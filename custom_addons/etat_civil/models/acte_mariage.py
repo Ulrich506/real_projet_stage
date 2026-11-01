@@ -192,6 +192,7 @@ class EtatCivilActeMariage(models.Model):
                     )
 
     def action_valider_acte(self):
+        res = super().action_valider_acte()
         for record in self:
             for number, spouse in (
                 (1, record.conjoint_1_id),
@@ -222,7 +223,6 @@ class EtatCivilActeMariage(models.Model):
                     "commune_naissance": spouse.lieu_naissance_commune or False,
                     "statut": "valide" if same_municipality else "brouillon",
                 })
-        res = super().action_valider_acte()
         for record in self:
             for spouse in (record.conjoint_1_id, record.conjoint_2_id):
                 spouse.situation_matrimoniale = "marie"

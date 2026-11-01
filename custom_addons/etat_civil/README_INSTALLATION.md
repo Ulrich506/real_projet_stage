@@ -87,6 +87,19 @@ Si vous utilisez le script `odoo.sh`, passez le nom du module :
 `./odoo.sh update etat_civil`. Sans ce nom, Odoo ne met pas le module à jour.
 Redémarrez ensuite Odoo et rechargez la page avec `Ctrl+Shift+R`.
 
+## Gestion des utilisateurs d'état civil
+
+Le menu **État Civil > Administration > Utilisateurs > Liste des utilisateurs**
+affiche les comptes internes Odoo, leur rôle métier, leurs centres affectés,
+leur état et leur dernière connexion. Cette liste est en lecture seule et
+réservée aux administrateurs d'état civil et aux administrateurs techniques
+Odoo. La création et la gestion des rôles continuent d'utiliser les assistants
+existants adossés à `res.users` ; aucun modèle utilisateur parallèle n'est créé.
+
+Après déploiement des fichiers du module, une mise à jour planifiée du module
+est nécessaire pour charger le nouveau champ de rôle et les vues. Ne lancez pas
+cette mise à jour sans sauvegarde vérifiée et procédure de déploiement approuvée.
+
 ## Connexion Odoo
 
 Le login utilisateur se fait via `/web/login`. Le paramètre `admin_passwd` de `odoo.conf` est le **mot de passe maître** de gestion des bases et n’est pas le mot de passe de connexion de l’utilisateur Odoo.

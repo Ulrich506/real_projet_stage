@@ -45,7 +45,7 @@ class EtatCivilActeOfficiel(models.AbstractModel):
             ("brouillon", "Brouillon"),
             ("en_attente", "En attente de validation"),
             ("a_corriger", "À corriger"),
-            ("valide", "Validé / Signé"),
+            ("valide", "Validé"),
             ("rectifie", "Rectifié"),
             ("annule", "Annulé"),
             ("archive", "Archivé"),
@@ -129,22 +129,33 @@ class EtatCivilActeOfficiel(models.AbstractModel):
                 raise ValidationError("Le motif d'annulation est obligatoire.")
 
     def _ensure_officier(self):
-        if not (
-            self.env.user.has_group("etat_civil.group_etat_civil_officier")
-            or self.env.user.has_group("base.group_system")
-        ):
-            raise UserError("Seul un officier d'état civil peut effectuer cette opération.")
+        if not self.env.user.has_group("etat_civil.group_etat_civil_officier"):
+            raise AccessError(_("Seul un officier d'état civil peut effectuer cette opération."))
+
+    def _ensure_agent(self):
+        user = self.env.user
+        if user.has_group("etat_civil.group_etat_civil_officier"):
+            raise AccessError(_("Un officier ne peut pas effectuer les opérations réservées à l'agent."))
+        if not self.env.su and not user.has_group("etat_civil.group_etat_civil_agent"):
+            raise AccessError(_("Seul un agent d'état civil peut effectuer cette opération."))
 
     def _ensure_competence_territoriale(self):
         self.ensure_one()
         user = self.env.user
-        if user.has_group("base.group_system"):
+        if self.env.su:
             return
         centre = self.registre_id.centre_id
         if not centre or centre not in user.etat_civil_centre_ids:
             raise AccessError(
                 _("Vous n'êtes pas affecté au centre d'état civil de ce dossier (%s). Opération refusée.")
                 % (centre.nom_centre if centre else _("non défini"))
+            )
+
+    def _ensure_officier_responsable(self):
+        self.ensure_one()
+        if not self.officier_validateur_id or self.officier_validateur_id != self.env.user:
+            raise AccessError(
+                _("Seul l'officier désigné lors de la transmission peut traiter ce dossier.")
             )
 
     def _compute_integrity_hash(self):
@@ -185,6 +196,17 @@ class EtatCivilActeOfficiel(models.AbstractModel):
             lambda user: centre in user.etat_civil_centre_ids
         )
 
+    def _generate_qr_verification_values(self, hash_value):
+        self.ensure_one()
+        payload = f"etat-civil:{self._name}:{self.id}:{hash_value}"
+        image = qrcode.make(payload)
+        buffer = BytesIO()
+        image.save(buffer, format="PNG")
+        return {
+            "qr_code_signature": payload,
+            "qr_code_image": base64.b64encode(buffer.getvalue()),
+        }
+
     def _check_specific_transmission_requirements(self):
         """Hook pour les contrôles spécifiques à chaque type d'acte (surchargé dans les sous-classes)."""
         return []
@@ -203,6 +225,7 @@ class EtatCivilActeOfficiel(models.AbstractModel):
 
     def action_lister_officiers_competents(self):
         self.ensure_one()
+        self._ensure_agent()
         self.check_access_rights("read")
         self.check_access_rule("read")
         return [
@@ -347,13 +370,12 @@ class EtatCivilActeOfficiel(models.AbstractModel):
         return officier
 
     def action_envoyer_validation(self, officier=None, notes=None):
-        if not (
-            self.env.user.has_group("etat_civil.group_etat_civil_agent")
-            or self.env.user.has_group("base.group_system")
-        ):
-            raise AccessError(_("Seul un agent d'état civil peut transmettre un dossier pour validation."))
+        self._ensure_agent()
         if not self:
             raise UserError(_("Sélectionnez au moins un dossier à transmettre."))
+        self.check_access_rights("write")
+        if not self.env.su:
+            self.check_access_rule("write")
 
         if len(self) > 1:
             transmitted = 0
@@ -439,6 +461,8 @@ class EtatCivilActeOfficiel(models.AbstractModel):
 
     def _execute_transmission(self, officier, notes=None):
         self.ensure_one()
+        if not officier or officier not in self._get_competent_officiers():
+            raise AccessError(_("L'officier responsable doit être compétent pour ce dossier."))
         vals = {
             "statut": "en_attente",
             "agent_transmetteur_id": self.env.user.id,
@@ -480,7 +504,7 @@ class EtatCivilActeOfficiel(models.AbstractModel):
         self.activity_schedule(
             activity_type_id=todo_type.id,
             summary=_("Validation de l'acte %s") % self.numero_acte,
-            note=_("L'agent %s a soumis ce dossier pour examen et signature.") % self.env.user.name,
+            note=_("L'agent %s a soumis ce dossier pour examen et validation.") % self.env.user.name,
             user_id=officier.id,
         )
 
@@ -488,6 +512,7 @@ class EtatCivilActeOfficiel(models.AbstractModel):
         self.ensure_one()
         self._ensure_officier()
         self._ensure_competence_territoriale()
+        self._ensure_officier_responsable()
         action = self.env.ref("etat_civil.action_etat_civil_retour_correction_wizard").read()[0]
         action["context"] = {
             "default_action_type": "correction",
@@ -504,6 +529,7 @@ class EtatCivilActeOfficiel(models.AbstractModel):
             raise ValidationError(_("Le motif de retour pour correction est obligatoire."))
         for record in self:
             record._ensure_competence_territoriale()
+            record._ensure_officier_responsable()
             if record.statut != "en_attente":
                 raise UserError(_("Seul un dossier en attente de validation peut être retourné pour correction."))
             record.with_context(
@@ -533,6 +559,7 @@ class EtatCivilActeOfficiel(models.AbstractModel):
         self.ensure_one()
         self._ensure_officier()
         self._ensure_competence_territoriale()
+        self._ensure_officier_responsable()
         action = self.env.ref("etat_civil.action_etat_civil_retour_correction_wizard").read()[0]
         action["context"] = {
             "default_action_type": "refus",
@@ -549,11 +576,13 @@ class EtatCivilActeOfficiel(models.AbstractModel):
             raise ValidationError(_("Le motif de refus est obligatoire."))
         for record in self:
             record._ensure_competence_territoriale()
+            record._ensure_officier_responsable()
             if record.statut != "en_attente":
                 raise UserError(_("Seul un dossier en attente de validation peut être refusé."))
+            decision_motif = _("REFUS — %s") % motif
             record.with_context(
                 etat_civil_transition_token=_INTERNAL_TRANSITION_TOKEN
-            ).write({"statut": "annule", "motif_annulation": motif})
+            ).write({"statut": "annule", "motif_annulation": decision_motif})
             record.message_post(
                 body=_("Dossier définitivement refusé par l'officier <b>%s</b>.<br/><b>Motif :</b> %s")
                 % (self.env.user.name, motif)
@@ -564,8 +593,9 @@ class EtatCivilActeOfficiel(models.AbstractModel):
         self._ensure_officier()
         for record in self:
             record._ensure_competence_territoriale()
-            if record.statut not in ("en_attente", "brouillon"):
-                raise UserError(_("Seul un dossier en attente de validation (ou en brouillon direct) peut être validé."))
+            if record.statut != "en_attente":
+                raise UserError(_("Seul un dossier transmis et en attente peut être validé."))
+            record._ensure_officier_responsable()
             if record.registre_id.est_cloture:
                 raise UserError(_("Impossible de valider un acte dans un registre clôturé."))
             if not (record.texte_integral_acte or "").strip():
@@ -573,19 +603,16 @@ class EtatCivilActeOfficiel(models.AbstractModel):
             record._sync_pieces_justificatives()
             record._check_pieces_justificatives()
 
+        for record in self:
             hash_value = record._compute_integrity_hash()
-            qr_payload = f"etat-civil:{record._name}:{record.id}:{hash_value}"
-            qr_image = qrcode.make(qr_payload)
-            buffer = BytesIO()
-            qr_image.save(buffer, format="PNG")
+            qr_values = record._generate_qr_verification_values(hash_value)
 
             record.with_context(
                 etat_civil_transition_token=_INTERNAL_TRANSITION_TOKEN
             ).write(
                 {
                     "hash_empreinte_num": hash_value,
-                    "qr_code_signature": qr_payload,
-                    "qr_code_image": base64.b64encode(buffer.getvalue()),
+                    **qr_values,
                     "statut": "valide",
                     "officier_validateur_id": self.env.user.id,
                     "date_validation": fields.Datetime.now(),
@@ -595,7 +622,7 @@ class EtatCivilActeOfficiel(models.AbstractModel):
 
             record.message_post(
                 body=(
-                    _("Acte validé et signé par l'officier <b>%s</b>. Empreinte SHA-256 générée et QR de vérification créé.")
+                    _("Acte validé par l'officier <b>%s</b>. Une empreinte SHA-256 a été calculée et un QR de vérification a été généré.")
                     % self.env.user.name
                 )
             )
@@ -657,6 +684,7 @@ class EtatCivilActeOfficiel(models.AbstractModel):
         self.ensure_one()
         self._ensure_officier()
         self._ensure_competence_territoriale()
+        self._ensure_officier_responsable()
         if self.statut != "valide":
             raise UserError(_("Seul un acte validé peut être annulé."))
         action = self.env.ref("etat_civil.action_etat_civil_annulation_acte_wizard").read()[0]
@@ -681,11 +709,13 @@ class EtatCivilActeOfficiel(models.AbstractModel):
             raise ValidationError(_("Le motif d'annulation est obligatoire."))
         for record in self:
             record._ensure_competence_territoriale()
+            record._ensure_officier_responsable()
             if record.statut != "valide":
                 raise UserError(_("Seul un acte validé peut être annulé."))
+            decision_motif = _("ANNULATION — %s") % motif
             record.with_context(
                 etat_civil_transition_token=_INTERNAL_TRANSITION_TOKEN
-            ).write({"statut": "annule", "motif_annulation": motif})
+            ).write({"statut": "annule", "motif_annulation": decision_motif})
             record.message_post(body=_("Acte annulé. Motif : %s") % motif)
         return True
 
@@ -693,6 +723,7 @@ class EtatCivilActeOfficiel(models.AbstractModel):
         self._ensure_officier()
         for record in self:
             record._ensure_competence_territoriale()
+            record._ensure_officier_responsable()
             if record.statut != "valide":
                 raise UserError(_("Seul un acte validé peut être rectifié."))
             record.with_context(
@@ -705,6 +736,7 @@ class EtatCivilActeOfficiel(models.AbstractModel):
         self._ensure_officier()
         for record in self:
             record._ensure_competence_territoriale()
+            record._ensure_officier_responsable()
             if record.statut != "annule":
                 raise UserError(_("Seul un acte annulé peut être archivé."))
             record.with_context(
@@ -715,6 +747,7 @@ class EtatCivilActeOfficiel(models.AbstractModel):
 
     @api.model_create_multi
     def create(self, vals_list):
+        self._ensure_agent()
         internal_transition = (
             self.env.context.get("etat_civil_transition_token") is _INTERNAL_TRANSITION_TOKEN
         )
@@ -727,6 +760,9 @@ class EtatCivilActeOfficiel(models.AbstractModel):
                 vals.pop("qr_code_image", None)
                 vals.pop("officier_validateur_id", None)
                 vals.pop("date_validation", None)
+                vals.pop("agent_transmetteur_id", None)
+                vals.pop("date_transmission", None)
+                vals.pop("notes_transmission", None)
             # Generate sequence number ONLY at actual record creation,
             # never during form open / default_get / onchange.
             if not (vals.get("numero_acte") or "").strip():
@@ -758,9 +794,21 @@ class EtatCivilActeOfficiel(models.AbstractModel):
             )
         if "hash_empreinte_num" in vals and not internal_transition:
             raise UserError(_("L'empreinte d'un acte est gérée automatiquement."))
+        protected_workflow_fields = {
+            "qr_code_signature",
+            "qr_code_image",
+            "officier_validateur_id",
+            "agent_transmetteur_id",
+            "date_transmission",
+            "date_validation",
+        }
+        if protected_workflow_fields.intersection(vals) and not internal_transition:
+            raise UserError(_("Les informations de transmission et de vérification sont gérées par le workflow."))
 
         if not internal_transition:
             for record in self:
+                if record.statut in {"brouillon", "a_corriger"}:
+                    record._ensure_agent()
                 if record.statut == "en_attente":
                     raise UserError(
                         _("Ce dossier est actuellement en attente de validation par l'officier compétent. "
@@ -783,6 +831,7 @@ class EtatCivilActeOfficiel(models.AbstractModel):
         return super().write(vals)
 
     def unlink(self):
+        self._ensure_agent()
         for record in self:
             if record.statut not in ("brouillon", "a_corriger"):
                 raise UserError(

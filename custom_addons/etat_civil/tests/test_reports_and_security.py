@@ -122,7 +122,17 @@ class TestReportsAndSecurity(TransactionCase):
             }
         )
 
+        agent_group = cls.env.ref("etat_civil.group_etat_civil_agent")
         officier_group = cls.env.ref("etat_civil.group_etat_civil_officier")
+        cls.agent = cls.env["res.users"].create(
+            {
+                "name": "Agent Test Reports",
+                "login": "agent_test_report@example.com",
+                "email": "agent_test_report@example.com",
+                "groups_id": [(6, 0, [agent_group.id])],
+                "etat_civil_centre_ids": [(6, 0, [cls.centre.id])],
+            }
+        )
         cls.officier = cls.env["res.users"].create(
             {
                 "name": "Officier Test Reports",
@@ -132,6 +142,12 @@ class TestReportsAndSecurity(TransactionCase):
                 "etat_civil_centre_ids": [(6, 0, [cls.centre.id])],
             }
         )
+
+    def _valider_par_le_workflow(self, acte):
+        acte.piece_ids.with_user(self.agent).write({"etat": "recu"})
+        acte.with_user(self.agent).action_envoyer_validation(officier=self.officier)
+        acte.piece_ids.with_user(self.officier).write({"etat": "verifie"})
+        acte.with_user(self.officier).action_valider_acte()
 
     def _render_report(self, xmlid, record_ids):
         """Helper compatible Odoo 17 pour rendre un rapport QWeb en HTML."""
@@ -220,8 +236,7 @@ class TestReportsAndSecurity(TransactionCase):
         self.assertFalse(acte.qr_code_image)
 
         # L'officier vérifie les pièces puis valide
-        acte.piece_ids.with_user(self.officier).write({"etat": "verifie"})
-        acte.with_user(self.officier).action_valider_acte()
+        self._valider_par_le_workflow(acte)
 
         # Après validation
         self.assertEqual(acte.statut, "valide")
@@ -237,7 +252,8 @@ class TestReportsAndSecurity(TransactionCase):
         self.assertIn(acte.hash_empreinte_num, html_str)
         self.assertIn("data:image/png;base64,", html_str)
         # Disclaimer légal obligatoire
-        self.assertIn("ne se substitue pas à la signature manuscrite", html_str)
+        self.assertIn("ne constituent pas une signature électronique", html_str)
+        self.assertIn("ne se substituent pas à la signature manuscrite", html_str)
 
     def test_chatter_and_messages(self):
         """Vérifie que mail.thread fonctionne : message_post crée bien un message dans le chatter."""
@@ -277,8 +293,7 @@ class TestReportsAndSecurity(TransactionCase):
             }
         )
         # Valider l'acte pour générer le hash
-        acte.piece_ids.with_user(self.officier).write({"etat": "verifie"})
-        acte.with_user(self.officier).action_valider_acte()
+        self._valider_par_le_workflow(acte)
 
         self.assertEqual(acte.statut, "valide")
         self.assertTrue(acte.hash_empreinte_num)
@@ -395,4 +410,3 @@ class TestReportsAndSecurity(TransactionCase):
         acte_a.piece_ids.with_user(self.officier).write({"etat": "verifie"})
         with self.assertRaises(AccessError):
             acte_a.with_user(officier_b).action_valider_acte()
-

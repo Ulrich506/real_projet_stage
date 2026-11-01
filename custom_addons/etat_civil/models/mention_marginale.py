@@ -137,10 +137,7 @@ class EtatCivilMentionMarginale(models.Model):
         return records
 
     def _ensure_officier(self):
-        if not (
-            self.env.user.has_group('etat_civil.group_etat_civil_officier')
-            or self.env.user.has_group('base.group_system')
-        ):
+        if not self.env.user.has_group('etat_civil.group_etat_civil_officier'):
             raise AccessError("Seul un officier d'état civil peut gérer les mentions marginales.")
 
     def _pieces_owner_field(self):

@@ -102,6 +102,12 @@ class EtatCivilApiController(http.Controller):
             'registre_id': acte.registre_id.id,
             'registre': acte.registre_id.display_name,
             'statut': acte.statut,
+            'officier_responsable': (
+                {'id': acte.officier_validateur_id.id, 'nom': acte.officier_validateur_id.name}
+                if acte.officier_validateur_id
+                else None
+            ),
+            'date_transmission': cls._serialize_value(acte.date_transmission),
             'date_dressage': cls._serialize_value(acte.date_dressage),
             'enfant': cls._serialize_individu(acte.enfant_id),
             'pere': cls._serialize_individu(acte.pere_id) if acte.pere_id else None,
@@ -117,6 +123,7 @@ class EtatCivilApiController(http.Controller):
             'certificat_medical_ref': acte.certificat_medical_ref,
             'texte_integral_acte': acte.texte_integral_acte,
             'hash_empreinte_num': acte.hash_empreinte_num,
+            'qr_verification_payload': acte.qr_code_signature,
             'qr_code_signature': acte.qr_code_signature,
             'mentions_marginales': [cls._serialize_mention(mention) for mention in acte.mention_ids],
             'pieces_justificatives': [cls._serialize_piece(piece) for piece in acte.piece_ids],
@@ -132,6 +139,12 @@ class EtatCivilApiController(http.Controller):
             'registre_id': acte.registre_id.id,
             'registre': acte.registre_id.display_name,
             'statut': acte.statut,
+            'officier_responsable': (
+                {'id': acte.officier_validateur_id.id, 'nom': acte.officier_validateur_id.name}
+                if acte.officier_validateur_id
+                else None
+            ),
+            'date_transmission': cls._serialize_value(acte.date_transmission),
             'date_dressage': cls._serialize_value(acte.date_dressage),
             'conjoint_1': cls._serialize_individu(acte.conjoint_1_id),
             'conjoint_2': cls._serialize_individu(acte.conjoint_2_id),
@@ -149,6 +162,7 @@ class EtatCivilApiController(http.Controller):
             'officier_etat_civil': acte.officier_etat_civil,
             'texte_integral_acte': acte.texte_integral_acte,
             'hash_empreinte_num': acte.hash_empreinte_num,
+            'qr_verification_payload': acte.qr_code_signature,
             'qr_code_signature': acte.qr_code_signature,
             'mentions_marginales': [cls._serialize_mention(mention) for mention in acte.mention_ids],
             'pieces_justificatives': [cls._serialize_piece(piece) for piece in acte.piece_ids],
@@ -164,6 +178,12 @@ class EtatCivilApiController(http.Controller):
             'registre_id': acte.registre_id.id,
             'registre': acte.registre_id.display_name,
             'statut': acte.statut,
+            'officier_responsable': (
+                {'id': acte.officier_validateur_id.id, 'nom': acte.officier_validateur_id.name}
+                if acte.officier_validateur_id
+                else None
+            ),
+            'date_transmission': cls._serialize_value(acte.date_transmission),
             'date_dressage': cls._serialize_value(acte.date_dressage),
             'defunt': cls._serialize_individu(acte.defunt_id),
             'declarant': cls._serialize_individu(acte.declarant_id) if acte.declarant_id else None,
@@ -174,6 +194,7 @@ class EtatCivilApiController(http.Controller):
             'certificat_medical_ref': acte.certificat_medical_ref,
             'texte_integral_acte': acte.texte_integral_acte,
             'hash_empreinte_num': acte.hash_empreinte_num,
+            'qr_verification_payload': acte.qr_code_signature,
             'qr_code_signature': acte.qr_code_signature,
             'mentions_marginales': [cls._serialize_mention(mention) for mention in acte.mention_ids],
             'pieces_justificatives': [cls._serialize_piece(piece) for piece in acte.piece_ids],
@@ -545,7 +566,7 @@ class EtatCivilApiController(http.Controller):
                 officier=payload.get('officier_id') or None,
                 notes=payload.get('notes') or None,
             )
-            if isinstance(result, dict):
+            if result.get('type') == 'ir.actions.act_window':
                 return self._response(
                     {
                         'error': (
@@ -1247,6 +1268,7 @@ class EtatCivilApiController(http.Controller):
             'valide': is_authentic,
             'hash_enregistre': acte.hash_empreinte_num,
             'hash_calcule': expected_hash,
+            'qr_verification_payload': acte.qr_code_signature,
             'qr_code_signature': acte.qr_code_signature,
         })
 

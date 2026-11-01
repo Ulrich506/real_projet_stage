@@ -721,6 +721,14 @@ class TestNouveauNeSequenceImportExport(TransactionCase):
             model = self.env[model_name].with_user(system_user)
             for operation in ("read", "create", "write", "unlink"):
                 model.check_access_rights(operation)
+        for model_name in (
+            "etat.civil.acte.naissance",
+            "etat.civil.acte.mariage",
+            "etat.civil.acte.deces",
+        ):
+            model = self.env[model_name].with_user(system_user)
+            with self.assertRaises(AccessError):
+                model.create({})
 
         person = self.env["etat.civil.individu"].with_user(system_user).create({
             "nom": "Administrateur",
@@ -730,5 +738,7 @@ class TestNouveauNeSequenceImportExport(TransactionCase):
         person.write({"domicile_actuel": "Centre"})
         person.unlink()
 
-        self.ActeNaissance.with_user(system_user)._ensure_officier()
-        self.env["etat.civil.mention.marginale"].with_user(system_user)._ensure_officier()
+        with self.assertRaises(AccessError):
+            self.ActeNaissance.with_user(system_user)._ensure_officier()
+        with self.assertRaises(AccessError):
+            self.env["etat.civil.mention.marginale"].with_user(system_user)._ensure_officier()

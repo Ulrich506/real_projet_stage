@@ -133,6 +133,10 @@ class TestEtatCivilRolePermissions(TransactionCase):
             }
         )
 
+    def _transmit_birth_act(self, acte):
+        acte.piece_ids.with_user(self.agent).write({"etat": "recu"})
+        acte.with_user(self.agent).action_envoyer_validation(officier=self.officer)
+
     def test_manual_act_number_is_preserved_and_folio_increments_per_register(self):
         first_act = self._create_birth_act()
         self.assertEqual(first_act.numero_acte, "ROLE-1")
@@ -159,9 +163,7 @@ class TestEtatCivilRolePermissions(TransactionCase):
 
     def test_agent_transmits_to_the_assigned_officer(self):
         acte = self._create_birth_act()
-        acte.piece_ids.with_user(self.agent).write({"etat": "recu"})
-
-        acte.action_envoyer_validation()
+        self._transmit_birth_act(acte)
 
         self.assertEqual(acte.statut, "en_attente")
         self.assertEqual(acte.officier_validateur_id, self.officer)
@@ -239,7 +241,7 @@ class TestEtatCivilRolePermissions(TransactionCase):
 
         with self.assertRaises(UserError):
             acte.write({"statut": "valide"})
-        with self.assertRaises(UserError):
+        with self.assertRaises(AccessError):
             acte.action_valider_acte()
 
     def test_civil_admin_does_not_receive_officer_validation_rights_from_module_groups(self):
@@ -247,11 +249,15 @@ class TestEtatCivilRolePermissions(TransactionCase):
 
         self.assertTrue(self.admin.has_group("etat_civil.group_etat_civil_agent"))
         self.assertFalse(self.admin.has_group("etat_civil.group_etat_civil_officier"))
-        with self.assertRaises(UserError):
+        with self.assertRaises(AccessError):
             acte.with_user(self.admin).action_valider_acte()
+
+    def test_officer_group_does_not_imply_agent_group(self):
+        self.assertFalse(self.officer.has_group("etat_civil.group_etat_civil_agent"))
 
     def test_officer_validation_locks_all_act_data_but_keeps_mentions_optional(self):
         acte = self._create_birth_act()
+        self._transmit_birth_act(acte)
         acte.piece_ids.with_user(self.officer).write({"etat": "verifie"})
         acte.with_user(self.officer).action_valider_acte()
 
@@ -277,6 +283,7 @@ class TestEtatCivilRolePermissions(TransactionCase):
 
     def test_act_validation_requires_verified_documents(self):
         acte = self._create_birth_act()
+        self._transmit_birth_act(acte)
         with self.assertRaises(ValidationError):
             acte.with_user(self.officer).action_valider_acte()
         acte.piece_ids.with_user(self.officer).write({"etat": "verifie"})
@@ -339,7 +346,7 @@ class TestEtatCivilRolePermissions(TransactionCase):
             [("login", "=", "role-created-officer")], limit=1
         )
         self.assertIn(self.officer_group, user.groups_id)
-        self.assertIn(self.agent_group, user.groups_id)
+        self.assertNotIn(self.agent_group, user.groups_id)
         self.assertNotIn(self.admin_group, user.groups_id)
 
     def test_agent_cannot_open_user_management(self):
@@ -364,7 +371,7 @@ class TestEtatCivilRolePermissions(TransactionCase):
         wizard.action_save()
         self.agent.invalidate_recordset(["groups_id"])
         self.assertIn(self.officer_group, self.agent.groups_id)
-        self.assertIn(self.agent_group, self.agent.groups_id)
+        self.assertNotIn(self.agent_group, self.agent.groups_id)
         self.assertNotIn(self.admin_group, self.agent.groups_id)
 
     def test_cannot_disable_last_civil_admin(self):
@@ -399,25 +406,26 @@ class TestEtatCivilRolePermissions(TransactionCase):
 
     def test_officer_can_return_for_correction_and_agent_can_resubmit(self):
         acte = self._create_birth_act()
-        acte.piece_ids.with_user(self.agent).write({"etat": "recu"})
-        acte.action_envoyer_validation()
+        self._transmit_birth_act(acte)
         acte.with_user(self.officer).action_retourner_correction("Pièce illisible")
         self.assertEqual(acte.statut, "a_corriger")
         self.assertEqual(acte.motif_correction, "Pièce illisible")
         acte.with_user(self.agent).write({"texte_integral_acte": "Texte corrigé"})
-        acte.with_user(self.agent).action_envoyer_validation()
+        acte.piece_ids.with_user(self.agent).write({"etat": "recu"})
+        acte.with_user(self.agent).action_envoyer_validation(officier=self.officer)
         self.assertEqual(acte.statut, "en_attente")
 
     def test_officer_can_refuse_waiting_act(self):
         acte = self._create_birth_act()
-        acte.piece_ids.with_user(self.agent).write({"etat": "recu"})
-        acte.action_envoyer_validation()
+        self._transmit_birth_act(acte)
         acte.with_user(self.officer).action_refuser_acte("Dossier hors compétence communale")
         self.assertEqual(acte.statut, "annule")
         self.assertIn("hors compétence", acte.motif_annulation)
+        self.assertTrue(acte.motif_annulation.startswith("REFUS"))
 
     def test_validated_act_cannot_be_transmitted(self):
         acte = self._create_birth_act()
+        self._transmit_birth_act(acte)
         acte.piece_ids.with_user(self.officer).write({"etat": "verifie"})
         acte.with_user(self.officer).action_valider_acte()
         with self.assertRaises(UserError):
@@ -425,8 +433,7 @@ class TestEtatCivilRolePermissions(TransactionCase):
 
     def test_officer_from_another_centre_cannot_validate(self):
         acte = self._create_birth_act()
-        acte.piece_ids.with_user(self.agent).write({"etat": "recu"})
-        acte.action_envoyer_validation()
+        self._transmit_birth_act(acte)
         other_centre = self.env["etat.civil.centre"].sudo().create(
             {
                 "code_centre": "OTHER-VALIDATE",
@@ -449,8 +456,44 @@ class TestEtatCivilRolePermissions(TransactionCase):
         with self.assertRaises(AccessError):
             acte.with_user(outsider).action_valider_acte()
 
+    def test_only_the_assigned_officer_can_validate(self):
+        acte = self._create_birth_act()
+        self._transmit_birth_act(acte)
+        acte.piece_ids.with_user(self.officer).write({"etat": "verifie"})
+        other_officer = self.env["res.users"].sudo().create(
+            {
+                "name": "Officer same centre, not assigned",
+                "login": "role-test-unassigned-officer",
+                "groups_id": [(6, 0, [self.officer_group.id])],
+                "etat_civil_centre_ids": [(4, acte.registre_id.centre_id.id)],
+            }
+        )
+
+        with self.assertRaises(AccessError):
+            acte.with_user(other_officer).action_valider_acte()
+        acte.with_user(self.officer).action_valider_acte()
+
+    def test_officer_cannot_create_edit_or_transmit_agent_acts(self):
+        acte = self._create_birth_act()
+
+        with self.assertRaises(AccessError):
+            self.env["etat.civil.acte.naissance"].with_user(self.officer).create(
+                {
+                    "registre_id": acte.registre_id.id,
+                    "texte_integral_acte": "Création interdite à l'officier.",
+                    "lieu_naissance": "Commune de test",
+                    "enfant_id": acte.enfant_id.id,
+                    "mere_id": acte.mere_id.id,
+                }
+            )
+        with self.assertRaises(AccessError):
+            acte.with_user(self.officer).write({"texte_integral_acte": "Modification interdite."})
+        with self.assertRaises(AccessError):
+            acte.with_user(self.officer).action_envoyer_validation(officier=self.officer)
+
     def test_officer_full_lifecycle_annulation_and_archivage(self):
         acte = self._create_birth_act()
+        self._transmit_birth_act(acte)
         acte.piece_ids.with_user(self.officer).write({"etat": "verifie"})
         acte.with_user(self.officer).action_valider_acte()
         self.assertEqual(acte.statut, "valide")
@@ -459,14 +502,15 @@ class TestEtatCivilRolePermissions(TransactionCase):
         with self.assertRaises(UserError):
             acte.with_user(self.officer).action_archiver_acte()
 
-        # Un agent ne peut pas annuler un acte (UserError via _ensure_officier)
-        with self.assertRaises(UserError):
+        # Un agent ne peut pas annuler un acte.
+        with self.assertRaises(AccessError):
             acte.with_user(self.agent).action_annuler_acte("Motif agent interdit")
 
         # L'officier compétent annule l'acte
         acte.with_user(self.officer).action_annuler_acte("Erreur matérielle avérée sur la filiation")
         self.assertEqual(acte.statut, "annule")
         self.assertIn("Erreur matérielle", acte.motif_annulation)
+        self.assertTrue(acte.motif_annulation.startswith("ANNULATION"))
 
         # L'officier compétent archive l'acte annulé
         acte.with_user(self.officer).action_archiver_acte()
@@ -474,6 +518,7 @@ class TestEtatCivilRolePermissions(TransactionCase):
 
     def test_cancellation_wizard(self):
         acte = self._create_birth_act()
+        self._transmit_birth_act(acte)
         acte.piece_ids.with_user(self.officer).write({"etat": "verifie"})
         acte.with_user(self.officer).action_valider_acte()
 
@@ -485,4 +530,4 @@ class TestEtatCivilRolePermissions(TransactionCase):
         })
         wizard.action_confirmer()
         self.assertEqual(acte.statut, "annule")
-        self.assertEqual(acte.motif_annulation, "Annulation légale via wizard")
+        self.assertEqual(acte.motif_annulation, "ANNULATION — Annulation légale via wizard")
