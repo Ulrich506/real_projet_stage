@@ -1,0 +1,651 @@
+2026-11-01 09:05:49,294 844655 INFO ? odoo: Odoo version 17.0 
+2026-11-01 09:05:49,294 844655 INFO ? odoo: Using configuration file at /home/ulrich/tous_les_projet/stage_l3_odoo/config/odoo17.conf 
+2026-11-01 09:05:49,295 844655 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-01 09:05:49,295 844655 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-01 09:05:49,518 844655 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-01 09:05:49,997 844655 INFO ? odoo.service.server: HTTP service (werkzeug) running on localhost:8071 
+2026-11-01 09:06:04,885 844655 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-11-01 09:06:04,894 844655 INFO ? odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-01 09:06:04,908 844655 WARNING ? odoo.modules.graph: module etat_civil: not installable, skipped 
+2026-11-01 09:06:04,919 844655 INFO ? odoo.modules.loading: loading 23 modules... 
+2026-11-01 09:06:05,718 844655 INFO ? odoo.modules.loading: 23 modules loaded in 0.80s, 0 queries (+0 extra) 
+2026-11-01 09:06:05,806 844655 INFO ? odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-01 09:06:05,809 844655 ERROR ? odoo.modules.loading: Some modules are not loaded, some dependencies or manifest may be missing: ['etat_civil'] 
+2026-11-01 09:06:05,810 844655 INFO ? odoo.modules.loading: Modules loaded. 
+2026-11-01 09:06:05,815 844655 INFO ? odoo.modules.registry: Registry loaded in 0.957s 
+2026-11-01 09:06:05,817 844655 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-01 09:06:05,842 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:06:05] "GET / HTTP/1.1" 303 - 23 0.026 0.983
+2026-11-01 09:06:05,896 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:06:05] "GET /web HTTP/1.1" 303 - 2 0.004 0.026
+2026-11-01 09:06:06,161 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:06:06] "GET /web/login HTTP/1.1" 200 - 55 0.042 0.199
+2026-11-01 09:06:06,466 844655 INFO etat_civil_odoo17_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/a3cf721/web.assets_frontend_minimal.min.js (id:886) 
+2026-11-01 09:06:06,467 844655 INFO etat_civil_odoo17_test odoo.addons.base.models.assetsbundle: Deleting attachments [14] (matching /web/assets/_______/web.assets_frontend_minimal.min.js) because it was replaced with /web/assets/a3cf721/web.assets_frontend_minimal.min.js 
+2026-11-01 09:06:06,493 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:06:06] "GET /web/assets/a3cf721/web.assets_frontend_minimal.min.js HTTP/1.1" 200 - 16 0.078 0.147
+2026-11-01 09:06:07,992 844655 INFO etat_civil_odoo17_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/f7c8089/web.assets_frontend.min.css (id:887) 
+2026-11-01 09:06:07,994 844655 INFO etat_civil_odoo17_test odoo.addons.base.models.assetsbundle: Deleting attachments [49] (matching /web/assets/_______/web.assets_frontend.min.css) because it was replaced with /web/assets/f7c8089/web.assets_frontend.min.css 
+2026-11-01 09:06:08,009 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:06:08] "GET /web/assets/f7c8089/web.assets_frontend.min.css HTTP/1.1" 200 - 12 0.060 1.684
+2026-11-01 09:06:08,062 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:06:08] "GET /web/binary/company_logo HTTP/1.1" 200 - 3 0.008 0.027
+2026-11-01 09:06:09,086 844655 INFO ? werkzeug: 127.0.0.1 - - [01/Nov/2026 09:06:09] "GET /web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0 HTTP/1.1" 200 - 1 0.010 2.811
+2026-11-01 09:06:09,087 844655 INFO ? werkzeug: 127.0.0.1 - - [01/Nov/2026 09:06:09] "GET /web/static/img/favicon.ico HTTP/1.1" 200 - 1 0.006 0.681
+2026-11-01 09:06:09,163 844655 INFO etat_civil_odoo17_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/d040e93/web.assets_frontend_lazy.min.js (id:888) 
+2026-11-01 09:06:09,165 844655 INFO etat_civil_odoo17_test odoo.addons.base.models.assetsbundle: Deleting attachments [50] (matching /web/assets/_______/web.assets_frontend_lazy.min.js) because it was replaced with /web/assets/d040e93/web.assets_frontend_lazy.min.js 
+2026-11-01 09:06:09,180 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:06:09] "GET /web/assets/d040e93/web.assets_frontend_lazy.min.js HTTP/1.1" 200 - 12 0.019 0.962
+2026-11-01 09:06:10,726 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:06:10] "GET /web/webclient/translations/1793523969443 HTTP/1.1" 200 - 5 0.007 1.253
+2026-11-01 09:06:21,029 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:06:21] "GET /web/login HTTP/1.1" 200 - 5 0.020 0.095
+2026-11-01 09:06:21,720 844655 INFO ? werkzeug: 127.0.0.1 - - [01/Nov/2026 09:06:21] "GET /web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0 HTTP/1.1" 200 - 1 0.006 0.179
+2026-11-01 09:06:21,763 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:06:21] "GET /web/binary/company_logo HTTP/1.1" 200 - 3 0.019 0.198
+2026-11-01 09:06:21,788 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:06:21] "GET /web/assets/f7c8089/web.assets_frontend.min.css HTTP/1.1" 200 - 5 0.069 0.182
+2026-11-01 09:06:22,051 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:06:22] "GET /web/assets/a3cf721/web.assets_frontend_minimal.min.js HTTP/1.1" 200 - 5 0.012 0.082
+2026-11-01 09:06:22,539 844655 INFO ? werkzeug: 127.0.0.1 - - [01/Nov/2026 09:06:22] "GET /web/static/img/favicon.ico HTTP/1.1" 200 - 1 0.010 0.042
+2026-11-01 09:06:22,580 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:06:22] "GET /web/assets/d040e93/web.assets_frontend_lazy.min.js HTTP/1.1" 200 - 5 0.036 0.085
+2026-11-01 09:06:23,250 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:06:23] "GET /web/webclient/translations/1793523983005 HTTP/1.1" 200 - 4 0.007 0.098
+2026-11-01 09:06:30,092 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:06:30] "GET / HTTP/1.1" 303 - 2 0.005 0.023
+2026-11-01 09:06:30,132 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:06:30] "GET /web HTTP/1.1" 303 - 2 0.004 0.026
+2026-11-01 09:06:30,205 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:06:30] "GET /web/login HTTP/1.1" 200 - 5 0.009 0.041
+2026-11-01 09:06:30,380 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:06:30] "GET /web/binary/company_logo HTTP/1.1" 304 - 3 0.008 0.025
+2026-11-01 09:06:30,678 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:06:30] "GET /web/webclient/translations/1793523990640 HTTP/1.1" 200 - 4 0.004 0.027
+2026-11-01 09:10:30,107 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:10:30] "GET /web/signup HTTP/1.1" 200 - 12 0.016 0.078
+2026-11-01 09:10:30,417 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:10:30] "GET /web/binary/company_logo HTTP/1.1" 304 - 3 0.006 0.031
+2026-11-01 09:10:30,843 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:10:30] "GET /web/webclient/translations/1793524230762 HTTP/1.1" 200 - 4 0.005 0.038
+2026-11-01 09:10:52,021 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:10:52] "GET /web/webclient/translations/1793524251981 HTTP/1.1" 200 - 4 0.004 0.024
+2026-11-01 09:10:53,031 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:10:53] "GET /web/webclient/translations/1793524252965 HTTP/1.1" 200 - 4 0.006 0.035
+2026-11-01 09:11:03,111 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:11:03] "GET / HTTP/1.1" 303 - 2 0.005 0.031
+2026-11-01 09:11:03,154 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:11:03] "GET /web HTTP/1.1" 303 - 2 0.004 0.024
+2026-11-01 09:11:03,219 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:11:03] "GET /web/login HTTP/1.1" 200 - 5 0.007 0.042
+2026-11-01 09:11:03,439 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:11:03] "GET /web/binary/company_logo HTTP/1.1" 304 - 3 0.008 0.041
+2026-11-01 09:11:03,952 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:11:03] "GET /web/webclient/translations/1793524263915 HTTP/1.1" 200 - 4 0.004 0.026
+2026-11-01 09:11:08,571 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:11:08] "GET / HTTP/1.1" 303 - 2 0.005 0.025
+2026-11-01 09:11:08,649 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:11:08] "GET /web HTTP/1.1" 303 - 2 0.004 0.022
+2026-11-01 09:11:08,721 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:11:08] "GET /web/login HTTP/1.1" 200 - 5 0.011 0.048
+2026-11-01 09:11:08,886 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:11:08] "GET /web/binary/company_logo HTTP/1.1" 304 - 3 0.008 0.043
+2026-11-01 09:11:09,085 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:11:09] "GET /web/webclient/translations/1793524269023 HTTP/1.1" 200 - 4 0.007 0.035
+2026-11-01 09:11:54,986 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:11:54] "GET /web/signup HTTP/1.1" 200 - 4 0.005 0.031
+2026-11-01 09:11:55,153 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:11:55] "GET /web/binary/company_logo HTTP/1.1" 304 - 3 0.018 0.048
+2026-11-01 09:11:55,680 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:11:55] "GET /web/webclient/translations/1793524315517 HTTP/1.1" 200 - 4 0.006 0.038
+2026-11-01 09:12:14,170 844655 INFO etat_civil_odoo17_test odoo.addons.base.models.res_users: Login successful for db:etat_civil_odoo17_test login:tempulrich54@gmail.com from 127.0.0.1 
+2026-11-01 09:12:15,125 844655 INFO etat_civil_odoo17_test odoo.addons.base.models.res_users: Login successful for db:etat_civil_odoo17_test login:tempulrich54@gmail.com from 127.0.0.1 
+2026-11-01 09:12:15,148 844655 INFO etat_civil_odoo17_test odoo.modules.registry: Caches invalidated, signaling through the database: ['default'] 
+2026-11-01 09:12:15,150 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:15] "POST /web/signup HTTP/1.1" 303 - 202 0.174 2.749
+2026-11-01 09:12:15,268 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:15] "GET /web/login_successful?account_created=True HTTP/1.1" 200 - 27 0.024 0.073
+2026-11-01 09:12:15,474 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:15] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.003 0.009
+2026-11-01 09:12:16,096 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:16] "GET /web/webclient/translations/1793524336050 HTTP/1.1" 200 - 2 0.002 0.014
+2026-11-01 09:12:24,991 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:24] "GET /web/login_successful HTTP/1.1" 200 - 2 0.003 0.010
+2026-11-01 09:12:25,143 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:25] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.002 0.007
+2026-11-01 09:12:25,318 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:25] "GET /web/webclient/translations/1793524345242 HTTP/1.1" 200 - 2 0.003 0.022
+2026-11-01 09:12:26,570 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:26] "GET /web/login_successful HTTP/1.1" 200 - 2 0.001 0.008
+2026-11-01 09:12:26,672 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:26] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.003 0.006
+2026-11-01 09:12:26,909 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:26] "GET /web/webclient/translations/1793524346850 HTTP/1.1" 200 - 2 0.001 0.013
+2026-11-01 09:12:29,831 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:29] "GET /web/webclient/translations/1793524349741 HTTP/1.1" 200 - 2 0.002 0.011
+2026-11-01 09:12:31,568 844655 WARNING etat_civil_odoo17_test odoo.http: CSRF validation failed on path '/web/login' 
+2026-11-01 09:12:31,569 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:31] "POST /web/login HTTP/1.1" 400 - 1 0.001 0.006
+2026-11-01 09:12:31,878 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:31] "GET /favicon.ico HTTP/1.1" 404 - 2 0.002 0.004
+2026-11-01 09:12:35,415 844655 WARNING etat_civil_odoo17_test odoo.http: CSRF validation failed on path '/web/login' 
+2026-11-01 09:12:35,416 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:35] "POST /web/login HTTP/1.1" 400 - 1 0.001 0.004
+2026-11-01 09:12:39,248 844655 WARNING etat_civil_odoo17_test odoo.http: CSRF validation failed on path '/web/login' 
+2026-11-01 09:12:39,249 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:39] "POST /web/login HTTP/1.1" 400 - 1 0.002 0.010
+2026-11-01 09:12:41,755 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:41] "GET /web/login HTTP/1.1" 200 - 7 0.008 0.049
+2026-11-01 09:12:41,856 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:41] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.003 0.007
+2026-11-01 09:12:41,967 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:41] "GET /web/webclient/translations/1793524361930 HTTP/1.1" 200 - 2 0.002 0.012
+2026-11-01 09:12:45,667 844655 INFO etat_civil_odoo17_test odoo.addons.base.models.res_users: Login successful for db:etat_civil_odoo17_test login:tempulrich54@gmail.com from 127.0.0.1 
+2026-11-01 09:12:45,688 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:45] "POST /web/login HTTP/1.1" 303 - 18 0.019 0.869
+2026-11-01 09:12:45,738 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:45] "GET /web/login_successful HTTP/1.1" 200 - 2 0.003 0.017
+2026-11-01 09:12:45,879 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:45] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.004 0.008
+2026-11-01 09:12:46,074 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:46] "GET /web/webclient/translations/1793524366044 HTTP/1.1" 200 - 2 0.002 0.010
+2026-11-01 09:12:47,176 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:47] "GET /web/session/logout HTTP/1.1" 303 - 1 0.001 0.036
+2026-11-01 09:12:47,194 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:47] "GET /web HTTP/1.1" 303 - 1 0.001 0.003
+2026-11-01 09:12:47,247 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:47] "GET /web/login HTTP/1.1" 200 - 5 0.005 0.027
+2026-11-01 09:12:47,348 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:47] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.003 0.015
+2026-11-01 09:12:47,558 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:47] "GET /web/webclient/translations/1793524367441 HTTP/1.1" 200 - 5 0.004 0.012
+2026-11-01 09:12:49,650 844655 INFO etat_civil_odoo17_test odoo.addons.base.models.res_users: Login successful for db:etat_civil_odoo17_test login:tempulrich54@gmail.com from 127.0.0.1 
+2026-11-01 09:12:49,672 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:49] "POST /web/login HTTP/1.1" 303 - 19 0.018 0.855
+2026-11-01 09:12:49,702 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:49] "GET /web/login_successful HTTP/1.1" 200 - 2 0.001 0.007
+2026-11-01 09:12:49,844 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:49] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.004 0.011
+2026-11-01 09:12:50,048 844655 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:12:50] "GET /web/webclient/translations/1793524369990 HTTP/1.1" 200 - 2 0.002 0.011
+2026-11-01 09:13:32,071 844655 INFO ? odoo.service.server: Initiating shutdown 
+2026-11-01 09:13:32,071 844655 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-01 09:13:32,084 844655 INFO ? odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 5 connections  
+2026-11-01 09:13:47,996 847905 INFO ? odoo: Odoo version 17.0 
+2026-11-01 09:13:47,997 847905 INFO ? odoo: Using configuration file at /home/ulrich/tous_les_projet/stage_l3_odoo/config/odoo17.conf 
+2026-11-01 09:13:47,997 847905 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-01 09:13:47,997 847905 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-01 09:13:48,141 847905 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-01 09:13:48,465 847905 INFO ? odoo.service.server: HTTP service (werkzeug) running on localhost:8071 
+2026-11-01 09:13:48,823 847905 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-11-01 09:13:48,838 847905 INFO ? odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-01 09:13:48,857 847905 WARNING ? odoo.modules.graph: module etat_civil: not installable, skipped 
+2026-11-01 09:13:48,867 847905 INFO ? odoo.modules.loading: loading 23 modules... 
+2026-11-01 09:13:49,118 847905 INFO ? odoo.modules.loading: 23 modules loaded in 0.25s, 0 queries (+0 extra) 
+2026-11-01 09:13:49,217 847905 INFO ? odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-01 09:13:49,221 847905 ERROR ? odoo.modules.loading: Some modules are not loaded, some dependencies or manifest may be missing: ['etat_civil'] 
+2026-11-01 09:13:49,222 847905 INFO ? odoo.modules.loading: Modules loaded. 
+2026-11-01 09:13:49,229 847905 INFO ? odoo.modules.registry: Registry loaded in 0.447s 
+2026-11-01 09:13:49,231 847905 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-01 09:13:49,486 847905 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:13:49] "GET /web/login_successful HTTP/1.1" 200 - 73 0.083 0.625
+2026-11-01 09:13:49,710 847905 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:13:49] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.006 0.029
+2026-11-01 09:13:51,504 847905 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:13:51] "GET /web/login_successful HTTP/1.1" 200 - 2 0.011 0.034
+2026-11-01 09:13:51,630 847905 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:13:51] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.006 0.023
+2026-11-01 09:13:51,950 847905 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:13:51] "GET /web/webclient/translations/1793524431749 HTTP/1.1" 200 - 2 0.008 0.171
+2026-11-01 09:13:51,951 847905 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:13:51] "GET /web/webclient/translations/1793524430415 HTTP/1.1" 200 - 2 0.004 1.526
+2026-11-01 09:23:49,112 847905 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_cron: Starting job `Notification: Send scheduled message notifications`. 
+2026-11-01 09:23:49,121 847905 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_cron: Job done: `Notification: Send scheduled message notifications` (0.009s). 
+2026-11-01 09:23:49,137 847905 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_cron: Starting job `Partner Autocomplete: Sync with remote DB`. 
+2026-11-01 09:23:49,142 847905 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_cron: Job done: `Partner Autocomplete: Sync with remote DB` (0.005s). 
+2026-11-01 09:23:49,156 847905 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_cron: Starting job `SMS: SMS Queue Manager`. 
+2026-11-01 09:23:49,161 847905 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_cron: Job done: `SMS: SMS Queue Manager` (0.005s). 
+2026-11-01 09:23:49,180 847905 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_cron: Starting job `Snailmail: process letters queue`. 
+2026-11-01 09:23:49,185 847905 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_cron: Job done: `Snailmail: process letters queue` (0.005s). 
+2026-11-01 09:23:49,201 847905 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_cron: Starting job `Mail: Email Queue Manager`. 
+2026-11-01 09:23:49,208 847905 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_cron: Job done: `Mail: Email Queue Manager` (0.008s). 
+2026-11-01 09:29:55,583 847905 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:29:55] "GET /web/login_successful HTTP/1.1" 200 - 2 0.007 0.045
+2026-11-01 09:29:55,762 847905 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:29:55] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.002 0.010
+2026-11-01 09:29:56,257 847905 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:29:56] "GET /web/webclient/translations/1793525396156 HTTP/1.1" 200 - 2 0.001 0.012
+2026-11-01 09:29:58,100 847905 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:29:58] "GET /web/login_successful HTTP/1.1" 200 - 2 0.003 0.011
+2026-11-01 09:29:58,291 847905 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:29:58] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.002 0.005
+2026-11-01 09:29:58,687 847905 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:29:58] "GET /web/webclient/translations/1793525398654 HTTP/1.1" 200 - 2 0.001 0.012
+2026-11-01 09:29:59,657 847905 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:29:59] "GET /web/login HTTP/1.1" 200 - 10 0.013 0.090
+2026-11-01 09:30:00,065 847905 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:30:00] "GET /web/webclient/translations/1793525400041 HTTP/1.1" 200 - 2 0.002 0.010
+2026-11-01 09:30:02,665 847905 INFO etat_civil_odoo17_test odoo.addons.base.models.res_users: Login successful for db:etat_civil_odoo17_test login:tempulrich54@gmail.com from 127.0.0.1 
+2026-11-01 09:30:02,770 847905 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:30:02] "POST /web/login HTTP/1.1" 303 - 32 0.041 1.277
+2026-11-01 09:30:02,791 847905 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:30:02] "GET /web/login_successful HTTP/1.1" 200 - 2 0.002 0.009
+2026-11-01 09:30:02,937 847905 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:30:02] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.003 0.006
+2026-11-01 09:30:03,482 847905 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:30:03] "GET /web/webclient/translations/1793525403364 HTTP/1.1" 200 - 2 0.007 0.017
+2026-11-01 09:30:04,410 847905 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:30:04] "GET /web/session/logout HTTP/1.1" 303 - 1 0.001 0.008
+2026-11-01 09:30:04,565 847905 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:30:04] "GET /web HTTP/1.1" 303 - 1 0.001 0.004
+2026-11-01 09:30:04,633 847905 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:30:04] "GET /web/login HTTP/1.1" 200 - 5 0.008 0.034
+2026-11-01 09:30:04,747 847905 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:30:04] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.013 0.010
+2026-11-01 09:30:04,920 847905 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:30:04] "GET /web/webclient/translations/1793525404875 HTTP/1.1" 200 - 5 0.005 0.012
+2026-11-01 09:30:05,679 847905 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_cron: Starting job `Base: Auto-vacuum internal data`. 
+2026-11-01 09:30:05,703 847905 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_attachment: _file_gc could not unlink /home/ulrich/tous_les_projet/stage_l3_odoo/data/filestore/etat_civil_odoo17_test/3f/3f03c5786a985e21a4e412a28791ce1b783c8ff6 
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons/base/models/ir_attachment.py", line 220, in _gc_file_store_unsafe
+    os.unlink(self._full_path(fname))
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] Aucun fichier ou dossier de ce nom: '/home/ulrich/tous_les_projet/stage_l3_odoo/data/filestore/etat_civil_odoo17_test/3f/3f03c5786a985e21a4e412a28791ce1b783c8ff6'
+2026-11-01 09:30:05,704 847905 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_attachment: filestore gc 5 checked, 0 removed 
+2026-11-01 09:30:05,757 847905 INFO etat_civil_odoo17_test odoo.addons.base.models.res_users: GC'd 4 user log entries 
+2026-11-01 09:30:06,481 847905 INFO etat_civil_odoo17_test odoo.addons.auth_totp.models.auth_totp: GC'd 0 totp devices entries 
+2026-11-01 09:30:06,515 847905 INFO etat_civil_odoo17_test odoo.models.unlink: User #1 deleted bus.bus records with IDs: [118, 119, 120, 121, 122, 123, 124, 125, 126, 127] 
+2026-11-01 09:30:07,198 847905 INFO etat_civil_odoo17_test odoo.addons.sms.models.sms_sms: GC'd 0 sms marked for deletion 
+2026-11-01 09:30:07,269 847905 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_cron: Job done: `Base: Auto-vacuum internal data` (1.590s). 
+2026-11-01 09:30:17,330 847905 INFO etat_civil_odoo17_test odoo.addons.base.models.res_users: Login successful for db:etat_civil_odoo17_test login:tempulrich54@gmail.com from 127.0.0.1 
+2026-11-01 09:30:17,339 847905 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:30:17] "POST /web/login HTTP/1.1" 303 - 20 0.016 0.808
+2026-11-01 09:30:17,362 847905 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:30:17] "GET /web/login_successful HTTP/1.1" 200 - 2 0.002 0.008
+2026-11-01 09:30:17,505 847905 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:30:17] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.002 0.005
+2026-11-01 09:30:17,782 847905 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:30:17] "GET /web/webclient/translations/1793525417749 HTTP/1.1" 200 - 2 0.002 0.014
+2026-11-01 09:30:27,670 847905 INFO ? odoo.service.server: Initiating shutdown 
+2026-11-01 09:30:27,670 847905 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-01 09:30:27,783 847905 INFO ? odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 5 connections  
+2026-11-01 09:30:33,467 853480 INFO ? odoo: Odoo version 17.0 
+2026-11-01 09:30:33,467 853480 INFO ? odoo: Using configuration file at /home/ulrich/tous_les_projet/stage_l3_odoo/config/odoo17.conf 
+2026-11-01 09:30:33,467 853480 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-01 09:30:33,468 853480 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-01 09:30:33,586 853480 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-01 09:30:33,794 853480 INFO ? odoo.service.server: HTTP service (werkzeug) running on localhost:8071 
+2026-11-01 09:30:36,038 853480 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-11-01 09:30:36,053 853480 INFO ? odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-01 09:30:36,071 853480 INFO ? odoo.modules.loading: loading 24 modules... 
+2026-11-01 09:30:36,345 853480 INFO ? odoo.modules.loading: 24 modules loaded in 0.27s, 0 queries (+0 extra) 
+2026-11-01 09:30:36,452 853480 INFO ? odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-01 09:30:36,455 853480 INFO ? odoo.modules.loading: Modules loaded. 
+2026-11-01 09:30:36,461 853480 INFO ? odoo.modules.registry: Registry loaded in 0.467s 
+2026-11-01 09:30:36,463 853480 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-01 09:30:36,675 853480 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:30:36] "GET /web/login_successful HTTP/1.1" 200 - 71 0.066 0.617
+2026-11-01 09:30:36,852 853480 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:30:36] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.008 0.029
+2026-11-01 09:30:38,487 853480 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:30:38] "GET /web/webclient/translations/1793525437408 HTTP/1.1" 200 - 2 0.002 1.062
+2026-11-01 09:31:05,458 853480 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:31:05] "GET /web/login_successful HTTP/1.1" 200 - 2 0.002 0.008
+2026-11-01 09:31:05,579 853480 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:31:05] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.003 0.009
+2026-11-01 09:31:05,774 853480 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:31:05] "GET /web/webclient/translations/1793525465722 HTTP/1.1" 200 - 2 0.005 0.020
+2026-11-01 09:31:37,301 853480 INFO ? odoo.service.server: Initiating shutdown 
+2026-11-01 09:31:37,301 853480 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-01 09:31:37,784 853480 INFO ? odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 4 connections  
+2026-11-01 09:31:42,011 853879 INFO ? odoo: Odoo version 17.0 
+2026-11-01 09:31:42,011 853879 INFO ? odoo: Using configuration file at /home/ulrich/tous_les_projet/stage_l3_odoo/config/odoo17.conf 
+2026-11-01 09:31:42,011 853879 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-01 09:31:42,011 853879 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-01 09:31:42,145 853879 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-01 09:31:42,426 853879 INFO ? odoo.service.server: HTTP service (werkzeug) running on localhost:8071 
+2026-11-01 09:31:46,743 853879 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-11-01 09:31:46,755 853879 INFO ? odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-01 09:31:46,779 853879 INFO ? odoo.modules.loading: loading 24 modules... 
+2026-11-01 09:31:47,130 853879 INFO ? odoo.modules.loading: 24 modules loaded in 0.35s, 0 queries (+0 extra) 
+2026-11-01 09:31:47,249 853879 INFO ? odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-01 09:31:47,254 853879 INFO ? odoo.modules.loading: Modules loaded. 
+2026-11-01 09:31:47,260 853879 INFO ? odoo.modules.registry: Registry loaded in 0.546s 
+2026-11-01 09:31:47,265 853879 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-01 09:31:47,568 853879 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:31:47] "GET /web/login_successful HTTP/1.1" 200 - 71 0.090 0.765
+2026-11-01 09:31:47,810 853879 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:31:47] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.021 0.047
+2026-11-01 09:31:50,101 853879 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:31:50] "GET /web/webclient/translations/1793525508247 HTTP/1.1" 200 - 2 0.002 1.840
+2026-11-01 09:31:50,947 853879 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:31:50] "GET /web/login_successful HTTP/1.1" 200 - 2 0.001 0.010
+2026-11-01 09:31:51,075 853879 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:31:51] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.002 0.007
+2026-11-01 09:31:51,426 853879 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:31:51] "GET /web/webclient/translations/1793525511401 HTTP/1.1" 200 - 2 0.002 0.012
+2026-11-01 09:31:53,346 853879 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:31:53] "GET /web/login HTTP/1.1" 200 - 10 0.051 0.086
+2026-11-01 09:31:54,010 853879 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:31:54] "GET /web/webclient/translations/1793525513988 HTTP/1.1" 200 - 2 0.001 0.014
+2026-11-01 09:31:56,353 853879 INFO etat_civil_odoo17_test odoo.addons.base.models.res_users: Login successful for db:etat_civil_odoo17_test login:tempulrich54@gmail.com from 127.0.0.1 
+2026-11-01 09:31:56,371 853879 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:31:56] "POST /web/login HTTP/1.1" 303 - 32 0.036 0.918
+2026-11-01 09:31:56,398 853879 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:31:56] "GET /web/login_successful HTTP/1.1" 200 - 2 0.004 0.011
+2026-11-01 09:31:56,561 853879 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:31:56] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.003 0.012
+2026-11-01 09:31:56,895 853879 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:31:56] "GET /web/webclient/translations/1793525516725 HTTP/1.1" 200 - 2 0.004 0.062
+2026-11-01 09:33:49,093 853879 INFO ? odoo.service.server: Initiating shutdown 
+2026-11-01 09:33:49,094 853879 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-01 09:33:49,480 853879 INFO ? odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 4 connections  
+2026-11-01 09:34:55,803 854966 INFO ? odoo: Odoo version 17.0 
+2026-11-01 09:34:55,803 854966 INFO ? odoo: Using configuration file at /home/ulrich/tous_les_projet/stage_l3_odoo/config/odoo17.conf 
+2026-11-01 09:34:55,803 854966 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-01 09:34:55,803 854966 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-01 09:34:55,914 854966 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-01 09:34:56,109 854966 INFO ? odoo.service.server: HTTP service (werkzeug) running on localhost:8071 
+2026-11-01 09:35:20,187 854966 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-11-01 09:35:20,199 854966 INFO ? odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-01 09:35:20,216 854966 INFO ? odoo.modules.loading: loading 24 modules... 
+2026-11-01 09:35:20,587 854966 INFO ? odoo.modules.loading: 24 modules loaded in 0.37s, 0 queries (+0 extra) 
+2026-11-01 09:35:20,712 854966 INFO ? odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-01 09:35:20,717 854966 INFO ? odoo.modules.loading: Modules loaded. 
+2026-11-01 09:35:20,723 854966 INFO ? odoo.modules.registry: Registry loaded in 0.589s 
+2026-11-01 09:35:20,726 854966 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-01 09:35:20,957 854966 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:35:20] "GET /web/login_successful HTTP/1.1" 200 - 71 0.062 0.764
+2026-11-01 09:35:21,097 854966 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:35:21] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.010 0.030
+2026-11-01 09:35:22,716 854966 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:35:22] "GET /web/webclient/translations/1793525721373 HTTP/1.1" 200 - 2 0.002 1.324
+2026-11-01 09:35:29,981 854966 INFO ? odoo.service.server: Initiating shutdown 
+2026-11-01 09:35:29,981 854966 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-01 09:35:30,412 854966 INFO ? odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 4 connections  
+2026-11-01 09:35:39,719 855266 INFO ? odoo: Odoo version 17.0 
+2026-11-01 09:35:39,720 855266 INFO ? odoo: Using configuration file at /home/ulrich/tous_les_projet/stage_l3_odoo/config/odoo17.conf 
+2026-11-01 09:35:39,720 855266 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-01 09:35:39,720 855266 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-01 09:35:39,869 855266 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-01 09:35:40,156 855266 INFO ? odoo.service.server: HTTP service (werkzeug) running on localhost:8071 
+2026-11-01 09:35:51,848 855266 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-11-01 09:35:51,858 855266 INFO ? odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-01 09:35:51,872 855266 INFO ? odoo.modules.loading: loading 24 modules... 
+2026-11-01 09:35:52,107 855266 INFO ? odoo.modules.loading: 24 modules loaded in 0.23s, 0 queries (+0 extra) 
+2026-11-01 09:35:52,200 855266 INFO ? odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-01 09:35:52,204 855266 INFO ? odoo.modules.loading: Modules loaded. 
+2026-11-01 09:35:52,210 855266 INFO ? odoo.modules.registry: Registry loaded in 0.392s 
+2026-11-01 09:35:52,212 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-01 09:35:52,408 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:35:52] "GET /web/login_successful HTTP/1.1" 200 - 71 0.056 0.537
+2026-11-01 09:35:52,535 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:35:52] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.005 0.022
+2026-11-01 09:35:53,685 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:35:53] "GET /web/webclient/translations/1793525752723 HTTP/1.1" 200 - 2 0.001 0.954
+2026-11-01 09:35:55,035 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:35:55] "GET /web/login_successful HTTP/1.1" 200 - 2 0.002 0.011
+2026-11-01 09:35:55,127 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:35:55] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.002 0.006
+2026-11-01 09:35:55,288 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:35:55] "GET /web/webclient/translations/1793525755253 HTTP/1.1" 200 - 2 0.003 0.018
+2026-11-01 09:35:56,764 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:35:56] "GET /web/login HTTP/1.1" 200 - 10 0.013 0.066
+2026-11-01 09:35:57,102 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:35:57] "GET /web/webclient/translations/1793525757062 HTTP/1.1" 200 - 2 0.003 0.011
+2026-11-01 09:35:58,019 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:35:58] "GET /web/webclient/translations/1793525757948 HTTP/1.1" 200 - 2 0.002 0.016
+2026-11-01 09:36:11,433 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:36:11] "GET / HTTP/1.1" 303 - 2 0.004 0.022
+2026-11-01 09:36:11,483 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:36:11] "GET /web HTTP/1.1" 303 - 2 0.004 0.032
+2026-11-01 09:36:11,560 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:36:11] "GET /web/login HTTP/1.1" 200 - 6 0.010 0.045
+2026-11-01 09:36:11,802 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:36:11] "GET /web/assets/f7c8089/web.assets_frontend.min.css HTTP/1.1" 200 - 6 0.022 0.127
+2026-11-01 09:36:11,804 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:36:11] "GET /web/binary/company_logo HTTP/1.1" 200 - 3 0.016 0.131
+2026-11-01 09:36:12,007 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:36:12] "GET /web/assets/a3cf721/web.assets_frontend_minimal.min.js HTTP/1.1" 200 - 5 0.007 0.031
+2026-11-01 09:36:12,128 855266 INFO ? werkzeug: 127.0.0.1 - - [01/Nov/2026 09:36:12] "GET /web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0 HTTP/1.1" 200 - 1 0.006 0.479
+2026-11-01 09:36:12,226 855266 INFO ? werkzeug: 127.0.0.1 - - [01/Nov/2026 09:36:12] "GET /web/static/img/favicon.ico HTTP/1.1" 200 - 1 0.005 0.038
+2026-11-01 09:36:12,237 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:36:12] "GET /web/assets/d040e93/web.assets_frontend_lazy.min.js HTTP/1.1" 200 - 5 0.007 0.052
+2026-11-01 09:36:12,454 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:36:12] "GET /web/webclient/translations/1793525772413 HTTP/1.1" 200 - 6 0.007 0.028
+2026-11-01 09:36:22,986 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.res_users: Login successful for db:etat_civil_odoo17_test login:tempulrich54@gmail.com from 127.0.0.1 
+2026-11-01 09:36:23,103 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:36:23] "POST /web/login HTTP/1.1" 303 - 35 0.040 1.100
+2026-11-01 09:36:23,134 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:36:23] "GET /web/login_successful HTTP/1.1" 200 - 2 0.005 0.010
+2026-11-01 09:36:23,750 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:36:23] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.002 0.006
+2026-11-01 09:36:24,131 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:36:24] "GET /web/webclient/translations/1793525783982 HTTP/1.1" 200 - 2 0.001 0.010
+2026-11-01 09:36:40,272 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_cron: Starting job `Base: Auto-vacuum internal data`. 
+2026-11-01 09:36:40,305 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_attachment: filestore gc 1 checked, 0 removed 
+2026-11-01 09:36:40,376 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.res_users: GC'd 3 user log entries 
+2026-11-01 09:36:40,412 855266 INFO etat_civil_odoo17_test odoo.addons.auth_totp.models.auth_totp: GC'd 0 totp devices entries 
+2026-11-01 09:36:40,513 855266 INFO etat_civil_odoo17_test odoo.addons.sms.models.sms_sms: GC'd 0 sms marked for deletion 
+2026-11-01 09:36:40,528 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_cron: Job done: `Base: Auto-vacuum internal data` (0.255s). 
+2026-11-01 09:37:45,609 856071 INFO ? odoo: Odoo version 17.0 
+2026-11-01 09:37:45,609 856071 INFO ? odoo: Using configuration file at /home/ulrich/tous_les_projet/stage_l3_odoo/config/odoo17.conf 
+2026-11-01 09:37:45,609 856071 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/.local/share/Odoo/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-01 09:37:45,609 856071 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-01 09:37:45,714 856071 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-01 09:37:45,909 856071 INFO ? odoo.service.server: Initiating shutdown 
+2026-11-01 09:37:45,909 856071 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-01 09:37:45,944 856071 INFO etat_civil_odoo17_test odoo.modules.loading: loading 1 modules... 
+2026-11-01 09:37:45,951 856071 INFO etat_civil_odoo17_test odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-01 09:37:45,963 856071 INFO etat_civil_odoo17_test odoo.modules.loading: loading 24 modules... 
+2026-11-01 09:37:46,179 856071 INFO etat_civil_odoo17_test odoo.modules.loading: 24 modules loaded in 0.22s, 0 queries (+0 extra) 
+2026-11-01 09:37:46,263 856071 INFO etat_civil_odoo17_test odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-01 09:37:46,267 856071 INFO etat_civil_odoo17_test odoo.modules.loading: Modules loaded. 
+2026-11-01 09:37:46,272 856071 INFO etat_civil_odoo17_test odoo.modules.registry: Registry loaded in 0.354s 
+2026-11-01 09:39:03,837 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:39:03] "GET /web HTTP/1.1" 303 - 2 0.004 0.005
+2026-11-01 09:39:03,870 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:39:03] "GET /web/login_successful HTTP/1.1" 200 - 2 0.001 0.007
+2026-11-01 09:39:04,090 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:39:04] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.002 0.006
+2026-11-01 09:39:04,519 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:39:04] "GET /web/webclient/translations/1793525944439 HTTP/1.1" 200 - 2 0.001 0.013
+2026-11-01 09:39:18,978 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:39:18] "HEAD /web HTTP/1.1" 303 - 6 0.008 0.027
+2026-11-01 09:40:23,049 857258 INFO ? odoo: Odoo version 17.0 
+2026-11-01 09:40:23,049 857258 INFO ? odoo: Using configuration file at /home/ulrich/tous_les_projet/stage_l3_odoo/config/odoo17.conf 
+2026-11-01 09:40:23,049 857258 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/.local/share/Odoo/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-01 09:40:23,049 857258 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-01 09:40:23,159 857258 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-01 09:40:23,369 857258 INFO ? odoo.service.server: Initiating shutdown 
+2026-11-01 09:40:23,369 857258 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-01 09:40:23,405 857258 INFO etat_civil_odoo17_test odoo.modules.loading: loading 1 modules... 
+2026-11-01 09:40:23,414 857258 INFO etat_civil_odoo17_test odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-01 09:40:23,426 857258 INFO etat_civil_odoo17_test odoo.modules.loading: loading 24 modules... 
+2026-11-01 09:40:23,640 857258 INFO etat_civil_odoo17_test odoo.modules.loading: 24 modules loaded in 0.21s, 0 queries (+0 extra) 
+2026-11-01 09:40:23,726 857258 INFO etat_civil_odoo17_test odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-01 09:40:23,729 857258 INFO etat_civil_odoo17_test odoo.modules.loading: Modules loaded. 
+2026-11-01 09:40:23,734 857258 INFO etat_civil_odoo17_test odoo.modules.registry: Registry loaded in 0.355s 
+2026-11-01 09:41:39,299 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:41:39] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 - 2 0.003 0.005
+2026-11-01 09:41:52,749 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:41:52] "GET /web/login_successful HTTP/1.1" 200 - 2 0.002 0.010
+2026-11-01 09:41:52,873 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:41:52] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 - 2 0.003 0.005
+2026-11-01 09:41:52,897 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:41:52] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.002 0.007
+2026-11-01 09:41:53,269 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:41:53] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 - 2 0.003 0.004
+2026-11-01 09:41:53,734 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:41:53] "GET /web/webclient/translations/1793526113711 HTTP/1.1" 200 - 2 0.001 0.009
+2026-11-01 09:41:56,075 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:41:56] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 - 2 0.002 0.010
+2026-11-01 09:41:56,353 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:41:56] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 - 2 0.002 0.008
+2026-11-01 09:41:56,607 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:41:56] "GET /web/webclient/translations/1793526116584 HTTP/1.1" 200 - 2 0.002 0.012
+2026-11-01 09:41:57,267 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:41:57] "GET /web/login HTTP/1.1" 200 - 3 0.004 0.025
+2026-11-01 09:41:57,349 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:41:57] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 - 2 0.003 0.007
+2026-11-01 09:41:58,038 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:41:58] "GET /web/webclient/translations/1793526118008 HTTP/1.1" 200 - 2 0.005 0.013
+2026-11-01 09:42:00,992 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.res_users: Login successful for db:etat_civil_odoo17_test login:tempulrich54@gmail.com from 127.0.0.1 
+2026-11-01 09:42:01,002 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:42:01] "POST /web/login HTTP/1.1" 303 - 18 0.014 0.900
+2026-11-01 09:42:01,023 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:42:01] "GET /web/login_successful HTTP/1.1" 200 - 2 0.002 0.006
+2026-11-01 09:42:01,126 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:42:01] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 - 2 0.011 0.007
+2026-11-01 09:42:01,130 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:42:01] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.002 0.009
+2026-11-01 09:42:01,476 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:42:01] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 - 2 0.002 0.004
+2026-11-01 09:42:01,788 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:42:01] "GET /web/webclient/translations/1793526121755 HTTP/1.1" 200 - 2 0.002 0.012
+2026-11-01 09:43:56,319 858532 INFO ? odoo: Odoo version 17.0 
+2026-11-01 09:43:56,320 858532 INFO ? odoo: Using configuration file at /home/ulrich/tous_les_projet/stage_l3_odoo/config/odoo17.conf 
+2026-11-01 09:43:56,320 858532 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/.local/share/Odoo/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-01 09:43:56,320 858532 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-01 09:43:56,427 858532 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-01 09:43:56,616 858532 INFO ? odoo.service.server: Initiating shutdown 
+2026-11-01 09:43:56,616 858532 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-01 09:43:56,651 858532 INFO etat_civil_odoo17_test odoo.modules.loading: loading 1 modules... 
+2026-11-01 09:43:56,659 858532 INFO etat_civil_odoo17_test odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-01 09:43:56,670 858532 INFO etat_civil_odoo17_test odoo.modules.loading: loading 24 modules... 
+2026-11-01 09:43:56,876 858532 INFO etat_civil_odoo17_test odoo.modules.loading: 24 modules loaded in 0.21s, 0 queries (+0 extra) 
+2026-11-01 09:43:56,963 858532 INFO etat_civil_odoo17_test odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-01 09:43:56,966 858532 INFO etat_civil_odoo17_test odoo.modules.loading: Modules loaded. 
+2026-11-01 09:43:56,971 858532 INFO etat_civil_odoo17_test odoo.modules.registry: Registry loaded in 0.346s 
+2026-11-01 09:45:59,398 859156 INFO ? odoo: Odoo version 17.0 
+2026-11-01 09:45:59,399 859156 INFO ? odoo: Using configuration file at /home/ulrich/tous_les_projet/stage_l3_odoo/config/odoo17.conf 
+2026-11-01 09:45:59,399 859156 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/.local/share/Odoo/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-01 09:45:59,399 859156 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-01 09:45:59,512 859156 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-01 09:45:59,734 859156 INFO ? odoo.service.server: Initiating shutdown 
+2026-11-01 09:45:59,734 859156 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-01 09:45:59,771 859156 INFO etat_civil_odoo17_test odoo.modules.loading: loading 1 modules... 
+2026-11-01 09:45:59,780 859156 INFO etat_civil_odoo17_test odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-01 09:45:59,793 859156 INFO etat_civil_odoo17_test odoo.modules.loading: loading 24 modules... 
+2026-11-01 09:46:00,041 859156 INFO etat_civil_odoo17_test odoo.modules.loading: 24 modules loaded in 0.25s, 0 queries (+0 extra) 
+2026-11-01 09:46:00,139 859156 INFO etat_civil_odoo17_test odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-01 09:46:00,143 859156 INFO etat_civil_odoo17_test odoo.modules.loading: Modules loaded. 
+2026-11-01 09:46:00,148 859156 INFO etat_civil_odoo17_test odoo.modules.registry: Registry loaded in 0.404s 
+2026-11-01 09:51:13,036 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:51:13] "GET /web/login_successful HTTP/1.1" 200 - 2 0.003 0.016
+2026-11-01 09:51:13,189 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:51:13] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.001 0.013
+2026-11-01 09:51:13,346 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:51:13] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 - 2 0.004 0.012
+2026-11-01 09:51:13,755 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:51:13] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 - 2 0.005 0.005
+2026-11-01 09:51:14,390 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:51:14] "GET /web/webclient/translations/1793526674333 HTTP/1.1" 200 - 2 0.002 0.012
+2026-11-01 09:51:20,361 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:51:20] "GET /web/login_successful HTTP/1.1" 200 - 2 0.002 0.012
+2026-11-01 09:51:20,483 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:51:20] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.002 0.006
+2026-11-01 09:51:20,802 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:51:20] "GET /web/webclient/translations/1793526680781 HTTP/1.1" 200 - 2 0.001 0.011
+2026-11-01 09:54:40,167 855266 WARNING ? odoo.service.server: Thread <Thread(odoo.service.http.request.132055513917120, started 132055513917120)> virtual real time limit (170/120s) reached. 
+2026-11-01 09:54:40,167 855266 INFO ? odoo.service.server: Dumping stacktrace of limit exceeding threads before reloading 
+2026-11-01 09:54:40,281 855266 INFO ? odoo.tools.misc: 
+# Thread: <Thread(odoo.service.http.request.132055513917120, started 132055513917120)> (db:n/a) (uid:n/a) (url:n/a) (qc:n/a qt:n/a pt:n/a)
+File: "/usr/lib/python3.14/threading.py", line 1044, in _bootstrap
+  self._bootstrap_inner()
+File: "/usr/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+  self._context.run(self.run)
+File: "/usr/lib/python3.14/threading.py", line 1024, in run
+  self._target(*self._args, **self._kwargs)
+File: "/usr/lib/python3.14/socketserver.py", line 697, in process_request_thread
+  self.finish_request(request, client_address)
+File: "/usr/lib/python3.14/socketserver.py", line 362, in finish_request
+  self.RequestHandlerClass(request, client_address, self)
+File: "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/service/server.py", line 127, in __init__
+  super().__init__(*args, **kwargs)
+File: "/usr/lib/python3.14/socketserver.py", line 766, in __init__
+  self.handle()
+File: "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/werkzeug/serving.py", line 390, in handle
+  super().handle()
+File: "/usr/lib/python3.14/http/server.py", line 496, in handle
+  self.handle_one_request()
+File: "/usr/lib/python3.14/http/server.py", line 464, in handle_one_request
+  self.raw_requestline = self.rfile.readline(65537)
+File: "/usr/lib/python3.14/socket.py", line 725, in readinto
+  return self._sock.recv_into(b) 
+2026-11-01 09:54:40,281 855266 INFO ? odoo.service.server: Initiating server reload 
+2026-11-01 09:54:40,317 855266 INFO ? odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 4 connections  
+2026-11-01 09:54:41,179 855266 INFO ? odoo: Odoo version 17.0 
+2026-11-01 09:54:41,179 855266 INFO ? odoo: Using configuration file at /home/ulrich/tous_les_projet/stage_l3_odoo/config/odoo17.conf 
+2026-11-01 09:54:41,179 855266 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-01 09:54:41,179 855266 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-01 09:54:41,300 855266 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-01 09:54:41,515 855266 INFO ? odoo.service.server: HTTP service (werkzeug) running on localhost:8071 
+2026-11-01 09:57:05,049 855266 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-11-01 09:57:05,072 855266 INFO ? odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2026-11-01 09:57:05,093 855266 INFO ? odoo.modules.loading: loading 24 modules... 
+2026-11-01 09:57:05,577 855266 INFO ? odoo.modules.loading: 24 modules loaded in 0.48s, 0 queries (+0 extra) 
+2026-11-01 09:57:05,747 855266 INFO ? odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-01 09:57:05,751 855266 INFO ? odoo.modules.loading: Modules loaded. 
+2026-11-01 09:57:05,759 855266 INFO ? odoo.modules.registry: Registry loaded in 0.784s 
+2026-11-01 09:57:05,761 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-01 09:57:06,097 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:57:06] "GET /web/login HTTP/1.1" 200 - 78 0.125 1.032
+2026-11-01 09:57:30,622 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:57:30] "GET /web/login HTTP/1.1" 200 - 8 0.018 0.067
+2026-11-01 09:57:30,677 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:57:30] "GET /web HTTP/1.1" 303 - 5 0.007 0.030
+2026-11-01 09:57:31,648 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/b991f4e/web.assets_backend.js.map (id:889) 
+2026-11-01 09:57:34,287 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/b991f4e/web.assets_backend.js (id:890) 
+2026-11-01 09:57:34,567 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:57:34] "GET /web/assets/debug/web.assets_backend.js HTTP/1.1" 200 - 31 0.056 3.811
+2026-11-01 09:57:34,682 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:57:34] "GET /web/webclient/load_menus HTTP/1.1" 404 - 3 0.007 0.052
+2026-11-01 09:59:13,358 855266 INFO etat_civil_odoo17_test odoo.http: Session expired 
+2026-11-01 09:59:13,358 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 09:59:13] "GET /web/login_successful HTTP/1.1" 303 - 2 0.007 0.030
+2026-11-01 10:07:51,184 868290 INFO ? odoo: Odoo version 17.0 
+2026-11-01 10:07:51,185 868290 INFO ? odoo: Using configuration file at /home/ulrich/tous_les_projet/stage_l3_odoo/config/odoo17.conf 
+2026-11-01 10:07:51,185 868290 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/.local/share/Odoo/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-01 10:07:51,185 868290 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-01 10:07:51,317 868290 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-01 10:07:51,581 868290 INFO ? odoo.service.server: Initiating shutdown 
+2026-11-01 10:07:51,581 868290 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-01 10:07:51,624 868290 INFO etat_civil_odoo17_test odoo.modules.loading: loading 1 modules... 
+2026-11-01 10:07:51,634 868290 INFO etat_civil_odoo17_test odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-01 10:07:51,654 868290 INFO etat_civil_odoo17_test odoo.modules.loading: loading 24 modules... 
+2026-11-01 10:07:51,943 868290 INFO etat_civil_odoo17_test odoo.modules.loading: 24 modules loaded in 0.29s, 0 queries (+0 extra) 
+2026-11-01 10:07:52,027 868290 INFO etat_civil_odoo17_test odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-01 10:07:52,031 868290 INFO etat_civil_odoo17_test odoo.modules.loading: Modules loaded. 
+2026-11-01 10:07:52,035 868290 INFO etat_civil_odoo17_test odoo.modules.registry: Registry loaded in 0.442s 
+2026-11-01 10:09:58,149 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:09:58] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 - 2 0.002 0.004
+2026-11-01 10:10:20,383 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:10:20] "GET /web/login_successful HTTP/1.1" 200 - 11 0.009 0.023
+2026-11-01 10:10:20,578 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:10:20] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.013 0.046
+2026-11-01 10:10:20,593 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:10:20] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 - 2 0.005 0.008
+2026-11-01 10:10:21,039 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:10:21] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 - 2 0.009 0.006
+2026-11-01 10:10:22,280 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:10:22] "GET /web/webclient/translations/1793527821325 HTTP/1.1" 200 - 4 0.003 0.946
+2026-11-01 10:11:47,074 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:11:47] "GET /web/login_successful HTTP/1.1" 200 - 2 0.006 0.012
+2026-11-01 10:11:47,304 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:11:47] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.004 0.010
+2026-11-01 10:11:47,339 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:11:47] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 - 2 0.002 0.005
+2026-11-01 10:11:47,855 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:11:47] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 - 2 0.007 0.011
+2026-11-01 10:11:48,366 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:11:48] "GET /web/webclient/translations/1793527908296 HTTP/1.1" 200 - 2 0.003 0.015
+2026-11-01 10:13:31,299 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:13:31] "GET /web/login_successful HTTP/1.1" 200 - 2 0.001 0.010
+2026-11-01 10:13:31,637 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:13:31] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.002 0.008
+2026-11-01 10:13:31,754 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:13:31] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 - 2 0.001 0.007
+2026-11-01 10:13:32,234 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:13:32] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 - 2 0.010 0.005
+2026-11-01 10:13:33,318 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:13:33] "GET /web/webclient/translations/1793528013200 HTTP/1.1" 200 - 2 0.004 0.024
+2026-11-01 10:14:53,567 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:14:53] "GET /web/login_successful HTTP/1.1" 200 - 2 0.002 0.010
+2026-11-01 10:14:53,753 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:14:53] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.002 0.005
+2026-11-01 10:14:53,930 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:14:53] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 - 2 0.002 0.004
+2026-11-01 10:14:54,649 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:14:54] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 - 2 0.002 0.006
+2026-11-01 10:14:55,148 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:14:55] "GET /web/webclient/translations/1793528095051 HTTP/1.1" 200 - 2 0.003 0.050
+2026-11-01 10:20:58,616 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:20:58] "GET /web/login_successful HTTP/1.1" 200 - 2 0.001 0.007
+2026-11-01 10:20:58,744 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:20:58] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.002 0.005
+2026-11-01 10:20:58,925 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:20:58] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 - 2 0.002 0.005
+2026-11-01 10:20:59,628 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:20:59] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 - 2 0.002 0.006
+2026-11-01 10:20:59,881 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:20:59] "GET /web/webclient/translations/1793528459855 HTTP/1.1" 200 - 2 0.003 0.012
+2026-11-01 10:21:01,761 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:01] "GET /web/session/logout HTTP/1.1" 303 - 1 0.001 0.007
+2026-11-01 10:21:01,787 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:01] "GET /web HTTP/1.1" 303 - 1 0.001 0.005
+2026-11-01 10:21:01,850 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:01] "GET /web/login HTTP/1.1" 200 - 4 0.008 0.035
+2026-11-01 10:21:01,934 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:01] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 - 2 0.005 0.006
+2026-11-01 10:21:02,055 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:02] "GET /web/binary/company_logo HTTP/1.1" 304 - 2 0.003 0.055
+2026-11-01 10:21:02,884 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:02] "GET /web/webclient/translations/1793528462851 HTTP/1.1" 200 - 4 0.003 0.014
+2026-11-01 10:21:30,137 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.res_users: Login successful for db:etat_civil_odoo17_test login:admin@etatcivil.mg from 127.0.0.1 
+2026-11-01 10:21:30,261 855266 INFO etat_civil_odoo17_test odoo.modules.registry: Caches invalidated, signaling through the database: ['default'] 
+2026-11-01 10:21:30,263 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:30] "POST /web/login HTTP/1.1" 303 - 51 0.050 1.151
+2026-11-01 10:21:30,390 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_attachment: _read_file reading /home/ulrich/tous_les_projet/stage_l3_odoo/data/filestore/etat_civil_odoo17_test/74/744fc247b813c44f4cf02357706e88b283cb0f97 
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/cache.py", line 99, in lookup
+    r = d[key]
+        ~^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/func.py", line 87, in locked
+    return func(inst, *args, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/lru.py", line 34, in __getitem__
+    a = self.d[obj]
+        ~~~~~~^^^^^
+KeyError: ('ir.ui.menu', <function IrUiMenu.load_menus at 0x73c28dd4df30>, 2, '', ('fr_FR',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons/base/models/ir_attachment.py", line 128, in _file_read
+    with open(full_path, 'rb') as f:
+         ~~~~^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] Aucun fichier ou dossier de ce nom: '/home/ulrich/tous_les_projet/stage_l3_odoo/data/filestore/etat_civil_odoo17_test/74/744fc247b813c44f4cf02357706e88b283cb0f97'
+2026-11-01 10:21:30,394 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_attachment: _read_file reading /home/ulrich/tous_les_projet/stage_l3_odoo/data/filestore/etat_civil_odoo17_test/3d/3d7a7360fe4a73a90dd3b4ba554a9254ed61e864 
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/cache.py", line 99, in lookup
+    r = d[key]
+        ~^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/func.py", line 87, in locked
+    return func(inst, *args, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/lru.py", line 34, in __getitem__
+    a = self.d[obj]
+        ~~~~~~^^^^^
+KeyError: ('ir.ui.menu', <function IrUiMenu.load_menus at 0x73c28dd4df30>, 2, '', ('fr_FR',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons/base/models/ir_attachment.py", line 128, in _file_read
+    with open(full_path, 'rb') as f:
+         ~~~~^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] Aucun fichier ou dossier de ce nom: '/home/ulrich/tous_les_projet/stage_l3_odoo/data/filestore/etat_civil_odoo17_test/3d/3d7a7360fe4a73a90dd3b4ba554a9254ed61e864'
+2026-11-01 10:21:30,395 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_attachment: _read_file reading /home/ulrich/tous_les_projet/stage_l3_odoo/data/filestore/etat_civil_odoo17_test/b7/b73a9deb85def8a1a00e4d545c4f79747d78f487 
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/cache.py", line 99, in lookup
+    r = d[key]
+        ~^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/func.py", line 87, in locked
+    return func(inst, *args, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/lru.py", line 34, in __getitem__
+    a = self.d[obj]
+        ~~~~~~^^^^^
+KeyError: ('ir.ui.menu', <function IrUiMenu.load_menus at 0x73c28dd4df30>, 2, '', ('fr_FR',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons/base/models/ir_attachment.py", line 128, in _file_read
+    with open(full_path, 'rb') as f:
+         ~~~~^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] Aucun fichier ou dossier de ce nom: '/home/ulrich/tous_les_projet/stage_l3_odoo/data/filestore/etat_civil_odoo17_test/b7/b73a9deb85def8a1a00e4d545c4f79747d78f487'
+2026-11-01 10:21:30,579 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:30] "GET /web HTTP/1.1" 200 - 74 0.061 0.239
+2026-11-01 10:21:30,962 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:30] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 - 2 0.065 0.041
+2026-11-01 10:21:33,482 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:33] "GET /web/webclient/load_menus/4247419e705de05c2b82d47fe98c00535fb2201625fae0810b96cda3ff83def0 HTTP/1.1" 200 - 2 0.021 0.063
+2026-11-01 10:21:33,510 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:33] "GET /web/webclient/translations/b21dcfa63bcb9d9859bf513bfa15768caa09389f?lang=fr_FR HTTP/1.1" 200 - 3 0.019 0.081
+2026-11-01 10:21:33,562 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/9de409c/web.assets_web.min.css (id:891) 
+2026-11-01 10:21:33,570 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.assetsbundle: Deleting attachments [17] (matching /web/assets/_______/web.assets_web.min.css) because it was replaced with /web/assets/9de409c/web.assets_web.min.css 
+2026-11-01 10:21:33,589 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:33] "GET /web/manifest.webmanifest HTTP/1.1" 200 - 9 0.018 0.019
+2026-11-01 10:21:33,680 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:33] "GET /web/assets/9de409c/web.assets_web.min.css HTTP/1.1" 200 - 17 0.086 2.896
+2026-11-01 10:21:34,886 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/2ef2699/web.assets_web.min.js (id:892) 
+2026-11-01 10:21:34,888 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.assetsbundle: Deleting attachments [18] (matching /web/assets/_______/web.assets_web.min.js) because it was replaced with /web/assets/2ef2699/web.assets_web.min.js 
+2026-11-01 10:21:34,963 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:34] "GET /web/assets/2ef2699/web.assets_web.min.js HTTP/1.1" 200 - 13 0.021 4.225
+2026-11-01 10:21:35,538 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/ac0e841/bus.websocket_worker_assets.min.js (id:893) 
+2026-11-01 10:21:35,540 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.assetsbundle: Deleting attachments [19] (matching /web/assets/_______/bus.websocket_worker_assets.min.js) because it was replaced with /web/assets/ac0e841/bus.websocket_worker_assets.min.js 
+2026-11-01 10:21:35,572 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:35] "GET /bus/websocket_worker_bundle?v=17.0-3 HTTP/1.1" 200 - 10 0.012 0.049
+2026-11-01 10:21:35,655 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:35] "POST /mail/init_messaging HTTP/1.1" 200 - 55 0.053 0.050
+2026-11-01 10:21:35,663 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:35] "POST /web/dataset/call_kw/res.users/systray_get_activities HTTP/1.1" 200 - 4 0.004 0.006
+2026-11-01 10:21:35,768 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:35] "POST /web/action/load HTTP/1.1" 200 - 6 0.014 0.014
+2026-11-01 10:21:35,783 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:35] "GET /web/image?model=res.users&field=avatar_128&id=2 HTTP/1.1" 200 - 15 0.025 0.028
+2026-11-01 10:21:35,890 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:35] "POST /mail/load_message_failures HTTP/1.1" 200 - 3 0.007 0.008
+2026-11-01 10:21:35,904 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:35] "GET /websocket?version=17.0-3 HTTP/1.1" 101 - 1 0.001 0.008
+2026-11-01 10:21:35,971 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:35] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 - 2 0.005 0.008
+2026-11-01 10:21:36,245 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:36] "POST /mail/inbox/messages HTTP/1.1" 200 - 7 0.030 0.019
+2026-11-01 10:21:36,313 855266 INFO ? odoo.addons.bus.models.bus: Bus.loop listen imbus on db postgres 
+2026-11-01 10:21:36,441 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:36] "GET /discuss/channel/1/avatar_128?unique=898ccfb6329d1269c8da4f8c9789030fa766fdacb7b176fae628372d9f7db2dcab6cb4c260fc7d694f964681db5172604b3569e58b11b82d9eb5ff195fe78b08 HTTP/1.1" 200 - 4 0.008 0.015
+2026-11-01 10:21:36,541 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:36] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 - 2 0.017 0.012
+2026-11-01 10:21:36,642 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_attachment: _read_file reading /home/ulrich/tous_les_projet/stage_l3_odoo/data/filestore/etat_civil_odoo17_test/36/36ba5ef36880a809f9bdddfe35f12fcf34406a6e 
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons/base/models/ir_attachment.py", line 128, in _file_read
+    with open(full_path, 'rb') as f:
+         ~~~~^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] Aucun fichier ou dossier de ce nom: '/home/ulrich/tous_les_projet/stage_l3_odoo/data/filestore/etat_civil_odoo17_test/36/36ba5ef36880a809f9bdddfe35f12fcf34406a6e'
+2026-11-01 10:21:36,684 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:36] "GET /web/image/res.partner/2/avatar_128?unique=2026-10-31%2014:23:29 HTTP/1.1" 200 - 7 0.094 0.079
+2026-11-01 10:21:36,752 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:36] "GET /web/service-worker.js HTTP/1.1" 200 - 1 0.002 0.015
+2026-11-01 10:21:36,783 855266 INFO ? werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:36] "GET /web/static/lib/odoo_ui_icons/fonts/odoo_ui_icons.woff2 HTTP/1.1" 200 - 0 0.000 0.902
+2026-11-01 10:21:36,784 855266 INFO ? werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:36] "GET /web/static/img/odoo-icon-192x192.png HTTP/1.1" 200 - 0 0.000 0.673
+2026-11-01 10:21:36,879 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:36] "GET /web/offline HTTP/1.1" 200 - 6 0.006 0.021
+2026-11-01 10:21:43,490 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:43] "POST /web/action/load HTTP/1.1" 200 - 8 0.005 0.009
+2026-11-01 10:21:43,570 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:43] "POST /web/dataset/call_kw/etat.civil.demande.guichet/get_views HTTP/1.1" 200 - 29 0.019 0.031
+2026-11-01 10:21:43,610 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:43] "POST /web/dataset/call_kw/res.users/has_group HTTP/1.1" 200 - 2 0.001 0.004
+2026-11-01 10:21:43,611 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:43] "POST /web/dataset/call_kw/etat.civil.demande.guichet/web_search_read HTTP/1.1" 200 - 3 0.003 0.005
+2026-11-01 10:21:46,927 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:46] "POST /web/action/load HTTP/1.1" 200 - 9 0.005 0.115
+2026-11-01 10:21:47,036 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:47] "POST /web/dataset/call_kw/etat.civil.acte.naissance/get_views HTTP/1.1" 200 - 44 0.029 0.058
+2026-11-01 10:21:47,069 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:47] "POST /web/dataset/call_kw/etat.civil.acte.naissance/web_search_read HTTP/1.1" 200 - 7 0.007 0.008
+2026-11-01 10:21:47,091 855266 INFO ? werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:47] "GET /web/static/img/smiling_face.svg HTTP/1.1" 200 - 0 0.000 0.001
+2026-11-01 10:21:48,273 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:48] "POST /web/action/load HTTP/1.1" 200 - 9 0.006 0.016
+2026-11-01 10:21:48,328 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:48] "POST /web/dataset/call_kw/etat.civil.acte.naissance/get_views HTTP/1.1" 200 - 5 0.005 0.023
+2026-11-01 10:21:48,358 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:48] "POST /web/dataset/call_kw/etat.civil.acte.naissance/web_search_read HTTP/1.1" 200 - 2 0.002 0.005
+2026-11-01 10:21:49,968 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:49] "POST /web/action/load HTTP/1.1" 200 - 9 0.008 0.018
+2026-11-01 10:21:50,032 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:50] "POST /web/dataset/call_kw/etat.civil.individu/get_views HTTP/1.1" 200 - 25 0.014 0.030
+2026-11-01 10:21:50,053 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:50] "POST /web/dataset/call_kw/etat.civil.individu/web_search_read HTTP/1.1" 200 - 3 0.002 0.004
+2026-11-01 10:21:52,698 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:52] "POST /web/action/load HTTP/1.1" 200 - 9 0.005 0.010
+2026-11-01 10:21:52,746 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:52] "POST /web/dataset/call_kw/etat.civil.import.wizard/get_views HTTP/1.1" 200 - 14 0.007 0.018
+2026-11-01 10:21:52,769 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:21:52] "POST /web/dataset/call_kw/etat.civil.import.wizard/onchange HTTP/1.1" 200 - 2 0.001 0.004
+2026-11-01 10:22:21,419 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:22:21] "POST /web/action/load HTTP/1.1" 200 - 9 0.006 0.012
+2026-11-01 10:22:21,763 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:22:21] "POST /web/dataset/call_kw/etat.civil.export.wizard/get_views HTTP/1.1" 200 - 15 0.011 0.021
+2026-11-01 10:22:21,826 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:22:21] "POST /web/dataset/call_kw/etat.civil.export.wizard/onchange HTTP/1.1" 200 - 2 0.003 0.005
+2026-11-01 10:22:41,206 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:22:41] "POST /web/dataset/call_kw/etat.civil.export.wizard/web_save HTTP/1.1" 200 - 6 0.007 0.011
+2026-11-01 10:22:41,245 855266 WARNING etat_civil_odoo17_test odoo.http: La bibliothèque 'openpyxl' est nécessaire pour exporter en Excel. Installez-la avec : pip install openpyxl 
+2026-11-01 10:22:41,245 855266 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:22:41] "POST /web/dataset/call_button HTTP/1.1" 200 - 11 0.006 0.014
+2026-11-01 10:23:43,337 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_cron: Starting job `Notification: Send scheduled message notifications`. 
+2026-11-01 10:23:43,349 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_cron: Job done: `Notification: Send scheduled message notifications` (0.012s). 
+2026-11-01 10:23:43,368 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_cron: Starting job `Partner Autocomplete: Sync with remote DB`. 
+2026-11-01 10:23:43,375 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_cron: Job done: `Partner Autocomplete: Sync with remote DB` (0.006s). 
+2026-11-01 10:23:43,393 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_cron: Starting job `SMS: SMS Queue Manager`. 
+2026-11-01 10:23:43,402 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_cron: Job done: `SMS: SMS Queue Manager` (0.009s). 
+2026-11-01 10:23:43,420 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_cron: Starting job `Snailmail: process letters queue`. 
+2026-11-01 10:23:43,432 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_cron: Job done: `Snailmail: process letters queue` (0.012s). 
+2026-11-01 10:23:43,451 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_cron: Starting job `Mail: Email Queue Manager`. 
+2026-11-01 10:23:43,470 855266 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_cron: Job done: `Mail: Email Queue Manager` (0.018s). 
+2026-11-01 10:26:57,914 855266 INFO ? odoo.service.server: Initiating shutdown 
+2026-11-01 10:26:57,915 855266 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-01 10:26:58,093 855266 INFO ? odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 6 connections  
+2026-11-01 10:27:08,107 874827 INFO ? odoo: Odoo version 17.0 
+2026-11-01 10:27:08,107 874827 INFO ? odoo: Using configuration file at /home/ulrich/tous_les_projet/stage_l3_odoo/config/odoo17.conf 
+2026-11-01 10:27:08,107 874827 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-01 10:27:08,107 874827 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-01 10:27:08,218 874827 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-01 10:27:08,430 874827 INFO ? odoo.service.server: HTTP service (werkzeug) running on localhost:8071 
+2026-11-01 10:27:14,971 874827 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-11-01 10:27:14,980 874827 INFO ? odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-01 10:27:14,992 874827 INFO ? odoo.modules.loading: loading 24 modules... 
+2026-11-01 10:27:15,315 874827 INFO ? odoo.modules.loading: 24 modules loaded in 0.32s, 0 queries (+0 extra) 
+2026-11-01 10:27:15,410 874827 INFO ? odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-01 10:27:15,413 874827 INFO ? odoo.modules.loading: Modules loaded. 
+2026-11-01 10:27:15,418 874827 INFO ? odoo.modules.registry: Registry loaded in 0.471s 
+2026-11-01 10:27:15,478 874827 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-01 10:27:15,522 874827 INFO etat_civil_odoo17_test werkzeug: 127.0.0.1 - - [01/Nov/2026 10:27:15] "GET /websocket?version=17.0-3 HTTP/1.1" 101 - 22 0.022 0.554
+2026-11-01 10:27:15,867 874827 INFO ? odoo.addons.bus.models.bus: Bus.loop listen imbus on db postgres 
+2026-11-01 10:28:08,567 874827 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_cron: Starting job `Base: Auto-vacuum internal data`. 
+2026-11-01 10:28:08,604 874827 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_attachment: _file_gc could not unlink /home/ulrich/tous_les_projet/stage_l3_odoo/data/filestore/etat_civil_odoo17_test/d1/d11ecb865fd166a7227fa2c50f2f3de8854f61f8 
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons/base/models/ir_attachment.py", line 220, in _gc_file_store_unsafe
+    os.unlink(self._full_path(fname))
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] Aucun fichier ou dossier de ce nom: '/home/ulrich/tous_les_projet/stage_l3_odoo/data/filestore/etat_civil_odoo17_test/d1/d11ecb865fd166a7227fa2c50f2f3de8854f61f8'
+2026-11-01 10:28:08,605 874827 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_attachment: _file_gc could not unlink /home/ulrich/tous_les_projet/stage_l3_odoo/data/filestore/etat_civil_odoo17_test/a4/a484e7af68d44147f0f914600b108192059bac44 
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons/base/models/ir_attachment.py", line 220, in _gc_file_store_unsafe
+    os.unlink(self._full_path(fname))
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] Aucun fichier ou dossier de ce nom: '/home/ulrich/tous_les_projet/stage_l3_odoo/data/filestore/etat_civil_odoo17_test/a4/a484e7af68d44147f0f914600b108192059bac44'
+2026-11-01 10:28:08,606 874827 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_attachment: filestore gc 8 checked, 0 removed 
+2026-11-01 10:28:08,680 874827 INFO etat_civil_odoo17_test odoo.addons.base.models.res_users: GC'd 2 user log entries 
+2026-11-01 10:28:08,739 874827 INFO etat_civil_odoo17_test odoo.addons.auth_totp.models.auth_totp: GC'd 0 totp devices entries 
+2026-11-01 10:28:08,762 874827 INFO etat_civil_odoo17_test odoo.models.unlink: User #1 deleted bus.bus records with IDs: [128, 129, 130] 
+2026-11-01 10:28:08,891 874827 INFO etat_civil_odoo17_test odoo.addons.sms.models.sms_sms: GC'd 0 sms marked for deletion 
+2026-11-01 10:28:08,922 874827 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_cron: Job done: `Base: Auto-vacuum internal data` (0.355s). 

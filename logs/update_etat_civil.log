@@ -1,0 +1,102 @@
+2026-11-01 09:35:31,799 855215 INFO ? odoo: Odoo version 17.0 
+2026-11-01 09:35:31,799 855215 INFO ? odoo: Using configuration file at /home/ulrich/tous_les_projet/stage_l3_odoo/config/odoo17.conf 
+2026-11-01 09:35:31,799 855215 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-01 09:35:31,800 855215 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-01 09:35:31,940 855215 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-01 09:35:32,168 855215 INFO etat_civil_odoo17_test odoo.modules.loading: loading 1 modules... 
+2026-11-01 09:35:32,176 855215 INFO etat_civil_odoo17_test odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-01 09:35:32,205 855215 INFO etat_civil_odoo17_test odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-01 09:35:32,206 855215 INFO etat_civil_odoo17_test odoo.modules.loading: updating modules list 
+2026-11-01 09:35:32,208 855215 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-11-01 09:35:33,653 855215 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Gestion d’État Civil'] to user __system__ #1 via n/a 
+2026-11-01 09:35:33,653 855215 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Gestion d’État Civil'] to user __system__ #1 via n/a 
+2026-11-01 09:35:34,667 855215 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-11-01 09:35:35,351 855215 INFO etat_civil_odoo17_test odoo.modules.loading: loading 24 modules... 
+2026-11-01 09:35:35,552 855215 INFO etat_civil_odoo17_test odoo.modules.loading: Loading module etat_civil (15/24) 
+2026-11-01 09:35:35,708 855215 INFO etat_civil_odoo17_test odoo.modules.registry: module etat_civil: creating or updating database tables 
+2026-11-01 09:35:35,785 855215 WARNING etat_civil_odoo17_test odoo.addons.base.models.ir_model: Two fields (conjoint_2_capacite_requise, conjoint_1_capacite_requise) of etat.civil.acte.mariage() have the same label: Capacité matrimoniale requise. [Modules: etat_civil and etat_civil] 
+2026-11-01 09:35:35,785 855215 WARNING etat_civil_odoo17_test odoo.addons.base.models.ir_model: Two fields (conjoint_2_residence_etranger_requise, conjoint_1_residence_etranger_requise) of etat.civil.acte.mariage() have the same label: Résidence requise. [Modules: etat_civil and etat_civil] 
+2026-11-01 09:35:35,785 855215 WARNING etat_civil_odoo17_test odoo.addons.base.models.ir_model: Two fields (acte_display, acte_id) of etat.civil.annulation.acte.wizard() have the same label: Acte. [Modules: etat_civil and etat_civil] 
+2026-11-01 09:35:35,908 855215 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/security/security.xml 
+2026-11-01 09:35:36,098 855215 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/security/ir.model.access.csv 
+2026-11-01 09:35:36,237 855215 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/demande_guichet_sequence.xml 
+2026-11-01 09:35:36,243 855215 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/acte_sequence.xml 
+2026-11-01 09:35:36,247 855215 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/mention_sequence.xml 
+2026-11-01 09:35:36,258 855215 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/individu_views.xml 
+2026-11-01 09:35:36,319 855215 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/registre_views.xml 
+2026-11-01 09:35:36,377 855215 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/reports/actes_reports.xml 
+2026-11-01 09:35:36,440 855215 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/acte_naissance_views.xml 
+2026-11-01 09:35:36,510 855215 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/acte_mariage_views.xml 
+2026-11-01 09:35:36,580 855215 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/acte_deces_views.xml 
+2026-11-01 09:35:36,657 855215 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/mentions_marginales_views.xml 
+2026-11-01 09:35:36,707 855215 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/demandes_guichet_views.xml 
+2026-11-01 09:35:36,746 855215 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/gestion_utilisateurs_views.xml 
+2026-11-01 09:35:36,798 855215 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/registry_actions.xml 
+2026-11-01 09:35:36,849 855215 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/wizard_views.xml 
+2026-11-01 09:35:36,898 855215 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/import_export_views.xml 
+2026-11-01 09:35:36,938 855215 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/import_export_log_views.xml 
+2026-11-01 09:35:36,987 855215 INFO etat_civil_odoo17_test odoo.models.unlink: User #1 deleted ir.actions.act_window.view records with IDs: [41, 42] 
+2026-11-01 09:35:36,994 855215 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/menus.xml 
+2026-11-01 09:35:37,136 855215 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: module etat_civil: no translation for language fr_FR 
+2026-11-01 09:35:37,178 855215 INFO etat_civil_odoo17_test odoo.modules.loading: Module etat_civil loaded in 1.63s, 1165 queries (+1165 other) 
+2026-11-01 09:35:37,232 855215 INFO etat_civil_odoo17_test odoo.modules.loading: 24 modules loaded in 1.88s, 1165 queries (+1165 extra) 
+2026-11-01 09:35:37,566 855215 INFO etat_civil_odoo17_test odoo.modules.registry: verifying fields for every extended model 
+2026-11-01 09:35:37,650 855215 WARNING etat_civil_odoo17_test odoo.addons.base.models.ir_model: Two fields (acte_display, acte_id) of etat.civil.annulation.acte.wizard() have the same label: Acte. [Modules: etat_civil and etat_civil] 
+2026-11-01 09:35:37,651 855215 WARNING etat_civil_odoo17_test odoo.addons.base.models.ir_model: Two fields (conjoint_2_capacite_requise, conjoint_1_capacite_requise) of etat.civil.acte.mariage() have the same label: Capacité matrimoniale requise. [Modules: etat_civil and etat_civil] 
+2026-11-01 09:35:37,651 855215 WARNING etat_civil_odoo17_test odoo.addons.base.models.ir_model: Two fields (conjoint_2_residence_etranger_requise, conjoint_1_residence_etranger_requise) of etat.civil.acte.mariage() have the same label: Résidence requise. [Modules: etat_civil and etat_civil] 
+2026-11-01 09:35:38,360 855215 INFO etat_civil_odoo17_test odoo.modules.loading: Modules loaded. 
+2026-11-01 09:35:38,369 855215 INFO etat_civil_odoo17_test odoo.modules.registry: Registry loaded in 6.228s 
+2026-11-01 09:35:38,369 855215 INFO etat_civil_odoo17_test odoo.service.server: Initiating shutdown 
+2026-11-01 09:35:38,370 855215 INFO etat_civil_odoo17_test odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-01 09:35:38,370 855215 INFO etat_civil_odoo17_test odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 1 connections  
+2026-11-01 10:26:59,707 874765 INFO ? odoo: Odoo version 17.0 
+2026-11-01 10:26:59,707 874765 INFO ? odoo: Using configuration file at /home/ulrich/tous_les_projet/stage_l3_odoo/config/odoo17.conf 
+2026-11-01 10:26:59,708 874765 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-01 10:26:59,708 874765 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-01 10:26:59,840 874765 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-01 10:27:00,094 874765 INFO etat_civil_odoo17_test odoo.modules.loading: loading 1 modules... 
+2026-11-01 10:27:00,102 874765 INFO etat_civil_odoo17_test odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-01 10:27:00,135 874765 INFO etat_civil_odoo17_test odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-01 10:27:00,136 874765 INFO etat_civil_odoo17_test odoo.modules.loading: updating modules list 
+2026-11-01 10:27:00,138 874765 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-11-01 10:27:01,695 874765 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Gestion d’État Civil'] to user __system__ #1 via n/a 
+2026-11-01 10:27:01,695 874765 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Gestion d’État Civil'] to user __system__ #1 via n/a 
+2026-11-01 10:27:02,853 874765 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-11-01 10:27:03,398 874765 INFO etat_civil_odoo17_test odoo.modules.loading: loading 24 modules... 
+2026-11-01 10:27:03,648 874765 INFO etat_civil_odoo17_test odoo.modules.loading: Loading module etat_civil (15/24) 
+2026-11-01 10:27:03,792 874765 INFO etat_civil_odoo17_test odoo.modules.registry: module etat_civil: creating or updating database tables 
+2026-11-01 10:27:03,878 874765 WARNING etat_civil_odoo17_test odoo.addons.base.models.ir_model: Two fields (conjoint_2_capacite_requise, conjoint_1_capacite_requise) of etat.civil.acte.mariage() have the same label: Capacité matrimoniale requise. [Modules: etat_civil and etat_civil] 
+2026-11-01 10:27:03,878 874765 WARNING etat_civil_odoo17_test odoo.addons.base.models.ir_model: Two fields (conjoint_2_residence_etranger_requise, conjoint_1_residence_etranger_requise) of etat.civil.acte.mariage() have the same label: Résidence requise. [Modules: etat_civil and etat_civil] 
+2026-11-01 10:27:03,878 874765 WARNING etat_civil_odoo17_test odoo.addons.base.models.ir_model: Two fields (acte_display, acte_id) of etat.civil.annulation.acte.wizard() have the same label: Acte. [Modules: etat_civil and etat_civil] 
+2026-11-01 10:27:04,064 874765 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/security/security.xml 
+2026-11-01 10:27:04,293 874765 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/security/ir.model.access.csv 
+2026-11-01 10:27:04,459 874765 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/demande_guichet_sequence.xml 
+2026-11-01 10:27:04,466 874765 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/acte_sequence.xml 
+2026-11-01 10:27:04,474 874765 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/mention_sequence.xml 
+2026-11-01 10:27:04,490 874765 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/individu_views.xml 
+2026-11-01 10:27:04,550 874765 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/registre_views.xml 
+2026-11-01 10:27:04,605 874765 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/reports/actes_reports.xml 
+2026-11-01 10:27:04,667 874765 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/acte_naissance_views.xml 
+2026-11-01 10:27:04,740 874765 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/acte_mariage_views.xml 
+2026-11-01 10:27:04,817 874765 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/acte_deces_views.xml 
+2026-11-01 10:27:04,916 874765 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/mentions_marginales_views.xml 
+2026-11-01 10:27:04,962 874765 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/demandes_guichet_views.xml 
+2026-11-01 10:27:05,001 874765 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/gestion_utilisateurs_views.xml 
+2026-11-01 10:27:05,055 874765 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/registry_actions.xml 
+2026-11-01 10:27:05,108 874765 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/wizard_views.xml 
+2026-11-01 10:27:05,172 874765 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/import_export_views.xml 
+2026-11-01 10:27:05,214 874765 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/import_export_log_views.xml 
+2026-11-01 10:27:05,274 874765 INFO etat_civil_odoo17_test odoo.models.unlink: User #1 deleted ir.actions.act_window.view records with IDs: [43, 44] 
+2026-11-01 10:27:05,283 874765 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/menus.xml 
+2026-11-01 10:27:05,492 874765 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: module etat_civil: no translation for language fr_FR 
+2026-11-01 10:27:05,530 874765 INFO etat_civil_odoo17_test odoo.modules.loading: Module etat_civil loaded in 1.88s, 1165 queries (+1165 other) 
+2026-11-01 10:27:05,591 874765 INFO etat_civil_odoo17_test odoo.modules.loading: 24 modules loaded in 2.19s, 1165 queries (+1165 extra) 
+2026-11-01 10:27:05,956 874765 INFO etat_civil_odoo17_test odoo.modules.registry: verifying fields for every extended model 
+2026-11-01 10:27:06,046 874765 WARNING etat_civil_odoo17_test odoo.addons.base.models.ir_model: Two fields (acte_display, acte_id) of etat.civil.annulation.acte.wizard() have the same label: Acte. [Modules: etat_civil and etat_civil] 
+2026-11-01 10:27:06,046 874765 WARNING etat_civil_odoo17_test odoo.addons.base.models.ir_model: Two fields (conjoint_2_capacite_requise, conjoint_1_capacite_requise) of etat.civil.acte.mariage() have the same label: Capacité matrimoniale requise. [Modules: etat_civil and etat_civil] 
+2026-11-01 10:27:06,047 874765 WARNING etat_civil_odoo17_test odoo.addons.base.models.ir_model: Two fields (conjoint_2_residence_etranger_requise, conjoint_1_residence_etranger_requise) of etat.civil.acte.mariage() have the same label: Résidence requise. [Modules: etat_civil and etat_civil] 
+2026-11-01 10:27:06,692 874765 INFO etat_civil_odoo17_test odoo.modules.loading: Modules loaded. 
+2026-11-01 10:27:06,701 874765 INFO etat_civil_odoo17_test odoo.modules.registry: Registry loaded in 6.633s 
+2026-11-01 10:27:06,701 874765 INFO etat_civil_odoo17_test odoo.service.server: Initiating shutdown 
+2026-11-01 10:27:06,702 874765 INFO etat_civil_odoo17_test odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-01 10:27:06,702 874765 INFO etat_civil_odoo17_test odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 1 connections  

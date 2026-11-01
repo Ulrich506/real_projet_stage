@@ -1,0 +1,108 @@
+Exception in thread odoo.service.cron.cron0:
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/service/server.py", line 572, in target
+    self.cron_thread(i)
+    ~~~~~~~~~~~~~~~~^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/service/server.py", line 554, in cron_thread
+    _run_cron(cr)
+    ~~~~~~~~~^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/service/server.py", line 538, in _run_cron
+    pg_conn.poll()
+    ~~~~~~~~~~~~^^
+psycopg2.InterfaceError: connection already closed
+Exception in thread odoo.service.cron.cron1:
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/service/server.py", line 572, in target
+    self.cron_thread(i)
+    ~~~~~~~~~~~~~~~~^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/service/server.py", line 554, in cron_thread
+    _run_cron(cr)
+    ~~~~~~~~~^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/service/server.py", line 538, in _run_cron
+    pg_conn.poll()
+    ~~~~~~~~~~~~^^
+psycopg2.InterfaceError: connection already closed
+Exception in thread odoo.service.cron.cron0:
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/service/server.py", line 572, in target
+    self.cron_thread(i)
+    ~~~~~~~~~~~~~~~~^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/service/server.py", line 554, in cron_thread
+    _run_cron(cr)
+    ~~~~~~~~~^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/service/server.py", line 538, in _run_cron
+    pg_conn.poll()
+    ~~~~~~~~~~~~^^
+psycopg2.InterfaceError: connection already closed
+Exception in thread odoo.service.cron.cron1:
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/service/server.py", line 572, in target
+    self.cron_thread(i)
+    ~~~~~~~~~~~~~~~~^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/service/server.py", line 554, in cron_thread
+    _run_cron(cr)
+    ~~~~~~~~~^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/service/server.py", line 538, in _run_cron
+    pg_conn.poll()
+    ~~~~~~~~~~~~^^
+psycopg2.InterfaceError: connection already closed
+Exception in thread odoo.service.cron.cron0:
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/service/server.py", line 572, in target
+    self.cron_thread(i)
+    ~~~~~~~~~~~~~~~~^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/service/server.py", line 554, in cron_thread
+    _run_cron(cr)
+    ~~~~~~~~~^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/service/server.py", line 538, in _run_cron
+    pg_conn.poll()
+    ~~~~~~~~~~~~^^
+psycopg2.InterfaceError: connection already closed
+Exception in thread odoo.service.cron.cron1:
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/service/server.py", line 572, in target
+    self.cron_thread(i)
+    ~~~~~~~~~~~~~~~~^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/service/server.py", line 554, in cron_thread
+    _run_cron(cr)
+    ~~~~~~~~~^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/service/server.py", line 538, in _run_cron
+    pg_conn.poll()
+    ~~~~~~~~~~~~^^
+psycopg2.InterfaceError: connection already closed
