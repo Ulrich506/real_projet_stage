@@ -1,0 +1,8 @@
+2026-11-06 06:13:10,586 686811 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-11-06 06:13:10,770 686811 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-06 06:13:11,034 686811 INFO ? odoo.modules.loading: 1 modules loaded in 0.45s, 0 queries (+0 extra) 
+2026-11-06 06:13:11,063 686811 INFO ? odoo.modules.loading: loading 46 modules... 
+2026-11-06 06:13:12,039 686811 INFO ? odoo.modules.loading: 46 modules loaded in 0.98s, 0 queries (+0 extra) 
+2026-11-06 06:13:12,242 686811 INFO ? odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-06 06:13:12,247 686811 INFO ? odoo.modules.loading: Modules loaded. 
+2026-11-06 06:13:12,255 686811 INFO ? odoo.modules.registry: Registry loaded in 1.726s 

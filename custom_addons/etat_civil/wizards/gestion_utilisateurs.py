@@ -5,7 +5,7 @@ from odoo.exceptions import AccessError, UserError, ValidationError
 # Rôles métiers du module État Civil selon le workflow opérationnel :
 # - Agent : crée et prépare les actes d'état civil.
 # - Officier : valide et signe officiellement les actes créés.
-# - Administrateur : supervise le système, les paramètres et les comptes.
+# - Administrateur : accède aux actions Agent et Officier et gère le module.
 _CIVIL_ROLE_REFS = (
     "etat_civil.group_etat_civil_agent",
     "etat_civil.group_etat_civil_officier",
@@ -41,7 +41,8 @@ class EtatCivilGestionUtilisateur(models.TransientModel):
             "Workflow métier proposé :\n"
             "- Agent : crée les actes et les dossiers ;\n"
             "- Officier : valide et signe les actes ;\n"
-            "- Administrateur : supervise le système et les comptes."
+            "- Administrateur : accède aux fonctions Agent et Officier, "
+            "gère les référentiels et les comptes."
         ),
         required=True,
         default="agent",
@@ -50,6 +51,7 @@ class EtatCivilGestionUtilisateur(models.TransientModel):
         [
             ("agent", "Agent d'état civil"),
             ("officier", "Officier d'état civil"),
+            ("admin", "Administrateur d'état civil"),
         ],
         string="Rôle du nouveau compte",
         required=True,
@@ -65,7 +67,7 @@ class EtatCivilGestionUtilisateur(models.TransientModel):
 
     def _ensure_admin(self):
         if not (
-            self.env.user.has_group("etat_civil.group_etat_civil_admin")
+            self.env.user._is_etat_civil_admin()
             or self.env.user.has_group("base.group_system")
         ):
             raise AccessError(
@@ -136,9 +138,9 @@ class EtatCivilGestionUtilisateur(models.TransientModel):
         self.ensure_one()
         self._ensure_admin()
         target_role = self.new_user_role if self.mode == "create" else self.role
-        if self.mode == "create" and target_role not in ("agent", "officier"):
+        if self.mode == "create" and target_role not in ("agent", "officier", "admin"):
             raise ValidationError(
-                "Un nouveau compte doit être créé comme agent ou officier d'état civil."
+                "Sélectionnez un rôle valide pour le nouveau compte."
             )
         role_group = self._role_group(target_role)
 

@@ -1,0 +1,161 @@
+2026-11-05 10:35:14,057 325250 INFO ? odoo: Odoo version 17.0 
+2026-11-05 10:35:14,058 325250 INFO ? odoo: Using configuration file at /home/ulrich/tous_les_projet/stage_l3_odoo/config/odoo17.conf 
+2026-11-05 10:35:14,058 325250 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 10:35:14,059 325250 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 10:35:14,308 325250 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 10:35:14,746 325250 INFO ? odoo.service.server: HTTP service (werkzeug) running on localhost:18207 
+2026-11-05 10:35:14,807 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading 1 modules... 
+2026-11-05 10:35:14,825 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2026-11-05 10:35:14,889 325250 INFO etat_civil_final_review_20261105_1304 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 10:35:14,892 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: updating modules list 
+2026-11-05 10:35:14,896 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-11-05 10:35:17,671 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Gestion d’État Civil'] to user __system__ #1 via n/a 
+2026-11-05 10:35:17,672 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Gestion d’État Civil'] to user __system__ #1 via n/a 
+2026-11-05 10:35:19,729 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-11-05 10:35:19,786 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading 24 modules... 
+2026-11-05 10:35:20,483 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: Loading module etat_civil (15/24) 
+2026-11-05 10:35:20,814 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.registry: module etat_civil: creating or updating database tables 
+2026-11-05 10:35:21,263 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/security/security.xml 
+2026-11-05 10:35:21,774 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/security/ir.model.access.csv 
+2026-11-05 10:35:22,028 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/data/demande_guichet_sequence.xml 
+2026-11-05 10:35:22,038 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/data/acte_sequence.xml 
+2026-11-05 10:35:22,046 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/data/mention_sequence.xml 
+2026-11-05 10:35:22,065 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/views/individu_views.xml 
+2026-11-05 10:35:22,159 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/views/registre_views.xml 
+2026-11-05 10:35:22,251 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/reports/actes_reports.xml 
+2026-11-05 10:35:22,427 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/views/acte_naissance_views.xml 
+2026-11-05 10:35:22,554 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/views/acte_mariage_views.xml 
+2026-11-05 10:35:22,672 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/views/acte_deces_views.xml 
+2026-11-05 10:35:22,803 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/views/mentions_marginales_views.xml 
+2026-11-05 10:35:22,890 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/views/demandes_guichet_views.xml 
+2026-11-05 10:35:22,956 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/views/gestion_utilisateurs_views.xml 
+2026-11-05 10:35:23,096 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/views/registry_actions.xml 
+2026-11-05 10:35:23,156 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/views/wizard_views.xml 
+2026-11-05 10:35:23,242 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/views/import_export_views.xml 
+2026-11-05 10:35:23,309 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/views/import_export_log_views.xml 
+2026-11-05 10:35:23,421 325250 INFO etat_civil_final_review_20261105_1304 odoo.models.unlink: User #1 deleted ir.actions.act_window.view records with IDs: [25, 26] 
+2026-11-05 10:35:23,436 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/views/menus.xml 
+2026-11-05 10:35:23,811 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: Module etat_civil loaded in 3.33s, 1368 queries (+1368 other) 
+2026-11-05 10:35:23,900 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: 24 modules loaded in 4.11s, 1368 queries (+1368 extra) 
+2026-11-05 10:35:24,470 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.registry: verifying fields for every extended model 
+2026-11-05 10:35:25,739 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: Modules loaded. 
+2026-11-05 10:35:25,751 325250 INFO etat_civil_final_review_20261105_1304 odoo.modules.registry: Registry loaded in 10.998s 
+2026-11-05 10:35:25,752 325250 INFO etat_civil_final_review_20261105_1304 odoo.service.server: Starting post tests 
+2026-11-05 10:35:25,761 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.ir_qweb: Pregenerating assets bundles 
+2026-11-05 10:35:27,284 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.ir_qweb: JS Assets bundles generated in 1.0965797901153564 seconds 
+2026-11-05 10:35:27,404 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.ir_qweb: CSS Assets bundles generated in 0.11915445327758789 seconds 
+2026-11-05 10:35:27,802 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 238 and Message-Id '<737392151361485.1793874927.742003917694092-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'****************pi@example.test'" successfully sent 
+2026-11-05 10:35:27,802 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 10:35:27,815 325250 INFO etat_civil_final_review_20261105_1304 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [238] 
+2026-11-05 10:35:27,844 325250 INFO etat_civil_final_review_20261105_1304 odoo.models.unlink: User #1 deleted mail.message records with IDs: [3394] 
+2026-11-05 10:35:27,844 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 10:35:27,849 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <agent-workflow-api> to <agent-workflow-api@example.test> 
+2026-11-05 10:35:28,207 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 239 and Message-Id '<383477945761082.1793874928.169883489608765-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'******************pi@example.test'" successfully sent 
+2026-11-05 10:35:28,208 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 10:35:28,216 325250 INFO etat_civil_final_review_20261105_1304 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [239] 
+2026-11-05 10:35:28,235 325250 INFO etat_civil_final_review_20261105_1304 odoo.models.unlink: User #1 deleted mail.message records with IDs: [3396] 
+2026-11-05 10:35:28,236 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 10:35:28,245 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <officer-workflow-api> to <officer-workflow-api@example.test> 
+2026-11-05 10:35:28,604 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 240 and Message-Id '<946708995417822.1793874928.554669141769409-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'************************pi@example.test'" successfully sent 
+2026-11-05 10:35:28,605 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 10:35:28,619 325250 INFO etat_civil_final_review_20261105_1304 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [240] 
+2026-11-05 10:35:28,638 325250 INFO etat_civil_final_review_20261105_1304 odoo.models.unlink: User #1 deleted mail.message records with IDs: [3398] 
+2026-11-05 10:35:28,639 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 10:35:28,644 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <agent-outside-workflow-api> to <agent-outside-workflow-api@example.test> 
+2026-11-05 10:35:28,645 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_accepts_valid_piece_images_and_infers_mimetype ... 
+2026-11-05 10:35:28,665 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.res_users: Login successful for db:etat_civil_final_review_20261105_1304 login:agent-workflow-api from n/a 
+2026-11-05 10:35:28,931 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 10:35:29,261 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:29] "POST /api/v1/actes/naissance/162 HTTP/1.1" 200 - 62 0.094 0.238
+2026-11-05 10:35:29,329 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_allows_agent_correction_and_rejects_direct_civil_status_changes ... 
+2026-11-05 10:35:30,042 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 241 and Message-Id '<538981158530801.1793874929.859446048736572-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-api@example.test' to (redacted) 'o*****************pi@example.test' successfully sent 
+2026-11-05 10:35:30,042 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 10:35:30,074 325250 INFO etat_civil_final_review_20261105_1304 odoo.models.unlink: User #416 deleted mail.mail records with IDs: [241] 
+2026-11-05 10:35:30,074 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 10:35:30,324 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 242 and Message-Id '<329636538668392.1793874930.236820459365845-openerp-message-notify@ulrich-Default-string>' from 'officer-workflow-api@example.test' to (redacted) 'a***************pi@example.test' successfully sent 
+2026-11-05 10:35:30,324 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 10:35:30,344 325250 INFO etat_civil_final_review_20261105_1304 odoo.models.unlink: User #417 deleted mail.mail records with IDs: [242] 
+2026-11-05 10:35:30,344 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 10:35:30,443 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.res_users: Login successful for db:etat_civil_final_review_20261105_1304 login:agent-workflow-api from n/a 
+2026-11-05 10:35:30,449 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 10:35:30,714 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:30] "POST /api/v1/actes/naissance/163 HTTP/1.1" 200 - 34 0.037 0.229
+2026-11-05 10:35:30,746 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:30] "POST /api/v1/personnes/481 HTTP/1.1" 400 - 3 0.001 0.003
+2026-11-05 10:35:30,752 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_health_reports_the_selected_database ... 
+2026-11-05 10:35:30,759 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 10:35:30,800 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:30] "GET /api/v1/health HTTP/1.1" 200 - 7 0.003 0.041
+2026-11-05 10:35:30,802 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.etat_civil.tests.test_acte_workflow.TestActeWorkflowApi: waiting for threads: [<Thread(odoo.service.http.request.134027340150464, started 134027340150464)>] 
+2026-11-05 10:35:30,806 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_logout_requires_json_post ... 
+2026-11-05 10:35:30,820 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.res_users: Login successful for db:etat_civil_final_review_20261105_1304 login:agent-workflow-api from n/a 
+2026-11-05 10:35:30,844 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 10:35:30,873 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:30] "GET /api/v1/auth/logout HTTP/1.1" 405 - 3 0.001 0.030
+2026-11-05 10:35:30,884 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:30] "POST /api/v1/auth/logout HTTP/1.1" 415 - 5 0.002 0.005
+2026-11-05 10:35:30,904 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:30] "POST /api/v1/auth/logout HTTP/1.1" 200 - 3 0.002 0.008
+2026-11-05 10:35:30,907 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.etat_civil.tests.test_acte_workflow.TestActeWorkflowApi: waiting for threads: [<Thread(odoo.service.http.request.134027331757760, started 134027331757760)>] 
+2026-11-05 10:35:30,910 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_mutations_reject_json_sent_as_plain_text ... 
+2026-11-05 10:35:30,928 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.res_users: Login successful for db:etat_civil_final_review_20261105_1304 login:agent-workflow-api from n/a 
+2026-11-05 10:35:30,944 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 10:35:30,984 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:30] "POST /api/v1/personnes HTTP/1.1" 415 - 8 0.007 0.035
+2026-11-05 10:35:31,589 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 243 and Message-Id '<333532481438436.1793874931.452672481536865-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-api@example.test' to (redacted) 'o*****************pi@example.test' successfully sent 
+2026-11-05 10:35:31,590 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 10:35:31,605 325250 INFO etat_civil_final_review_20261105_1304 odoo.models.unlink: User #416 deleted mail.mail records with IDs: [243] 
+2026-11-05 10:35:31,606 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 10:35:31,694 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.res_users: Login successful for db:etat_civil_final_review_20261105_1304 login:officer-workflow-api from n/a 
+2026-11-05 10:35:31,718 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:31] "POST /api/v1/actes/naissance/164/valider HTTP/1.1" 415 - 2 0.004 0.004
+2026-11-05 10:35:31,745 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:31] "POST /api/v1/actes/mariage/999999999/valider HTTP/1.1" 415 - 2 0.001 0.004
+2026-11-05 10:35:31,755 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:31] "POST /api/v1/actes/deces/999999999/valider HTTP/1.1" 415 - 2 0.002 0.004
+2026-11-05 10:35:31,766 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:31] "POST /api/v1/actes/invalide/999999999/valider HTTP/1.1" 415 - 2 0.001 0.005
+2026-11-05 10:35:31,775 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:31] "POST /api/v1/mentions/999999999/valider HTTP/1.1" 415 - 2 0.001 0.002
+2026-11-05 10:35:31,776 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.etat_civil.tests.test_acte_workflow.TestActeWorkflowApi: waiting for threads: [<Thread(odoo.service.http.request.134027323365056, started 134027323365056)>] 
+2026-11-05 10:35:31,778 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_rejects_invalid_piece_images_without_partial_updates ... 
+2026-11-05 10:35:31,814 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.res_users: Login successful for db:etat_civil_final_review_20261105_1304 login:agent-workflow-api from n/a 
+2026-11-05 10:35:32,043 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 10:35:32,212 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:32] "POST /api/v1/actes/naissance/165 HTTP/1.1" 400 - 20 0.022 0.153
+2026-11-05 10:35:32,273 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:32] "POST /api/v1/actes/naissance/165 HTTP/1.1" 400 - 9 0.006 0.021
+2026-11-05 10:35:32,471 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:32] "POST /api/v1/actes/naissance HTTP/1.1" 400 - 41 0.048 0.118
+2026-11-05 10:35:32,480 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_attachment_preview_route_respects_civil_centre_access ... 
+2026-11-05 10:35:32,726 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.res_users: Login successful for db:etat_civil_final_review_20261105_1304 login:agent-workflow-api from n/a 
+2026-11-05 10:35:32,743 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 10:35:32,818 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:32] "GET /web/content/2305?download=false HTTP/1.1" 200 - 13 0.013 0.066
+2026-11-05 10:35:32,833 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.res_users: Login successful for db:etat_civil_final_review_20261105_1304 login:agent-outside-workflow-api from n/a 
+2026-11-05 10:35:32,894 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [2305], uid: 418, model: ir.attachment 
+2026-11-05 10:35:32,904 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:32] "GET /web/content/2305?download=false HTTP/1.1" 404 - 24 0.024 0.030
+2026-11-05 10:35:32,906 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.etat_civil.tests.test_acte_workflow.TestActeWorkflowApi: waiting for threads: [<Thread(odoo.service.http.request.134027323365056, started 134027323365056)>] 
+2026-11-05 10:35:32,908 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_authenticated_api_routes_reject_anonymous_writes ... 
+2026-11-05 10:35:32,924 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.res_users: Login successful for db:etat_civil_final_review_20261105_1304 login:agent-workflow-api from n/a 
+2026-11-05 10:35:32,943 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 10:35:33,008 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:33] "POST /api/v1/auth/logout HTTP/1.1" 200 - 6 0.003 0.064
+2026-11-05 10:35:33,017 325250 INFO etat_civil_final_review_20261105_1304 odoo.http: Session expired 
+2026-11-05 10:35:33,017 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:33] "POST /api/v1/personnes HTTP/1.1" 303 - 4 0.001 0.003
+2026-11-05 10:35:33,022 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_specific_api_routes_enforce_the_workflow_for_each_act_type ... 
+2026-11-05 10:35:33,049 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.res_users: Login successful for db:etat_civil_final_review_20261105_1304 login:officer-workflow-api from n/a 
+2026-11-05 10:35:33,072 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.res_users: Login successful for db:etat_civil_final_review_20261105_1304 login:officer-workflow-api from n/a 
+2026-11-05 10:35:33,321 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 10:35:33,411 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:33] "POST /api/v1/actes/naissance/168/valider HTTP/1.1" 409 - 27 0.023 0.069
+2026-11-05 10:35:33,431 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.res_users: Login successful for db:etat_civil_final_review_20261105_1304 login:agent-workflow-api from n/a 
+2026-11-05 10:35:34,064 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:34] "POST /api/v1/actes/naissance/168/transmettre HTTP/1.1" 200 - 106 0.127 0.285
+2026-11-05 10:35:34,086 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.res_users: Login successful for db:etat_civil_final_review_20261105_1304 login:officer-workflow-api from n/a 
+2026-11-05 10:35:34,614 325250 INFO etat_civil_final_review_20261105_1304 odoo.models.unlink: User #417 deleted mail.activity records with IDs: [135] 
+2026-11-05 10:35:34,803 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:34] "POST /api/v1/actes/naissance/168/valider HTTP/1.1" 200 - 73 0.149 0.306
+2026-11-05 10:35:34,836 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.res_users: Login successful for db:etat_civil_final_review_20261105_1304 login:agent-workflow-api from n/a 
+2026-11-05 10:35:34,854 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.res_users: Login successful for db:etat_civil_final_review_20261105_1304 login:officer-workflow-api from n/a 
+2026-11-05 10:35:35,199 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:35] "POST /api/v1/actes/mariage/35/valider HTTP/1.1" 409 - 21 0.019 0.022
+2026-11-05 10:35:35,217 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.res_users: Login successful for db:etat_civil_final_review_20261105_1304 login:agent-workflow-api from n/a 
+2026-11-05 10:35:35,888 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:35] "POST /api/v1/actes/mariage/35/transmettre HTTP/1.1" 200 - 76 0.090 0.161
+2026-11-05 10:35:35,906 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.res_users: Login successful for db:etat_civil_final_review_20261105_1304 login:officer-workflow-api from n/a 
+2026-11-05 10:35:36,433 325250 INFO etat_civil_final_review_20261105_1304 odoo.models.unlink: User #417 deleted mail.activity records with IDs: [136] 
+2026-11-05 10:35:36,593 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:36] "POST /api/v1/actes/mariage/35/valider HTTP/1.1" 200 - 77 0.100 0.202
+2026-11-05 10:35:36,622 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.res_users: Login successful for db:etat_civil_final_review_20261105_1304 login:agent-workflow-api from n/a 
+2026-11-05 10:35:36,637 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.res_users: Login successful for db:etat_civil_final_review_20261105_1304 login:officer-workflow-api from n/a 
+2026-11-05 10:35:36,817 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:36] "POST /api/v1/actes/deces/23/valider HTTP/1.1" 409 - 17 0.012 0.013
+2026-11-05 10:35:36,834 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.res_users: Login successful for db:etat_civil_final_review_20261105_1304 login:agent-workflow-api from n/a 
+2026-11-05 10:35:37,303 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:37] "POST /api/v1/actes/deces/23/transmettre HTTP/1.1" 200 - 71 0.101 0.201
+2026-11-05 10:35:37,317 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.res_users: Login successful for db:etat_civil_final_review_20261105_1304 login:officer-workflow-api from n/a 
+2026-11-05 10:35:37,678 325250 INFO etat_civil_final_review_20261105_1304 odoo.models.unlink: User #417 deleted mail.activity records with IDs: [137] 
+2026-11-05 10:35:37,776 325250 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 10:35:37] "POST /api/v1/actes/deces/23/valider HTTP/1.1" 200 - 56 0.075 0.191
+2026-11-05 10:35:37,802 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.res_users: Login successful for db:etat_civil_final_review_20261105_1304 login:agent-workflow-api from n/a 
+2026-11-05 10:35:37,962 325250 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.ir_attachment: filestore gc 5 checked, 4 removed 
+2026-11-05 10:35:37,982 325250 INFO etat_civil_final_review_20261105_1304 odoo.service.server: 9 post-tests in 12.23s, 3104 queries 
+2026-11-05 10:35:37,983 325250 INFO etat_civil_final_review_20261105_1304 odoo.tests.stats: etat_civil: 11 tests 10.57s 2935 queries 
+2026-11-05 10:35:37,983 325250 INFO etat_civil_final_review_20261105_1304 odoo.tests.result: 0 failed, 0 error(s) of 9 tests when loading database 'etat_civil_final_review_20261105_1304' 
+2026-11-05 10:35:37,983 325250 INFO etat_civil_final_review_20261105_1304 odoo.service.server: Initiating shutdown 
+2026-11-05 10:35:37,984 325250 INFO etat_civil_final_review_20261105_1304 odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-05 10:35:38,012 325250 INFO etat_civil_final_review_20261105_1304 odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 1 connections  

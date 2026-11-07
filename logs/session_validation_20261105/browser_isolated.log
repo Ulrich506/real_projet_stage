@@ -1,0 +1,504 @@
+2026-11-05 11:50:43,348 378504 INFO ? odoo: Odoo version 17.0 
+2026-11-05 11:50:43,349 378504 INFO ? odoo: Using configuration file at /home/ulrich/tous_les_projet/stage_l3_odoo/config/odoo17.conf 
+2026-11-05 11:50:43,350 378504 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/usr/lib/python3/dist-packages/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 11:50:43,350 378504 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 11:50:44,762 378504 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 11:50:46,474 378504 CRITICAL ? odoo.modules.module: Couldn't load module web 
+2026-11-05 11:50:46,475 378504 ERROR ? odoo.service.server: Failed to load server-wide module `web`.
+The `web` module is provided by the addons found in the `openerp-web` project.
+Maybe you forgot to add those addons in your addons_path configuration. 
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/service/server.py", line 1351, in load_server_wide_modules
+    odoo.modules.module.load_openerp_module(m)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/module.py", line 424, in load_openerp_module
+    __import__(qualname)
+    ~~~~~~~~~~^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/__init__.py", line 5, in <module>
+    from . import models
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/models/__init__.py", line 9, in <module>
+    from . import models
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/models/models.py", line 15, in <module>
+    from odoo.tools.translate import LazyTranslate
+ImportError: cannot import name 'LazyTranslate' from 'odoo.tools.translate' (/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/translate.py)
+2026-11-05 11:50:46,489 378504 INFO ? odoo.service.server: HTTP service (werkzeug) running on localhost:18221 
+2026-11-05 11:50:46,526 378504 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading 1 modules... 
+2026-11-05 11:50:46,549 378504 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2026-11-05 11:50:46,608 378504 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module web_editor: Unmet dependencies: html_editor 
+2026-11-05 11:50:46,613 378504 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module auth_totp_mail: Unmet dependencies: mail 
+2026-11-05 11:50:46,614 378504 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module base_install_request: Unmet dependencies: mail 
+2026-11-05 11:50:46,615 378504 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module google_gmail: Unmet dependencies: mail 
+2026-11-05 11:50:46,616 378504 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module sms: Unmet dependencies: iap_mail, mail, phone_validation 
+2026-11-05 11:50:46,616 378504 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module privacy_lookup: Unmet dependencies: mail 
+2026-11-05 11:50:46,616 378504 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module snailmail: Unmet dependencies: iap_mail, mail 
+2026-11-05 11:50:46,616 378504 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module partner_autocomplete: Unmet dependencies: iap_mail 
+2026-11-05 11:50:46,616 378504 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module web_unsplash: Unmet dependencies: web_editor, html_editor 
+2026-11-05 11:50:46,616 378504 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module mail_bot: Unmet dependencies: mail 
+2026-11-05 11:50:46,616 378504 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module etat_civil: Unmet dependencies: mail 
+2026-11-05 11:50:46,616 378504 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module auth_signup: Unmet dependencies: mail 
+2026-11-05 11:50:46,617 378504 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module iap_mail: Unmet dependencies: mail 
+2026-11-05 11:50:46,618 378504 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module mail: Unmet dependencies: html_editor 
+2026-11-05 11:50:46,618 378504 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module phone_validation: Unmet dependencies: mail 
+2026-11-05 11:50:46,618 378504 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading 9 modules... 
+2026-11-05 11:50:46,631 378504 CRITICAL etat_civil_final_review_20261105_1304 odoo.modules.module: Couldn't load module web 
+2026-11-05 11:50:46,639 378504 WARNING etat_civil_final_review_20261105_1304 odoo.modules.loading: Transient module states were reset 
+2026-11-05 11:50:46,643 378504 ERROR etat_civil_final_review_20261105_1304 odoo.modules.registry: Failed to load registry 
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/registry.py", line 99, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 481, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+                         ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+        ['installed', 'to upgrade', 'to remove'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        force, status, report, loaded_modules, update_module, models_to_check)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 366, in load_marked_modules
+    loaded, processed = load_module_graph(
+                        ~~~~~~~~~~~~~~~~~^
+        env, graph, progressdict, report=report, skip_modules=loaded_modules,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        perform_checks=perform_checks, models_to_check=models_to_check
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 187, in load_module_graph
+    load_openerp_module(package.name)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/module.py", line 424, in load_openerp_module
+    __import__(qualname)
+    ~~~~~~~~~~^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/__init__.py", line 5, in <module>
+    from . import models
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/models/__init__.py", line 9, in <module>
+    from . import models
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/models/models.py", line 15, in <module>
+    from odoo.tools.translate import LazyTranslate
+ImportError: cannot import name 'LazyTranslate' from 'odoo.tools.translate' (/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/translate.py)
+2026-11-05 11:50:46,648 378504 CRITICAL etat_civil_final_review_20261105_1304 odoo.service.server: Failed to initialize database `etat_civil_final_review_20261105_1304`. 
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/service/server.py", line 1424, in preload_registries
+    registry = Registry.new(dbname, update_module=update_module)
+  File "/usr/lib/python3/dist-packages/decorator.py", line 235, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/func.py", line 87, in locked
+    return func(inst, *args, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/registry.py", line 99, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 481, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+                         ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+        ['installed', 'to upgrade', 'to remove'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        force, status, report, loaded_modules, update_module, models_to_check)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 366, in load_marked_modules
+    loaded, processed = load_module_graph(
+                        ~~~~~~~~~~~~~~~~~^
+        env, graph, progressdict, report=report, skip_modules=loaded_modules,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        perform_checks=perform_checks, models_to_check=models_to_check
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 187, in load_module_graph
+    load_openerp_module(package.name)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/module.py", line 424, in load_openerp_module
+    __import__(qualname)
+    ~~~~~~~~~~^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/__init__.py", line 5, in <module>
+    from . import models
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/models/__init__.py", line 9, in <module>
+    from . import models
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/models/models.py", line 15, in <module>
+    from odoo.tools.translate import LazyTranslate
+ImportError: cannot import name 'LazyTranslate' from 'odoo.tools.translate' (/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/translate.py)
+2026-11-05 11:50:55,799 378504 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-11-05 11:50:55,832 378504 INFO ? odoo.modules.loading: 1 modules loaded in 0.03s, 0 queries (+0 extra) 
+2026-11-05 11:50:55,836 378504 INFO ? odoo.modules.graph: module web_editor: Unmet dependencies: html_editor 
+2026-11-05 11:50:55,837 378504 INFO ? odoo.modules.graph: module auth_totp_mail: Unmet dependencies: mail 
+2026-11-05 11:50:55,837 378504 INFO ? odoo.modules.graph: module base_install_request: Unmet dependencies: mail 
+2026-11-05 11:50:55,837 378504 INFO ? odoo.modules.graph: module google_gmail: Unmet dependencies: mail 
+2026-11-05 11:50:55,837 378504 INFO ? odoo.modules.graph: module sms: Unmet dependencies: iap_mail, mail, phone_validation 
+2026-11-05 11:50:55,838 378504 INFO ? odoo.modules.graph: module privacy_lookup: Unmet dependencies: mail 
+2026-11-05 11:50:55,838 378504 INFO ? odoo.modules.graph: module snailmail: Unmet dependencies: iap_mail, mail 
+2026-11-05 11:50:55,838 378504 INFO ? odoo.modules.graph: module partner_autocomplete: Unmet dependencies: iap_mail 
+2026-11-05 11:50:55,838 378504 INFO ? odoo.modules.graph: module web_unsplash: Unmet dependencies: web_editor, html_editor 
+2026-11-05 11:50:55,838 378504 INFO ? odoo.modules.graph: module mail_bot: Unmet dependencies: mail 
+2026-11-05 11:50:55,838 378504 INFO ? odoo.modules.graph: module etat_civil: Unmet dependencies: mail 
+2026-11-05 11:50:55,838 378504 INFO ? odoo.modules.graph: module auth_signup: Unmet dependencies: mail 
+2026-11-05 11:50:55,838 378504 INFO ? odoo.modules.graph: module iap_mail: Unmet dependencies: mail 
+2026-11-05 11:50:55,839 378504 INFO ? odoo.modules.graph: module mail: Unmet dependencies: html_editor 
+2026-11-05 11:50:55,839 378504 INFO ? odoo.modules.graph: module phone_validation: Unmet dependencies: mail 
+2026-11-05 11:50:55,839 378504 INFO ? odoo.modules.loading: loading 9 modules... 
+2026-11-05 11:50:55,842 378504 CRITICAL ? odoo.modules.module: Couldn't load module web 
+2026-11-05 11:50:55,846 378504 WARNING ? odoo.modules.loading: Transient module states were reset 
+2026-11-05 11:50:55,847 378504 ERROR ? odoo.modules.registry: Failed to load registry 
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/registry.py", line 74, in __new__
+    return cls.registries[db_name]
+           ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/decorator.py", line 235, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/func.py", line 87, in locked
+    return func(inst, *args, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/lru.py", line 34, in __getitem__
+    a = self.d[obj]
+        ~~~~~~^^^^^
+KeyError: 'etat_civil_final_review_20261105_1304'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/registry.py", line 99, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 481, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+                         ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+        ['installed', 'to upgrade', 'to remove'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        force, status, report, loaded_modules, update_module, models_to_check)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 366, in load_marked_modules
+    loaded, processed = load_module_graph(
+                        ~~~~~~~~~~~~~~~~~^
+        env, graph, progressdict, report=report, skip_modules=loaded_modules,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        perform_checks=perform_checks, models_to_check=models_to_check
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 187, in load_module_graph
+    load_openerp_module(package.name)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/module.py", line 424, in load_openerp_module
+    __import__(qualname)
+    ~~~~~~~~~~^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/__init__.py", line 5, in <module>
+    from . import models
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/models/__init__.py", line 9, in <module>
+    from . import models
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/models/models.py", line 15, in <module>
+    from odoo.tools.translate import LazyTranslate
+ImportError: cannot import name 'LazyTranslate' from 'odoo.tools.translate' (/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/translate.py)
+2026-11-05 11:50:55,855 378504 ERROR ? odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/registry.py", line 74, in __new__
+    return cls.registries[db_name]
+           ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/decorator.py", line 235, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/func.py", line 87, in locked
+    return func(inst, *args, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/lru.py", line 34, in __getitem__
+    a = self.d[obj]
+        ~~~~~~^^^^^
+KeyError: 'etat_civil_final_review_20261105_1304'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/http.py", line 2411, in __call__
+    response = request._serve_db()
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/http.py", line 1963, in _serve_db
+    self.registry = Registry(self.db).check_signaling()
+                    ~~~~~~~~^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/registry.py", line 76, in __new__
+    return cls.new(db_name)
+           ~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/decorator.py", line 235, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/func.py", line 87, in locked
+    return func(inst, *args, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/registry.py", line 99, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 481, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+                         ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+        ['installed', 'to upgrade', 'to remove'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        force, status, report, loaded_modules, update_module, models_to_check)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 366, in load_marked_modules
+    loaded, processed = load_module_graph(
+                        ~~~~~~~~~~~~~~~~~^
+        env, graph, progressdict, report=report, skip_modules=loaded_modules,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        perform_checks=perform_checks, models_to_check=models_to_check
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 187, in load_module_graph
+    load_openerp_module(package.name)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/module.py", line 424, in load_openerp_module
+    __import__(qualname)
+    ~~~~~~~~~~^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/__init__.py", line 5, in <module>
+    from . import models
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/models/__init__.py", line 9, in <module>
+    from . import models
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/models/models.py", line 15, in <module>
+    from odoo.tools.translate import LazyTranslate
+ImportError: cannot import name 'LazyTranslate' from 'odoo.tools.translate' (/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/translate.py)
+2026-11-05 11:50:55,868 378504 INFO ? werkzeug: 127.0.0.1 - - [05/Nov/2026 11:50:55] "GET /web/login HTTP/1.1" 500 - 12 0.016 0.079
+2026-11-05 11:51:37,297 378504 INFO etat_civil_final_review_20261105_1304 odoo.service.server: Initiating shutdown 
+2026-11-05 11:51:37,297 378504 INFO etat_civil_final_review_20261105_1304 odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-05 11:51:37,424 378504 INFO etat_civil_final_review_20261105_1304 odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 3 connections  
+2026-11-05 11:51:52,187 379611 INFO ? odoo: Odoo version 17.0 
+2026-11-05 11:51:52,188 379611 INFO ? odoo: Using configuration file at /home/ulrich/tous_les_projet/stage_l3_odoo/config/odoo17.conf 
+2026-11-05 11:51:52,188 379611 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/usr/lib/python3/dist-packages/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 11:51:52,189 379611 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 11:51:52,785 379611 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 11:51:53,775 379611 CRITICAL ? odoo.modules.module: Couldn't load module web 
+2026-11-05 11:51:53,776 379611 ERROR ? odoo.service.server: Failed to load server-wide module `web`.
+The `web` module is provided by the addons found in the `openerp-web` project.
+Maybe you forgot to add those addons in your addons_path configuration. 
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/service/server.py", line 1351, in load_server_wide_modules
+    odoo.modules.module.load_openerp_module(m)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/module.py", line 424, in load_openerp_module
+    __import__(qualname)
+    ~~~~~~~~~~^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/__init__.py", line 5, in <module>
+    from . import models
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/models/__init__.py", line 9, in <module>
+    from . import models
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/models/models.py", line 15, in <module>
+    from odoo.tools.translate import LazyTranslate
+ImportError: cannot import name 'LazyTranslate' from 'odoo.tools.translate' (/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/translate.py)
+2026-11-05 11:51:53,784 379611 INFO ? odoo.service.server: HTTP service (werkzeug) running on localhost:18221 
+2026-11-05 11:51:54,203 379611 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading 1 modules... 
+2026-11-05 11:51:54,248 379611 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: 1 modules loaded in 0.04s, 0 queries (+0 extra) 
+2026-11-05 11:51:54,344 379611 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module google_gmail: Unmet dependencies: mail 
+2026-11-05 11:51:54,346 379611 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module mail: Unmet dependencies: html_editor 
+2026-11-05 11:51:54,347 379611 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module web_unsplash: Unmet dependencies: web_editor, html_editor 
+2026-11-05 11:51:54,349 379611 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module base_install_request: Unmet dependencies: mail 
+2026-11-05 11:51:54,349 379611 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module auth_signup: Unmet dependencies: mail 
+2026-11-05 11:51:54,349 379611 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module snailmail: Unmet dependencies: iap_mail, mail 
+2026-11-05 11:51:54,349 379611 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module partner_autocomplete: Unmet dependencies: iap_mail 
+2026-11-05 11:51:54,349 379611 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module web_editor: Unmet dependencies: html_editor 
+2026-11-05 11:51:54,350 379611 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module etat_civil: Unmet dependencies: mail 
+2026-11-05 11:51:54,351 379611 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module phone_validation: Unmet dependencies: mail 
+2026-11-05 11:51:54,351 379611 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module iap_mail: Unmet dependencies: mail 
+2026-11-05 11:51:54,352 379611 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module auth_totp_mail: Unmet dependencies: mail 
+2026-11-05 11:51:54,352 379611 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module mail_bot: Unmet dependencies: mail 
+2026-11-05 11:51:54,352 379611 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module sms: Unmet dependencies: iap_mail, mail, phone_validation 
+2026-11-05 11:51:54,352 379611 INFO etat_civil_final_review_20261105_1304 odoo.modules.graph: module privacy_lookup: Unmet dependencies: mail 
+2026-11-05 11:51:54,353 379611 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading 9 modules... 
+2026-11-05 11:51:54,357 379611 CRITICAL etat_civil_final_review_20261105_1304 odoo.modules.module: Couldn't load module web 
+2026-11-05 11:51:54,418 379611 WARNING etat_civil_final_review_20261105_1304 odoo.modules.loading: Transient module states were reset 
+2026-11-05 11:51:54,422 379611 ERROR etat_civil_final_review_20261105_1304 odoo.modules.registry: Failed to load registry 
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/registry.py", line 99, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 481, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+                         ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+        ['installed', 'to upgrade', 'to remove'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        force, status, report, loaded_modules, update_module, models_to_check)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 366, in load_marked_modules
+    loaded, processed = load_module_graph(
+                        ~~~~~~~~~~~~~~~~~^
+        env, graph, progressdict, report=report, skip_modules=loaded_modules,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        perform_checks=perform_checks, models_to_check=models_to_check
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 187, in load_module_graph
+    load_openerp_module(package.name)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/module.py", line 424, in load_openerp_module
+    __import__(qualname)
+    ~~~~~~~~~~^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/__init__.py", line 5, in <module>
+    from . import models
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/models/__init__.py", line 9, in <module>
+    from . import models
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/models/models.py", line 15, in <module>
+    from odoo.tools.translate import LazyTranslate
+ImportError: cannot import name 'LazyTranslate' from 'odoo.tools.translate' (/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/translate.py)
+2026-11-05 11:51:54,428 379611 CRITICAL etat_civil_final_review_20261105_1304 odoo.service.server: Failed to initialize database `etat_civil_final_review_20261105_1304`. 
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/service/server.py", line 1424, in preload_registries
+    registry = Registry.new(dbname, update_module=update_module)
+  File "/usr/lib/python3/dist-packages/decorator.py", line 235, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/func.py", line 87, in locked
+    return func(inst, *args, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/registry.py", line 99, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 481, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+                         ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+        ['installed', 'to upgrade', 'to remove'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        force, status, report, loaded_modules, update_module, models_to_check)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 366, in load_marked_modules
+    loaded, processed = load_module_graph(
+                        ~~~~~~~~~~~~~~~~~^
+        env, graph, progressdict, report=report, skip_modules=loaded_modules,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        perform_checks=perform_checks, models_to_check=models_to_check
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 187, in load_module_graph
+    load_openerp_module(package.name)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/module.py", line 424, in load_openerp_module
+    __import__(qualname)
+    ~~~~~~~~~~^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/__init__.py", line 5, in <module>
+    from . import models
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/models/__init__.py", line 9, in <module>
+    from . import models
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/models/models.py", line 15, in <module>
+    from odoo.tools.translate import LazyTranslate
+ImportError: cannot import name 'LazyTranslate' from 'odoo.tools.translate' (/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/translate.py)
+2026-11-05 11:52:04,324 379611 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-11-05 11:52:04,366 379611 INFO ? odoo.modules.loading: 1 modules loaded in 0.04s, 0 queries (+0 extra) 
+2026-11-05 11:52:04,372 379611 INFO ? odoo.modules.graph: module google_gmail: Unmet dependencies: mail 
+2026-11-05 11:52:04,373 379611 INFO ? odoo.modules.graph: module mail: Unmet dependencies: html_editor 
+2026-11-05 11:52:04,373 379611 INFO ? odoo.modules.graph: module web_unsplash: Unmet dependencies: web_editor, html_editor 
+2026-11-05 11:52:04,374 379611 INFO ? odoo.modules.graph: module base_install_request: Unmet dependencies: mail 
+2026-11-05 11:52:04,374 379611 INFO ? odoo.modules.graph: module auth_signup: Unmet dependencies: mail 
+2026-11-05 11:52:04,374 379611 INFO ? odoo.modules.graph: module snailmail: Unmet dependencies: iap_mail, mail 
+2026-11-05 11:52:04,374 379611 INFO ? odoo.modules.graph: module partner_autocomplete: Unmet dependencies: iap_mail 
+2026-11-05 11:52:04,374 379611 INFO ? odoo.modules.graph: module web_editor: Unmet dependencies: html_editor 
+2026-11-05 11:52:04,374 379611 INFO ? odoo.modules.graph: module etat_civil: Unmet dependencies: mail 
+2026-11-05 11:52:04,375 379611 INFO ? odoo.modules.graph: module phone_validation: Unmet dependencies: mail 
+2026-11-05 11:52:04,375 379611 INFO ? odoo.modules.graph: module iap_mail: Unmet dependencies: mail 
+2026-11-05 11:52:04,375 379611 INFO ? odoo.modules.graph: module auth_totp_mail: Unmet dependencies: mail 
+2026-11-05 11:52:04,376 379611 INFO ? odoo.modules.graph: module mail_bot: Unmet dependencies: mail 
+2026-11-05 11:52:04,376 379611 INFO ? odoo.modules.graph: module sms: Unmet dependencies: iap_mail, mail, phone_validation 
+2026-11-05 11:52:04,376 379611 INFO ? odoo.modules.graph: module privacy_lookup: Unmet dependencies: mail 
+2026-11-05 11:52:04,377 379611 INFO ? odoo.modules.loading: loading 9 modules... 
+2026-11-05 11:52:04,379 379611 CRITICAL ? odoo.modules.module: Couldn't load module web 
+2026-11-05 11:52:04,388 379611 WARNING ? odoo.modules.loading: Transient module states were reset 
+2026-11-05 11:52:04,390 379611 ERROR ? odoo.modules.registry: Failed to load registry 
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/registry.py", line 74, in __new__
+    return cls.registries[db_name]
+           ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/decorator.py", line 235, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/func.py", line 87, in locked
+    return func(inst, *args, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/lru.py", line 34, in __getitem__
+    a = self.d[obj]
+        ~~~~~~^^^^^
+KeyError: 'etat_civil_final_review_20261105_1304'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/registry.py", line 99, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 481, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+                         ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+        ['installed', 'to upgrade', 'to remove'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        force, status, report, loaded_modules, update_module, models_to_check)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 366, in load_marked_modules
+    loaded, processed = load_module_graph(
+                        ~~~~~~~~~~~~~~~~~^
+        env, graph, progressdict, report=report, skip_modules=loaded_modules,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        perform_checks=perform_checks, models_to_check=models_to_check
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 187, in load_module_graph
+    load_openerp_module(package.name)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/module.py", line 424, in load_openerp_module
+    __import__(qualname)
+    ~~~~~~~~~~^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/__init__.py", line 5, in <module>
+    from . import models
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/models/__init__.py", line 9, in <module>
+    from . import models
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/models/models.py", line 15, in <module>
+    from odoo.tools.translate import LazyTranslate
+ImportError: cannot import name 'LazyTranslate' from 'odoo.tools.translate' (/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/translate.py)
+2026-11-05 11:52:04,404 379611 ERROR ? odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/registry.py", line 74, in __new__
+    return cls.registries[db_name]
+           ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/decorator.py", line 235, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/func.py", line 87, in locked
+    return func(inst, *args, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/lru.py", line 34, in __getitem__
+    a = self.d[obj]
+        ~~~~~~^^^^^
+KeyError: 'etat_civil_final_review_20261105_1304'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/http.py", line 2411, in __call__
+    response = request._serve_db()
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/http.py", line 1963, in _serve_db
+    self.registry = Registry(self.db).check_signaling()
+                    ~~~~~~~~^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/registry.py", line 76, in __new__
+    return cls.new(db_name)
+           ~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/decorator.py", line 235, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/func.py", line 87, in locked
+    return func(inst, *args, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/registry.py", line 99, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 481, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+                         ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+        ['installed', 'to upgrade', 'to remove'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        force, status, report, loaded_modules, update_module, models_to_check)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 366, in load_marked_modules
+    loaded, processed = load_module_graph(
+                        ~~~~~~~~~~~~~~~~~^
+        env, graph, progressdict, report=report, skip_modules=loaded_modules,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        perform_checks=perform_checks, models_to_check=models_to_check
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 187, in load_module_graph
+    load_openerp_module(package.name)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/module.py", line 424, in load_openerp_module
+    __import__(qualname)
+    ~~~~~~~~~~^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/__init__.py", line 5, in <module>
+    from . import models
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/models/__init__.py", line 9, in <module>
+    from . import models
+  File "/usr/lib/python3/dist-packages/odoo/addons/web/models/models.py", line 15, in <module>
+    from odoo.tools.translate import LazyTranslate
+ImportError: cannot import name 'LazyTranslate' from 'odoo.tools.translate' (/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/translate.py)
+2026-11-05 11:52:04,411 379611 INFO ? werkzeug: 127.0.0.1 - - [05/Nov/2026 11:52:04] "GET /web/login HTTP/1.1" 500 - 12 0.020 0.089
+2026-11-05 11:52:36,813 379611 INFO etat_civil_final_review_20261105_1304 odoo.service.server: Initiating shutdown 
+2026-11-05 11:52:36,813 379611 INFO etat_civil_final_review_20261105_1304 odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-05 11:52:37,026 379611 INFO etat_civil_final_review_20261105_1304 odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 3 connections  

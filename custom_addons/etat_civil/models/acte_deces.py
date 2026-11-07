@@ -26,6 +26,33 @@ class EtatCivilActeDeces(models.Model):
         ('defunt_unique', 'unique(defunt_id)', "Un acte de décès existe déjà pour cet individu."),
     ]
 
+    def _build_texte_integral_acte(self):
+        self.ensure_one()
+        if not self.defunt_id:
+            return ""
+        date_deces = self.date_deces.strftime("%d/%m/%Y") if self.date_deces else "[date à compléter]"
+        hour = ""
+        if self.heure_deces is not False and self.heure_deces:
+            hours = int(self.heure_deces)
+            minutes = round((self.heure_deces - hours) * 60)
+            hour = f" à {hours:02d}h{minutes:02d}"
+        declarant = self.declarant_id.nom_complet if self.declarant_id else "[déclarant à compléter]"
+        return (
+            f"Acte de décès de {self.defunt_id.nom_complet}.\n"
+            f"Décès survenu le {date_deces}{hour} à {self.lieu_deces or '[lieu à compléter]'}.\n"
+            f"Cause du décès : {self.cause_deces or 'Non renseignée'}.\n"
+            f"Déclarant : {declarant}."
+        )
+
+    @api.onchange("defunt_id", "declarant_id", "date_deces", "heure_deces", "lieu_deces", "cause_deces")
+    def _onchange_deces_text(self):
+        if not self.texte_integral_acte_auto and self.texte_integral_acte:
+            return
+        generated = self._build_texte_integral_acte()
+        if generated:
+            self.texte_integral_acte = generated
+            self.texte_integral_acte_auto = True
+
     def _required_piece_codes(self):
         return {'cin_declarant_deces', 'residence_declarant_deces'}
 
@@ -67,8 +94,9 @@ class EtatCivilActeDeces(models.Model):
 
     def action_valider_acte(self):
         """Mise à jour automatique du statut vital du défunt après validation"""
-        res = super().action_valider_acte()
-        for record in self:
-            if record.defunt_id:
-                record.defunt_id.statut_vital = 'decede'
+        with self.env.cr.savepoint():
+            res = super().action_valider_acte()
+            for record in self:
+                if record.defunt_id:
+                    record.defunt_id._write_civil_status({'statut_vital': 'decede'})
         return res

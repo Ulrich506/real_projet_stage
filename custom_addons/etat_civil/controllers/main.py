@@ -2,20 +2,62 @@ import base64
 import binascii
 from datetime import date, datetime
 import hashlib
-import json
+import io
 import logging
 import re
+
+from PIL import Image
 
 from odoo import fields, http
 from odoo.exceptions import AccessDenied, AccessError, UserError, ValidationError
 from odoo.http import request
+from odoo.tools.image import IMAGE_MAX_RESOLUTION
+from werkzeug.exceptions import NotFound, UnsupportedMediaType
 
 
 _logger = logging.getLogger(__name__)
 
 
 class EtatCivilApiController(http.Controller):
-    """HTTP JSON API for the civil-status application."""
+    """HTTP JSON API and document routes for civil-status records."""
+
+    @http.route('/etat_civil/download/<string:report_name>/<int:record_id>', type='http', auth='user', methods=['GET'])
+    def download_act_document(self, report_name, record_id, **kwargs):
+        report = request.env['ir.actions.report'].sudo().search([
+            ('report_name', '=', report_name),
+            ('report_type', '=', 'qweb-pdf'),
+        ], limit=1)
+        if not report:
+            raise NotFound()
+        record = request.env[report.model].browse(record_id).exists()
+        if not record:
+            raise NotFound()
+        record.check_access_rights('read')
+        record.check_access_rule('read')
+        pdf, _content_type = report._render_qweb_pdf(report_name, [record.id])
+        filename = "%s.pdf" % (record.numero_acte or record.display_name).replace('/', '-')
+        return request.make_response(pdf, headers=[
+            ('Content-Type', 'application/pdf'),
+            ('Content-Length', len(pdf)),
+            ('Content-Disposition', 'attachment; filename="%s"' % filename),
+        ])
+
+    @http.route('/etat_civil/imprimer/<string:report_name>/<int:record_id>', type='http', auth='user', methods=['GET'])
+    def print_act_document(self, report_name, record_id, **kwargs):
+        report = request.env['ir.actions.report'].sudo().search([
+            ('report_name', '=', report_name),
+            ('report_type', '=', 'qweb-pdf'),
+        ], limit=1)
+        if not report:
+            raise NotFound()
+        record = request.env[report.model].browse(record_id).exists()
+        if not record:
+            raise NotFound()
+        record.check_access_rights('read')
+        record.check_access_rule('read')
+        html = report._render_qweb_html(report_name, [record.id])[0]
+        html = html.replace(b'</body>', b'<script>window.addEventListener("load",()=>window.print());</script></body>', 1)
+        return request.make_response(html, headers=[('Content-Type', 'text/html; charset=utf-8')])
 
     @http.route(
         '/api/v1/health',
@@ -28,7 +70,6 @@ class EtatCivilApiController(http.Controller):
         return self._response({
             'status': 'ok',
             'service': 'etat_civil_api',
-            'database': request.db or 'gestion_detat_civil',
         })
 
     @staticmethod
@@ -36,14 +77,16 @@ class EtatCivilApiController(http.Controller):
         return request.make_json_response(payload, status=status)
 
     @staticmethod
+    def _require_json_content_type():
+        if request.httprequest.mimetype != 'application/json':
+            raise UnsupportedMediaType(
+                'Le type de contenu doit être application/json.'
+            )
+
+    @staticmethod
     def _json_body():
-        if request.httprequest.mimetype == 'application/json':
-            payload = request.httprequest.get_json(silent=True)
-        else:
-            try:
-                payload = json.loads(request.httprequest.get_data(as_text=True) or '{}')
-            except json.JSONDecodeError as error:
-                raise ValidationError('Le corps de la requête doit être un JSON valide.') from error
+        EtatCivilApiController._require_json_content_type()
+        payload = request.httprequest.get_json(silent=True)
         if not isinstance(payload, dict):
             raise ValidationError('Le corps de la requête doit être un objet JSON.')
         return payload
@@ -102,9 +145,18 @@ class EtatCivilApiController(http.Controller):
             'registre_id': acte.registre_id.id,
             'registre': acte.registre_id.display_name,
             'statut': acte.statut,
+            'motif_decision': acte.motif_annulation,
             'officier_responsable': (
                 {'id': acte.officier_validateur_id.id, 'nom': acte.officier_validateur_id.name}
                 if acte.officier_validateur_id
+                else None
+            ),
+            'utilisateur_validation': (
+                {
+                    'id': acte.utilisateur_validation_id.id,
+                    'nom': acte.utilisateur_validation_id.name,
+                }
+                if acte.utilisateur_validation_id
                 else None
             ),
             'date_transmission': cls._serialize_value(acte.date_transmission),
@@ -139,9 +191,18 @@ class EtatCivilApiController(http.Controller):
             'registre_id': acte.registre_id.id,
             'registre': acte.registre_id.display_name,
             'statut': acte.statut,
+            'motif_decision': acte.motif_annulation,
             'officier_responsable': (
                 {'id': acte.officier_validateur_id.id, 'nom': acte.officier_validateur_id.name}
                 if acte.officier_validateur_id
+                else None
+            ),
+            'utilisateur_validation': (
+                {
+                    'id': acte.utilisateur_validation_id.id,
+                    'nom': acte.utilisateur_validation_id.name,
+                }
+                if acte.utilisateur_validation_id
                 else None
             ),
             'date_transmission': cls._serialize_value(acte.date_transmission),
@@ -178,9 +239,18 @@ class EtatCivilApiController(http.Controller):
             'registre_id': acte.registre_id.id,
             'registre': acte.registre_id.display_name,
             'statut': acte.statut,
+            'motif_decision': acte.motif_annulation,
             'officier_responsable': (
                 {'id': acte.officier_validateur_id.id, 'nom': acte.officier_validateur_id.name}
                 if acte.officier_validateur_id
+                else None
+            ),
+            'utilisateur_validation': (
+                {
+                    'id': acte.utilisateur_validation_id.id,
+                    'nom': acte.utilisateur_validation_id.name,
+                }
+                if acte.utilisateur_validation_id
                 else None
             ),
             'date_transmission': cls._serialize_value(acte.date_transmission),
@@ -249,6 +319,37 @@ class EtatCivilApiController(http.Controller):
         }
 
     @staticmethod
+    def _validate_piece_image(image_data, declared_mimetype):
+        if not isinstance(image_data, str) or len(image_data) > 7_000_000:
+            raise ValidationError('La photo doit faire moins de 5 Mo.')
+        try:
+            decoded = base64.b64decode(image_data, validate=True)
+        except (binascii.Error, ValueError) as error:
+            raise ValidationError('Le contenu de la photo est invalide.') from error
+        if len(decoded) > 5 * 1024 * 1024:
+            raise ValidationError('La photo doit faire moins de 5 Mo.')
+
+        supported_formats = {
+            'JPEG': 'image/jpeg',
+            'PNG': 'image/png',
+            'WEBP': 'image/webp',
+        }
+        try:
+            with Image.open(io.BytesIO(decoded)) as image:
+                actual_mimetype = supported_formats.get(image.format)
+                if not actual_mimetype:
+                    raise ValidationError('Format photo non pris en charge.')
+                if image.width * image.height > IMAGE_MAX_RESOLUTION:
+                    raise ValidationError('La résolution de la photo est trop élevée.')
+                image.verify()
+        except (OSError, EOFError, SyntaxError, ValueError, Image.DecompressionBombError) as error:
+            raise ValidationError('Le contenu de la photo ne correspond pas à une image valide.') from error
+
+        if declared_mimetype and declared_mimetype != actual_mimetype:
+            raise ValidationError('Le type MIME déclaré ne correspond pas au contenu de la photo.')
+        return actual_mimetype
+
+    @staticmethod
     def _apply_piece_updates(acte, pieces):
         if pieces is None:
             return
@@ -257,6 +358,7 @@ class EtatCivilApiController(http.Controller):
         owner_field = acte._pieces_owner_field()
         required = acte._required_piece_codes()
         updated_codes = set()
+        updates = []
         for item in pieces:
             if not isinstance(item, dict):
                 raise ValidationError('Chaque pièce doit être un objet JSON.')
@@ -275,27 +377,31 @@ class EtatCivilApiController(http.Controller):
             )
             if not piece:
                 raise ValidationError('La pièce justificative demandée est introuvable.')
-            piece.write({'etat': state})
             image_data = item.get('image_base64')
+            attachment_values = None
             if image_data:
-                if not isinstance(image_data, str) or len(image_data) > 7_000_000:
-                    raise ValidationError('La photo doit faire moins de 5 Mo.')
-                try:
-                    decoded = base64.b64decode(image_data, validate=True)
-                except (binascii.Error, ValueError) as error:
-                    raise ValidationError('Le contenu de la photo est invalide.') from error
-                if len(decoded) > 5 * 1024 * 1024:
-                    raise ValidationError('La photo doit faire moins de 5 Mo.')
-                mime_type = item.get('image_mimetype') or 'image/jpeg'
-                if mime_type not in ('image/jpeg', 'image/png', 'image/webp'):
-                    raise ValidationError('Format photo non pris en charge.')
-                attachment = request.env['ir.attachment'].create({
-                    'name': item.get('image_name') or f'{code}.jpg',
+                mime_type = EtatCivilApiController._validate_piece_image(
+                    image_data,
+                    item.get('image_mimetype'),
+                )
+                extension = {
+                    'image/jpeg': 'jpg',
+                    'image/png': 'png',
+                    'image/webp': 'webp',
+                }[mime_type]
+                attachment_values = {
+                    'name': item.get('image_name') or f'{code}.{extension}',
                     'datas': image_data,
                     'mimetype': mime_type,
                     'res_model': 'etat.civil.piece.justificative',
                     'res_id': piece.id,
-                })
+                }
+            updates.append((piece, state, attachment_values))
+
+        for piece, state, attachment_values in updates:
+            piece.write({'etat': state})
+            if attachment_values:
+                attachment = request.env['ir.attachment'].create(attachment_values)
                 piece.write({'attachment_ids': [(4, attachment.id)]})
 
     @staticmethod
@@ -339,8 +445,12 @@ class EtatCivilApiController(http.Controller):
         }
         if target_field and target_id:
             values[target_field] = target_id
-        mention = request.env['etat.civil.mention.marginale'].create(values)
-        EtatCivilApiController._apply_piece_updates(mention, payload.get('pieces'))
+        with request.env.cr.savepoint():
+            mention = request.env['etat.civil.mention.marginale'].create(values)
+            EtatCivilApiController._apply_piece_updates(
+                mention,
+                payload.get('pieces'),
+            )
         return mention
 
     @classmethod
@@ -377,6 +487,11 @@ class EtatCivilApiController(http.Controller):
 
     @staticmethod
     def _handle_error(error):
+        if isinstance(error, UnsupportedMediaType):
+            return EtatCivilApiController._response(
+                {'error': str(error.description)},
+                status=415,
+            )
         if isinstance(error, ValidationError):
             return EtatCivilApiController._response({'error': str(error)}, status=400)
         if isinstance(error, AccessError):
@@ -451,7 +566,12 @@ class EtatCivilApiController(http.Controller):
                     {'error': 'Les champs login et password sont obligatoires.'},
                     status=400,
                 )
-            target_db = payload.get('db') or request.db or 'gestion_detat_civil'
+            # Never authenticate against a database selected only by the caller.
+            # The request's dbfilter-bound database is the sole target.
+            target_db = request.db
+            requested_db = payload.get('db')
+            if not target_db or (requested_db and requested_db != target_db):
+                raise AccessDenied()
             try:
                 # Odoo 17: authenticate(dbname, login, password) -> int uid
                 res_auth = request.session.authenticate(target_db, login, password)
@@ -464,7 +584,6 @@ class EtatCivilApiController(http.Controller):
             uid = res_auth['uid'] if isinstance(res_auth, dict) else res_auth
             return self._response({
                 'uid': uid,
-                'session_id': request.session.sid,
                 'message': 'Authentification réussie.',
             })
         except AccessDenied:
@@ -479,11 +598,16 @@ class EtatCivilApiController(http.Controller):
         '/api/v1/auth/logout',
         type='http',
         auth='none',
-        methods=['POST', 'GET'],
+        methods=['POST'],
         csrf=False,
     )
     def logout(self, **kwargs):
         """Log out current user and invalidate session."""
+        if request.httprequest.mimetype != 'application/json':
+            return self._response(
+                {'error': 'La déconnexion API doit être envoyée en JSON.'},
+                status=415,
+            )
         request.session.logout(keep_db=True)
         return self._response({'message': 'Déconnexion réussie.'})
 
@@ -504,7 +628,7 @@ class EtatCivilApiController(http.Controller):
             'is_agent': user.has_group('etat_civil.group_etat_civil_agent'),
             'is_officier': user.has_group('etat_civil.group_etat_civil_officier'),
             'is_admin': (
-                user.has_group('etat_civil.group_etat_civil_admin')
+                user._is_etat_civil_admin()
                 or user.has_group('base.group_system')
             ),
         })
@@ -591,12 +715,15 @@ class EtatCivilApiController(http.Controller):
         """Create a citizen / individu via API."""
         try:
             payload = self._json_body()
+            if {'statut_vital', 'situation_matrimoniale'}.intersection(payload):
+                raise ValidationError(
+                    "Les statuts vitaux et matrimoniaux sont gérés par les actes d'état civil."
+                )
             allowed = {
                 'cin', 'nin', 'nom', 'prenoms', 'sexe', 'date_naissance',
                 'date_naissance_estimee', 'lieu_naissance_commune',
                 'lieu_naissance_pays', 'profession_actuelle',
                 'domicile_actuel', 'nationalite_actuelle',
-                'statut_vital', 'situation_matrimoniale',
             }
             vals = {k: payload[k] for k in allowed if k in payload}
             legacy_cin = vals.pop('nin', None)
@@ -623,12 +750,15 @@ class EtatCivilApiController(http.Controller):
             if not individu:
                 return self._response({'error': 'Citoyen introuvable.'}, status=404)
             payload = self._json_body()
+            if {'statut_vital', 'situation_matrimoniale'}.intersection(payload):
+                raise ValidationError(
+                    "Les statuts vitaux et matrimoniaux sont gérés par les actes d'état civil."
+                )
             allowed = {
                 'cin', 'nin', 'nom', 'prenoms', 'sexe', 'date_naissance',
                 'date_naissance_estimee', 'lieu_naissance_commune',
                 'lieu_naissance_pays', 'profession_actuelle',
                 'domicile_actuel', 'nationalite_actuelle',
-                'statut_vital', 'situation_matrimoniale',
             }
             vals = {k: payload[k] for k in allowed if k in payload}
             legacy_cin = vals.pop('nin', None)
@@ -798,29 +928,32 @@ class EtatCivilApiController(http.Controller):
             if not values.get('registre_id'):
                 values['registre_id'] = self._get_default_registre('naissance')
 
-            if not values.get('enfant_id') and payload.get('enfant_nom'):
-                values['enfant_id'] = self._resolve_or_create_individu(
-                    payload['enfant_nom'],
-                    cin=payload.get('enfant_cin', payload.get('enfant_nin')),
-                    sexe='M',
-                    date_naissance=payload.get('date_naissance'),
-                )
-            if not values.get('mere_id') and payload.get('mere_nom'):
-                values['mere_id'] = self._resolve_or_create_individu(payload['mere_nom'], sexe='F')
-            if not values.get('pere_id') and payload.get('pere_nom'):
-                values['pere_id'] = self._resolve_or_create_individu(payload['pere_nom'], sexe='M')
-            if not values.get('declarant_id') and payload.get('declarant_nom'):
-                values['declarant_id'] = self._resolve_or_create_individu(payload['declarant_nom'])
+            with request.env.cr.savepoint():
+                if not values.get('enfant_id') and payload.get('enfant_nom'):
+                    values['enfant_id'] = self._resolve_or_create_individu(
+                        payload['enfant_nom'],
+                        cin=payload.get('enfant_cin', payload.get('enfant_nin')),
+                        sexe='M',
+                        date_naissance=payload.get('date_naissance'),
+                    )
+                if not values.get('mere_id') and payload.get('mere_nom'):
+                    values['mere_id'] = self._resolve_or_create_individu(payload['mere_nom'], sexe='F')
+                if not values.get('pere_id') and payload.get('pere_nom'):
+                    values['pere_id'] = self._resolve_or_create_individu(payload['pere_nom'], sexe='M')
+                if not values.get('declarant_id') and payload.get('declarant_nom'):
+                    values['declarant_id'] = self._resolve_or_create_individu(payload['declarant_nom'])
 
-            acte = request.env['etat.civil.acte.naissance'].create(values)
-            self._apply_piece_updates(acte, payload.get('pieces'))
-            return self._response(self._serialize_acte_naissance(acte), status=201)
+                acte = request.env['etat.civil.acte.naissance'].create(values)
+                self._apply_piece_updates(acte, payload.get('pieces'))
+                response = self._response(self._serialize_acte_naissance(acte), status=201)
+            return response
         except Exception as error:
             return self._handle_error(error)
 
     @http.route('/api/v1/actes/naissance/<int:acte_id>/valider', type='http', auth='user', methods=['POST'], csrf=False)
     def validate_acte_naissance(self, acte_id, **kwargs):
         try:
+            self._require_json_content_type()
             acte = request.env['etat.civil.acte.naissance'].browse(acte_id).exists()
             if not acte:
                 return self._response({'error': 'Acte de naissance introuvable.'}, status=404)
@@ -883,32 +1016,35 @@ class EtatCivilApiController(http.Controller):
             if not values.get('registre_id'):
                 values['registre_id'] = self._get_default_registre('mariage')
 
-            if not values.get('conjoint_1_id') and payload.get('conjoint_1_nom'):
-                values['conjoint_1_id'] = self._resolve_or_create_individu(payload['conjoint_1_nom'], sexe='M')
-            if not values.get('conjoint_2_id') and payload.get('conjoint_2_nom'):
-                values['conjoint_2_id'] = self._resolve_or_create_individu(payload['conjoint_2_nom'], sexe='F')
-            for number in (1, 2):
-                field_name = f'temoin_{number}_id'
-                name = payload.get(f'temoin_{number}_nom')
-                if not values.get(field_name) and name:
-                    values[field_name] = self._resolve_or_create_individu(name)
+            with request.env.cr.savepoint():
+                if not values.get('conjoint_1_id') and payload.get('conjoint_1_nom'):
+                    values['conjoint_1_id'] = self._resolve_or_create_individu(payload['conjoint_1_nom'], sexe='M')
+                if not values.get('conjoint_2_id') and payload.get('conjoint_2_nom'):
+                    values['conjoint_2_id'] = self._resolve_or_create_individu(payload['conjoint_2_nom'], sexe='F')
+                for number in (1, 2):
+                    field_name = f'temoin_{number}_id'
+                    name = payload.get(f'temoin_{number}_nom')
+                    if not values.get(field_name) and name:
+                        values[field_name] = self._resolve_or_create_individu(name)
 
-            if not values.get('date_mariage'):
-                values['date_mariage'] = payload.get('date_mariage') or fields.Date.today()
-            if not values.get('lieu_mariage'):
-                values['lieu_mariage'] = payload.get('lieu') or 'Commune urbaine'
-            if not values.get('regime_matrimonial'):
-                values['regime_matrimonial'] = 'communaute_biens'
+                if not values.get('date_mariage'):
+                    values['date_mariage'] = payload.get('date_mariage') or fields.Date.today()
+                if not values.get('lieu_mariage'):
+                    values['lieu_mariage'] = payload.get('lieu') or 'Commune urbaine'
+                if not values.get('regime_matrimonial'):
+                    values['regime_matrimonial'] = 'communaute_biens'
 
-            acte = request.env['etat.civil.acte.mariage'].create(values)
-            self._apply_piece_updates(acte, payload.get('pieces'))
-            return self._response(self._serialize_acte_mariage(acte), status=201)
+                acte = request.env['etat.civil.acte.mariage'].create(values)
+                self._apply_piece_updates(acte, payload.get('pieces'))
+                response = self._response(self._serialize_acte_mariage(acte), status=201)
+            return response
         except Exception as error:
             return self._handle_error(error)
 
     @http.route('/api/v1/actes/mariage/<int:acte_id>/valider', type='http', auth='user', methods=['POST'], csrf=False)
     def validate_acte_mariage(self, acte_id, **kwargs):
         try:
+            self._require_json_content_type()
             acte = request.env['etat.civil.acte.mariage'].browse(acte_id).exists()
             if not acte:
                 return self._response({'error': 'Acte de mariage introuvable.'}, status=404)
@@ -970,29 +1106,32 @@ class EtatCivilApiController(http.Controller):
             if not values.get('registre_id'):
                 values['registre_id'] = self._get_default_registre('deces')
 
-            if not values.get('defunt_id') and payload.get('defunt_nom'):
-                values['defunt_id'] = self._resolve_or_create_individu(
-                    payload['defunt_nom'],
-                    cin=payload.get('defunt_cin', payload.get('defunt_nin')),
-                    date_naissance='1970-01-01',
-                )
-            if not values.get('declarant_id') and payload.get('declarant_nom'):
-                values['declarant_id'] = self._resolve_or_create_individu(payload['declarant_nom'])
+            with request.env.cr.savepoint():
+                if not values.get('defunt_id') and payload.get('defunt_nom'):
+                    values['defunt_id'] = self._resolve_or_create_individu(
+                        payload['defunt_nom'],
+                        cin=payload.get('defunt_cin', payload.get('defunt_nin')),
+                        date_naissance='1970-01-01',
+                    )
+                if not values.get('declarant_id') and payload.get('declarant_nom'):
+                    values['declarant_id'] = self._resolve_or_create_individu(payload['declarant_nom'])
 
-            if not values.get('date_deces'):
-                values['date_deces'] = payload.get('date_deces') or fields.Date.today()
-            if not values.get('lieu_deces'):
-                values['lieu_deces'] = payload.get('lieu') or 'Commune urbaine'
+                if not values.get('date_deces'):
+                    values['date_deces'] = payload.get('date_deces') or fields.Date.today()
+                if not values.get('lieu_deces'):
+                    values['lieu_deces'] = payload.get('lieu') or 'Commune urbaine'
 
-            acte = request.env['etat.civil.acte.deces'].create(values)
-            self._apply_piece_updates(acte, payload.get('pieces'))
-            return self._response(self._serialize_acte_deces(acte), status=201)
+                acte = request.env['etat.civil.acte.deces'].create(values)
+                self._apply_piece_updates(acte, payload.get('pieces'))
+                response = self._response(self._serialize_acte_deces(acte), status=201)
+            return response
         except Exception as error:
             return self._handle_error(error)
 
     @http.route('/api/v1/actes/deces/<int:acte_id>/valider', type='http', auth='user', methods=['POST'], csrf=False)
     def validate_acte_deces(self, acte_id, **kwargs):
         try:
+            self._require_json_content_type()
             acte = request.env['etat.civil.acte.deces'].browse(acte_id).exists()
             if not acte:
                 return self._response({'error': 'Acte de décès introuvable.'}, status=404)
@@ -1025,8 +1164,11 @@ class EtatCivilApiController(http.Controller):
             acte = request.env[model_name].browse(acte_id).exists()
             if not acte:
                 return self._response({'error': 'Acte introuvable.'}, status=404)
-            if acte.statut != 'brouillon':
-                raise UserError(f"Seuls les actes au statut 'brouillon' peuvent être modifiés. Statut actuel: {acte.statut}")
+            if acte.statut not in ('brouillon', 'a_corriger'):
+                raise UserError(
+                    "Seuls les brouillons et les actes retournés pour correction peuvent être modifiés. "
+                    f"Statut actuel: {acte.statut}"
+                )
 
             payload = self._json_body()
             allowed_by_type = {
@@ -1054,9 +1196,10 @@ class EtatCivilApiController(http.Controller):
             }
             allowed = allowed_by_type[acte_type]
             vals = {k: payload[k] for k in allowed if k in payload and payload[k] is not None}
-            if vals:
-                acte.write(vals)
-            self._apply_piece_updates(acte, payload.get('pieces'))
+            with request.env.cr.savepoint():
+                if vals:
+                    acte.write(vals)
+                self._apply_piece_updates(acte, payload.get('pieces'))
 
             serializer = {
                 'naissance': self._serialize_acte_naissance,
@@ -1077,6 +1220,7 @@ class EtatCivilApiController(http.Controller):
     def validate_acte_unified(self, acte_type, acte_id, **kwargs):
         """Unified validation route for any act type."""
         try:
+            self._require_json_content_type()
             model_name = {
                 'naissance': 'etat.civil.acte.naissance',
                 'mariage': 'etat.civil.acte.mariage',
@@ -1227,6 +1371,7 @@ class EtatCivilApiController(http.Controller):
     )
     def validate_marginal_mention(self, mention_id, **kwargs):
         try:
+            self._require_json_content_type()
             mention = request.env['etat.civil.mention.marginale'].browse(
                 mention_id
             ).exists()

@@ -4,6 +4,9 @@ from odoo import api, fields, models
 from odoo.exceptions import AccessError, ValidationError
 
 
+_MENTION_TRANSITION_TOKEN = object()
+
+
 class EtatCivilMentionMarginale(models.Model):
     _name = 'etat.civil.mention.marginale'
     _description = 'Mention marginale d’état civil'
@@ -82,6 +85,10 @@ class EtatCivilMentionMarginale(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         self._ensure_officier()
+        internal_transition = (
+            self.env.context.get("etat_civil_mention_transition_token")
+            is _MENTION_TRANSITION_TOKEN
+        )
         sequence_by_type = {
             'mariage': 'etat.civil.mention.mariage',
             'divorce': 'etat.civil.mention.divorce',
@@ -94,6 +101,8 @@ class EtatCivilMentionMarginale(models.Model):
             'autre': 'etat.civil.mention.autre',
         }
         for vals in vals_list:
+            if not internal_transition:
+                vals["statut"] = "brouillon"
             if not (vals.get('name') or '').strip():
                 sequence_code = sequence_by_type.get(
                     vals.get('type_mention'),
@@ -132,13 +141,71 @@ class EtatCivilMentionMarginale(models.Model):
                     vals['personne_concernee_id']
                 )
                 vals['commune_naissance'] = person.lieu_naissance_commune
+        self._ensure_competence_territoriale(vals_list=vals_list)
         records = super().create(vals_list)
         records._sync_pieces_justificatives()
         return records
 
+    @api.model_create_multi
+    def _create_from_acte_validation(self, vals_list):
+        return self.with_context(
+            etat_civil_mention_transition_token=_MENTION_TRANSITION_TOKEN
+        ).create(vals_list)
+
     def _ensure_officier(self):
-        if not self.env.user.has_group('etat_civil.group_etat_civil_officier'):
-            raise AccessError("Seul un officier d'état civil peut gérer les mentions marginales.")
+        if not (
+            self.env.user.has_group('etat_civil.group_etat_civil_officier')
+            or self.env.user._is_etat_civil_admin()
+        ):
+            raise AccessError(
+                "Seul un officier ou un administrateur d'état civil peut gérer les mentions marginales."
+            )
+
+    def _ensure_competence_territoriale(self, vals_list=None):
+        if self.env.su or self.env.user._is_etat_civil_admin():
+            return
+        user = self.env.user
+        allowed_centres = user.etat_civil_centre_ids
+        link_fields = (
+            'acte_naissance_id',
+            'acte_mariage_id',
+            'acte_deces_id',
+            'source_acte_mariage_id',
+            'source_acte_deces_id',
+        )
+        if vals_list is not None:
+            for vals in vals_list:
+                linked_act = False
+                for field_name in link_fields:
+                    act_id = vals.get(field_name)
+                    if act_id:
+                        model_name = self._fields[field_name].comodel_name
+                        act = self.env[model_name].sudo().browse(act_id).exists()
+                        if not act or act.registre_id.centre_id not in allowed_centres:
+                            raise AccessError(
+                                "Vous n'êtes pas affecté au centre de l'acte lié à cette mention."
+                            )
+                        linked_act = True
+                if not linked_act and not allowed_centres:
+                    raise AccessError(
+                        "Affectez l'officier à un centre avant de créer une mention."
+                    )
+            return
+
+        for record in self:
+            linked_act = False
+            for field_name in link_fields:
+                act = record[field_name]
+                if act:
+                    if act.registre_id.centre_id not in allowed_centres:
+                        raise AccessError(
+                            "Vous n'êtes pas affecté au centre de l'acte lié à cette mention."
+                        )
+                    linked_act = True
+            if not linked_act and record.create_uid != user:
+                raise AccessError(
+                    "Seul l'officier ayant créé cette mention non rattachée à un acte peut la gérer."
+                )
 
     def _pieces_owner_field(self):
         return 'mention_id'
@@ -148,12 +215,10 @@ class EtatCivilMentionMarginale(models.Model):
             required = record._required_piece_codes()
             existing = {piece.name: piece for piece in record.piece_ids}
             for code, piece in existing.items():
-                piece.with_context(etat_civil_sync_required=True).write({
-                    'obligatoire': code in required,
-                })
+                piece._set_required_from_procedure(code in required)
             missing = required - existing.keys()
             if missing:
-                self.env['etat.civil.piece.justificative'].create([
+                self.env['etat.civil.piece.justificative']._create_required([
                     {'name': code, 'obligatoire': True, 'mention_id': record.id}
                     for code in sorted(missing)
                 ])
@@ -172,39 +237,59 @@ class EtatCivilMentionMarginale(models.Model):
 
     def action_valider_mention(self):
         self._ensure_officier()
-        for record in self:
-            if record.statut != 'brouillon':
-                raise ValidationError("Seule une mention à compléter peut être validée.")
-            record._sync_pieces_justificatives()
-            record._check_pieces_justificatives()
-            if record.type_mention == 'reconnaissance' and not record.pere_reconnaissant_id:
-                raise ValidationError("Sélectionnez le père qui reconnaît l’enfant.")
-            if record.type_mention in ('reconnaissance', 'adoption') and not record.personne_concernee_id:
-                raise ValidationError("Sélectionnez l’enfant concerné par cette mention.")
-            if record.type_mention == 'adoption':
-                if not record.adoptant_id:
-                    raise ValidationError("Sélectionnez le parent adoptant.")
-                if not record.source_approbation_adoption:
-                    raise ValidationError(
-                        "Indiquez si la lettre d’accord vient de la famille ou du fokontany."
-                    )
-            record.statut = 'valide'
-            if record.personne_concernee_id:
-                if record.type_mention == 'mariage':
-                    record.personne_concernee_id.situation_matrimoniale = 'marie'
-                elif record.type_mention == 'divorce':
-                    record.personne_concernee_id.situation_matrimoniale = 'divorce'
-                elif record.type_mention == 'veuvage':
-                    record.personne_concernee_id.situation_matrimoniale = 'veuf'
+        self._ensure_competence_territoriale()
+        with self.env.cr.savepoint():
+            for record in self:
+                if record.statut != 'brouillon':
+                    raise ValidationError("Seule une mention à compléter peut être validée.")
+                record._sync_pieces_justificatives()
+                record._check_pieces_justificatives()
+                if record.type_mention == 'reconnaissance' and not record.pere_reconnaissant_id:
+                    raise ValidationError("Sélectionnez le père qui reconnaît l’enfant.")
+                if record.type_mention in ('reconnaissance', 'adoption') and not record.personne_concernee_id:
+                    raise ValidationError("Sélectionnez l’enfant concerné par cette mention.")
+                if record.type_mention == 'adoption':
+                    if not record.adoptant_id:
+                        raise ValidationError("Sélectionnez le parent adoptant.")
+                    if not record.source_approbation_adoption:
+                        raise ValidationError(
+                            "Indiquez si la lettre d’accord vient de la famille ou du fokontany."
+                        )
+                record.with_context(
+                    etat_civil_mention_transition_token=_MENTION_TRANSITION_TOKEN
+                ).write({'statut': 'valide'})
+                if record.personne_concernee_id:
+                    if record.type_mention == 'mariage':
+                        record.personne_concernee_id._write_civil_status(
+                            {'situation_matrimoniale': 'marie'}
+                        )
+                    elif record.type_mention == 'divorce':
+                        record.personne_concernee_id._write_civil_status(
+                            {'situation_matrimoniale': 'divorce'}
+                        )
+                    elif record.type_mention == 'veuvage':
+                        record.personne_concernee_id._write_civil_status(
+                            {'situation_matrimoniale': 'veuf'}
+                        )
         return True
 
     def write(self, vals):
         self._ensure_officier()
+        self._ensure_competence_territoriale()
+        internal_transition = (
+            self.env.context.get("etat_civil_mention_transition_token")
+            is _MENTION_TRANSITION_TOKEN
+        )
+        if "statut" in vals and not internal_transition:
+            raise ValidationError(
+                "L'état d'une mention doit être modifié par l'action de validation."
+            )
         protected = {
+            'name',
             'type_mention',
             'date_mention',
             'contenu',
-            'personne_concernee_id',
+            'autorite',
             'personne_concernee_id',
             'pere_reconnaissant_id',
             'adoptant_id',
@@ -212,7 +297,12 @@ class EtatCivilMentionMarginale(models.Model):
             'acte_naissance_id',
             'acte_mariage_id',
             'acte_deces_id',
+            'source_acte_mariage_id',
+            'source_acte_deces_id',
             'individu_id',
+            'commune_naissance',
+            'notification_commune_naissance',
+            'reference_notification',
         }
         if protected.intersection(vals) and any(record.statut == 'valide' for record in self):
             raise ValidationError("Une mention validée ne peut plus être modifiée.")
@@ -223,6 +313,7 @@ class EtatCivilMentionMarginale(models.Model):
 
     def unlink(self):
         self._ensure_officier()
+        self._ensure_competence_territoriale()
         return super().unlink()
 
     @api.constrains(

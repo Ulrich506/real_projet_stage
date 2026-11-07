@@ -1,0 +1,536 @@
+
+/* /web/static/tests/mobile/core/action_swiper_tests.js */
+odoo.define('@web/../tests/mobile/core/action_swiper_tests',['@web/core/action_swiper/action_swiper','@web/core/registry','@web/../tests/helpers/mock_services','@web/../tests/helpers/mock_env','@web/../tests/helpers/utils','@web/../tests/mobile/helpers','@web/core/utils/concurrency','@odoo/owl'],function(require){'use strict';let __exports={};QUnit.module("web",function(){const{ActionSwiper}=require("@web/core/action_swiper/action_swiper");const{registry}=require("@web/core/registry");const{makeFakeLocalizationService}=require("@web/../tests/helpers/mock_services");const{makeTestEnv}=require("@web/../tests/helpers/mock_env");const{mount,nextTick,triggerEvent,getFixture,mockTimeout,patchWithCleanup,}=require("@web/../tests/helpers/utils");const{swipeRight}=require("@web/../tests/mobile/helpers");const{Deferred}=require("@web/core/utils/concurrency");const{Component,xml,onPatched}=require("@odoo/owl");const serviceRegistry=registry.category("services");let env;let target;QUnit.module("ActionSwiper",({beforeEach})=>{beforeEach(async()=>{env=await makeTestEnv();target=getFixture();});QUnit.test("render only its target if no props is given",async(assert)=>{class Parent extends Component{}
+Parent.components={ActionSwiper};Parent.template=xml`
+            <div class="d-flex">
+                <ActionSwiper>
+                    <div class="target-component"/>
+                </ActionSwiper>
+            </div>
+        `;await mount(Parent,target,{env});assert.containsNone(target,"div.o_actionswiper");assert.containsOnce(target,"div.target-component");});QUnit.test("only render the necessary divs",async(assert)=>{await mount(ActionSwiper,target,{env,props:{onRightSwipe:{action:()=>{},icon:"fa-circle",bgColor:"bg-warning",},slots:{},},});assert.containsOnce(target,"div.o_actionswiper_right_swipe_area");assert.containsNone(target,"div.o_actionswiper_left_swipe_area");await mount(ActionSwiper,target,{env,props:{onLeftSwipe:{action:()=>{},icon:"fa-circle",bgColor:"bg-warning",},slots:{},},});assert.containsOnce(target,"div.o_actionswiper_right_swipe_area");assert.containsOnce(target,"div.o_actionswiper_left_swipe_area");});QUnit.test("render with the height of its content",async(assert)=>{assert.expect(2);class Parent extends Component{onRightSwipe(){assert.step("onRightSwipe");}}
+Parent.components={ActionSwiper};Parent.template=xml`
+            <div class="o-container d-flex" style="width: 200px; height: 200px; overflow: auto">
+                <ActionSwiper onRightSwipe = "{
+                    action: onRightSwipe,
+                    icon: 'fa-circle',
+                    bgColor: 'bg-warning'
+                }">
+                    <div class="target-component" style="height: 800px">This element is very high and
+                    the o-container element must have a scrollbar</div>
+                </ActionSwiper>
+            </div>
+        `;await mount(Parent,target,{env});assert.ok(target.querySelector(".o_actionswiper").scrollHeight===target.querySelector(".target-component").scrollHeight,"the swiper has the height of its content");assert.ok(target.querySelector(".o_actionswiper").scrollHeight>target.querySelector(".o_actionswiper").clientHeight,"the height of the swiper must make the parent div scrollable");});QUnit.test("can perform actions by swiping to the right [REQUIRE TOUCHEVENT]",async(assert)=>{assert.expect(5);const{execRegisteredTimeouts}=mockTimeout();class Parent extends Component{onRightSwipe(){assert.step("onRightSwipe");}}
+Parent.components={ActionSwiper};Parent.template=xml`
+                <div class="d-flex">
+                    <ActionSwiper onRightSwipe = "{
+                        action: onRightSwipe,
+                        icon: 'fa-circle',
+                        bgColor: 'bg-warning'
+                    }">
+                        <div class="target-component" style="width: 200px; height: 80px">Test</div>
+                    </ActionSwiper>
+                </div>
+            `;await mount(Parent,target,{env});const swiper=target.querySelector(".o_actionswiper");const targetContainer=target.querySelector(".o_actionswiper_target_container");await triggerEvent(target,".o_actionswiper","touchstart",{touches:[{identifier:0,clientX:0,clientY:0,target:target,},],});await triggerEvent(target,".o_actionswiper","touchmove",{touches:[{identifier:0,clientX:(3*swiper.clientWidth)/4,clientY:0,target:target,},],});assert.ok(targetContainer.style.transform.includes("translateX"),"target has translateX");await triggerEvent(target,".o_actionswiper","touchmove",{touches:[{identifier:0,clientX:swiper.clientWidth/2-1,clientY:0,target:target,},],});await triggerEvent(target,".o_actionswiper","touchend",{});execRegisteredTimeouts();await nextTick();assert.ok(!targetContainer.style.transform.includes("translateX"),"target does not have a translate value");await triggerEvent(target,".o_actionswiper","touchstart",{touches:[{identifier:0,clientX:swiper.clientWidth/2,clientY:0,target:target,},],});await triggerEvent(target,".o_actionswiper","touchmove",{touches:[{identifier:0,clientX:swiper.clientWidth+1,clientY:0,target:target,},],});await triggerEvent(target,".o_actionswiper","touchend",{});execRegisteredTimeouts();await nextTick();assert.ok(!targetContainer.style.transform.includes("translateX"),"target doesn't have translateX after action is performed");assert.verifySteps(["onRightSwipe"]);});QUnit.test("can perform actions by swiping in both directions [REQUIRE TOUCHEVENT]",async(assert)=>{assert.expect(7);const{execRegisteredTimeouts}=mockTimeout();class Parent extends Component{onRightSwipe(){assert.step("onRightSwipe");}
+onLeftSwipe(){assert.step("onLeftSwipe");}}
+Parent.components={ActionSwiper};Parent.template=xml`
+                <div class="d-flex">
+                    <ActionSwiper 
+                        onRightSwipe = "{
+                            action: onRightSwipe,
+                            icon: 'fa-circle',
+                            bgColor: 'bg-warning'
+                        }"
+                        onLeftSwipe = "{
+                            action: onLeftSwipe,
+                            icon: 'fa-check',
+                            bgColor: 'bg-success'
+                        }">
+                            <div class="target-component" style="width: 250px; height: 80px">Swipe in both directions</div>
+                    </ActionSwiper>
+                </div>
+            `;await mount(Parent,target,{env});const swiper=target.querySelector(".o_actionswiper");const targetContainer=target.querySelector(".o_actionswiper_target_container");await triggerEvent(target,".o_actionswiper","touchstart",{touches:[{identifier:0,clientX:0,clientY:0,target:target,},],});await triggerEvent(target,".o_actionswiper","touchmove",{touches:[{identifier:0,clientX:(3*swiper.clientWidth)/4,clientY:0,target:target,},],});assert.ok(targetContainer.style.transform.includes("translateX"),"target has translateX");await triggerEvent(target,".o_actionswiper","touchmove",{touches:[{identifier:0,clientX:-swiper.clientWidth/2+1,clientY:0,target:target,},],});await triggerEvent(target,".o_actionswiper","touchend",{});execRegisteredTimeouts();await nextTick();assert.ok(!targetContainer.style.transform.includes("translateX"),"target does not have a translate value");await triggerEvent(target,".o_actionswiper","touchstart",{touches:[{identifier:0,clientX:swiper.clientWidth/2,clientY:0,target:target,},],});await triggerEvent(target,".o_actionswiper","touchmove",{touches:[{identifier:0,clientX:-swiper.clientWidth-1,clientY:0,target:target,},],});await triggerEvent(target,".o_actionswiper","touchend",{});execRegisteredTimeouts();await nextTick();assert.verifySteps(["onLeftSwipe"],"the onLeftSwipe props action has been performed");await triggerEvent(target,".o_actionswiper","touchstart",{touches:[{identifier:0,clientX:swiper.clientWidth/2,clientY:0,target:target,},],});await triggerEvent(target,".o_actionswiper","touchmove",{touches:[{identifier:0,clientX:swiper.clientWidth+1,clientY:0,target:target,},],});await triggerEvent(target,".o_actionswiper","touchend",{});execRegisteredTimeouts();await nextTick();assert.ok(!targetContainer.style.transform.includes("translateX"),"target doesn't have translateX after all actions are performed");assert.verifySteps(["onRightSwipe"],"the onRightSwipe props action has been performed");});QUnit.test("invert the direction of swipes when language is rtl [REQUIRE TOUCHEVENT]",async(assert)=>{assert.expect(7);const{execRegisteredTimeouts}=mockTimeout();class Parent extends Component{onRightSwipe(){assert.step("onRightSwipe");}
+onLeftSwipe(){assert.step("onLeftSwipe");}}
+Parent.components={ActionSwiper};Parent.template=xml`
+                <div class="d-flex">
+                    <ActionSwiper 
+                        onRightSwipe = "{
+                            action: onRightSwipe,
+                            icon: 'fa-circle',
+                            bgColor: 'bg-warning'
+                        }"
+                        onLeftSwipe = "{
+                            action: onLeftSwipe,
+                            icon: 'fa-check',
+                            bgColor: 'bg-success'
+                        }">
+                            <div class="target-component" style="width: 250px; height: 80px">Swipe in both directions</div>
+                    </ActionSwiper>
+                </div>
+            `;serviceRegistry.add("localization",makeFakeLocalizationService({direction:"rtl"}));await mount(Parent,target,{env});const swiper=target.querySelector(".o_actionswiper");const targetContainer=target.querySelector(".o_actionswiper_target_container");await triggerEvent(target,".o_actionswiper","touchstart",{touches:[{identifier:0,clientX:0,clientY:0,target:target,},],});await triggerEvent(target,".o_actionswiper","touchmove",{touches:[{identifier:0,clientX:(3*swiper.clientWidth)/4,clientY:0,target:target,},],});assert.ok(targetContainer.style.transform.includes("translateX"),"target has translateX");await triggerEvent(target,".o_actionswiper","touchmove",{touches:[{identifier:0,clientX:-swiper.clientWidth/2+1,clientY:0,target:target,},],});await triggerEvent(target,".o_actionswiper","touchend",{});execRegisteredTimeouts();await nextTick();assert.ok(!targetContainer.style.transform.includes("translateX"),"target does not have a translate value");await triggerEvent(target,".o_actionswiper","touchstart",{touches:[{identifier:0,clientX:swiper.clientWidth/2,clientY:0,target:target,},],});await triggerEvent(target,".o_actionswiper","touchmove",{touches:[{identifier:0,clientX:-swiper.clientWidth-1,clientY:0,target:target,},],});await triggerEvent(target,".o_actionswiper","touchend",{});execRegisteredTimeouts();await nextTick();assert.verifySteps(["onRightSwipe"],"the onRightSwipe props action has been performed");await triggerEvent(target,".o_actionswiper","touchstart",{touches:[{identifier:0,clientX:swiper.clientWidth/2,clientY:0,target:target,},],});await triggerEvent(target,".o_actionswiper","touchmove",{touches:[{identifier:0,clientX:swiper.clientWidth+1,clientY:0,target:target,},],});await triggerEvent(target,".o_actionswiper","touchend",{});execRegisteredTimeouts();await nextTick();assert.ok(!targetContainer.style.transform.includes("translateX"),"target doesn't have translateX after all actions are performed");assert.verifySteps(["onLeftSwipe"],"the onLeftSwipe props action has been performed");});QUnit.test("swiping when the swiper contains scrollable areas [REQUIRE TOUCHEVENT]",async(assert)=>{assert.expect(9);const{execRegisteredTimeouts}=mockTimeout();class Parent extends Component{onRightSwipe(){assert.step("onRightSwipe");}
+onLeftSwipe(){assert.step("onLeftSwipe");}}
+Parent.components={ActionSwiper};Parent.template=xml`
+                <div class="d-flex">
+                    <ActionSwiper 
+                        onRightSwipe = "{
+                            action: onRightSwipe,
+                            icon: 'fa-circle',
+                            bgColor: 'bg-warning'
+                        }"
+                        onLeftSwipe = "{
+                            action: onLeftSwipe,
+                            icon: 'fa-check',
+                            bgColor: 'bg-success'
+                        }">
+                            <div class="target-component" style="width: 200px; height: 300px">
+                            <h1>Test about swiping and scrolling</h1>
+                                <div class="large-content" style="overflow: auto">
+                                    <h2>This div contains a larger element that will make it scrollable</h2>
+                                    <p class="large-text" style="width: 400px">This element is so large it needs to be scrollable</p>
+                                </div>
+                            </div>
+                    </ActionSwiper>
+                </div>
+            `;await mount(Parent,target,{env});const swiper=target.querySelector(".o_actionswiper");const targetContainer=target.querySelector(".o_actionswiper_target_container");const scrollable=target.querySelector(".large-content");scrollable.scrollLeft=100;await triggerEvent(target,".o_actionswiper","touchstart",{touches:[{identifier:0,clientX:0,clientY:0,target:target,},],});await triggerEvent(target,".o_actionswiper","touchmove",{touches:[{identifier:0,clientX:(3*swiper.clientWidth)/4,clientY:0,target:target,},],});assert.ok(targetContainer.style.transform.includes("translateX"),"the swiper can swipe if the scrollable area is not under touch pressure");await triggerEvent(target,".o_actionswiper","touchmove",{touches:[{identifier:0,clientX:0,clientY:0,target:target,},],});await triggerEvent(target,".o_actionswiper","touchend",{});await triggerEvent(scrollable,".large-text","touchstart",{touches:[{identifier:0,clientX:scrollable.clientLeft,clientY:scrollable.getBoundingClientRect().top+
+scrollable.getBoundingClientRect().height/2,target:scrollable.querySelector(".large-text"),},],});await triggerEvent(scrollable,".large-text","touchmove",{touches:[{identifier:0,clientX:scrollable.clientWidth,clientY:scrollable.getBoundingClientRect().top+
+scrollable.getBoundingClientRect().height/2,target:scrollable.querySelector(".large-text"),},],});assert.ok(!targetContainer.style.transform.includes("translateX"),"the swiper has not swiped to the right because the scrollable element was scrollable to the left");scrollable.scrollLeft=0;await triggerEvent(scrollable,".large-text","touchstart",{touches:[{identifier:0,clientX:scrollable.clientLeft,clientY:scrollable.getBoundingClientRect().top+
+scrollable.getBoundingClientRect().height/2,target:scrollable.querySelector(".large-text"),},],});await triggerEvent(scrollable,".large-text","touchmove",{touches:[{identifier:0,clientX:scrollable.clientWidth,clientY:scrollable.getBoundingClientRect().top+
+scrollable.getBoundingClientRect().height/2,target:scrollable.querySelector(".large-text"),},],});assert.ok(targetContainer.style.transform.includes("translateX"),"the swiper has swiped to the right because the scrollable element couldn't scroll anymore to the left");await triggerEvent(target,".o_actionswiper","touchend",{});execRegisteredTimeouts();await nextTick();assert.verifySteps(["onRightSwipe"],"the onRightSwipe props action has been performed");await triggerEvent(scrollable,".large-text","touchstart",{touches:[{identifier:0,clientX:scrollable.clientWidth,clientY:scrollable.getBoundingClientRect().top+
+scrollable.getBoundingClientRect().height/2,target:scrollable.querySelector(".large-text"),},],});await triggerEvent(scrollable,".large-text","touchmove",{touches:[{identifier:0,clientX:scrollable.clientLeft,clientY:scrollable.getBoundingClientRect().top+
+scrollable.getBoundingClientRect().height/2,target:scrollable.querySelector(".large-text"),},],});assert.ok(!targetContainer.style.transform.includes("translateX"),"the swiper has not swiped to the left because the scrollable element was scrollable to the right");scrollable.scrollLeft=scrollable.scrollWidth-scrollable.getBoundingClientRect().right;await triggerEvent(scrollable,".large-text","touchstart",{touches:[{identifier:0,clientX:scrollable.clientWidth,clientY:scrollable.getBoundingClientRect().top+
+scrollable.getBoundingClientRect().height/2,target:scrollable.querySelector(".large-text"),},],});await triggerEvent(scrollable,".large-text","touchmove",{touches:[{identifier:0,clientX:scrollable.clientLeft,clientY:scrollable.getBoundingClientRect().top+
+scrollable.getBoundingClientRect().height/2,target:scrollable.querySelector(".large-text"),},],});assert.ok(targetContainer.style.transform.includes("translateX"),"the swiper has swiped to the left because the scrollable element couldn't scroll anymore to the right");await triggerEvent(target,".o_actionswiper","touchend",{});execRegisteredTimeouts();await nextTick();assert.verifySteps(["onLeftSwipe"],"the onLeftSwipe props action has been performed");});QUnit.test("preventing swipe on scrollable areas when language is rtl [REQUIRE TOUCHEVENT]",async(assert)=>{assert.expect(8);const{execRegisteredTimeouts}=mockTimeout();class Parent extends Component{onRightSwipe(){assert.step("onRightSwipe");}
+onLeftSwipe(){assert.step("onLeftSwipe");}}
+Parent.components={ActionSwiper};Parent.template=xml`
+                <div class="d-flex">
+                    <ActionSwiper
+                        onRightSwipe = "{
+                            action: onRightSwipe,
+                            icon: 'fa-circle',
+                            bgColor: 'bg-warning'
+                        }"
+                        onLeftSwipe = "{
+                            action: onLeftSwipe,
+                            icon: 'fa-check',
+                            bgColor: 'bg-success'
+                        }">
+                            <div class="target-component" style="width: 200px; height: 300px">
+                            <h1>Test about swiping and scrolling for rtl</h1>
+                                <div class="large-content" style="overflow: auto">
+                                    <h2>elballorcs ti ekam lliw taht tnemele regral a sniatnoc vid sihT</h2>
+                                    <p class="large-text" style="width: 400px">elballorcs eb ot sdeen ti egral os si tnemele sihT</p>
+                                </div>
+                            </div>
+                    </ActionSwiper>
+                </div>
+            `;serviceRegistry.add("localization",makeFakeLocalizationService({direction:"rtl"}));await mount(Parent,target,{env});const targetContainer=target.querySelector(".o_actionswiper_target_container");const scrollable=target.querySelector(".large-content");scrollable.scrollLeft=100;await triggerEvent(scrollable,".large-text","touchstart",{touches:[{identifier:0,clientX:scrollable.clientLeft,clientY:scrollable.getBoundingClientRect().top+
+scrollable.getBoundingClientRect().height/2,target:scrollable.querySelector(".large-text"),},],});await triggerEvent(scrollable,".large-text","touchmove",{touches:[{identifier:0,clientX:scrollable.clientWidth,clientY:scrollable.getBoundingClientRect().top+
+scrollable.getBoundingClientRect().height/2,target:scrollable.querySelector(".large-text"),},],});assert.ok(!targetContainer.style.transform.includes("translateX"),"the swiper has not swiped to the right because the scrollable element was scrollable to the left");scrollable.scrollLeft=0;await triggerEvent(scrollable,".large-text","touchstart",{touches:[{identifier:0,clientX:scrollable.clientLeft,clientY:scrollable.getBoundingClientRect().top+
+scrollable.getBoundingClientRect().height/2,target:scrollable.querySelector(".large-text"),},],});await triggerEvent(scrollable,".large-text","touchmove",{touches:[{identifier:0,clientX:scrollable.clientWidth,clientY:scrollable.getBoundingClientRect().top+
+scrollable.getBoundingClientRect().height/2,target:scrollable.querySelector(".large-text"),},],});assert.ok(targetContainer.style.transform.includes("translateX"),"the swiper has swiped to the right because the scrollable element couldn't scroll anymore to the left");await triggerEvent(target,".o_actionswiper","touchend",{});execRegisteredTimeouts();await nextTick();assert.verifySteps(["onLeftSwipe"],"the onLeftSwipe props action has been performed");await triggerEvent(scrollable,".large-text","touchstart",{touches:[{identifier:0,clientX:scrollable.clientWidth,clientY:scrollable.getBoundingClientRect().top+
+scrollable.getBoundingClientRect().height/2,target:scrollable.querySelector(".large-text"),},],});await triggerEvent(scrollable,".large-text","touchmove",{touches:[{identifier:0,clientX:scrollable.clientLeft,clientY:scrollable.getBoundingClientRect().top+
+scrollable.getBoundingClientRect().height/2,target:scrollable.querySelector(".large-text"),},],});assert.ok(!targetContainer.style.transform.includes("translateX"),"the swiper has not swiped to the left because the scrollable element was scrollable to the right");scrollable.scrollLeft=scrollable.scrollWidth-scrollable.getBoundingClientRect().right;await triggerEvent(scrollable,".large-text","touchstart",{touches:[{identifier:0,clientX:scrollable.clientWidth,clientY:scrollable.getBoundingClientRect().top+
+scrollable.getBoundingClientRect().height/2,target:scrollable.querySelector(".large-text"),},],});await triggerEvent(scrollable,".large-text","touchmove",{touches:[{identifier:0,clientX:scrollable.clientLeft,clientY:scrollable.getBoundingClientRect().top+
+scrollable.getBoundingClientRect().height/2,target:scrollable.querySelector(".large-text"),},],});assert.ok(targetContainer.style.transform.includes("translateX"),"the swiper has swiped to the left because the scrollable element couldn't scroll anymore to the right");await triggerEvent(target,".o_actionswiper","touchend",{});execRegisteredTimeouts();await nextTick();assert.verifySteps(["onRightSwipe"],"the onRightSwipe props action has been performed");});QUnit.test("swipeInvalid prop prevents swiping",async(assert)=>{assert.expect(3);const{execRegisteredTimeouts}=mockTimeout();class Parent extends Component{onRightSwipe(){assert.step("onRightSwipe");}
+swipeInvalid(){assert.step("swipeInvalid");return true;}}
+Parent.components={ActionSwiper};Parent.template=xml`
+            <div class="d-flex">
+                <ActionSwiper onRightSwipe = "{
+                    action: onRightSwipe,
+                    icon: 'fa-circle',
+                    bgColor: 'bg-warning',
+                }" swipeInvalid = "swipeInvalid">
+                    <div class="target-component" style="width: 200px; height: 80px">Test</div>
+                </ActionSwiper>
+            </div>
+        `;await mount(Parent,target,{env});const swiper=target.querySelector(".o_actionswiper");const targetContainer=target.querySelector(".o_actionswiper_target_container");await triggerEvent(target,".o_actionswiper","touchstart",{touches:[{identifier:0,clientX:swiper.clientWidth/2,clientY:0,target:target,},],});await triggerEvent(target,".o_actionswiper","touchmove",{touches:[{identifier:0,clientX:swiper.clientWidth+1,clientY:0,target:target,},],});await triggerEvent(target,".o_actionswiper","touchend",{});execRegisteredTimeouts();await nextTick();assert.ok(!targetContainer.style.transform.includes("translateX"),"target doesn't have translateX after action is performed");assert.verifySteps(["swipeInvalid"]);});QUnit.test("action should be done before a new render",async(assert)=>{let executingAction=false;const prom=new Deferred();const{execRegisteredTimeouts}=mockTimeout();patchWithCleanup(ActionSwiper.prototype,{setup(){super.setup();onPatched(()=>{if(executingAction){assert.step("ActionSwiper patched");}});},});class Parent extends Component{async onRightSwipe(){await nextTick();assert.step("action done");prom.resolve();}}
+Parent.props=[];Parent.components={ActionSwiper};Parent.template=xml`
+            <div class="d-flex">
+               <ActionSwiper animationType="'forwards'" onRightSwipe = "{
+                   action: onRightSwipe.bind(this),
+                   icon: 'fa-circle',
+                   bgColor: 'bg-warning',
+               }">
+                   <span>test</span>
+               </ActionSwiper>
+           </div>
+        `;await mount(Parent,target,{env});await swipeRight(target,".o_actionswiper");executingAction=true;execRegisteredTimeouts();await prom;await nextTick();assert.verifySteps(["action done","ActionSwiper patched"]);});});});return __exports;});;
+
+/* /web/static/tests/mobile/core/datetime_input_mobile_tests.js */
+odoo.define('@web/../tests/mobile/core/datetime_input_mobile_tests',['@odoo/owl','@web/../tests/helpers/mock_env','@web/../tests/helpers/mock_services','@web/../tests/helpers/utils','@web/core/datetime/datetime_input','@web/core/datetime/datetimepicker_service','@web/core/hotkeys/hotkey_service','@web/core/popover/popover_service','@web/core/registry','@web/core/ui/ui_service'],function(require){'use strict';let __exports={};QUnit.module("web",function(){const{Component,xml}=require("@odoo/owl");const{clearRegistryWithCleanup,makeTestEnv}=require("@web/../tests/helpers/mock_env");const{makeFakeLocalizationService}=require("@web/../tests/helpers/mock_services");const{click,getFixture,mount}=require("@web/../tests/helpers/utils");const{DateTimeInput}=require("@web/core/datetime/datetime_input");const{datetimePickerService}=require("@web/core/datetime/datetimepicker_service");const{hotkeyService}=require("@web/core/hotkeys/hotkey_service");const{popoverService}=require("@web/core/popover/popover_service");const{registry}=require("@web/core/registry");const{uiService}=require("@web/core/ui/ui_service");const{DateTime}=luxon;const mountInput=async(props)=>{const env=await makeTestEnv();await mount(Root,getFixture(),{env,props});return getFixture().querySelector(".o_datetime_input");};class Root extends Component{static components={DateTimeInput};static template=xml`
+        <div class="d-flex">
+            <DateTimeInput t-props="props" />
+        </div>
+        <t t-foreach="mainComponentEntries" t-as="comp" t-key="comp[0]">
+            <t t-component="comp[1].Component" t-props="comp[1].props" />
+        </t>
+    `;setup(){this.mainComponentEntries=mainComponentRegistry.getEntries();}}
+const mainComponentRegistry=registry.category("main_components");const serviceRegistry=registry.category("services");QUnit.module("Components",({beforeEach})=>{beforeEach(()=>{clearRegistryWithCleanup(mainComponentRegistry);serviceRegistry.add("datetime_picker",datetimePickerService).add("hotkey",hotkeyService).add("localization",makeFakeLocalizationService({dateFormat:"dd/MM/yyyy",dateTimeFormat:"dd/MM/yyyy HH:mm:ss",})).add("popover",popoverService).add("ui",uiService);});QUnit.module("DateTimeInput (date)");QUnit.test("popover should have enough space to be displayed",async(assert)=>{const{parentElement:parent}=await mountInput({value:DateTime.fromFormat("09/01/1997","dd/MM/yyyy"),type:"date",});const initialParentRect=parent.getBoundingClientRect();await click(parent,".o_datetime_input");const pickerRect=getFixture().querySelector(".o_datetime_picker").getBoundingClientRect();const finalParentRect=parent.getBoundingClientRect();assert.ok(initialParentRect.height<pickerRect.height,"initial height shouldn't be big enough to display the picker");assert.ok(finalParentRect.height>pickerRect.height,"initial height should be big enough to display the picker");});});});return __exports;});;
+
+/* /web/static/tests/mobile/core/dialog_tests.js */
+odoo.define('@web/../tests/mobile/core/dialog_tests',['@web/core/registry','@web/core/hotkeys/hotkey_service','@web/core/dialog/dialog','@web/../tests/helpers/mock_env','@web/../tests/helpers/utils','@web/../tests/helpers/mock_services','@odoo/owl'],function(require){'use strict';let __exports={};QUnit.module("web",function(){const{registry}=require("@web/core/registry");const{hotkeyService}=require("@web/core/hotkeys/hotkey_service");const{Dialog}=require("@web/core/dialog/dialog");const{makeTestEnv}=require("@web/../tests/helpers/mock_env");const{getFixture,mount,dragAndDrop}=require("@web/../tests/helpers/utils");const{makeFakeDialogService}=require("@web/../tests/helpers/mock_services");const{Component,xml}=require("@odoo/owl");const serviceRegistry=registry.category("services");let parent;let target;async function makeDialogTestEnv(){const env=await makeTestEnv();env.dialogData={isActive:true,close:()=>{},scrollToOrigin:()=>{},};return env;}
+QUnit.module("Components",(hooks)=>{hooks.beforeEach(async()=>{target=getFixture();serviceRegistry.add("hotkey",hotkeyService);serviceRegistry.add("dialog",makeFakeDialogService());});hooks.afterEach(()=>{if(parent){parent=undefined;}});QUnit.module("Dialog");QUnit.test("dialog can't be moved on small screen",async(assert)=>{class Parent extends Component{static template=xml`<Dialog>content</Dialog>`;static components={Dialog};}
+await mount(Parent,target,{env:await makeDialogTestEnv()});const content=target.querySelector(".modal-content");assert.strictEqual(content.style.top,"0px");assert.strictEqual(content.style.left,"0px");const header=content.querySelector(".modal-header");const headerRect=header.getBoundingClientRect();await dragAndDrop(header,document.body,{x:headerRect.x+headerRect.width/2+20,y:headerRect.y+headerRect.height/2+50,});assert.strictEqual(content.style.top,"0px");assert.strictEqual(content.style.left,"0px");});});});return __exports;});;
+
+/* /web/static/tests/mobile/helpers.js */
+odoo.define('@web/../tests/mobile/helpers',['@web/../tests/helpers/utils'],function(require){'use strict';let __exports={};const{findElement,triggerEvent}=require("@web/../tests/helpers/utils");async function swipe(target,selector,direction){const touchTarget=findElement(target,selector);if(direction==="left"){touchTarget.scrollLeft=touchTarget.scrollWidth-touchTarget.offsetWidth;}else{touchTarget.scrollLeft=0;}
+await triggerEvent(target,selector,"touchstart",{touches:[{identifier:0,clientX:0,clientY:0,target:touchTarget,},],});await triggerEvent(target,selector,"touchmove",{touches:[{identifier:0,clientX:(direction==="left"?-1:1)*touchTarget.clientWidth,clientY:0,target:touchTarget,},],});await triggerEvent(target,selector,"touchend",{});}
+__exports.swipeRight=swipeRight;async function swipeRight(target,selector){return swipe(target,selector,"right");}
+__exports.swipeLeft=swipeLeft;async function swipeLeft(target,selector){return swipe(target,selector,"left");}
+__exports.tap=tap;async function tap(target,selector){const touchTarget=findElement(target,selector);const box=touchTarget.getBoundingClientRect();const x=box.left+box.width/2;const y=box.top+box.height/2;const touch={identifier:0,target:touchTarget,clientX:x,clientY:y,pageX:x,pageY:y,};await triggerEvent(touchTarget,null,"touchstart",{touches:[touch],});await triggerEvent(touchTarget,null,"touchend",{});}
+__exports.tapAndMove=tapAndMove;async function tapAndMove(target,startSelector,endSelector,positions={start:"center",end:"center"}){const startTarget=findElement(target,startSelector);const startBox=startTarget.getBoundingClientRect();const touch={identifier:0,target:startTarget,pageX:startBox.x+startBox.width/2,pageY:positions.start==="center"?startBox.y+startBox.height/2:startBox.y+1,};await triggerEvent(startTarget,null,"touchstart",{touches:[touch],});const endTarget=findElement(target,endSelector);const endBox=endTarget.getBoundingClientRect();touch.pageX=endBox.x+endBox.width/2;touch.pageY=positions.end==="center"?endBox.y+endBox.height/2:endBox.y-1;await triggerEvent(startTarget,null,"touchmove",{touches:[touch],});await triggerEvent(startTarget,null,"touchend",{touches:[touch],});}
+return __exports;});;
+
+/* /web/static/tests/mobile/search/control_panel_tests.js */
+odoo.define('@web/../tests/mobile/search/control_panel_tests',['@web/../tests/helpers/utils','@web/search/control_panel/control_panel','@web/../tests/search/helpers','@web/core/registry','@web/core/ui/ui_service'],function(require){'use strict';let __exports={};QUnit.module("web",function(){const{getFixture,nextTick}=require("@web/../tests/helpers/utils");const{ControlPanel}=require("@web/search/control_panel/control_panel");const{makeWithSearch,setupControlPanelServiceRegistry}=require("@web/../tests/search/helpers");const{registry}=require("@web/core/registry");const{uiService}=require("@web/core/ui/ui_service");let serverData;let target;QUnit.module("Search",(hooks)=>{hooks.beforeEach(async()=>{setupControlPanelServiceRegistry();target=getFixture();registry.category("services").add("ui",uiService);serverData={models:{foo:{fields:{birthday:{string:"Birthday",type:"date",store:true,sortable:true},date_field:{string:"Date",type:"date",store:true,sortable:true},},records:[{date_field:"2022-02-14"}],},},views:{"foo,false,search":`
+                    <search>
+                        <filter name="birthday" date="birthday"/>
+                        <filter name="date_field" date="date_field"/>
+                    </search>
+                `,},};});QUnit.module("Control Panel (mobile)");QUnit.test("Control panel is shown/hide on top when scrolling",async(assert)=>{await makeWithSearch({serverData,resModel:"foo",Component:ControlPanel,searchMenuTypes:["filter"],});const contentHeight=200;const sampleContent=document.createElement("div");sampleContent.style.minHeight=`${2 * contentHeight}px`;target.appendChild(sampleContent);const{maxHeight,overflow}=target.style;target.style.maxHeight=`${contentHeight}px`;target.style.overflow="auto";target.scrollTo({top:50});await nextTick();assert.hasClass(target.querySelector(".o_control_panel"),"o_mobile_sticky","control panel becomes sticky when the target is not on top");target.scrollTo({top:-50});await nextTick();assert.doesNotHaveClass(target.querySelector(".o_control_panel"),"o_mobile_sticky","control panel is not sticky anymore");target.style.maxHeight=maxHeight;target.style.overflow=overflow;});});});return __exports;});;
+
+/* /web/static/tests/mobile/search/search_panel_tests.js */
+odoo.define('@web/../tests/mobile/search/search_panel_tests',['@web/../tests/helpers/utils','@web/search/search_panel/search_panel','@web/../tests/search/helpers','@web/core/registry','@web/core/ui/ui_service','@odoo/owl'],function(require){'use strict';let __exports={};QUnit.module("web",function(){const{click,getFixture}=require("@web/../tests/helpers/utils");const{SearchPanel}=require("@web/search/search_panel/search_panel");const{makeWithSearch,setupControlPanelServiceRegistry}=require("@web/../tests/search/helpers");const{registry}=require("@web/core/registry");const{uiService}=require("@web/core/ui/ui_service");const{Component,xml}=require("@odoo/owl");let serverData;let target;QUnit.module("Search",(hooks)=>{hooks.beforeEach(async()=>{setupControlPanelServiceRegistry();target=getFixture();registry.category("services").add("ui",uiService);serverData={models:{foo:{fields:{tag_id:{string:"Many2One",type:"many2one",relation:"tag",store:true,sortable:true,},},records:[{id:1,tag_id:2},{id:2,tag_id:1},{id:3,tag_id:1},],},tag:{fields:{name:{string:"Name",type:"string"},},records:[{id:1,name:"Gold"},{id:2,name:"Silver"},],},},};});QUnit.module("Search Panel (mobile)");QUnit.test("basic search panel rendering",async(assert)=>{class Parent extends Component{}
+Parent.components={SearchPanel};Parent.template=xml`<SearchPanel/>`;await makeWithSearch({serverData,resModel:"foo",Component:Parent,searchViewFields:serverData.models.foo.fields,searchViewArch:`
+                <search>
+                    <searchpanel>
+                        <field name="tag_id" icon="fa-bars" string="Tags"/>
+                    </searchpanel>
+                </search>`,});assert.containsOnce(target,".o_search_panel.o_search_panel_summary");await click(target,".o_search_panel .o_search_panel_current_selection");assert.containsOnce(document.body,".o_search_panel.o_mobile_search");assert.containsN(document.body,".o_search_panel_category_value",3);});});});return __exports;});;
+
+/* /web/static/tests/mobile/views/calendar_view_tests.js */
+odoo.define('@web/../tests/mobile/views/calendar_view_tests',['@web/core/browser/browser','@web/views/calendar/calendar_common/calendar_common_renderer','@web/views/calendar/calendar_year/calendar_year_renderer','@web/../tests/helpers/utils','@web/../tests/views/calendar/helpers','@web/../tests/views/helpers','@web/../tests/mobile/helpers'],function(require){'use strict';let __exports={};QUnit.module("web",function(){const{browser}=require("@web/core/browser/browser");const{CalendarCommonRenderer}=require("@web/views/calendar/calendar_common/calendar_common_renderer");const{CalendarYearRenderer}=require("@web/views/calendar/calendar_year/calendar_year_renderer");const{click,getFixture,nextTick,patchDate,patchWithCleanup}=require("@web/../tests/helpers/utils");const{changeScale,clickEvent,toggleSectionFilter}=require("@web/../tests/views/calendar/helpers");const{makeView,setupViewRegistries}=require("@web/../tests/views/helpers");const{tap,swipeRight,tapAndMove}=require("@web/../tests/mobile/helpers");let target;let serverData;QUnit.module("Views",({beforeEach})=>{beforeEach(()=>{patchDate(2016,11,12,8,0,0);patchWithCleanup(browser,{setTimeout:(fn)=>fn(),clearTimeout:()=>{},});target=getFixture();setupViewRegistries();serverData={models:{event:{fields:{id:{string:"ID",type:"integer"},name:{string:"name",type:"char"},start:{string:"start datetime",type:"datetime"},stop:{string:"stop datetime",type:"datetime"},partner_id:{string:"user",type:"many2one",relation:"partner",related:"user_id.partner_id",default:1,},},records:[{id:1,partner_id:1,name:"event 1",start:"2016-12-11 00:00:00",stop:"2016-12-11 00:00:00",},{id:2,partner_id:2,name:"event 2",start:"2016-12-12 10:55:05",stop:"2016-12-12 14:55:05",},],methods:{check_access_rights(){return Promise.resolve(true);},},},partner:{fields:{id:{string:"ID",type:"integer"},image:{string:"Image",type:"binary"},display_name:{string:"Displayed name",type:"char"},},records:[{id:1,display_name:"partner 1",image:"AAA"},{id:2,display_name:"partner 2",image:"BBB"},],},},};});QUnit.module("CalendarView - Mobile");QUnit.test("simple calendar rendering in mobile",async function(assert){await makeView({type:"calendar",resModel:"event",arch:`
+                <calendar date_start="start" date_stop="stop">
+                    <field name="name"/>
+                </calendar>`,serverData,});assert.containsNone(target,".o_calendar_button_prev","prev button should be hidden");assert.containsNone(target,".o_calendar_button_next","next button should be hidden");await click(target,".o_calendar_container .o_other_calendar_panel");assert.isVisible(target.querySelector(".o_calendar_container .o_calendar_header button.o_calendar_button_today"),"today button should be visible");assert.equal(target.querySelector(".o_calendar_container .o_calendar_header .dropdown-toggle").textContent,"Week","should display the current week");await click(target,".o_calendar_container .o_calendar_header .dropdown-toggle");await click(target,".o_calendar_container .o_calendar_header .o_scale_button_day");await nextTick();assert.equal(target.querySelector(".o_calendar_container .o_calendar_header .dropdown-toggle").textContent,"Day","should display the current day");await click(target,".o_calendar_container .o_calendar_header .dropdown-toggle");await click(target,".o_calendar_container .o_calendar_header .o_scale_button_month");await nextTick();assert.equal(target.querySelector(".o_calendar_container .o_calendar_header .dropdown-toggle").textContent,"Month","should display the current month");await click(target,".o_calendar_container .o_calendar_header .dropdown-toggle");await click(target,".o_calendar_container .o_calendar_header .o_scale_button_year");await nextTick();assert.equal(target.querySelector(".o_calendar_container .o_calendar_header .dropdown-toggle").textContent,"Year","should display the current year");});QUnit.test("calendar: popover is rendered as dialog in mobile",async function(assert){await makeView({type:"calendar",resModel:"event",serverData,arch:`
+                <calendar date_start="start" date_stop="stop">
+                    <field name="name"/>
+                </calendar>`,});await clickEvent(target,1);assert.containsNone(target,".o_cw_popover");assert.containsOnce(target,".modal");assert.hasClass(target.querySelector(".modal"),"o_modal_full");assert.containsN(target,".modal-footer .btn",2);assert.containsOnce(target,".modal-footer .btn.btn-primary.o_cw_popover_edit");assert.containsOnce(target,".modal-footer .btn.btn-secondary.o_cw_popover_delete");});QUnit.test("calendar: today button",async function(assert){await makeView({type:"calendar",resModel:"event",serverData,arch:`<calendar mode="day" date_start="start" date_stop="stop"></calendar>`,});assert.equal(target.querySelector(".fc-day-header[data-date]").dataset.date,"2016-12-12");await swipeRight(target,".o_calendar_widget");assert.equal(target.querySelector(".fc-day-header[data-date]").dataset.date,"2016-12-11");await click(target,".o_other_calendar_panel");await click(target,".o_calendar_button_today");await click(target,".o_other_calendar_panel");assert.equal(target.querySelector(".fc-day-header[data-date]").dataset.date,"2016-12-12");});QUnit.test("calendar: show and change other calendar",async function(assert){await makeView({type:"calendar",resModel:"event",serverData,arch:`
+                <calendar date_start="start" date_stop="stop" color="partner_id">
+                    <filter name="user_id" avatar_field="image"/>
+                    <field name="partner_id" filters="1" invisible="1"/>
+                </calendar>`,});assert.containsOnce(target,".o_calendar_renderer");assert.containsOnce(target,".o_other_calendar_panel");await click(target,".o_other_calendar_panel");assert.containsOnce(target,".o_calendar_filter_items_checkall","should contain one filter to check all");assert.containsN(target,".o_calendar_filter_item",2,"should contain 2 child nodes -> 2 resources");assert.containsOnce(target,".o_calendar_sidebar");assert.containsNone(target,".o_calendar_renderer");assert.containsOnce(target,".o_calendar_filter");assert.containsOnce(target,".o_calendar_filter[data-name=partner_id]");await toggleSectionFilter(target,"partner_id");assert.containsN(target,".o_other_calendar_panel .o_filter > *",0,"should contain 0 child nodes -> no filters selected");await click(target,".o_other_calendar_panel");assert.containsNone(target,".o_calendar_sidebar");assert.containsOnce(target,".o_calendar_renderer");});QUnit.test('calendar: tap on "Free Zone" opens quick create',async function(assert){patchWithCleanup(CalendarCommonRenderer.prototype,{onDateClick(...args){assert.step("dateClick");return super.onDateClick(...args);},onSelect(...args){assert.step("select");return super.onSelect(...args);},});await makeView({type:"calendar",resModel:"event",serverData,arch:`<calendar mode="day" date_start="start" date_stop="stop"/>`,});await tap(target,".fc-time-grid .fc-minor[data-time='00:30:00'] .fc-widget-content:last-child");await nextTick();assert.containsOnce(target,".modal");assert.verifySteps(["dateClick"]);});QUnit.test('calendar: select range on "Free Zone" opens quick create',async function(assert){patchWithCleanup(CalendarCommonRenderer.prototype,{get options(){return Object.assign({},super.options,{selectLongPressDelay:0,});},onDateClick(info){assert.step("dateClick");return super.onDateClick(info);},onSelect(info){assert.step("select");const{startStr,endStr}=info;assert.equal(startStr,"2016-12-12T01:00:00+01:00");assert.equal(endStr,"2016-12-12T02:00:00+01:00");return super.onSelect(info);},});await makeView({type:"calendar",resModel:"event",serverData,arch:`<calendar mode="day" date_start="start" date_stop="stop"/>`,});await tapAndMove(target,".fc-time-grid [data-time='01:00:00'] .fc-widget-content:last-child",".fc-time-grid [data-time='02:00:00'] .fc-widget-content:last-child",{start:"top",end:"bottom"});await nextTick();assert.containsOnce(target,".modal");assert.verifySteps(["select"]);});QUnit.test("calendar (year): select date range opens quick create",async function(assert){patchWithCleanup(CalendarYearRenderer.prototype,{get options(){return Object.assign({},super.options,{longPressDelay:0,selectLongPressDelay:0,});},onDateClick(info){assert.step("dateClick");return super.onDateClick(info);},onSelect(info){assert.step("select");const{startStr,endStr}=info;assert.equal(startStr,"2016-02-02");assert.equal(endStr,"2016-02-06");return super.onSelect(info);},});await makeView({type:"calendar",resModel:"event",serverData,arch:`<calendar mode="year" date_start="start" date_stop="stop"/>`,});await tapAndMove(target,".fc-day-top[data-date='2016-02-02']",".fc-day-top[data-date='2016-02-05']");await nextTick();assert.containsOnce(target,".modal");assert.verifySteps(["select"]);});QUnit.test("calendar (year): tap on date switch to day scale",async function(assert){await makeView({type:"calendar",resModel:"event",serverData,arch:`<calendar mode="year" date_start="start" date_stop="stop"/>`,});assert.containsOnce(target,".fc-dayGridYear-view");assert.containsN(target,".fc-month-container",12);await tap(target,".fc-day-top[data-date='2016-02-05']");await nextTick();await nextTick();assert.strictEqual(document.querySelector(".o_calendar_container .o_calendar_header h5").textContent,"5 February 2016");assert.containsNone(target,".fc-dayGridYear-view");assert.containsOnce(target,".fc-timeGridDay-view");assert.equal(target.querySelector(".fc-day-header[data-date]").dataset.date,"2016-02-05");await changeScale(target,"month");assert.containsOnce(target,".o_calendar_container .o_calendar_header h5");assert.strictEqual(document.querySelector(".o_calendar_container .o_calendar_header h5").textContent,"February 2016");assert.containsNone(target,".fc-timeGridDay-view");assert.containsOnce(target,".fc-dayGridMonth-view");await tap(target,".fc-day-top[data-date='2016-02-10']");await nextTick();await nextTick();assert.strictEqual(document.querySelector(".o_calendar_container .o_calendar_header h5").textContent,"February 2016");assert.containsOnce(target,".modal");});});});return __exports;});;
+
+/* /web/static/tests/mobile/views/fields/many2many_tags_field_tests.js */
+odoo.define('@web/../tests/mobile/views/fields/many2many_tags_field_tests',['@web/../tests/helpers/utils','@web/../tests/views/helpers'],function(require){'use strict';let __exports={};QUnit.module("web",function(){const{getFixture}=require("@web/../tests/helpers/utils");const{makeView,setupViewRegistries}=require("@web/../tests/views/helpers");let serverData;let target;QUnit.module("Fields",(hooks)=>{hooks.beforeEach(()=>{target=getFixture();serverData={models:{partner:{fields:{display_name:{string:"Displayed name",type:"char"},timmy:{string:"pokemon",type:"many2many",relation:"partner_type"},},},partner_type:{fields:{name:{string:"Partner Type",type:"char"},},records:[{id:12,display_name:"gold"},{id:14,display_name:"silver"},],},},};setupViewRegistries();});QUnit.module("Many2ManyTagsField");QUnit.test("Many2ManyTagsField placeholder should be correct",async function(assert){await makeView({type:"form",resModel:"partner",serverData,arch:`
+                <form>
+                    <field name="timmy" widget="many2many_tags" placeholder="foo"/>
+                </form>`,});assert.strictEqual(target.querySelector("#timmy_0").placeholder,"foo");});QUnit.test("Many2ManyTagsField placeholder should be empty",async function(assert){await makeView({type:"form",resModel:"partner",serverData,arch:`
+                <form>
+                    <field name="timmy" widget="many2many_tags"/>
+                </form>`,});assert.strictEqual(target.querySelector("#timmy_0").placeholder,"");});});});return __exports;});;
+
+/* /web/static/tests/mobile/views/fields/many2one_barcode_field_tests.js */
+odoo.define('@web/../tests/mobile/views/fields/many2one_barcode_field_tests',['@web/core/autocomplete/autocomplete','@web/core/browser/browser','@web/../tests/helpers/utils','@web/../tests/views/helpers','@web/webclient/barcode/barcode_scanner'],function(require){'use strict';let __exports={};QUnit.module("web",function(){const{AutoComplete}=require("@web/core/autocomplete/autocomplete");const{browser}=require("@web/core/browser/browser");const{click,clickSave,getFixture,patchWithCleanup}=require("@web/../tests/helpers/utils");const{makeView,setupViewRegistries}=require("@web/../tests/views/helpers");const BarcodeScanner=require("@web/webclient/barcode/barcode_scanner");let serverData;let target;const NAME_SEARCH="name_search";const PRODUCT_PRODUCT="product.product";const SALE_ORDER_LINE="sale_order_line";const PRODUCT_FIELD_NAME="product_id";async function barcodeMockRPC(route,args,performRPC){if(args.method===NAME_SEARCH&&args.model===PRODUCT_PRODUCT){const result=await performRPC(route,args);const records=serverData.models[PRODUCT_PRODUCT].records.filter((record)=>record.barcode===args.kwargs.name).map((record)=>[record.id,record.name]);return records.concat(result);}}
+QUnit.module("Fields",(hooks)=>{hooks.beforeEach(()=>{target=getFixture();serverData={models:{[PRODUCT_PRODUCT]:{fields:{id:{type:"integer"},name:{},barcode:{},},records:[{id:111,name:"product_cable_management_box",barcode:"601647855631",},{id:112,name:"product_n95_mask",barcode:"601647855632",},{id:113,name:"product_surgical_mask",barcode:"601647855633",},],},[SALE_ORDER_LINE]:{fields:{id:{type:"integer"},[PRODUCT_FIELD_NAME]:{string:PRODUCT_FIELD_NAME,type:"many2one",relation:PRODUCT_PRODUCT,},},},},views:{"product.product,false,kanban":`
+                    <kanban><templates><t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <field name="id"/>
+                            <field name="name"/>
+                            <field name="barcode"/>
+                        </div>
+                    </t></templates></kanban>
+                `,"product.product,false,search":"<search></search>",},};setupViewRegistries();patchWithCleanup(AutoComplete,{delay:0,});patchWithCleanup(browser,Object.assign({},browser,{setTimeout:(fn)=>fn(),navigator:{userAgent:"Chrome/0.0.0 (Linux; Android 13; Odoo TestSuite)",mediaDevices:{getUserMedia:()=>[],},},}));});QUnit.module("Many2OneField Barcode (Small)");QUnit.test("barcode button with multiple results",async function(assert){assert.expect(4);const selectedRecordTest=serverData.models[PRODUCT_PRODUCT].records[1];patchWithCleanup(BarcodeScanner,{scanBarcode:async()=>"mask",});await makeView({type:"form",resModel:SALE_ORDER_LINE,serverData,arch:`
+                <form>
+                    <field name="${PRODUCT_FIELD_NAME}" options="{'can_scan_barcode': True}"/>
+                </form>`,async mockRPC(route,args,performRPC){if(args.method==="web_save"&&args.model===SALE_ORDER_LINE){const selectedId=args.args[1][PRODUCT_FIELD_NAME];assert.equal(selectedId,selectedRecordTest.id,`product id selected ${selectedId}, should be ${selectedRecordTest.id} (${selectedRecordTest.barcode})`);return performRPC(route,args,performRPC);}
+return barcodeMockRPC(route,args,performRPC);},});const scanButton=target.querySelector(".o_barcode");assert.containsOnce(target,scanButton,"has scanner barcode button");await click(target,".o_barcode");const modal=target.querySelector(".modal-dialog.modal-lg");assert.containsOnce(target,modal,"there should be one modal opened in full screen");assert.containsN(modal,".o_kanban_record .oe_kanban_global_click",2,"there should be 2 records displayed");await click(modal,".o_kanban_record:nth-child(1)");await clickSave(target);});QUnit.test("many2one with barcode show all records",async function(assert){const selectedRecordTest=serverData.models[PRODUCT_PRODUCT].records[0];patchWithCleanup(BarcodeScanner,{scanBarcode:async()=>selectedRecordTest.barcode,});await makeView({type:"form",resModel:SALE_ORDER_LINE,serverData,arch:`
+                <form>
+                    <field name="${PRODUCT_FIELD_NAME}" options="{'can_scan_barcode': True}"/>
+                </form>`,mockRPC:barcodeMockRPC,});await click(target,".o_barcode");await click(target,".o_input_dropdown > input");const modal=target.querySelector(".modal-dialog.modal-lg");assert.containsOnce(target,modal,"there should be one modal opened in full screen");assert.containsN(modal,".o_kanban_record .oe_kanban_global_click",3,"there should be 3 records displayed");});});});return __exports;});;
+
+/* /web/static/tests/mobile/views/fields/statusbar_field_tests.js */
+odoo.define('@web/../tests/mobile/views/fields/statusbar_field_tests',['@web/../tests/helpers/utils','@web/../tests/views/helpers','@web/../tests/helpers/cleanup'],function(require){'use strict';let __exports={};QUnit.module("web",function(){const{click,getFixture}=require("@web/../tests/helpers/utils");const{makeView,setupViewRegistries}=require("@web/../tests/views/helpers");const{registerCleanup}=require("@web/../tests/helpers/cleanup");let fixture;let serverData;QUnit.module("Mobile Fields",({beforeEach})=>{beforeEach(()=>{setupViewRegistries();fixture=getFixture();fixture.setAttribute("style","width:100vw; height:100vh;");registerCleanup(()=>fixture.removeAttribute("style"));serverData={models:{partner:{fields:{display_name:{string:"Displayed name",type:"char"},trululu:{string:"Trululu",type:"many2one",relation:"partner"},},records:[{id:1,display_name:"first record",trululu:4},{id:2,display_name:"second record",trululu:1},{id:3,display_name:"third record"},{id:4,display_name:"aaa"},],},},};});QUnit.module("StatusBarField");QUnit.test("statusbar is rendered correctly on small devices",async(assert)=>{await makeView({type:"form",resModel:"partner",resId:1,serverData,arch:`
+                <form>
+                    <header>
+                        <field name="trululu" widget="statusbar" />
+                    </header>
+                    <field name="display_name" />
+                </form>
+            `,});assert.containsN(fixture,".o_statusbar_status .o_arrow_button:visible",4);assert.containsOnce(fixture,".o_statusbar_status .o_arrow_button.dropdown-toggle:visible");assert.containsOnce(fixture,".o_statusbar_status .o_arrow_button.o_arrow_button_current");assert.containsNone(fixture,".o_statusbar_status .dropdown-menu","dropdown should be hidden");assert.strictEqual(fixture.querySelector(".o_statusbar_status button.dropdown-toggle").textContent.trim(),"...");await click(fixture,".o_statusbar_status .dropdown-toggle.o_last");assert.containsOnce(fixture,".o_statusbar_status .dropdown-menu","dropdown should be visible");assert.containsOnce(fixture,".o_statusbar_status .dropdown-menu .dropdown-item.disabled");});QUnit.test("statusbar with no status on extra small screens",async(assert)=>{await makeView({type:"form",resModel:"partner",resId:4,serverData,arch:`
+                <form>
+                    <header>
+                        <field name="trululu" widget="statusbar" />
+                    </header>
+                </form>
+            `,});assert.doesNotHaveClass(fixture.querySelector(".o_field_statusbar"),"o_field_empty","statusbar widget should have class o_field_empty in edit");assert.containsOnce(fixture,".o_statusbar_status button.dropdown-toggle:visible");assert.strictEqual($(".o_statusbar_status button.dropdown-toggle:visible").text(),"...");await click($(".o_statusbar_status button.dropdown-toggle:visible")[0]);assert.containsOnce(fixture,".o_statusbar_status .dropdown-menu");assert.containsOnce(fixture,".o_statusbar_status .dropdown-menu .dropdown-item");assert.strictEqual(fixture.querySelector(".o_statusbar_status .dropdown-menu .dropdown-item").textContent.trim(),"first record","statusbar widget dropdown first item should display the first record display_name");});QUnit.test("clickable statusbar widget on mobile view",async(assert)=>{await makeView({type:"form",resModel:"partner",resId:1,serverData,arch:`
+                <form>
+                    <header>
+                        <field name="trululu" widget="statusbar" options="{'clickable': '1'}" />
+                    </header>
+                </form>
+            `,});await click($(".o_statusbar_status .dropdown-toggle:visible")[0]);assert.containsOnce(fixture,".o_statusbar_status .dropdown-item");await click(fixture,".o_statusbar_status .dropdown-item");assert.strictEqual($(".o_arrow_button_current").text(),"first record");assert.containsN(fixture,".o_statusbar_status .o_arrow_button:visible",3);assert.containsOnce(fixture,".o_statusbar_status .dropdown-toggle:visible");await click($(".o_statusbar_status .dropdown-toggle:visible")[0]);assert.containsN(fixture,".o_statusbar_status .dropdown-item",2);});});});return __exports;});;
+
+/* /web/static/tests/mobile/views/form_view_tests.js */
+odoo.define('@web/../tests/mobile/views/form_view_tests',['@web/core/registry','@web/../tests/helpers/utils','@web/../tests/views/helpers','@web/views/widgets/attach_document/attach_document'],function(require){'use strict';let __exports={};QUnit.module("web",function(){const{registry}=require("@web/core/registry");const{click,clickSave,editInput,getFixture,makeDeferred,nextTick,patchWithCleanup,}=require("@web/../tests/helpers/utils");const{makeView,setupViewRegistries}=require("@web/../tests/views/helpers");const{AttachDocumentWidget}=require("@web/views/widgets/attach_document/attach_document");let fixture;let serverData;const serviceRegistry=registry.category("services");QUnit.module("Mobile Views",({beforeEach})=>{beforeEach(()=>{setupViewRegistries();fixture=getFixture();serverData={models:{partner:{fields:{display_name:{type:"char",string:"Display Name"},trululu:{type:"many2one",string:"Trululu",relation:"partner"},boolean:{type:"boolean",string:"Bool"},},records:[{id:1,display_name:"first record",trululu:4},{id:2,display_name:"second record",trululu:1},{id:4,display_name:"aaa"},],},},};});QUnit.module("FormView");QUnit.test(`statusbar buttons are correctly rendered in mobile`,async(assert)=>{await makeView({type:"form",resModel:"partner",resId:1,serverData,arch:`
+                <form>
+                    <header>
+                        <button string="Confirm" />
+                        <button string="Do it" />
+                    </header>
+                    <sheet>
+                        <group>
+                            <button name="display_name" />
+                        </group>
+                    </sheet>
+                </form>
+            `,});assert.containsOnce(fixture,".o_statusbar_buttons .dropdown","statusbar should contain a button 'Action'");assert.containsNone(fixture,".o_statusbar_buttons .dropdown-menu","statusbar should contain a dropdown");assert.containsNone(fixture,".o_statusbar_buttons .dropdown-menu:visible","dropdown should be hidden");await click(fixture,".o_statusbar_buttons .dropdown-toggle");assert.containsOnce(fixture,".o_statusbar_buttons .dropdown-menu:visible","dropdown should be visible");assert.containsN(fixture,".o_statusbar_buttons .dropdown-menu button",2,"dropdown should contain 2 buttons");});QUnit.test(`statusbar "Action" button should be displayed only if there are multiple visible buttons`,async(assert)=>{await makeView({type:"form",resModel:"partner",resId:1,serverData,arch:`
+                    <form>
+                        <header>
+                            <button string="Confirm" invisible="display_name == 'first record'" />
+                            <button string="Do it" invisible="display_name == 'first record'" />
+                        </header>
+                        <sheet>
+                            <group>
+                                <field name="display_name" />
+                            </group>
+                        </sheet>
+                    </form>
+                `,});assert.containsNone(fixture,".o_statusbar_buttons > btn-group > .dropdown-toggle","'Action' dropdown is not displayed as there are no visible buttons");await editInput(fixture,".o_field_widget[name=display_name] input","test");await clickSave(fixture);assert.containsOnce(fixture,".o_statusbar_buttons .dropdown","statusbar should contain a dropdown");});QUnit.test(`statusbar "Action" button shouldn't be displayed for only one visible button`,async(assert)=>{await makeView({type:"form",resModel:"partner",serverData,resId:1,arch:`
+                    <form>
+                        <header>
+                            <button string="Hola" invisible="display_name == 'first record'" />
+                            <button string="Ciao" />
+                        </header>
+                        <sheet>
+                            <group>
+                                <field name="display_name" />
+                            </group>
+                        </sheet>
+                    </form>
+                `,});assert.containsNone(fixture,".o_statusbar_buttons .dropdown","should have no 'Action' dropdown");assert.containsOnce(fixture,".o_statusbar_buttons > button","should have a simple statusbar button");await editInput(fixture,".o_field_widget[name=display_name] input","test");assert.containsOnce(fixture,".o_statusbar_buttons .dropdown","should have no 'Action' dropdown");});QUnit.test(`statusbar widgets should appear in the statusbar dropdown only if there are multiple items`,async(assert)=>{serviceRegistry.add("http",{start:()=>({}),});await makeView({type:"form",resModel:"partner",serverData,resId:2,arch:`
+                    <form>
+                        <header>
+                            <widget name="attach_document" string="Attach document" />
+                            <button string="Ciao" invisible="display_name == 'first record'" />
+                        </header>
+                        <sheet>
+                            <group>
+                                <field name="display_name" />
+                            </group>
+                        </sheet>
+                    </form>
+                `,});assert.containsOnce(fixture,".o_statusbar_buttons .dropdown","should have 'Action' dropdown");await click(fixture,".o_statusbar_buttons .dropdown-toggle");assert.containsN(fixture,".o_statusbar_buttons .dropdown-menu button",2,"should have 2 buttons in the dropdown");await editInput(fixture,".o_field_widget[name=display_name] input","first record");assert.containsNone(fixture,".o_statusbar_buttons .dropdown","shouldn't have 'Action' dropdown");assert.containsOnce(fixture,".o_statusbar_buttons button:visible","should have 1 button visible in the statusbar");});QUnit.test(`statusbar "Action" dropdown should keep its open/close state`,async function(assert){await makeView({type:"form",resModel:"partner",serverData,arch:`
+                    <form>
+                        <header>
+                            <button string="Just more than one" />
+                            <button string="Confirm" invisible="display_name == ''" />
+                            <button string="Do it" invisible="display_name != ''" />
+                        </header>
+                        <sheet>
+                            <field name="display_name" />
+                        </sheet>
+                    </form>
+                `,});assert.containsOnce(fixture,".o_statusbar_buttons .dropdown","statusbar should contain a dropdown");assert.doesNotHaveClass(fixture.querySelector(".o_statusbar_buttons .dropdown"),"show","dropdown should be closed");await click(fixture,".o_statusbar_buttons .dropdown-toggle");assert.hasClass(fixture.querySelector(".o_statusbar_buttons .dropdown"),"show","dropdown should be opened");await editInput(fixture,".o_field_widget[name=display_name] input","test");assert.containsOnce(fixture,".o_statusbar_buttons .dropdown","statusbar should contain a dropdown");assert.hasClass(fixture.querySelector(".o_statusbar_buttons .dropdown"),"show","dropdown should still be opened");});QUnit.test(`statusbar "Action" dropdown's open/close state shouldn't be modified after 'onchange'`,async function(assert){serverData.models.partner.onchanges={display_name:async()=>{},};const onchangeDef=makeDeferred();await makeView({type:"form",resModel:"partner",serverData,arch:`
+                    <form>
+                        <header>
+                            <button name="create" string="Create Invoice" type="action" />
+                            <button name="send" string="Send by Email" type="action" />
+                        </header>
+                        <sheet>
+                            <field name="display_name" />
+                        </sheet>
+                    </form>
+                `,mockRPC(route,{method,args}){if(method==="onchange"&&args[2][0]==="display_name"){return onchangeDef;}},});assert.containsOnce(fixture,".o_statusbar_buttons .dropdown","statusbar should contain a dropdown");assert.doesNotHaveClass(fixture.querySelector(".o_statusbar_buttons .dropdown"),"show","dropdown should be closed");await editInput(fixture,".o_field_widget[name=display_name] input","before onchange");await click(fixture,".o_statusbar_buttons .dropdown-toggle");assert.hasClass(fixture.querySelector(".o_statusbar_buttons .dropdown"),"show","dropdown should be opened");onchangeDef.resolve({value:{display_name:"after onchange"}});await nextTick();assert.strictEqual(fixture.querySelector(".o_field_widget[name=display_name] input").value,"after onchange");assert.hasClass(fixture.querySelector(".o_statusbar_buttons .dropdown"),"show","dropdown should still be opened");});QUnit.test(`preserve current scroll position on form view while closing dialog`,async function(assert){serverData.views={"partner,false,kanban":`
+                    <kanban>
+                        <templates>
+                            <t t-name="kanban-box">
+                                <div class="oe_kanban_global_click">
+                                    <field name="display_name" />
+                                </div>
+                            </t>
+                        </templates>
+                    </kanban>
+                `,"partner,false,search":`
+                    <search />
+                `,};await makeView({type:"form",resModel:"partner",resId:2,serverData,arch:`
+                    <form>
+                        <sheet>
+                            <p style="height:500px" />
+                            <field name="trululu" />
+                            <p style="height:500px" />
+                        </sheet>
+                    </form>
+                `,});let position={top:0,left:0};patchWithCleanup(window,{scrollTo(newPosition){position=newPosition;},get scrollX(){return position.left;},get scrollY(){return position.top;},});window.scrollTo({top:265,left:0});assert.strictEqual(window.scrollY,265,"Should have scrolled 265 px vertically");assert.strictEqual(window.scrollX,0,"Should be 0 px from left as it is");await click(fixture,".o_field_many2one input");assert.containsOnce(fixture,".modal.o_modal_full","there should be a many2one modal opened in full screen");await click(fixture,".modal .modal-header .oi-arrow-left");assert.strictEqual(window.scrollY,265,"Should have scrolled back to 265 px vertically");assert.strictEqual(window.scrollX,0,"Should be 0 px from left as it is");});QUnit.test("attach_document widget also works inside a dropdown",async(assert)=>{let fileInput;patchWithCleanup(AttachDocumentWidget.prototype,{setup(){super.setup();fileInput=this.fileInput;},});serviceRegistry.add("http",{start:()=>({post:(route,params)=>{assert.step("post");assert.strictEqual(route,"/web/binary/upload_attachment");assert.strictEqual(params.model,"partner");assert.strictEqual(params.id,1);return'[{ "id": 5 }, { "id": 2 }]';},}),});await makeView({type:"form",resModel:"partner",resId:1,serverData,arch:`
+                <form>
+                    <header>
+                        <button string="Confirm" />
+                        <widget name="attach_document" string="Attach Document"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <button name="display_name" />
+                        </group>
+                    </sheet>
+                </form>
+            `,});await click(fixture,".o_statusbar_buttons .dropdown-toggle");await click(fixture,".o_attach_document");fileInput.dispatchEvent(new Event("change"));await nextTick();assert.verifySteps(["post"]);});QUnit.test("button box with 3/4 buttons (close to threshold)",async(assert)=>{await makeView({type:"form",resModel:"partner",serverData,arch:`
+                <form>
+                    <sheet>
+                        <div name="button_box">
+                            <button>MyButton</button>
+                            <button>MyButton2</button>
+                            <button>MyButton3</button>
+                            <button invisible="not boolean">MyButton4</button>
+                        </div>
+                        <field name="boolean"/>
+                    </sheet>
+                </form>`,resId:2,});assert.containsNone(fixture,".o_field_widget[name=boolean] input:checked");assert.containsN(fixture,".o-form-buttonbox > .oe_stat_button",3);assert.containsNone(fixture,".o-form-buttonbox .o_button_more");await click(fixture.querySelector(".o_field_widget[name=boolean] input"));assert.containsN(fixture,".o-form-buttonbox > .oe_stat_button",3);assert.containsOnce(fixture,".o-form-buttonbox .oe_stat_button .o_button_more");await click(fixture.querySelector(".o_button_more"));assert.containsN(fixture,".o_dropdown_more .oe_stat_button",2);});});});return __exports;});;
+
+/* /web/static/tests/mobile/views/kanban_view_tests.js */
+odoo.define('@web/../tests/mobile/views/kanban_view_tests',['@web/../tests/views/helpers','@web/../tests/helpers/utils','@web/views/view_components/animated_number'],function(require){'use strict';let __exports={};QUnit.module("web",function(){const{makeView,setupViewRegistries}=require("@web/../tests/views/helpers");const{click,getFixture,patchWithCleanup}=require("@web/../tests/helpers/utils");const{AnimatedNumber}=require("@web/views/view_components/animated_number");let serverData;let target;QUnit.module("Views",(hooks)=>{hooks.beforeEach(()=>{patchWithCleanup(AnimatedNumber,{enableAnimations:false});serverData={models:{partner:{fields:{foo:{string:"Foo",type:"char"},product_id:{string:"something_id",type:"many2one",relation:"product",},},records:[{id:1,foo:"yop",product_id:3,},{id:2,foo:"blip",product_id:5,},{id:3,foo:"gnap",product_id:3,},{id:4,foo:"blip",product_id:5,},],},product:{fields:{id:{string:"ID",type:"integer"},name:{string:"Display Name",type:"char"},},records:[{id:3,name:"hello"},{id:5,name:"xmo"},],},},views:{},};target=getFixture();setupViewRegistries();});QUnit.module("KanbanView");QUnit.test("Should load grouped kanban with folded column",async(assert)=>{await makeView({type:"kanban",resModel:"partner",serverData,arch:`
+                <kanban>
+                    <progressbar field="foo" colors='{"yop": "success", "blip": "danger"}'/>
+                    <field name="product_id"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div><field name="foo"/></div>
+                        </t>
+                    </templates>
+                </kanban>`,groupBy:["product_id"],async mockRPC(route,args,performRPC){if(args.method==="web_read_group"){const result=await performRPC(route,args);result.groups[1].__fold=true;return result;}},});assert.containsN(target,".o_column_progress",2,"Should have 2 progress bar");assert.containsN(target,".o_kanban_group",2,"Should have 2 grouped column");assert.containsN(target,".o_kanban_record",2,"Should have 2 loaded record");assert.containsOnce(target,".o_kanban_load_more","Should have a folded column with a load more button");await click(target,".o_kanban_load_more button");assert.containsNone(target,".o_kanban_load_more","Shouldn't have a load more button");assert.containsN(target,".o_kanban_record",4,"Should have 4 loaded record");});});});return __exports;});;
+
+/* /web/static/tests/mobile/views/list_view_tests.js */
+odoo.define('@web/../tests/mobile/views/list_view_tests',['@web/core/browser/browser','@web/core/registry','@web/../tests/helpers/mock_services','@web/../tests/helpers/utils','@web/../tests/search/helpers','@web/../tests/views/helpers'],function(require){'use strict';let __exports={};QUnit.module("web",function(){const{browser}=require("@web/core/browser/browser");const{registry}=require("@web/core/registry");const{makeFakeUserService}=require("@web/../tests/helpers/mock_services");const{click,getFixture,patchWithCleanup,triggerEvents}=require("@web/../tests/helpers/utils");const{getMenuItemTexts,toggleActionMenu}=require("@web/../tests/search/helpers");const{makeView,setupViewRegistries}=require("@web/../tests/views/helpers");let serverData;let fixture;QUnit.module("Mobile Views",({beforeEach})=>{beforeEach(()=>{setupViewRegistries();fixture=getFixture();serverData={models:{foo:{fields:{foo:{string:"Foo",type:"char"},bar:{string:"Bar",type:"boolean"},},records:[{id:1,bar:true,foo:"yop"},{id:2,bar:true,foo:"blip"},{id:3,bar:true,foo:"gnap"},{id:4,bar:false,foo:"blip"},],},},};patchWithCleanup(browser,{setTimeout:(fn)=>fn()||true,clearTimeout:()=>{},});});QUnit.module("ListView");QUnit.test("selection is properly displayed (single page)",async function(assert){registry.category("services").add("user",makeFakeUserService(()=>false),{force:true});await makeView({type:"list",resModel:"foo",serverData,arch:`
+                <tree>
+                    <field name="foo"/>
+                    <field name="bar"/>
+                </tree>
+            `,loadActionMenus:true,});assert.containsN(fixture,".o_data_row",4);assert.containsNone(fixture,".o_list_selection_box");assert.containsOnce(fixture,".o_control_panel .fa-search");await triggerEvents(fixture,".o_data_row:nth-child(1)",["touchstart","touchend"]);assert.containsOnce(fixture,".o_list_selection_box");assert.containsNone(fixture,".o_list_selection_box .o_list_select_domain");assert.containsNone(fixture,".o_control_panel .o_cp_searchview");assert.ok(fixture.querySelector(".o_list_selection_box").textContent.includes("1 selected"));await triggerEvents(fixture,".o_data_row:nth-child(1)",["touchstart","touchend"]);assert.containsNone(fixture,".o_list_selection_box .o_list_select_domain");await triggerEvents(fixture,".o_data_row:nth-child(1)",["touchstart","touchend"]);await triggerEvents(fixture,".o_data_row:nth-child(2)",["touchstart","touchend"]);assert.ok(fixture.querySelector(".o_list_selection_box").textContent.includes("2 selected"));assert.containsOnce(fixture,"div.o_control_panel .o_cp_action_menus");await toggleActionMenu(fixture);assert.deepEqual(getMenuItemTexts(fixture.querySelector(".o_cp_action_menus")),["Duplicate","Delete"],"action menu should contain the Duplicate and Delete actions");await click(fixture,".o_list_unselect_all");assert.containsNone(fixture,".o_list_selection_box");assert.containsOnce(fixture,".o_control_panel .fa-search");});QUnit.test("selection box is properly displayed (multi pages)",async function(assert){registry.category("services").add("user",makeFakeUserService(()=>false),{force:true});await makeView({type:"list",resModel:"foo",serverData,arch:`
+                <tree limit="3">
+                    <field name="foo"/>
+                    <field name="bar"/>
+                </tree>
+            `,loadActionMenus:true,});assert.containsN(fixture,".o_data_row",3);assert.containsNone(fixture,".o_list_selection_box");await triggerEvents(fixture,".o_data_row:nth-child(1)",["touchstart","touchend"]);assert.containsOnce(fixture,".o_list_selection_box");assert.containsNone(fixture,".o_list_selection_box .o_list_select_domain");assert.ok(fixture.querySelector(".o_list_selection_box").textContent.includes("1 selected"));assert.containsOnce(fixture,".o_list_selection_box");assert.containsOnce(fixture,"div.o_control_panel .o_cp_action_menus");await toggleActionMenu(fixture);assert.deepEqual(getMenuItemTexts(fixture.querySelector(".o_cp_action_menus")),["Duplicate","Delete"],"action menu should contain the Duplicate and Delete actions");await triggerEvents(fixture,".o_data_row:nth-child(2)",["touchstart","touchend"]);await triggerEvents(fixture,".o_data_row:nth-child(3)",["touchstart","touchend"]);assert.containsOnce(fixture,".o_list_selection_box");assert.containsOnce(fixture,".o_list_selection_box .o_list_select_domain");assert.ok(fixture.querySelector(".o_list_selection_box").textContent.includes("3 selected"));assert.containsOnce(fixture,".o_list_select_domain");await click(fixture,".o_list_selection_box .o_list_select_domain");assert.containsOnce(fixture,".o_list_selection_box");assert.ok(fixture.querySelector(".o_list_selection_box").textContent.includes("All 4 selected"));});QUnit.test("export button is properly hidden",async(assert)=>{registry.category("services").add("user",makeFakeUserService((group)=>group==="base.group_allow_export"),{force:true});await makeView({type:"list",resModel:"foo",serverData,arch:`
+                <tree>
+                    <field name="foo"/>
+                    <field name="bar"/>
+                </tree>
+            `,});assert.containsN(fixture,".o_data_row",4);assert.isNotVisible(fixture.querySelector(".o_list_export_xlsx"));});QUnit.test("editable readonly list view is disabled",async(assert)=>{await makeView({type:"list",resModel:"foo",serverData,arch:`
+                <tree>
+                    <field name="foo" />
+                </tree>
+            `,});await triggerEvents(fixture,".o_data_row:nth-child(1)",["touchstart","touchend"]);await click(fixture,".o_data_row:nth-child(1) .o_data_cell:nth-child(1)");assert.containsNone(fixture,".o_selected_row .o_field_widget[name=foo]","The listview should not contains an edit field");});QUnit.test("add custom field button not shown in mobile (with opt. col.)",async(assert)=>{await makeView({type:"list",resModel:"foo",serverData,arch:`
+                    <tree>
+                        <field name="foo" />
+                        <field name="bar" optional="hide" />
+                    </tree>
+                `,});assert.containsOnce(fixture,"table .o_optional_columns_dropdown_toggle");await click(fixture,"table .o_optional_columns_dropdown_toggle");assert.containsOnce(fixture,"div.o_optional_columns_dropdown .dropdown-item");});QUnit.test("add custom field button not shown to non-system users (wo opt. col.)",async(assert)=>{await makeView({type:"list",resModel:"foo",serverData,arch:`
+                    <tree>
+                        <field name="foo" />
+                        <field name="bar" />
+                    </tree>
+                `,});assert.containsNone(fixture,"table .o_optional_columns_dropdown_toggle");});});});return __exports;});;
+
+/* /web/static/tests/mobile/views/view_dialog/select_create_dialog_tests.js */
+odoo.define('@web/../tests/mobile/views/view_dialog/select_create_dialog_tests',['@web/../tests/helpers/utils','@web/../tests/views/helpers'],function(require){'use strict';let __exports={};QUnit.module("web",function(){const{click,getFixture,editInput}=require("@web/../tests/helpers/utils");const{makeView,setupViewRegistries}=require("@web/../tests/views/helpers");QUnit.module("ViewDialogs",(hooks)=>{let serverData;let target;hooks.beforeEach(()=>{target=getFixture();serverData={models:{product:{fields:{id:{type:"integer"},name:{},},records:[{id:111,name:"product_cable_management_box",},],},sale_order_line:{fields:{id:{type:"integer"},product_id:{string:"product_id",type:"many2one",relation:"product",},linked_sale_order_line:{string:"linked_sale_order_line",type:"many2many",relation:"sale_order_line",},},},},views:{"product,false,kanban":`
+                    <kanban><templates><t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <field name="id"/>
+                            <field name="name"/>
+                        </div>
+                    </t></templates></kanban>
+                `,"sale_order_line,false,kanban":`
+                    <kanban><templates><t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <field name="id"/>
+                        </div>
+                    </t></templates></kanban>
+                `,"product,false,search":"<search></search>",},};setupViewRegistries();});QUnit.module("SelectCreateDialog - Mobile");QUnit.test("SelectCreateDialog: clear selection in mobile",async function(assert){assert.expect(3);await makeView({type:"form",resModel:"sale_order_line",serverData,arch:`
+                <form>
+                    <field name="product_id"/>
+                    <field name="linked_sale_order_line" widget="many2many_tags"/>
+                </form>`,async mockRPC(route,args){if(args.method==="web_save"&&args.model==="sale_order_line"){const{product_id:selectedId}=args.args[1];assert.strictEqual(selectedId,false,`there should be no product selected`);}},});const clearBtnSelector=".btn.o_clear_button";await click(target,'.o_field_widget[name="linked_sale_order_line"] input');let modal=target.querySelector(".modal-dialog.modal-lg");assert.containsNone(modal,clearBtnSelector,"there shouldn't be a Clear button");await click(modal,".o_form_button_cancel");await click(target,'.o_field_widget[name="product_id"] input');modal=target.querySelector(".modal-dialog.modal-lg");await click(modal,".o_kanban_record:nth-child(1)");await click(target,'.o_field_widget[name="product_id"] input');modal=target.querySelector(".modal-dialog.modal-lg");assert.containsOnce(modal,clearBtnSelector,"there should be a Clear button");await click(modal,clearBtnSelector);await click(target,".o_form_button_save");});QUnit.test("SelectCreateDialog: selection_mode should be true",async function(assert){assert.expect(3);serverData.views["product,false,kanban"]=`
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                         <div class="o_primary" t-if="!selection_mode">
+                            <a type="object" name="some_action">
+                                <field name="name"/>
+                            </a>
+                         </div>
+                         <div class="o_primary" t-if="selection_mode">
+                             <field name="name"/>
+                         </div>
+                    </t>
+                </templates>
+            </kanban>`;await makeView({type:"form",resModel:"sale_order_line",serverData,arch:`
+                <form>
+                    <field name="product_id"/>
+                    <field name="linked_sale_order_line" widget="many2many_tags"/>
+                </form>`,async mockRPC(route,args){if(args.method==="web_save"&&args.model==="sale_order_line"){const{product_id:selectedId}=args.args[1];assert.strictEqual(selectedId,111,`the product should be selected`);}
+if(args.method==="some_action"){assert.step("action should not be called");}},});await click(target,'.o_field_widget[name="product_id"] input');await click(target,".modal-dialog.modal-lg .o_kanban_record:nth-child(1) .o_primary span");assert.containsNone(target,".modal-dialog.modal-lg");await click(target,".o_form_button_save");assert.verifySteps([]);});QUnit.test("SelectCreateDialog: default props, create a record",async function(assert){assert.expect(9);serverData.views["product,false,form"]=`<form><field name="display_name"/></form>`;await makeView({type:"form",resModel:"sale_order_line",serverData,arch:`
+                <form>
+                    <field name="product_id"/>
+                    <field name="linked_sale_order_line" widget="many2many_tags"/>
+                </form>`,});await click(target,'.o_field_widget[name="product_id"] input');assert.containsOnce(target,".o_dialog");assert.containsOnce(target,".o_dialog .o_kanban_view .o_kanban_record:not(.o_kanban_ghost)");assert.containsN(target,".o_dialog footer button",2);assert.containsOnce(target,".o_dialog footer button.o_create_button");assert.containsOnce(target,".o_dialog footer button.o_form_button_cancel");assert.containsNone(target,".o_dialog .o_control_panel_main_buttons .o-kanban-button-new");await click(target.querySelector(".o_dialog footer button.o_create_button"));assert.containsN(target,".o_dialog",2);assert.containsOnce(target,".o_dialog .o_form_view");await editInput(target,".o_dialog .o_form_view .o_field_widget input","hello");await click(target.querySelector(".o_dialog .o_form_button_save"));assert.containsNone(target,".o_dialog");});});});return __exports;});;
+
+/* /web/static/tests/mobile/views/widgets/signature_tests.js */
+odoo.define('@web/../tests/mobile/views/widgets/signature_tests',['@web/../tests/helpers/utils','@web/../tests/views/helpers','@web/views/widgets/signature/signature'],function(require){'use strict';let __exports={};QUnit.module("web",function(){const{click,getFixture,patchWithCleanup,editInput,nextTick}=require("@web/../tests/helpers/utils");const{makeView,setupViewRegistries}=require("@web/../tests/views/helpers");const{SignatureWidget}=require("@web/views/widgets/signature/signature");let serverData;let target;QUnit.module("Widgets",(hooks)=>{hooks.beforeEach(()=>{target=getFixture();serverData={models:{partner:{fields:{display_name:{string:"Name",type:"char"},product_id:{string:"Product Name",type:"many2one",relation:"product",},signature:{string:"",type:"string"},},records:[{id:1,display_name:"Pop's Chock'lit",product_id:7,},],onchanges:{},},product:{fields:{name:{string:"Product Name",type:"char"},},records:[{id:7,display_name:"Veggie Burger",},],},},};setupViewRegistries();});QUnit.module("Signature Widget");QUnit.test("Signature widget works inside of a dropdown",async(assert)=>{assert.expect(7);patchWithCleanup(SignatureWidget.prototype,{async onClickSignature(){await super.onClickSignature(...arguments);assert.step("onClickSignature");},async uploadSignature({signatureImage}){await super.uploadSignature(...arguments);assert.step("uploadSignature");},});await makeView({type:"form",resModel:"partner",resId:1,serverData,arch:`
+                <form>
+                    <header>
+                        <button string="Dummy"/>
+                        <widget name="signature" string="Sign" full_name="display_name"/>
+                    </header>
+                    <field name="display_name" />
+                </form>
+            `,mockRPC:async(route,args)=>{if(route==="/web/sign/get_fonts/"){return{};}},});await editInput(target,".o_field_widget[name=display_name] input","test");await click(target,".o_statusbar_buttons .dropdown-toggle");await click(target,".o_widget_signature button.o_sign_button");assert.containsOnce(target,".modal-dialog","Should have one modal opened");await click(target,".o_web_sign_auto_button");assert.containsOnce(target,".modal-footer button.btn-primary");let maxDelay=100;while(target.querySelector(".modal-footer button.btn-primary")["disabled"]&&maxDelay>0){await nextTick();maxDelay--;}
+assert.equal(maxDelay>0,true,"Timeout exceeded");await click(target,".modal-footer button.btn-primary:enabled");assert.containsNone(target,".modal-dialog","Should have no modal opened");assert.verifySteps(["onClickSignature","uploadSignature"],"An error has occurred while signing");});});});return __exports;});;
+
+/* /web/static/tests/mobile/webclient/burger_menu/burger_menu_tests.js */
+odoo.define('@web/../tests/mobile/webclient/burger_menu/burger_menu_tests',['@web/../tests/helpers/utils','@web/../tests/webclient/helpers','@web/core/registry','@web/webclient/burger_menu/burger_menu','@web/webclient/company_service'],function(require){'use strict';let __exports={};QUnit.module("web",function(){const{click,nextTick}=require("@web/../tests/helpers/utils");const{createWebClient,doAction,getActionManagerServerData,}=require("@web/../tests/webclient/helpers");const{registry}=require("@web/core/registry");const{BurgerMenu}=require("@web/webclient/burger_menu/burger_menu");const{companyService}=require("@web/webclient/company_service");let serverData;const serviceRegistry=registry.category("services");const userMenuRegistry=registry.category("user_menuitems");QUnit.module("Burger Menu",{beforeEach(){serverData=getActionManagerServerData();serviceRegistry.add("company",companyService);registry.category("systray").add("burger_menu",{Component:BurgerMenu,});},});QUnit.test("Burger menu can be opened and closed",async(assert)=>{assert.expect(2);await createWebClient({serverData});await click(document.body,".o_mobile_menu_toggle");assert.containsOnce(document.body,".o_burger_menu");await click(document.body,".o_burger_menu_close");assert.containsNone(document.body,".o_burger_menu");});QUnit.test("Burger Menu on an App",async(assert)=>{assert.expect(7);serverData.menus[1].children=[99];serverData.menus[99]={id:99,children:[],name:"SubMenu",appID:1,actionID:1002,xmlid:"",webIconData:undefined,webIcon:false,};await createWebClient({serverData});await click(document.body,".o_navbar_apps_menu .dropdown-toggle");await click(document.body,".o_app:nth-of-type(2)");assert.containsNone(document.body,".o_burger_menu");await click(document.body,".o_mobile_menu_toggle");assert.containsOnce(document.body,".o_burger_menu");assert.containsOnce(document.body,".o_burger_menu nav.o_burger_menu_content li");assert.strictEqual(document.body.querySelector(".o_burger_menu nav.o_burger_menu_content li").textContent,"SubMenu");assert.hasClass(document.body.querySelector(".o_burger_menu_content"),"o_burger_menu_app");await click(document.body,".o_burger_menu_topbar");assert.doesNotHaveClass(document.body.querySelector(".o_burger_menu_content"),"o_burger_menu_dark");await click(document.body,".o_burger_menu_topbar");assert.hasClass(document.body.querySelector(".o_burger_menu_content"),"o_burger_menu_app");});QUnit.test("Burger Menu on an App without SubMenu",async(assert)=>{assert.expect(4);await createWebClient({serverData});await click(document.body,".o_navbar_apps_menu .dropdown-toggle");await click(document.body,".o_app:nth-of-type(2)");assert.containsNone(document.body,".o_burger_menu");await click(document.body,".o_mobile_menu_toggle");assert.containsOnce(document.body,".o_burger_menu");assert.containsOnce(document.body,".o_user_menu_mobile");await click(document.body,".o_burger_menu_close");assert.containsNone(document.body,".o_burger_menu");});QUnit.test("Burger menu closes when an action is requested",async(assert)=>{assert.expect(3);const wc=await createWebClient({serverData});await click(document.body,".o_mobile_menu_toggle");assert.containsOnce(document.body,".o_burger_menu");await doAction(wc,1);assert.containsNone(document.body,".o_burger_menu");assert.containsOnce(document.body,".o_kanban_view");});QUnit.test("Burger menu closes when click on menu item",async(assert)=>{serverData.actions[1].target="new";serverData.menus[1].children=[99];serverData.menus[99]={id:99,children:[],name:"SubMenu",appID:1,actionID:1,xmlid:"",webIconData:undefined,webIcon:false,};await createWebClient({serverData});await click(document.body,".o_navbar_apps_menu .dropdown-toggle");await click(document.body,".o_app:nth-of-type(2)");assert.containsNone(document.body,".o_burger_menu");await click(document.body,".o_mobile_menu_toggle");assert.containsOnce(document.body,".o_burger_menu");assert.strictEqual(document.body.querySelector(".o_burger_menu nav.o_burger_menu_content li").textContent,"SubMenu");await click(document.body,".o_burger_menu nav.o_burger_menu_content li");await nextTick();assert.containsNone(document.body,".o_burger_menu");});QUnit.test("Burger menu closes when click on user menu item",async(assert)=>{userMenuRegistry.add("ring_item",function(){return{type:"item",id:"ring",description:"Ring",callback:()=>{assert.step("callback ring_item");},sequence:5,};});await createWebClient({serverData});assert.containsNone(document.body,".o_burger_menu");await click(document.body,".o_mobile_menu_toggle");assert.containsOnce(document.body,".o_burger_menu");await click(document.body,".o_burger_menu .o_user_menu_mobile a");assert.containsNone(document.body,".o_burger_menu");assert.verifySteps(["callback ring_item"]);});});return __exports;});;
+
+/* /web/static/tests/mobile/webclient/burger_menu/burger_user_menu_tests.js */
+odoo.define('@web/../tests/mobile/webclient/burger_menu/burger_user_menu_tests',['@web/core/orm_service','@web/core/registry','@web/core/hotkeys/hotkey_service','@web/webclient/burger_menu/burger_user_menu/burger_user_menu','@web/webclient/user_menu/user_menu_items','@web/core/user_service','@web/../tests/helpers/mock_env','@web/../tests/helpers/mock_services','@web/../tests/helpers/utils','@odoo/owl'],function(require){'use strict';let __exports={};QUnit.module("web",function(){const{ormService}=require("@web/core/orm_service");const{registry}=require("@web/core/registry");const{hotkeyService}=require("@web/core/hotkeys/hotkey_service");const{BurgerUserMenu}=require("@web/webclient/burger_menu/burger_user_menu/burger_user_menu");const{preferencesItem}=require("@web/webclient/user_menu/user_menu_items");const{userService}=require("@web/core/user_service");const{makeTestEnv}=require("@web/../tests/helpers/mock_env");const{makeFakeLocalizationService}=require("@web/../tests/helpers/mock_services");const{click,getFixture,mount}=require("@web/../tests/helpers/utils");const{markup}=require("@odoo/owl");const serviceRegistry=registry.category("services");const userMenuRegistry=registry.category("user_menuitems");let target;let env;QUnit.module("BurgerUserMenu",{async beforeEach(){serviceRegistry.add("user",userService);serviceRegistry.add("hotkey",hotkeyService);target=getFixture();},});QUnit.test("can be rendered",async(assert)=>{env=await makeTestEnv();userMenuRegistry.add("bad_item",function(){return{type:"item",id:"bad",description:"Bad",callback:()=>{assert.step("callback bad_item");},sequence:10,};});userMenuRegistry.add("ring_item",function(){return{type:"item",id:"ring",description:"Ring",callback:()=>{assert.step("callback ring_item");},sequence:5,};});userMenuRegistry.add("frodo_item",function(){return{type:"switch",id:"frodo",description:"Frodo",callback:()=>{assert.step("callback frodo_item");},sequence:11,};});userMenuRegistry.add("separator",function(){return{type:"separator",sequence:15,};});userMenuRegistry.add("invisible_item",function(){return{type:"item",id:"hidden",description:"Hidden Power",callback:()=>{},sequence:5,hide:true,};});userMenuRegistry.add("eye_item",function(){return{type:"item",id:"eye",description:"Eye",callback:()=>{assert.step("callback eye_item");},};});userMenuRegistry.add("html_item",function(){return{type:"item",id:"html",description:markup(`<div>HTML<i class="fa fa-check px-2"></i></div>`),callback:()=>{assert.step("callback html_item");},sequence:20,};});await mount(BurgerUserMenu,target,{env});assert.containsN(target,".o_user_menu_mobile .dropdown-item",5);assert.containsOnce(target,".o_user_menu_mobile .dropdown-item input.form-check-input");assert.containsOnce(target,"div.dropdown-divider");const children=[...(target.querySelector(".o_user_menu_mobile").children||[])];assert.deepEqual(children.map((el)=>el.tagName),["A","A","DIV","DIV","A","A"]);const items=[...target.querySelectorAll(".dropdown-item")]||[];assert.deepEqual(items.map((el)=>el.textContent),["Ring","Bad","Frodo","HTML","Eye"]);for(const item of items){click(item);}
+assert.verifySteps(["callback ring_item","callback bad_item","callback frodo_item","callback html_item","callback eye_item",]);});QUnit.test("can execute the callback of settings",async(assert)=>{const mockRPC=(route)=>{if(route==="/web/dataset/call_kw/res.users/action_get"){return Promise.resolve({name:"Change My Preferences",res_id:0,});}};const testConfig={mockRPC};serviceRegistry.add("localization",makeFakeLocalizationService());serviceRegistry.add("orm",ormService);const fakeActionService={name:"action",start(){return{doAction(actionId){assert.step(""+actionId.res_id);assert.step(actionId.name);return Promise.resolve(true);},};},};serviceRegistry.add("action",fakeActionService,{force:true});env=await makeTestEnv(testConfig);userMenuRegistry.add("profile",preferencesItem);await mount(BurgerUserMenu,target,{env});assert.containsOnce(target,".o_user_menu_mobile .dropdown-item");const item=target.querySelector(".o_user_menu_mobile .dropdown-item");assert.strictEqual(item.textContent,"Preferences");await click(item);assert.verifySteps(["7","Change My Preferences"]);});});return __exports;});;
+
+/* /web/static/tests/mobile/webclient/settings_form_view_tests.js */
+odoo.define('@web/../tests/mobile/webclient/settings_form_view_tests',['@web/../tests/helpers/utils','@web/../tests/views/helpers','@web/../tests/mobile/helpers','@web/core/registry','@odoo/owl'],function(require){'use strict';let __exports={};QUnit.module("web",function(){const{getFixture,mockTimeout,nextTick}=require("@web/../tests/helpers/utils");const{makeView,setupViewRegistries}=require("@web/../tests/views/helpers");const{swipeLeft,swipeRight}=require("@web/../tests/mobile/helpers");const{registry}=require("@web/core/registry");const{EventBus}=require("@odoo/owl");let serverData,target;const serviceRegistry=registry.category("services");QUnit.module("Mobile SettingsFormView",(hooks)=>{hooks.beforeEach(()=>{serverData={models:{project:{fields:{foo:{string:"Foo",type:"boolean"},bar:{string:"Bar",type:"boolean"},},},},};target=getFixture();setupViewRegistries();});QUnit.module("BaseSettings Mobile");QUnit.test("swipe settings in mobile [REQUIRE TOUCHEVENT]",async function(assert){const{execRegisteredTimeouts}=mockTimeout();serviceRegistry.add("ui",{start(env){Object.defineProperty(env,"isSmall",{value:true,});return{bus:new EventBus(),size:0,isSmall:true,};},});await makeView({type:"form",resModel:"project",serverData,arch:`
+                <form string="Settings" class="oe_form_configuration o_base_settings" js_class="base_settings">
+                    <app string="CRM" name="crm">
+                        <block>
+                            <setting help="this is bar">
+                                <field name="bar"/>
+                            </setting>
+                        </block>
+                    </app>
+                    <app string="Project" name="project">
+                        <block>
+                            <setting help="this is foo">
+                                <field name="foo"/>
+                            </setting>
+                        </block>
+                    </app>
+                </form>`,});await swipeLeft(target,".settings");execRegisteredTimeouts();await nextTick();assert.hasAttrValue(target.querySelector(".selected"),"data-key","project","current setting should be project");await swipeRight(target,".settings");execRegisteredTimeouts();await nextTick();assert.hasAttrValue(target.querySelector(".selected"),"data-key","crm","current setting should be crm");});QUnit.test("swipe settings on larger screen sizes has no effect [REQUIRE TOUCHEVENT]",async function(assert){const{execRegisteredTimeouts}=mockTimeout();serviceRegistry.add("ui",{start(env){Object.defineProperty(env,"isSmall",{value:false,});return{bus:new EventBus(),size:9,isSmall:false,};},});await makeView({type:"form",resModel:"project",serverData,arch:`
+                <form string="Settings" class="oe_form_configuration o_base_settings" js_class="base_settings">
+                    <app string="CRM" name="crm">
+                        <block>
+                            <setting help="this is bar">
+                                <field name="bar"/>
+                            </setting>
+                        </block>
+                    </app>
+                    <app string="Project" name="project">
+                        <block>
+                            <setting help="this is foo">
+                                <field name="foo"/>
+                            </setting>
+                        </block>
+                    </app>
+                </form>`,});await swipeLeft(target,".settings");execRegisteredTimeouts();await nextTick();assert.hasAttrValue(target.querySelector(".selected"),"data-key","crm","current setting should still be crm");});});});return __exports;});;
+
+/* /web/static/tests/mobile/webclient/window_action_tests.js */
+odoo.define('@web/../tests/mobile/webclient/window_action_tests',['@web/../tests/helpers/utils','@web/../tests/views/helpers','@web/../tests/webclient/helpers'],function(require){'use strict';let __exports={};QUnit.module("web",function(){const{getFixture}=require("@web/../tests/helpers/utils");const{setupViewRegistries}=require("@web/../tests/views/helpers");const{createWebClient,doAction}=require("@web/../tests/webclient/helpers");let serverData,target;QUnit.module("ActionManager",(hooks)=>{hooks.beforeEach(()=>{serverData={models:{project:{fields:{foo:{string:"Foo",type:"boolean"},},records:[{id:1,foo:true,},{id:2,foo:false,},],},},views:{"project,false,list":'<list><field name="foo"/></list>',"project,false,kanban":`
+                <kanban>
+                    <templates>
+                        <t t-name='kanban-box'>
+                            <div class='oe_kanban_card'>
+                                <field name='foo' />
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+                `,"project,false,search":"<search></search>",},};target=getFixture();setupViewRegistries();});QUnit.module("Window Actions");QUnit.test("execute a window action with mobile_view_mode",async(assert)=>{const webClient=await createWebClient({serverData});await doAction(webClient,{xml_id:"project.action",name:"Project Action",res_model:"project",type:"ir.actions.act_window",view_mode:"list,kanban",mobile_view_mode:"list",views:[[false,"kanban"],[false,"list"],],});assert.containsOnce(target,".o_list_view");});});});return __exports;});;
+
+/* /mail/static/tests/mobile/composer_tests.js */
+odoo.define('@mail/../tests/mobile/composer_tests',['@bus/../tests/helpers/mock_python_environment','@mail/../tests/helpers/test_utils','@web/../tests/helpers/utils','@web/../tests/utils','@web/core/browser/browser'],function(require){'use strict';let __exports={};QUnit.module("mail",function(){const{startServer}=require("@bus/../tests/helpers/mock_python_environment");const{start}=require("@mail/../tests/helpers/test_utils");const{triggerHotkey,patchWithCleanup}=require("@web/../tests/helpers/utils");const{contains,insertText,click}=require("@web/../tests/utils");const{browser}=require("@web/core/browser/browser");QUnit.module("mobile composer");QUnit.test('Mobile: enter key should create a newline in composer',async()=>{const pyEnv=await startServer();pyEnv["discuss.channel"].create({name:"General"});patchWithCleanup(browser.navigator,{userAgent:"Chrome/0.0.0 Android (OdooMobile; Linux; Android 13; Odoo TestSuite)",});const{openDiscuss}=await start();openDiscuss();await click(".o-mail-MessagingMenu-tab",{text:"Channel"});await click(".o-mail-NotificationItem",{text:"General"});await insertText(".o-mail-Composer-input","Test\n");triggerHotkey("Enter");await insertText(".o-mail-Composer-input","Other");await click(".o-mail-Composer-send");await contains(".o-mail-Message-body");await contains(".o-mail-Message-body:has(br)",{textContent:"TestOther"});})});return __exports;});;
+
+/* /mail/static/tests/mobile/mobile_tests.js */
+odoo.define('@mail/../tests/mobile/mobile_tests',['@bus/../tests/helpers/mock_python_environment','@mail/../tests/helpers/patch_ui_size','@mail/../tests/helpers/test_utils','@web/../tests/utils','@web/../tests/helpers/utils'],function(require){'use strict';let __exports={};QUnit.module("mail",function(){const{startServer}=require("@bus/../tests/helpers/mock_python_environment");const{patchUiSize,SIZES}=require("@mail/../tests/helpers/patch_ui_size");const{start}=require("@mail/../tests/helpers/test_utils");const{click,contains,insertText}=require("@web/../tests/utils");const{nextTick}=require("@web/../tests/helpers/utils");QUnit.module("mobile");QUnit.test("auto-select 'Inbox' when discuss had channel as active thread",async()=>{const pyEnv=await startServer();const channelId=pyEnv["discuss.channel"].create({name:"test"});patchUiSize({height:360,width:640});const{openDiscuss}=await start();openDiscuss(channelId);await contains(".o-mail-MessagingMenu-tab.text-primary.fw-bolder",{text:"Channel"});await click("button",{text:"Mailboxes"});await contains(".o-mail-MessagingMenu-tab.text-primary.fw-bolder",{text:"Mailboxes"});await contains("button.active",{text:"Inbox"});});QUnit.test("Show send button in mobile",async()=>{const pyEnv=await startServer();patchUiSize({size:SIZES.SM});pyEnv["discuss.channel"].create({name:"minecraft-wii-u"});const{openDiscuss}=await start();openDiscuss();await click("button",{text:"Channel"});await click(".o-mail-NotificationItem",{text:"minecraft-wii-u"});await nextTick();await contains(".o-mail-Composer button[aria-label='Send']");await contains(".o-mail-Composer button[aria-label='Send'] i.fa-paper-plane-o");});QUnit.test("Edit message (mobile)",async()=>{patchUiSize({size:SIZES.SM});const pyEnv=await startServer();const channelId=pyEnv["discuss.channel"].create({name:"general",channel_type:"channel",});pyEnv["mail.message"].create({author_id:pyEnv.currentPartnerId,body:"Hello world",model:"discuss.channel",res_id:channelId,message_type:"comment",});const{openDiscuss}=await start();await openDiscuss();await click("button",{text:"Channel"});await click("button",{text:"general"});await contains(".o-mail-Message");await click(".o-mail-Message [title='Expand']");await click(".o-mail-Message [title='Edit']");await contains(".o-mail-Message-editable .o-mail-Composer-input",{value:"Hello world"});await click("button",{text:"Discard editing"});await contains(".o-mail-Message-editable .o-mail-Composer",{count:0});await contains(".o-mail-Message-content",{text:"Hello world"});await click(".o-mail-Message [title='Expand']");await click(".o-mail-Message [title='Edit']");await insertText(".o-mail-Message .o-mail-Composer-input","edited message",{replace:true});await nextTick();await click(".o-mail-Message .fa-paper-plane-o");await contains(".o-mail-Message-content",{text:"edited message"});});});return __exports;});

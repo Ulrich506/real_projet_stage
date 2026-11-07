@@ -1,0 +1,35 @@
+                                                      Madagascar                                                     Registre
+                                                                                              Registre naissance - 2026 (Vol.
+                                                       Centre A                                                              1)
+                                                  Commune : Commune A                                              Feuillet : 1
+
+
+                                             ACTE DE NAISSANCE
+                                                                                                            Extrait validé : Validé
+
+N° d’acte : BROWSER-N-1
+Date de dressage : 11/05/2026 10:18:57
+
+Nom et prénoms de l’enfant : Enfant Browser
+Date et heure de naissance : 02/01/2026 à 00:00
+Lieu de naissance : Commune A
+Mère : Mere Browser
+Transcription intégrale :
+Acte de naissance isolé pour le navigateur
+
+
+
+
+Vérification d’intégrité numérique
+Empreinte SHA-256 :
+50b8085667d6034125275226b236521c782db10544d3383485e9a9f25c425b01
+Validation informatique : Officier A — 11/05/2026 10:32:25
+Officier compétent désigné : Officier A
+L’empreinte et le QR servent au contrôle d’intégrité ; ils ne constituent pas une signature
+électronique et ne se substituent pas à la signature manuscrite de l’officier compétent.
+
+
+
+
+Fait à ____________________, le ____________________                          Signature manuscrite de l’officier compétent
+

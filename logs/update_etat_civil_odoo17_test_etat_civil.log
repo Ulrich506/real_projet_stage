@@ -1,0 +1,323 @@
+2026-11-06 06:44:22,681 717312 INFO ? odoo: Odoo version 17.0 
+2026-11-06 06:44:22,682 717312 INFO ? odoo: Using configuration file at /home/ulrich/tous_les_projet/stage_l3_odoo/config/odoo17.conf 
+2026-11-06 06:44:22,683 717312 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-06 06:44:22,684 717312 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-06 06:44:22,974 717312 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-06 06:44:23,620 717312 INFO etat_civil_odoo17_test odoo.modules.loading: loading 1 modules... 
+2026-11-06 06:44:23,637 717312 INFO etat_civil_odoo17_test odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2026-11-06 06:44:23,700 717312 INFO etat_civil_odoo17_test odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-06 06:44:23,701 717312 INFO etat_civil_odoo17_test odoo.modules.loading: updating modules list 
+2026-11-06 06:44:23,705 717312 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-11-06 06:44:27,156 717312 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Gestion d’État Civil'] to user __system__ #1 via n/a 
+2026-11-06 06:44:27,157 717312 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Gestion d’État Civil'] to user __system__ #1 via n/a 
+2026-11-06 06:44:29,522 717312 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-11-06 06:44:30,601 717312 INFO etat_civil_odoo17_test odoo.modules.loading: loading 58 modules... 
+2026-11-06 06:44:31,180 717312 INFO etat_civil_odoo17_test odoo.modules.loading: Loading module etat_civil (22/58) 
+2026-11-06 06:44:31,446 717312 INFO etat_civil_odoo17_test odoo.modules.registry: module etat_civil: creating or updating database tables 
+2026-11-06 06:44:32,111 717312 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/security/security.xml 
+2026-11-06 06:44:32,836 717312 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/security/ir.model.access.csv 
+2026-11-06 06:44:33,152 717312 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/demande_guichet_sequence.xml 
+2026-11-06 06:44:33,172 717312 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/acte_sequence.xml 
+2026-11-06 06:44:33,182 717312 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/mention_sequence.xml 
+2026-11-06 06:44:33,204 717312 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/individu_views.xml 
+2026-11-06 06:44:33,301 717312 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/registre_views.xml 
+2026-11-06 06:44:33,400 717312 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/reports/actes_reports.xml 
+2026-11-06 06:44:33,651 717312 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/acte_naissance_views.xml 
+2026-11-06 06:44:33,781 717312 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/acte_mariage_views.xml 
+2026-11-06 06:44:33,938 717312 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/acte_deces_views.xml 
+2026-11-06 06:44:34,086 717312 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/mentions_marginales_views.xml 
+2026-11-06 06:44:34,188 717312 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/demandes_guichet_views.xml 
+2026-11-06 06:44:34,267 717312 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/gestion_utilisateurs_views.xml 
+2026-11-06 06:44:34,418 717312 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/registry_actions.xml 
+2026-11-06 06:44:34,503 717312 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/wizard_views.xml 
+2026-11-06 06:44:34,596 717312 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/import_export_views.xml 
+2026-11-06 06:44:34,679 717312 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/import_export_log_views.xml 
+2026-11-06 06:44:34,926 717312 INFO etat_civil_odoo17_test odoo.models.unlink: User #1 deleted ir.actions.act_window.view records with IDs: [51, 52] 
+2026-11-06 06:44:34,960 717312 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/menus.xml 
+2026-11-06 06:44:35,478 717312 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: module etat_civil: no translation for language fr_FR 
+2026-11-06 06:44:35,543 717312 INFO etat_civil_odoo17_test odoo.modules.loading: Module etat_civil loaded in 4.36s, 1421 queries (+1421 other) 
+2026-11-06 06:44:37,934 717312 INFO etat_civil_odoo17_test odoo.modules.loading: 58 modules loaded in 7.33s, 1421 queries (+1421 extra) 
+2026-11-06 06:44:39,774 717312 INFO etat_civil_odoo17_test odoo.modules.registry: verifying fields for every extended model 
+2026-11-06 06:44:42,105 717312 INFO etat_civil_odoo17_test odoo.modules.loading: Modules loaded. 
+2026-11-06 06:44:42,124 717312 INFO etat_civil_odoo17_test odoo.modules.registry: Registry loaded in 18.638s 
+2026-11-06 06:44:42,125 717312 INFO etat_civil_odoo17_test odoo.service.server: Initiating shutdown 
+2026-11-06 06:44:42,125 717312 INFO etat_civil_odoo17_test odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-06 06:44:42,129 717312 INFO etat_civil_odoo17_test odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 1 connections  
+2026-11-06 07:16:56,220 741499 INFO ? odoo: Odoo version 17.0 
+2026-11-06 07:16:56,222 741499 INFO ? odoo: Using configuration file at /home/ulrich/tous_les_projet/stage_l3_odoo/config/odoo17.conf 
+2026-11-06 07:16:56,222 741499 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-06 07:16:56,222 741499 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-06 07:16:56,678 741499 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-06 07:16:57,382 741499 INFO etat_civil_odoo17_test odoo.modules.loading: loading 1 modules... 
+2026-11-06 07:16:57,402 741499 INFO etat_civil_odoo17_test odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2026-11-06 07:16:57,533 741499 INFO etat_civil_odoo17_test odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-06 07:16:57,534 741499 INFO etat_civil_odoo17_test odoo.modules.loading: updating modules list 
+2026-11-06 07:16:57,543 741499 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-11-06 07:17:01,196 741499 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Gestion d’État Civil'] to user __system__ #1 via n/a 
+2026-11-06 07:17:01,196 741499 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Gestion d’État Civil'] to user __system__ #1 via n/a 
+2026-11-06 07:17:03,770 741499 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-11-06 07:17:04,717 741499 INFO etat_civil_odoo17_test odoo.modules.loading: loading 58 modules... 
+2026-11-06 07:17:05,493 741499 INFO etat_civil_odoo17_test odoo.modules.loading: Loading module etat_civil (22/58) 
+2026-11-06 07:17:05,801 741499 INFO etat_civil_odoo17_test odoo.modules.registry: module etat_civil: creating or updating database tables 
+2026-11-06 07:17:05,830 741499 INFO etat_civil_odoo17_test odoo.models: Prepare computation of etat.civil.individu.categorie_age 
+2026-11-06 07:17:05,831 741499 INFO etat_civil_odoo17_test odoo.models: Prepare computation of etat.civil.individu.eligible_conjoint 
+2026-11-06 07:17:06,291 741499 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/security/security.xml 
+2026-11-06 07:17:06,997 741499 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/security/ir.model.access.csv 
+2026-11-06 07:17:07,250 741499 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/demande_guichet_sequence.xml 
+2026-11-06 07:17:07,260 741499 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/acte_sequence.xml 
+2026-11-06 07:17:07,275 741499 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/mention_sequence.xml 
+2026-11-06 07:17:07,302 741499 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/age_category_cron.xml 
+2026-11-06 07:17:07,337 741499 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/individu_views.xml 
+2026-11-06 07:17:07,551 741499 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/registre_views.xml 
+2026-11-06 07:17:07,660 741499 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/reports/actes_reports.xml 
+2026-11-06 07:17:08,061 741499 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/acte_naissance_views.xml 
+2026-11-06 07:17:08,238 741499 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/acte_mariage_views.xml 
+2026-11-06 07:17:08,490 741499 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/acte_deces_views.xml 
+2026-11-06 07:17:08,637 741499 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/mentions_marginales_views.xml 
+2026-11-06 07:17:08,725 741499 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/demandes_guichet_views.xml 
+2026-11-06 07:17:08,795 741499 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/gestion_utilisateurs_views.xml 
+2026-11-06 07:17:08,949 741499 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/registry_actions.xml 
+2026-11-06 07:17:09,020 741499 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/wizard_views.xml 
+2026-11-06 07:17:09,102 741499 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/import_export_views.xml 
+2026-11-06 07:17:09,194 741499 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/import_export_log_views.xml 
+2026-11-06 07:17:09,310 741499 INFO etat_civil_odoo17_test odoo.models.unlink: User #1 deleted ir.actions.act_window.view records with IDs: [81, 82] 
+2026-11-06 07:17:09,349 741499 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/menus.xml 
+2026-11-06 07:17:09,746 741499 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: module etat_civil: no translation for language fr_FR 
+2026-11-06 07:17:09,795 741499 INFO etat_civil_odoo17_test odoo.modules.loading: Module etat_civil loaded in 4.30s, 1425 queries (+1425 other) 
+2026-11-06 07:17:11,660 741499 INFO etat_civil_odoo17_test odoo.modules.loading: 58 modules loaded in 6.94s, 1425 queries (+1425 extra) 
+2026-11-06 07:17:14,689 741499 INFO etat_civil_odoo17_test odoo.modules.registry: verifying fields for every extended model 
+2026-11-06 07:17:16,989 741499 INFO etat_civil_odoo17_test odoo.modules.loading: Modules loaded. 
+2026-11-06 07:17:17,017 741499 INFO etat_civil_odoo17_test odoo.modules.registry: Registry loaded in 19.685s 
+2026-11-06 07:17:17,018 741499 INFO etat_civil_odoo17_test odoo.service.server: Initiating shutdown 
+2026-11-06 07:17:17,018 741499 INFO etat_civil_odoo17_test odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-06 07:17:17,020 741499 INFO etat_civil_odoo17_test odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 1 connections  
+2026-11-06 09:00:38,052 800528 INFO ? odoo: Odoo version 17.0 
+2026-11-06 09:00:38,057 800528 INFO ? odoo: Using configuration file at /home/ulrich/tous_les_projet/stage_l3_odoo/config/odoo17.conf 
+2026-11-06 09:00:38,059 800528 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-06 09:00:38,062 800528 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-06 09:00:38,330 800528 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-06 09:00:38,876 800528 INFO etat_civil_odoo17_test odoo.modules.loading: loading 1 modules... 
+2026-11-06 09:00:38,912 800528 INFO etat_civil_odoo17_test odoo.modules.loading: 1 modules loaded in 0.03s, 0 queries (+0 extra) 
+2026-11-06 09:00:38,982 800528 INFO etat_civil_odoo17_test odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-06 09:00:38,983 800528 INFO etat_civil_odoo17_test odoo.modules.loading: updating modules list 
+2026-11-06 09:00:38,991 800528 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-11-06 09:00:42,439 800528 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Gestion d’État Civil'] to user __system__ #1 via n/a 
+2026-11-06 09:00:42,440 800528 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Gestion d’État Civil'] to user __system__ #1 via n/a 
+2026-11-06 09:00:45,295 800528 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-11-06 09:00:46,457 800528 INFO etat_civil_odoo17_test odoo.modules.loading: loading 58 modules... 
+2026-11-06 09:00:47,524 800528 INFO etat_civil_odoo17_test odoo.modules.loading: Loading module etat_civil (22/58) 
+2026-11-06 09:00:48,021 800528 INFO etat_civil_odoo17_test odoo.modules.registry: module etat_civil: creating or updating database tables 
+2026-11-06 09:00:48,960 800528 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/security/security.xml 
+2026-11-06 09:00:50,493 800528 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/security/ir.model.access.csv 
+2026-11-06 09:00:50,974 800528 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/demande_guichet_sequence.xml 
+2026-11-06 09:00:50,985 800528 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/acte_sequence.xml 
+2026-11-06 09:00:50,997 800528 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/mention_sequence.xml 
+2026-11-06 09:00:51,022 800528 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/age_category_cron.xml 
+2026-11-06 09:00:51,055 800528 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/individu_views.xml 
+2026-11-06 09:00:51,267 800528 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/registre_views.xml 
+2026-11-06 09:00:51,495 800528 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/reports/actes_reports.xml 
+2026-11-06 09:00:51,860 800528 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/acte_naissance_views.xml 
+2026-11-06 09:00:52,079 800528 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/acte_mariage_views.xml 
+2026-11-06 09:00:52,217 800528 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/acte_deces_views.xml 
+2026-11-06 09:00:52,381 800528 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/mentions_marginales_views.xml 
+2026-11-06 09:00:52,494 800528 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/demandes_guichet_views.xml 
+2026-11-06 09:00:52,582 800528 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/gestion_utilisateurs_views.xml 
+2026-11-06 09:00:52,773 800528 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/registry_actions.xml 
+2026-11-06 09:00:52,874 800528 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/wizard_views.xml 
+2026-11-06 09:00:52,968 800528 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/import_export_views.xml 
+2026-11-06 09:00:53,059 800528 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/import_export_log_views.xml 
+2026-11-06 09:00:53,215 800528 INFO etat_civil_odoo17_test odoo.models.unlink: User #1 deleted ir.actions.act_window.view records with IDs: [83, 84] 
+2026-11-06 09:00:53,232 800528 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/menus.xml 
+2026-11-06 09:00:53,849 800528 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: module etat_civil: no translation for language fr_FR 
+2026-11-06 09:00:54,055 800528 INFO etat_civil_odoo17_test odoo.modules.loading: Module etat_civil loaded in 6.53s, 1449 queries (+1449 other) 
+2026-11-06 09:00:56,133 800528 INFO etat_civil_odoo17_test odoo.modules.loading: 58 modules loaded in 9.68s, 1449 queries (+1449 extra) 
+2026-11-06 09:00:58,178 800528 INFO etat_civil_odoo17_test odoo.modules.registry: verifying fields for every extended model 
+2026-11-06 09:01:01,001 800528 INFO etat_civil_odoo17_test odoo.modules.loading: Modules loaded. 
+2026-11-06 09:01:01,054 800528 INFO etat_civil_odoo17_test odoo.modules.registry: Registry loaded in 22.290s 
+2026-11-06 09:01:01,054 800528 INFO etat_civil_odoo17_test odoo.service.server: Initiating shutdown 
+2026-11-06 09:01:01,054 800528 INFO etat_civil_odoo17_test odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-06 09:01:01,056 800528 INFO etat_civil_odoo17_test odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 1 connections  
+2026-11-06 09:26:00,016 820242 INFO ? odoo: Odoo version 17.0 
+2026-11-06 09:26:00,016 820242 INFO ? odoo: Using configuration file at /home/ulrich/tous_les_projet/stage_l3_odoo/config/odoo17.conf 
+2026-11-06 09:26:00,017 820242 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-06 09:26:00,017 820242 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-06 09:26:00,263 820242 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-06 09:26:00,735 820242 INFO etat_civil_odoo17_test odoo.modules.loading: loading 1 modules... 
+2026-11-06 09:26:00,750 820242 INFO etat_civil_odoo17_test odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-06 09:26:00,826 820242 INFO etat_civil_odoo17_test odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-06 09:26:00,828 820242 INFO etat_civil_odoo17_test odoo.modules.loading: updating modules list 
+2026-11-06 09:26:00,833 820242 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-11-06 09:26:03,277 820242 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Gestion d’État Civil'] to user __system__ #1 via n/a 
+2026-11-06 09:26:03,278 820242 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Gestion d’État Civil'] to user __system__ #1 via n/a 
+2026-11-06 09:26:05,453 820242 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-11-06 09:26:07,537 820242 INFO etat_civil_odoo17_test odoo.modules.loading: loading 58 modules... 
+2026-11-06 09:26:08,247 820242 INFO etat_civil_odoo17_test odoo.modules.loading: Loading module etat_civil (22/58) 
+2026-11-06 09:26:08,747 820242 INFO etat_civil_odoo17_test odoo.modules.registry: module etat_civil: creating or updating database tables 
+2026-11-06 09:26:09,535 820242 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/security/security.xml 
+2026-11-06 09:26:10,382 820242 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/security/ir.model.access.csv 
+2026-11-06 09:26:10,762 820242 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/demande_guichet_sequence.xml 
+2026-11-06 09:26:10,775 820242 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/acte_sequence.xml 
+2026-11-06 09:26:10,787 820242 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/mention_sequence.xml 
+2026-11-06 09:26:10,822 820242 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/age_category_cron.xml 
+2026-11-06 09:26:10,857 820242 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/individu_views.xml 
+2026-11-06 09:26:10,999 820242 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/registre_views.xml 
+2026-11-06 09:26:11,101 820242 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/reports/actes_reports.xml 
+2026-11-06 09:26:11,403 820242 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/acte_naissance_views.xml 
+2026-11-06 09:26:11,560 820242 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/acte_mariage_views.xml 
+2026-11-06 09:26:11,764 820242 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/acte_deces_views.xml 
+2026-11-06 09:26:12,064 820242 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/mentions_marginales_views.xml 
+2026-11-06 09:26:12,154 820242 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/demandes_guichet_views.xml 
+2026-11-06 09:26:12,239 820242 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/gestion_utilisateurs_views.xml 
+2026-11-06 09:26:12,599 820242 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/registry_actions.xml 
+2026-11-06 09:26:13,656 820242 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/wizard_views.xml 
+2026-11-06 09:26:14,257 820242 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/import_export_views.xml 
+2026-11-06 09:26:14,362 820242 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/import_export_log_views.xml 
+2026-11-06 09:26:14,598 820242 INFO etat_civil_odoo17_test odoo.models.unlink: User #1 deleted ir.actions.act_window.view records with IDs: [85, 86] 
+2026-11-06 09:26:14,618 820242 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/menus.xml 
+2026-11-06 09:26:15,498 820242 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: module etat_civil: no translation for language fr_FR 
+2026-11-06 09:26:15,630 820242 INFO etat_civil_odoo17_test odoo.modules.loading: Module etat_civil loaded in 7.38s, 1432 queries (+1432 other) 
+2026-11-06 09:26:17,309 820242 INFO etat_civil_odoo17_test odoo.modules.loading: 58 modules loaded in 9.77s, 1432 queries (+1432 extra) 
+2026-11-06 09:26:19,478 820242 INFO etat_civil_odoo17_test odoo.modules.registry: verifying fields for every extended model 
+2026-11-06 09:26:23,427 820242 INFO etat_civil_odoo17_test odoo.modules.loading: Modules loaded. 
+2026-11-06 09:26:23,455 820242 INFO etat_civil_odoo17_test odoo.modules.registry: Registry loaded in 22.763s 
+2026-11-06 09:26:23,455 820242 INFO etat_civil_odoo17_test odoo.service.server: Initiating shutdown 
+2026-11-06 09:26:23,455 820242 INFO etat_civil_odoo17_test odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-06 09:26:23,471 820242 INFO etat_civil_odoo17_test odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 1 connections  
+2026-11-06 09:35:15,415 828921 INFO ? odoo: Odoo version 17.0 
+2026-11-06 09:35:15,416 828921 INFO ? odoo: Using configuration file at /home/ulrich/tous_les_projet/stage_l3_odoo/config/odoo17.conf 
+2026-11-06 09:35:15,416 828921 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-06 09:35:15,416 828921 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-06 09:35:15,643 828921 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-06 09:35:16,126 828921 INFO etat_civil_odoo17_test odoo.modules.loading: loading 1 modules... 
+2026-11-06 09:35:16,144 828921 INFO etat_civil_odoo17_test odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2026-11-06 09:35:16,225 828921 INFO etat_civil_odoo17_test odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-06 09:35:16,226 828921 INFO etat_civil_odoo17_test odoo.modules.loading: updating modules list 
+2026-11-06 09:35:16,232 828921 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-11-06 09:35:19,705 828921 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Gestion d’État Civil'] to user __system__ #1 via n/a 
+2026-11-06 09:35:19,706 828921 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Gestion d’État Civil'] to user __system__ #1 via n/a 
+2026-11-06 09:35:23,079 828921 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-11-06 09:35:24,523 828921 INFO etat_civil_odoo17_test odoo.modules.loading: loading 58 modules... 
+2026-11-06 09:35:25,625 828921 INFO etat_civil_odoo17_test odoo.modules.loading: Loading module etat_civil (22/58) 
+2026-11-06 09:35:26,650 828921 INFO etat_civil_odoo17_test odoo.modules.registry: module etat_civil: creating or updating database tables 
+2026-11-06 09:35:27,051 828921 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/security/security.xml 
+2026-11-06 09:35:28,249 828921 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/security/ir.model.access.csv 
+2026-11-06 09:35:28,573 828921 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/demande_guichet_sequence.xml 
+2026-11-06 09:35:28,677 828921 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/acte_sequence.xml 
+2026-11-06 09:35:28,724 828921 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/mention_sequence.xml 
+2026-11-06 09:35:28,746 828921 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/age_category_cron.xml 
+2026-11-06 09:35:28,809 828921 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/individu_views.xml 
+2026-11-06 09:35:29,154 828921 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/registre_views.xml 
+2026-11-06 09:35:29,448 828921 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/reports/actes_reports.xml 
+2026-11-06 09:35:29,716 828921 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/acte_naissance_views.xml 
+2026-11-06 09:35:29,868 828921 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/acte_mariage_views.xml 
+2026-11-06 09:35:30,025 828921 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/acte_deces_views.xml 
+2026-11-06 09:35:30,197 828921 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/mentions_marginales_views.xml 
+2026-11-06 09:35:30,320 828921 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/demandes_guichet_views.xml 
+2026-11-06 09:35:30,389 828921 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/gestion_utilisateurs_views.xml 
+2026-11-06 09:35:30,549 828921 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/registry_actions.xml 
+2026-11-06 09:35:30,645 828921 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/wizard_views.xml 
+2026-11-06 09:35:30,735 828921 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/import_export_views.xml 
+2026-11-06 09:35:30,804 828921 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/import_export_log_views.xml 
+2026-11-06 09:35:30,913 828921 INFO etat_civil_odoo17_test odoo.models.unlink: User #1 deleted ir.actions.act_window.view records with IDs: [89, 90] 
+2026-11-06 09:35:30,990 828921 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/menus.xml 
+2026-11-06 09:35:31,621 828921 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: module etat_civil: no translation for language fr_FR 
+2026-11-06 09:35:31,770 828921 INFO etat_civil_odoo17_test odoo.modules.loading: Module etat_civil loaded in 6.15s, 1432 queries (+1432 other) 
+2026-11-06 09:35:33,151 828921 INFO etat_civil_odoo17_test odoo.modules.loading: 58 modules loaded in 8.63s, 1432 queries (+1432 extra) 
+2026-11-06 09:35:35,545 828921 INFO etat_civil_odoo17_test odoo.modules.registry: verifying fields for every extended model 
+2026-11-06 09:35:37,949 828921 INFO etat_civil_odoo17_test odoo.modules.loading: Modules loaded. 
+2026-11-06 09:35:38,006 828921 INFO etat_civil_odoo17_test odoo.modules.registry: Registry loaded in 21.941s 
+2026-11-06 09:35:38,006 828921 INFO etat_civil_odoo17_test odoo.service.server: Initiating shutdown 
+2026-11-06 09:35:38,006 828921 INFO etat_civil_odoo17_test odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-06 09:35:38,027 828921 INFO etat_civil_odoo17_test odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 1 connections  
+2026-11-06 09:39:58,971 832977 INFO ? odoo: Odoo version 17.0 
+2026-11-06 09:39:58,972 832977 INFO ? odoo: Using configuration file at /home/ulrich/tous_les_projet/stage_l3_odoo/config/odoo17.conf 
+2026-11-06 09:39:58,972 832977 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-06 09:39:58,973 832977 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-06 09:39:59,389 832977 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-06 09:40:00,081 832977 INFO etat_civil_odoo17_test odoo.modules.loading: loading 1 modules... 
+2026-11-06 09:40:00,111 832977 INFO etat_civil_odoo17_test odoo.modules.loading: 1 modules loaded in 0.03s, 0 queries (+0 extra) 
+2026-11-06 09:40:00,178 832977 INFO etat_civil_odoo17_test odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-06 09:40:00,179 832977 INFO etat_civil_odoo17_test odoo.modules.loading: updating modules list 
+2026-11-06 09:40:00,184 832977 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-11-06 09:40:02,471 832977 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Gestion d’État Civil'] to user __system__ #1 via n/a 
+2026-11-06 09:40:02,472 832977 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Gestion d’État Civil'] to user __system__ #1 via n/a 
+2026-11-06 09:40:04,209 832977 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-11-06 09:40:04,992 832977 INFO etat_civil_odoo17_test odoo.modules.loading: loading 58 modules... 
+2026-11-06 09:40:05,530 832977 INFO etat_civil_odoo17_test odoo.modules.loading: Loading module etat_civil (22/58) 
+2026-11-06 09:40:05,766 832977 INFO etat_civil_odoo17_test odoo.modules.registry: module etat_civil: creating or updating database tables 
+2026-11-06 09:40:06,090 832977 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/security/security.xml 
+2026-11-06 09:40:06,688 832977 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/security/ir.model.access.csv 
+2026-11-06 09:40:06,978 832977 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/demande_guichet_sequence.xml 
+2026-11-06 09:40:06,989 832977 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/acte_sequence.xml 
+2026-11-06 09:40:06,999 832977 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/mention_sequence.xml 
+2026-11-06 09:40:07,020 832977 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/age_category_cron.xml 
+2026-11-06 09:40:07,054 832977 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/individu_views.xml 
+2026-11-06 09:40:07,154 832977 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/registre_views.xml 
+2026-11-06 09:40:07,304 832977 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/reports/actes_reports.xml 
+2026-11-06 09:40:07,776 832977 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/acte_naissance_views.xml 
+2026-11-06 09:40:08,132 832977 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/acte_mariage_views.xml 
+2026-11-06 09:40:08,313 832977 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/acte_deces_views.xml 
+2026-11-06 09:40:08,459 832977 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/mentions_marginales_views.xml 
+2026-11-06 09:40:08,559 832977 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/demandes_guichet_views.xml 
+2026-11-06 09:40:08,639 832977 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/gestion_utilisateurs_views.xml 
+2026-11-06 09:40:08,774 832977 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/registry_actions.xml 
+2026-11-06 09:40:08,854 832977 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/wizard_views.xml 
+2026-11-06 09:40:08,944 832977 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/import_export_views.xml 
+2026-11-06 09:40:09,040 832977 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/import_export_log_views.xml 
+2026-11-06 09:40:09,156 832977 INFO etat_civil_odoo17_test odoo.models.unlink: User #1 deleted ir.actions.act_window.view records with IDs: [93, 94] 
+2026-11-06 09:40:09,175 832977 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/menus.xml 
+2026-11-06 09:40:09,707 832977 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: module etat_civil: no translation for language fr_FR 
+2026-11-06 09:40:09,764 832977 INFO etat_civil_odoo17_test odoo.modules.loading: Module etat_civil loaded in 4.23s, 1432 queries (+1432 other) 
+2026-11-06 09:40:11,269 832977 INFO etat_civil_odoo17_test odoo.modules.loading: 58 modules loaded in 6.28s, 1432 queries (+1432 extra) 
+2026-11-06 09:40:13,102 832977 INFO etat_civil_odoo17_test odoo.modules.registry: verifying fields for every extended model 
+2026-11-06 09:40:15,803 832977 INFO etat_civil_odoo17_test odoo.modules.loading: Modules loaded. 
+2026-11-06 09:40:16,181 832977 INFO etat_civil_odoo17_test odoo.modules.registry: Registry loaded in 16.155s 
+2026-11-06 09:40:16,182 832977 INFO etat_civil_odoo17_test odoo.service.server: Initiating shutdown 
+2026-11-06 09:40:16,182 832977 INFO etat_civil_odoo17_test odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-06 09:40:16,184 832977 INFO etat_civil_odoo17_test odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 1 connections  
+2026-11-06 09:41:31,360 835376 INFO ? odoo: Odoo version 17.0 
+2026-11-06 09:41:31,361 835376 INFO ? odoo: Using configuration file at /home/ulrich/tous_les_projet/stage_l3_odoo/config/odoo17.conf 
+2026-11-06 09:41:31,361 835376 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-06 09:41:31,361 835376 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-06 09:41:31,630 835376 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-06 09:41:32,122 835376 INFO etat_civil_odoo17_test odoo.modules.loading: loading 1 modules... 
+2026-11-06 09:41:32,207 835376 INFO etat_civil_odoo17_test odoo.modules.loading: 1 modules loaded in 0.08s, 0 queries (+0 extra) 
+2026-11-06 09:41:32,417 835376 INFO etat_civil_odoo17_test odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-06 09:41:32,418 835376 INFO etat_civil_odoo17_test odoo.modules.loading: updating modules list 
+2026-11-06 09:41:32,422 835376 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-11-06 09:41:34,460 835376 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Gestion d’État Civil'] to user __system__ #1 via n/a 
+2026-11-06 09:41:34,461 835376 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Gestion d’État Civil'] to user __system__ #1 via n/a 
+2026-11-06 09:41:36,224 835376 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-11-06 09:41:37,163 835376 INFO etat_civil_odoo17_test odoo.modules.loading: loading 58 modules... 
+2026-11-06 09:41:37,686 835376 INFO etat_civil_odoo17_test odoo.modules.loading: Loading module etat_civil (22/58) 
+2026-11-06 09:41:38,173 835376 INFO etat_civil_odoo17_test odoo.modules.registry: module etat_civil: creating or updating database tables 
+2026-11-06 09:41:38,555 835376 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/security/security.xml 
+2026-11-06 09:41:39,259 835376 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/security/ir.model.access.csv 
+2026-11-06 09:41:39,517 835376 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/demande_guichet_sequence.xml 
+2026-11-06 09:41:39,525 835376 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/acte_sequence.xml 
+2026-11-06 09:41:39,534 835376 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/mention_sequence.xml 
+2026-11-06 09:41:39,552 835376 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/data/age_category_cron.xml 
+2026-11-06 09:41:39,587 835376 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/individu_views.xml 
+2026-11-06 09:41:39,689 835376 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/registre_views.xml 
+2026-11-06 09:41:39,778 835376 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/reports/actes_reports.xml 
+2026-11-06 09:41:40,044 835376 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/acte_naissance_views.xml 
+2026-11-06 09:41:40,172 835376 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/acte_mariage_views.xml 
+2026-11-06 09:41:40,296 835376 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/acte_deces_views.xml 
+2026-11-06 09:41:40,421 835376 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/mentions_marginales_views.xml 
+2026-11-06 09:41:40,508 835376 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/demandes_guichet_views.xml 
+2026-11-06 09:41:40,572 835376 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/gestion_utilisateurs_views.xml 
+2026-11-06 09:41:40,718 835376 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/registry_actions.xml 
+2026-11-06 09:41:40,813 835376 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/wizard_views.xml 
+2026-11-06 09:41:40,946 835376 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/import_export_views.xml 
+2026-11-06 09:41:41,088 835376 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/import_export_log_views.xml 
+2026-11-06 09:41:41,209 835376 INFO etat_civil_odoo17_test odoo.models.unlink: User #1 deleted ir.actions.act_window.view records with IDs: [95, 96] 
+2026-11-06 09:41:41,223 835376 INFO etat_civil_odoo17_test odoo.modules.loading: loading etat_civil/views/menus.xml 
+2026-11-06 09:41:41,619 835376 INFO etat_civil_odoo17_test odoo.addons.base.models.ir_module: module etat_civil: no translation for language fr_FR 
+2026-11-06 09:41:41,672 835376 INFO etat_civil_odoo17_test odoo.modules.loading: Module etat_civil loaded in 3.99s, 1432 queries (+1432 other) 
+2026-11-06 09:41:42,760 835376 INFO etat_civil_odoo17_test odoo.modules.loading: 58 modules loaded in 5.60s, 1432 queries (+1432 extra) 
+2026-11-06 09:41:43,997 835376 INFO etat_civil_odoo17_test odoo.modules.registry: verifying fields for every extended model 
+2026-11-06 09:41:45,872 835376 INFO etat_civil_odoo17_test odoo.modules.loading: Modules loaded. 
+2026-11-06 09:41:45,941 835376 INFO etat_civil_odoo17_test odoo.modules.registry: Registry loaded in 13.888s 
+2026-11-06 09:41:45,944 835376 INFO etat_civil_odoo17_test odoo.service.server: Initiating shutdown 
+2026-11-06 09:41:45,945 835376 INFO etat_civil_odoo17_test odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-06 09:41:45,948 835376 INFO etat_civil_odoo17_test odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 1 connections  

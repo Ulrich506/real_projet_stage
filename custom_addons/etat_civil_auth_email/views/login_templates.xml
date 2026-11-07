@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="login_email_input" inherit_id="web.login" name="Email login field">
+        <xpath expr="//input[@name='login']" position="attributes">
+            <attribute name="type">email</attribute>
+            <attribute name="placeholder">Adresse e-mail</attribute>
+            <attribute name="autocomplete">username</attribute>
+            <attribute name="autocapitalize">off</attribute>
+            <attribute name="spellcheck">false</attribute>
+        </xpath>
+        <xpath expr="//label[@for='login']" position="replace">
+            <label for="login" class="form-label">Adresse e-mail</label>
+        </xpath>
+    </template>
+</odoo>
+

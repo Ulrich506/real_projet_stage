@@ -1,0 +1,315 @@
+2026-11-05 16:48:36,768 518511 INFO ? odoo: Odoo version 17.0 
+2026-11-05 16:48:36,769 518511 INFO ? odoo: Using configuration file at /tmp/etat_civil_dev_latest_server_20261105.conf 
+2026-11-05 16:48:36,769 518511 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/implementation_odoo17_dev/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 16:48:36,769 518511 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 16:48:36,916 518511 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 16:48:37,169 518511 INFO ? odoo.service.server: HTTP service (werkzeug) running on 127.0.0.1:18181 
+2026-11-05 16:48:37,200 518511 INFO etat_civil_dev_latest_20261105 odoo.modules.loading: loading 1 modules... 
+2026-11-05 16:48:37,210 518511 INFO etat_civil_dev_latest_20261105 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-05 16:48:37,236 518511 INFO etat_civil_dev_latest_20261105 odoo.modules.loading: loading 46 modules... 
+2026-11-05 16:48:38,080 518511 INFO etat_civil_dev_latest_20261105 odoo.modules.loading: 46 modules loaded in 0.84s, 0 queries (+0 extra) 
+2026-11-05 16:48:38,278 518511 INFO etat_civil_dev_latest_20261105 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 16:48:38,283 518511 INFO etat_civil_dev_latest_20261105 odoo.modules.loading: Modules loaded. 
+2026-11-05 16:48:38,290 518511 INFO etat_civil_dev_latest_20261105 odoo.modules.registry: Registry loaded in 1.121s 
+2026-11-05 16:48:38,291 518511 INFO etat_civil_dev_latest_20261105 odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 1 connections  
+2026-11-05 16:48:38,300 518544 INFO etat_civil_dev_latest_20261105 odoo.service.server: Worker WorkerHTTP (518544) alive 
+2026-11-05 16:48:38,308 518546 INFO etat_civil_dev_latest_20261105 odoo.service.server: Worker WorkerHTTP (518546) alive 
+2026-11-05 16:48:39,523 518547 INFO ? odoo: Odoo version 17.0 
+2026-11-05 16:48:39,523 518547 INFO ? odoo: Using configuration file at /tmp/etat_civil_dev_latest_server_20261105.conf 
+2026-11-05 16:48:39,523 518547 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/implementation_odoo17_dev/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 16:48:39,524 518547 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 16:48:39,686 518547 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 16:48:39,979 518547 INFO etat_civil_dev_latest_20261105 odoo.modules.loading: loading 1 modules... 
+2026-11-05 16:48:39,991 518547 INFO etat_civil_dev_latest_20261105 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-05 16:48:40,015 518547 INFO etat_civil_dev_latest_20261105 odoo.modules.loading: loading 46 modules... 
+2026-11-05 16:48:40,972 518547 INFO etat_civil_dev_latest_20261105 odoo.modules.loading: 46 modules loaded in 0.96s, 0 queries (+0 extra) 
+2026-11-05 16:48:41,189 518547 INFO etat_civil_dev_latest_20261105 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 16:48:41,196 518547 INFO etat_civil_dev_latest_20261105 odoo.modules.loading: Modules loaded. 
+2026-11-05 16:48:41,204 518547 INFO etat_civil_dev_latest_20261105 odoo.modules.registry: Registry loaded in 1.253s 
+2026-11-05 16:48:41,208 518547 INFO etat_civil_dev_latest_20261105 odoo.service.server: Evented Service (longpolling) running on 127.0.0.1:18182 
+2026-11-05 16:53:11,270 518544 INFO etat_civil_dev_latest_20261105 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 16:53:11,591 518544 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:53:11] "GET /web/login HTTP/1.1" 200 - 60 0.059 0.304
+2026-11-05 16:53:11,630 518544 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:53:11] "GET /api/v1/health HTTP/1.1" 200 - 2 0.003 0.019
+2026-11-05 16:53:12,687 518546 INFO etat_civil_dev_latest_20261105 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 16:53:13,078 518546 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:53:13] "GET /web/login HTTP/1.1" 200 - 60 0.060 0.401
+2026-11-05 16:53:13,460 518544 INFO ? werkzeug: 127.0.0.1 - - [05/Nov/2026 16:53:13] "GET /web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0 HTTP/1.1" 200 - 1 0.006 0.350
+2026-11-05 16:53:13,545 518544 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:53:13] "GET /web/binary/company_logo HTTP/1.1" 200 - 3 0.010 0.062
+2026-11-05 16:53:13,631 518544 INFO etat_civil_dev_latest_20261105 odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/a3cf721/web.assets_frontend_minimal.min.js (id:460) 
+2026-11-05 16:53:13,646 518544 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:53:13] "GET /web/assets/a3cf721/web.assets_frontend_minimal.min.js HTTP/1.1" 200 - 13 0.017 0.075
+2026-11-05 16:53:15,066 518546 INFO etat_civil_dev_latest_20261105 odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/1d0cf09/web.assets_frontend.min.css (id:461) 
+2026-11-05 16:53:15,077 518546 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:53:15] "GET /web/assets/1d0cf09/web.assets_frontend.min.css HTTP/1.1" 200 - 13 0.043 1.929
+2026-11-05 16:53:15,245 518544 INFO ? werkzeug: 127.0.0.1 - - [05/Nov/2026 16:53:15] "GET /web/static/img/favicon.ico HTTP/1.1" 200 - 1 0.004 0.043
+2026-11-05 16:53:15,789 518546 INFO etat_civil_dev_latest_20261105 odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/0c5835b/web.assets_frontend_lazy.min.js (id:462) 
+2026-11-05 16:53:15,797 518546 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:53:15] "GET /web/assets/0c5835b/web.assets_frontend_lazy.min.js HTTP/1.1" 200 - 10 0.011 0.576
+2026-11-05 16:58:38,138 518546 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:58:38] "POST /api/v1/auth/login HTTP/1.1" 401 - 2 0.003 0.023
+2026-11-05 16:58:38,179 518546 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:58:38] "POST /api/v1/auth/login HTTP/1.1" 401 - 2 0.004 0.019
+2026-11-05 17:34:20,582 518511 ERROR etat_civil_dev_latest_20261105 odoo.service.server: WorkerHTTP (518544) timeout after 120s 
+2026-11-05 17:34:20,582 518511 ERROR etat_civil_dev_latest_20261105 odoo.service.server: WorkerHTTP (518546) timeout after 120s 
+2026-11-05 17:34:20,642 518511 ERROR etat_civil_dev_latest_20261105 odoo.service.server: WorkerHTTP (518546) timeout after 120s 
+2026-11-05 17:34:20,677 523489 INFO etat_civil_dev_latest_20261105 odoo.service.server: Worker WorkerHTTP (523489) alive 
+2026-11-05 17:34:20,692 523493 INFO etat_civil_dev_latest_20261105 odoo.service.server: Worker WorkerHTTP (523493) alive 
+2026-11-05 17:35:55,551 524458 INFO ? odoo: Odoo version 17.0 
+2026-11-05 17:35:55,552 524458 INFO ? odoo: Using configuration file at /tmp/etat_civil_dev_latest_server_20261105.conf 
+2026-11-05 17:35:55,553 524458 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/.local/share/Odoo/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/implementation_odoo17_dev/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 17:35:55,553 524458 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 17:35:55,714 524458 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 17:35:56,066 524458 INFO ? odoo.service.server: Stopping gracefully 
+2026-11-05 17:35:56,107 524458 INFO etat_civil_dev_latest_20261105 odoo.modules.loading: loading 1 modules... 
+2026-11-05 17:35:56,126 524458 INFO etat_civil_dev_latest_20261105 odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2026-11-05 17:35:56,160 524458 INFO etat_civil_dev_latest_20261105 odoo.modules.loading: loading 46 modules... 
+2026-11-05 17:35:57,262 524458 INFO etat_civil_dev_latest_20261105 odoo.modules.loading: 46 modules loaded in 1.10s, 0 queries (+0 extra) 
+2026-11-05 17:35:57,498 524458 INFO etat_civil_dev_latest_20261105 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 17:35:57,506 524458 INFO etat_civil_dev_latest_20261105 odoo.modules.loading: Modules loaded. 
+2026-11-05 17:35:57,515 524458 INFO etat_civil_dev_latest_20261105 odoo.modules.registry: Registry loaded in 1.448s 
+2026-11-05 18:04:58,673 523489 INFO etat_civil_dev_latest_20261105 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 18:04:58,717 523489 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:04:58] "GET /api/v1/health HTTP/1.1" 200 - 7 0.010 0.076
+2026-11-05 18:07:39,395 537126 ERROR ? odoo.service.db: Database management functions blocked, admin disabled database listing 
+2026-11-05 18:08:01,927 537305 INFO ? odoo.service.db: RESTORING DB: etat_civil_restore_validation_20261105_01 
+2026-11-05 18:08:47,288 537305 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-11-05 18:08:47,410 537305 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 18:08:47,639 537305 INFO ? odoo.modules.loading: 1 modules loaded in 0.35s, 0 queries (+0 extra) 
+2026-11-05 18:08:47,667 537305 INFO ? odoo.modules.loading: loading 45 modules... 
+2026-11-05 18:08:48,588 537305 INFO ? odoo.modules.loading: 45 modules loaded in 0.92s, 0 queries (+0 extra) 
+2026-11-05 18:08:48,773 537305 INFO ? odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 18:08:48,779 537305 INFO ? odoo.modules.loading: Modules loaded. 
+2026-11-05 18:08:48,787 537305 INFO ? odoo.modules.registry: Registry loaded in 1.511s 
+2026-11-05 18:08:49,001 537305 INFO ? odoo.service.db: RESTORE DB: etat_civil_restore_validation_20261105_01 
+2026-11-05 18:13:36,677 540079 INFO ? odoo: Odoo version 17.0 
+2026-11-05 18:13:36,677 540079 INFO ? odoo: Using configuration file at /tmp/etat_civil_restore_validation_20261105_01.conf 
+2026-11-05 18:13:36,677 540079 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/.local/share/Odoo/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/implementation_odoo17_dev/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 18:13:36,678 540079 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 18:13:36,812 540079 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 18:13:37,117 540079 INFO ? odoo.service.server: HTTP service (werkzeug) running on 127.0.0.1:18183 
+2026-11-05 18:14:00,464 540266 INFO ? odoo: Odoo version 17.0 
+2026-11-05 18:14:00,466 540266 INFO ? odoo: Using configuration file at /tmp/etat_civil_restore_validation_20261105_01.conf 
+2026-11-05 18:14:00,466 540266 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/.local/share/Odoo/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/implementation_odoo17_dev/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 18:14:00,467 540266 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 18:14:00,642 540266 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 18:14:00,936 540266 INFO ? odoo.service.server: Initiating shutdown 
+2026-11-05 18:14:00,936 540266 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-05 18:14:00,988 540266 INFO etat_civil_restore_validation_20261105_01 odoo.modules.loading: loading 1 modules... 
+2026-11-05 18:14:01,001 540266 INFO etat_civil_restore_validation_20261105_01 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-05 18:14:01,031 540266 INFO etat_civil_restore_validation_20261105_01 odoo.modules.loading: loading 45 modules... 
+2026-11-05 18:14:02,029 540266 INFO etat_civil_restore_validation_20261105_01 odoo.modules.loading: 45 modules loaded in 1.00s, 0 queries (+0 extra) 
+2026-11-05 18:14:02,257 540266 INFO etat_civil_restore_validation_20261105_01 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 18:14:02,263 540266 INFO etat_civil_restore_validation_20261105_01 odoo.modules.loading: Modules loaded. 
+2026-11-05 18:14:02,273 540266 INFO etat_civil_restore_validation_20261105_01 odoo.modules.registry: Registry loaded in 1.322s 
+2026-11-05 18:14:39,676 540593 INFO ? odoo: Odoo version 17.0 
+2026-11-05 18:14:39,677 540593 INFO ? odoo: Using configuration file at /tmp/etat_civil_restore_validation_20261105_01.conf 
+2026-11-05 18:14:39,678 540593 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/.local/share/Odoo/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/implementation_odoo17_dev/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 18:14:39,679 540593 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 18:14:39,841 540593 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 18:14:40,148 540593 INFO ? odoo.service.server: Initiating shutdown 
+2026-11-05 18:14:40,148 540593 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-05 18:14:40,204 540593 INFO etat_civil_restore_validation_20261105_01 odoo.modules.loading: loading 1 modules... 
+2026-11-05 18:14:40,214 540593 INFO etat_civil_restore_validation_20261105_01 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-05 18:14:40,247 540593 INFO etat_civil_restore_validation_20261105_01 odoo.modules.loading: loading 45 modules... 
+2026-11-05 18:14:41,249 540593 INFO etat_civil_restore_validation_20261105_01 odoo.modules.loading: 45 modules loaded in 1.00s, 0 queries (+0 extra) 
+2026-11-05 18:14:41,483 540593 INFO etat_civil_restore_validation_20261105_01 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 18:14:41,491 540593 INFO etat_civil_restore_validation_20261105_01 odoo.modules.loading: Modules loaded. 
+2026-11-05 18:14:41,499 540593 INFO etat_civil_restore_validation_20261105_01 odoo.modules.registry: Registry loaded in 1.335s 
+2026-11-05 18:16:23,764 541407 INFO ? odoo.service.db: RESTORING DB: etat_civil_final_audit_tests_20261105 
+2026-11-05 18:17:20,576 541407 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-11-05 18:17:20,801 541407 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 18:17:21,165 541407 INFO ? odoo.modules.loading: 1 modules loaded in 0.59s, 0 queries (+0 extra) 
+2026-11-05 18:17:21,203 541407 INFO ? odoo.modules.loading: loading 45 modules... 
+2026-11-05 18:17:22,310 541407 INFO ? odoo.modules.loading: 45 modules loaded in 1.11s, 0 queries (+0 extra) 
+2026-11-05 18:17:22,583 541407 INFO ? odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 18:17:22,591 541407 INFO ? odoo.modules.loading: Modules loaded. 
+2026-11-05 18:17:22,603 541407 INFO ? odoo.modules.registry: Registry loaded in 2.065s 
+2026-11-05 18:17:22,956 541407 INFO ? odoo.service.db: RESTORE DB: etat_civil_final_audit_tests_20261105 
+2026-11-05 18:17:47,209 542093 ERROR ? odoo.service.db: Database management functions blocked, admin disabled database listing 
+2026-11-05 18:17:59,387 542177 INFO ? odoo.service.db: DUMP DB: etat_civil_final_audit_tests_20261105 format zip 
+2026-11-05 18:25:41,316 546971 INFO ? odoo: Odoo version 17.0 
+2026-11-05 18:25:41,317 546971 INFO ? odoo: Using configuration file at /tmp/etat_civil_restore_validation_20261105_01.conf 
+2026-11-05 18:25:41,317 546971 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/.local/share/Odoo/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/implementation_odoo17_dev/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 18:25:41,317 546971 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 18:25:41,510 546971 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 18:25:41,881 546971 INFO ? odoo.service.server: Initiating shutdown 
+2026-11-05 18:25:41,881 546971 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-05 18:25:41,940 546971 INFO etat_civil_restore_validation_20261105_01 odoo.modules.loading: loading 1 modules... 
+2026-11-05 18:25:41,960 546971 INFO etat_civil_restore_validation_20261105_01 odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2026-11-05 18:25:42,023 546971 INFO etat_civil_restore_validation_20261105_01 odoo.modules.loading: loading 45 modules... 
+2026-11-05 18:25:43,093 546971 INFO etat_civil_restore_validation_20261105_01 odoo.modules.loading: 45 modules loaded in 1.07s, 0 queries (+0 extra) 
+2026-11-05 18:25:43,320 546971 INFO etat_civil_restore_validation_20261105_01 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 18:25:43,325 546971 INFO etat_civil_restore_validation_20261105_01 odoo.modules.loading: Modules loaded. 
+2026-11-05 18:25:43,335 546971 INFO etat_civil_restore_validation_20261105_01 odoo.modules.registry: Registry loaded in 1.437s 
+2026-11-05 18:25:55,097 523489 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:25:55] "GET /api/v1/health HTTP/1.1" 200 - 2 0.005 0.067
+2026-11-05 18:27:08,948 523493 INFO etat_civil_dev_latest_20261105 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 18:27:09,075 523493 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:27:09] "GET /api/v1/health HTTP/1.1" 200 - 7 0.083 0.096
+2026-11-05 18:42:38,054 523493 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:42:38] "GET /web/login HTTP/1.1" 200 - 56 0.050 0.252
+2026-11-05 18:43:51,306 555610 INFO ? odoo.service.db: RESTORING DB: etat_civil_phase_next_auth_20261105_01 
+2026-11-05 18:44:28,716 555610 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-11-05 18:44:28,846 555610 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 18:44:29,106 555610 INFO ? odoo.modules.loading: 1 modules loaded in 0.39s, 0 queries (+0 extra) 
+2026-11-05 18:44:29,122 555610 INFO ? odoo.modules.loading: loading 24 modules... 
+2026-11-05 18:44:29,581 555610 INFO ? odoo.modules.loading: 24 modules loaded in 0.46s, 0 queries (+0 extra) 
+2026-11-05 18:44:29,673 555610 INFO ? odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 18:44:29,677 555610 INFO ? odoo.modules.loading: Modules loaded. 
+2026-11-05 18:44:29,682 555610 INFO ? odoo.modules.registry: Registry loaded in 0.991s 
+2026-11-05 18:44:29,735 555610 INFO ? odoo.service.db: RESTORE DB: etat_civil_phase_next_auth_20261105_01 
+2026-11-05 18:46:23,831 556891 INFO ? odoo: Odoo version 17.0 
+2026-11-05 18:46:23,831 556891 INFO ? odoo: Using configuration file at /tmp/etat_civil_dev_latest_server_20261105.conf 
+2026-11-05 18:46:23,832 556891 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/.local/share/Odoo/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/implementation_odoo17_dev/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 18:46:23,832 556891 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 18:46:23,957 556891 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 18:46:24,165 556891 INFO ? odoo.service.server: Stopping gracefully 
+2026-11-05 18:46:24,195 556891 INFO etat_civil_phase_next_auth_20261105_01 odoo.modules.loading: loading 1 modules... 
+2026-11-05 18:46:24,203 556891 INFO etat_civil_phase_next_auth_20261105_01 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-05 18:46:24,215 556891 INFO etat_civil_phase_next_auth_20261105_01 odoo.modules.loading: loading 24 modules... 
+2026-11-05 18:46:24,587 556891 INFO etat_civil_phase_next_auth_20261105_01 odoo.modules.loading: 24 modules loaded in 0.37s, 0 queries (+0 extra) 
+2026-11-05 18:46:24,671 556891 INFO etat_civil_phase_next_auth_20261105_01 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 18:46:24,674 556891 INFO etat_civil_phase_next_auth_20261105_01 odoo.modules.loading: Modules loaded. 
+2026-11-05 18:46:24,679 556891 INFO etat_civil_phase_next_auth_20261105_01 odoo.modules.registry: Registry loaded in 0.514s 
+2026-11-05 18:47:38,148 557562 INFO ? odoo.service.db: RESTORING DB: etat_civil_phase_next_finance_20261105_01 
+2026-11-05 18:48:32,078 557562 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-11-05 18:48:32,206 557562 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 18:48:32,425 557562 INFO ? odoo.modules.loading: 1 modules loaded in 0.35s, 0 queries (+0 extra) 
+2026-11-05 18:48:32,449 557562 INFO ? odoo.modules.loading: loading 45 modules... 
+2026-11-05 18:48:33,170 557562 INFO ? odoo.modules.loading: 45 modules loaded in 0.72s, 0 queries (+0 extra) 
+2026-11-05 18:48:33,423 557562 INFO ? odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 18:48:33,427 557562 INFO ? odoo.modules.loading: Modules loaded. 
+2026-11-05 18:48:33,435 557562 INFO ? odoo.modules.registry: Registry loaded in 1.369s 
+2026-11-05 18:48:33,726 557562 INFO ? odoo.service.db: RESTORE DB: etat_civil_phase_next_finance_20261105_01 
+2026-11-05 18:51:02,377 523489 WARNING ? odoo.http: Logged into database 'etat_civil_phase_next_finance_20261105_01', but dbfilter rejects it; logging session out. 
+2026-11-05 18:51:02,596 523489 INFO etat_civil_dev_latest_20261105 odoo.http: Session expired 
+2026-11-05 18:51:02,596 523489 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:51:02] "POST /api/v1/actes/naissance/55 HTTP/1.1" 303 - 3 0.199 0.055
+2026-11-05 18:51:02,619 523489 WARNING ? odoo.http: Logged into database 'etat_civil_phase_next_finance_20261105_01', but dbfilter rejects it; logging session out. 
+2026-11-05 18:51:02,900 523489 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:51:02] "GET /web/login?redirect=/api/v1/actes/naissance/55? HTTP/1.1" 200 - 55 0.060 0.241
+2026-11-05 18:51:03,592 523493 WARNING ? odoo.http: Logged into database 'etat_civil_phase_next_finance_20261105_01', but dbfilter rejects it; logging session out. 
+2026-11-05 18:51:03,597 523493 INFO etat_civil_dev_latest_20261105 odoo.http: Session expired 
+2026-11-05 18:51:03,598 523493 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:51:03] "POST /api/v1/actes/naissance/56 HTTP/1.1" 303 - 2 0.003 0.020
+2026-11-05 18:51:03,620 523493 WARNING ? odoo.http: Logged into database 'etat_civil_phase_next_finance_20261105_01', but dbfilter rejects it; logging session out. 
+2026-11-05 18:51:03,628 523493 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:51:03] "GET /web/login?redirect=/api/v1/actes/naissance/56? HTTP/1.1" 200 - 4 0.004 0.023
+2026-11-05 18:51:03,659 523493 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:51:03] "GET /api/v1/health HTTP/1.1" 200 - 2 0.004 0.019
+2026-11-05 18:51:03,700 523493 WARNING ? odoo.http: Logged into database 'etat_civil_phase_next_finance_20261105_01', but dbfilter rejects it; logging session out. 
+2026-11-05 18:51:03,704 523493 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:51:03] "GET /api/v1/auth/logout HTTP/1.1" 405 - 2 0.003 0.019
+2026-11-05 18:51:03,724 523493 WARNING ? odoo.http: Logged into database 'etat_civil_phase_next_finance_20261105_01', but dbfilter rejects it; logging session out. 
+2026-11-05 18:51:03,728 523493 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:51:03] "POST /api/v1/auth/logout HTTP/1.1" 415 - 2 0.003 0.018
+2026-11-05 18:51:03,752 523493 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:51:03] "POST /api/v1/auth/logout HTTP/1.1" 200 - 2 0.003 0.018
+2026-11-05 18:51:03,787 523493 WARNING ? odoo.http: Logged into database 'etat_civil_phase_next_finance_20261105_01', but dbfilter rejects it; logging session out. 
+2026-11-05 18:51:03,790 523493 INFO etat_civil_dev_latest_20261105 odoo.http: Session expired 
+2026-11-05 18:51:03,790 523493 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:51:03] "POST /api/v1/personnes HTTP/1.1" 303 - 2 0.003 0.017
+2026-11-05 18:51:03,812 523493 WARNING ? odoo.http: Logged into database 'etat_civil_phase_next_finance_20261105_01', but dbfilter rejects it; logging session out. 
+2026-11-05 18:51:03,820 523493 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:51:03] "GET /web/login?redirect=/api/v1/personnes? HTTP/1.1" 200 - 4 0.004 0.023
+2026-11-05 18:51:03,985 523493 WARNING ? odoo.http: Logged into database 'etat_civil_phase_next_finance_20261105_01', but dbfilter rejects it; logging session out. 
+2026-11-05 18:51:03,990 523493 INFO etat_civil_dev_latest_20261105 odoo.http: Session expired 
+2026-11-05 18:51:03,991 523493 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:51:03] "POST /api/v1/actes/naissance/57 HTTP/1.1" 303 - 2 0.004 0.027
+2026-11-05 18:51:04,016 523493 WARNING ? odoo.http: Logged into database 'etat_civil_phase_next_finance_20261105_01', but dbfilter rejects it; logging session out. 
+2026-11-05 18:51:04,025 523493 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:51:04] "GET /web/login?redirect=/api/v1/actes/naissance/57? HTTP/1.1" 200 - 4 0.004 0.026
+2026-11-05 18:51:04,061 523489 INFO etat_civil_dev_latest_20261105 odoo.http: Session expired 
+2026-11-05 18:51:04,062 523489 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:51:04] "POST /api/v1/actes/naissance/57 HTTP/1.1" 303 - 2 0.005 0.022
+2026-11-05 18:51:04,092 523493 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:51:04] "GET /web/login?redirect=/api/v1/actes/naissance/57? HTTP/1.1" 200 - 4 0.004 0.021
+2026-11-05 18:51:04,123 523493 INFO etat_civil_dev_latest_20261105 odoo.http: Session expired 
+2026-11-05 18:51:04,123 523493 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:51:04] "POST /api/v1/actes/naissance HTTP/1.1" 303 - 2 0.003 0.017
+2026-11-05 18:51:04,150 523493 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:51:04] "GET /web/login?redirect=/api/v1/actes/naissance? HTTP/1.1" 200 - 4 0.004 0.021
+2026-11-05 18:51:04,312 523489 WARNING ? odoo.http: Logged into database 'etat_civil_phase_next_finance_20261105_01', but dbfilter rejects it; logging session out. 
+2026-11-05 18:51:04,318 523489 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:51:04] "GET /web/content/639?download=false HTTP/1.1" 404 - 4 0.005 0.019
+2026-11-05 18:51:04,358 523493 WARNING ? odoo.http: Logged into database 'etat_civil_phase_next_finance_20261105_01', but dbfilter rejects it; logging session out. 
+2026-11-05 18:51:04,366 523493 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:51:04] "POST /api/v1/auth/logout HTTP/1.1" 200 - 2 0.006 0.023
+2026-11-05 18:51:04,389 523489 INFO etat_civil_dev_latest_20261105 odoo.http: Session expired 
+2026-11-05 18:51:04,390 523489 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:51:04] "POST /api/v1/personnes HTTP/1.1" 303 - 2 0.003 0.016
+2026-11-05 18:51:04,614 523493 WARNING ? odoo.http: Logged into database 'etat_civil_phase_next_finance_20261105_01', but dbfilter rejects it; logging session out. 
+2026-11-05 18:51:04,618 523493 INFO etat_civil_dev_latest_20261105 odoo.http: Session expired 
+2026-11-05 18:51:04,618 523493 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:51:04] "POST /api/v1/actes/naissance/59/valider HTTP/1.1" 303 - 2 0.003 0.020
+2026-11-05 18:51:04,637 523493 WARNING ? odoo.http: Logged into database 'etat_civil_phase_next_finance_20261105_01', but dbfilter rejects it; logging session out. 
+2026-11-05 18:51:04,645 523493 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:51:04] "GET /web/login?redirect=/api/v1/actes/naissance/59/valider? HTTP/1.1" 200 - 4 0.004 0.020
+2026-11-05 18:51:04,822 523493 WARNING ? odoo.http: Logged into database 'etat_civil_phase_next_finance_20261105_01', but dbfilter rejects it; logging session out. 
+2026-11-05 18:51:04,824 523493 INFO etat_civil_dev_latest_20261105 odoo.http: Session expired 
+2026-11-05 18:51:04,825 523493 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:51:04] "POST /api/v1/actes/mariage/12/valider HTTP/1.1" 303 - 2 0.003 0.019
+2026-11-05 18:51:04,847 523493 WARNING ? odoo.http: Logged into database 'etat_civil_phase_next_finance_20261105_01', but dbfilter rejects it; logging session out. 
+2026-11-05 18:51:04,858 523493 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:51:04] "GET /web/login?redirect=/api/v1/actes/mariage/12/valider? HTTP/1.1" 200 - 4 0.005 0.025
+2026-11-05 18:51:04,963 523489 WARNING ? odoo.http: Logged into database 'etat_civil_phase_next_finance_20261105_01', but dbfilter rejects it; logging session out. 
+2026-11-05 18:51:04,966 523489 INFO etat_civil_dev_latest_20261105 odoo.http: Session expired 
+2026-11-05 18:51:04,967 523489 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:51:04] "POST /api/v1/actes/deces/8/valider HTTP/1.1" 303 - 2 0.003 0.018
+2026-11-05 18:51:04,986 523489 WARNING ? odoo.http: Logged into database 'etat_civil_phase_next_finance_20261105_01', but dbfilter rejects it; logging session out. 
+2026-11-05 18:51:04,995 523489 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 18:51:04] "GET /web/login?redirect=/api/v1/actes/deces/8/valider? HTTP/1.1" 200 - 4 0.004 0.021
+2026-11-05 18:59:09,926 563677 INFO ? odoo: Odoo version 17.0 
+2026-11-05 18:59:09,926 563677 INFO ? odoo: Using configuration file at /tmp/etat_civil_phase_next_finance.conf 
+2026-11-05 18:59:09,926 563677 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/.local/share/Odoo/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/implementation_odoo17_dev/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 18:59:09,927 563677 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 18:59:10,047 563677 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 18:59:10,312 563677 INFO ? odoo.service.server: Stopping gracefully 
+2026-11-05 18:59:10,344 563677 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading 1 modules... 
+2026-11-05 18:59:10,354 563677 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-05 18:59:10,381 563677 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading 45 modules... 
+2026-11-05 18:59:11,069 563677 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: 45 modules loaded in 0.69s, 0 queries (+0 extra) 
+2026-11-05 18:59:11,239 563677 INFO etat_civil_phase_next_finance_20261105_01 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 18:59:11,243 563677 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: Modules loaded. 
+2026-11-05 18:59:11,249 563677 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.registry: Registry loaded in 0.937s 
+2026-11-05 18:59:25,880 563802 INFO ? odoo: Odoo version 17.0 
+2026-11-05 18:59:25,881 563802 INFO ? odoo: Using configuration file at /tmp/etat_civil_phase_next_finance.conf 
+2026-11-05 18:59:25,881 563802 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/implementation_odoo17_dev/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 18:59:25,881 563802 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 18:59:26,026 563802 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 18:59:26,249 563802 INFO ? odoo.service.server: HTTP service (werkzeug) running on 127.0.0.1:18191 
+2026-11-05 18:59:26,275 563802 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading 1 modules... 
+2026-11-05 18:59:26,283 563802 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-05 18:59:26,303 563802 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading 45 modules... 
+2026-11-05 18:59:27,031 563802 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: 45 modules loaded in 0.73s, 0 queries (+0 extra) 
+2026-11-05 18:59:27,203 563802 INFO etat_civil_phase_next_finance_20261105_01 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 18:59:27,207 563802 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: Modules loaded. 
+2026-11-05 18:59:27,214 563802 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.registry: Registry loaded in 0.964s 
+2026-11-05 18:59:27,214 563802 INFO etat_civil_phase_next_finance_20261105_01 odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 1 connections  
+2026-11-05 18:59:27,222 563830 INFO etat_civil_phase_next_finance_20261105_01 odoo.service.server: Worker WorkerHTTP (563830) alive 
+2026-11-05 18:59:27,229 563832 INFO etat_civil_phase_next_finance_20261105_01 odoo.service.server: Worker WorkerHTTP (563832) alive 
+2026-11-05 18:59:28,281 563833 INFO ? odoo: Odoo version 17.0 
+2026-11-05 18:59:28,282 563833 INFO ? odoo: Using configuration file at /tmp/etat_civil_phase_next_finance.conf 
+2026-11-05 18:59:28,282 563833 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/implementation_odoo17_dev/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 18:59:28,282 563833 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 18:59:28,451 563833 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 18:59:28,754 563833 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading 1 modules... 
+2026-11-05 18:59:28,764 563833 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-05 18:59:28,790 563833 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading 45 modules... 
+2026-11-05 18:59:29,595 563833 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: 45 modules loaded in 0.80s, 0 queries (+0 extra) 
+2026-11-05 18:59:29,804 563833 INFO etat_civil_phase_next_finance_20261105_01 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 18:59:29,812 563833 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: Modules loaded. 
+2026-11-05 18:59:29,821 563833 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.registry: Registry loaded in 1.097s 
+2026-11-05 18:59:29,824 563833 INFO etat_civil_phase_next_finance_20261105_01 odoo.service.server: Evented Service (longpolling) running on 127.0.0.1:18192 
+2026-11-05 19:00:04,231 563830 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-11-05 19:00:04,248 563830 INFO ? odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2026-11-05 19:00:04,257 563830 INFO ? odoo.modules.loading: loading 46 modules... 
+2026-11-05 19:00:04,329 563830 INFO ? odoo.modules.loading: 46 modules loaded in 0.07s, 0 queries (+0 extra) 
+2026-11-05 19:00:04,539 563830 INFO ? odoo.modules.loading: Modules loaded. 
+2026-11-05 19:00:04,547 563830 INFO ? odoo.modules.registry: Registry loaded in 0.346s 
+2026-11-05 19:00:04,550 563830 INFO etat_civil_dev_latest_20261105 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 19:00:04,586 563830 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 19:00:04] "GET /api/v1/health HTTP/1.1" 200 - 21 0.027 0.382
+2026-11-05 19:00:04,654 563832 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-11-05 19:00:04,667 563832 INFO ? odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-05 19:00:04,674 563832 INFO ? odoo.modules.loading: loading 46 modules... 
+2026-11-05 19:00:04,730 563832 INFO ? odoo.modules.loading: 46 modules loaded in 0.06s, 0 queries (+0 extra) 
+2026-11-05 19:00:04,918 563832 INFO ? odoo.modules.loading: Modules loaded. 
+2026-11-05 19:00:04,926 563832 INFO ? odoo.modules.registry: Registry loaded in 0.299s 
+2026-11-05 19:00:04,928 563832 INFO etat_civil_dev_latest_20261105 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 19:00:04,966 563832 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 19:00:04] "POST /api/v1/auth/login HTTP/1.1" 401 - 21 0.023 0.340
+2026-11-05 19:00:12,128 563832 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 19:00:12] "GET /web/login HTTP/1.1" 200 - 56 0.057 0.271
+2026-11-05 19:00:12,217 563832 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 19:00:12] "GET /web/assets/1d0cf09/web.assets_frontend.min.css HTTP/1.1" 200 - 6 0.013 0.031
+2026-11-05 19:00:12,359 563832 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 19:00:12] "GET /web/binary/company_logo HTTP/1.1" 200 - 3 0.016 0.115
+2026-11-05 19:00:12,410 563832 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 19:00:12] "GET /web/assets/a3cf721/web.assets_frontend_minimal.min.js HTTP/1.1" 200 - 5 0.006 0.033
+2026-11-05 19:00:12,610 563830 INFO ? werkzeug: 127.0.0.1 - - [05/Nov/2026 19:00:12] "GET /web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0 HTTP/1.1" 200 - 1 0.008 0.444
+2026-11-05 19:00:12,691 563830 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 19:00:12] "GET /web/assets/0c5835b/web.assets_frontend_lazy.min.js HTTP/1.1" 200 - 7 0.018 0.042
+2026-11-05 19:00:13,113 563832 INFO ? werkzeug: 127.0.0.1 - - [05/Nov/2026 19:00:13] "GET /web/static/img/favicon.ico HTTP/1.1" 200 - 1 0.004 0.468
+2026-11-05 19:00:13,132 563830 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 19:00:13] "GET /website/translations/a0904ff8e2c6bfa6bb5d9f87c1ef6d45fe749aa6 HTTP/1.1" 200 - 14 0.041 0.060
+2026-11-05 19:00:42,391 563802 INFO etat_civil_phase_next_finance_20261105_01 odoo.service.server: Stopping gracefully 
+2026-11-05 19:00:42,392 563830 INFO etat_civil_phase_next_finance_20261105_01 odoo.service.server: Worker (563830) exiting. request_count: 5, registry count: 2. 
+2026-11-05 19:00:42,392 563832 INFO etat_civil_phase_next_finance_20261105_01 odoo.service.server: Worker (563832) exiting. request_count: 7, registry count: 2. 
+2026-11-05 19:07:47,797 523489 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 19:07:47] "GET /web/login HTTP/1.1" 200 - 4 0.006 0.035
+2026-11-05 19:09:33,698 569347 INFO ? odoo.service.db: RESTORING DB: etat_civil_phase_next_auth_incompatible_20261105_02 
+2026-11-05 19:09:57,592 569347 INFO ? odoo.modules.loading: loading 1 modules... 
+2026-11-05 19:09:57,716 569347 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 19:09:57,952 569347 INFO ? odoo.modules.loading: 1 modules loaded in 0.36s, 0 queries (+0 extra) 
+2026-11-05 19:09:57,969 569347 INFO ? odoo.modules.loading: loading 24 modules... 
+2026-11-05 19:09:58,472 569347 INFO ? odoo.modules.loading: 24 modules loaded in 0.50s, 0 queries (+0 extra) 
+2026-11-05 19:09:58,568 569347 INFO ? odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 19:09:58,572 569347 INFO ? odoo.modules.loading: Modules loaded. 
+2026-11-05 19:09:58,578 569347 INFO ? odoo.modules.registry: Registry loaded in 1.000s 
+2026-11-05 19:09:58,638 569347 INFO ? odoo.service.db: RESTORE DB: etat_civil_phase_next_auth_incompatible_20261105_02 
+2026-11-05 19:11:04,077 523489 INFO etat_civil_dev_latest_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 19:11:04] "GET /web/login HTTP/1.1" 200 - 4 0.005 0.038
+2026-11-06 08:28:47,332 518511 ERROR etat_civil_dev_latest_20261105 odoo.service.server: WorkerHTTP (523489) timeout after 120s 
+2026-11-06 08:28:47,400 778238 INFO etat_civil_dev_latest_20261105 odoo.service.server: Worker WorkerHTTP (778238) alive 
+2026-11-06 11:15:23,964 518511 ERROR etat_civil_dev_latest_20261105 odoo.service.server: WorkerHTTP (778238) timeout after 120s 
+2026-11-06 11:15:24,627 848627 INFO etat_civil_dev_latest_20261105 odoo.service.server: Worker WorkerHTTP (848627) alive 
+2026-11-06 16:35:24,497 518511 ERROR etat_civil_dev_latest_20261105 odoo.service.server: WorkerHTTP (523493) timeout after 120s 
+2026-11-06 16:35:24,718 882068 INFO etat_civil_dev_latest_20261105 odoo.service.server: Worker WorkerHTTP (882068) alive 
+2026-11-07 07:15:43,726 518511 ERROR etat_civil_dev_latest_20261105 odoo.service.server: WorkerHTTP (882068) timeout after 120s 
+2026-11-07 07:15:43,745 1041366 INFO etat_civil_dev_latest_20261105 odoo.service.server: Worker WorkerHTTP (1041366) alive 

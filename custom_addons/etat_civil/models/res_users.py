@@ -31,6 +31,9 @@ class ResUsers(models.Model):
         ),
     )
 
+    def _is_etat_civil_admin(self):
+        return self.has_group("etat_civil.group_etat_civil_admin")
+
     @api.depends("groups_id", "share")
     def _compute_etat_civil_role(self):
         role_groups = {

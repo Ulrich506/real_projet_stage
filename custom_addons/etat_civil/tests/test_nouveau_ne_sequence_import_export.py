@@ -654,8 +654,85 @@ class TestNouveauNeSequenceImportExport(TransactionCase):
         self.assertTrue(export_ods.result_file)
         self.assertEqual(export_ods.result_file_name, "citoyens_export.ods")
 
+    def test_spreadsheet_exports_treat_formula_like_citizen_values_as_text(self):
+        self.Individu.create({
+            "nom": "=1+1",
+            "prenoms": "+SUM(1,1)",
+            "sexe": "F",
+            "date_naissance": "2000-01-01",
+        })
+
+        csv_export = self.env["etat.civil.export.wizard"].create({
+            "export_format": "csv",
+            "export_filter": "all",
+            "include_fields": "essential",
+        })
+        csv_export.action_export()
+        csv_content = base64.b64decode(csv_export.result_file).decode("utf-8-sig")
+        csv_row = next(
+            row
+            for row in csv.DictReader(io.StringIO(csv_content))
+            if row["nom"] == "'=1+1"
+        )
+        self.assertEqual(csv_row["prenoms"], "'+SUM(1,1)")
+        for value in ("=1+1", "+1+1", "-1+1", "@SUM(1,1)", "\t=1+1"):
+            csv_data, _ = self.env["etat.civil.export.wizard"]._export_csv(
+                [{"nom": value}],
+                ["nom"],
+            )
+            reader = csv.reader(io.StringIO(csv_data.decode("utf-8-sig")))
+            next(reader)
+            exported_value = next(reader)[0]
+            self.assertEqual(
+                exported_value,
+                "'" + value,
+            )
+
+        xlsx_export = self.env["etat.civil.export.wizard"].create({
+            "export_format": "xlsx",
+            "export_filter": "all",
+            "include_fields": "essential",
+        })
+        xlsx_export.action_export()
+        import openpyxl
+
+        workbook = openpyxl.load_workbook(
+            io.BytesIO(base64.b64decode(xlsx_export.result_file)),
+            data_only=False,
+        )
+        worksheet = workbook.active
+        headers = [cell.value for cell in worksheet[1]]
+        name_column = headers.index("nom") + 1
+        first_name_column = headers.index("prenoms") + 1
+        matching_row = next(
+            row
+            for row in range(2, worksheet.max_row + 1)
+            if worksheet.cell(row, name_column).value == "=1+1"
+        )
+        self.assertEqual(
+            worksheet.cell(matching_row, name_column).data_type,
+            "s",
+        )
+        self.assertEqual(
+            worksheet.cell(matching_row, first_name_column).data_type,
+            "s",
+        )
+        self.assertEqual(
+            worksheet.cell(matching_row, first_name_column).value,
+            "+SUM(1,1)",
+        )
+
     def test_18_mentions_generate_type_specific_references(self):
         """New mentions get independent references and existing references remain unchanged."""
+        officer = self.env["res.users"].create({
+            "name": "Officier Test Mentions",
+            "login": "officier_test_mentions",
+            "groups_id": [(6, 0, [
+                self.env.ref("base.group_user").id,
+                self.env.ref("etat_civil.group_etat_civil_officier").id,
+            ])],
+            "etat_civil_centre_ids": [(6, 0, [self.centre.id])],
+        })
         person = self.Individu.create({
             "nom": "Mention",
             "sexe": "F",
@@ -670,7 +747,7 @@ class TestNouveauNeSequenceImportExport(TransactionCase):
         }
         references = {}
         for mention_type, prefix in expected_prefixes.items():
-            mention = self.env["etat.civil.mention.marginale"].create({
+            mention = self.env["etat.civil.mention.marginale"].with_user(officer).create({
                 "type_mention": mention_type,
                 "date_mention": "2026-10-31",
                 "contenu": "Mention de test",

@@ -1,0 +1,16 @@
+PDF RENDER / EXTRACTION SUMMARY
+Run: 2026-11-05 13:10 UTC
+Method: Odoo shell, explicit database etat_civil_final_review_20261105_1304, --no-http, cron=0, env -u PYTHONPATH. Rendering only; shell transaction rolled back at exit. No record was created or written.
+
+naissance: RENDERED; record id 109; 34,393 bytes; SHA-256 7e08c3544115f72dad32e8318f7989a87a103833f9a6abac8b8e36769c5114e6; A4 Portrait; margins top/bottom/left/right 35/20/15/15 mm; 1 page; text extraction 1,513 chars; source transcription length 42 chars; mentions 0.
+mariage: RENDERED; record id 23; 16,410 bytes; SHA-256 5dca1f05a21f34f37a26ae9df45e938b63ab300d8788afff0e2c7b3124839506; A4 Portrait; margins top/bottom/left/right 35/20/15/15 mm; 1 page; text extraction 1,100 chars; source transcription length 21 chars; mentions 0.
+deces: RENDERED; record id 15; 16,381 bytes; SHA-256 c5221787fcb73c8a09a5b1c3602a5e47d098246321f30b9b41aa020526431d59; A4 Portrait; margins top/bottom/left/right 35/20/15/15 mm; 1 page; text extraction 1,035 chars; source transcription length 19 chars; mentions 0.
+mention_marginale: NO_RECORD; database count was 0; no document generated.
+
+The extracted text preserves accents and the expected labels, dates, record numbers, test names, validation notice, integrity notice and physical signature labels. Raster page previews were produced with pdftoppm and inspected. The logo area is blank, no stamp or handwritten signature is simulated, and the physical signature fields are blank.
+
+LIMITATION: wkhtmltopdf emitted “Exit with code 1 due to network error: ConnectionRefusedError” for each report while the isolated HTTP server was stopped. It still produced a PDF. Treat the PDFs as PARTIAL evidence; visual/resource completeness is not confirmed. Source transcriptions are short; long text, overflow, multi-page pagination and multiple mentions are not covered.
+
+Sanitized command form used (the temporary configuration is now credential-scrubbed):
+`env -u PYTHONPATH venv/bin/python odoo/odoo-bin shell -c /tmp/etat_civil_review_shell.conf -d etat_civil_final_review_20261105_1304 --no-http --max-cron-threads=0`
+The shell used `env[model].search([], order='id', limit=1)` and `report._render_qweb_pdf(report.id, record.ids)` for the three available types. It wrote PDFs only; the shell transaction was rolled back on exit. Validation commands included `pdfinfo`, `pdftotext -layout`, `pdftoppm`, and UTF-8 `iconv` validation. The PDF output path was the dedicated proof directory.

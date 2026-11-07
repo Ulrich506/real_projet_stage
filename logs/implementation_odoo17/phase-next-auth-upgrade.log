@@ -1,0 +1,35 @@
+2026-11-05 18:47:10,105 557345 INFO ? odoo: Odoo version 17.0 
+2026-11-05 18:47:10,106 557345 INFO ? odoo: Using configuration file at /tmp/etat_civil_dev_latest_server_20261105.conf 
+2026-11-05 18:47:10,106 557345 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/implementation_odoo17_dev/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 18:47:10,106 557345 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 18:47:10,242 557345 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 18:47:10,467 557345 WARNING ? odoo.service.server: Unit testing in workers mode could fail; use --workers 0. 
+2026-11-05 18:47:10,493 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.modules.loading: loading 1 modules... 
+2026-11-05 18:47:10,501 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-05 18:47:10,535 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 18:47:10,536 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.modules.loading: updating modules list 
+2026-11-05 18:47:10,538 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-11-05 18:47:11,881 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['État civil — Connexion par e-mail'] to user __system__ #1 via n/a 
+2026-11-05 18:47:11,882 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['État civil — Connexion par e-mail'] to user __system__ #1 via n/a 
+2026-11-05 18:47:12,884 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-11-05 18:47:12,918 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.modules.loading: loading 25 modules... 
+2026-11-05 18:47:13,292 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.modules.loading: Loading module etat_civil_auth_email (22/25) 
+2026-11-05 18:47:13,444 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.modules.registry: module etat_civil_auth_email: creating or updating database tables 
+2026-11-05 18:47:13,529 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.modules.loading: loading etat_civil_auth_email/views/login_templates.xml 
+2026-11-05 18:47:13,581 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.modules.loading: Module etat_civil_auth_email loaded in 0.29s, 72 queries (+72 other) 
+2026-11-05 18:47:13,611 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.modules.loading: 25 modules loaded in 0.69s, 72 queries (+72 extra) 
+2026-11-05 18:47:13,923 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.modules.registry: verifying fields for every extended model 
+2026-11-05 18:47:14,403 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.modules.loading: Modules loaded. 
+2026-11-05 18:47:14,413 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.modules.registry: Registry loaded in 3.946s 
+2026-11-05 18:47:14,413 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.service.server: Starting post tests 
+2026-11-05 18:47:14,416 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.addons.etat_civil_auth_email.tests.test_email_login: Starting TestEmailLogin.test_authentication_rejects_invalid_login_syntax_generically ... 
+2026-11-05 18:47:14,418 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.addons.etat_civil_auth_email.tests.test_email_login: Starting TestEmailLogin.test_case_insensitive_duplicate_is_rejected ... 
+2026-11-05 18:47:14,569 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.addons.etat_civil_auth_email.tests.test_email_login: Starting TestEmailLogin.test_create_requires_valid_login ... 
+2026-11-05 18:47:14,572 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.addons.etat_civil_auth_email.tests.test_email_login: Starting TestEmailLogin.test_create_trims_and_normalizes_domain ... 
+2026-11-05 18:47:14,676 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.addons.etat_civil_auth_email.tests.test_email_login: Starting TestEmailLogin.test_invalid_values_are_rejected ... 
+2026-11-05 18:47:14,679 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.addons.etat_civil_auth_email.tests.test_email_login: Starting TestEmailLogin.test_normalization_preserves_local_part ... 
+2026-11-05 18:47:14,680 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.addons.etat_civil_auth_email.tests.test_email_login: Starting TestEmailLogin.test_write_rejects_invalid_login ... 
+2026-11-05 18:47:14,912 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.addons.base.models.ir_attachment: filestore gc 3 checked, 3 removed 
+2026-11-05 18:47:14,931 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.service.server: 7 post-tests in 0.52s, 389 queries 
+2026-11-05 18:47:14,931 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.tests.stats: etat_civil_auth_email: 9 tests 0.51s 389 queries 
+2026-11-05 18:47:14,931 557345 INFO etat_civil_phase_next_auth_20261105_01 odoo.service.server: Stopping gracefully 

@@ -1,0 +1,1776 @@
+2026-11-05 18:52:19,990 559975 INFO ? odoo: Odoo version 17.0 
+2026-11-05 18:52:19,990 559975 INFO ? odoo: Using configuration file at /tmp/etat_civil_phase_next_finance.conf 
+2026-11-05 18:52:19,990 559975 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/implementation_odoo17_dev/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 18:52:19,990 559975 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 18:52:20,126 559975 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 18:52:20,336 559975 WARNING ? odoo.service.server: Unit testing in workers mode could fail; use --workers 0. 
+2026-11-05 18:52:20,376 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading 1 modules... 
+2026-11-05 18:52:20,386 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-05 18:52:20,420 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 18:52:20,421 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: updating modules list 
+2026-11-05 18:52:20,425 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-11-05 18:52:21,856 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Gestion d’État Civil', 'État civil — Passerelle comptable'] to user __system__ #1 via n/a 
+2026-11-05 18:52:21,857 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Gestion d’État Civil', 'État civil — Passerelle comptable'] to user __system__ #1 via n/a 
+2026-11-05 18:52:22,928 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-11-05 18:52:22,982 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading 45 modules... 
+2026-11-05 18:52:23,353 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: Loading module etat_civil (20/45) 
+2026-11-05 18:52:23,510 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.registry: module etat_civil: creating or updating database tables 
+2026-11-05 18:52:23,713 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/security/security.xml 
+2026-11-05 18:52:24,023 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/security/ir.model.access.csv 
+2026-11-05 18:52:24,194 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/data/demande_guichet_sequence.xml 
+2026-11-05 18:52:24,200 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/data/acte_sequence.xml 
+2026-11-05 18:52:24,205 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/data/mention_sequence.xml 
+2026-11-05 18:52:24,217 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/individu_views.xml 
+2026-11-05 18:52:24,276 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/registre_views.xml 
+2026-11-05 18:52:24,339 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/reports/actes_reports.xml 
+2026-11-05 18:52:24,486 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/acte_naissance_views.xml 
+2026-11-05 18:52:24,577 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/acte_mariage_views.xml 
+2026-11-05 18:52:24,652 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/acte_deces_views.xml 
+2026-11-05 18:52:24,727 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/mentions_marginales_views.xml 
+2026-11-05 18:52:24,772 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/demandes_guichet_views.xml 
+2026-11-05 18:52:24,811 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/gestion_utilisateurs_views.xml 
+2026-11-05 18:52:24,896 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/registry_actions.xml 
+2026-11-05 18:52:24,945 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/wizard_views.xml 
+2026-11-05 18:52:25,003 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/import_export_views.xml 
+2026-11-05 18:52:25,044 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/import_export_log_views.xml 
+2026-11-05 18:52:25,104 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted ir.actions.act_window.view records with IDs: [35, 36] 
+2026-11-05 18:52:25,111 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/menus.xml 
+2026-11-05 18:52:25,349 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: Module etat_civil loaded in 2.00s, 1411 queries (+1411 other) 
+2026-11-05 18:52:25,657 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: Loading module etat_civil_account (42/45) 
+2026-11-05 18:52:25,975 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.registry: module etat_civil_account: creating or updating database tables 
+2026-11-05 18:52:26,143 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil_account/data/sequences.xml 
+2026-11-05 18:52:26,147 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil_account/security/security.xml 
+2026-11-05 18:52:26,265 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil_account/security/ir.model.access.csv 
+2026-11-05 18:52:26,303 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil_account/views/copy_request_views.xml 
+2026-11-05 18:52:26,375 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil_account/report/copy_document.xml 
+2026-11-05 18:52:26,424 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: Module etat_civil_account loaded in 0.77s, 289 queries (+289 other) 
+2026-11-05 18:52:26,429 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: 45 modules loaded in 3.45s, 1700 queries (+1700 extra) 
+2026-11-05 18:52:26,949 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.registry: verifying fields for every extended model 
+2026-11-05 18:52:27,830 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: Modules loaded. 
+2026-11-05 18:52:27,890 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.registry: Registry loaded in 7.553s 
+2026-11-05 18:52:27,890 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.service.server: Starting post tests 
+2026-11-05 18:52:27,898 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_qweb: Pregenerating assets bundles 
+2026-11-05 18:52:28,966 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_qweb: JS Assets bundles generated in 0.7231011390686035 seconds 
+2026-11-05 18:52:29,057 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_qweb: CSS Assets bundles generated in 0.09070134162902832 seconds 
+2026-11-05 18:52:29,360 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 107 and Message-Id '<209456183827782.1793904749.319492101669312-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'****************pi@example.test'" successfully sent 
+2026-11-05 18:52:29,361 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:29,372 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [107] 
+2026-11-05 18:52:29,394 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [1606] 
+2026-11-05 18:52:29,395 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:29,401 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <agent-workflow-api> to <agent-workflow-api@example.test> 
+2026-11-05 18:52:29,648 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 108 and Message-Id '<836687236586000.1793904749.619783639907837-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'******************pi@example.test'" successfully sent 
+2026-11-05 18:52:29,648 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:29,657 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [108] 
+2026-11-05 18:52:29,668 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [1608] 
+2026-11-05 18:52:29,668 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:29,671 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <officer-workflow-api> to <officer-workflow-api@example.test> 
+2026-11-05 18:52:29,954 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 109 and Message-Id '<062008952468112.1793904749.926110982894897-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'************************pi@example.test'" successfully sent 
+2026-11-05 18:52:29,954 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:29,963 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [109] 
+2026-11-05 18:52:29,972 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [1610] 
+2026-11-05 18:52:29,972 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:29,975 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <agent-outside-workflow-api> to <agent-outside-workflow-api@example.test> 
+2026-11-05 18:52:29,980 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_accepts_valid_piece_images_and_infers_mimetype ... 
+2026-11-05 18:52:29,990 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:agent-workflow-api from n/a 
+2026-11-05 18:52:30,873 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:52:30,873 559975 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ERROR: TestActeWorkflowApi.test_api_accepts_valid_piece_images_and_infers_mimetype
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 497, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 395, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 1362, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/http/client.py", line 1122, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/usr/lib/python3.14/http/client.py", line 1066, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 243, in connect
+    self.sock = self._new_conn()
+                ~~~~~~~~~~~~~~^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+        self, f"Failed to establish a new connection: {e}"
+    ) from e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x74361a5e6660>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=18191): Max retries exceeded with url: /api/v1/actes/naissance/107 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x74361a5e6660>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 636, in test_api_accepts_valid_piece_images_and_infers_mimetype
+    response = self.url_open(
+        f"/api/v1/actes/naissance/{acte.id}",
+    ...<7 lines>...
+        headers={"Content-Type": "application/json"},
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 2009, in url_open
+    return self.opener.post(url, data=data, files=files, timeout=timeout, headers=headers, allow_redirects=allow_redirects)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 1906, in request
+    return super().request(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 347, in <lambda>
+    lambda s, r, **kwargs: cls._request_handler(s, r, **kwargs),
+                           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 291, in _request_handler
+    return _super_send(s, r, **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=18191): Max retries exceeded with url: /api/v1/actes/naissance/107 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x74361a5e6660>: Failed to establish a new connection: [Errno 111] Connection refused'))
+ 
+2026-11-05 18:52:30,876 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_allows_agent_correction_and_rejects_direct_civil_status_changes ... 
+2026-11-05 18:52:31,245 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 110 and Message-Id '<424985462595420.1793904751.155947923660278-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-api@example.test' to (redacted) 'o*****************pi@example.test' successfully sent 
+2026-11-05 18:52:31,245 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:31,255 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #54 deleted mail.mail records with IDs: [110] 
+2026-11-05 18:52:31,256 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:31,459 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 111 and Message-Id '<486274118483655.1793904751.388134479522705-openerp-message-notify@ulrich-Default-string>' from 'officer-workflow-api@example.test' to (redacted) 'a***************pi@example.test' successfully sent 
+2026-11-05 18:52:31,459 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:31,475 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #55 deleted mail.mail records with IDs: [111] 
+2026-11-05 18:52:31,475 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:31,521 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:agent-workflow-api from n/a 
+2026-11-05 18:52:31,530 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:52:31,530 559975 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ERROR: TestActeWorkflowApi.test_api_allows_agent_correction_and_rejects_direct_civil_status_changes
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 497, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 395, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 1362, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/http/client.py", line 1122, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/usr/lib/python3.14/http/client.py", line 1066, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 243, in connect
+    self.sock = self._new_conn()
+                ~~~~~~~~~~~~~~^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+        self, f"Failed to establish a new connection: {e}"
+    ) from e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x74361a585950>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=18191): Max retries exceeded with url: /api/v1/actes/naissance/108 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x74361a585950>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 456, in test_api_allows_agent_correction_and_rejects_direct_civil_status_changes
+    correction_response = self.url_open(
+        f"/api/v1/actes/naissance/{acte.id}",
+        data=json.dumps({"texte_integral_acte": "Texte corrigé."}),
+        headers={"Content-Type": "application/json"},
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 2009, in url_open
+    return self.opener.post(url, data=data, files=files, timeout=timeout, headers=headers, allow_redirects=allow_redirects)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 1906, in request
+    return super().request(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 347, in <lambda>
+    lambda s, r, **kwargs: cls._request_handler(s, r, **kwargs),
+                           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 291, in _request_handler
+    return _super_send(s, r, **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=18191): Max retries exceeded with url: /api/v1/actes/naissance/108 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x74361a585950>: Failed to establish a new connection: [Errno 111] Connection refused'))
+ 
+2026-11-05 18:52:31,532 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_health_does_not_disclose_the_database_name ... 
+2026-11-05 18:52:31,539 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:52:31,539 559975 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ERROR: TestActeWorkflowApi.test_api_health_does_not_disclose_the_database_name
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 497, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 395, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 1362, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/http/client.py", line 1122, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/usr/lib/python3.14/http/client.py", line 1066, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 243, in connect
+    self.sock = self._new_conn()
+                ~~~~~~~~~~~~~~^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+        self, f"Failed to establish a new connection: {e}"
+    ) from e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7436197582d0>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=18191): Max retries exceeded with url: /api/v1/health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7436197582d0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 501, in test_api_health_does_not_disclose_the_database_name
+    response = self.url_open("/api/v1/health")
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 2010, in url_open
+    return self.opener.get(url, timeout=timeout, headers=headers, allow_redirects=allow_redirects)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 1906, in request
+    return super().request(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 347, in <lambda>
+    lambda s, r, **kwargs: cls._request_handler(s, r, **kwargs),
+                           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 291, in _request_handler
+    return _super_send(s, r, **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=18191): Max retries exceeded with url: /api/v1/health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7436197582d0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+ 
+2026-11-05 18:52:31,540 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_logout_requires_json_post ... 
+2026-11-05 18:52:31,551 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:agent-workflow-api from n/a 
+2026-11-05 18:52:31,577 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:52:31,577 559975 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ERROR: TestActeWorkflowApi.test_api_logout_requires_json_post
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 497, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 395, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 1362, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/http/client.py", line 1122, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/usr/lib/python3.14/http/client.py", line 1066, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 243, in connect
+    self.sock = self._new_conn()
+                ~~~~~~~~~~~~~~^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+        self, f"Failed to establish a new connection: {e}"
+    ) from e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7436197ebbb0>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=18191): Max retries exceeded with url: /api/v1/auth/logout (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7436197ebbb0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 483, in test_api_logout_requires_json_post
+    get_response = self.url_open("/api/v1/auth/logout")
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 2010, in url_open
+    return self.opener.get(url, timeout=timeout, headers=headers, allow_redirects=allow_redirects)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 1906, in request
+    return super().request(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 347, in <lambda>
+    lambda s, r, **kwargs: cls._request_handler(s, r, **kwargs),
+                           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 291, in _request_handler
+    return _super_send(s, r, **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=18191): Max retries exceeded with url: /api/v1/auth/logout (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7436197ebbb0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+ 
+2026-11-05 18:52:31,578 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_mutations_reject_json_sent_as_plain_text ... 
+2026-11-05 18:52:31,591 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:agent-workflow-api from n/a 
+2026-11-05 18:52:31,609 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:52:31,609 559975 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ERROR: TestActeWorkflowApi.test_api_mutations_reject_json_sent_as_plain_text
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 497, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 395, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 1362, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/http/client.py", line 1122, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/usr/lib/python3.14/http/client.py", line 1066, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 243, in connect
+    self.sock = self._new_conn()
+                ~~~~~~~~~~~~~~^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+        self, f"Failed to establish a new connection: {e}"
+    ) from e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x743619740510>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=18191): Max retries exceeded with url: /api/v1/personnes (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x743619740510>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 517, in test_api_mutations_reject_json_sent_as_plain_text
+    response = self.url_open(
+        "/api/v1/personnes",
+        data=json.dumps(payload),
+        headers={"Content-Type": "text/plain"},
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 2009, in url_open
+    return self.opener.post(url, data=data, files=files, timeout=timeout, headers=headers, allow_redirects=allow_redirects)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 1906, in request
+    return super().request(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 347, in <lambda>
+    lambda s, r, **kwargs: cls._request_handler(s, r, **kwargs),
+                           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 291, in _request_handler
+    return _super_send(s, r, **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=18191): Max retries exceeded with url: /api/v1/personnes (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x743619740510>: Failed to establish a new connection: [Errno 111] Connection refused'))
+ 
+2026-11-05 18:52:31,611 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_rejects_invalid_piece_images_without_partial_updates ... 
+2026-11-05 18:52:31,623 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:agent-workflow-api from n/a 
+2026-11-05 18:52:31,782 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:52:31,782 559975 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ERROR: Subtest TestActeWorkflowApi.test_api_rejects_invalid_piece_images_without_partial_updates (index=0)
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 497, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 395, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 1362, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/http/client.py", line 1122, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/usr/lib/python3.14/http/client.py", line 1066, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 243, in connect
+    self.sock = self._new_conn()
+                ~~~~~~~~~~~~~~^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+        self, f"Failed to establish a new connection: {e}"
+    ) from e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x74361a188cb0>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=18191): Max retries exceeded with url: /api/v1/actes/naissance/109 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x74361a188cb0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 568, in test_api_rejects_invalid_piece_images_without_partial_updates
+    response = self.url_open(
+        f"/api/v1/actes/naissance/{acte.id}",
+    ...<9 lines>...
+        headers={"Content-Type": "application/json"},
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 2009, in url_open
+    return self.opener.post(url, data=data, files=files, timeout=timeout, headers=headers, allow_redirects=allow_redirects)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 1906, in request
+    return super().request(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 347, in <lambda>
+    lambda s, r, **kwargs: cls._request_handler(s, r, **kwargs),
+                           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 291, in _request_handler
+    return _super_send(s, r, **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=18191): Max retries exceeded with url: /api/v1/actes/naissance/109 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x74361a188cb0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+ 
+2026-11-05 18:52:31,798 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:52:31,798 559975 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ERROR: Subtest TestActeWorkflowApi.test_api_rejects_invalid_piece_images_without_partial_updates (index=1)
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 497, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 395, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 1362, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/http/client.py", line 1122, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/usr/lib/python3.14/http/client.py", line 1066, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 243, in connect
+    self.sock = self._new_conn()
+                ~~~~~~~~~~~~~~^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+        self, f"Failed to establish a new connection: {e}"
+    ) from e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x74361a597790>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=18191): Max retries exceeded with url: /api/v1/actes/naissance/109 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x74361a597790>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 568, in test_api_rejects_invalid_piece_images_without_partial_updates
+    response = self.url_open(
+        f"/api/v1/actes/naissance/{acte.id}",
+    ...<9 lines>...
+        headers={"Content-Type": "application/json"},
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 2009, in url_open
+    return self.opener.post(url, data=data, files=files, timeout=timeout, headers=headers, allow_redirects=allow_redirects)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 1906, in request
+    return super().request(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 347, in <lambda>
+    lambda s, r, **kwargs: cls._request_handler(s, r, **kwargs),
+                           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 291, in _request_handler
+    return _super_send(s, r, **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=18191): Max retries exceeded with url: /api/v1/actes/naissance/109 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x74361a597790>: Failed to establish a new connection: [Errno 111] Connection refused'))
+ 
+2026-11-05 18:52:31,812 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:52:31,812 559975 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ERROR: TestActeWorkflowApi.test_api_rejects_invalid_piece_images_without_partial_updates
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 497, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 395, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 1362, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/http/client.py", line 1122, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/usr/lib/python3.14/http/client.py", line 1066, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 243, in connect
+    self.sock = self._new_conn()
+                ~~~~~~~~~~~~~~^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+        self, f"Failed to establish a new connection: {e}"
+    ) from e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x74361a596cf0>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=18191): Max retries exceeded with url: /api/v1/actes/naissance (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x74361a596cf0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 594, in test_api_rejects_invalid_piece_images_without_partial_updates
+    response = self.url_open(
+        "/api/v1/actes/naissance",
+    ...<13 lines>...
+        headers={"Content-Type": "application/json"},
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 2009, in url_open
+    return self.opener.post(url, data=data, files=files, timeout=timeout, headers=headers, allow_redirects=allow_redirects)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 1906, in request
+    return super().request(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 347, in <lambda>
+    lambda s, r, **kwargs: cls._request_handler(s, r, **kwargs),
+                           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 291, in _request_handler
+    return _super_send(s, r, **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=18191): Max retries exceeded with url: /api/v1/actes/naissance (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x74361a596cf0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+ 
+2026-11-05 18:52:31,813 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_attachment_preview_route_respects_civil_centre_access ... 
+2026-11-05 18:52:32,066 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:agent-workflow-api from n/a 
+2026-11-05 18:52:32,077 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:52:32,077 559975 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ERROR: TestActeWorkflowApi.test_attachment_preview_route_respects_civil_centre_access
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 497, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 395, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 1362, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/http/client.py", line 1122, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/usr/lib/python3.14/http/client.py", line 1066, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 243, in connect
+    self.sock = self._new_conn()
+                ~~~~~~~~~~~~~~^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+        self, f"Failed to establish a new connection: {e}"
+    ) from e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x74362140b020>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=18191): Max retries exceeded with url: /web/content/755?download=false (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x74362140b020>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 669, in test_attachment_preview_route_respects_civil_centre_access
+    allowed = self.url_open(f"/web/content/{attachment.id}?download=false")
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 2010, in url_open
+    return self.opener.get(url, timeout=timeout, headers=headers, allow_redirects=allow_redirects)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 1906, in request
+    return super().request(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 347, in <lambda>
+    lambda s, r, **kwargs: cls._request_handler(s, r, **kwargs),
+                           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 291, in _request_handler
+    return _super_send(s, r, **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=18191): Max retries exceeded with url: /web/content/755?download=false (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x74362140b020>: Failed to establish a new connection: [Errno 111] Connection refused'))
+ 
+2026-11-05 18:52:32,078 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_authenticated_api_routes_reject_anonymous_writes ... 
+2026-11-05 18:52:32,097 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:agent-workflow-api from n/a 
+2026-11-05 18:52:32,125 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:52:32,126 559975 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ERROR: TestActeWorkflowApi.test_authenticated_api_routes_reject_anonymous_writes
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 497, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 395, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 1362, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/http/client.py", line 1122, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/usr/lib/python3.14/http/client.py", line 1066, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 243, in connect
+    self.sock = self._new_conn()
+                ~~~~~~~~~~~~~~^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+        self, f"Failed to establish a new connection: {e}"
+    ) from e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x74361a597790>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=18191): Max retries exceeded with url: /api/v1/auth/logout (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x74361a597790>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 683, in test_authenticated_api_routes_reject_anonymous_writes
+    logout_response = self.url_open(
+        "/api/v1/auth/logout",
+        data=json.dumps({}),
+        headers={"Content-Type": "application/json"},
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 2009, in url_open
+    return self.opener.post(url, data=data, files=files, timeout=timeout, headers=headers, allow_redirects=allow_redirects)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 1906, in request
+    return super().request(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 347, in <lambda>
+    lambda s, r, **kwargs: cls._request_handler(s, r, **kwargs),
+                           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 291, in _request_handler
+    return _super_send(s, r, **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=18191): Max retries exceeded with url: /api/v1/auth/logout (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x74361a597790>: Failed to establish a new connection: [Errno 111] Connection refused'))
+ 
+2026-11-05 18:52:32,128 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_specific_api_routes_enforce_the_workflow_for_each_act_type ... 
+2026-11-05 18:52:32,144 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:officer-workflow-api from n/a 
+2026-11-05 18:52:32,171 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:officer-workflow-api from n/a 
+2026-11-05 18:52:32,395 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:52:32,395 559975 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ERROR: Subtest TestActeWorkflowApi.test_specific_api_routes_enforce_the_workflow_for_each_act_type (acte_type='naissance')
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 497, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 395, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 1362, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/http/client.py", line 1122, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/usr/lib/python3.14/http/client.py", line 1066, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 243, in connect
+    self.sock = self._new_conn()
+                ~~~~~~~~~~~~~~^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+        self, f"Failed to establish a new connection: {e}"
+    ) from e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x74361a597570>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=18191): Max retries exceeded with url: /api/v1/actes/naissance/111/valider (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x74361a597570>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 404, in test_specific_api_routes_enforce_the_workflow_for_each_act_type
+    draft_response = self.url_open(
+        unified_url,
+        data=json.dumps({}),
+        headers={"Content-Type": "application/json"},
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 2009, in url_open
+    return self.opener.post(url, data=data, files=files, timeout=timeout, headers=headers, allow_redirects=allow_redirects)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 1906, in request
+    return super().request(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 347, in <lambda>
+    lambda s, r, **kwargs: cls._request_handler(s, r, **kwargs),
+                           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 291, in _request_handler
+    return _super_send(s, r, **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=18191): Max retries exceeded with url: /api/v1/actes/naissance/111/valider (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x74361a597570>: Failed to establish a new connection: [Errno 111] Connection refused'))
+ 
+2026-11-05 18:52:32,406 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:officer-workflow-api from n/a 
+2026-11-05 18:52:32,606 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:52:32,606 559975 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ERROR: Subtest TestActeWorkflowApi.test_specific_api_routes_enforce_the_workflow_for_each_act_type (acte_type='mariage')
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 497, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 395, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 1362, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/http/client.py", line 1122, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/usr/lib/python3.14/http/client.py", line 1066, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 243, in connect
+    self.sock = self._new_conn()
+                ~~~~~~~~~~~~~~^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+        self, f"Failed to establish a new connection: {e}"
+    ) from e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x74361b74ead0>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=18191): Max retries exceeded with url: /api/v1/actes/mariage/23/valider (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x74361b74ead0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 404, in test_specific_api_routes_enforce_the_workflow_for_each_act_type
+    draft_response = self.url_open(
+        unified_url,
+        data=json.dumps({}),
+        headers={"Content-Type": "application/json"},
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 2009, in url_open
+    return self.opener.post(url, data=data, files=files, timeout=timeout, headers=headers, allow_redirects=allow_redirects)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 1906, in request
+    return super().request(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 347, in <lambda>
+    lambda s, r, **kwargs: cls._request_handler(s, r, **kwargs),
+                           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 291, in _request_handler
+    return _super_send(s, r, **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=18191): Max retries exceeded with url: /api/v1/actes/mariage/23/valider (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x74361b74ead0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+ 
+2026-11-05 18:52:32,617 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:officer-workflow-api from n/a 
+2026-11-05 18:52:32,720 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:52:32,720 559975 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ERROR: Subtest TestActeWorkflowApi.test_specific_api_routes_enforce_the_workflow_for_each_act_type (acte_type='deces')
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 497, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 395, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 1362, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/http/client.py", line 1122, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/usr/lib/python3.14/http/client.py", line 1066, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 243, in connect
+    self.sock = self._new_conn()
+                ~~~~~~~~~~~~~~^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+        self, f"Failed to establish a new connection: {e}"
+    ) from e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x74361b5486b0>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=18191): Max retries exceeded with url: /api/v1/actes/deces/15/valider (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x74361b5486b0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 404, in test_specific_api_routes_enforce_the_workflow_for_each_act_type
+    draft_response = self.url_open(
+        unified_url,
+        data=json.dumps({}),
+        headers={"Content-Type": "application/json"},
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 2009, in url_open
+    return self.opener.post(url, data=data, files=files, timeout=timeout, headers=headers, allow_redirects=allow_redirects)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 1906, in request
+    return super().request(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 347, in <lambda>
+    lambda s, r, **kwargs: cls._request_handler(s, r, **kwargs),
+                           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 291, in _request_handler
+    return _super_send(s, r, **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=18191): Max retries exceeded with url: /api/v1/actes/deces/15/valider (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x74361b5486b0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+ 
+2026-11-05 18:52:32,905 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_attachment: filestore gc 5 checked, 4 removed 
+2026-11-05 18:52:33,226 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 112 and Message-Id '<787223259429786.1793904753.192064523696899-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'************************ns@example.test'" successfully sent 
+2026-11-05 18:52:33,227 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:33,237 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [112] 
+2026-11-05 18:52:33,252 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [1653] 
+2026-11-05 18:52:33,253 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:33,258 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <agent-workflow-transitions> to <agent-workflow-transitions@example.test> 
+2026-11-05 18:52:33,584 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 113 and Message-Id '<605250309307493.1793904753.554381370544434-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'**************************ns@example.test'" successfully sent 
+2026-11-05 18:52:33,584 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:33,591 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [113] 
+2026-11-05 18:52:33,600 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [1655] 
+2026-11-05 18:52:33,648 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:33,658 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <officer-workflow-transitions> to <officer-workflow-transitions@example.test> 
+2026-11-05 18:52:33,669 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowTransitions.test_all_act_types_reject_invalid_states_and_run_validation_effects ... 
+2026-11-05 18:52:34,115 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 114 and Message-Id '<892543915485663.1793904754.019026994705200-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:52:34,116 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:34,131 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #57 deleted mail.mail records with IDs: [114] 
+2026-11-05 18:52:34,131 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:34,272 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 115 and Message-Id '<017513017877811.1793904754.223140716552734-openerp-message-notify@ulrich-Default-string>' from 'officer-workflow-transitions@example.test' to (redacted) 'a***********************ns@example.test' successfully sent 
+2026-11-05 18:52:34,272 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:34,284 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #58 deleted mail.mail records with IDs: [115] 
+2026-11-05 18:52:34,285 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:34,482 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 116 and Message-Id '<762177146413151.1793904754.435415029525757-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:52:34,482 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:34,495 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #57 deleted mail.mail records with IDs: [116] 
+2026-11-05 18:52:34,495 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:34,746 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #58 deleted mail.activity records with IDs: [87, 88, 89] 
+2026-11-05 18:52:35,429 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 117 and Message-Id '<679711391640029.1793904755.393245935440063-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:52:35,430 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:35,451 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #57 deleted mail.mail records with IDs: [117] 
+2026-11-05 18:52:35,452 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:35,578 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 118 and Message-Id '<245810299180745.1793904755.532441377639771-openerp-message-notify@ulrich-Default-string>' from 'officer-workflow-transitions@example.test' to (redacted) 'a***********************ns@example.test' successfully sent 
+2026-11-05 18:52:35,655 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:35,680 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #58 deleted mail.mail records with IDs: [118] 
+2026-11-05 18:52:35,680 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:35,883 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 119 and Message-Id '<773239582595820.1793904755.836148738861084-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:52:35,883 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:35,896 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #57 deleted mail.mail records with IDs: [119] 
+2026-11-05 18:52:35,896 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:36,263 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #58 deleted mail.activity records with IDs: [90, 91, 92] 
+2026-11-05 18:52:36,704 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 120 and Message-Id '<129635511586611.1793904756.666153192520142-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:52:36,705 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:36,722 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #57 deleted mail.mail records with IDs: [120] 
+2026-11-05 18:52:36,723 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:36,830 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 121 and Message-Id '<617733766884107.1793904756.790013790130615-openerp-message-notify@ulrich-Default-string>' from 'officer-workflow-transitions@example.test' to (redacted) 'a***********************ns@example.test' successfully sent 
+2026-11-05 18:52:36,830 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:36,842 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #58 deleted mail.mail records with IDs: [121] 
+2026-11-05 18:52:36,880 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:37,067 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 122 and Message-Id '<915416875388369.1793904757.026546478271484-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:52:37,067 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:37,087 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #57 deleted mail.mail records with IDs: [122] 
+2026-11-05 18:52:37,087 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:37,282 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #58 deleted mail.activity records with IDs: [93, 94, 95] 
+2026-11-05 18:52:37,441 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowTransitions.test_officer_record_rule_preserves_read_access_in_own_centre ... 
+2026-11-05 18:52:37,578 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowTransitions.test_piece_actions_are_separated_in_each_act_form ... 
+2026-11-05 18:52:37,866 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowTransitions.test_piece_receipt_and_verification_actions_are_persistent_and_audited ... 
+2026-11-05 18:52:38,403 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 123 and Message-Id '<318574734457362.1793904758.301461935043335-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:52:38,403 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:38,419 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #57 deleted mail.mail records with IDs: [123] 
+2026-11-05 18:52:38,419 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:38,527 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowTransitions.test_second_marriage_for_a_spouse_is_rechecked_before_validation ... 
+2026-11-05 18:52:39,237 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 124 and Message-Id '<171349097027164.1793904759.152819156646729-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:52:39,237 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:39,250 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #57 deleted mail.mail records with IDs: [124] 
+2026-11-05 18:52:39,250 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:39,875 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 125 and Message-Id '<079619460441985.1793904759.833076715469360-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:52:39,876 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:39,889 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #57 deleted mail.mail records with IDs: [125] 
+2026-11-05 18:52:39,889 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:40,273 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #58 deleted mail.activity records with IDs: [97] 
+2026-11-05 18:52:40,329 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowTransitions.test_transmission_is_atomic_when_activity_creation_fails ... 
+2026-11-05 18:52:40,624 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowTransitions.test_validation_is_atomic_when_a_post_validation_effect_fails ... 
+2026-11-05 18:52:41,004 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 126 and Message-Id '<998414343177130.1793904760.913144588470459-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:52:41,004 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:41,018 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #57 deleted mail.mail records with IDs: [126] 
+2026-11-05 18:52:41,019 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:41,790 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 127 and Message-Id '<316714129348302.1793904761.750427961349487-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:52:41,790 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:41,803 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #57 deleted mail.mail records with IDs: [127] 
+2026-11-05 18:52:41,803 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:42,160 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #58 deleted mail.activity records with IDs: [100] 
+2026-11-05 18:52:42,447 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 128 and Message-Id '<817907818643604.1793904762.409988164901733-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:52:42,447 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:42,461 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #57 deleted mail.mail records with IDs: [128] 
+2026-11-05 18:52:42,462 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:42,664 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #58 deleted mail.activity records with IDs: [101] 
+2026-11-05 18:52:42,690 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_attachment: filestore gc 3 checked, 3 removed 
+2026-11-05 18:52:42,704 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_cin_compatibility: Starting TestCINCompatibility.test_birth_filiation_piece_rules_remain_distinct_and_neutral ... 
+2026-11-05 18:52:42,706 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_cin_compatibility: Starting TestCINCompatibility.test_guichet_accepts_legacy_citizen_nin_key ... 
+2026-11-05 18:52:42,717 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_cin_compatibility: Starting TestCINCompatibility.test_guichet_status_changes_only_through_actions ... 
+2026-11-05 18:52:42,727 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_cin_compatibility: Starting TestCINCompatibility.test_individu_accepts_legacy_api_key_and_stores_cin ... 
+2026-11-05 18:52:42,742 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_cin_compatibility: Starting TestCINCompatibility.test_individu_rejects_invalid_cin_length ... 
+2026-11-05 18:52:42,744 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_cin_compatibility: Starting TestCINCompatibility.test_marriage_foreign_documents_and_witness_requirements_are_explicit ... 
+2026-11-05 18:52:42,750 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-11-05 18:52:42,776 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_01_creation_nouveau_ne_sans_cin_et_sans_profession ... 
+2026-11-05 18:52:42,782 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_02_nouveau_ne_cin_format_et_unicite ... 
+2026-11-05 18:52:42,796 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_03_creation_adulte_avec_cin_et_profession ... 
+2026-11-05 18:52:42,804 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_04_cin_parents_distinctes_de_lenfant ... 
+2026-11-05 18:52:42,877 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_05_sequence_non_consommee_a_louverture_du_formulaire ... 
+2026-11-05 18:52:42,982 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_06_sequences_independantes_mariage_et_deces ... 
+2026-11-05 18:52:43,097 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_07_import_csv ... 
+2026-11-05 18:52:43,141 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_08_import_json ... 
+2026-11-05 18:52:43,170 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_09_import_xml ... 
+2026-11-05 18:52:43,198 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_10_import_xlsx ... 
+2026-11-05 18:52:43,247 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_11_detection_doublons_et_strategies ... 
+2026-11-05 18:52:43,298 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_12_exportation_citoyens ... 
+2026-11-05 18:52:43,355 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_14_import_xls ... 
+2026-11-05 18:52:43,393 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_15_import_ods ... 
+2026-11-05 18:52:43,430 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_16_import_valid_zip ... 
+2026-11-05 18:52:43,458 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_17_zip_import_reports_invalid_inner_file ... 
+2026-11-05 18:52:43,468 559975 WARNING etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.wizards.import_export_citoyen: Could not parse citoyens.json from uploaded ZIP: Expecting property name enclosed in double quotes: line 1 column 2 (char 1) 
+2026-11-05 18:52:43,480 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_18_mentions_generate_type_specific_references ... 
+2026-11-05 18:52:43,752 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_19_system_admin_has_direct_module_access ... 
+2026-11-05 18:52:43,992 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #61 deleted etat.civil.individu records with IDs: [388] 
+2026-11-05 18:52:43,996 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_mobile_act_creation_requires_an_open_register ... 
+2026-11-05 18:52:43,998 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_mobile_citizen_list_omits_nested_mentions ... 
+2026-11-05 18:52:44,006 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_spreadsheet_exports_treat_formula_like_citizen_values_as_text ... 
+2026-11-05 18:52:44,056 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_attachment: filestore gc 19 checked, 19 removed 
+2026-11-05 18:52:44,358 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 129 and Message-Id '<159315984990626.1793904764.323160409927368-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'***************rt@example.com'" successfully sent 
+2026-11-05 18:52:44,359 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:44,369 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [129] 
+2026-11-05 18:52:44,383 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [1924] 
+2026-11-05 18:52:44,383 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:44,388 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <agent_test_report@example.com> to <agent_test_report@example.com> 
+2026-11-05 18:52:44,619 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 130 and Message-Id '<305597127792053.1793904764.588323354721069-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'******************rt@example.com'" successfully sent 
+2026-11-05 18:52:44,619 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:44,626 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [130] 
+2026-11-05 18:52:44,639 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [1926] 
+2026-11-05 18:52:44,640 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:44,644 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <officier_test_report@example.com> to <officier_test_report@example.com> 
+2026-11-05 18:52:44,648 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_chatter_and_messages ... 
+2026-11-05 18:52:44,713 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_civil_admin_can_render_report_without_system_or_officer_group ... 
+2026-11-05 18:52:45,112 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_historical_marriage_without_witnesses ... 
+2026-11-05 18:52:45,398 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_integrity_hash_detects_tampering ... 
+2026-11-05 18:52:45,742 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 131 and Message-Id '<200673106655642.1793904765.649215936660767-openerp-message-notify@ulrich-Default-string>' from 'agent_test_report@example.com' to (redacted) 'o*****************rt@example.com' successfully sent 
+2026-11-05 18:52:45,742 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:45,756 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #62 deleted mail.mail records with IDs: [131] 
+2026-11-05 18:52:45,756 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:46,001 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #63 deleted mail.activity records with IDs: [102] 
+2026-11-05 18:52:46,022 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_physical_print_action_is_available_before_validation_for_all_act_types ... 
+2026-11-05 18:52:46,431 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_qr_code_and_hash_generation_and_disclaimer_in_report ... 
+2026-11-05 18:52:46,926 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 132 and Message-Id '<785746222382980.1793904766.807267427444458-openerp-message-notify@ulrich-Default-string>' from 'agent_test_report@example.com' to (redacted) 'o*****************rt@example.com' successfully sent 
+2026-11-05 18:52:46,926 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:46,943 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #62 deleted mail.mail records with IDs: [132] 
+2026-11-05 18:52:46,943 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:47,264 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #63 deleted mail.activity records with IDs: [103] 
+2026-11-05 18:52:47,511 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_report_deces_rendering ... 
+2026-11-05 18:52:47,739 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_report_mariage_rendering ... 
+2026-11-05 18:52:48,028 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_report_naissance_rendering_with_missing_optional_fields ... 
+2026-11-05 18:52:48,247 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_territorial_security_isolation ... 
+2026-11-05 18:52:48,528 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 133 and Message-Id '<612163493101191.1793904768.495567321777344-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'*******************so@test.com'" successfully sent 
+2026-11-05 18:52:48,529 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:48,539 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [133] 
+2026-11-05 18:52:48,553 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [2017] 
+2026-11-05 18:52:48,553 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:48,558 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <officier_centre_b_iso@test.com> to <officier_centre_b_iso@test.com> 
+2026-11-05 18:52:48,948 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 134 and Message-Id '<059202138376941.1793904768.860431194305420-openerp-message-notify@ulrich-Default-string>' from 'agent_test_report@example.com' to (redacted) 'o*****************rt@example.com' successfully sent 
+2026-11-05 18:52:48,948 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:48,967 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #62 deleted mail.mail records with IDs: [134] 
+2026-11-05 18:52:48,967 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:49,127 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [127], uid: 65, model: etat.civil.acte.naissance 
+2026-11-05 18:52:49,145 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_attachment: filestore gc 4 checked, 4 removed 
+2026-11-05 18:52:49,452 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 135 and Message-Id '<025107696981370.1793904769.417412757873535-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'********nt@example.test'" successfully sent 
+2026-11-05 18:52:49,452 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:49,459 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [135] 
+2026-11-05 18:52:49,472 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [2032] 
+2026-11-05 18:52:49,473 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:49,477 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <role-test-agent> to <role-agent@example.test> 
+2026-11-05 18:52:49,709 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 136 and Message-Id '<450299131279038.1793904769.679340124130249-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'**********er@example.test'" successfully sent 
+2026-11-05 18:52:49,709 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:49,717 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [136] 
+2026-11-05 18:52:49,732 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [2034] 
+2026-11-05 18:52:49,732 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:49,737 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <role-test-officer> to <role-officer@example.test> 
+2026-11-05 18:52:50,009 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 137 and Message-Id '<739175560818232.1793904769.974888563156128-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'********in@example.test'" successfully sent 
+2026-11-05 18:52:50,009 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:50,019 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [137] 
+2026-11-05 18:52:50,037 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [2036] 
+2026-11-05 18:52:50,037 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:50,043 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <role-test-admin> to <role-admin@example.test> 
+2026-11-05 18:52:50,048 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_act_numbers_and_page_numbers_are_defaulted_by_act_type ... 
+2026-11-05 18:52:50,157 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_act_validation_requires_verified_documents ... 
+2026-11-05 18:52:50,597 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 138 and Message-Id '<820483048567677.1793904770.494352102279663-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:52:50,597 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:50,609 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #66 deleted mail.mail records with IDs: [138] 
+2026-11-05 18:52:50,609 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:50,895 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #67 deleted mail.activity records with IDs: [105] 
+2026-11-05 18:52:50,913 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_admin_can_create_centres_registers_and_admin_users ... 
+2026-11-05 18:52:51,115 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_admin_can_manage_mentions_and_read_across_centres ... 
+2026-11-05 18:52:51,354 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_admin_can_process_decisions_without_territorial_assignment ... 
+2026-11-05 18:52:51,697 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 139 and Message-Id '<709293903309686.1793904771.605484008789062-openerp-message-notify@ulrich-Default-string>' from 'role-admin@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:52:51,698 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:51,713 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #68 deleted mail.mail records with IDs: [139] 
+2026-11-05 18:52:51,713 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:51,997 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 140 and Message-Id '<610806999630097.1793904771.960036754608154-openerp-message-notify@ulrich-Default-string>' from 'role-admin@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:52:51,998 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:52,011 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #68 deleted mail.mail records with IDs: [140] 
+2026-11-05 18:52:52,011 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:52,329 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 141 and Message-Id '<349193308687921.1793904772.289257287979126-openerp-message-notify@ulrich-Default-string>' from 'role-admin@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:52:52,330 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:52,345 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #68 deleted mail.mail records with IDs: [141] 
+2026-11-05 18:52:52,346 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:52,546 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #68 deleted mail.activity records with IDs: [109] 
+2026-11-05 18:52:52,800 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 142 and Message-Id '<106412716151379.1793904772.758838176727295-openerp-message-notify@ulrich-Default-string>' from 'role-admin@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:52:52,800 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:52,813 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #68 deleted mail.mail records with IDs: [142] 
+2026-11-05 18:52:52,814 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:52,981 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #68 deleted mail.activity records with IDs: [110] 
+2026-11-05 18:52:53,039 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_admin_has_full_act_workflow_without_officer_membership ... 
+2026-11-05 18:52:53,217 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #68 deleted mail.message records with IDs: [2140] 
+2026-11-05 18:52:53,234 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #68 deleted etat.civil.acte.naissance records with IDs: [136] 
+2026-11-05 18:52:53,242 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #68 deleted mail.followers records with IDs: [684] 
+2026-11-05 18:52:53,499 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 143 and Message-Id '<757868819692398.1793904773.406541109085083-openerp-message-notify@ulrich-Default-string>' from 'role-admin@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:52:53,500 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:53,512 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #68 deleted mail.mail records with IDs: [143] 
+2026-11-05 18:52:53,513 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:53,698 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #68 deleted mail.activity records with IDs: [111] 
+2026-11-05 18:52:53,716 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_agent_can_read_but_cannot_create_marginal_mentions ... 
+2026-11-05 18:52:53,720 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_agent_cannot_assign_an_officer_from_another_centre ... 
+2026-11-05 18:52:54,214 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_agent_cannot_open_user_management ... 
+2026-11-05 18:52:54,226 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: create, uid: 66, model: etat.civil.gestion.utilisateur 
+2026-11-05 18:52:54,228 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_agent_cannot_read_acts_outside_assigned_centres ... 
+2026-11-05 18:52:54,299 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_agent_cannot_set_act_status_directly_or_validate ... 
+2026-11-05 18:52:54,464 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_agent_transmits_to_the_assigned_officer ... 
+2026-11-05 18:52:54,841 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 144 and Message-Id '<685085551298470.1793904774.750715732574463-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:52:54,841 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:54,861 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #66 deleted mail.mail records with IDs: [144] 
+2026-11-05 18:52:54,861 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:54,919 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_cancellation_wizard ... 
+2026-11-05 18:52:55,314 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 145 and Message-Id '<189045818154882.1793904775.219388246536255-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:52:55,315 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:55,325 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #66 deleted mail.mail records with IDs: [145] 
+2026-11-05 18:52:55,325 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:55,564 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #67 deleted mail.activity records with IDs: [113] 
+2026-11-05 18:52:55,618 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_cannot_disable_last_civil_admin ... 
+2026-11-05 18:52:55,641 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_civil_admin_can_change_an_internal_users_role ... 
+2026-11-05 18:52:55,831 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_civil_admin_can_create_an_officer_account ... 
+2026-11-05 18:52:56,017 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_civil_admin_can_create_role_limited_internal_user ... 
+2026-11-05 18:52:56,200 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_civil_admin_can_validate_without_officer_group_membership ... 
+2026-11-05 18:52:56,592 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 147 and Message-Id '<397507777348268.1793904776.496118068695068-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:52:56,592 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:56,606 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #66 deleted mail.mail records with IDs: [147] 
+2026-11-05 18:52:56,606 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:56,846 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #68 deleted mail.activity records with IDs: [114] 
+2026-11-05 18:52:56,867 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_civil_status_cannot_be_changed_outside_approved_workflows ... 
+2026-11-05 18:52:56,881 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_double_transmission_is_rejected ... 
+2026-11-05 18:52:57,293 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 148 and Message-Id '<049188907298296.1793904777.203084468841553-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:52:57,293 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:57,307 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #66 deleted mail.mail records with IDs: [148] 
+2026-11-05 18:52:57,307 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:57,353 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_incomplete_act_cannot_be_transmitted ... 
+2026-11-05 18:52:57,505 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_manual_act_number_is_preserved_and_folio_increments_per_register ... 
+2026-11-05 18:52:57,707 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_can_refuse_waiting_act ... 
+2026-11-05 18:52:58,093 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 149 and Message-Id '<799787178097158.1793904777.999074697494507-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:52:58,093 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:58,107 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #66 deleted mail.mail records with IDs: [149] 
+2026-11-05 18:52:58,108 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:58,181 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_can_return_for_correction_and_agent_can_resubmit ... 
+2026-11-05 18:52:58,596 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 150 and Message-Id '<413427977271561.1793904778.505400657653809-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:52:58,597 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:58,608 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #66 deleted mail.mail records with IDs: [150] 
+2026-11-05 18:52:58,608 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:58,745 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 151 and Message-Id '<816927315532188.1793904778.696631908416748-openerp-message-notify@ulrich-Default-string>' from 'role-officer@example.test' to (redacted) 'r*******nt@example.test' successfully sent 
+2026-11-05 18:52:58,745 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:58,758 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #67 deleted mail.mail records with IDs: [151] 
+2026-11-05 18:52:58,759 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:58,944 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 152 and Message-Id '<616951981998814.1793904778.901557922363281-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:52:58,944 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:52:58,956 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #66 deleted mail.mail records with IDs: [152] 
+2026-11-05 18:52:58,957 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:52:58,984 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_cannot_create_edit_or_transmit_agent_acts ... 
+2026-11-05 18:52:59,160 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_cannot_read_or_change_another_centres_mentions ... 
+2026-11-05 18:52:59,508 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [39], uid: 73, model: etat.civil.mention.marginale 
+2026-11-05 18:52:59,593 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [113], uid: 73, model: etat.civil.centre 
+2026-11-05 18:52:59,601 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_cannot_set_mention_status_directly ... 
+2026-11-05 18:52:59,790 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_from_another_centre_cannot_validate ... 
+2026-11-05 18:53:00,265 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 153 and Message-Id '<261696676450461.1793904780.137311697006226-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:53:00,265 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:53:00,281 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #66 deleted mail.mail records with IDs: [153] 
+2026-11-05 18:53:00,281 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:53:00,585 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [152], uid: 74, model: etat.civil.acte.naissance 
+2026-11-05 18:53:00,599 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_full_lifecycle_annulation_and_archivage ... 
+2026-11-05 18:53:01,032 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 154 and Message-Id '<892981968063983.1793904780.929910182952881-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:53:01,032 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:53:01,048 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #66 deleted mail.mail records with IDs: [154] 
+2026-11-05 18:53:01,048 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:53:01,332 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #67 deleted mail.activity records with IDs: [121] 
+2026-11-05 18:53:01,453 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_group_does_not_imply_agent_group ... 
+2026-11-05 18:53:01,455 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_validation_locks_all_act_data_but_keeps_mentions_optional ... 
+2026-11-05 18:53:01,949 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 155 and Message-Id '<052109824586198.1793904781.820765495300293-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:53:01,949 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:53:01,965 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #66 deleted mail.mail records with IDs: [155] 
+2026-11-05 18:53:01,965 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:53:02,496 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #67 deleted mail.activity records with IDs: [122] 
+2026-11-05 18:53:02,574 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_only_officer_can_verify_required_documents ... 
+2026-11-05 18:53:02,780 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_only_the_assigned_officer_can_validate ... 
+2026-11-05 18:53:03,262 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 156 and Message-Id '<084039220518026.1793904783.149675607681274-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:53:03,263 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:53:03,282 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #66 deleted mail.mail records with IDs: [156] 
+2026-11-05 18:53:03,282 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:53:03,967 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #67 deleted mail.activity records with IDs: [123] 
+2026-11-05 18:53:03,989 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_user_with_agent_and_officer_groups_is_not_allowed_agent_actions ... 
+2026-11-05 18:53:04,394 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_validated_act_cannot_be_transmitted ... 
+2026-11-05 18:53:04,802 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 157 and Message-Id '<853104362389575.1793904784.700436115264893-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:53:04,802 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:53:04,820 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #66 deleted mail.mail records with IDs: [157] 
+2026-11-05 18:53:04,820 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:53:05,104 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #67 deleted mail.activity records with IDs: [124] 
+2026-11-05 18:53:05,132 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_attachment: filestore gc 11 checked, 11 removed 
+2026-11-05 18:53:05,148 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_user_directory: Starting TestEtatCivilUserDirectory.test_role_is_derived_from_existing_groups ... 
+2026-11-05 18:53:05,434 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_user_directory: Starting TestEtatCivilUserDirectory.test_user_directory_action_is_read_only_and_restricted ... 
+2026-11-05 18:53:05,443 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_user_directory: Starting TestEtatCivilUserDirectory.test_user_directory_menu_uses_native_user_model ... 
+2026-11-05 18:53:05,452 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_attachment: filestore gc 1 checked, 1 removed 
+2026-11-05 18:53:05,470 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil_account.tests.test_copy_request_security: Starting TestCopyRequestSecurity.test_direct_state_write_is_rejected ... 
+2026-11-05 18:53:05,479 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil_account.tests.test_copy_request_security: Starting TestCopyRequestSecurity.test_missing_invoice_never_satisfies_payment_gate ... 
+2026-11-05 18:53:05,485 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil_account.tests.test_copy_request_security: Starting TestCopyRequestSecurity.test_negative_tariff_is_rejected ... 
+2026-11-05 18:53:05,593 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil_account.tests.test_copy_request_security: Starting TestCopyRequestSecurity.test_payment_confirmation_requires_regisseur ... 
+2026-11-05 18:53:05,607 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil_account.tests.test_copy_request_security: Starting TestCopyRequestSecurity.test_typed_act_is_required ... 
+2026-11-05 18:53:05,622 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-11-05 18:53:05,638 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.service.server: 96 post-tests in 37.75s, 18144 queries 
+2026-11-05 18:53:05,639 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.tests.stats: etat_civil: 105 tests 36.33s 17864 queries 
+2026-11-05 18:53:05,639 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.tests.stats: etat_civil_account: 7 tests 0.17s 93 queries 
+2026-11-05 18:53:05,639 559975 INFO etat_civil_phase_next_finance_20261105_01 odoo.service.server: Stopping gracefully 

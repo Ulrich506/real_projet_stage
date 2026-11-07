@@ -42,10 +42,12 @@
         <field name="arch" type="xml">
             <form string="Mention marginale">
                 <header>
+                    <button name="%(action_report_mention_marginale)d" string="IMPRIMER" type="action" class="btn-secondary"
+                            groups="etat_civil.group_etat_civil_officier,etat_civil.group_etat_civil_admin"/>
                     <button name="action_valider_mention" string="Valider la mention"
                             type="object" class="btn-primary"
                             invisible="statut != 'brouillon'"
-                            groups="etat_civil.group_etat_civil_officier,base.group_system"/>
+                            groups="etat_civil.group_etat_civil_officier,etat_civil.group_etat_civil_admin"/>
                     <field name="statut" widget="statusbar" statusbar_visible="brouillon,valide"/>
                 </header>
                 <sheet>
@@ -91,7 +93,15 @@
                                 <tree editable="bottom">
                                     <field name="name"/>
                                     <field name="obligatoire"/>
-                                    <field name="etat"/>
+                                    <field name="etat" readonly="1"/>
+                                    <button name="action_mark_received" type="object" string="REÇU"
+                                            class="btn-secondary"
+                                            groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_admin"
+                                            invisible="etat != 'a_fournir'"/>
+                                    <button name="action_mark_verified" type="object" string="REÇU ET VÉRIFIER"
+                                            class="btn-primary"
+                                            groups="etat_civil.group_etat_civil_officier,etat_civil.group_etat_civil_admin"
+                                            invisible="etat != 'recu'"/>
                                     <field name="attachment_ids" widget="many2many_binary"/>
                                 </tree>
                             </field>

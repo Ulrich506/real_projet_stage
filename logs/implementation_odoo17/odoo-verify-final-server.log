@@ -1,0 +1,55 @@
+2026-11-05 16:39:11,776 513556 INFO ? odoo: Odoo version 17.0 
+2026-11-05 16:39:11,777 513556 INFO ? odoo: Using configuration file at /tmp/etat_civil_dev_verify_final_server_20261105.conf 
+2026-11-05 16:39:11,778 513556 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/implementation_odoo17_dev/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 16:39:11,778 513556 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 16:39:11,966 513556 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 16:39:12,275 513556 INFO ? odoo.service.server: HTTP service (werkzeug) running on 127.0.0.1:18179 
+2026-11-05 16:39:12,315 513556 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading 1 modules... 
+2026-11-05 16:39:12,327 513556 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-05 16:39:12,363 513556 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading 46 modules... 
+2026-11-05 16:39:13,395 513556 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: 46 modules loaded in 1.03s, 0 queries (+0 extra) 
+2026-11-05 16:39:13,670 513556 INFO etat_civil_dev_verify_final_20261105 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 16:39:13,676 513556 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Modules loaded. 
+2026-11-05 16:39:13,685 513556 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: Registry loaded in 1.409s 
+2026-11-05 16:39:13,691 513556 INFO etat_civil_dev_verify_final_20261105 odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 1 connections  
+2026-11-05 16:39:13,701 513592 INFO etat_civil_dev_verify_final_20261105 odoo.service.server: Worker WorkerHTTP (513592) alive 
+2026-11-05 16:39:13,710 513593 INFO etat_civil_dev_verify_final_20261105 odoo.service.server: Worker WorkerHTTP (513593) alive 
+2026-11-05 16:39:15,243 513594 INFO ? odoo: Odoo version 17.0 
+2026-11-05 16:39:15,244 513594 INFO ? odoo: Using configuration file at /tmp/etat_civil_dev_verify_final_server_20261105.conf 
+2026-11-05 16:39:15,244 513594 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/implementation_odoo17_dev/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 16:39:15,245 513594 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 16:39:15,448 513594 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 16:39:15,792 513594 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading 1 modules... 
+2026-11-05 16:39:15,811 513594 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2026-11-05 16:39:15,849 513594 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading 46 modules... 
+2026-11-05 16:39:16,995 513594 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: 46 modules loaded in 1.15s, 0 queries (+0 extra) 
+2026-11-05 16:39:17,293 513594 INFO etat_civil_dev_verify_final_20261105 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 16:39:17,301 513594 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Modules loaded. 
+2026-11-05 16:39:17,311 513594 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: Registry loaded in 1.564s 
+2026-11-05 16:39:17,318 513594 INFO etat_civil_dev_verify_final_20261105 odoo.service.server: Evented Service (longpolling) running on 127.0.0.1:18180 
+2026-11-05 16:43:13,114 513593 INFO etat_civil_dev_verify_final_20261105 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 16:43:13,548 513593 INFO etat_civil_dev_verify_final_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:43:13] "GET /web/login HTTP/1.1" 200 - 60 0.081 0.402
+2026-11-05 16:43:13,619 513592 INFO etat_civil_dev_verify_final_20261105 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 16:43:13,675 513592 INFO etat_civil_dev_verify_final_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:43:13] "GET /api/v1/health HTTP/1.1" 200 - 7 0.015 0.092
+2026-11-05 16:43:15,693 513593 INFO etat_civil_dev_verify_final_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:43:15] "GET /web/login HTTP/1.1" 200 - 4 0.028 0.067
+2026-11-05 16:43:16,285 513592 INFO ? werkzeug: 127.0.0.1 - - [05/Nov/2026 16:43:16] "GET /web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0 HTTP/1.1" 200 - 1 0.005 0.525
+2026-11-05 16:43:16,351 513592 INFO etat_civil_dev_verify_final_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:43:16] "GET /web/binary/company_logo HTTP/1.1" 200 - 3 0.009 0.053
+2026-11-05 16:43:16,582 513592 INFO etat_civil_dev_verify_final_20261105 odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/a3cf721/web.assets_frontend_minimal.min.js (id:460) 
+2026-11-05 16:43:16,599 513592 INFO etat_civil_dev_verify_final_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:43:16] "GET /web/assets/a3cf721/web.assets_frontend_minimal.min.js HTTP/1.1" 200 - 15 0.030 0.206
+2026-11-05 16:43:18,538 513593 INFO etat_civil_dev_verify_final_20261105 odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/1d0cf09/web.assets_frontend.min.css (id:461) 
+2026-11-05 16:43:18,553 513593 INFO etat_civil_dev_verify_final_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:43:18] "GET /web/assets/1d0cf09/web.assets_frontend.min.css HTTP/1.1" 200 - 13 0.047 2.746
+2026-11-05 16:43:19,205 513593 INFO ? werkzeug: 127.0.0.1 - - [05/Nov/2026 16:43:19] "GET /web/static/img/favicon.ico HTTP/1.1" 200 - 1 0.005 0.488
+2026-11-05 16:43:19,573 513592 INFO etat_civil_dev_verify_final_20261105 odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/0c5835b/web.assets_frontend_lazy.min.js (id:462) 
+2026-11-05 16:43:19,585 513592 INFO etat_civil_dev_verify_final_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:43:19] "GET /web/assets/0c5835b/web.assets_frontend_lazy.min.js HTTP/1.1" 200 - 21 0.028 0.860
+2026-11-05 17:34:22,619 513556 ERROR etat_civil_dev_verify_final_20261105 odoo.service.server: WorkerHTTP (513592) timeout after 120s 
+2026-11-05 17:34:22,650 523566 INFO etat_civil_dev_verify_final_20261105 odoo.service.server: Worker WorkerHTTP (523566) alive 
+2026-11-06 05:44:04,191 513556 ERROR etat_civil_dev_verify_final_20261105 odoo.service.server: WorkerHTTP (513593) timeout after 120s 
+2026-11-06 05:44:04,494 664586 INFO etat_civil_dev_verify_final_20261105 odoo.service.server: Worker WorkerHTTP (664586) alive 
+2026-11-06 08:28:48,062 513556 ERROR etat_civil_dev_verify_final_20261105 odoo.service.server: WorkerHTTP (664586) timeout after 120s 
+2026-11-06 08:28:48,093 778288 INFO etat_civil_dev_verify_final_20261105 odoo.service.server: Worker WorkerHTTP (778288) alive 
+2026-11-06 11:15:24,710 513556 ERROR etat_civil_dev_verify_final_20261105 odoo.service.server: WorkerHTTP (778288) timeout after 120s 
+2026-11-06 11:15:25,336 848675 INFO etat_civil_dev_verify_final_20261105 odoo.service.server: Worker WorkerHTTP (848675) alive 
+2026-11-06 16:35:24,992 513556 ERROR etat_civil_dev_verify_final_20261105 odoo.service.server: WorkerHTTP (523566) timeout after 120s 
+2026-11-06 16:35:25,370 882106 INFO etat_civil_dev_verify_final_20261105 odoo.service.server: Worker WorkerHTTP (882106) alive 
+2026-11-07 07:15:44,332 513556 ERROR etat_civil_dev_verify_final_20261105 odoo.service.server: WorkerHTTP (882106) timeout after 120s 
+2026-11-07 07:15:44,354 1041380 INFO etat_civil_dev_verify_final_20261105 odoo.service.server: Worker WorkerHTTP (1041380) alive 

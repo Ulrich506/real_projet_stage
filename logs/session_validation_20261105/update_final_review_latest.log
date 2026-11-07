@@ -1,0 +1,44 @@
+2026-11-05 11:22:19,672 356337 INFO ? odoo: Odoo version 17.0 
+2026-11-05 11:22:19,672 356337 INFO ? odoo: Using configuration file at /home/ulrich/tous_les_projet/stage_l3_odoo/config/odoo17.conf 
+2026-11-05 11:22:19,673 356337 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 11:22:19,673 356337 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 11:22:19,909 356337 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 11:22:20,335 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading 1 modules... 
+2026-11-05 11:22:20,358 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2026-11-05 11:22:20,405 356337 INFO etat_civil_final_review_20261105_1304 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 11:22:20,406 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: updating modules list 
+2026-11-05 11:22:20,412 356337 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-11-05 11:22:22,654 356337 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Gestion d’État Civil'] to user __system__ #1 via n/a 
+2026-11-05 11:22:22,655 356337 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Gestion d’État Civil'] to user __system__ #1 via n/a 
+2026-11-05 11:22:24,319 356337 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-11-05 11:22:24,381 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading 24 modules... 
+2026-11-05 11:22:24,889 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: Loading module etat_civil (15/24) 
+2026-11-05 11:22:25,134 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.registry: module etat_civil: creating or updating database tables 
+2026-11-05 11:22:25,528 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/security/security.xml 
+2026-11-05 11:22:25,987 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/security/ir.model.access.csv 
+2026-11-05 11:22:26,213 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/data/demande_guichet_sequence.xml 
+2026-11-05 11:22:26,223 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/data/acte_sequence.xml 
+2026-11-05 11:22:26,234 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/data/mention_sequence.xml 
+2026-11-05 11:22:26,260 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/views/individu_views.xml 
+2026-11-05 11:22:26,358 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/views/registre_views.xml 
+2026-11-05 11:22:26,444 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/reports/actes_reports.xml 
+2026-11-05 11:22:26,718 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/views/acte_naissance_views.xml 
+2026-11-05 11:22:26,843 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/views/acte_mariage_views.xml 
+2026-11-05 11:22:26,979 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/views/acte_deces_views.xml 
+2026-11-05 11:22:27,103 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/views/mentions_marginales_views.xml 
+2026-11-05 11:22:27,185 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/views/demandes_guichet_views.xml 
+2026-11-05 11:22:27,255 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/views/gestion_utilisateurs_views.xml 
+2026-11-05 11:22:27,383 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/views/registry_actions.xml 
+2026-11-05 11:22:27,446 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/views/wizard_views.xml 
+2026-11-05 11:22:27,539 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/views/import_export_views.xml 
+2026-11-05 11:22:27,604 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/views/import_export_log_views.xml 
+2026-11-05 11:22:27,712 356337 INFO etat_civil_final_review_20261105_1304 odoo.models.unlink: User #1 deleted ir.actions.act_window.view records with IDs: [31, 32] 
+2026-11-05 11:22:27,723 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading etat_civil/views/menus.xml 
+2026-11-05 11:22:28,119 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: Module etat_civil loaded in 3.23s, 1395 queries (+1395 other) 
+2026-11-05 11:22:28,220 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: 24 modules loaded in 3.84s, 1395 queries (+1395 extra) 
+2026-11-05 11:22:28,783 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.registry: verifying fields for every extended model 
+2026-11-05 11:22:30,107 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: Modules loaded. 
+2026-11-05 11:22:30,121 356337 INFO etat_civil_final_review_20261105_1304 odoo.modules.registry: Registry loaded in 9.836s 
+2026-11-05 11:22:30,123 356337 INFO etat_civil_final_review_20261105_1304 odoo.service.server: Initiating shutdown 
+2026-11-05 11:22:30,123 356337 INFO etat_civil_final_review_20261105_1304 odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-05 11:22:30,124 356337 INFO etat_civil_final_review_20261105_1304 odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 1 connections  

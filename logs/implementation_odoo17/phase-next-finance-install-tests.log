@@ -1,0 +1,36 @@
+2026-11-05 18:48:50,873 558106 INFO ? odoo: Odoo version 17.0 
+2026-11-05 18:48:50,874 558106 INFO ? odoo: Using configuration file at /tmp/etat_civil_dev_latest_server_20261105.conf 
+2026-11-05 18:48:50,874 558106 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/implementation_odoo17_dev/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 18:48:50,875 558106 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 18:48:51,044 558106 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 18:48:51,286 558106 WARNING ? odoo.service.server: Unit testing in workers mode could fail; use --workers 0. 
+2026-11-05 18:48:51,322 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading 1 modules... 
+2026-11-05 18:48:51,334 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-05 18:48:51,394 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 18:48:51,397 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: updating modules list 
+2026-11-05 18:48:51,404 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-11-05 18:48:52,943 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['État civil — Passerelle comptable'] to user __system__ #1 via n/a 
+2026-11-05 18:48:52,943 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['État civil — Passerelle comptable'] to user __system__ #1 via n/a 
+2026-11-05 18:48:54,064 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-11-05 18:48:54,112 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading 45 modules... 
+2026-11-05 18:48:54,776 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: Loading module etat_civil_account (42/45) 
+2026-11-05 18:48:55,076 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.registry: module etat_civil_account: creating or updating database tables 
+2026-11-05 18:48:55,196 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil_account/data/sequences.xml 
+2026-11-05 18:48:55,200 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil_account/security/security.xml 
+2026-11-05 18:48:55,358 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil_account/security/ir.model.access.csv 
+2026-11-05 18:48:55,408 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil_account/views/copy_request_views.xml 
+2026-11-05 18:48:55,487 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil_account/report/copy_document.xml 
+2026-11-05 18:48:55,621 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: Module etat_civil_account loaded in 0.85s, 325 queries (+325 other) 
+2026-11-05 18:48:55,629 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: 45 modules loaded in 1.52s, 325 queries (+325 extra) 
+2026-11-05 18:48:56,991 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: Modules loaded. 
+2026-11-05 18:48:57,220 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.registry: Registry loaded in 5.934s 
+2026-11-05 18:48:57,220 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.service.server: Starting post tests 
+2026-11-05 18:48:57,222 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil_account.tests.test_copy_request_security: Starting TestCopyRequestSecurity.test_direct_state_write_is_rejected ... 
+2026-11-05 18:48:57,229 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil_account.tests.test_copy_request_security: Starting TestCopyRequestSecurity.test_missing_invoice_never_satisfies_payment_gate ... 
+2026-11-05 18:48:57,233 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil_account.tests.test_copy_request_security: Starting TestCopyRequestSecurity.test_negative_tariff_is_rejected ... 
+2026-11-05 18:48:57,324 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil_account.tests.test_copy_request_security: Starting TestCopyRequestSecurity.test_payment_confirmation_requires_regisseur ... 
+2026-11-05 18:48:57,334 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil_account.tests.test_copy_request_security: Starting TestCopyRequestSecurity.test_typed_act_is_required ... 
+2026-11-05 18:48:57,482 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-11-05 18:48:57,495 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.service.server: 5 post-tests in 0.28s, 96 queries 
+2026-11-05 18:48:57,496 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.tests.stats: etat_civil_account: 7 tests 0.27s 96 queries 
+2026-11-05 18:48:57,496 558106 INFO etat_civil_phase_next_finance_20261105_01 odoo.service.server: Stopping gracefully 

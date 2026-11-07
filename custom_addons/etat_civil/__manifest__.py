@@ -1,6 +1,6 @@
 {
     "name": "Gestion d’État Civil",
-    "version": "17.0.2.1.8",
+    "version": "17.0.2.1.9",
     "summary": "Gestion professionnelle des citoyens et actes d’état civil",
     "category": "Public Sector",
     "author": "Équipe État Civil",
@@ -11,7 +11,9 @@
         "data/demande_guichet_sequence.xml",
         "data/acte_sequence.xml",
         "data/mention_sequence.xml",
+        "data/age_category_cron.xml",
         "views/individu_views.xml",
+
         "views/registre_views.xml",
         "reports/actes_reports.xml",
         "views/acte_naissance_views.xml",
@@ -29,6 +31,8 @@
     "assets": {
         "web.assets_backend": [
             "etat_civil/static/src/scss/etat_civil_ui.scss",
+            "etat_civil/static/src/js/piece_attachment_preview_field.js",
+            "etat_civil/static/src/xml/piece_attachment_preview_field.xml",
         ],
     },
     "installable": True,

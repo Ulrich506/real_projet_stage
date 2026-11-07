@@ -1,0 +1,219 @@
+@startuml
+title Passerelle proposée entre état civil et comptabilité Odoo 17
+hide methods
+skinparam classAttributeIconSize 0
+
+package "etat_civil (installé)" {
+  abstract class "etat.civil.acte.officiel" as ActeAbstract
+  class "etat.civil.acte.naissance" as ActeNaissance
+  class "etat.civil.acte.mariage" as ActeMariage
+  class "etat.civil.acte.deces" as ActeDeces
+  class "etat.civil.piece.justificative" as Piece
+  class "etat.civil.demande.guichet" as Guichet
+  class "etat.civil.individu" as Individu
+  ActeNaissance --|> ActeAbstract
+  ActeMariage --|> ActeAbstract
+  ActeDeces --|> ActeAbstract
+  Piece "*" --> "0..1" ActeNaissance
+  Piece "*" --> "0..1" ActeMariage
+  Piece "*" --> "0..1" ActeDeces
+  Guichet "0..*" ..> "0..1" ActeAbstract : pas de lien actuel
+  ActeAbstract "*" --> "1..*" Individu : rôles typés
+}
+
+package "etat_civil_account (à concevoir)" {
+  class "etat.civil.copy.request" as Copy {
+    reference
+    acte_naissance_id / acte_mariage_id / acte_deces_id
+    applicant_partner_id
+    copy_type
+    is_first_copy
+    amount_snapshot
+    state
+    invoice_id
+    delivery_date
+  }
+  class "etat.civil.copy.tariff" as Tariff {
+    service_type
+    document_type
+    amount
+    currency_id
+    tax_ids
+    company_id
+    center_id
+    valid_from / valid_to
+  }
+  class "etat.civil.copy.delivery" as Delivery {
+    copy_request_id
+    number
+    delivered_by
+    delivered_at
+  }
+  Copy "*" --> "0..1" ActeNaissance : exactement 1 lien concret
+  Copy "*" --> "0..1" ActeMariage : exactement 1 lien concret
+  Copy "*" --> "0..1" ActeDeces : exactement 1 lien concret
+  Copy "*" --> "0..1" Tariff : tarif snapshot d’origine
+  Copy "1" --> "0..1" Delivery : délivrance unique
+}
+
+package "Odoo standard (à installer pour cette base)" {
+  class "res.partner" as Partner
+  class "product.product" as Product
+  class "account.move" as Move
+  class "account.move.line" as MoveLine
+  class "account.payment" as Payment
+  Move "1" *-- "1..*" MoveLine : invoice_line_ids
+  Move "*" --> "1" Partner : partner_id
+  MoveLine "*" --> "0..1" Product : product_id
+  Copy "*" --> "0..1" Partner : applicant
+  Copy "*" --> "0..1" Move : invoice_id
+  Copy ..> Payment : paiement via rapprochement / liens Account
+  note right of Payment
+    Facture client posted, residual nul et payment_state paid.
+    account.payment.is_matched concerne le rapprochement bancaire
+    et reste une décision métier distincte.
+  end note
+  note right of Payment
+    Ne pas recopier le paiement dans un modèle custom.
+    L’état comptable reste contrôlé par account.
+  end note
+}
+
+note bottom
+  État constaté : seuls etat_civil, base, mail, web sont installés.
+  account/product/account_payment/POS sont disponibles dans les addons du checkout,
+  mais désinstallés dans la base de revue. Pas de module financier custom trouvé.
+end note
+@enduml
+
+@startuml
+title Séquence proposée — paiement d’une copie supplémentaire
+actor Demandeur
+participant "Agent / Officier" as Staff
+participant "État civil" as Civil
+participant "Odoo Account" as Account
+actor Régisseur
+participant "Document final" as Report
+
+Demandeur -> Staff : demande de copie
+Staff -> Civil : créer demande liée à acte validé
+Civil -> Civil : verrouiller l’historique et classifier
+Civil --> Staff : tarif / erreur explicite si tarif absent
+Civil -> Account : créer une facture client (idempotent)
+Account --> Civil : account.move référencé
+Régisseur -> Account : vérifier le paiement et son rapprochement
+Account --> Civil : état comptable relu côté serveur
+alt Facture réglée et paiement non annulé
+  Civil -> Civil : confirmer une seule fois, journaliser
+  Civil --> Régisseur : autorisée à délivrer
+  Staff -> Civil : délivrer
+  Civil -> Report : vérifier droit à chaque requête
+  Report --> Demandeur : PDF après autorisation
+else Paiement absent, partiel, annulé ou facture annulée
+  Civil --> Régisseur : reste en attente / bloqué
+  Staff -> Report : accès direct URL ou RPC
+  Report --> Staff : refus côté serveur
+end
+@enduml
+
+@startuml
+title Activité proposée — délivrance avec première copie gratuite
+start
+:Demande de copie;
+:Vérifier acte validé et centre autorisé;
+:Verrouiller l'historique de délivrance;
+if (Une première copie a-t-elle déjà été délivrée ?) then (non)
+  :Marquer la demande gratuite;
+  :Autoriser sans facture;
+else (oui)
+  :Résoudre tarif actif et non ambigu;
+  if (Tarif configuré ?) then (oui)
+    :Créer / réutiliser la facture unique;
+    :Attendre paiement complet comptabilisé;
+    if (Confirmation Régisseur conforme ?) then (oui)
+      :Marquer autorisée à délivrer;
+    else (non)
+      :Rester en attente ou bloquer;
+      stop
+    endif
+  else (non)
+    :Bloquer et signaler tarif manquant;
+    stop
+  endif
+endif
+:Vérifier à nouveau l'autorisation côté serveur;
+:Créer un enregistrement de délivrance unique;
+:Générer / exposer le rapport protégé;
+:Journaliser l'utilisateur et la date;
+stop
+@enduml
+
+@startuml
+title Permissions proposées (actions métier)
+left to right direction
+actor Agent
+actor Officier
+actor Regisseur
+actor Administrateur as Admin
+rectangle "Actes et pièces" {
+  usecase "Ajouter / réceptionner pièce" as U1
+  usecase "Vérifier pièce" as U2
+  usecase "Valider acte" as U3
+}
+rectangle "Copie / finance" {
+  usecase "Demander copie" as U4
+  usecase "Consulter paiements" as U5
+  usecase "Confirmer encaissement" as U6
+  usecase "Délivrer après autorisation" as U7
+  usecase "Gérer tarifs / utilisateurs" as U8
+}
+Agent --> U1
+Agent --> U4
+Officier --> U2
+Officier --> U3
+Officier --> U4
+Regisseur --> U5
+Regisseur --> U6
+Admin --> U1
+Admin --> U2
+Admin --> U3
+Admin --> U4
+Admin --> U5
+Admin --> U6
+Admin --> U7
+Admin --> U8
+Officier --> U7 : uniquement si accordé
+Agent --> U7 : uniquement si accordé
+note bottom of U6
+  Contrôle groupe, centre, état de facture/paiement,
+  montant, idempotence et journal dans la méthode serveur.
+end note
+@enduml
+
+@startuml
+title Dépendances de modules proposées
+package "Modules Odoo installés en revue" {
+  [base]
+  [mail]
+  [web]
+  [etat_civil]
+}
+package "Addons présents mais désinstallés en revue" {
+  [product]
+  [account]
+  [account_payment]
+  [point_of_sale]
+}
+[etat_civil] --> [base]
+[etat_civil] --> [mail]
+[etat_civil] --> [web]
+[account] --> [product]
+[account_payment] --> [account]
+[etat_civil_account] ..> [etat_civil] : dépendance requise
+[etat_civil_account] ..> [account] : dépendance requise
+[point_of_sale] ..> [etat_civil_account] : option future, après décision
+note bottom
+  Aucun addon financier custom distinct n'a été trouvé sous custom_addons.
+  `etat_civil_account` est une proposition, pas un module existant.
+end note
+@enduml

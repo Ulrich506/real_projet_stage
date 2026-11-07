@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id="menu_etat_civil_root" name="État Civil" web_icon="etat_civil,static/description/icon.png" groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_officier,base.group_system" sequence="10"/>
-    <menuitem id="menu_etat_civil_guichet" name="File d'attente" parent="menu_etat_civil_root" action="action_etat_civil_demandes_guichet" groups="etat_civil.group_etat_civil_agent,base.group_system" sequence="5"/>
-    <menuitem id="menu_etat_civil_a_valider" name="Dossiers à examiner" parent="menu_etat_civil_root" groups="etat_civil.group_etat_civil_officier,base.group_system" sequence="8"/>
+    <menuitem id="menu_etat_civil_root" name="État Civil" web_icon="etat_civil,static/description/icon.png" groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_officier,etat_civil.group_etat_civil_admin,base.group_system" sequence="10"/>
+    <menuitem id="menu_etat_civil_guichet" name="File d'attente" parent="menu_etat_civil_root" action="action_etat_civil_demandes_guichet" groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_admin,base.group_system" sequence="5"/>
+    <menuitem id="menu_etat_civil_a_valider" name="Dossiers à examiner" parent="menu_etat_civil_root" groups="etat_civil.group_etat_civil_officier,etat_civil.group_etat_civil_admin,base.group_system" sequence="8"/>
     <menuitem id="menu_etat_civil_naissance_a_valider" name="Naissances à examiner" parent="menu_etat_civil_a_valider" action="action_etat_civil_acte_naissance_a_valider" sequence="10"/>
     <menuitem id="menu_etat_civil_mariage_a_valider" name="Mariages à examiner" parent="menu_etat_civil_a_valider" action="action_etat_civil_acte_mariage_a_valider" sequence="20"/>
     <menuitem id="menu_etat_civil_deces_a_valider" name="Décès à examiner" parent="menu_etat_civil_a_valider" action="action_etat_civil_acte_deces_a_valider" sequence="30"/>

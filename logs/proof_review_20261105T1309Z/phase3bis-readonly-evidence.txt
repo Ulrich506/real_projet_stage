@@ -1,0 +1,62 @@
+PHASE 3 BIS — READ-ONLY EVIDENCE SUMMARY
+Timestamp: 2026-11-05 13:42-13:45 UTC
+Database: etat_civil_final_review_20261105_1304
+Odoo endpoint: 127.0.0.1:18071; gevent 127.0.0.1:18072
+Method: Odoo shell using the isolated local checkout. First SQL statement set transaction READ ONLY; all queries were SELECT; explicit ROLLBACK at completion. No fixtures, writes, authentication attempts, or database changes were performed during this phase.
+
+Environment checks:
+- systemd user unit odoo-etat-civil-review-mp-18071.service: active.
+- GET http://127.0.0.1:18071/web/login: HTTP 200.
+- TCP 127.0.0.1:18071: listening under local Odoo master and HTTP worker PIDs.
+- TCP 127.0.0.1:18072: listening under local Odoo evented process.
+- Active Odoo on 127.0.0.1:8071 is a separate PID and was not touched.
+- Current server log confirms 24 modules loaded on database etat_civil_final_review_20261105_1304; cron threads were set to zero at launch.
+
+Installed module catalog query:
+account=uninstalled
+etat_civil=installed
+mail=installed
+point_of_sale=uninstalled
+pos_restaurant=uninstalled
+web=installed
+
+ORM business model query returned the following etat_civil models:
+etat.civil.acte.deces
+etat.civil.acte.mariage
+etat.civil.acte.naissance
+etat.civil.acte.officiel
+etat.civil.annulation.acte.wizard
+etat.civil.centre
+etat.civil.demande.guichet
+etat.civil.exchange.log
+etat.civil.export.wizard
+etat.civil.gestion.utilisateur
+etat.civil.import.wizard
+etat.civil.individu
+etat.civil.mention.marginale
+etat.civil.piece.justificative
+etat.civil.registre
+etat.civil.retour.correction.wizard
+etat.civil.transmission.acte.wizard
+
+Counts from read-only SQL:
+Birth acts=1; marriage acts=1; death acts=1; marginal mentions=0; justification pieces=13.
+Piece state counts: a_fournir=10; verifie=3; recu=0.
+Attachments linked through etat_civil_piece_attachment_rel: application/pdf count=1, total size=8772 bytes. Linked attachment/piece orphan count=0.
+QR image binary not empty: birth 1/1; marriage 0/1; death 0/1.
+
+Evidence for inline attachment access (historical automated run, not executed in this phase):
+File: logs/session_validation_20261105/etat_civil_full_http.log
+Test: TestActeWorkflowApi.test_attachment_preview_route_respects_civil_centre_access
+At 10:36:08 UTC, authenticated Agent GET /web/content/<fixture-id>?download=false returned 200 and image/png, without Content-Disposition attachment. An authenticated user from another centre then received 404; log records Access Denied by record rules on ir.attachment. The test suite later reported 105 tests, 0 failures, 0 errors on the review database.
+
+Earlier historical run on that same review database:
+File: logs/session_validation_20261105/etat_civil_full.log
+Result line at 10:34:26 UTC: 105 tests, 13 failures, 0 errors. The later HTTP-configured test run above passed. Both are historical test runs and neither is a Chromium UI test.
+
+Source inventory:
+- No fields named image_1920 or image fields for civil-document photos. qr_code_image is a binary QR field, separate from attachment scans.
+- Attachment preview component accepts image/jpeg, image/png, image/webp and application/pdf; opens Odoo FileViewer. Other attachment types have a download link only.
+- API image validation accepts decoded JPEG/PNG/WebP, checks MIME against bytes and max pixel resolution. README states 5 MB and 50 megapixels.
+- No account.move, account.move.line, pos.config, pos.session, pos.order or pos.payment integration found in etat_civil sources; no financial receipt, cashier or regisseur business model/group.
+- Current statistics API route is /api/v1/statistiques and returns civil-status, citizen, register and guichet counters only. The old client dashboard is removed by migrations 2.1.1/2.1.2.

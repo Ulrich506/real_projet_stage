@@ -82,6 +82,31 @@ class EtatCivilActeNaissance(models.Model):
         ('enfant_unique', 'unique(enfant_id)', "Un acte de naissance existe déjà pour cet individu."),
     ]
 
+    def _build_texte_integral_acte(self):
+        self.ensure_one()
+        if not self.enfant_id:
+            return ""
+        birth_date = self.enfant_id.date_naissance.strftime("%d/%m/%Y") if self.enfant_id.date_naissance else "[date à compléter]"
+        mother = self.mere_id.nom_complet if self.mere_id else "[mère à compléter]"
+        father = self.pere_id.nom_complet if self.pere_id else "Non renseigné"
+        lieu = self.lieu_naissance or "[lieu à compléter]"
+        return (
+            f"Acte de naissance de {self.enfant_id.nom_complet}.\n"
+            f"L'enfant est né(e) le {birth_date} à {lieu}.\n"
+            f"Filiation : {dict(self._fields['filiation'].selection).get(self.filiation, '')}.\n"
+            f"Père : {father}.\n"
+            f"Mère : {mother}."
+        )
+
+    @api.onchange("enfant_id", "pere_id", "mere_id", "lieu_naissance", "lieu_accouchement", "filiation")
+    def _onchange_naissance_text(self):
+        if not self.texte_integral_acte_auto and self.texte_integral_acte:
+            return
+        generated = self._build_texte_integral_acte()
+        if generated:
+            self.texte_integral_acte = generated
+            self.texte_integral_acte_auto = True
+
     def _required_piece_codes(self):
         self.ensure_one()
         required = set()

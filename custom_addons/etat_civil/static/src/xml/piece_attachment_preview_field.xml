@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="etat_civil.PieceAttachmentPreviewField">
+        <div t-attf-class="oe_fileupload {{props.className ? props.className : ''}}" aria-atomic="true">
+            <div class="o_attachments d-flex flex-wrap gap-2">
+                <div t-foreach="files" t-as="file" t-key="file.id"
+                     class="border rounded p-2" style="min-width: 16rem; max-width: 24rem;">
+                    <div class="d-flex align-items-start gap-2">
+                        <span class="fa fa-file-o fa-2x text-muted" role="img"
+                              t-att-data-mimetype="file.mimetype" aria-label="Document"/>
+                        <div class="flex-grow-1 text-break">
+                            <strong t-esc="file.name"/>
+                            <div class="small text-muted" t-if="file.create_date">
+                                Ajouté le <span t-esc="file.create_date"/>
+                            </div>
+                            <div class="small text-muted" t-if="file.create_uid">
+                                Par <span t-esc="file.create_uid[1]"/>
+                            </div>
+                            <div class="d-flex gap-2 mt-2">
+                                <button t-if="canPreview(file)" type="button"
+                                        class="btn btn-primary btn-sm"
+                                        t-on-click.stop="() => this.openPreview(file)">
+                                    Consulter
+                                </button>
+                                <a class="btn btn-secondary btn-sm"
+                                   t-att-href="getUrl(file.id)" download="">
+                                    Télécharger
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <button t-if="!props.readonly" type="button"
+                            class="btn btn-link text-danger btn-sm mt-1"
+                            t-on-click.stop="() => this.onFileRemove(file.id)">
+                        Retirer
+                    </button>
+                </div>
+            </div>
+            <div t-if="!props.readonly &amp;&amp; (!props.numberOfFiles or files.length &lt; props.numberOfFiles)"
+                 class="oe_add mt-2">
+                <FileInput
+                    acceptedFileExtensions="props.acceptedFileExtensions"
+                    multiUpload="true"
+                    onUpload.bind="onFileUploaded"
+                    resModel="props.record.resModel"
+                    resId="props.record.resId or 0"
+                >
+                    <button class="btn btn-secondary o_attach" data-tooltip="Ajouter une pièce">
+                        <span class="fa fa-paperclip" aria-label="Joindre"/>
+                        Ajouter une pièce
+                    </button>
+                </FileInput>
+            </div>
+        </div>
+    </t>
+</templates>

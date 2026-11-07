@@ -105,6 +105,12 @@ def _create_exchange_log(
     })
 
 
+def _escape_spreadsheet_formula(value):
+    if isinstance(value, str) and value.lstrip().startswith(('=', '+', '-', '@')):
+        return "'" + value
+    return value
+
+
 class EtatCivilImportWizard(models.TransientModel):
     _name = 'etat.civil.import.wizard'
     _description = "Assistant d'importation des citoyens"
@@ -475,7 +481,7 @@ class EtatCivilImportWizard(models.TransientModel):
                                 if 'cin' in update_vals:
                                     del update_vals['cin']
                                 if update_vals:
-                                    existing.write(update_vals)
+                                    existing._write_from_import(update_vals)
                                     updated += 1
                                 else:
                                     skipped += 1
@@ -501,7 +507,7 @@ class EtatCivilImportWizard(models.TransientModel):
                             errors += 1
                             continue
 
-                        Individu.create(vals)
+                        Individu._create_from_import([vals])
                         imported += 1
 
                 except ValidationError as e:
@@ -805,7 +811,13 @@ class EtatCivilExportWizard(models.TransientModel):
         output = io.StringIO()
         writer = csv.DictWriter(output, fieldnames=field_list, extrasaction='ignore')
         writer.writeheader()
-        writer.writerows(data)
+        writer.writerows([
+            {
+                field: _escape_spreadsheet_formula(value)
+                for field, value in row.items()
+            }
+            for row in data
+        ])
         return output.getvalue().encode('utf-8-sig'), 'citoyens_export.csv'
 
     def _export_xlsx(self, data, field_list):
@@ -819,6 +831,8 @@ class EtatCivilExportWizard(models.TransientModel):
         ws.append(field_list)
         for row in data:
             ws.append([row.get(f, '') for f in field_list])
+            for cell in ws[ws.max_row]:
+                cell.data_type = 's'
         buf = io.BytesIO()
         wb.save(buf)
         return buf.getvalue(), 'citoyens_export.xlsx'

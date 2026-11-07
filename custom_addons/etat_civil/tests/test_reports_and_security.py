@@ -155,6 +155,34 @@ class TestReportsAndSecurity(TransactionCase):
         html, _ = report._render_qweb_html(report.id, record_ids)
         return html.decode("utf-8") if isinstance(html, bytes) else html
 
+    def test_civil_admin_can_render_report_without_system_or_officer_group(self):
+        admin = self.env["res.users"].sudo().create(
+            {
+                "name": "Administrateur civil rapport",
+                "login": "civil-admin-report",
+                "groups_id": [
+                    (6, 0, [self.env.ref("etat_civil.group_etat_civil_admin").id])
+                ],
+            }
+        )
+        self.assertFalse(admin.has_group("etat_civil.group_etat_civil_officier"))
+        self.assertFalse(admin.has_group("base.group_system"))
+
+        acte = self.env["etat.civil.acte.naissance"].with_user(admin).create(
+            {
+                "registre_id": self.registre_naissance.id,
+                "enfant_id": self.enfant.id,
+                "mere_id": self.mere.id,
+                "lieu_naissance": "Fianarantsoa",
+                "texte_integral_acte": "Acte de naissance pour test administrateur.",
+            }
+        )
+        report = self.env.ref("etat_civil.action_report_acte_naissance").with_user(admin)
+        html, _ = report._render_qweb_html(report.id, [acte.id])
+
+        html_str = html.decode("utf-8") if isinstance(html, bytes) else html
+        self.assertIn("Acte de Naissance", html_str)
+
     def test_report_naissance_rendering_with_missing_optional_fields(self):
         """Le rapport de naissance doit se générer même sans père ni CIN pour mineur."""
         acte = self.env["etat.civil.acte.naissance"].create(
@@ -218,6 +246,79 @@ class TestReportsAndSecurity(TransactionCase):
 
         self.assertIn("Acte de Décès", html_str)
         self.assertIn("Rakotomalala", html_str)
+
+    def test_physical_print_action_is_available_before_validation_for_all_act_types(self):
+        examples = (
+            (
+                "etat.civil.acte.naissance",
+                "etat_civil.action_report_acte_naissance",
+                {
+                    "registre_id": self.registre_naissance.id,
+                    "enfant_id": self.enfant.id,
+                    "mere_id": self.mere.id,
+                    "texte_integral_acte": "Acte imprimable avant validation.",
+                },
+            ),
+            (
+                "etat.civil.acte.mariage",
+                "etat_civil.action_report_acte_mariage",
+                {
+                    "registre_id": self.registre_mariage.id,
+                    "conjoint_1_id": self.conjoint1.id,
+                    "conjoint_2_id": self.conjoint2.id,
+                    "date_mariage": "2026-06-15",
+                    "lieu_mariage": "Mairie de Fianarantsoa",
+                    "regime_matrimonial": "communaute_biens",
+                    "texte_integral_acte": "Acte imprimable avant validation.",
+                },
+            ),
+            (
+                "etat.civil.acte.deces",
+                "etat_civil.action_report_acte_deces",
+                {
+                    "registre_id": self.registre_deces.id,
+                    "defunt_id": self.defunt.id,
+                    "declarant_id": self.declarant_deces.id,
+                    "date_deces": "2026-10-10",
+                    "lieu_deces": "Hôpital Tambohobe",
+                    "texte_integral_acte": "Acte imprimable avant validation.",
+                },
+            ),
+        )
+        for model_name, report_xmlid, values in examples:
+            with self.subTest(model=model_name):
+                acte = self.env[model_name].create(values)
+                self.assertEqual(acte.statut, "brouillon")
+                report = self.env.ref(report_xmlid)
+                self.assertEqual(report.paperformat_id.format, "A4")
+                self.assertGreaterEqual(report.paperformat_id.margin_top, 35)
+                self.assertGreaterEqual(report.paperformat_id.header_spacing, 30)
+                self.assertTrue(report.groups_id & self.env.ref(
+                    "etat_civil.group_etat_civil_agent"
+                ))
+                self.assertTrue(report.groups_id & self.env.ref(
+                    "etat_civil.group_etat_civil_officier"
+                ))
+
+                html, _ = report.with_user(self.agent)._render_qweb_html(
+                    report.id,
+                    [acte.id],
+                )
+                html_str = html.decode("utf-8") if isinstance(html, bytes) else html
+                self.assertIn(
+                    "DOCUMENT À IMPRIMER POUR VÉRIFICATION / SIGNATURE PHYSIQUE",
+                    html_str,
+                )
+                self.assertIn("NON VALIDÉ", html_str)
+                self.assertIn("Signature manuscrite de l’officier compétent", html_str                )
+                report.with_user(self.agent).report_action(acte)
+                self.assertEqual(acte.statut, "brouillon")
+
+                officer_html, _ = report.with_user(self.officier)._render_qweb_html(
+                    report.id,
+                    [acte.id],
+                )
+                self.assertTrue(officer_html)
 
     def test_qr_code_and_hash_generation_and_disclaimer_in_report(self):
         """Valide la génération du SHA-256, du QR code, et la présence du disclaimer légal."""
@@ -331,7 +432,7 @@ class TestReportsAndSecurity(TransactionCase):
                 "temoin_2_id": False,
                 "donnees_historiques_incompletes": True,
                 "motif_regularisation": "Acte issu de la migration Odoo 18 : témoins non renseignés.",
-                "date_mariage": "2010-03-15",
+                "date_mariage": "2011-03-15",
                 "lieu_mariage": "Mairie Ancienne",
                 "regime_matrimonial": "communaute_biens",
                 "texte_integral_acte": "Acte historique incomplet transféré sans falsification.",
@@ -406,7 +507,10 @@ class TestReportsAndSecurity(TransactionCase):
         )
         self.assertFalse(visible, "L'officier du Centre B ne doit pas voir les actes du Centre A")
 
-        # Tentative de validation directe doit lever AccessError (compétence territoriale)
+        acte_a.piece_ids.with_user(self.agent).write({"etat": "recu"})
+        acte_a.with_user(self.agent).action_envoyer_validation(officier=self.officier)
         acte_a.piece_ids.with_user(self.officier).write({"etat": "verifie"})
+
+        # Tentative de validation directe doit lever AccessError (compétence territoriale)
         with self.assertRaises(AccessError):
             acte_a.with_user(officier_b).action_valider_acte()

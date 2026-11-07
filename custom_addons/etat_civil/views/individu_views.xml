@@ -11,12 +11,21 @@
                 <field name="nom"/>
                 <field name="prenoms"/>
                 <field name="sexe"/>
+                <field name="categorie_age"/>
                 <field name="statut_vital"/>
+                <separator/>
+                <filter name="nourrissons" string="Nourrissons" domain="[('categorie_age','=','nourrisson')]"/>
+                <filter name="enfants" string="Enfants" domain="[('categorie_age','=','enfant')]"/>
+                <filter name="adolescents" string="Adolescents" domain="[('categorie_age','=','adolescent')]"/>
+                <filter name="adultes" string="Adultes" domain="[('categorie_age','=','adulte')]"/>
+                <filter name="seniors" string="Seniors" domain="[('categorie_age','=','senior')]"/>
+                <filter name="age_indetermine" string="Âge non déterminé" domain="[('categorie_age','=','indetermine')]"/>
                 <separator/>
                 <filter name="vivants" string="Vivant" domain="[('statut_vital','=','vivant')]"/>
                 <filter name="decedes" string="Décédé" domain="[('statut_vital','=','decede')]"/>
                 <group expand="0" string="Regrouper par">
                     <filter name="group_sexe" string="Sexe" context="{'group_by':'sexe'}"/>
+                    <filter name="group_categorie_age" string="Catégorie d'âge" context="{'group_by':'categorie_age'}"/>
                     <filter name="group_vital" string="Statut vital" context="{'group_by':'statut_vital'}"/>
                 </group>
             </search>
@@ -32,6 +41,7 @@
                 <field name="nom_complet" string="Nom complet"/>
                 <field name="sexe"/>
                 <field name="date_naissance"/>
+                <field name="categorie_age"/>
                 <field name="lieu_naissance_commune" optional="show"/>
                 <field name="statut_vital" widget="badge" decoration-success="statut_vital == 'vivant'" decoration-danger="statut_vital == 'decede'" decoration-warning="statut_vital == 'disparu'"/>
                 <field name="situation_matrimoniale" optional="hide"/>
@@ -63,6 +73,7 @@
                         </group>
                         <group string="Naissance">
                             <field name="date_naissance"/>
+                            <field name="categorie_age" readonly="1" help="Classification administrative d'affichage, sans valeur juridique."/>
                             <field name="date_naissance_estimee"/>
                             <field name="lieu_naissance_commune"/>
                             <field name="lieu_naissance_pays"/>
@@ -70,8 +81,8 @@
                     </group>
                     <group string="Situation actuelle">
                         <group>
-                            <field name="statut_vital"/>
-                            <field name="situation_matrimoniale" invisible="cin_non_requise"/>
+                            <field name="statut_vital" readonly="1"/>
+                            <field name="situation_matrimoniale" readonly="1" invisible="cin_non_requise"/>
                         </group>
                         <group>
                             <field name="profession_actuelle" invisible="cin_non_requise"/>
@@ -106,6 +117,7 @@
                         </group>
                         <group>
                             <field name="date_naissance" required="1"/>
+                            <field name="categorie_age" readonly="1" help="Classification administrative d'affichage, sans valeur juridique."/>
                             <field name="date_naissance_estimee"/>
                             <field name="lieu_naissance_commune"/>
                             <field name="lieu_naissance_pays"/>
@@ -115,7 +127,7 @@
                     <!-- Section B : Situation de l'enfant -->
                     <group string="Situation de l'enfant">
                         <group>
-                            <field name="statut_vital"/>
+                            <field name="statut_vital" readonly="1"/>
                             <field name="situation_matrimoniale" readonly="1"/>
                         </group>
                     </group>

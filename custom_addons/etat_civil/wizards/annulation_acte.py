@@ -16,7 +16,7 @@ class EtatCivilAnnulationActeWizard(models.TransientModel):
         readonly=True,
     )
     acte_id = fields.Integer(required=True, readonly=True)
-    acte_display = fields.Char(string='Acte', readonly=True)
+    acte_display = fields.Char(string='Acte concerné', readonly=True)
     motif = fields.Text(string='Motif d\'annulation', required=True)
 
     def action_confirmer(self):

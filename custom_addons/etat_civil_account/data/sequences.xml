@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="seq_copy_request" model="ir.sequence">
+        <field name="name">Demande de copie d'état civil</field>
+        <field name="code">etat.civil.copy.request</field>
+        <field name="prefix">CP/%(year)s/</field>
+        <field name="padding">6</field>
+    </record>
+</odoo>
+

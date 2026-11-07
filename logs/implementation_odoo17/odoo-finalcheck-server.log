@@ -1,0 +1,61 @@
+2026-11-05 16:13:36,745 500668 INFO ? odoo: Odoo version 17.0 
+2026-11-05 16:13:36,746 500668 INFO ? odoo: Using configuration file at /tmp/etat_civil_dev_finalcheck_server_20261105.conf 
+2026-11-05 16:13:36,747 500668 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/implementation_odoo17_dev/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 16:13:36,747 500668 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 16:13:36,939 500668 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 16:13:37,230 500668 INFO ? odoo.service.server: HTTP service (werkzeug) running on 127.0.0.1:18171 
+2026-11-05 16:13:49,642 500810 INFO ? odoo: Odoo version 17.0 
+2026-11-05 16:13:49,643 500810 INFO ? odoo: Using configuration file at /tmp/etat_civil_dev_finalcheck_server_20261105.conf 
+2026-11-05 16:13:49,643 500810 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/implementation_odoo17_dev/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 16:13:49,643 500810 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 16:13:49,843 500810 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 16:13:50,146 500810 INFO ? odoo.service.server: HTTP service (werkzeug) running on 127.0.0.1:18175 
+2026-11-05 16:13:50,181 500810 INFO etat_civil_dev_finalcheck_20261105 odoo.modules.loading: loading 1 modules... 
+2026-11-05 16:13:50,197 500810 INFO etat_civil_dev_finalcheck_20261105 odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2026-11-05 16:13:50,239 500810 INFO etat_civil_dev_finalcheck_20261105 odoo.modules.loading: loading 46 modules... 
+2026-11-05 16:13:51,278 500810 INFO etat_civil_dev_finalcheck_20261105 odoo.modules.loading: 46 modules loaded in 1.04s, 0 queries (+0 extra) 
+2026-11-05 16:13:51,527 500810 INFO etat_civil_dev_finalcheck_20261105 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 16:13:51,534 500810 INFO etat_civil_dev_finalcheck_20261105 odoo.modules.loading: Modules loaded. 
+2026-11-05 16:13:51,544 500810 INFO etat_civil_dev_finalcheck_20261105 odoo.modules.registry: Registry loaded in 1.397s 
+2026-11-05 16:13:51,546 500810 INFO etat_civil_dev_finalcheck_20261105 odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 1 connections  
+2026-11-05 16:13:51,562 500843 INFO etat_civil_dev_finalcheck_20261105 odoo.service.server: Worker WorkerHTTP (500843) alive 
+2026-11-05 16:13:51,571 500844 INFO etat_civil_dev_finalcheck_20261105 odoo.service.server: Worker WorkerHTTP (500844) alive 
+2026-11-05 16:13:53,324 500845 INFO ? odoo: Odoo version 17.0 
+2026-11-05 16:13:53,325 500845 INFO ? odoo: Using configuration file at /tmp/etat_civil_dev_finalcheck_server_20261105.conf 
+2026-11-05 16:13:53,326 500845 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/implementation_odoo17_dev/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 16:13:53,326 500845 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 16:13:53,549 500845 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 16:13:53,960 500845 INFO etat_civil_dev_finalcheck_20261105 odoo.modules.loading: loading 1 modules... 
+2026-11-05 16:13:53,976 500845 INFO etat_civil_dev_finalcheck_20261105 odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2026-11-05 16:13:54,023 500845 INFO etat_civil_dev_finalcheck_20261105 odoo.modules.loading: loading 46 modules... 
+2026-11-05 16:13:55,108 500845 INFO etat_civil_dev_finalcheck_20261105 odoo.modules.loading: 46 modules loaded in 1.08s, 0 queries (+0 extra) 
+2026-11-05 16:13:55,331 500845 INFO etat_civil_dev_finalcheck_20261105 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 16:13:55,338 500845 INFO etat_civil_dev_finalcheck_20261105 odoo.modules.loading: Modules loaded. 
+2026-11-05 16:13:55,346 500845 INFO etat_civil_dev_finalcheck_20261105 odoo.modules.registry: Registry loaded in 1.438s 
+2026-11-05 16:13:55,350 500845 INFO etat_civil_dev_finalcheck_20261105 odoo.service.server: Evented Service (longpolling) running on 127.0.0.1:18176 
+2026-11-05 16:14:10,378 500843 INFO etat_civil_dev_finalcheck_20261105 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 16:14:10,855 500843 INFO etat_civil_dev_finalcheck_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:14:10] "GET /web/login HTTP/1.1" 200 - 60 0.095 0.433
+2026-11-05 16:14:10,944 500844 INFO etat_civil_dev_finalcheck_20261105 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 16:14:11,023 500844 INFO etat_civil_dev_finalcheck_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:14:11] "GET /api/v1/health HTTP/1.1" 200 - 7 0.015 0.128
+2026-11-05 16:14:53,023 500844 INFO etat_civil_dev_finalcheck_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:14:53] "GET /web/login HTTP/1.1" 200 - 56 0.076 0.396
+2026-11-05 16:14:53,553 500843 INFO ? werkzeug: 127.0.0.1 - - [05/Nov/2026 16:14:53] "GET /web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0 HTTP/1.1" 200 - 1 0.004 0.424
+2026-11-05 16:14:53,641 500843 INFO etat_civil_dev_finalcheck_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:14:53] "GET /web/binary/company_logo HTTP/1.1" 200 - 3 0.014 0.065
+2026-11-05 16:14:53,772 500843 INFO etat_civil_dev_finalcheck_20261105 odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/a3cf721/web.assets_frontend_minimal.min.js (id:471) 
+2026-11-05 16:14:53,782 500843 INFO etat_civil_dev_finalcheck_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:14:53] "GET /web/assets/a3cf721/web.assets_frontend_minimal.min.js HTTP/1.1" 200 - 13 0.023 0.107
+2026-11-05 16:14:55,790 500844 INFO etat_civil_dev_finalcheck_20261105 odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/1d0cf09/web.assets_frontend.min.css (id:472) 
+2026-11-05 16:14:55,803 500844 INFO etat_civil_dev_finalcheck_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:14:55] "GET /web/assets/1d0cf09/web.assets_frontend.min.css HTTP/1.1" 200 - 13 0.050 2.639
+2026-11-05 16:14:55,948 500843 INFO ? werkzeug: 127.0.0.1 - - [05/Nov/2026 16:14:55] "GET /web/static/img/favicon.ico HTTP/1.1" 200 - 1 0.004 0.027
+2026-11-05 16:14:56,654 500844 INFO etat_civil_dev_finalcheck_20261105 odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/0c5835b/web.assets_frontend_lazy.min.js (id:473) 
+2026-11-05 16:14:56,662 500844 INFO etat_civil_dev_finalcheck_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:14:56] "GET /web/assets/0c5835b/web.assets_frontend_lazy.min.js HTTP/1.1" 200 - 10 0.015 0.725
+2026-11-05 17:34:21,299 500810 ERROR etat_civil_dev_finalcheck_20261105 odoo.service.server: WorkerHTTP (500844) timeout after 120s 
+2026-11-05 17:34:21,366 523524 INFO etat_civil_dev_finalcheck_20261105 odoo.service.server: Worker WorkerHTTP (523524) alive 
+2026-11-06 05:44:02,933 500810 ERROR etat_civil_dev_finalcheck_20261105 odoo.service.server: WorkerHTTP (523524) timeout after 120s 
+2026-11-06 05:44:03,099 664491 INFO etat_civil_dev_finalcheck_20261105 odoo.service.server: Worker WorkerHTTP (664491) alive 
+2026-11-06 08:28:46,485 500810 ERROR etat_civil_dev_finalcheck_20261105 odoo.service.server: WorkerHTTP (664491) timeout after 120s 
+2026-11-06 08:28:47,568 778211 INFO etat_civil_dev_finalcheck_20261105 odoo.service.server: Worker WorkerHTTP (778211) alive 
+2026-11-06 11:15:25,635 500810 ERROR etat_civil_dev_finalcheck_20261105 odoo.service.server: WorkerHTTP (500843) timeout after 120s 
+2026-11-06 11:15:25,704 848727 INFO etat_civil_dev_finalcheck_20261105 odoo.service.server: Worker WorkerHTTP (848727) alive 
+2026-11-06 16:35:23,025 500810 ERROR etat_civil_dev_finalcheck_20261105 odoo.service.server: WorkerHTTP (778211) timeout after 120s 
+2026-11-06 16:35:23,335 881992 INFO etat_civil_dev_finalcheck_20261105 odoo.service.server: Worker WorkerHTTP (881992) alive 
+2026-11-07 07:15:42,475 500810 ERROR etat_civil_dev_finalcheck_20261105 odoo.service.server: WorkerHTTP (881992) timeout after 120s 
+2026-11-07 07:15:42,506 1041280 INFO etat_civil_dev_finalcheck_20261105 odoo.service.server: Worker WorkerHTTP (1041280) alive 

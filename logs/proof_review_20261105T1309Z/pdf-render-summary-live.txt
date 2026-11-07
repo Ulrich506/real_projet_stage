@@ -1,0 +1,13 @@
+PDF LIVE RENDER / EXTRACTION SUMMARY
+Run: 2026-11-05 13:27-13:28 UTC
+Database: etat_civil_final_review_20261105_1304
+Method: Odoo shell against the explicit review database, --no-http, --max-cron-threads=0, env -u PYTHONPATH. Render only; shell transaction rolled back. No business record was created or written.
+
+The stored web.base.url was http://localhost:18201. A temporary loopback TCP relay from 127.0.0.1:18201 to the isolated HTTP server at 127.0.0.1:18071 was active for rendering, then ended. No database setting was changed. Odoo logs show successful HTTP 200 responses for report CSS assets and no wkhtmltopdf network errors in this run.
+
+naissance: GENERATED; record 109; 34,393 bytes; A4 portrait 595x842 pt; 1 page; SHA-256 5ded2b5f7cde282c5b873e6b1f968b106da807c97f35e642b0f731717d7b2ef6.
+mariage: GENERATED; record 23; 16,410 bytes; A4 portrait 595x842 pt; 1 page; SHA-256 15a98ab1a3b5b6eb5c9aabf6d5ee2435cd00b4aa0356f5f1af7ef56999ccdf7d.
+deces: GENERATED; record 15; 16,381 bytes; A4 portrait 595x842 pt; 1 page; SHA-256 540ef7295c1e4e798aa80c9482eb5e403a3c367c7dd2dbd9cf72258a0a280d86.
+mention_marginale: NOT GENERATED; there are zero mention records in the review database.
+
+For all three PDFs: pdftotext extraction succeeded and UTF-8 validation passed. Text, names, record numbers, dates, labels and physical-signature areas were reviewed. Raster previews were inspected. The birth report shows the integrity hash and QR; its explanatory text explicitly says they do not replace a handwritten signature. The logo is blank, with no invented stamp or signature. All signature lines remain blank. No long-transcription, multiple-mention, or multi-page test data were available.

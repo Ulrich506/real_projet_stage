@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_copy_request_agent,copy request agent,model_etat_civil_copy_request,etat_civil.group_etat_civil_agent,1,1,1,0
+access_copy_request_officer,copy request officer,model_etat_civil_copy_request,etat_civil.group_etat_civil_officier,1,1,1,0
+access_copy_request_admin,copy request admin,model_etat_civil_copy_request,etat_civil.group_etat_civil_admin,1,1,1,0
+access_copy_request_regisseur,copy request regisseur,model_etat_civil_copy_request,etat_civil_account.group_etat_civil_regisseur,1,0,0,0
+access_copy_tariff_read_agent,copy tariff agent,model_etat_civil_copy_tariff,etat_civil.group_etat_civil_agent,1,0,0,0
+access_copy_tariff_read_officer,copy tariff officer,model_etat_civil_copy_tariff,etat_civil.group_etat_civil_officier,1,0,0,0
+access_copy_tariff_read_regisseur,copy tariff regisseur,model_etat_civil_copy_tariff,etat_civil_account.group_etat_civil_regisseur,1,0,0,0
+access_copy_tariff_admin,copy tariff admin,model_etat_civil_copy_tariff,etat_civil.group_etat_civil_admin,1,1,1,1
+access_finance_event_agent,finance event agent,model_etat_civil_finance_event,etat_civil.group_etat_civil_agent,1,0,0,0
+access_finance_event_officer,finance event officer,model_etat_civil_finance_event,etat_civil.group_etat_civil_officier,1,0,0,0
+access_finance_event_admin,finance event admin,model_etat_civil_finance_event,etat_civil.group_etat_civil_admin,1,0,0,0
+access_finance_event_regisseur,finance event regisseur,model_etat_civil_finance_event,etat_civil_account.group_etat_civil_regisseur,1,0,0,0
+

@@ -1,0 +1,91 @@
+2026-11-05 18:44:46,686 556170 INFO ? odoo: Odoo version 17.0 
+2026-11-05 18:44:46,686 556170 INFO ? odoo: Using configuration file at /tmp/etat_civil_dev_latest_server_20261105.conf 
+2026-11-05 18:44:46,686 556170 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/implementation_odoo17_dev/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 18:44:46,686 556170 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 18:44:46,820 556170 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 18:44:47,061 556170 INFO etat_civil_phase_next_auth_20261105_01 odoo.modules.loading: loading 1 modules... 
+2026-11-05 18:44:47,069 556170 INFO etat_civil_phase_next_auth_20261105_01 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-05 18:44:47,099 556170 INFO etat_civil_phase_next_auth_20261105_01 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 18:44:47,100 556170 INFO etat_civil_phase_next_auth_20261105_01 odoo.modules.loading: updating modules list 
+2026-11-05 18:44:47,102 556170 INFO etat_civil_phase_next_auth_20261105_01 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-11-05 18:44:48,529 556170 INFO etat_civil_phase_next_auth_20261105_01 odoo.addons.base.models.ir_module: ALLOW access to module.button_install on ['État civil — Connexion par e-mail'] to user __system__ #1 via n/a 
+2026-11-05 18:44:48,602 556170 INFO etat_civil_phase_next_auth_20261105_01 odoo.modules.loading: loading 24 modules... 
+2026-11-05 18:44:49,016 556170 INFO etat_civil_phase_next_auth_20261105_01 odoo.modules.loading: 24 modules loaded in 0.41s, 0 queries (+0 extra) 
+2026-11-05 18:44:49,017 556170 INFO etat_civil_phase_next_auth_20261105_01 odoo.modules.loading: loading 25 modules... 
+2026-11-05 18:44:49,018 556170 INFO etat_civil_phase_next_auth_20261105_01 odoo.modules.loading: Loading module etat_civil_auth_email (22/25) 
+2026-11-05 18:44:49,112 556170 WARNING etat_civil_phase_next_auth_20261105_01 odoo.modules.loading: Transient module states were reset 
+2026-11-05 18:44:49,112 556170 ERROR etat_civil_phase_next_auth_20261105_01 odoo.modules.registry: Failed to load registry 
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/registry.py", line 99, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 485, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+                         ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+        ['to install'], force, status, report,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        loaded_modules, update_module, models_to_check)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 366, in load_marked_modules
+    loaded, processed = load_module_graph(
+                        ~~~~~~~~~~~~~~~~~^
+        env, graph, progressdict, report=report, skip_modules=loaded_modules,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        perform_checks=perform_checks, models_to_check=models_to_check
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 194, in load_module_graph
+    getattr(py_module, pre_init)(env)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil_auth_email/__init__.py", line 13, in pre_init_hook
+    return check_hook(env)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil_auth_email/models/res_users.py", line 137, in pre_init_hook
+    require_compatible_existing_logins(env.cr)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil_auth_email/models/res_users.py", line 51, in require_compatible_existing_logins
+    raise ValidationError(
+    ...<6 lines>...
+    )
+odoo.exceptions.ValidationError: Activation de la connexion par e-mail interrompue : 1 identifiant(s) actif(s) et 4 inactif(s) ne sont pas compatibles, 0 collision(s) après normalisation. Aucun login n'a été modifié. Classifiez les comptes humains et techniques puis faites confirmer les adresses avant une transition contrôlée.
+2026-11-05 18:44:49,161 556170 CRITICAL etat_civil_phase_next_auth_20261105_01 odoo.service.server: Failed to initialize database `etat_civil_phase_next_auth_20261105_01`. 
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/service/server.py", line 1424, in preload_registries
+    registry = Registry.new(dbname, update_module=update_module)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tools/func.py", line 87, in locked
+    return func(inst, *args, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/registry.py", line 99, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 485, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+                         ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+        ['to install'], force, status, report,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        loaded_modules, update_module, models_to_check)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 366, in load_marked_modules
+    loaded, processed = load_module_graph(
+                        ~~~~~~~~~~~~~~~~~^
+        env, graph, progressdict, report=report, skip_modules=loaded_modules,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        perform_checks=perform_checks, models_to_check=models_to_check
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/modules/loading.py", line 194, in load_module_graph
+    getattr(py_module, pre_init)(env)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil_auth_email/__init__.py", line 13, in pre_init_hook
+    return check_hook(env)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil_auth_email/models/res_users.py", line 137, in pre_init_hook
+    require_compatible_existing_logins(env.cr)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil_auth_email/models/res_users.py", line 51, in require_compatible_existing_logins
+    raise ValidationError(
+    ...<6 lines>...
+    )
+odoo.exceptions.ValidationError: Activation de la connexion par e-mail interrompue : 1 identifiant(s) actif(s) et 4 inactif(s) ne sont pas compatibles, 0 collision(s) après normalisation. Aucun login n'a été modifié. Classifiez les comptes humains et techniques puis faites confirmer les adresses avant une transition contrôlée.
+2026-11-05 18:44:49,169 556170 INFO etat_civil_phase_next_auth_20261105_01 odoo.service.server: Stopping gracefully 

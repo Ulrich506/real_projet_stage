@@ -20,16 +20,16 @@ class EtatCivilActeMariage(models.Model):
     conjoint_1_est_etranger = fields.Boolean(string="Premier conjoint étranger")
     conjoint_2_est_etranger = fields.Boolean(string="Second conjoint étranger")
     conjoint_1_capacite_requise = fields.Boolean(
-        string="Capacité matrimoniale requise"
+        string="Capacité matrimoniale requise — premier conjoint"
     )
     conjoint_2_capacite_requise = fields.Boolean(
-        string="Capacité matrimoniale requise"
+        string="Capacité matrimoniale requise — second conjoint"
     )
     conjoint_1_residence_etranger_requise = fields.Boolean(
-        string="Résidence requise"
+        string="Résidence à l'étranger requise — premier conjoint"
     )
     conjoint_2_residence_etranger_requise = fields.Boolean(
-        string="Résidence requise"
+        string="Résidence à l'étranger requise — second conjoint"
     )
     temoin_1_id = fields.Many2one(
         "etat.civil.individu", string="Premier témoin", required=False
@@ -73,6 +73,29 @@ class EtatCivilActeMariage(models.Model):
         "acte_mariage_id",
         string="Documents à vérifier",
     )
+    def _build_texte_integral_acte(self):
+        self.ensure_one()
+        if not self.conjoint_1_id or not self.conjoint_2_id:
+            return ""
+        date_marriage = self.date_mariage.strftime("%d/%m/%Y") if self.date_mariage else "[date à compléter]"
+        lieu = self.lieu_mariage or "[lieu à compléter]"
+        regime = dict(self._fields["regime_matrimonial"].selection).get(self.regime_matrimonial, "")
+        return (
+            f"Acte de mariage célébré le {date_marriage} à {lieu}.\n"
+            f"Premier conjoint : {self.conjoint_1_id.nom_complet or self.conjoint_1_id.nom}.\n"
+            f"Second conjoint : {self.conjoint_2_id.nom_complet or self.conjoint_2_id.nom}.\n"
+            f"Régime matrimonial : {regime or '[à compléter]'}."
+        )
+
+    @api.onchange("conjoint_1_id", "conjoint_2_id", "date_mariage", "lieu_mariage", "regime_matrimonial")
+    def _onchange_marriage_text(self):
+        if not self.texte_integral_acte_auto and self.texte_integral_acte:
+            return
+        generated = self._build_texte_integral_acte()
+        if generated:
+            self.texte_integral_acte = generated
+            self.texte_integral_acte_auto = True
+
     def _required_piece_codes(self):
         self.ensure_one()
         required = set()
@@ -152,8 +175,16 @@ class EtatCivilActeMariage(models.Model):
         for record in self:
             if not record.registre_id or record.registre_id.type_registre != "mariage":
                 raise ValidationError("L'acte doit être rattaché à un registre de mariage.")
+            if not record.conjoint_1_id or not record.conjoint_2_id:
+                raise ValidationError("Les deux conjoints doivent être renseignés.")
             if record.conjoint_1_id == record.conjoint_2_id:
-                raise ValidationError("Les deux conjoints doivent être des personnes différentes.")
+                raise ValidationError("Les deux conjoints doivent être deux individus différents.")
+            reference_age_date = record.date_mariage or today
+            for conjoint, label in (
+                (record.conjoint_1_id, "premier"),
+                (record.conjoint_2_id, "second"),
+            ):
+                conjoint._validate_marriage_eligibility(reference_age_date, label)
             if not record.donnees_historiques_incompletes and record.statut not in ("brouillon", "a_corriger"):
                 if not record.temoin_1_id or not record.temoin_2_id:
                     raise ValidationError("Les deux témoins doivent être renseignés pour cet acte.")
@@ -192,38 +223,73 @@ class EtatCivilActeMariage(models.Model):
                     )
 
     def action_valider_acte(self):
-        res = super().action_valider_acte()
-        for record in self:
-            for number, spouse in (
-                (1, record.conjoint_1_id),
-                (2, record.conjoint_2_id),
-            ):
-                birth_act = self.env["etat.civil.acte.naissance"].search(
-                    [("enfant_id", "=", spouse.id)], limit=1
+        with self.env.cr.savepoint():
+            spouse_ids = [
+                spouse_id
+                for record in self
+                for spouse_id in (
+                    record.conjoint_1_id.id,
+                    record.conjoint_2_id.id,
                 )
-                same_municipality = bool(
-                    birth_act
-                    and birth_act.registre_id.centre_id == record.registre_id.centre_id
+                if spouse_id
+            ]
+            if len(spouse_ids) != len(set(spouse_ids)):
+                raise ValidationError(
+                    "Une même personne ne peut figurer dans plusieurs mariages "
+                    "validés simultanément."
                 )
-                mention = self.env["etat.civil.mention.marginale"].create({
-                    "name": f"MARIAGE-{record.numero_acte}-{number}",
-                    "type_mention": "mariage",
-                    "date_mention": record.date_mariage,
-                    "contenu": (
-                        f"Mariage de {spouse.nom_complet} célébré le "
-                        f"{record.date_mariage}."
-                    ),
-                    "personne_concernee_id": spouse.id,
-                    "source_acte_mariage_id": record.id,
-                    "acte_naissance_id": birth_act.id if same_municipality else False,
-                    "individu_id": False if same_municipality else spouse.id,
-                    "notification_commune_naissance": (
-                        "inscrite" if same_municipality else "a_faire"
-                    ),
-                    "commune_naissance": spouse.lieu_naissance_commune or False,
-                    "statut": "valide" if same_municipality else "brouillon",
-                })
-        for record in self:
-            for spouse in (record.conjoint_1_id, record.conjoint_2_id):
-                spouse.situation_matrimoniale = "marie"
+            if spouse_ids:
+                self.env.cr.execute(
+                    """
+                    SELECT id
+                    FROM etat_civil_individu
+                    WHERE id = ANY(%s)
+                    ORDER BY id
+                    FOR UPDATE
+                    """,
+                    [sorted(spouse_ids)],
+                )
+                self.env["etat.civil.individu"].browse(
+                    spouse_ids
+                ).invalidate_recordset(
+                    ["statut_vital", "situation_matrimoniale"]
+                )
+            for record in self:
+                record._check_acte_mariage()
+            res = super().action_valider_acte()
+            for record in self:
+                for number, spouse in (
+                    (1, record.conjoint_1_id),
+                    (2, record.conjoint_2_id),
+                ):
+                    birth_act = self.env["etat.civil.acte.naissance"].search(
+                        [("enfant_id", "=", spouse.id)], limit=1
+                    )
+                    same_municipality = bool(
+                        birth_act
+                        and birth_act.registre_id.centre_id == record.registre_id.centre_id
+                    )
+                    self.env["etat.civil.mention.marginale"]._create_from_acte_validation([{
+                        "name": f"MARIAGE-{record.numero_acte}-{number}",
+                        "type_mention": "mariage",
+                        "date_mention": record.date_mariage,
+                        "contenu": (
+                            f"Mariage de {spouse.nom_complet} célébré le "
+                            f"{record.date_mariage}."
+                        ),
+                        "personne_concernee_id": spouse.id,
+                        "source_acte_mariage_id": record.id,
+                        "acte_naissance_id": birth_act.id if same_municipality else False,
+                        "individu_id": False if same_municipality else spouse.id,
+                        "notification_commune_naissance": (
+                            "inscrite" if same_municipality else "a_faire"
+                        ),
+                        "commune_naissance": spouse.lieu_naissance_commune or False,
+                        "statut": "valide" if same_municipality else "brouillon",
+                    }])
+            for record in self:
+                for spouse in (record.conjoint_1_id, record.conjoint_2_id):
+                    spouse._write_civil_status(
+                        {"situation_matrimoniale": "marie"}
+                    )
         return res

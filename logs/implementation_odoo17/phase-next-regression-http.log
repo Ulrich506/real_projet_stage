@@ -1,0 +1,1517 @@
+2026-11-05 18:53:36,397 560655 INFO ? odoo: Odoo version 17.0 
+2026-11-05 18:53:36,398 560655 INFO ? odoo: Using configuration file at /tmp/etat_civil_phase_next_finance.conf 
+2026-11-05 18:53:36,398 560655 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/implementation_odoo17_dev/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 18:53:36,398 560655 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 18:53:36,533 560655 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 18:53:36,753 560655 WARNING ? odoo.service.server: Unit testing in workers mode could fail; use --workers 0. 
+2026-11-05 18:53:36,753 560655 INFO ? odoo.service.server: HTTP service (werkzeug) running on 127.0.0.1:18191 
+2026-11-05 18:53:36,783 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading 1 modules... 
+2026-11-05 18:53:36,790 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-05 18:53:36,820 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 18:53:36,821 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: updating modules list 
+2026-11-05 18:53:36,824 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-11-05 18:53:38,345 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Gestion d’État Civil', 'État civil — Passerelle comptable'] to user __system__ #1 via n/a 
+2026-11-05 18:53:38,346 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Gestion d’État Civil', 'État civil — Passerelle comptable'] to user __system__ #1 via n/a 
+2026-11-05 18:53:39,357 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-11-05 18:53:39,403 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading 45 modules... 
+2026-11-05 18:53:39,746 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: Loading module etat_civil (20/45) 
+2026-11-05 18:53:39,908 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.registry: module etat_civil: creating or updating database tables 
+2026-11-05 18:53:40,156 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/security/security.xml 
+2026-11-05 18:53:40,432 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/security/ir.model.access.csv 
+2026-11-05 18:53:40,560 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/data/demande_guichet_sequence.xml 
+2026-11-05 18:53:40,568 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/data/acte_sequence.xml 
+2026-11-05 18:53:40,573 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/data/mention_sequence.xml 
+2026-11-05 18:53:40,585 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/individu_views.xml 
+2026-11-05 18:53:40,638 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/registre_views.xml 
+2026-11-05 18:53:40,700 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/reports/actes_reports.xml 
+2026-11-05 18:53:40,877 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/acte_naissance_views.xml 
+2026-11-05 18:53:40,964 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/acte_mariage_views.xml 
+2026-11-05 18:53:41,055 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/acte_deces_views.xml 
+2026-11-05 18:53:41,139 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/mentions_marginales_views.xml 
+2026-11-05 18:53:41,214 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/demandes_guichet_views.xml 
+2026-11-05 18:53:41,254 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/gestion_utilisateurs_views.xml 
+2026-11-05 18:53:41,344 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/registry_actions.xml 
+2026-11-05 18:53:41,403 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/wizard_views.xml 
+2026-11-05 18:53:41,462 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/import_export_views.xml 
+2026-11-05 18:53:41,513 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/import_export_log_views.xml 
+2026-11-05 18:53:41,571 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted ir.actions.act_window.view records with IDs: [37, 38] 
+2026-11-05 18:53:41,579 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/menus.xml 
+2026-11-05 18:53:42,231 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: Module etat_civil loaded in 2.49s, 1411 queries (+1411 other) 
+2026-11-05 18:53:42,560 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: Loading module etat_civil_account (42/45) 
+2026-11-05 18:53:42,900 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.registry: module etat_civil_account: creating or updating database tables 
+2026-11-05 18:53:43,044 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil_account/data/sequences.xml 
+2026-11-05 18:53:43,047 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil_account/security/security.xml 
+2026-11-05 18:53:43,173 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil_account/security/ir.model.access.csv 
+2026-11-05 18:53:43,621 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil_account/views/copy_request_views.xml 
+2026-11-05 18:53:43,682 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil_account/report/copy_document.xml 
+2026-11-05 18:53:43,998 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: Module etat_civil_account loaded in 1.44s, 289 queries (+289 other) 
+2026-11-05 18:53:44,010 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: 45 modules loaded in 4.61s, 1700 queries (+1700 extra) 
+2026-11-05 18:53:44,566 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.registry: verifying fields for every extended model 
+2026-11-05 18:53:45,743 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: Modules loaded. 
+2026-11-05 18:53:45,759 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.registry: Registry loaded in 9.005s 
+2026-11-05 18:53:45,759 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.service.server: Starting post tests 
+2026-11-05 18:53:45,764 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_qweb: Pregenerating assets bundles 
+2026-11-05 18:53:46,777 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_qweb: JS Assets bundles generated in 0.6951713562011719 seconds 
+2026-11-05 18:53:46,900 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_qweb: CSS Assets bundles generated in 0.12254214286804199 seconds 
+2026-11-05 18:53:47,320 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 158 and Message-Id '<039649044675238.1793904827.259336471557617-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'****************pi@example.test'" successfully sent 
+2026-11-05 18:53:47,321 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:53:47,336 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [158] 
+2026-11-05 18:53:47,358 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [2376] 
+2026-11-05 18:53:47,359 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:53:47,374 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <agent-workflow-api> to <agent-workflow-api@example.test> 
+2026-11-05 18:53:47,763 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 159 and Message-Id '<117345848622478.1793904827.725425004959106-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'******************pi@example.test'" successfully sent 
+2026-11-05 18:53:47,764 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:53:47,775 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [159] 
+2026-11-05 18:53:47,789 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [2378] 
+2026-11-05 18:53:47,790 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:53:47,795 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <officer-workflow-api> to <officer-workflow-api@example.test> 
+2026-11-05 18:53:48,128 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 160 and Message-Id '<751448291341997.1793904828.089834928512573-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'************************pi@example.test'" successfully sent 
+2026-11-05 18:53:48,129 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:53:48,140 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [160] 
+2026-11-05 18:53:48,155 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [2380] 
+2026-11-05 18:53:48,155 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:53:48,161 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <agent-outside-workflow-api> to <agent-outside-workflow-api@example.test> 
+2026-11-05 18:53:48,169 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_accepts_valid_piece_images_and_infers_mimetype ... 
+2026-11-05 18:53:48,184 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:agent-workflow-api from n/a 
+2026-11-05 18:54:00,479 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:54:00,479 560655 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ERROR: TestActeWorkflowApi.test_api_accepts_valid_piece_images_and_infers_mimetype
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 537, in _make_request
+    response = conn.getresponse()
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 461, in getresponse
+    httplib_response = super().getresponse()
+  File "/usr/lib/python3.14/http/client.py", line 1459, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/retry.py", line 470, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 539, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 371, in _raise_timeout
+    raise ReadTimeoutError(
+        self, url, f"Read timed out. (read timeout={timeout_value})"
+    ) from err
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='127.0.0.1', port=18191): Read timed out. (read timeout=12)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 636, in test_api_accepts_valid_piece_images_and_infers_mimetype
+    response = self.url_open(
+        f"/api/v1/actes/naissance/{acte.id}",
+    ...<7 lines>...
+        headers={"Content-Type": "application/json"},
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 2009, in url_open
+    return self.opener.post(url, data=data, files=files, timeout=timeout, headers=headers, allow_redirects=allow_redirects)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 1906, in request
+    return super().request(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 347, in <lambda>
+    lambda s, r, **kwargs: cls._request_handler(s, r, **kwargs),
+                           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 291, in _request_handler
+    return _super_send(s, r, **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 532, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=18191): Read timed out. (read timeout=12)
+ 
+2026-11-05 18:54:00,482 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_allows_agent_correction_and_rejects_direct_civil_status_changes ... 
+2026-11-05 18:54:00,888 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 161 and Message-Id '<660607582856468.1793904840.781392335891724-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-api@example.test' to (redacted) 'o*****************pi@example.test' successfully sent 
+2026-11-05 18:54:00,889 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:54:00,909 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #78 deleted mail.mail records with IDs: [161] 
+2026-11-05 18:54:00,910 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:54:01,087 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 162 and Message-Id '<181324494239173.1793904841.024349689483643-openerp-message-notify@ulrich-Default-string>' from 'officer-workflow-api@example.test' to (redacted) 'a***************pi@example.test' successfully sent 
+2026-11-05 18:54:01,087 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:54:01,101 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #79 deleted mail.mail records with IDs: [162] 
+2026-11-05 18:54:01,101 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:54:01,154 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:agent-workflow-api from n/a 
+2026-11-05 18:54:13,175 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:54:13,176 560655 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ERROR: TestActeWorkflowApi.test_api_allows_agent_correction_and_rejects_direct_civil_status_changes
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 537, in _make_request
+    response = conn.getresponse()
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 461, in getresponse
+    httplib_response = super().getresponse()
+  File "/usr/lib/python3.14/http/client.py", line 1459, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/retry.py", line 470, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 539, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 371, in _raise_timeout
+    raise ReadTimeoutError(
+        self, url, f"Read timed out. (read timeout={timeout_value})"
+    ) from err
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='127.0.0.1', port=18191): Read timed out. (read timeout=12)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 456, in test_api_allows_agent_correction_and_rejects_direct_civil_status_changes
+    correction_response = self.url_open(
+        f"/api/v1/actes/naissance/{acte.id}",
+        data=json.dumps({"texte_integral_acte": "Texte corrigé."}),
+        headers={"Content-Type": "application/json"},
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 2009, in url_open
+    return self.opener.post(url, data=data, files=files, timeout=timeout, headers=headers, allow_redirects=allow_redirects)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 1906, in request
+    return super().request(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 347, in <lambda>
+    lambda s, r, **kwargs: cls._request_handler(s, r, **kwargs),
+                           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 291, in _request_handler
+    return _super_send(s, r, **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 532, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=18191): Read timed out. (read timeout=12)
+ 
+2026-11-05 18:54:13,177 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_health_does_not_disclose_the_database_name ... 
+2026-11-05 18:54:25,197 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:54:25,197 560655 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ERROR: TestActeWorkflowApi.test_api_health_does_not_disclose_the_database_name
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 537, in _make_request
+    response = conn.getresponse()
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 461, in getresponse
+    httplib_response = super().getresponse()
+  File "/usr/lib/python3.14/http/client.py", line 1459, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/retry.py", line 470, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 539, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 371, in _raise_timeout
+    raise ReadTimeoutError(
+        self, url, f"Read timed out. (read timeout={timeout_value})"
+    ) from err
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='127.0.0.1', port=18191): Read timed out. (read timeout=12)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 501, in test_api_health_does_not_disclose_the_database_name
+    response = self.url_open("/api/v1/health")
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 2010, in url_open
+    return self.opener.get(url, timeout=timeout, headers=headers, allow_redirects=allow_redirects)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 1906, in request
+    return super().request(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 347, in <lambda>
+    lambda s, r, **kwargs: cls._request_handler(s, r, **kwargs),
+                           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 291, in _request_handler
+    return _super_send(s, r, **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 532, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=18191): Read timed out. (read timeout=12)
+ 
+2026-11-05 18:54:25,198 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_logout_requires_json_post ... 
+2026-11-05 18:54:25,209 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:agent-workflow-api from n/a 
+2026-11-05 18:54:37,236 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:54:37,236 560655 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ERROR: TestActeWorkflowApi.test_api_logout_requires_json_post
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 537, in _make_request
+    response = conn.getresponse()
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 461, in getresponse
+    httplib_response = super().getresponse()
+  File "/usr/lib/python3.14/http/client.py", line 1459, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/retry.py", line 470, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 539, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 371, in _raise_timeout
+    raise ReadTimeoutError(
+        self, url, f"Read timed out. (read timeout={timeout_value})"
+    ) from err
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='127.0.0.1', port=18191): Read timed out. (read timeout=12)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 483, in test_api_logout_requires_json_post
+    get_response = self.url_open("/api/v1/auth/logout")
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 2010, in url_open
+    return self.opener.get(url, timeout=timeout, headers=headers, allow_redirects=allow_redirects)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 1906, in request
+    return super().request(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 347, in <lambda>
+    lambda s, r, **kwargs: cls._request_handler(s, r, **kwargs),
+                           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 291, in _request_handler
+    return _super_send(s, r, **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 532, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=18191): Read timed out. (read timeout=12)
+ 
+2026-11-05 18:54:37,237 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_mutations_reject_json_sent_as_plain_text ... 
+2026-11-05 18:54:37,247 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:agent-workflow-api from n/a 
+2026-11-05 18:54:49,273 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:54:49,273 560655 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ERROR: TestActeWorkflowApi.test_api_mutations_reject_json_sent_as_plain_text
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 537, in _make_request
+    response = conn.getresponse()
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 461, in getresponse
+    httplib_response = super().getresponse()
+  File "/usr/lib/python3.14/http/client.py", line 1459, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/retry.py", line 470, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 539, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 371, in _raise_timeout
+    raise ReadTimeoutError(
+        self, url, f"Read timed out. (read timeout={timeout_value})"
+    ) from err
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='127.0.0.1', port=18191): Read timed out. (read timeout=12)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 517, in test_api_mutations_reject_json_sent_as_plain_text
+    response = self.url_open(
+        "/api/v1/personnes",
+        data=json.dumps(payload),
+        headers={"Content-Type": "text/plain"},
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 2009, in url_open
+    return self.opener.post(url, data=data, files=files, timeout=timeout, headers=headers, allow_redirects=allow_redirects)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 1906, in request
+    return super().request(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 347, in <lambda>
+    lambda s, r, **kwargs: cls._request_handler(s, r, **kwargs),
+                           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 291, in _request_handler
+    return _super_send(s, r, **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 532, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=18191): Read timed out. (read timeout=12)
+ 
+2026-11-05 18:54:49,274 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_rejects_invalid_piece_images_without_partial_updates ... 
+2026-11-05 18:54:49,285 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:agent-workflow-api from n/a 
+2026-11-05 18:55:01,467 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:55:01,467 560655 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ERROR: Subtest TestActeWorkflowApi.test_api_rejects_invalid_piece_images_without_partial_updates (index=0)
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 537, in _make_request
+    response = conn.getresponse()
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 461, in getresponse
+    httplib_response = super().getresponse()
+  File "/usr/lib/python3.14/http/client.py", line 1459, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/retry.py", line 470, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 539, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 371, in _raise_timeout
+    raise ReadTimeoutError(
+        self, url, f"Read timed out. (read timeout={timeout_value})"
+    ) from err
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='127.0.0.1', port=18191): Read timed out. (read timeout=12)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 568, in test_api_rejects_invalid_piece_images_without_partial_updates
+    response = self.url_open(
+        f"/api/v1/actes/naissance/{acte.id}",
+    ...<9 lines>...
+        headers={"Content-Type": "application/json"},
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 2009, in url_open
+    return self.opener.post(url, data=data, files=files, timeout=timeout, headers=headers, allow_redirects=allow_redirects)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 1906, in request
+    return super().request(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 347, in <lambda>
+    lambda s, r, **kwargs: cls._request_handler(s, r, **kwargs),
+                           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 291, in _request_handler
+    return _super_send(s, r, **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 532, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=18191): Read timed out. (read timeout=12)
+ 
+2026-11-05 18:55:13,495 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:55:13,495 560655 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ERROR: Subtest TestActeWorkflowApi.test_api_rejects_invalid_piece_images_without_partial_updates (index=1)
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 537, in _make_request
+    response = conn.getresponse()
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 461, in getresponse
+    httplib_response = super().getresponse()
+  File "/usr/lib/python3.14/http/client.py", line 1459, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/retry.py", line 470, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 539, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 371, in _raise_timeout
+    raise ReadTimeoutError(
+        self, url, f"Read timed out. (read timeout={timeout_value})"
+    ) from err
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='127.0.0.1', port=18191): Read timed out. (read timeout=12)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 568, in test_api_rejects_invalid_piece_images_without_partial_updates
+    response = self.url_open(
+        f"/api/v1/actes/naissance/{acte.id}",
+    ...<9 lines>...
+        headers={"Content-Type": "application/json"},
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 2009, in url_open
+    return self.opener.post(url, data=data, files=files, timeout=timeout, headers=headers, allow_redirects=allow_redirects)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 1906, in request
+    return super().request(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 347, in <lambda>
+    lambda s, r, **kwargs: cls._request_handler(s, r, **kwargs),
+                           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 291, in _request_handler
+    return _super_send(s, r, **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 532, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=18191): Read timed out. (read timeout=12)
+ 
+2026-11-05 18:55:25,526 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:55:25,526 560655 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ERROR: TestActeWorkflowApi.test_api_rejects_invalid_piece_images_without_partial_updates
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 537, in _make_request
+    response = conn.getresponse()
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 461, in getresponse
+    httplib_response = super().getresponse()
+  File "/usr/lib/python3.14/http/client.py", line 1459, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/retry.py", line 470, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 539, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 371, in _raise_timeout
+    raise ReadTimeoutError(
+        self, url, f"Read timed out. (read timeout={timeout_value})"
+    ) from err
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='127.0.0.1', port=18191): Read timed out. (read timeout=12)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 594, in test_api_rejects_invalid_piece_images_without_partial_updates
+    response = self.url_open(
+        "/api/v1/actes/naissance",
+    ...<13 lines>...
+        headers={"Content-Type": "application/json"},
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 2009, in url_open
+    return self.opener.post(url, data=data, files=files, timeout=timeout, headers=headers, allow_redirects=allow_redirects)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 1906, in request
+    return super().request(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 347, in <lambda>
+    lambda s, r, **kwargs: cls._request_handler(s, r, **kwargs),
+                           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 291, in _request_handler
+    return _super_send(s, r, **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 532, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=18191): Read timed out. (read timeout=12)
+ 
+2026-11-05 18:55:25,527 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_attachment_preview_route_respects_civil_centre_access ... 
+2026-11-05 18:55:25,771 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:agent-workflow-api from n/a 
+2026-11-05 18:55:37,795 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:55:37,796 560655 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ERROR: TestActeWorkflowApi.test_attachment_preview_route_respects_civil_centre_access
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 537, in _make_request
+    response = conn.getresponse()
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 461, in getresponse
+    httplib_response = super().getresponse()
+  File "/usr/lib/python3.14/http/client.py", line 1459, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/retry.py", line 470, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 539, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 371, in _raise_timeout
+    raise ReadTimeoutError(
+        self, url, f"Read timed out. (read timeout={timeout_value})"
+    ) from err
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='127.0.0.1', port=18191): Read timed out. (read timeout=12)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 669, in test_attachment_preview_route_respects_civil_centre_access
+    allowed = self.url_open(f"/web/content/{attachment.id}?download=false")
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 2010, in url_open
+    return self.opener.get(url, timeout=timeout, headers=headers, allow_redirects=allow_redirects)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 1906, in request
+    return super().request(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 347, in <lambda>
+    lambda s, r, **kwargs: cls._request_handler(s, r, **kwargs),
+                           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 291, in _request_handler
+    return _super_send(s, r, **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 532, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=18191): Read timed out. (read timeout=12)
+ 
+2026-11-05 18:55:37,797 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_authenticated_api_routes_reject_anonymous_writes ... 
+2026-11-05 18:55:37,809 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:agent-workflow-api from n/a 
+2026-11-05 18:55:49,835 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:55:49,835 560655 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ERROR: TestActeWorkflowApi.test_authenticated_api_routes_reject_anonymous_writes
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 537, in _make_request
+    response = conn.getresponse()
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 461, in getresponse
+    httplib_response = super().getresponse()
+  File "/usr/lib/python3.14/http/client.py", line 1459, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/retry.py", line 470, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 539, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 371, in _raise_timeout
+    raise ReadTimeoutError(
+        self, url, f"Read timed out. (read timeout={timeout_value})"
+    ) from err
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='127.0.0.1', port=18191): Read timed out. (read timeout=12)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 683, in test_authenticated_api_routes_reject_anonymous_writes
+    logout_response = self.url_open(
+        "/api/v1/auth/logout",
+        data=json.dumps({}),
+        headers={"Content-Type": "application/json"},
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 2009, in url_open
+    return self.opener.post(url, data=data, files=files, timeout=timeout, headers=headers, allow_redirects=allow_redirects)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 1906, in request
+    return super().request(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 347, in <lambda>
+    lambda s, r, **kwargs: cls._request_handler(s, r, **kwargs),
+                           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 291, in _request_handler
+    return _super_send(s, r, **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 532, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=18191): Read timed out. (read timeout=12)
+ 
+2026-11-05 18:55:49,836 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_specific_api_routes_enforce_the_workflow_for_each_act_type ... 
+2026-11-05 18:55:49,848 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:officer-workflow-api from n/a 
+2026-11-05 18:55:49,867 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:officer-workflow-api from n/a 
+2026-11-05 18:56:02,019 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:56:02,019 560655 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ERROR: Subtest TestActeWorkflowApi.test_specific_api_routes_enforce_the_workflow_for_each_act_type (acte_type='naissance')
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 537, in _make_request
+    response = conn.getresponse()
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 461, in getresponse
+    httplib_response = super().getresponse()
+  File "/usr/lib/python3.14/http/client.py", line 1459, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/retry.py", line 470, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 539, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 371, in _raise_timeout
+    raise ReadTimeoutError(
+        self, url, f"Read timed out. (read timeout={timeout_value})"
+    ) from err
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='127.0.0.1', port=18191): Read timed out. (read timeout=12)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 404, in test_specific_api_routes_enforce_the_workflow_for_each_act_type
+    draft_response = self.url_open(
+        unified_url,
+        data=json.dumps({}),
+        headers={"Content-Type": "application/json"},
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 2009, in url_open
+    return self.opener.post(url, data=data, files=files, timeout=timeout, headers=headers, allow_redirects=allow_redirects)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 1906, in request
+    return super().request(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 347, in <lambda>
+    lambda s, r, **kwargs: cls._request_handler(s, r, **kwargs),
+                           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 291, in _request_handler
+    return _super_send(s, r, **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 532, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=18191): Read timed out. (read timeout=12)
+ 
+2026-11-05 18:56:02,026 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:officer-workflow-api from n/a 
+2026-11-05 18:56:14,234 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:56:14,234 560655 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ERROR: Subtest TestActeWorkflowApi.test_specific_api_routes_enforce_the_workflow_for_each_act_type (acte_type='mariage')
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 537, in _make_request
+    response = conn.getresponse()
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 461, in getresponse
+    httplib_response = super().getresponse()
+  File "/usr/lib/python3.14/http/client.py", line 1459, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/retry.py", line 470, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 539, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 371, in _raise_timeout
+    raise ReadTimeoutError(
+        self, url, f"Read timed out. (read timeout={timeout_value})"
+    ) from err
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='127.0.0.1', port=18191): Read timed out. (read timeout=12)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 404, in test_specific_api_routes_enforce_the_workflow_for_each_act_type
+    draft_response = self.url_open(
+        unified_url,
+        data=json.dumps({}),
+        headers={"Content-Type": "application/json"},
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 2009, in url_open
+    return self.opener.post(url, data=data, files=files, timeout=timeout, headers=headers, allow_redirects=allow_redirects)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 1906, in request
+    return super().request(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 347, in <lambda>
+    lambda s, r, **kwargs: cls._request_handler(s, r, **kwargs),
+                           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 291, in _request_handler
+    return _super_send(s, r, **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 532, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=18191): Read timed out. (read timeout=12)
+ 
+2026-11-05 18:56:14,243 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:officer-workflow-api from n/a 
+2026-11-05 18:56:26,349 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:56:26,349 560655 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ERROR: Subtest TestActeWorkflowApi.test_specific_api_routes_enforce_the_workflow_for_each_act_type (acte_type='deces')
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 537, in _make_request
+    response = conn.getresponse()
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connection.py", line 461, in getresponse
+    httplib_response = super().getresponse()
+  File "/usr/lib/python3.14/http/client.py", line 1459, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/retry.py", line 470, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 539, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/urllib3/connectionpool.py", line 371, in _raise_timeout
+    raise ReadTimeoutError(
+        self, url, f"Read timed out. (read timeout={timeout_value})"
+    ) from err
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='127.0.0.1', port=18191): Read timed out. (read timeout=12)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 404, in test_specific_api_routes_enforce_the_workflow_for_each_act_type
+    draft_response = self.url_open(
+        unified_url,
+        data=json.dumps({}),
+        headers={"Content-Type": "application/json"},
+    )
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 2009, in url_open
+    return self.opener.post(url, data=data, files=files, timeout=timeout, headers=headers, allow_redirects=allow_redirects)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 1906, in request
+    return super().request(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 347, in <lambda>
+    lambda s, r, **kwargs: cls._request_handler(s, r, **kwargs),
+                           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/tests/common.py", line 291, in _request_handler
+    return _super_send(s, r, **kw)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/venv/lib/python3.14/site-packages/requests/adapters.py", line 532, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=18191): Read timed out. (read timeout=12)
+ 
+2026-11-05 18:56:26,518 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_attachment: filestore gc 5 checked, 4 removed 
+2026-11-05 18:56:26,909 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 163 and Message-Id '<794356314850229.1793904986.870221614837646-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'************************ns@example.test'" successfully sent 
+2026-11-05 18:56:26,910 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:26,919 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [163] 
+2026-11-05 18:56:26,936 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [2423] 
+2026-11-05 18:56:26,937 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:26,943 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <agent-workflow-transitions> to <agent-workflow-transitions@example.test> 
+2026-11-05 18:56:27,228 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 164 and Message-Id '<305544602861387.1793904987.194666147232056-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'**************************ns@example.test'" successfully sent 
+2026-11-05 18:56:27,228 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:27,235 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [164] 
+2026-11-05 18:56:27,250 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [2425] 
+2026-11-05 18:56:27,251 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:27,255 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <officer-workflow-transitions> to <officer-workflow-transitions@example.test> 
+2026-11-05 18:56:27,263 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowTransitions.test_all_act_types_reject_invalid_states_and_run_validation_effects ... 
+2026-11-05 18:56:27,734 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 165 and Message-Id '<809450655768068.1793904987.629132509231567-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:56:27,735 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:27,747 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #81 deleted mail.mail records with IDs: [165] 
+2026-11-05 18:56:27,748 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:27,891 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 166 and Message-Id '<636935316655715.1793904987.835664749145508-openerp-message-notify@ulrich-Default-string>' from 'officer-workflow-transitions@example.test' to (redacted) 'a***********************ns@example.test' successfully sent 
+2026-11-05 18:56:27,891 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:27,906 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #82 deleted mail.mail records with IDs: [166] 
+2026-11-05 18:56:27,906 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:28,106 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 167 and Message-Id '<774366826102437.1793904988.060234308242798-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:56:28,106 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:28,119 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #81 deleted mail.mail records with IDs: [167] 
+2026-11-05 18:56:28,120 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:28,366 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #82 deleted mail.activity records with IDs: [127, 128, 129] 
+2026-11-05 18:56:29,006 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 168 and Message-Id '<485544209394843.1793904988.965340375900269-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:56:29,006 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:29,020 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #81 deleted mail.mail records with IDs: [168] 
+2026-11-05 18:56:29,020 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:29,124 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 169 and Message-Id '<850468440361580.1793904989.078753709793091-openerp-message-notify@ulrich-Default-string>' from 'officer-workflow-transitions@example.test' to (redacted) 'a***********************ns@example.test' successfully sent 
+2026-11-05 18:56:29,124 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:29,138 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #82 deleted mail.mail records with IDs: [169] 
+2026-11-05 18:56:29,138 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:29,339 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 170 and Message-Id '<723435851125860.1793904989.298003673553467-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:56:29,340 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:29,356 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #81 deleted mail.mail records with IDs: [170] 
+2026-11-05 18:56:29,356 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:29,749 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #82 deleted mail.activity records with IDs: [130, 131, 132] 
+2026-11-05 18:56:30,225 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 171 and Message-Id '<746651926304120.1793904990.186623334884644-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:56:30,226 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:30,240 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #81 deleted mail.mail records with IDs: [171] 
+2026-11-05 18:56:30,240 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:30,354 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 172 and Message-Id '<134265250565198.1793904990.301942825317383-openerp-message-notify@ulrich-Default-string>' from 'officer-workflow-transitions@example.test' to (redacted) 'a***********************ns@example.test' successfully sent 
+2026-11-05 18:56:30,354 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:30,372 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #82 deleted mail.mail records with IDs: [172] 
+2026-11-05 18:56:30,373 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:30,557 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 173 and Message-Id '<853756794742273.1793904990.512945890426636-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:56:30,557 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:30,571 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #81 deleted mail.mail records with IDs: [173] 
+2026-11-05 18:56:30,572 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:30,776 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #82 deleted mail.activity records with IDs: [133, 134, 135] 
+2026-11-05 18:56:30,943 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowTransitions.test_officer_record_rule_preserves_read_access_in_own_centre ... 
+2026-11-05 18:56:31,125 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowTransitions.test_piece_actions_are_separated_in_each_act_form ... 
+2026-11-05 18:56:31,358 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowTransitions.test_piece_receipt_and_verification_actions_are_persistent_and_audited ... 
+2026-11-05 18:56:31,930 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 174 and Message-Id '<277877517526789.1793904991.823498487472534-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:56:31,930 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:31,943 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #81 deleted mail.mail records with IDs: [174] 
+2026-11-05 18:56:31,944 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:32,059 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowTransitions.test_second_marriage_for_a_spouse_is_rechecked_before_validation ... 
+2026-11-05 18:56:33,021 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 175 and Message-Id '<200185514908723.1793904992.908151865005493-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:56:33,022 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:33,036 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #81 deleted mail.mail records with IDs: [175] 
+2026-11-05 18:56:33,036 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:33,834 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 176 and Message-Id '<640397155585540.1793904993.786299705505371-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:56:33,834 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:33,854 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #81 deleted mail.mail records with IDs: [176] 
+2026-11-05 18:56:33,854 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:34,279 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #82 deleted mail.activity records with IDs: [137] 
+2026-11-05 18:56:34,350 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowTransitions.test_transmission_is_atomic_when_activity_creation_fails ... 
+2026-11-05 18:56:34,635 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowTransitions.test_validation_is_atomic_when_a_post_validation_effect_fails ... 
+2026-11-05 18:56:35,055 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 177 and Message-Id '<592780595514991.1793904994.960420608520508-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:56:35,055 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:35,070 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #81 deleted mail.mail records with IDs: [177] 
+2026-11-05 18:56:35,070 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:35,855 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 178 and Message-Id '<838267865931030.1793904995.811321973800659-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:56:35,855 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:35,869 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #81 deleted mail.mail records with IDs: [178] 
+2026-11-05 18:56:35,870 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:36,296 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #82 deleted mail.activity records with IDs: [140] 
+2026-11-05 18:56:36,638 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 179 and Message-Id '<189970684888683.1793904996.589559316635132-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:56:36,638 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:36,658 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #81 deleted mail.mail records with IDs: [179] 
+2026-11-05 18:56:36,658 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:36,864 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #82 deleted mail.activity records with IDs: [141] 
+2026-11-05 18:56:36,900 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_attachment: filestore gc 3 checked, 3 removed 
+2026-11-05 18:56:36,916 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_cin_compatibility: Starting TestCINCompatibility.test_birth_filiation_piece_rules_remain_distinct_and_neutral ... 
+2026-11-05 18:56:36,918 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_cin_compatibility: Starting TestCINCompatibility.test_guichet_accepts_legacy_citizen_nin_key ... 
+2026-11-05 18:56:36,928 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_cin_compatibility: Starting TestCINCompatibility.test_guichet_status_changes_only_through_actions ... 
+2026-11-05 18:56:36,944 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_cin_compatibility: Starting TestCINCompatibility.test_individu_accepts_legacy_api_key_and_stores_cin ... 
+2026-11-05 18:56:36,963 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_cin_compatibility: Starting TestCINCompatibility.test_individu_rejects_invalid_cin_length ... 
+2026-11-05 18:56:36,966 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_cin_compatibility: Starting TestCINCompatibility.test_marriage_foreign_documents_and_witness_requirements_are_explicit ... 
+2026-11-05 18:56:36,974 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-11-05 18:56:37,017 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_01_creation_nouveau_ne_sans_cin_et_sans_profession ... 
+2026-11-05 18:56:37,025 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_02_nouveau_ne_cin_format_et_unicite ... 
+2026-11-05 18:56:37,045 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_03_creation_adulte_avec_cin_et_profession ... 
+2026-11-05 18:56:37,058 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_04_cin_parents_distinctes_de_lenfant ... 
+2026-11-05 18:56:37,140 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_05_sequence_non_consommee_a_louverture_du_formulaire ... 
+2026-11-05 18:56:37,275 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_06_sequences_independantes_mariage_et_deces ... 
+2026-11-05 18:56:37,415 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_07_import_csv ... 
+2026-11-05 18:56:37,465 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_08_import_json ... 
+2026-11-05 18:56:37,513 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_09_import_xml ... 
+2026-11-05 18:56:37,548 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_10_import_xlsx ... 
+2026-11-05 18:56:37,611 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_11_detection_doublons_et_strategies ... 
+2026-11-05 18:56:37,667 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_12_exportation_citoyens ... 
+2026-11-05 18:56:37,730 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_14_import_xls ... 
+2026-11-05 18:56:37,768 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_15_import_ods ... 
+2026-11-05 18:56:37,811 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_16_import_valid_zip ... 
+2026-11-05 18:56:37,850 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_17_zip_import_reports_invalid_inner_file ... 
+2026-11-05 18:56:37,864 560655 WARNING etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.wizards.import_export_citoyen: Could not parse citoyens.json from uploaded ZIP: Expecting property name enclosed in double quotes: line 1 column 2 (char 1) 
+2026-11-05 18:56:37,885 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_18_mentions_generate_type_specific_references ... 
+2026-11-05 18:56:38,209 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_19_system_admin_has_direct_module_access ... 
+2026-11-05 18:56:38,469 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #85 deleted etat.civil.individu records with IDs: [542] 
+2026-11-05 18:56:38,472 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_mobile_act_creation_requires_an_open_register ... 
+2026-11-05 18:56:38,474 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_mobile_citizen_list_omits_nested_mentions ... 
+2026-11-05 18:56:38,484 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_spreadsheet_exports_treat_formula_like_citizen_values_as_text ... 
+2026-11-05 18:56:38,539 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_attachment: filestore gc 19 checked, 19 removed 
+2026-11-05 18:56:38,908 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 180 and Message-Id '<871917694925876.1793904998.871759653091431-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'***************rt@example.com'" successfully sent 
+2026-11-05 18:56:38,908 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:38,917 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [180] 
+2026-11-05 18:56:38,929 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [2694] 
+2026-11-05 18:56:38,930 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:38,933 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <agent_test_report@example.com> to <agent_test_report@example.com> 
+2026-11-05 18:56:39,198 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 181 and Message-Id '<440315158951425.1793904999.165343284606934-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'******************rt@example.com'" successfully sent 
+2026-11-05 18:56:39,198 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:39,208 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [181] 
+2026-11-05 18:56:39,218 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [2696] 
+2026-11-05 18:56:39,219 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:39,223 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <officier_test_report@example.com> to <officier_test_report@example.com> 
+2026-11-05 18:56:39,229 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_chatter_and_messages ... 
+2026-11-05 18:56:39,293 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_civil_admin_can_render_report_without_system_or_officer_group ... 
+2026-11-05 18:56:39,730 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_historical_marriage_without_witnesses ... 
+2026-11-05 18:56:40,012 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_integrity_hash_detects_tampering ... 
+2026-11-05 18:56:40,412 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 182 and Message-Id '<435389675116709.1793905000.302941322326660-openerp-message-notify@ulrich-Default-string>' from 'agent_test_report@example.com' to (redacted) 'o*****************rt@example.com' successfully sent 
+2026-11-05 18:56:40,413 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:40,428 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #86 deleted mail.mail records with IDs: [182] 
+2026-11-05 18:56:40,429 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:40,676 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #87 deleted mail.activity records with IDs: [142] 
+2026-11-05 18:56:40,700 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_physical_print_action_is_available_before_validation_for_all_act_types ... 
+2026-11-05 18:56:41,167 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_qr_code_and_hash_generation_and_disclaimer_in_report ... 
+2026-11-05 18:56:41,621 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 183 and Message-Id '<243589926041017.1793905001.521108388900757-openerp-message-notify@ulrich-Default-string>' from 'agent_test_report@example.com' to (redacted) 'o*****************rt@example.com' successfully sent 
+2026-11-05 18:56:41,621 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:41,635 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #86 deleted mail.mail records with IDs: [183] 
+2026-11-05 18:56:41,635 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:41,881 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #87 deleted mail.activity records with IDs: [143] 
+2026-11-05 18:56:42,064 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_report_deces_rendering ... 
+2026-11-05 18:56:42,254 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_report_mariage_rendering ... 
+2026-11-05 18:56:42,486 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_report_naissance_rendering_with_missing_optional_fields ... 
+2026-11-05 18:56:42,692 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_territorial_security_isolation ... 
+2026-11-05 18:56:42,981 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 184 and Message-Id '<666132556463550.1793905002.949727773666382-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'*******************so@test.com'" successfully sent 
+2026-11-05 18:56:42,981 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:42,992 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [184] 
+2026-11-05 18:56:43,004 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [2787] 
+2026-11-05 18:56:43,004 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:43,009 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <officier_centre_b_iso@test.com> to <officier_centre_b_iso@test.com> 
+2026-11-05 18:56:43,412 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 185 and Message-Id '<593597161520015.1793905003.308223485946655-openerp-message-notify@ulrich-Default-string>' from 'agent_test_report@example.com' to (redacted) 'o*****************rt@example.com' successfully sent 
+2026-11-05 18:56:43,412 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:43,427 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #86 deleted mail.mail records with IDs: [185] 
+2026-11-05 18:56:43,428 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:43,591 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [179], uid: 89, model: etat.civil.acte.naissance 
+2026-11-05 18:56:43,606 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_attachment: filestore gc 4 checked, 4 removed 
+2026-11-05 18:56:43,919 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 186 and Message-Id '<429849883600781.1793905003.886611938476562-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'********nt@example.test'" successfully sent 
+2026-11-05 18:56:43,920 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:43,927 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [186] 
+2026-11-05 18:56:43,938 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [2802] 
+2026-11-05 18:56:43,939 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:43,943 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <role-test-agent> to <role-agent@example.test> 
+2026-11-05 18:56:44,231 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 187 and Message-Id '<011840094429875.1793905004.198111772537231-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'**********er@example.test'" successfully sent 
+2026-11-05 18:56:44,231 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:44,239 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [187] 
+2026-11-05 18:56:44,249 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [2804] 
+2026-11-05 18:56:44,250 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:44,255 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <role-test-officer> to <role-officer@example.test> 
+2026-11-05 18:56:44,501 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 188 and Message-Id '<462318353667507.1793905004.471294403076172-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'********in@example.test'" successfully sent 
+2026-11-05 18:56:44,501 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:44,513 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [188] 
+2026-11-05 18:56:44,525 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [2806] 
+2026-11-05 18:56:44,525 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:44,530 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <role-test-admin> to <role-admin@example.test> 
+2026-11-05 18:56:44,536 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_act_numbers_and_page_numbers_are_defaulted_by_act_type ... 
+2026-11-05 18:56:44,641 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_act_validation_requires_verified_documents ... 
+2026-11-05 18:56:45,043 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 189 and Message-Id '<649479926678133.1793905004.946869134902954-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:56:45,043 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:45,059 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #90 deleted mail.mail records with IDs: [189] 
+2026-11-05 18:56:45,060 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:45,392 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #91 deleted mail.activity records with IDs: [145] 
+2026-11-05 18:56:45,413 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_admin_can_create_centres_registers_and_admin_users ... 
+2026-11-05 18:56:45,636 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_admin_can_manage_mentions_and_read_across_centres ... 
+2026-11-05 18:56:46,033 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_admin_can_process_decisions_without_territorial_assignment ... 
+2026-11-05 18:56:46,357 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 190 and Message-Id '<009852190559802.1793905006.261294603347778-openerp-message-notify@ulrich-Default-string>' from 'role-admin@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:56:46,357 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:46,371 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #92 deleted mail.mail records with IDs: [190] 
+2026-11-05 18:56:46,372 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:46,631 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 191 and Message-Id '<124848918128937.1793905006.587908029556274-openerp-message-notify@ulrich-Default-string>' from 'role-admin@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:56:46,631 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:46,646 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #92 deleted mail.mail records with IDs: [191] 
+2026-11-05 18:56:46,646 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:46,956 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 192 and Message-Id '<877153235208904.1793905006.919616937637329-openerp-message-notify@ulrich-Default-string>' from 'role-admin@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:56:46,957 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:46,969 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #92 deleted mail.mail records with IDs: [192] 
+2026-11-05 18:56:46,969 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:47,152 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #92 deleted mail.activity records with IDs: [149] 
+2026-11-05 18:56:47,499 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 193 and Message-Id '<643023946813324.1793905007.412024974822998-openerp-message-notify@ulrich-Default-string>' from 'role-admin@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:56:47,500 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:47,530 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #92 deleted mail.mail records with IDs: [193] 
+2026-11-05 18:56:47,532 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:47,743 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #92 deleted mail.activity records with IDs: [150] 
+2026-11-05 18:56:47,822 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_admin_has_full_act_workflow_without_officer_membership ... 
+2026-11-05 18:56:48,056 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #92 deleted mail.message records with IDs: [2910] 
+2026-11-05 18:56:48,079 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #92 deleted etat.civil.acte.naissance records with IDs: [188] 
+2026-11-05 18:56:48,094 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #92 deleted mail.followers records with IDs: [942] 
+2026-11-05 18:56:48,399 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 194 and Message-Id '<382681425391951.1793905008.282334566116333-openerp-message-notify@ulrich-Default-string>' from 'role-admin@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:56:48,399 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:48,414 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #92 deleted mail.mail records with IDs: [194] 
+2026-11-05 18:56:48,414 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:48,634 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #92 deleted mail.activity records with IDs: [151] 
+2026-11-05 18:56:48,651 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_agent_can_read_but_cannot_create_marginal_mentions ... 
+2026-11-05 18:56:48,654 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_agent_cannot_assign_an_officer_from_another_centre ... 
+2026-11-05 18:56:49,201 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_agent_cannot_open_user_management ... 
+2026-11-05 18:56:49,214 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: create, uid: 90, model: etat.civil.gestion.utilisateur 
+2026-11-05 18:56:49,215 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_agent_cannot_read_acts_outside_assigned_centres ... 
+2026-11-05 18:56:49,305 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_agent_cannot_set_act_status_directly_or_validate ... 
+2026-11-05 18:56:49,486 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_agent_transmits_to_the_assigned_officer ... 
+2026-11-05 18:56:49,857 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 195 and Message-Id '<079352556181079.1793905009.762175321578979-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:56:49,857 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:49,873 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #90 deleted mail.mail records with IDs: [195] 
+2026-11-05 18:56:49,873 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:49,922 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_cancellation_wizard ... 
+2026-11-05 18:56:50,295 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 196 and Message-Id '<714654008513687.1793905010.187942504882812-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:56:50,295 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:50,313 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #90 deleted mail.mail records with IDs: [196] 
+2026-11-05 18:56:50,313 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:50,557 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #91 deleted mail.activity records with IDs: [153] 
+2026-11-05 18:56:50,616 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_cannot_disable_last_civil_admin ... 
+2026-11-05 18:56:50,634 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_civil_admin_can_change_an_internal_users_role ... 
+2026-11-05 18:56:50,790 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_civil_admin_can_create_an_officer_account ... 
+2026-11-05 18:56:50,964 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_civil_admin_can_create_role_limited_internal_user ... 
+2026-11-05 18:56:51,141 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_civil_admin_can_validate_without_officer_group_membership ... 
+2026-11-05 18:56:51,519 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 198 and Message-Id '<336841459047169.1793905011.422122955322266-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:56:51,519 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:51,533 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #90 deleted mail.mail records with IDs: [198] 
+2026-11-05 18:56:51,533 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:51,788 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #92 deleted mail.activity records with IDs: [154] 
+2026-11-05 18:56:51,807 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_civil_status_cannot_be_changed_outside_approved_workflows ... 
+2026-11-05 18:56:51,821 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_double_transmission_is_rejected ... 
+2026-11-05 18:56:52,217 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 199 and Message-Id '<422490735128867.1793905012.122991085052490-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:56:52,217 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:52,227 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #90 deleted mail.mail records with IDs: [199] 
+2026-11-05 18:56:52,228 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:52,271 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_incomplete_act_cannot_be_transmitted ... 
+2026-11-05 18:56:52,837 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_manual_act_number_is_preserved_and_folio_increments_per_register ... 
+2026-11-05 18:56:53,028 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_can_refuse_waiting_act ... 
+2026-11-05 18:56:53,426 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 200 and Message-Id '<560725480415664.1793905013.323850154876709-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:56:53,426 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:53,439 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #90 deleted mail.mail records with IDs: [200] 
+2026-11-05 18:56:53,440 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:53,514 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_can_return_for_correction_and_agent_can_resubmit ... 
+2026-11-05 18:56:53,925 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 201 and Message-Id '<438236738544174.1793905013.828118324279785-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:56:53,925 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:53,937 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #90 deleted mail.mail records with IDs: [201] 
+2026-11-05 18:56:53,937 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:54,075 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 202 and Message-Id '<002995090394508.1793905014.024498939514160-openerp-message-notify@ulrich-Default-string>' from 'role-officer@example.test' to (redacted) 'r*******nt@example.test' successfully sent 
+2026-11-05 18:56:54,075 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:54,089 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #91 deleted mail.mail records with IDs: [202] 
+2026-11-05 18:56:54,089 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:54,273 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 203 and Message-Id '<980536908257496.1793905014.222986459732056-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:56:54,273 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:54,283 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #90 deleted mail.mail records with IDs: [203] 
+2026-11-05 18:56:54,284 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:54,311 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_cannot_create_edit_or_transmit_agent_acts ... 
+2026-11-05 18:56:54,493 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_cannot_read_or_change_another_centres_mentions ... 
+2026-11-05 18:56:54,830 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [52], uid: 97, model: etat.civil.mention.marginale 
+2026-11-05 18:56:54,909 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [154], uid: 97, model: etat.civil.centre 
+2026-11-05 18:56:54,916 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_cannot_set_mention_status_directly ... 
+2026-11-05 18:56:55,070 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_from_another_centre_cannot_validate ... 
+2026-11-05 18:56:55,466 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 204 and Message-Id '<119178917524782.1793905015.369622468948364-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:56:55,467 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:55,481 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #90 deleted mail.mail records with IDs: [204] 
+2026-11-05 18:56:55,481 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:55,711 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [204], uid: 98, model: etat.civil.acte.naissance 
+2026-11-05 18:56:55,721 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_full_lifecycle_annulation_and_archivage ... 
+2026-11-05 18:56:56,153 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 205 and Message-Id '<969022347544146.1793905016.055346727371216-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:56:56,153 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:56,165 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #90 deleted mail.mail records with IDs: [205] 
+2026-11-05 18:56:56,166 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:56,416 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #91 deleted mail.activity records with IDs: [161] 
+2026-11-05 18:56:56,524 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_group_does_not_imply_agent_group ... 
+2026-11-05 18:56:56,526 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_validation_locks_all_act_data_but_keeps_mentions_optional ... 
+2026-11-05 18:56:56,920 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 206 and Message-Id '<226319979662486.1793905016.814838886260986-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:56:56,920 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:56,933 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #90 deleted mail.mail records with IDs: [206] 
+2026-11-05 18:56:56,933 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:57,187 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #91 deleted mail.activity records with IDs: [162] 
+2026-11-05 18:56:57,249 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_only_officer_can_verify_required_documents ... 
+2026-11-05 18:56:57,418 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_only_the_assigned_officer_can_validate ... 
+2026-11-05 18:56:57,796 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 207 and Message-Id '<399073568057941.1793905017.707164525985718-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:56:57,796 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:57,811 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #90 deleted mail.mail records with IDs: [207] 
+2026-11-05 18:56:57,811 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:58,320 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #91 deleted mail.activity records with IDs: [163] 
+2026-11-05 18:56:58,337 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_user_with_agent_and_officer_groups_is_not_allowed_agent_actions ... 
+2026-11-05 18:56:58,667 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_validated_act_cannot_be_transmitted ... 
+2026-11-05 18:56:59,049 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 208 and Message-Id '<654952587153675.1793905018.953467369079590-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:56:59,049 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:56:59,062 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #90 deleted mail.mail records with IDs: [208] 
+2026-11-05 18:56:59,062 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:56:59,306 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #91 deleted mail.activity records with IDs: [164] 
+2026-11-05 18:56:59,335 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_attachment: filestore gc 11 checked, 11 removed 
+2026-11-05 18:56:59,354 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_user_directory: Starting TestEtatCivilUserDirectory.test_role_is_derived_from_existing_groups ... 
+2026-11-05 18:56:59,596 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_user_directory: Starting TestEtatCivilUserDirectory.test_user_directory_action_is_read_only_and_restricted ... 
+2026-11-05 18:56:59,605 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_user_directory: Starting TestEtatCivilUserDirectory.test_user_directory_menu_uses_native_user_model ... 
+2026-11-05 18:56:59,617 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_attachment: filestore gc 1 checked, 1 removed 
+2026-11-05 18:56:59,632 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil_account.tests.test_copy_request_security: Starting TestCopyRequestSecurity.test_direct_state_write_is_rejected ... 
+2026-11-05 18:56:59,640 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil_account.tests.test_copy_request_security: Starting TestCopyRequestSecurity.test_missing_invoice_never_satisfies_payment_gate ... 
+2026-11-05 18:56:59,643 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil_account.tests.test_copy_request_security: Starting TestCopyRequestSecurity.test_negative_tariff_is_rejected ... 
+2026-11-05 18:56:59,760 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil_account.tests.test_copy_request_security: Starting TestCopyRequestSecurity.test_payment_confirmation_requires_regisseur ... 
+2026-11-05 18:56:59,777 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil_account.tests.test_copy_request_security: Starting TestCopyRequestSecurity.test_typed_act_is_required ... 
+2026-11-05 18:56:59,792 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-11-05 18:56:59,807 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.service.server: 96 post-tests in 194.05s, 18144 queries 
+2026-11-05 18:56:59,807 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.tests.stats: etat_civil: 105 tests 192.70s 17864 queries 
+2026-11-05 18:56:59,808 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.tests.stats: etat_civil_account: 7 tests 0.17s 93 queries 
+2026-11-05 18:56:59,808 560655 INFO etat_civil_phase_next_finance_20261105_01 odoo.service.server: Stopping gracefully 

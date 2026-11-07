@@ -1,0 +1,8 @@
+HTTP/1.0 303 SEE OTHER
+Server: Werkzeug/3.0.1 Python/3.14.4
+Date: Thu, 05 Nov 2026 13:25:46 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 303
+Location: /web/login?redirect=%2Fapi%2Fv1%2Factes%3Ftype%3Dnaissance
+Connection: close
+

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_copy_document" model="ir.actions.report">
+        <field name="name">Copie d'acte autorisée</field>
+        <field name="model">etat.civil.copy.request</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">etat_civil_account.copy_document</field>
+        <field name="report_file">etat_civil_account.copy_document</field>
+        <field name="groups_id" eval="[(6, 0, [ref('etat_civil.group_etat_civil_agent'), ref('etat_civil.group_etat_civil_officier'), ref('etat_civil.group_etat_civil_admin')])]"/>
+    </record>
+    <template id="copy_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="copy_request">
+                <t t-set="docs" t-value="copy_request.acte_naissance_id"/>
+                <t t-if="copy_request.acte_naissance_id" t-call="etat_civil.report_acte_naissance"/>
+                <t t-set="docs" t-value="copy_request.acte_mariage_id"/>
+                <t t-if="copy_request.acte_mariage_id" t-call="etat_civil.report_acte_mariage"/>
+                <t t-set="docs" t-value="copy_request.acte_deces_id"/>
+                <t t-if="copy_request.acte_deces_id" t-call="etat_civil.report_acte_deces"/>
+            </t>
+        </t>
+    </template>
+</odoo>

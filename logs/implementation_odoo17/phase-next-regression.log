@@ -1,0 +1,1170 @@
+2026-11-05 18:50:52,153 559182 INFO ? odoo: Odoo version 17.0 
+2026-11-05 18:50:52,154 559182 INFO ? odoo: Using configuration file at /tmp/etat_civil_dev_latest_server_20261105.conf 
+2026-11-05 18:50:52,154 559182 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/implementation_odoo17_dev/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 18:50:52,154 559182 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 18:50:52,288 559182 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 18:50:52,509 559182 WARNING ? odoo.service.server: Unit testing in workers mode could fail; use --workers 0. 
+2026-11-05 18:50:52,538 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading 1 modules... 
+2026-11-05 18:50:52,545 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-05 18:50:52,578 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 18:50:52,579 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: updating modules list 
+2026-11-05 18:50:52,582 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-11-05 18:50:53,992 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Gestion d’État Civil', 'État civil — Passerelle comptable'] to user __system__ #1 via n/a 
+2026-11-05 18:50:53,993 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Gestion d’État Civil', 'État civil — Passerelle comptable'] to user __system__ #1 via n/a 
+2026-11-05 18:50:55,009 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-11-05 18:50:55,059 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading 45 modules... 
+2026-11-05 18:50:55,413 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: Loading module etat_civil (20/45) 
+2026-11-05 18:50:55,582 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.registry: module etat_civil: creating or updating database tables 
+2026-11-05 18:50:55,789 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/security/security.xml 
+2026-11-05 18:50:56,085 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/security/ir.model.access.csv 
+2026-11-05 18:50:56,240 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/data/demande_guichet_sequence.xml 
+2026-11-05 18:50:56,246 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/data/acte_sequence.xml 
+2026-11-05 18:50:56,250 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/data/mention_sequence.xml 
+2026-11-05 18:50:56,263 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/individu_views.xml 
+2026-11-05 18:50:56,320 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/registre_views.xml 
+2026-11-05 18:50:56,375 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/reports/actes_reports.xml 
+2026-11-05 18:50:56,523 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/acte_naissance_views.xml 
+2026-11-05 18:50:56,591 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/acte_mariage_views.xml 
+2026-11-05 18:50:56,669 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/acte_deces_views.xml 
+2026-11-05 18:50:56,756 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/mentions_marginales_views.xml 
+2026-11-05 18:50:56,820 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/demandes_guichet_views.xml 
+2026-11-05 18:50:56,864 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/gestion_utilisateurs_views.xml 
+2026-11-05 18:50:56,948 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/registry_actions.xml 
+2026-11-05 18:50:56,988 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/wizard_views.xml 
+2026-11-05 18:50:57,040 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/import_export_views.xml 
+2026-11-05 18:50:57,082 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/import_export_log_views.xml 
+2026-11-05 18:50:57,145 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted ir.actions.act_window.view records with IDs: [23, 24] 
+2026-11-05 18:50:57,153 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil/views/menus.xml 
+2026-11-05 18:50:57,389 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: Module etat_civil loaded in 1.98s, 1412 queries (+1412 other) 
+2026-11-05 18:50:57,702 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: Loading module etat_civil_account (42/45) 
+2026-11-05 18:50:58,064 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.registry: module etat_civil_account: creating or updating database tables 
+2026-11-05 18:50:58,220 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil_account/data/sequences.xml 
+2026-11-05 18:50:58,224 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil_account/security/security.xml 
+2026-11-05 18:50:58,362 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil_account/security/ir.model.access.csv 
+2026-11-05 18:50:58,405 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil_account/views/copy_request_views.xml 
+2026-11-05 18:50:58,474 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: loading etat_civil_account/report/copy_document.xml 
+2026-11-05 18:50:58,526 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: Module etat_civil_account loaded in 0.82s, 289 queries (+289 other) 
+2026-11-05 18:50:58,531 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: 45 modules loaded in 3.47s, 1701 queries (+1701 extra) 
+2026-11-05 18:50:59,057 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.registry: verifying fields for every extended model 
+2026-11-05 18:50:59,955 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.loading: Modules loaded. 
+2026-11-05 18:50:59,966 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.modules.registry: Registry loaded in 7.457s 
+2026-11-05 18:50:59,967 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.service.server: Starting post tests 
+2026-11-05 18:50:59,971 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_qweb: Pregenerating assets bundles 
+2026-11-05 18:51:01,014 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_qweb: JS Assets bundles generated in 0.698479175567627 seconds 
+2026-11-05 18:51:01,097 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_qweb: CSS Assets bundles generated in 0.08210921287536621 seconds 
+2026-11-05 18:51:01,421 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 56 and Message-Id '<682256887622263.1793904661.378943920135498-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'****************pi@example.test'" successfully sent 
+2026-11-05 18:51:01,421 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:01,432 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [56] 
+2026-11-05 18:51:01,451 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [836] 
+2026-11-05 18:51:01,451 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:01,455 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <agent-workflow-api> to <agent-workflow-api@example.test> 
+2026-11-05 18:51:01,746 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 57 and Message-Id '<605324137971009.1793904661.704892396926880-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'******************pi@example.test'" successfully sent 
+2026-11-05 18:51:01,747 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:01,756 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [57] 
+2026-11-05 18:51:01,770 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [838] 
+2026-11-05 18:51:01,771 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:01,776 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <officer-workflow-api> to <officer-workflow-api@example.test> 
+2026-11-05 18:51:02,122 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 58 and Message-Id '<313525129094394.1793904662.089278697967529-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'************************pi@example.test'" successfully sent 
+2026-11-05 18:51:02,123 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:02,130 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [58] 
+2026-11-05 18:51:02,142 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [840] 
+2026-11-05 18:51:02,142 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:02,146 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <agent-outside-workflow-api> to <agent-outside-workflow-api@example.test> 
+2026-11-05 18:51:02,152 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_accepts_valid_piece_images_and_infers_mimetype ... 
+2026-11-05 18:51:02,166 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:agent-workflow-api from n/a 
+2026-11-05 18:51:02,910 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:51:02,911 559182 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: FAIL: TestActeWorkflowApi.test_api_accepts_valid_piece_images_and_infers_mimetype
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 650, in test_api_accepts_valid_piece_images_and_infers_mimetype
+    self.assertEqual(piece.etat, "recu")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'a_fournir' != 'recu'
+- a_fournir
++ recu
+
+ 
+2026-11-05 18:51:02,913 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_allows_agent_correction_and_rejects_direct_civil_status_changes ... 
+2026-11-05 18:51:03,319 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 59 and Message-Id '<580811001166441.1793904663.200263977050781-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-api@example.test' to (redacted) 'o*****************pi@example.test' successfully sent 
+2026-11-05 18:51:03,319 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:03,337 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #30 deleted mail.mail records with IDs: [59] 
+2026-11-05 18:51:03,337 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:03,496 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 60 and Message-Id '<890336750723732.1793904663.451022624969482-openerp-message-notify@ulrich-Default-string>' from 'officer-workflow-api@example.test' to (redacted) 'a***************pi@example.test' successfully sent 
+2026-11-05 18:51:03,497 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:03,510 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #31 deleted mail.mail records with IDs: [60] 
+2026-11-05 18:51:03,510 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:03,570 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:agent-workflow-api from n/a 
+2026-11-05 18:51:03,633 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:51:03,633 559182 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: FAIL: TestActeWorkflowApi.test_api_allows_agent_correction_and_rejects_direct_civil_status_changes
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 466, in test_api_allows_agent_correction_and_rejects_direct_civil_status_changes
+    self.assertEqual(
+    ~~~~~~~~~~~~~~~~^
+        acte.texte_integral_acte,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+        "Texte corrigé.",
+        ^^^^^^^^^^^^^^^^^
+        correction_response.text,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+AssertionError: 'Acte de test naissance api-correction.' != 'Texte corrigé.'
+- Acte de test naissance api-correction.
++ Texte corrigé.
+ : <!DOCTYPE html>
+<html style="height: 100%;" dir="ltr">
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Odoo</title>
+        <link type="image/x-icon" rel="shortcut icon" href="/web/static/img/favicon.ico"/>
+        <link rel="preload" href="/web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0" as="font" crossorigin=""/>
+        <link type="text/css" rel="stylesheet" href="/web/assets/1d0cf09/web.assets_frontend.min.css"/>
+        <script id="web.layout.odooscript" type="text/javascript">
+            var odoo = {
+                csrf_token: "7098846b52be9b0d009aa1588c09ec093c1a7732o1825440663",
+                debug: "",
+            };
+        </script>
+        <script type="text/javascript">
+            odoo.__session_info__ = {"is_admin": false, "is_system": false, "is_public": true, "is_website_user": false, "user_id": false, "is_frontend": true, "profile_session": null, "profile_collectors": null, "profile_params": null, "show_effect": true, "currencies": {"1": {"symbol": "$", "position": "before", "digits": [69, 2]}}, "bundle_params": {"lang": "en_US"}, "websocket_worker_version": "17.0-3", "translationURL": "/website/translations", "cache_hashes": {"translations": "a0904ff8e2c6bfa6bb5d9f87c1ef6d45fe749aa6"}};
+            if (!/(^|;\s)tz=/.test(document.cookie)) {
+                const userTZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                document.cookie = `tz=${userTZ}; path=/`;
+            }
+        </script>
+        <script type="text/javascript" defer="defer" src="/web/assets/a3cf721/web.assets_frontend_minimal.min.js" onerror="__odooAssetError=1"></script>
+        <script type="text/javascript" defer="defer" data-src="/web/assets/0c5835b/web.assets_frontend_lazy.min.js" onerror="__odooAssetError=1"></script>
+        
+    </head>
+    <body class="bg-100">
+        <div id="wrapwrap" class="  ">
+                <main>
+                    
+
+            <div class="container py-5">
+                <div style="max-width: 300px;" class="card border-0 mx-auto bg-100  o_database_list">
+                    <div class="card-body">
+                        <div class="text-center pb-3 border-bottom mb-4">
+                            <img alt="Logo" style="max-height:120px; max-width: 100%; width:auto" src="/web/binary/company_logo"/>
+                        </div>
+                        
+            <form class="oe_login_form" role="form" method="post" onsubmit="this.action = &#39;/web/login&#39; + location.hash" action="/web/login">
+                <input type="hidden" name="csrf_token" value="7098846b52be9b0d009aa1588c09ec093c1a7732o1825440663"/>
+
+
+                <div class="mb-3 field-login">
+                    <label for="login" class="form-label">Adresse e-mail</label>
+        <input type="email" placeholder="Adresse e-mail" name="login" id="login" required="required" autocomplete="username" autofocus="autofocus" autocapitalize="off" spellcheck="false" class="form-control "/>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" placeholder="Password" name="password" id="password" required="required" autocomplete="current-password" maxlength="4096" class="form-control "/>
+                </div>
+
+
+                <div class="clearfix oe_login_buttons text-center gap-1 d-grid mb-1 pt-3">
+                    <button type="submit" class="btn btn-primary">Log in</button>
+                <div class="justify-content-between mt-2 d-flex small">
+                    <a href="/web/signup?redirect=%2Fapi%2Fv1%2Factes%2Fnaissance%2F56%3F">Don't have an account?</a>
+                    <a href="/web/reset_password?redirect=%2Fapi%2Fv1%2Factes%2Fnaissance%2F56%3F">Reset Password</a>
+                </div>
+                    <div class="o_login_auth"></div>
+                </div>
+
+                <input type="hidden" name="redirect" value="/api/v1/actes/naissance/56?"/>
+            </form>
+        
+                        <div class="text-center small mt-4 pt-3 border-top">
+                            <a href="https://www.odoo.com?utm_source=db&amp;utm_medium=auth" target="_blank">Powered by <span>Odoo</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+                </main>
+                
+            </div>
+        </body>
+</html>
+ 
+2026-11-05 18:51:03,634 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_health_does_not_disclose_the_database_name ... 
+2026-11-05 18:51:03,662 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:51:03,662 559182 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: FAIL: TestActeWorkflowApi.test_api_health_does_not_disclose_the_database_name
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 505, in test_api_health_does_not_disclose_the_database_name
+    self.assertNotIn("database", payload)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'database' unexpectedly found in {'status': 'ok', 'service': 'etat_civil_api', 'database': 'etat_civil_dev_latest_20261105'}
+ 
+2026-11-05 18:51:03,663 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_logout_requires_json_post ... 
+2026-11-05 18:51:03,671 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:agent-workflow-api from n/a 
+2026-11-05 18:51:03,753 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_mutations_reject_json_sent_as_plain_text ... 
+2026-11-05 18:51:03,762 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:agent-workflow-api from n/a 
+2026-11-05 18:51:03,822 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:51:03,823 559182 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: FAIL: TestActeWorkflowApi.test_api_mutations_reject_json_sent_as_plain_text
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 523, in test_api_mutations_reject_json_sent_as_plain_text
+    self.assertEqual(response.status_code, 415, response.text)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 415 : <!DOCTYPE html>
+<html style="height: 100%;" dir="ltr">
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Odoo</title>
+        <link type="image/x-icon" rel="shortcut icon" href="/web/static/img/favicon.ico"/>
+        <link rel="preload" href="/web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0" as="font" crossorigin=""/>
+        <link type="text/css" rel="stylesheet" href="/web/assets/1d0cf09/web.assets_frontend.min.css"/>
+        <script id="web.layout.odooscript" type="text/javascript">
+            var odoo = {
+                csrf_token: "4bfc96b95722ddc5c276e5fc0feea24000f5ebfao1825440663",
+                debug: "",
+            };
+        </script>
+        <script type="text/javascript">
+            odoo.__session_info__ = {"is_admin": false, "is_system": false, "is_public": true, "is_website_user": false, "user_id": false, "is_frontend": true, "profile_session": null, "profile_collectors": null, "profile_params": null, "show_effect": true, "currencies": {"1": {"symbol": "$", "position": "before", "digits": [69, 2]}}, "bundle_params": {"lang": "en_US"}, "websocket_worker_version": "17.0-3", "translationURL": "/website/translations", "cache_hashes": {"translations": "a0904ff8e2c6bfa6bb5d9f87c1ef6d45fe749aa6"}};
+            if (!/(^|;\s)tz=/.test(document.cookie)) {
+                const userTZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                document.cookie = `tz=${userTZ}; path=/`;
+            }
+        </script>
+        <script type="text/javascript" defer="defer" src="/web/assets/a3cf721/web.assets_frontend_minimal.min.js" onerror="__odooAssetError=1"></script>
+        <script type="text/javascript" defer="defer" data-src="/web/assets/0c5835b/web.assets_frontend_lazy.min.js" onerror="__odooAssetError=1"></script>
+        
+    </head>
+    <body class="bg-100">
+        <div id="wrapwrap" class="  ">
+                <main>
+                    
+
+            <div class="container py-5">
+                <div style="max-width: 300px;" class="card border-0 mx-auto bg-100  o_database_list">
+                    <div class="card-body">
+                        <div class="text-center pb-3 border-bottom mb-4">
+                            <img alt="Logo" style="max-height:120px; max-width: 100%; width:auto" src="/web/binary/company_logo"/>
+                        </div>
+                        
+            <form class="oe_login_form" role="form" method="post" onsubmit="this.action = &#39;/web/login&#39; + location.hash" action="/web/login">
+                <input type="hidden" name="csrf_token" value="4bfc96b95722ddc5c276e5fc0feea24000f5ebfao1825440663"/>
+
+
+                <div class="mb-3 field-login">
+                    <label for="login" class="form-label">Adresse e-mail</label>
+        <input type="email" placeholder="Adresse e-mail" name="login" id="login" required="required" autocomplete="username" autofocus="autofocus" autocapitalize="off" spellcheck="false" class="form-control "/>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" placeholder="Password" name="password" id="password" required="required" autocomplete="current-password" maxlength="4096" class="form-control "/>
+                </div>
+
+
+                <div class="clearfix oe_login_buttons text-center gap-1 d-grid mb-1 pt-3">
+                    <button type="submit" class="btn btn-primary">Log in</button>
+                <div class="justify-content-between mt-2 d-flex small">
+                    <a href="/web/signup?redirect=%2Fapi%2Fv1%2Fpersonnes%3F">Don't have an account?</a>
+                    <a href="/web/reset_password?redirect=%2Fapi%2Fv1%2Fpersonnes%3F">Reset Password</a>
+                </div>
+                    <div class="o_login_auth"></div>
+                </div>
+
+                <input type="hidden" name="redirect" value="/api/v1/personnes?"/>
+            </form>
+        
+                        <div class="text-center small mt-4 pt-3 border-top">
+                            <a href="https://www.odoo.com?utm_source=db&amp;utm_medium=auth" target="_blank">Powered by <span>Odoo</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+                </main>
+                
+            </div>
+        </body>
+</html>
+ 
+2026-11-05 18:51:03,823 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_rejects_invalid_piece_images_without_partial_updates ... 
+2026-11-05 18:51:03,830 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:agent-workflow-api from n/a 
+2026-11-05 18:51:04,027 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:51:04,027 559182 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: FAIL: Subtest TestActeWorkflowApi.test_api_rejects_invalid_piece_images_without_partial_updates (index=0)
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 582, in test_api_rejects_invalid_piece_images_without_partial_updates
+    self.assertEqual(response.status_code, 400, response.text)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 400 : <!DOCTYPE html>
+<html style="height: 100%;" dir="ltr">
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Odoo</title>
+        <link type="image/x-icon" rel="shortcut icon" href="/web/static/img/favicon.ico"/>
+        <link rel="preload" href="/web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0" as="font" crossorigin=""/>
+        <link type="text/css" rel="stylesheet" href="/web/assets/1d0cf09/web.assets_frontend.min.css"/>
+        <script id="web.layout.odooscript" type="text/javascript">
+            var odoo = {
+                csrf_token: "4575728908e72b0aa535cea95dea51b5c8a15bceo1825440664",
+                debug: "",
+            };
+        </script>
+        <script type="text/javascript">
+            odoo.__session_info__ = {"is_admin": false, "is_system": false, "is_public": true, "is_website_user": false, "user_id": false, "is_frontend": true, "profile_session": null, "profile_collectors": null, "profile_params": null, "show_effect": true, "currencies": {"1": {"symbol": "$", "position": "before", "digits": [69, 2]}}, "bundle_params": {"lang": "en_US"}, "websocket_worker_version": "17.0-3", "translationURL": "/website/translations", "cache_hashes": {"translations": "a0904ff8e2c6bfa6bb5d9f87c1ef6d45fe749aa6"}};
+            if (!/(^|;\s)tz=/.test(document.cookie)) {
+                const userTZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                document.cookie = `tz=${userTZ}; path=/`;
+            }
+        </script>
+        <script type="text/javascript" defer="defer" src="/web/assets/a3cf721/web.assets_frontend_minimal.min.js" onerror="__odooAssetError=1"></script>
+        <script type="text/javascript" defer="defer" data-src="/web/assets/0c5835b/web.assets_frontend_lazy.min.js" onerror="__odooAssetError=1"></script>
+        
+    </head>
+    <body class="bg-100">
+        <div id="wrapwrap" class="  ">
+                <main>
+                    
+
+            <div class="container py-5">
+                <div style="max-width: 300px;" class="card border-0 mx-auto bg-100  o_database_list">
+                    <div class="card-body">
+                        <div class="text-center pb-3 border-bottom mb-4">
+                            <img alt="Logo" style="max-height:120px; max-width: 100%; width:auto" src="/web/binary/company_logo"/>
+                        </div>
+                        
+            <form class="oe_login_form" role="form" method="post" onsubmit="this.action = &#39;/web/login&#39; + location.hash" action="/web/login">
+                <input type="hidden" name="csrf_token" value="4575728908e72b0aa535cea95dea51b5c8a15bceo1825440664"/>
+
+
+                <div class="mb-3 field-login">
+                    <label for="login" class="form-label">Adresse e-mail</label>
+        <input type="email" placeholder="Adresse e-mail" name="login" id="login" required="required" autocomplete="username" autofocus="autofocus" autocapitalize="off" spellcheck="false" class="form-control "/>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" placeholder="Password" name="password" id="password" required="required" autocomplete="current-password" maxlength="4096" class="form-control "/>
+                </div>
+
+
+                <div class="clearfix oe_login_buttons text-center gap-1 d-grid mb-1 pt-3">
+                    <button type="submit" class="btn btn-primary">Log in</button>
+                <div class="justify-content-between mt-2 d-flex small">
+                    <a href="/web/signup?redirect=%2Fapi%2Fv1%2Factes%2Fnaissance%2F57%3F">Don't have an account?</a>
+                    <a href="/web/reset_password?redirect=%2Fapi%2Fv1%2Factes%2Fnaissance%2F57%3F">Reset Password</a>
+                </div>
+                    <div class="o_login_auth"></div>
+                </div>
+
+                <input type="hidden" name="redirect" value="/api/v1/actes/naissance/57?"/>
+            </form>
+        
+                        <div class="text-center small mt-4 pt-3 border-top">
+                            <a href="https://www.odoo.com?utm_source=db&amp;utm_medium=auth" target="_blank">Powered by <span>Odoo</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+                </main>
+                
+            </div>
+        </body>
+</html>
+ 
+2026-11-05 18:51:04,093 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:51:04,093 559182 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: FAIL: Subtest TestActeWorkflowApi.test_api_rejects_invalid_piece_images_without_partial_updates (index=1)
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 582, in test_api_rejects_invalid_piece_images_without_partial_updates
+    self.assertEqual(response.status_code, 400, response.text)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 400 : <!DOCTYPE html>
+<html style="height: 100%;" dir="ltr">
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Odoo</title>
+        <link type="image/x-icon" rel="shortcut icon" href="/web/static/img/favicon.ico"/>
+        <link rel="preload" href="/web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0" as="font" crossorigin=""/>
+        <link type="text/css" rel="stylesheet" href="/web/assets/1d0cf09/web.assets_frontend.min.css"/>
+        <script id="web.layout.odooscript" type="text/javascript">
+            var odoo = {
+                csrf_token: "4575728908e72b0aa535cea95dea51b5c8a15bceo1825440664",
+                debug: "",
+            };
+        </script>
+        <script type="text/javascript">
+            odoo.__session_info__ = {"is_admin": false, "is_system": false, "is_public": true, "is_website_user": false, "user_id": false, "is_frontend": true, "profile_session": null, "profile_collectors": null, "profile_params": null, "show_effect": true, "currencies": {"1": {"symbol": "$", "position": "before", "digits": [69, 2]}}, "bundle_params": {"lang": "en_US"}, "websocket_worker_version": "17.0-3", "translationURL": "/website/translations", "cache_hashes": {"translations": "a0904ff8e2c6bfa6bb5d9f87c1ef6d45fe749aa6"}};
+            if (!/(^|;\s)tz=/.test(document.cookie)) {
+                const userTZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                document.cookie = `tz=${userTZ}; path=/`;
+            }
+        </script>
+        <script type="text/javascript" defer="defer" src="/web/assets/a3cf721/web.assets_frontend_minimal.min.js" onerror="__odooAssetError=1"></script>
+        <script type="text/javascript" defer="defer" data-src="/web/assets/0c5835b/web.assets_frontend_lazy.min.js" onerror="__odooAssetError=1"></script>
+        
+    </head>
+    <body class="bg-100">
+        <div id="wrapwrap" class="  ">
+                <main>
+                    
+
+            <div class="container py-5">
+                <div style="max-width: 300px;" class="card border-0 mx-auto bg-100  o_database_list">
+                    <div class="card-body">
+                        <div class="text-center pb-3 border-bottom mb-4">
+                            <img alt="Logo" style="max-height:120px; max-width: 100%; width:auto" src="/web/binary/company_logo"/>
+                        </div>
+                        
+            <form class="oe_login_form" role="form" method="post" onsubmit="this.action = &#39;/web/login&#39; + location.hash" action="/web/login">
+                <input type="hidden" name="csrf_token" value="4575728908e72b0aa535cea95dea51b5c8a15bceo1825440664"/>
+
+
+                <div class="mb-3 field-login">
+                    <label for="login" class="form-label">Adresse e-mail</label>
+        <input type="email" placeholder="Adresse e-mail" name="login" id="login" required="required" autocomplete="username" autofocus="autofocus" autocapitalize="off" spellcheck="false" class="form-control "/>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" placeholder="Password" name="password" id="password" required="required" autocomplete="current-password" maxlength="4096" class="form-control "/>
+                </div>
+
+
+                <div class="clearfix oe_login_buttons text-center gap-1 d-grid mb-1 pt-3">
+                    <button type="submit" class="btn btn-primary">Log in</button>
+                <div class="justify-content-between mt-2 d-flex small">
+                    <a href="/web/signup?redirect=%2Fapi%2Fv1%2Factes%2Fnaissance%2F57%3F">Don't have an account?</a>
+                    <a href="/web/reset_password?redirect=%2Fapi%2Fv1%2Factes%2Fnaissance%2F57%3F">Reset Password</a>
+                </div>
+                    <div class="o_login_auth"></div>
+                </div>
+
+                <input type="hidden" name="redirect" value="/api/v1/actes/naissance/57?"/>
+            </form>
+        
+                        <div class="text-center small mt-4 pt-3 border-top">
+                            <a href="https://www.odoo.com?utm_source=db&amp;utm_medium=auth" target="_blank">Powered by <span>Odoo</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+                </main>
+                
+            </div>
+        </body>
+</html>
+ 
+2026-11-05 18:51:04,152 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:51:04,152 559182 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: FAIL: TestActeWorkflowApi.test_api_rejects_invalid_piece_images_without_partial_updates
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 611, in test_api_rejects_invalid_piece_images_without_partial_updates
+    self.assertEqual(response.status_code, 400, response.text)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 400 : <!DOCTYPE html>
+<html style="height: 100%;" dir="ltr">
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Odoo</title>
+        <link type="image/x-icon" rel="shortcut icon" href="/web/static/img/favicon.ico"/>
+        <link rel="preload" href="/web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0" as="font" crossorigin=""/>
+        <link type="text/css" rel="stylesheet" href="/web/assets/1d0cf09/web.assets_frontend.min.css"/>
+        <script id="web.layout.odooscript" type="text/javascript">
+            var odoo = {
+                csrf_token: "4575728908e72b0aa535cea95dea51b5c8a15bceo1825440664",
+                debug: "",
+            };
+        </script>
+        <script type="text/javascript">
+            odoo.__session_info__ = {"is_admin": false, "is_system": false, "is_public": true, "is_website_user": false, "user_id": false, "is_frontend": true, "profile_session": null, "profile_collectors": null, "profile_params": null, "show_effect": true, "currencies": {"1": {"symbol": "$", "position": "before", "digits": [69, 2]}}, "bundle_params": {"lang": "en_US"}, "websocket_worker_version": "17.0-3", "translationURL": "/website/translations", "cache_hashes": {"translations": "a0904ff8e2c6bfa6bb5d9f87c1ef6d45fe749aa6"}};
+            if (!/(^|;\s)tz=/.test(document.cookie)) {
+                const userTZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                document.cookie = `tz=${userTZ}; path=/`;
+            }
+        </script>
+        <script type="text/javascript" defer="defer" src="/web/assets/a3cf721/web.assets_frontend_minimal.min.js" onerror="__odooAssetError=1"></script>
+        <script type="text/javascript" defer="defer" data-src="/web/assets/0c5835b/web.assets_frontend_lazy.min.js" onerror="__odooAssetError=1"></script>
+        
+    </head>
+    <body class="bg-100">
+        <div id="wrapwrap" class="  ">
+                <main>
+                    
+
+            <div class="container py-5">
+                <div style="max-width: 300px;" class="card border-0 mx-auto bg-100  o_database_list">
+                    <div class="card-body">
+                        <div class="text-center pb-3 border-bottom mb-4">
+                            <img alt="Logo" style="max-height:120px; max-width: 100%; width:auto" src="/web/binary/company_logo"/>
+                        </div>
+                        
+            <form class="oe_login_form" role="form" method="post" onsubmit="this.action = &#39;/web/login&#39; + location.hash" action="/web/login">
+                <input type="hidden" name="csrf_token" value="4575728908e72b0aa535cea95dea51b5c8a15bceo1825440664"/>
+
+
+                <div class="mb-3 field-login">
+                    <label for="login" class="form-label">Adresse e-mail</label>
+        <input type="email" placeholder="Adresse e-mail" name="login" id="login" required="required" autocomplete="username" autofocus="autofocus" autocapitalize="off" spellcheck="false" class="form-control "/>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" placeholder="Password" name="password" id="password" required="required" autocomplete="current-password" maxlength="4096" class="form-control "/>
+                </div>
+
+
+                <div class="clearfix oe_login_buttons text-center gap-1 d-grid mb-1 pt-3">
+                    <button type="submit" class="btn btn-primary">Log in</button>
+                <div class="justify-content-between mt-2 d-flex small">
+                    <a href="/web/signup?redirect=%2Fapi%2Fv1%2Factes%2Fnaissance%3F">Don't have an account?</a>
+                    <a href="/web/reset_password?redirect=%2Fapi%2Fv1%2Factes%2Fnaissance%3F">Reset Password</a>
+                </div>
+                    <div class="o_login_auth"></div>
+                </div>
+
+                <input type="hidden" name="redirect" value="/api/v1/actes/naissance?"/>
+            </form>
+        
+                        <div class="text-center small mt-4 pt-3 border-top">
+                            <a href="https://www.odoo.com?utm_source=db&amp;utm_medium=auth" target="_blank">Powered by <span>Odoo</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+                </main>
+                
+            </div>
+        </body>
+</html>
+ 
+2026-11-05 18:51:04,153 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_attachment_preview_route_respects_civil_centre_access ... 
+2026-11-05 18:51:04,290 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:agent-workflow-api from n/a 
+2026-11-05 18:51:04,319 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:51:04,319 559182 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: FAIL: TestActeWorkflowApi.test_attachment_preview_route_respects_civil_centre_access
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 670, in test_attachment_preview_route_respects_civil_centre_access
+    self.assertEqual(allowed.status_code, 200, allowed.text)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 404 != 200 : <!doctype html>
+<html lang=en>
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+
+ 
+2026-11-05 18:51:04,320 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_authenticated_api_routes_reject_anonymous_writes ... 
+2026-11-05 18:51:04,328 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:agent-workflow-api from n/a 
+2026-11-05 18:51:04,393 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_specific_api_routes_enforce_the_workflow_for_each_act_type ... 
+2026-11-05 18:51:04,402 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:officer-workflow-api from n/a 
+2026-11-05 18:51:04,464 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:officer-workflow-api from n/a 
+2026-11-05 18:51:04,647 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:51:04,647 559182 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: FAIL: Subtest TestActeWorkflowApi.test_specific_api_routes_enforce_the_workflow_for_each_act_type (acte_type='naissance')
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 409, in test_specific_api_routes_enforce_the_workflow_for_each_act_type
+    self.assertEqual(
+    ~~~~~~~~~~~~~~~~^
+        draft_response.status_code,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        409,
+        ^^^^
+        draft_response.text,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+AssertionError: 200 != 409 : <!DOCTYPE html>
+<html style="height: 100%;" dir="ltr">
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Odoo</title>
+        <link type="image/x-icon" rel="shortcut icon" href="/web/static/img/favicon.ico"/>
+        <link rel="preload" href="/web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0" as="font" crossorigin=""/>
+        <link type="text/css" rel="stylesheet" href="/web/assets/1d0cf09/web.assets_frontend.min.css"/>
+        <script id="web.layout.odooscript" type="text/javascript">
+            var odoo = {
+                csrf_token: "f614551cc866c1be8ba3d62ecd9b7ada0499ab77o1825440664",
+                debug: "",
+            };
+        </script>
+        <script type="text/javascript">
+            odoo.__session_info__ = {"is_admin": false, "is_system": false, "is_public": true, "is_website_user": false, "user_id": false, "is_frontend": true, "profile_session": null, "profile_collectors": null, "profile_params": null, "show_effect": true, "currencies": {"1": {"symbol": "$", "position": "before", "digits": [69, 2]}}, "bundle_params": {"lang": "en_US"}, "websocket_worker_version": "17.0-3", "translationURL": "/website/translations", "cache_hashes": {"translations": "a0904ff8e2c6bfa6bb5d9f87c1ef6d45fe749aa6"}};
+            if (!/(^|;\s)tz=/.test(document.cookie)) {
+                const userTZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                document.cookie = `tz=${userTZ}; path=/`;
+            }
+        </script>
+        <script type="text/javascript" defer="defer" src="/web/assets/a3cf721/web.assets_frontend_minimal.min.js" onerror="__odooAssetError=1"></script>
+        <script type="text/javascript" defer="defer" data-src="/web/assets/0c5835b/web.assets_frontend_lazy.min.js" onerror="__odooAssetError=1"></script>
+        
+    </head>
+    <body class="bg-100">
+        <div id="wrapwrap" class="  ">
+                <main>
+                    
+
+            <div class="container py-5">
+                <div style="max-width: 300px;" class="card border-0 mx-auto bg-100  o_database_list">
+                    <div class="card-body">
+                        <div class="text-center pb-3 border-bottom mb-4">
+                            <img alt="Logo" style="max-height:120px; max-width: 100%; width:auto" src="/web/binary/company_logo"/>
+                        </div>
+                        
+            <form class="oe_login_form" role="form" method="post" onsubmit="this.action = &#39;/web/login&#39; + location.hash" action="/web/login">
+                <input type="hidden" name="csrf_token" value="f614551cc866c1be8ba3d62ecd9b7ada0499ab77o1825440664"/>
+
+
+                <div class="mb-3 field-login">
+                    <label for="login" class="form-label">Adresse e-mail</label>
+        <input type="email" placeholder="Adresse e-mail" name="login" id="login" required="required" autocomplete="username" autofocus="autofocus" autocapitalize="off" spellcheck="false" class="form-control "/>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" placeholder="Password" name="password" id="password" required="required" autocomplete="current-password" maxlength="4096" class="form-control "/>
+                </div>
+
+
+                <div class="clearfix oe_login_buttons text-center gap-1 d-grid mb-1 pt-3">
+                    <button type="submit" class="btn btn-primary">Log in</button>
+                <div class="justify-content-between mt-2 d-flex small">
+                    <a href="/web/signup?redirect=%2Fapi%2Fv1%2Factes%2Fnaissance%2F59%2Fvalider%3F">Don't have an account?</a>
+                    <a href="/web/reset_password?redirect=%2Fapi%2Fv1%2Factes%2Fnaissance%2F59%2Fvalider%3F">Reset Password</a>
+                </div>
+                    <div class="o_login_auth"></div>
+                </div>
+
+                <input type="hidden" name="redirect" value="/api/v1/actes/naissance/59/valider?"/>
+            </form>
+        
+                        <div class="text-center small mt-4 pt-3 border-top">
+                            <a href="https://www.odoo.com?utm_source=db&amp;utm_medium=auth" target="_blank">Powered by <span>Odoo</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+                </main>
+                
+            </div>
+        </body>
+</html>
+ 
+2026-11-05 18:51:04,656 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:officer-workflow-api from n/a 
+2026-11-05 18:51:04,860 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:51:04,860 559182 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: FAIL: Subtest TestActeWorkflowApi.test_specific_api_routes_enforce_the_workflow_for_each_act_type (acte_type='mariage')
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 409, in test_specific_api_routes_enforce_the_workflow_for_each_act_type
+    self.assertEqual(
+    ~~~~~~~~~~~~~~~~^
+        draft_response.status_code,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        409,
+        ^^^^
+        draft_response.text,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+AssertionError: 200 != 409 : <!DOCTYPE html>
+<html style="height: 100%;" dir="ltr">
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Odoo</title>
+        <link type="image/x-icon" rel="shortcut icon" href="/web/static/img/favicon.ico"/>
+        <link rel="preload" href="/web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0" as="font" crossorigin=""/>
+        <link type="text/css" rel="stylesheet" href="/web/assets/1d0cf09/web.assets_frontend.min.css"/>
+        <script id="web.layout.odooscript" type="text/javascript">
+            var odoo = {
+                csrf_token: "3f6ef82db59adb4c5abbe07f7c3caea077690aa7o1825440664",
+                debug: "",
+            };
+        </script>
+        <script type="text/javascript">
+            odoo.__session_info__ = {"is_admin": false, "is_system": false, "is_public": true, "is_website_user": false, "user_id": false, "is_frontend": true, "profile_session": null, "profile_collectors": null, "profile_params": null, "show_effect": true, "currencies": {"1": {"symbol": "$", "position": "before", "digits": [69, 2]}}, "bundle_params": {"lang": "en_US"}, "websocket_worker_version": "17.0-3", "translationURL": "/website/translations", "cache_hashes": {"translations": "a0904ff8e2c6bfa6bb5d9f87c1ef6d45fe749aa6"}};
+            if (!/(^|;\s)tz=/.test(document.cookie)) {
+                const userTZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                document.cookie = `tz=${userTZ}; path=/`;
+            }
+        </script>
+        <script type="text/javascript" defer="defer" src="/web/assets/a3cf721/web.assets_frontend_minimal.min.js" onerror="__odooAssetError=1"></script>
+        <script type="text/javascript" defer="defer" data-src="/web/assets/0c5835b/web.assets_frontend_lazy.min.js" onerror="__odooAssetError=1"></script>
+        
+    </head>
+    <body class="bg-100">
+        <div id="wrapwrap" class="  ">
+                <main>
+                    
+
+            <div class="container py-5">
+                <div style="max-width: 300px;" class="card border-0 mx-auto bg-100  o_database_list">
+                    <div class="card-body">
+                        <div class="text-center pb-3 border-bottom mb-4">
+                            <img alt="Logo" style="max-height:120px; max-width: 100%; width:auto" src="/web/binary/company_logo"/>
+                        </div>
+                        
+            <form class="oe_login_form" role="form" method="post" onsubmit="this.action = &#39;/web/login&#39; + location.hash" action="/web/login">
+                <input type="hidden" name="csrf_token" value="3f6ef82db59adb4c5abbe07f7c3caea077690aa7o1825440664"/>
+
+
+                <div class="mb-3 field-login">
+                    <label for="login" class="form-label">Adresse e-mail</label>
+        <input type="email" placeholder="Adresse e-mail" name="login" id="login" required="required" autocomplete="username" autofocus="autofocus" autocapitalize="off" spellcheck="false" class="form-control "/>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" placeholder="Password" name="password" id="password" required="required" autocomplete="current-password" maxlength="4096" class="form-control "/>
+                </div>
+
+
+                <div class="clearfix oe_login_buttons text-center gap-1 d-grid mb-1 pt-3">
+                    <button type="submit" class="btn btn-primary">Log in</button>
+                <div class="justify-content-between mt-2 d-flex small">
+                    <a href="/web/signup?redirect=%2Fapi%2Fv1%2Factes%2Fmariage%2F12%2Fvalider%3F">Don't have an account?</a>
+                    <a href="/web/reset_password?redirect=%2Fapi%2Fv1%2Factes%2Fmariage%2F12%2Fvalider%3F">Reset Password</a>
+                </div>
+                    <div class="o_login_auth"></div>
+                </div>
+
+                <input type="hidden" name="redirect" value="/api/v1/actes/mariage/12/valider?"/>
+            </form>
+        
+                        <div class="text-center small mt-4 pt-3 border-top">
+                            <a href="https://www.odoo.com?utm_source=db&amp;utm_medium=auth" target="_blank">Powered by <span>Odoo</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+                </main>
+                
+            </div>
+        </body>
+</html>
+ 
+2026-11-05 18:51:04,868 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.res_users: Login successful for db:etat_civil_phase_next_finance_20261105_01 login:officer-workflow-api from n/a 
+2026-11-05 18:51:04,997 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: ====================================================================== 
+2026-11-05 18:51:04,997 559182 ERROR etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: FAIL: Subtest TestActeWorkflowApi.test_specific_api_routes_enforce_the_workflow_for_each_act_type (acte_type='deces')
+Traceback (most recent call last):
+  File "/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons/etat_civil/tests/test_acte_workflow.py", line 409, in test_specific_api_routes_enforce_the_workflow_for_each_act_type
+    self.assertEqual(
+    ~~~~~~~~~~~~~~~~^
+        draft_response.status_code,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        409,
+        ^^^^
+        draft_response.text,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+AssertionError: 200 != 409 : <!DOCTYPE html>
+<html style="height: 100%;" dir="ltr">
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Odoo</title>
+        <link type="image/x-icon" rel="shortcut icon" href="/web/static/img/favicon.ico"/>
+        <link rel="preload" href="/web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0" as="font" crossorigin=""/>
+        <link type="text/css" rel="stylesheet" href="/web/assets/1d0cf09/web.assets_frontend.min.css"/>
+        <script id="web.layout.odooscript" type="text/javascript">
+            var odoo = {
+                csrf_token: "cd9062c7fe751a816f825a7e1632bb408ba43fa1o1825440664",
+                debug: "",
+            };
+        </script>
+        <script type="text/javascript">
+            odoo.__session_info__ = {"is_admin": false, "is_system": false, "is_public": true, "is_website_user": false, "user_id": false, "is_frontend": true, "profile_session": null, "profile_collectors": null, "profile_params": null, "show_effect": true, "currencies": {"1": {"symbol": "$", "position": "before", "digits": [69, 2]}}, "bundle_params": {"lang": "en_US"}, "websocket_worker_version": "17.0-3", "translationURL": "/website/translations", "cache_hashes": {"translations": "a0904ff8e2c6bfa6bb5d9f87c1ef6d45fe749aa6"}};
+            if (!/(^|;\s)tz=/.test(document.cookie)) {
+                const userTZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                document.cookie = `tz=${userTZ}; path=/`;
+            }
+        </script>
+        <script type="text/javascript" defer="defer" src="/web/assets/a3cf721/web.assets_frontend_minimal.min.js" onerror="__odooAssetError=1"></script>
+        <script type="text/javascript" defer="defer" data-src="/web/assets/0c5835b/web.assets_frontend_lazy.min.js" onerror="__odooAssetError=1"></script>
+        
+    </head>
+    <body class="bg-100">
+        <div id="wrapwrap" class="  ">
+                <main>
+                    
+
+            <div class="container py-5">
+                <div style="max-width: 300px;" class="card border-0 mx-auto bg-100  o_database_list">
+                    <div class="card-body">
+                        <div class="text-center pb-3 border-bottom mb-4">
+                            <img alt="Logo" style="max-height:120px; max-width: 100%; width:auto" src="/web/binary/company_logo"/>
+                        </div>
+                        
+            <form class="oe_login_form" role="form" method="post" onsubmit="this.action = &#39;/web/login&#39; + location.hash" action="/web/login">
+                <input type="hidden" name="csrf_token" value="cd9062c7fe751a816f825a7e1632bb408ba43fa1o1825440664"/>
+
+
+                <div class="mb-3 field-login">
+                    <label for="login" class="form-label">Adresse e-mail</label>
+        <input type="email" placeholder="Adresse e-mail" name="login" id="login" required="required" autocomplete="username" autofocus="autofocus" autocapitalize="off" spellcheck="false" class="form-control "/>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" placeholder="Password" name="password" id="password" required="required" autocomplete="current-password" maxlength="4096" class="form-control "/>
+                </div>
+
+
+                <div class="clearfix oe_login_buttons text-center gap-1 d-grid mb-1 pt-3">
+                    <button type="submit" class="btn btn-primary">Log in</button>
+                <div class="justify-content-between mt-2 d-flex small">
+                    <a href="/web/signup?redirect=%2Fapi%2Fv1%2Factes%2Fdeces%2F8%2Fvalider%3F">Don't have an account?</a>
+                    <a href="/web/reset_password?redirect=%2Fapi%2Fv1%2Factes%2Fdeces%2F8%2Fvalider%3F">Reset Password</a>
+                </div>
+                    <div class="o_login_auth"></div>
+                </div>
+
+                <input type="hidden" name="redirect" value="/api/v1/actes/deces/8/valider?"/>
+            </form>
+        
+                        <div class="text-center small mt-4 pt-3 border-top">
+                            <a href="https://www.odoo.com?utm_source=db&amp;utm_medium=auth" target="_blank">Powered by <span>Odoo</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+                </main>
+                
+            </div>
+        </body>
+</html>
+ 
+2026-11-05 18:51:05,137 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_attachment: filestore gc 5 checked, 4 removed 
+2026-11-05 18:51:05,436 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 61 and Message-Id '<858224649461114.1793904665.407004833221436-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'************************ns@example.test'" successfully sent 
+2026-11-05 18:51:05,436 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:05,447 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [61] 
+2026-11-05 18:51:05,460 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [883] 
+2026-11-05 18:51:05,460 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:05,465 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <agent-workflow-transitions> to <agent-workflow-transitions@example.test> 
+2026-11-05 18:51:05,685 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 62 and Message-Id '<148587791770956.1793904665.659450769424438-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'**************************ns@example.test'" successfully sent 
+2026-11-05 18:51:05,686 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:05,693 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [62] 
+2026-11-05 18:51:05,702 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [885] 
+2026-11-05 18:51:05,702 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:05,705 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <officer-workflow-transitions> to <officer-workflow-transitions@example.test> 
+2026-11-05 18:51:05,710 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowTransitions.test_all_act_types_reject_invalid_states_and_run_validation_effects ... 
+2026-11-05 18:51:06,144 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 63 and Message-Id '<442858589471574.1793904666.057669878005981-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:51:06,144 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:06,158 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #33 deleted mail.mail records with IDs: [63] 
+2026-11-05 18:51:06,158 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:06,299 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 64 and Message-Id '<235232551698589.1793904666.254626512527466-openerp-message-notify@ulrich-Default-string>' from 'officer-workflow-transitions@example.test' to (redacted) 'a***********************ns@example.test' successfully sent 
+2026-11-05 18:51:06,299 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:06,313 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #34 deleted mail.mail records with IDs: [64] 
+2026-11-05 18:51:06,313 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:06,521 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 65 and Message-Id '<272967074085483.1793904666.472739696502686-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:51:06,522 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:06,536 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #33 deleted mail.mail records with IDs: [65] 
+2026-11-05 18:51:06,537 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:06,785 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #34 deleted mail.activity records with IDs: [47, 48, 49] 
+2026-11-05 18:51:07,422 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 66 and Message-Id '<032255994277623.1793904667.384695768356323-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:51:07,422 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:07,435 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #33 deleted mail.mail records with IDs: [66] 
+2026-11-05 18:51:07,436 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:07,540 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 67 and Message-Id '<438279451289413.1793904667.497822999954224-openerp-message-notify@ulrich-Default-string>' from 'officer-workflow-transitions@example.test' to (redacted) 'a***********************ns@example.test' successfully sent 
+2026-11-05 18:51:07,540 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:07,553 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #34 deleted mail.mail records with IDs: [67] 
+2026-11-05 18:51:07,554 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:07,742 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 68 and Message-Id '<653024760052873.1793904667.699140310287476-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:51:07,742 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:07,755 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #33 deleted mail.mail records with IDs: [68] 
+2026-11-05 18:51:07,755 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:08,114 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #34 deleted mail.activity records with IDs: [50, 51, 52] 
+2026-11-05 18:51:08,635 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 69 and Message-Id '<990847180400189.1793904668.594895839691162-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:51:08,636 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:08,648 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #33 deleted mail.mail records with IDs: [69] 
+2026-11-05 18:51:08,648 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:08,748 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 70 and Message-Id '<666060959865284.1793904668.706455469131470-openerp-message-notify@ulrich-Default-string>' from 'officer-workflow-transitions@example.test' to (redacted) 'a***********************ns@example.test' successfully sent 
+2026-11-05 18:51:08,748 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:08,760 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #34 deleted mail.mail records with IDs: [70] 
+2026-11-05 18:51:08,760 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:08,938 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 71 and Message-Id '<275740600497888.1793904668.898240089416504-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:51:08,939 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:08,952 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #33 deleted mail.mail records with IDs: [71] 
+2026-11-05 18:51:08,952 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:09,145 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #34 deleted mail.activity records with IDs: [53, 54, 55] 
+2026-11-05 18:51:09,278 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowTransitions.test_officer_record_rule_preserves_read_access_in_own_centre ... 
+2026-11-05 18:51:09,435 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowTransitions.test_piece_actions_are_separated_in_each_act_form ... 
+2026-11-05 18:51:09,688 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowTransitions.test_piece_receipt_and_verification_actions_are_persistent_and_audited ... 
+2026-11-05 18:51:10,305 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 72 and Message-Id '<852860854134654.1793904670.210004329681396-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:51:10,305 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:10,318 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #33 deleted mail.mail records with IDs: [72] 
+2026-11-05 18:51:10,318 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:10,428 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowTransitions.test_second_marriage_for_a_spouse_is_rechecked_before_validation ... 
+2026-11-05 18:51:11,138 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 73 and Message-Id '<745631287470806.1793904671.026968717575073-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:51:11,138 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:11,151 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #33 deleted mail.mail records with IDs: [73] 
+2026-11-05 18:51:11,151 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:11,919 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 74 and Message-Id '<406685619446135.1793904671.877308130264282-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:51:11,919 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:11,932 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #33 deleted mail.mail records with IDs: [74] 
+2026-11-05 18:51:11,932 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:12,295 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #34 deleted mail.activity records with IDs: [57] 
+2026-11-05 18:51:12,353 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowTransitions.test_transmission_is_atomic_when_activity_creation_fails ... 
+2026-11-05 18:51:12,621 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowTransitions.test_validation_is_atomic_when_a_post_validation_effect_fails ... 
+2026-11-05 18:51:13,002 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 75 and Message-Id '<145109259341767.1793904672.913181543350220-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:51:13,002 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:13,014 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #33 deleted mail.mail records with IDs: [75] 
+2026-11-05 18:51:13,014 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:13,753 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 76 and Message-Id '<717691069836493.1793904673.710851430892944-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:51:13,754 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:13,771 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #33 deleted mail.mail records with IDs: [76] 
+2026-11-05 18:51:13,771 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:14,121 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #34 deleted mail.activity records with IDs: [60] 
+2026-11-05 18:51:14,390 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 77 and Message-Id '<753635725119143.1793904674.348883628845215-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 18:51:14,391 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:14,403 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #33 deleted mail.mail records with IDs: [77] 
+2026-11-05 18:51:14,404 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:14,573 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #34 deleted mail.activity records with IDs: [61] 
+2026-11-05 18:51:14,595 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_attachment: filestore gc 3 checked, 3 removed 
+2026-11-05 18:51:14,610 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_cin_compatibility: Starting TestCINCompatibility.test_birth_filiation_piece_rules_remain_distinct_and_neutral ... 
+2026-11-05 18:51:14,612 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_cin_compatibility: Starting TestCINCompatibility.test_guichet_accepts_legacy_citizen_nin_key ... 
+2026-11-05 18:51:14,625 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_cin_compatibility: Starting TestCINCompatibility.test_guichet_status_changes_only_through_actions ... 
+2026-11-05 18:51:14,634 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_cin_compatibility: Starting TestCINCompatibility.test_individu_accepts_legacy_api_key_and_stores_cin ... 
+2026-11-05 18:51:14,651 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_cin_compatibility: Starting TestCINCompatibility.test_individu_rejects_invalid_cin_length ... 
+2026-11-05 18:51:14,653 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_cin_compatibility: Starting TestCINCompatibility.test_marriage_foreign_documents_and_witness_requirements_are_explicit ... 
+2026-11-05 18:51:14,659 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-11-05 18:51:14,691 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_01_creation_nouveau_ne_sans_cin_et_sans_profession ... 
+2026-11-05 18:51:14,700 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_02_nouveau_ne_cin_format_et_unicite ... 
+2026-11-05 18:51:14,720 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_03_creation_adulte_avec_cin_et_profession ... 
+2026-11-05 18:51:14,732 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_04_cin_parents_distinctes_de_lenfant ... 
+2026-11-05 18:51:14,816 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_05_sequence_non_consommee_a_louverture_du_formulaire ... 
+2026-11-05 18:51:14,934 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_06_sequences_independantes_mariage_et_deces ... 
+2026-11-05 18:51:15,083 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_07_import_csv ... 
+2026-11-05 18:51:15,144 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_08_import_json ... 
+2026-11-05 18:51:15,179 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_09_import_xml ... 
+2026-11-05 18:51:15,209 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_10_import_xlsx ... 
+2026-11-05 18:51:15,263 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_11_detection_doublons_et_strategies ... 
+2026-11-05 18:51:15,315 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_12_exportation_citoyens ... 
+2026-11-05 18:51:15,374 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_14_import_xls ... 
+2026-11-05 18:51:15,408 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_15_import_ods ... 
+2026-11-05 18:51:15,445 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_16_import_valid_zip ... 
+2026-11-05 18:51:15,473 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_17_zip_import_reports_invalid_inner_file ... 
+2026-11-05 18:51:15,484 559182 WARNING etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.wizards.import_export_citoyen: Could not parse citoyens.json from uploaded ZIP: Expecting property name enclosed in double quotes: line 1 column 2 (char 1) 
+2026-11-05 18:51:15,497 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_18_mentions_generate_type_specific_references ... 
+2026-11-05 18:51:15,774 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_19_system_admin_has_direct_module_access ... 
+2026-11-05 18:51:15,999 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #37 deleted etat.civil.individu records with IDs: [234] 
+2026-11-05 18:51:16,001 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_mobile_act_creation_requires_an_open_register ... 
+2026-11-05 18:51:16,003 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_mobile_citizen_list_omits_nested_mentions ... 
+2026-11-05 18:51:16,012 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_spreadsheet_exports_treat_formula_like_citizen_values_as_text ... 
+2026-11-05 18:51:16,065 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_attachment: filestore gc 19 checked, 19 removed 
+2026-11-05 18:51:16,444 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 78 and Message-Id '<851349734271037.1793904676.396179914474487-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'***************rt@example.com'" successfully sent 
+2026-11-05 18:51:16,444 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:16,456 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [78] 
+2026-11-05 18:51:16,473 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [1154] 
+2026-11-05 18:51:16,474 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:16,481 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <agent_test_report@example.com> to <agent_test_report@example.com> 
+2026-11-05 18:51:16,787 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 79 and Message-Id '<162107139645294.1793904676.738260269165039-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'******************rt@example.com'" successfully sent 
+2026-11-05 18:51:16,790 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:16,800 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [79] 
+2026-11-05 18:51:16,829 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [1156] 
+2026-11-05 18:51:16,829 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:16,848 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <officier_test_report@example.com> to <officier_test_report@example.com> 
+2026-11-05 18:51:16,858 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_chatter_and_messages ... 
+2026-11-05 18:51:16,987 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_civil_admin_can_render_report_without_system_or_officer_group ... 
+2026-11-05 18:51:17,487 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_historical_marriage_without_witnesses ... 
+2026-11-05 18:51:17,817 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_integrity_hash_detects_tampering ... 
+2026-11-05 18:51:18,213 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 80 and Message-Id '<662604956036238.1793904678.101762294769287-openerp-message-notify@ulrich-Default-string>' from 'agent_test_report@example.com' to (redacted) 'o*****************rt@example.com' successfully sent 
+2026-11-05 18:51:18,214 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:18,231 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #38 deleted mail.mail records with IDs: [80] 
+2026-11-05 18:51:18,231 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:18,496 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #39 deleted mail.activity records with IDs: [62] 
+2026-11-05 18:51:18,520 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_physical_print_action_is_available_before_validation_for_all_act_types ... 
+2026-11-05 18:51:18,984 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_qr_code_and_hash_generation_and_disclaimer_in_report ... 
+2026-11-05 18:51:19,416 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 81 and Message-Id '<452624788744813.1793904679.314480304718018-openerp-message-notify@ulrich-Default-string>' from 'agent_test_report@example.com' to (redacted) 'o*****************rt@example.com' successfully sent 
+2026-11-05 18:51:19,417 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:19,429 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #38 deleted mail.mail records with IDs: [81] 
+2026-11-05 18:51:19,429 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:19,653 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #39 deleted mail.activity records with IDs: [63] 
+2026-11-05 18:51:19,831 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_report_deces_rendering ... 
+2026-11-05 18:51:20,036 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_report_mariage_rendering ... 
+2026-11-05 18:51:20,244 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_report_naissance_rendering_with_missing_optional_fields ... 
+2026-11-05 18:51:20,469 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_territorial_security_isolation ... 
+2026-11-05 18:51:20,713 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 82 and Message-Id '<439062753855906.1793904680.680821657180786-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'*******************so@test.com'" successfully sent 
+2026-11-05 18:51:20,713 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:20,722 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [82] 
+2026-11-05 18:51:20,735 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [1247] 
+2026-11-05 18:51:20,735 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:20,740 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <officier_centre_b_iso@test.com> to <officier_centre_b_iso@test.com> 
+2026-11-05 18:51:21,158 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 83 and Message-Id '<617679150580611.1793904681.049744606018066-openerp-message-notify@ulrich-Default-string>' from 'agent_test_report@example.com' to (redacted) 'o*****************rt@example.com' successfully sent 
+2026-11-05 18:51:21,158 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:21,173 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #38 deleted mail.mail records with IDs: [83] 
+2026-11-05 18:51:21,173 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:21,365 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [75], uid: 41, model: etat.civil.acte.naissance 
+2026-11-05 18:51:21,385 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_attachment: filestore gc 4 checked, 4 removed 
+2026-11-05 18:51:21,713 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 84 and Message-Id '<441627711693538.1793904681.677685737609863-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'********nt@example.test'" successfully sent 
+2026-11-05 18:51:21,714 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:21,720 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [84] 
+2026-11-05 18:51:21,732 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [1262] 
+2026-11-05 18:51:21,732 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:21,736 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <role-test-agent> to <role-agent@example.test> 
+2026-11-05 18:51:21,987 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 85 and Message-Id '<625595775423784.1793904681.955727100372314-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'**********er@example.test'" successfully sent 
+2026-11-05 18:51:21,987 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:21,998 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [85] 
+2026-11-05 18:51:22,010 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [1264] 
+2026-11-05 18:51:22,010 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:22,015 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <role-test-officer> to <role-officer@example.test> 
+2026-11-05 18:51:22,249 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 86 and Message-Id '<975640136746513.1793904682.220037460327148-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'********in@example.test'" successfully sent 
+2026-11-05 18:51:22,249 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:22,257 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [86] 
+2026-11-05 18:51:22,271 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #1 deleted mail.message records with IDs: [1266] 
+2026-11-05 18:51:22,271 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:22,275 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <role-test-admin> to <role-admin@example.test> 
+2026-11-05 18:51:22,280 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_act_numbers_and_page_numbers_are_defaulted_by_act_type ... 
+2026-11-05 18:51:22,397 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_act_validation_requires_verified_documents ... 
+2026-11-05 18:51:22,789 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 87 and Message-Id '<860084400451860.1793904682.692092657089233-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:51:22,789 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:22,806 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #42 deleted mail.mail records with IDs: [87] 
+2026-11-05 18:51:22,806 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:23,113 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #43 deleted mail.activity records with IDs: [65] 
+2026-11-05 18:51:23,135 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_admin_can_create_centres_registers_and_admin_users ... 
+2026-11-05 18:51:23,348 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_admin_can_manage_mentions_and_read_across_centres ... 
+2026-11-05 18:51:23,589 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_admin_can_process_decisions_without_territorial_assignment ... 
+2026-11-05 18:51:23,930 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 88 and Message-Id '<071425241341257.1793904683.825276374816895-openerp-message-notify@ulrich-Default-string>' from 'role-admin@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:51:23,930 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:23,944 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #44 deleted mail.mail records with IDs: [88] 
+2026-11-05 18:51:23,944 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:24,216 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 89 and Message-Id '<212291764940438.1793904684.172342061996460-openerp-message-notify@ulrich-Default-string>' from 'role-admin@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:51:24,216 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:24,231 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #44 deleted mail.mail records with IDs: [89] 
+2026-11-05 18:51:24,232 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:24,560 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 90 and Message-Id '<597937895278842.1793904684.518749713897705-openerp-message-notify@ulrich-Default-string>' from 'role-admin@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:51:24,560 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:24,573 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #44 deleted mail.mail records with IDs: [90] 
+2026-11-05 18:51:24,573 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:24,755 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #44 deleted mail.activity records with IDs: [69] 
+2026-11-05 18:51:25,036 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 91 and Message-Id '<380001872889177.1793904684.991264820098877-openerp-message-notify@ulrich-Default-string>' from 'role-admin@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:51:25,036 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:25,048 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #44 deleted mail.mail records with IDs: [91] 
+2026-11-05 18:51:25,049 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:25,204 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #44 deleted mail.activity records with IDs: [70] 
+2026-11-05 18:51:25,246 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_admin_has_full_act_workflow_without_officer_membership ... 
+2026-11-05 18:51:25,417 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #44 deleted mail.message records with IDs: [1370] 
+2026-11-05 18:51:25,434 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #44 deleted etat.civil.acte.naissance records with IDs: [84] 
+2026-11-05 18:51:25,445 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #44 deleted mail.followers records with IDs: [426] 
+2026-11-05 18:51:25,731 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 92 and Message-Id '<521315246063921.1793904685.632559776306152-openerp-message-notify@ulrich-Default-string>' from 'role-admin@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:51:25,731 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:25,747 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #44 deleted mail.mail records with IDs: [92] 
+2026-11-05 18:51:25,747 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:25,992 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #44 deleted mail.activity records with IDs: [71] 
+2026-11-05 18:51:26,011 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_agent_can_read_but_cannot_create_marginal_mentions ... 
+2026-11-05 18:51:26,013 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_agent_cannot_assign_an_officer_from_another_centre ... 
+2026-11-05 18:51:26,487 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_agent_cannot_open_user_management ... 
+2026-11-05 18:51:26,498 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: create, uid: 42, model: etat.civil.gestion.utilisateur 
+2026-11-05 18:51:26,500 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_agent_cannot_read_acts_outside_assigned_centres ... 
+2026-11-05 18:51:26,568 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_agent_cannot_set_act_status_directly_or_validate ... 
+2026-11-05 18:51:26,701 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_agent_transmits_to_the_assigned_officer ... 
+2026-11-05 18:51:27,122 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 93 and Message-Id '<321710921115738.1793904687.029665231704712-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:51:27,122 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:27,133 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #42 deleted mail.mail records with IDs: [93] 
+2026-11-05 18:51:27,134 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:27,182 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_cancellation_wizard ... 
+2026-11-05 18:51:27,591 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 94 and Message-Id '<393817917682345.1793904687.503265857696533-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:51:27,591 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:27,604 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #42 deleted mail.mail records with IDs: [94] 
+2026-11-05 18:51:27,605 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:27,839 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #43 deleted mail.activity records with IDs: [73] 
+2026-11-05 18:51:27,896 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_cannot_disable_last_civil_admin ... 
+2026-11-05 18:51:27,914 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_civil_admin_can_change_an_internal_users_role ... 
+2026-11-05 18:51:28,083 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_civil_admin_can_create_an_officer_account ... 
+2026-11-05 18:51:28,276 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_civil_admin_can_create_role_limited_internal_user ... 
+2026-11-05 18:51:28,459 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_civil_admin_can_validate_without_officer_group_membership ... 
+2026-11-05 18:51:28,839 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 96 and Message-Id '<191590545670578.1793904688.747459650039673-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:51:28,840 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:28,856 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #42 deleted mail.mail records with IDs: [96] 
+2026-11-05 18:51:28,856 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:29,092 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #44 deleted mail.activity records with IDs: [74] 
+2026-11-05 18:51:29,110 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_civil_status_cannot_be_changed_outside_approved_workflows ... 
+2026-11-05 18:51:29,124 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_double_transmission_is_rejected ... 
+2026-11-05 18:51:29,530 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 97 and Message-Id '<210283046111430.1793904689.429314374923706-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:51:29,530 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:29,543 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #42 deleted mail.mail records with IDs: [97] 
+2026-11-05 18:51:29,543 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:29,587 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_incomplete_act_cannot_be_transmitted ... 
+2026-11-05 18:51:29,737 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_manual_act_number_is_preserved_and_folio_increments_per_register ... 
+2026-11-05 18:51:29,936 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_can_refuse_waiting_act ... 
+2026-11-05 18:51:30,322 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 98 and Message-Id '<468916450750555.1793904690.226487398147583-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:51:30,322 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:30,337 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #42 deleted mail.mail records with IDs: [98] 
+2026-11-05 18:51:30,337 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:30,416 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_can_return_for_correction_and_agent_can_resubmit ... 
+2026-11-05 18:51:30,823 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 99 and Message-Id '<892233295783165.1793904690.713995933532715-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:51:30,823 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:30,836 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #42 deleted mail.mail records with IDs: [99] 
+2026-11-05 18:51:30,836 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:30,987 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 100 and Message-Id '<829131468019578.1793904690.935484886169434-openerp-message-notify@ulrich-Default-string>' from 'role-officer@example.test' to (redacted) 'r*******nt@example.test' successfully sent 
+2026-11-05 18:51:30,987 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:30,999 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #43 deleted mail.mail records with IDs: [100] 
+2026-11-05 18:51:31,000 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:31,180 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 101 and Message-Id '<756453095913134.1793904691.136675596237183-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:51:31,181 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:31,194 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #42 deleted mail.mail records with IDs: [101] 
+2026-11-05 18:51:31,194 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:31,222 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_cannot_create_edit_or_transmit_agent_acts ... 
+2026-11-05 18:51:31,411 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_cannot_read_or_change_another_centres_mentions ... 
+2026-11-05 18:51:31,848 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [26], uid: 49, model: etat.civil.mention.marginale 
+2026-11-05 18:51:31,950 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [72], uid: 49, model: etat.civil.centre 
+2026-11-05 18:51:31,958 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_cannot_set_mention_status_directly ... 
+2026-11-05 18:51:32,220 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_from_another_centre_cannot_validate ... 
+2026-11-05 18:51:32,721 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 102 and Message-Id '<273779691368074.1793904692.596666812896729-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:51:32,721 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:32,737 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #42 deleted mail.mail records with IDs: [102] 
+2026-11-05 18:51:32,737 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:33,014 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [100], uid: 50, model: etat.civil.acte.naissance 
+2026-11-05 18:51:33,026 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_full_lifecycle_annulation_and_archivage ... 
+2026-11-05 18:51:33,529 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 103 and Message-Id '<147923089473782.1793904693.402816534042358-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:51:33,529 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:33,544 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #42 deleted mail.mail records with IDs: [103] 
+2026-11-05 18:51:33,545 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:33,822 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #43 deleted mail.activity records with IDs: [81] 
+2026-11-05 18:51:33,924 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_group_does_not_imply_agent_group ... 
+2026-11-05 18:51:33,927 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_validation_locks_all_act_data_but_keeps_mentions_optional ... 
+2026-11-05 18:51:34,309 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 104 and Message-Id '<435537670829635.1793904694.219562768936157-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:51:34,309 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:34,322 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #42 deleted mail.mail records with IDs: [104] 
+2026-11-05 18:51:34,323 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:34,572 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #43 deleted mail.activity records with IDs: [82] 
+2026-11-05 18:51:34,640 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_only_officer_can_verify_required_documents ... 
+2026-11-05 18:51:34,822 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_only_the_assigned_officer_can_validate ... 
+2026-11-05 18:51:35,205 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 105 and Message-Id '<790264480549103.1793904695.115971565246582-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:51:35,205 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:35,218 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #42 deleted mail.mail records with IDs: [105] 
+2026-11-05 18:51:35,218 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:35,739 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #43 deleted mail.activity records with IDs: [83] 
+2026-11-05 18:51:35,759 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_user_with_agent_and_officer_groups_is_not_allowed_agent_actions ... 
+2026-11-05 18:51:36,099 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_validated_act_cannot_be_transmitted ... 
+2026-11-05 18:51:36,510 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 106 and Message-Id '<454940898476783.1793904696.407282590866089-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 18:51:36,511 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 18:51:36,524 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #42 deleted mail.mail records with IDs: [106] 
+2026-11-05 18:51:36,524 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 18:51:36,760 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.models.unlink: User #43 deleted mail.activity records with IDs: [84] 
+2026-11-05 18:51:36,789 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_attachment: filestore gc 11 checked, 11 removed 
+2026-11-05 18:51:36,804 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_user_directory: Starting TestEtatCivilUserDirectory.test_role_is_derived_from_existing_groups ... 
+2026-11-05 18:51:37,057 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_user_directory: Starting TestEtatCivilUserDirectory.test_user_directory_action_is_read_only_and_restricted ... 
+2026-11-05 18:51:37,067 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil.tests.test_user_directory: Starting TestEtatCivilUserDirectory.test_user_directory_menu_uses_native_user_model ... 
+2026-11-05 18:51:37,077 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_attachment: filestore gc 1 checked, 1 removed 
+2026-11-05 18:51:37,090 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil_account.tests.test_copy_request_security: Starting TestCopyRequestSecurity.test_direct_state_write_is_rejected ... 
+2026-11-05 18:51:37,098 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil_account.tests.test_copy_request_security: Starting TestCopyRequestSecurity.test_missing_invoice_never_satisfies_payment_gate ... 
+2026-11-05 18:51:37,103 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil_account.tests.test_copy_request_security: Starting TestCopyRequestSecurity.test_negative_tariff_is_rejected ... 
+2026-11-05 18:51:37,192 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil_account.tests.test_copy_request_security: Starting TestCopyRequestSecurity.test_payment_confirmation_requires_regisseur ... 
+2026-11-05 18:51:37,201 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.etat_civil_account.tests.test_copy_request_security: Starting TestCopyRequestSecurity.test_typed_act_is_required ... 
+2026-11-05 18:51:37,215 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-11-05 18:51:37,236 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.service.server: 96 post-tests in 37.27s, 18147 queries 
+2026-11-05 18:51:37,237 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.tests.stats: etat_civil: 105 tests 35.97s 17867 queries 
+2026-11-05 18:51:37,238 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.tests.stats: etat_civil_account: 7 tests 0.15s 93 queries 
+2026-11-05 18:51:37,238 559182 INFO etat_civil_phase_next_finance_20261105_01 odoo.service.server: Stopping gracefully 

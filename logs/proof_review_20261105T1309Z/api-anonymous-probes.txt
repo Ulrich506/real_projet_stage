@@ -1,0 +1,5 @@
+UTC observation: 2026-11-05 13:22
+health status=200
+anonymous_acts status=303
+anonymous_me status=303
+invalid_qr status=400

@@ -1,0 +1,634 @@
+2026-11-05 16:35:34,717 511383 INFO ? odoo: Odoo version 17.0 
+2026-11-05 16:35:34,718 511383 INFO ? odoo: Using configuration file at /tmp/etat_civil_dev_verify_final_20261105.conf 
+2026-11-05 16:35:34,718 511383 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/implementation_odoo17_dev/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 16:35:34,719 511383 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 16:35:35,065 511383 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 16:35:35,393 511383 INFO ? odoo.service.server: HTTP service (werkzeug) running on localhost:18179 
+2026-11-05 16:35:35,415 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: init db 
+2026-11-05 16:35:38,183 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading 1 modules... 
+2026-11-05 16:35:38,184 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module base (1/1) 
+2026-11-05 16:35:38,233 511383 INFO etat_civil_dev_verify_final_20261105 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 16:35:38,234 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module base: creating or updating database tables 
+2026-11-05 16:35:38,819 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of ir.module.module.menus_by_module 
+2026-11-05 16:35:38,819 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of ir.module.module.reports_by_module 
+2026-11-05 16:35:38,819 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of ir.module.module.views_by_module 
+2026-11-05 16:35:39,013 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of res.partner.user_id 
+2026-11-05 16:35:39,014 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of res.partner.commercial_partner_id 
+2026-11-05 16:35:39,014 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of res.partner.complete_name 
+2026-11-05 16:35:39,014 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of res.partner.company_registry 
+2026-11-05 16:35:39,014 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of res.partner.commercial_company_name 
+2026-11-05 16:35:39,014 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of res.partner.partner_share 
+2026-11-05 16:35:39,085 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of res.currency.decimal_places 
+2026-11-05 16:35:39,148 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of res.company.uses_default_logo 
+2026-11-05 16:35:39,149 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of res.company.logo_web 
+2026-11-05 16:35:39,153 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Computing parent_path for table res_company... 
+2026-11-05 16:35:39,206 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of res.users.signature 
+2026-11-05 16:35:39,206 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of res.users.share 
+2026-11-05 16:35:42,476 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/data/res_bank.xml 
+2026-11-05 16:35:42,486 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/data/res.lang.csv 
+2026-11-05 16:35:42,565 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/data/res_lang_data.xml 
+2026-11-05 16:35:42,637 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/data/res_partner_data.xml 
+2026-11-05 16:35:42,821 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/data/res_currency_data.xml 
+2026-11-05 16:35:44,352 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/data/res_company_data.xml 
+2026-11-05 16:35:44,371 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/data/res_users_data.xml 
+2026-11-05 16:35:46,047 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/data/report_paperformat_data.xml 
+2026-11-05 16:35:46,066 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/data/res_country_data.xml 
+2026-11-05 16:35:47,601 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/data/ir_demo_data.xml 
+2026-11-05 16:35:47,634 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/security/base_groups.xml 
+2026-11-05 16:35:48,427 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/security/base_security.xml 
+2026-11-05 16:35:48,895 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/base_menus.xml 
+2026-11-05 16:35:49,225 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/decimal_precision_views.xml 
+2026-11-05 16:35:49,275 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/res_config_views.xml 
+2026-11-05 16:35:49,312 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/data/res.country.state.csv 
+2026-11-05 16:35:51,407 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/ir_actions_views.xml 
+2026-11-05 16:35:51,776 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/ir_asset_views.xml 
+2026-11-05 16:35:51,879 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/ir_config_parameter_views.xml 
+2026-11-05 16:35:51,989 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/ir_cron_views.xml 
+2026-11-05 16:35:52,112 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/ir_cron_trigger_views.xml 
+2026-11-05 16:35:52,185 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/ir_filters_views.xml 
+2026-11-05 16:35:52,263 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/ir_mail_server_views.xml 
+2026-11-05 16:35:52,339 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/ir_model_views.xml 
+2026-11-05 16:35:52,733 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/ir_attachment_views.xml 
+2026-11-05 16:35:52,788 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/ir_rule_views.xml 
+2026-11-05 16:35:52,866 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/ir_sequence_views.xml 
+2026-11-05 16:35:52,931 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/ir_ui_menu_views.xml 
+2026-11-05 16:35:53,001 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/ir_ui_view_views.xml 
+2026-11-05 16:35:53,166 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/ir_default_views.xml 
+2026-11-05 16:35:53,222 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/data/ir_cron_data.xml 
+2026-11-05 16:35:53,269 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/report/ir_model_report.xml 
+2026-11-05 16:35:53,282 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/report/ir_model_templates.xml 
+2026-11-05 16:35:53,304 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/ir_logging_views.xml 
+2026-11-05 16:35:53,360 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/ir_qweb_widget_templates.xml 
+2026-11-05 16:35:53,394 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/ir_module_views.xml 
+2026-11-05 16:35:53,528 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/data/ir_module_category_data.xml 
+2026-11-05 16:35:53,779 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/data/ir_module_module.xml 
+2026-11-05 16:35:53,994 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/report/ir_module_reports.xml 
+2026-11-05 16:35:54,004 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/report/ir_module_report_templates.xml 
+2026-11-05 16:35:54,019 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/wizard/base_module_update_views.xml 
+2026-11-05 16:35:54,049 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/wizard/base_language_install_views.xml 
+2026-11-05 16:35:54,081 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/wizard/base_import_language_views.xml 
+2026-11-05 16:35:54,115 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/wizard/base_module_upgrade_views.xml 
+2026-11-05 16:35:54,177 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/wizard/base_module_uninstall_views.xml 
+2026-11-05 16:35:54,199 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/wizard/base_export_language_views.xml 
+2026-11-05 16:35:54,240 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/wizard/base_partner_merge_views.xml 
+2026-11-05 16:35:54,294 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/data/ir_demo_failure_data.xml 
+2026-11-05 16:35:54,340 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/ir_profile_views.xml 
+2026-11-05 16:35:54,405 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/res_company_views.xml 
+2026-11-05 16:35:54,463 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/res_lang_views.xml 
+2026-11-05 16:35:54,537 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/res_partner_views.xml 
+2026-11-05 16:35:54,862 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/res_bank_views.xml 
+2026-11-05 16:35:54,975 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/res_country_views.xml 
+2026-11-05 16:35:55,143 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/res_currency_views.xml 
+2026-11-05 16:35:55,319 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/res_users_views.xml 
+2026-11-05 16:35:55,734 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/res_users_identitycheck_views.xml 
+2026-11-05 16:35:55,770 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/ir_property_views.xml 
+2026-11-05 16:35:55,845 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/res_config_settings_views.xml 
+2026-11-05 16:35:55,868 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/views/report_paperformat_views.xml 
+2026-11-05 16:35:55,966 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base/security/ir.model.access.csv 
+2026-11-05 16:35:56,718 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module base loaded in 18.53s, 7945 queries (+7945 other) 
+2026-11-05 16:35:56,718 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: 1 modules loaded in 18.53s, 7945 queries (+7945 extra) 
+2026-11-05 16:35:56,758 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: updating modules list 
+2026-11-05 16:35:56,761 511383 INFO etat_civil_dev_verify_final_20261105 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-11-05 16:35:58,600 511383 INFO etat_civil_dev_verify_final_20261105 odoo.addons.base.models.ir_module: ALLOW access to module.button_install on ['Invoicing', 'Gestion d’État Civil', 'État civil — Passerelle comptable', 'État civil — Connexion par e-mail'] to user __system__ #1 via n/a 
+2026-11-05 16:35:59,251 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading 46 modules... 
+2026-11-05 16:35:59,252 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module uom (2/46) 
+2026-11-05 16:35:59,297 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module uom: creating or updating database tables 
+2026-11-05 16:35:59,453 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading uom/data/uom_data.xml 
+2026-11-05 16:35:59,749 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading uom/security/uom_security.xml 
+2026-11-05 16:35:59,794 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading uom/security/ir.model.access.csv 
+2026-11-05 16:35:59,924 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading uom/views/uom_uom_views.xml 
+2026-11-05 16:36:00,179 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module uom loaded in 0.93s, 287 queries (+287 other) 
+2026-11-05 16:36:00,180 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module web (3/46) 
+2026-11-05 16:36:00,279 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module web: creating or updating database tables 
+2026-11-05 16:36:01,472 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading web/security/ir.model.access.csv 
+2026-11-05 16:36:01,497 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading web/views/webclient_templates.xml 
+2026-11-05 16:36:01,771 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading web/views/report_templates.xml 
+2026-11-05 16:36:02,069 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading web/views/base_document_layout_views.xml 
+2026-11-05 16:36:02,106 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading web/views/partner_view.xml 
+2026-11-05 16:36:02,122 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading web/views/speedscope_template.xml 
+2026-11-05 16:36:02,141 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading web/views/neutralize_views.xml 
+2026-11-05 16:36:02,162 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading web/data/ir_attachment.xml 
+2026-11-05 16:36:02,175 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading web/data/report_layout.xml 
+2026-11-05 16:36:02,593 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module web loaded in 2.41s, 1018 queries (+1018 other) 
+2026-11-05 16:36:02,593 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module auth_totp (4/46) 
+2026-11-05 16:36:02,777 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module auth_totp: creating or updating database tables 
+2026-11-05 16:36:02,897 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading auth_totp/security/security.xml 
+2026-11-05 16:36:02,977 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading auth_totp/security/ir.model.access.csv 
+2026-11-05 16:36:02,999 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading auth_totp/data/ir_action_data.xml 
+2026-11-05 16:36:03,016 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading auth_totp/views/res_users_views.xml 
+2026-11-05 16:36:03,074 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading auth_totp/views/templates.xml 
+2026-11-05 16:36:03,091 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading auth_totp/wizard/auth_totp_wizard_views.xml 
+2026-11-05 16:36:03,156 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module auth_totp loaded in 0.56s, 179 queries (+179 other) 
+2026-11-05 16:36:03,157 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module base_import (5/46) 
+2026-11-05 16:36:03,456 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module base_import: creating or updating database tables 
+2026-11-05 16:36:04,524 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base_import/security/base_import_security.xml 
+2026-11-05 16:36:04,546 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base_import/security/ir.model.access.csv 
+2026-11-05 16:36:04,678 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module base_import loaded in 1.52s, 837 queries (+837 other) 
+2026-11-05 16:36:04,680 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module base_import_module (6/46) 
+2026-11-05 16:36:04,782 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module base_import_module: creating or updating database tables 
+2026-11-05 16:36:04,942 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base_import_module/security/ir.model.access.csv 
+2026-11-05 16:36:04,971 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base_import_module/views/base_import_module_view.xml 
+2026-11-05 16:36:05,019 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base_import_module/views/ir_module_views.xml 
+2026-11-05 16:36:05,133 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module base_import_module loaded in 0.45s, 154 queries (+154 other) 
+2026-11-05 16:36:05,133 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module base_setup (7/46) 
+2026-11-05 16:36:05,223 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module base_setup: creating or updating database tables 
+2026-11-05 16:36:05,386 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base_setup/data/base_setup_data.xml 
+2026-11-05 16:36:05,400 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base_setup/views/res_config_settings_views.xml 
+2026-11-05 16:36:05,481 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base_setup/views/res_partner_views.xml 
+2026-11-05 16:36:05,568 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module base_setup loaded in 0.43s, 143 queries (+143 other) 
+2026-11-05 16:36:05,568 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module bus (8/46) 
+2026-11-05 16:36:05,619 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module bus: creating or updating database tables 
+2026-11-05 16:36:05,816 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading bus/security/ir.model.access.csv 
+2026-11-05 16:36:05,920 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module bus loaded in 0.35s, 119 queries (+119 other) 
+2026-11-05 16:36:05,920 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module http_routing (9/46) 
+2026-11-05 16:36:05,967 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module http_routing: creating or updating database tables 
+2026-11-05 16:36:05,986 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading http_routing/views/http_routing_template.xml 
+2026-11-05 16:36:06,062 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading http_routing/views/res_lang_views.xml 
+2026-11-05 16:36:06,131 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module http_routing loaded in 0.21s, 71 queries (+71 other) 
+2026-11-05 16:36:06,131 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module onboarding (10/46) 
+2026-11-05 16:36:06,201 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module onboarding: creating or updating database tables 
+2026-11-05 16:36:06,536 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading onboarding/views/onboarding_templates.xml 
+2026-11-05 16:36:06,597 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading onboarding/views/onboarding_views.xml 
+2026-11-05 16:36:06,684 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading onboarding/views/onboarding_menus.xml 
+2026-11-05 16:36:06,733 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading onboarding/security/ir.model.access.csv 
+2026-11-05 16:36:06,900 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module onboarding loaded in 0.77s, 237 queries (+237 other) 
+2026-11-05 16:36:06,900 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module resource (11/46) 
+2026-11-05 16:36:06,969 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module resource: creating or updating database tables 
+2026-11-05 16:36:07,331 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading resource/data/resource_data.xml 
+2026-11-05 16:36:07,390 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading resource/security/ir.model.access.csv 
+2026-11-05 16:36:07,421 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading resource/security/resource_security.xml 
+2026-11-05 16:36:07,495 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading resource/views/resource_resource_views.xml 
+2026-11-05 16:36:07,565 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading resource/views/resource_calendar_leaves_views.xml 
+2026-11-05 16:36:07,641 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading resource/views/resource_calendar_attendance_views.xml 
+2026-11-05 16:36:07,666 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading resource/views/resource_calendar_views.xml 
+2026-11-05 16:36:07,729 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading resource/views/menuitems.xml 
+2026-11-05 16:36:07,841 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module resource loaded in 0.94s, 407 queries (+407 other) 
+2026-11-05 16:36:07,841 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module web_tour (12/46) 
+2026-11-05 16:36:07,909 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module web_tour: creating or updating database tables 
+2026-11-05 16:36:07,990 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading web_tour/security/ir.model.access.csv 
+2026-11-05 16:36:08,021 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading web_tour/security/ir.rule.csv 
+2026-11-05 16:36:08,048 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading web_tour/views/tour_views.xml 
+2026-11-05 16:36:08,154 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module web_tour loaded in 0.31s, 104 queries (+104 other) 
+2026-11-05 16:36:08,155 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module iap (13/46) 
+2026-11-05 16:36:08,217 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module iap: creating or updating database tables 
+2026-11-05 16:36:08,412 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading iap/security/ir.model.access.csv 
+2026-11-05 16:36:08,496 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading iap/security/ir_rule.xml 
+2026-11-05 16:36:08,522 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading iap/views/iap_views.xml 
+2026-11-05 16:36:08,609 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading iap/views/res_config_settings.xml 
+2026-11-05 16:36:08,681 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module iap loaded in 0.53s, 151 queries (+151 other) 
+2026-11-05 16:36:08,682 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module mail (14/46) 
+2026-11-05 16:36:08,807 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module mail: creating or updating database tables 
+2026-11-05 16:36:09,205 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of ir.actions.server.partner_ids 
+2026-11-05 16:36:09,205 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of ir.actions.server.template_id 
+2026-11-05 16:36:09,206 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of ir.actions.server.activity_type_id 
+2026-11-05 16:36:09,206 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of ir.actions.server.activity_date_deadline_range 
+2026-11-05 16:36:09,206 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of ir.actions.server.activity_user_id 
+2026-11-05 16:36:09,206 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of ir.actions.server.mail_post_method 
+2026-11-05 16:36:09,207 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of ir.actions.server.activity_summary 
+2026-11-05 16:36:09,207 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of ir.actions.server.activity_date_deadline_range_type 
+2026-11-05 16:36:09,207 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of ir.actions.server.activity_user_type 
+2026-11-05 16:36:09,207 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of ir.actions.server.activity_user_field_name 
+2026-11-05 16:36:09,207 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of ir.actions.server.activity_note 
+2026-11-05 16:36:09,207 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of ir.actions.server.mail_post_autofollow 
+2026-11-05 16:36:09,296 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of res.company.email_primary_color 
+2026-11-05 16:36:09,297 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of res.company.email_secondary_color 
+2026-11-05 16:36:09,332 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of res.users.notification_type 
+2026-11-05 16:36:09,502 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of res.partner.email_normalized 
+2026-11-05 16:36:13,047 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/data/mail_groups.xml 
+2026-11-05 16:36:13,278 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/wizard/mail_activity_schedule_views.xml 
+2026-11-05 16:36:13,298 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/wizard/mail_blacklist_remove_views.xml 
+2026-11-05 16:36:13,312 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/wizard/mail_compose_message_views.xml 
+2026-11-05 16:36:13,351 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/wizard/mail_resend_message_views.xml 
+2026-11-05 16:36:13,374 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/wizard/mail_resend_partner_views.xml 
+2026-11-05 16:36:13,399 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/wizard/mail_template_preview_views.xml 
+2026-11-05 16:36:13,421 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/wizard/mail_wizard_invite_views.xml 
+2026-11-05 16:36:13,433 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/wizard/mail_template_reset_views.xml 
+2026-11-05 16:36:13,454 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/fetchmail_views.xml 
+2026-11-05 16:36:13,499 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/mail_message_subtype_views.xml 
+2026-11-05 16:36:13,545 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/mail_tracking_value_views.xml 
+2026-11-05 16:36:13,585 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/mail_notification_views.xml 
+2026-11-05 16:36:13,617 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/mail_message_views.xml 
+2026-11-05 16:36:13,704 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/mail_message_schedule_views.xml 
+2026-11-05 16:36:13,744 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/mail_mail_views.xml 
+2026-11-05 16:36:13,806 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/mail_followers_views.xml 
+2026-11-05 16:36:13,834 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/mail_ice_server_views.xml 
+2026-11-05 16:36:13,863 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/discuss_channel_member_views.xml 
+2026-11-05 16:36:13,893 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/discuss_channel_rtc_session_views.xml 
+2026-11-05 16:36:13,932 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/mail_link_preview_views.xml 
+2026-11-05 16:36:13,963 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/discuss/discuss_gif_favorite_views.xml 
+2026-11-05 16:36:13,992 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/discuss_channel_views.xml 
+2026-11-05 16:36:14,062 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/mail_shortcode_views.xml 
+2026-11-05 16:36:14,103 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/mail_activity_views.xml 
+2026-11-05 16:36:14,337 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/mail_activity_plan_views.xml 
+2026-11-05 16:36:14,407 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/mail_activity_plan_template_views.xml 
+2026-11-05 16:36:14,433 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/res_config_settings_views.xml 
+2026-11-05 16:36:14,490 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/data/ir_config_parameter_data.xml 
+2026-11-05 16:36:14,499 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/data/res_partner_data.xml 
+2026-11-05 16:36:14,841 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/data/mail_message_subtype_data.xml 
+2026-11-05 16:36:14,869 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/data/mail_templates_chatter.xml 
+2026-11-05 16:36:14,916 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/data/mail_templates_email_layouts.xml 
+2026-11-05 16:36:14,987 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/data/mail_templates_mailgateway.xml 
+2026-11-05 16:36:15,029 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/data/discuss_channel_data.xml 
+2026-11-05 16:36:15,141 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/data/mail_activity_data.xml 
+2026-11-05 16:36:15,222 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/data/security_notifications_templates.xml 
+2026-11-05 16:36:15,240 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/data/ir_cron_data.xml 
+2026-11-05 16:36:15,394 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/security/mail_security.xml 
+2026-11-05 16:36:15,905 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/security/ir.model.access.csv 
+2026-11-05 16:36:16,125 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/discuss_public_templates.xml 
+2026-11-05 16:36:16,144 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/mail_alias_domain_views.xml 
+2026-11-05 16:36:16,183 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/mail_alias_views.xml 
+2026-11-05 16:36:16,227 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/mail_gateway_allowed_views.xml 
+2026-11-05 16:36:16,257 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/mail_guest_views.xml 
+2026-11-05 16:36:16,288 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/mail_message_reaction_views.xml 
+2026-11-05 16:36:16,319 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/mail_templates_public.xml 
+2026-11-05 16:36:16,340 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/res_users_views.xml 
+2026-11-05 16:36:16,379 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/res_users_settings_views.xml 
+2026-11-05 16:36:16,408 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/mail_template_views.xml 
+2026-11-05 16:36:16,464 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/ir_actions_server_views.xml 
+2026-11-05 16:36:16,487 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/ir_model_views.xml 
+2026-11-05 16:36:16,547 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/res_partner_views.xml 
+2026-11-05 16:36:16,664 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/mail_blacklist_views.xml 
+2026-11-05 16:36:16,702 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/mail_menus.xml 
+2026-11-05 16:36:16,988 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail/views/res_company_views.xml 
+2026-11-05 16:36:17,086 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module mail loaded in 8.40s, 4147 queries (+4148 other) 
+2026-11-05 16:36:17,086 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module web_editor (15/46) 
+2026-11-05 16:36:17,203 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module web_editor: creating or updating database tables 
+2026-11-05 16:36:18,819 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading web_editor/security/ir.model.access.csv 
+2026-11-05 16:36:18,853 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading web_editor/data/editor_assets.xml 
+2026-11-05 16:36:18,866 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading web_editor/views/editor.xml 
+2026-11-05 16:36:18,906 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading web_editor/views/snippets.xml 
+2026-11-05 16:36:19,038 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module web_editor loaded in 1.95s, 1355 queries (+1355 other) 
+2026-11-05 16:36:19,039 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module analytic (16/46) 
+2026-11-05 16:36:19,132 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module analytic: creating or updating database tables 
+2026-11-05 16:36:19,574 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading analytic/security/analytic_security.xml 
+2026-11-05 16:36:19,696 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading analytic/security/ir.model.access.csv 
+2026-11-05 16:36:19,751 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading analytic/views/analytic_line_views.xml 
+2026-11-05 16:36:19,875 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading analytic/views/analytic_account_views.xml 
+2026-11-05 16:36:19,980 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading analytic/views/analytic_plan_views.xml 
+2026-11-05 16:36:20,035 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading analytic/views/analytic_distribution_model_views.xml 
+2026-11-05 16:36:20,080 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading analytic/data/analytic_data.xml 
+2026-11-05 16:36:20,302 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module analytic loaded in 1.26s, 410 queries (+410 other) 
+2026-11-05 16:36:20,302 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module auth_signup (17/46) 
+2026-11-05 16:36:20,394 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module auth_signup: creating or updating database tables 
+2026-11-05 16:36:20,551 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading auth_signup/data/ir_config_parameter_data.xml 
+2026-11-05 16:36:20,567 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading auth_signup/data/ir_cron_data.xml 
+2026-11-05 16:36:20,603 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading auth_signup/data/mail_template_data.xml 
+2026-11-05 16:36:20,639 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading auth_signup/views/res_config_settings_views.xml 
+2026-11-05 16:36:20,673 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading auth_signup/views/res_users_views.xml 
+2026-11-05 16:36:20,767 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading auth_signup/views/auth_signup_login_templates.xml 
+2026-11-05 16:36:20,836 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading auth_signup/views/auth_signup_templates_email.xml 
+2026-11-05 16:36:20,872 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading auth_signup/views/webclient_templates.xml 
+2026-11-05 16:36:20,976 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module auth_signup loaded in 0.67s, 202 queries (+202 other) 
+2026-11-05 16:36:20,976 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module auth_totp_mail (18/46) 
+2026-11-05 16:36:21,069 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module auth_totp_mail: creating or updating database tables 
+2026-11-05 16:36:21,148 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading auth_totp_mail/data/ir_action_data.xml 
+2026-11-05 16:36:21,219 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading auth_totp_mail/data/mail_template_data.xml 
+2026-11-05 16:36:21,276 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading auth_totp_mail/data/security_notifications_template.xml 
+2026-11-05 16:36:21,321 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading auth_totp_mail/views/res_users_views.xml 
+2026-11-05 16:36:21,442 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module auth_totp_mail loaded in 0.47s, 112 queries (+112 other) 
+2026-11-05 16:36:21,444 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module base_install_request (19/46) 
+2026-11-05 16:36:21,573 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module base_install_request: creating or updating database tables 
+2026-11-05 16:36:21,751 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base_install_request/security/ir.model.access.csv 
+2026-11-05 16:36:21,810 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base_install_request/wizard/base_module_install_request_views.xml 
+2026-11-05 16:36:21,853 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base_install_request/data/mail_template_data.xml 
+2026-11-05 16:36:21,870 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base_install_request/data/mail_templates_module_install.xml 
+2026-11-05 16:36:21,883 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading base_install_request/views/ir_module_module_views.xml 
+2026-11-05 16:36:21,972 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module base_install_request loaded in 0.53s, 144 queries (+144 other) 
+2026-11-05 16:36:21,973 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module etat_civil (20/46) 
+2026-11-05 16:36:22,129 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module etat_civil: creating or updating database tables 
+2026-11-05 16:36:22,195 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of res.users.etat_civil_role 
+2026-11-05 16:36:23,436 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading etat_civil/security/security.xml 
+2026-11-05 16:36:23,973 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading etat_civil/security/ir.model.access.csv 
+2026-11-05 16:36:24,124 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading etat_civil/data/demande_guichet_sequence.xml 
+2026-11-05 16:36:24,138 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading etat_civil/data/acte_sequence.xml 
+2026-11-05 16:36:24,161 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading etat_civil/data/mention_sequence.xml 
+2026-11-05 16:36:24,218 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading etat_civil/views/individu_views.xml 
+2026-11-05 16:36:24,297 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading etat_civil/views/registre_views.xml 
+2026-11-05 16:36:24,392 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading etat_civil/reports/actes_reports.xml 
+2026-11-05 16:36:24,571 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading etat_civil/views/acte_naissance_views.xml 
+2026-11-05 16:36:24,671 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading etat_civil/views/acte_mariage_views.xml 
+2026-11-05 16:36:24,788 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading etat_civil/views/acte_deces_views.xml 
+2026-11-05 16:36:24,887 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading etat_civil/views/mentions_marginales_views.xml 
+2026-11-05 16:36:24,944 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading etat_civil/views/demandes_guichet_views.xml 
+2026-11-05 16:36:25,007 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading etat_civil/views/gestion_utilisateurs_views.xml 
+2026-11-05 16:36:25,152 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading etat_civil/views/registry_actions.xml 
+2026-11-05 16:36:25,237 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading etat_civil/views/wizard_views.xml 
+2026-11-05 16:36:25,316 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading etat_civil/views/import_export_views.xml 
+2026-11-05 16:36:25,377 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading etat_civil/views/import_export_log_views.xml 
+2026-11-05 16:36:25,428 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading etat_civil/views/menus.xml 
+2026-11-05 16:36:25,788 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module etat_civil loaded in 3.82s, 1577 queries (+1577 other) 
+2026-11-05 16:36:25,788 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module google_gmail (21/46) 
+2026-11-05 16:36:25,891 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module google_gmail: creating or updating database tables 
+2026-11-05 16:36:26,048 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading google_gmail/views/fetchmail_server_views.xml 
+2026-11-05 16:36:26,099 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading google_gmail/views/ir_mail_server_views.xml 
+2026-11-05 16:36:26,126 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading google_gmail/views/res_config_settings_views.xml 
+2026-11-05 16:36:26,207 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module google_gmail loaded in 0.42s, 118 queries (+118 other) 
+2026-11-05 16:36:26,208 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module iap_mail (22/46) 
+2026-11-05 16:36:26,301 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module iap_mail: creating or updating database tables 
+2026-11-05 16:36:26,335 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading iap_mail/data/mail_templates.xml 
+2026-11-05 16:36:26,528 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module iap_mail loaded in 0.32s, 40 queries (+40 other) 
+2026-11-05 16:36:26,528 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module mail_bot (23/46) 
+2026-11-05 16:36:26,614 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module mail_bot: creating or updating database tables 
+2026-11-05 16:36:26,854 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail_bot/views/res_users_views.xml 
+2026-11-05 16:36:26,903 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading mail_bot/data/mailbot_data.xml 
+2026-11-05 16:36:26,940 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module mail_bot loaded in 0.41s, 222 queries (+222 other) 
+2026-11-05 16:36:26,940 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module phone_validation (24/46) 
+2026-11-05 16:36:27,113 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module phone_validation: creating or updating database tables 
+2026-11-05 16:36:29,409 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading phone_validation/security/ir.model.access.csv 
+2026-11-05 16:36:29,452 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading phone_validation/views/phone_blacklist_views.xml 
+2026-11-05 16:36:29,528 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading phone_validation/wizard/phone_blacklist_remove_view.xml 
+2026-11-05 16:36:29,622 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module phone_validation loaded in 2.68s, 1571 queries (+1571 other) 
+2026-11-05 16:36:29,622 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module privacy_lookup (25/46) 
+2026-11-05 16:36:29,839 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module privacy_lookup: creating or updating database tables 
+2026-11-05 16:36:30,152 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading privacy_lookup/wizard/privacy_lookup_wizard_views.xml 
+2026-11-05 16:36:30,329 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading privacy_lookup/views/privacy_log_views.xml 
+2026-11-05 16:36:30,454 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading privacy_lookup/security/ir.model.access.csv 
+2026-11-05 16:36:30,531 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading privacy_lookup/data/ir_actions_server_data.xml 
+2026-11-05 16:36:30,635 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module privacy_lookup loaded in 1.01s, 247 queries (+247 other) 
+2026-11-05 16:36:30,635 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module product (26/46) 
+2026-11-05 16:36:30,987 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module product: creating or updating database tables 
+2026-11-05 16:36:32,693 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading product/data/product_data.xml 
+2026-11-05 16:36:32,757 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading product/security/product_security.xml 
+2026-11-05 16:36:33,036 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading product/security/ir.model.access.csv 
+2026-11-05 16:36:33,115 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading product/wizard/product_label_layout_views.xml 
+2026-11-05 16:36:33,142 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading product/views/product_tag_views.xml 
+2026-11-05 16:36:33,176 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading product/views/product_views.xml 
+2026-11-05 16:36:33,430 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading product/views/res_config_settings_views.xml 
+2026-11-05 16:36:33,482 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading product/views/product_attribute_views.xml 
+2026-11-05 16:36:33,550 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading product/views/product_attribute_value_views.xml 
+2026-11-05 16:36:33,563 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading product/views/product_category_views.xml 
+2026-11-05 16:36:33,601 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading product/views/product_document_views.xml 
+2026-11-05 16:36:33,643 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading product/views/product_packaging_views.xml 
+2026-11-05 16:36:33,696 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading product/views/product_pricelist_item_views.xml 
+2026-11-05 16:36:33,755 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading product/views/product_pricelist_views.xml 
+2026-11-05 16:36:33,814 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading product/views/product_supplierinfo_views.xml 
+2026-11-05 16:36:33,871 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading product/views/product_template_views.xml 
+2026-11-05 16:36:33,967 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading product/views/res_country_group_views.xml 
+2026-11-05 16:36:33,981 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading product/views/res_partner_views.xml 
+2026-11-05 16:36:34,007 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading product/report/product_reports.xml 
+2026-11-05 16:36:34,067 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading product/report/product_product_templates.xml 
+2026-11-05 16:36:34,142 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading product/report/product_template_templates.xml 
+2026-11-05 16:36:34,184 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading product/report/product_packaging.xml 
+2026-11-05 16:36:34,194 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading product/report/product_pricelist_report_templates.xml 
+2026-11-05 16:36:34,338 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module product loaded in 3.70s, 1503 queries (+1503 other) 
+2026-11-05 16:36:34,339 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module web_unsplash (27/46) 
+2026-11-05 16:36:34,460 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module web_unsplash: creating or updating database tables 
+2026-11-05 16:36:34,574 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading web_unsplash/views/res_config_settings_view.xml 
+2026-11-05 16:36:34,662 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module web_unsplash loaded in 0.32s, 100 queries (+100 other) 
+2026-11-05 16:36:34,663 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module etat_civil_auth_email (28/46) 
+2026-11-05 16:36:34,774 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module etat_civil_auth_email: creating or updating database tables 
+2026-11-05 16:36:34,840 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading etat_civil_auth_email/views/login_templates.xml 
+2026-11-05 16:36:34,915 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module etat_civil_auth_email loaded in 0.25s, 65 queries (+65 other) 
+2026-11-05 16:36:34,916 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module partner_autocomplete (29/46) 
+2026-11-05 16:36:35,030 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module partner_autocomplete: creating or updating database tables 
+2026-11-05 16:36:35,217 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading partner_autocomplete/security/ir.model.access.csv 
+2026-11-05 16:36:35,254 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading partner_autocomplete/views/res_partner_views.xml 
+2026-11-05 16:36:35,292 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading partner_autocomplete/views/res_company_views.xml 
+2026-11-05 16:36:35,312 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading partner_autocomplete/views/res_config_settings_views.xml 
+2026-11-05 16:36:35,338 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading partner_autocomplete/data/cron.xml 
+2026-11-05 16:36:35,398 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module partner_autocomplete loaded in 0.48s, 198 queries (+198 other) 
+2026-11-05 16:36:35,398 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module portal (30/46) 
+2026-11-05 16:36:35,518 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module portal: creating or updating database tables 
+2026-11-05 16:36:36,125 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading portal/security/ir.model.access.csv 
+2026-11-05 16:36:36,166 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading portal/data/mail_template_data.xml 
+2026-11-05 16:36:36,184 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading portal/data/mail_templates.xml 
+2026-11-05 16:36:36,201 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading portal/views/mail_templates_public.xml 
+2026-11-05 16:36:36,228 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading portal/views/portal_templates.xml 
+2026-11-05 16:36:36,537 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading portal/views/res_config_settings_views.xml 
+2026-11-05 16:36:36,591 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading portal/wizard/portal_share_views.xml 
+2026-11-05 16:36:36,628 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading portal/wizard/portal_wizard_views.xml 
+2026-11-05 16:36:36,761 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module portal loaded in 1.36s, 555 queries (+555 other) 
+2026-11-05 16:36:36,762 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module sms (31/46) 
+2026-11-05 16:36:37,034 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module sms: creating or updating database tables 
+2026-11-05 16:36:37,053 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of ir.actions.server.sms_template_id 
+2026-11-05 16:36:37,053 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of ir.actions.server.sms_method 
+2026-11-05 16:36:37,115 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of res.partner.phone_sanitized 
+2026-11-05 16:36:39,286 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading sms/data/ir_cron_data.xml 
+2026-11-05 16:36:39,310 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading sms/wizard/sms_composer_views.xml 
+2026-11-05 16:36:39,341 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading sms/wizard/sms_template_preview_views.xml 
+2026-11-05 16:36:39,364 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading sms/wizard/sms_resend_views.xml 
+2026-11-05 16:36:39,395 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading sms/wizard/sms_template_reset_views.xml 
+2026-11-05 16:36:39,419 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading sms/views/ir_actions_server_views.xml 
+2026-11-05 16:36:39,447 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading sms/views/mail_notification_views.xml 
+2026-11-05 16:36:39,489 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading sms/views/res_config_settings_views.xml 
+2026-11-05 16:36:39,528 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading sms/views/res_partner_views.xml 
+2026-11-05 16:36:39,627 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading sms/views/sms_sms_views.xml 
+2026-11-05 16:36:39,721 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading sms/views/sms_template_views.xml 
+2026-11-05 16:36:39,802 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading sms/security/ir.model.access.csv 
+2026-11-05 16:36:39,889 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading sms/security/sms_security.xml 
+2026-11-05 16:36:39,955 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module sms loaded in 3.19s, 2137 queries (+2137 other) 
+2026-11-05 16:36:39,955 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module snailmail (32/46) 
+2026-11-05 16:36:40,102 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module snailmail: creating or updating database tables 
+2026-11-05 16:36:40,703 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading snailmail/data/snailmail_data.xml 
+2026-11-05 16:36:40,735 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading snailmail/views/report_assets.xml 
+2026-11-05 16:36:40,779 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading snailmail/views/snailmail_views.xml 
+2026-11-05 16:36:40,839 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading snailmail/wizard/snailmail_letter_format_error_views.xml 
+2026-11-05 16:36:40,868 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading snailmail/wizard/snailmail_letter_missing_required_fields_views.xml 
+2026-11-05 16:36:40,892 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading snailmail/security/ir.model.access.csv 
+2026-11-05 16:36:40,991 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module snailmail loaded in 1.04s, 496 queries (+496 other) 
+2026-11-05 16:36:40,991 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module auth_totp_portal (33/46) 
+2026-11-05 16:36:41,097 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module auth_totp_portal: creating or updating database tables 
+2026-11-05 16:36:41,152 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading auth_totp_portal/security/security.xml 
+2026-11-05 16:36:41,177 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading auth_totp_portal/views/templates.xml 
+2026-11-05 16:36:41,224 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module auth_totp_portal loaded in 0.23s, 68 queries (+68 other) 
+2026-11-05 16:36:41,225 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module digest (34/46) 
+2026-11-05 16:36:41,354 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module digest: creating or updating database tables 
+2026-11-05 16:36:41,598 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading digest/security/ir.model.access.csv 
+2026-11-05 16:36:41,630 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading digest/data/digest_data.xml 
+2026-11-05 16:36:41,678 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading digest/data/digest_tips_data.xml 
+2026-11-05 16:36:41,718 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading digest/data/ir_cron_data.xml 
+2026-11-05 16:36:41,742 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading digest/data/res_config_settings_data.xml 
+2026-11-05 16:36:41,758 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading digest/views/digest_views.xml 
+2026-11-05 16:36:41,873 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading digest/views/digest_templates.xml 
+2026-11-05 16:36:41,885 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading digest/views/res_config_settings_views.xml 
+2026-11-05 16:36:41,975 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module digest loaded in 0.75s, 298 queries (+298 other) 
+2026-11-05 16:36:41,975 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module payment (35/46) 
+2026-11-05 16:36:42,161 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module payment: creating or updating database tables 
+2026-11-05 16:36:42,931 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading payment/data/onboarding_data.xml 
+2026-11-05 16:36:42,946 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading payment/data/payment_method_data.xml 
+2026-11-05 16:36:47,599 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading payment/data/payment_provider_data.xml 
+2026-11-05 16:36:47,979 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading payment/data/payment_cron.xml 
+2026-11-05 16:36:49,561 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading payment/views/express_checkout_templates.xml 
+2026-11-05 16:36:49,584 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading payment/views/payment_form_templates.xml 
+2026-11-05 16:36:49,689 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading payment/views/portal_templates.xml 
+2026-11-05 16:36:49,870 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading payment/views/payment_provider_views.xml 
+2026-11-05 16:36:49,967 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading payment/views/payment_method_views.xml 
+2026-11-05 16:36:50,062 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading payment/views/payment_transaction_views.xml 
+2026-11-05 16:36:50,162 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading payment/views/payment_token_views.xml 
+2026-11-05 16:36:50,240 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading payment/views/res_partner_views.xml 
+2026-11-05 16:36:50,298 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading payment/security/ir.model.access.csv 
+2026-11-05 16:36:50,373 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading payment/security/payment_security.xml 
+2026-11-05 16:36:50,490 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading payment/wizards/payment_capture_wizard_views.xml 
+2026-11-05 16:36:50,517 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading payment/wizards/payment_link_wizard_views.xml 
+2026-11-05 16:36:50,539 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading payment/wizards/payment_onboarding_views.xml 
+2026-11-05 16:36:50,628 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module payment loaded in 8.65s, 2224 queries (+2224 other) 
+2026-11-05 16:36:50,628 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module spreadsheet (36/46) 
+2026-11-05 16:36:51,063 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module spreadsheet: creating or updating database tables 
+2026-11-05 16:36:51,213 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading spreadsheet/views/public_readonly_spreadsheet_templates.xml 
+2026-11-05 16:36:51,302 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module spreadsheet loaded in 0.67s, 83 queries (+83 other) 
+2026-11-05 16:36:51,303 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module account (37/46) 
+2026-11-05 16:36:51,627 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module account: creating or updating database tables 
+2026-11-05 16:36:52,247 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of res.company.account_fiscal_country_id 
+2026-11-05 16:36:52,248 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of res.company.invoice_terms_html 
+2026-11-05 16:36:56,434 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/security/account_security.xml 
+2026-11-05 16:36:57,636 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/security/ir.model.access.csv 
+2026-11-05 16:36:57,917 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/data/account_data.xml 
+2026-11-05 16:36:58,125 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/data/digest_data.xml 
+2026-11-05 16:36:58,145 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/account_report.xml 
+2026-11-05 16:36:58,206 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/data/mail_template_data.xml 
+2026-11-05 16:36:58,250 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/data/onboarding_data.xml 
+2026-11-05 16:36:58,405 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/account_payment_view.xml 
+2026-11-05 16:36:58,697 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/wizard/account_automatic_entry_wizard_views.xml 
+2026-11-05 16:36:58,720 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/wizard/account_unreconcile_view.xml 
+2026-11-05 16:36:58,745 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/wizard/account_move_reversal_view.xml 
+2026-11-05 16:36:58,776 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/wizard/account_resequence_views.xml 
+2026-11-05 16:36:58,801 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/wizard/account_payment_register_views.xml 
+2026-11-05 16:36:58,823 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/account_move_views.xml 
+2026-11-05 16:36:59,853 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/wizard/setup_wizards_view.xml 
+2026-11-05 16:36:59,895 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/account_account_views.xml 
+2026-11-05 16:36:59,961 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/account_group_views.xml 
+2026-11-05 16:36:59,999 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/account_journal_views.xml 
+2026-11-05 16:37:00,168 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/account_account_tag_views.xml 
+2026-11-05 16:37:00,210 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/account_bank_statement_views.xml 
+2026-11-05 16:37:00,293 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/account_reconcile_model_views.xml 
+2026-11-05 16:37:00,379 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/account_tax_views.xml 
+2026-11-05 16:37:00,552 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/account_full_reconcile_views.xml 
+2026-11-05 16:37:00,567 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/account_payment_term_views.xml 
+2026-11-05 16:37:00,687 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/account_payment_method.xml 
+2026-11-05 16:37:00,837 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/res_partner_bank_views.xml 
+2026-11-05 16:37:01,089 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/report_statement.xml 
+2026-11-05 16:37:01,238 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/terms_template.xml 
+2026-11-05 16:37:01,344 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/wizard/account_validate_move_view.xml 
+2026-11-05 16:37:01,441 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/res_company_views.xml 
+2026-11-05 16:37:01,628 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/product_view.xml 
+2026-11-05 16:37:02,118 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/account_analytic_plan_views.xml 
+2026-11-05 16:37:02,136 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/account_analytic_account_views.xml 
+2026-11-05 16:37:02,171 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/account_analytic_distribution_model_views.xml 
+2026-11-05 16:37:02,206 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/account_analytic_line_views.xml 
+2026-11-05 16:37:02,325 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/report_invoice.xml 
+2026-11-05 16:37:02,428 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/report/account_invoice_report_view.xml 
+2026-11-05 16:37:02,563 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/account_cash_rounding_view.xml 
+2026-11-05 16:37:02,718 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/ir_module_views.xml 
+2026-11-05 16:37:02,795 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/res_config_settings_views.xml 
+2026-11-05 16:37:03,037 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/partner_view.xml 
+2026-11-05 16:37:03,202 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/account_journal_dashboard_view.xml 
+2026-11-05 16:37:03,254 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/account_portal_templates.xml 
+2026-11-05 16:37:03,394 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/report_payment_receipt_templates.xml 
+2026-11-05 16:37:03,419 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/data/service_cron.xml 
+2026-11-05 16:37:03,456 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/account_incoterms_view.xml 
+2026-11-05 16:37:03,499 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/data/account_incoterms_data.xml 
+2026-11-05 16:37:03,567 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/digest_views.xml 
+2026-11-05 16:37:03,588 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/wizard/account_move_send_views.xml 
+2026-11-05 16:37:03,622 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/report/account_hash_integrity_templates.xml 
+2026-11-05 16:37:03,642 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/res_currency.xml 
+2026-11-05 16:37:03,662 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/account_menuitem.xml 
+2026-11-05 16:37:04,640 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/wizard/account_tour_upload_bill.xml 
+2026-11-05 16:37:04,674 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/wizard/accrued_orders.xml 
+2026-11-05 16:37:04,696 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/bill_preview_template.xml 
+2026-11-05 16:37:04,766 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/data/account_reports_data.xml 
+2026-11-05 16:37:05,936 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/views/uom_uom_views.xml 
+2026-11-05 16:37:05,956 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account/data/ir_config_parameter_data.xml 
+2026-11-05 16:37:06,336 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module account loaded in 15.03s, 5759 queries (+5759 other) 
+2026-11-05 16:37:06,336 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module spreadsheet_dashboard (38/46) 
+2026-11-05 16:37:06,536 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module spreadsheet_dashboard: creating or updating database tables 
+2026-11-05 16:37:06,769 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading spreadsheet_dashboard/security/security.xml 
+2026-11-05 16:37:06,982 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading spreadsheet_dashboard/security/ir.model.access.csv 
+2026-11-05 16:37:07,030 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading spreadsheet_dashboard/views/spreadsheet_dashboard_views.xml 
+2026-11-05 16:37:07,085 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading spreadsheet_dashboard/views/menu_views.xml 
+2026-11-05 16:37:07,168 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading spreadsheet_dashboard/data/dashboard.xml 
+2026-11-05 16:37:07,433 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module spreadsheet_dashboard loaded in 1.10s, 279 queries (+279 other) 
+2026-11-05 16:37:07,433 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module account_add_gln (39/46) 
+2026-11-05 16:37:07,642 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module account_add_gln: creating or updating database tables 
+2026-11-05 16:37:07,846 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account_add_gln/views/res_partner_views.xml 
+2026-11-05 16:37:07,972 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module account_add_gln loaded in 0.54s, 98 queries (+98 other) 
+2026-11-05 16:37:07,972 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module account_edi_ubl_cii (40/46) 
+2026-11-05 16:37:08,349 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module account_edi_ubl_cii: creating or updating database tables 
+2026-11-05 16:37:08,409 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of res.partner.ubl_cii_format 
+2026-11-05 16:37:08,410 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of res.partner.peppol_endpoint 
+2026-11-05 16:37:08,410 511383 INFO etat_civil_dev_verify_final_20261105 odoo.models: Prepare computation of res.partner.peppol_eas 
+2026-11-05 16:37:08,834 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account_edi_ubl_cii/data/cii_22_templates.xml 
+2026-11-05 16:37:08,946 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account_edi_ubl_cii/data/ubl_20_templates.xml 
+2026-11-05 16:37:09,302 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account_edi_ubl_cii/data/ubl_21_templates.xml 
+2026-11-05 16:37:09,400 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account_edi_ubl_cii/views/account_move_views.xml 
+2026-11-05 16:37:09,419 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account_edi_ubl_cii/views/res_config_settings_views.xml 
+2026-11-05 16:37:09,467 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account_edi_ubl_cii/views/res_partner_views.xml 
+2026-11-05 16:37:09,557 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account_edi_ubl_cii/wizard/account_move_send_views.xml 
+2026-11-05 16:37:09,782 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module account_edi_ubl_cii loaded in 1.81s, 440 queries (+440 other) 
+2026-11-05 16:37:09,783 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module account_payment (41/46) 
+2026-11-05 16:37:10,036 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module account_payment: creating or updating database tables 
+2026-11-05 16:37:10,464 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account_payment/data/ir_config_parameter.xml 
+2026-11-05 16:37:10,478 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account_payment/data/onboarding_data.xml 
+2026-11-05 16:37:10,505 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account_payment/security/ir.model.access.csv 
+2026-11-05 16:37:10,541 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account_payment/security/ir_rules.xml 
+2026-11-05 16:37:10,567 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account_payment/views/account_payment_menus.xml 
+2026-11-05 16:37:10,639 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account_payment/views/account_portal_templates.xml 
+2026-11-05 16:37:10,739 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account_payment/views/account_move_views.xml 
+2026-11-05 16:37:10,773 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account_payment/views/account_journal_views.xml 
+2026-11-05 16:37:10,802 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account_payment/views/account_payment_views.xml 
+2026-11-05 16:37:10,831 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account_payment/views/payment_provider_views.xml 
+2026-11-05 16:37:10,855 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account_payment/views/payment_transaction_views.xml 
+2026-11-05 16:37:10,880 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account_payment/wizards/account_payment_register_views.xml 
+2026-11-05 16:37:10,902 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account_payment/wizards/payment_link_wizard_views.xml 
+2026-11-05 16:37:10,921 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account_payment/wizards/payment_refund_wizard_views.xml 
+2026-11-05 16:37:10,940 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account_payment/wizards/res_config_settings_views.xml 
+2026-11-05 16:37:11,131 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module account_payment loaded in 1.35s, 467 queries (+467 other) 
+2026-11-05 16:37:11,132 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module account_payment_term (42/46) 
+2026-11-05 16:37:11,352 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module account_payment_term: creating or updating database tables 
+2026-11-05 16:37:11,466 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading account_payment_term/views/account_payment_term_views.xml 
+2026-11-05 16:37:11,888 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module account_payment_term loaded in 0.76s, 52 queries (+52 other) 
+2026-11-05 16:37:11,888 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module etat_civil_account (43/46) 
+2026-11-05 16:37:12,088 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module etat_civil_account: creating or updating database tables 
+2026-11-05 16:37:12,647 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading etat_civil_account/data/sequences.xml 
+2026-11-05 16:37:12,660 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading etat_civil_account/security/security.xml 
+2026-11-05 16:37:12,895 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading etat_civil_account/security/ir.model.access.csv 
+2026-11-05 16:37:12,940 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading etat_civil_account/views/copy_request_views.xml 
+2026-11-05 16:37:13,040 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading etat_civil_account/report/copy_document.xml 
+2026-11-05 16:37:13,159 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module etat_civil_account loaded in 1.27s, 411 queries (+411 other) 
+2026-11-05 16:37:13,161 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module snailmail_account (44/46) 
+2026-11-05 16:37:13,389 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module snailmail_account: creating or updating database tables 
+2026-11-05 16:37:13,620 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading snailmail_account/views/res_config_settings_views.xml 
+2026-11-05 16:37:13,669 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading snailmail_account/wizard/account_move_send_views.xml 
+2026-11-05 16:37:13,788 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module snailmail_account loaded in 0.63s, 132 queries (+132 other) 
+2026-11-05 16:37:13,789 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module spreadsheet_account (45/46) 
+2026-11-05 16:37:13,996 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: module spreadsheet_account: creating or updating database tables 
+2026-11-05 16:37:14,169 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module spreadsheet_account loaded in 0.38s, 55 queries (+55 other) 
+2026-11-05 16:37:14,170 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Loading module spreadsheet_dashboard_account (46/46) 
+2026-11-05 16:37:14,444 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading spreadsheet_dashboard_account/data/dashboards.xml 
+2026-11-05 16:37:14,646 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Module spreadsheet_dashboard_account loaded in 0.48s, 29 queries (+29 other) 
+2026-11-05 16:37:14,646 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: 46 modules loaded in 75.39s, 29301 queries (+29302 extra) 
+2026-11-05 16:37:17,183 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Modules loaded. 
+2026-11-05 16:37:18,651 511383 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: Registry loaded in 103.259s 
+2026-11-05 16:37:18,651 511383 INFO etat_civil_dev_verify_final_20261105 odoo.service.server: Starting post tests 
+2026-11-05 16:37:18,804 511383 INFO etat_civil_dev_verify_final_20261105 odoo.addons.etat_civil_auth_email.tests.test_email_login: Starting TestEmailLogin.test_authentication_rejects_invalid_login_syntax_generically ... 
+2026-11-05 16:37:18,807 511383 INFO etat_civil_dev_verify_final_20261105 odoo.addons.etat_civil_auth_email.tests.test_email_login: Starting TestEmailLogin.test_case_insensitive_duplicate_is_rejected ... 
+2026-11-05 16:37:19,099 511383 INFO etat_civil_dev_verify_final_20261105 odoo.addons.etat_civil_auth_email.tests.test_email_login: Starting TestEmailLogin.test_create_requires_valid_login ... 
+2026-11-05 16:37:19,101 511383 INFO etat_civil_dev_verify_final_20261105 odoo.addons.etat_civil_auth_email.tests.test_email_login: Starting TestEmailLogin.test_create_trims_and_normalizes_domain ... 
+2026-11-05 16:37:19,353 511383 INFO etat_civil_dev_verify_final_20261105 odoo.addons.etat_civil_auth_email.tests.test_email_login: Starting TestEmailLogin.test_invalid_values_are_rejected ... 
+2026-11-05 16:37:19,357 511383 INFO etat_civil_dev_verify_final_20261105 odoo.addons.etat_civil_auth_email.tests.test_email_login: Starting TestEmailLogin.test_normalization_preserves_local_part ... 
+2026-11-05 16:37:19,358 511383 INFO etat_civil_dev_verify_final_20261105 odoo.addons.etat_civil_auth_email.tests.test_email_login: Starting TestEmailLogin.test_write_rejects_invalid_login ... 
+2026-11-05 16:37:19,882 511383 INFO etat_civil_dev_verify_final_20261105 odoo.addons.base.models.ir_attachment: filestore gc 383 checked, 3 removed 
+2026-11-05 16:37:19,905 511383 INFO etat_civil_dev_verify_final_20261105 odoo.addons.etat_civil_account.tests.test_copy_request_security: Starting TestCopyRequestSecurity.test_direct_state_write_is_rejected ... 
+2026-11-05 16:37:19,928 511383 INFO etat_civil_dev_verify_final_20261105 odoo.addons.etat_civil_account.tests.test_copy_request_security: Starting TestCopyRequestSecurity.test_negative_tariff_is_rejected ... 
+2026-11-05 16:37:20,077 511383 INFO etat_civil_dev_verify_final_20261105 odoo.addons.etat_civil_account.tests.test_copy_request_security: Starting TestCopyRequestSecurity.test_payment_confirmation_requires_regisseur ... 
+2026-11-05 16:37:20,095 511383 INFO etat_civil_dev_verify_final_20261105 odoo.addons.etat_civil_account.tests.test_copy_request_security: Starting TestCopyRequestSecurity.test_typed_act_is_required ... 
+2026-11-05 16:37:20,128 511383 INFO etat_civil_dev_verify_final_20261105 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-11-05 16:37:20,149 511383 INFO etat_civil_dev_verify_final_20261105 odoo.service.server: 11 post-tests in 1.50s, 537 queries 
+2026-11-05 16:37:20,150 511383 INFO etat_civil_dev_verify_final_20261105 odoo.tests.stats: etat_civil_account: 6 tests 0.24s 89 queries 
+2026-11-05 16:37:20,150 511383 INFO etat_civil_dev_verify_final_20261105 odoo.tests.stats: etat_civil_auth_email: 9 tests 1.10s 448 queries 
+2026-11-05 16:37:20,150 511383 INFO etat_civil_dev_verify_final_20261105 odoo.tests.result: 0 failed, 0 error(s) of 11 tests when loading database 'etat_civil_dev_verify_final_20261105' 
+2026-11-05 16:37:20,150 511383 INFO etat_civil_dev_verify_final_20261105 odoo.service.server: Initiating shutdown 
+2026-11-05 16:37:20,150 511383 INFO etat_civil_dev_verify_final_20261105 odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-05 16:37:20,568 511383 INFO etat_civil_dev_verify_final_20261105 odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 1 connections  
+2026-11-05 16:45:34,439 516716 INFO ? odoo: Odoo version 17.0 
+2026-11-05 16:45:34,439 516716 INFO ? odoo: Using configuration file at /tmp/etat_civil_dev_verify_final_20261105.conf 
+2026-11-05 16:45:34,439 516716 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/.local/share/Odoo/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/implementation_odoo17_dev/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 16:45:34,439 516716 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 16:45:34,569 516716 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 16:45:34,823 516716 INFO ? odoo.service.server: Stopping gracefully 
+2026-11-05 16:45:34,853 516716 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading 1 modules... 
+2026-11-05 16:45:34,862 516716 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-05 16:45:34,887 516716 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: loading 46 modules... 
+2026-11-05 16:45:35,680 516716 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: 46 modules loaded in 0.79s, 0 queries (+0 extra) 
+2026-11-05 16:45:35,874 516716 INFO etat_civil_dev_verify_final_20261105 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 16:45:35,880 516716 INFO etat_civil_dev_verify_final_20261105 odoo.modules.loading: Modules loaded. 
+2026-11-05 16:45:35,887 516716 INFO etat_civil_dev_verify_final_20261105 odoo.modules.registry: Registry loaded in 1.064s 

@@ -1,0 +1,116 @@
+2026-11-05 13:21:40,447 422996 INFO ? odoo: Odoo version 17.0 
+2026-11-05 13:21:40,449 422996 INFO ? odoo: Using configuration file at /tmp/etat_civil_isolated_review.conf 
+2026-11-05 13:21:40,449 422996 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 13:21:40,449 422996 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 13:21:40,657 422996 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 13:21:40,985 422996 INFO ? odoo.service.server: HTTP service (werkzeug) running on 127.0.0.1:18071 
+2026-11-05 13:21:41,027 422996 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading 1 modules... 
+2026-11-05 13:21:41,038 422996 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-05 13:21:41,056 422996 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading 24 modules... 
+2026-11-05 13:21:41,613 422996 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: 24 modules loaded in 0.56s, 0 queries (+0 extra) 
+2026-11-05 13:21:41,717 422996 INFO etat_civil_final_review_20261105_1304 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 13:21:41,724 422996 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: Modules loaded. 
+2026-11-05 13:21:41,730 422996 INFO etat_civil_final_review_20261105_1304 odoo.modules.registry: Registry loaded in 0.745s 
+2026-11-05 13:21:41,731 422996 INFO etat_civil_final_review_20261105_1304 odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 1 connections  
+2026-11-05 13:21:41,741 423020 INFO etat_civil_final_review_20261105_1304 odoo.service.server: Worker WorkerHTTP (423020) alive 
+2026-11-05 13:21:41,751 423021 INFO etat_civil_final_review_20261105_1304 odoo.service.server: Worker WorkerHTTP (423021) alive 
+2026-11-05 13:21:43,118 423023 INFO ? odoo: Odoo version 17.0 
+2026-11-05 13:21:43,118 423023 INFO ? odoo: Using configuration file at /tmp/etat_civil_isolated_review.conf 
+2026-11-05 13:21:43,118 423023 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 13:21:43,119 423023 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 13:21:43,313 423023 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 13:21:43,638 423023 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading 1 modules... 
+2026-11-05 13:21:43,648 423023 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-05 13:21:43,664 423023 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading 24 modules... 
+2026-11-05 13:21:44,192 423023 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: 24 modules loaded in 0.53s, 0 queries (+0 extra) 
+2026-11-05 13:21:44,312 423023 INFO etat_civil_final_review_20261105_1304 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 13:21:44,317 423023 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: Modules loaded. 
+2026-11-05 13:21:44,326 423023 INFO etat_civil_final_review_20261105_1304 odoo.modules.registry: Registry loaded in 0.720s 
+2026-11-05 13:21:44,330 423023 INFO etat_civil_final_review_20261105_1304 odoo.service.server: Evented Service (longpolling) running on 127.0.0.1:18072 
+2026-11-05 13:21:55,471 423021 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 13:21:55,859 423021 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 13:21:55] "HEAD /web/login HTTP/1.1" 200 - 58 0.079 0.369
+2026-11-05 13:21:55,911 423023 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 13:21:55,944 423023 INFO etat_civil_final_review_20261105_1304 longpolling: 127.0.0.1 - - [2026-11-05 13:21:55] "GET /longpolling/poll HTTP/1.1" 404 331 0.062157 
+2026-11-05 13:22:10,481 423020 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 13:22:10,885 423020 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 13:22:10] "GET /web/login HTTP/1.1" 200 - 58 0.082 0.401
+2026-11-05 13:22:11,012 423021 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 13:22:11] "GET /web/assets/f7c8089/web.assets_frontend.min.css HTTP/1.1" 200 - 6 0.015 0.054
+2026-11-05 13:22:11,088 423021 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 13:22:11] "GET /web/binary/company_logo HTTP/1.1" 200 - 3 0.009 0.052
+2026-11-05 13:22:11,203 423021 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 13:22:11] "GET /web/assets/a3cf721/web.assets_frontend_minimal.min.js HTTP/1.1" 200 - 5 0.015 0.054
+2026-11-05 13:22:11,643 423020 INFO ? werkzeug: 127.0.0.1 - - [05/Nov/2026 13:22:11] "GET /web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0 HTTP/1.1" 200 - 1 0.004 0.694
+2026-11-05 13:22:11,822 423020 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 13:22:11] "GET /web/assets/d040e93/web.assets_frontend_lazy.min.js HTTP/1.1" 200 - 6 0.014 0.117
+2026-11-05 13:22:12,292 423021 INFO ? werkzeug: 127.0.0.1 - - [05/Nov/2026 13:22:12] "GET /web/static/img/favicon.ico HTTP/1.1" 200 - 1 0.010 0.566
+2026-11-05 13:25:46,433 423021 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 13:25:46] "GET /api/v1/health HTTP/1.1" 200 - 2 0.003 0.020
+2026-11-05 13:25:46,484 423021 INFO etat_civil_final_review_20261105_1304 odoo.http: Session expired 
+2026-11-05 13:25:46,486 423021 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 13:25:46] "GET /api/v1/actes?type=naissance HTTP/1.1" 303 - 2 0.006 0.033
+2026-11-05 13:25:46,524 423021 INFO etat_civil_final_review_20261105_1304 odoo.http: Session expired 
+2026-11-05 13:25:46,525 423021 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 13:25:46] "GET /api/v1/auth/me HTTP/1.1" 303 - 2 0.004 0.022
+2026-11-05 13:25:46,573 423020 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 13:25:46] "GET /api/v1/actes/verifier_qr?code=bad HTTP/1.1" 400 - 2 0.005 0.029
+2026-11-05 13:27:12,718 423020 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 13:27:12] "HEAD /web/login HTTP/1.1" 200 - 4 0.007 0.035
+2026-11-05 13:27:36,025 423021 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 13:27:36] "HEAD /web/login HTTP/1.1" 200 - 4 0.006 0.030
+2026-11-05 13:27:57,793 423020 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 13:27:57] "GET /web/assets/9cdd27e/web.report_assets_pdf.min.css HTTP/1.1" 200 - 5 0.007 0.030
+2026-11-05 13:27:57,833 423020 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 13:27:57] "GET /web/assets/7557dcf/web.report_assets_common.min.css HTTP/1.1" 200 - 5 0.012 0.027
+2026-11-05 13:28:00,335 423021 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 13:28:00] "GET /web/assets/9cdd27e/web.report_assets_pdf.min.css HTTP/1.1" 200 - 5 0.009 0.035
+2026-11-05 13:28:00,374 423021 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 13:28:00] "GET /web/assets/7557dcf/web.report_assets_common.min.css HTTP/1.1" 200 - 5 0.007 0.030
+2026-11-05 13:28:02,728 423021 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 13:28:02] "GET /web/assets/9cdd27e/web.report_assets_pdf.min.css HTTP/1.1" 200 - 5 0.013 0.038
+2026-11-05 13:28:02,793 423021 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 13:28:02] "GET /web/assets/7557dcf/web.report_assets_common.min.css HTTP/1.1" 200 - 5 0.009 0.051
+2026-11-05 13:30:09,942 422996 INFO etat_civil_final_review_20261105_1304 odoo.service.server: Stopping gracefully 
+2026-11-05 13:30:09,943 423021 INFO etat_civil_final_review_20261105_1304 odoo.service.server: Worker (423021) exiting. request_count: 15, registry count: 1. 
+2026-11-05 13:30:09,945 423020 INFO etat_civil_final_review_20261105_1304 odoo.service.server: Worker (423020) exiting. request_count: 10, registry count: 1. 
+2026-11-05 13:31:55,108 428098 INFO ? odoo: Odoo version 17.0 
+2026-11-05 13:31:55,108 428098 INFO ? odoo: Using configuration file at /tmp/etat_civil_isolated_review.conf 
+2026-11-05 13:31:55,108 428098 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 13:31:55,109 428098 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 13:31:55,260 428098 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 13:31:55,483 428098 INFO ? odoo.service.server: HTTP service (werkzeug) running on localhost:18071 
+2026-11-05 13:31:55,507 428098 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading 1 modules... 
+2026-11-05 13:31:55,516 428098 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-05 13:31:55,528 428098 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading 24 modules... 
+2026-11-05 13:31:55,954 428098 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: 24 modules loaded in 0.43s, 0 queries (+0 extra) 
+2026-11-05 13:31:56,042 428098 INFO etat_civil_final_review_20261105_1304 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 13:31:56,047 428098 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: Modules loaded. 
+2026-11-05 13:31:56,052 428098 INFO etat_civil_final_review_20261105_1304 odoo.modules.registry: Registry loaded in 0.570s 
+2026-11-05 13:31:59,768 428098 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 13:31:59,980 428098 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 13:31:59] "GET /web/login HTTP/1.1" 200 - 58 0.052 0.186
+2026-11-05 13:32:06,131 428098 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 13:32:06] "GET /web/login HTTP/1.1" 200 - 4 0.005 0.026
+2026-11-05 13:32:23,306 428098 INFO etat_civil_final_review_20261105_1304 odoo.service.server: Initiating shutdown 
+2026-11-05 13:32:23,307 428098 INFO etat_civil_final_review_20261105_1304 odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-05 13:32:23,630 428098 INFO etat_civil_final_review_20261105_1304 odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 1 connections  
+2026-11-05 13:32:25,397 428338 INFO ? odoo: Odoo version 17.0 
+2026-11-05 13:32:25,397 428338 INFO ? odoo: Using configuration file at /tmp/etat_civil_isolated_review.conf 
+2026-11-05 13:32:25,397 428338 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 13:32:25,398 428338 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 13:32:25,661 428338 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 13:32:26,191 428338 INFO ? odoo.service.server: HTTP service (werkzeug) running on 127.0.0.1:18071 
+2026-11-05 13:32:26,235 428338 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading 1 modules... 
+2026-11-05 13:32:26,252 428338 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2026-11-05 13:32:26,271 428338 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading 24 modules... 
+2026-11-05 13:32:26,814 428338 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: 24 modules loaded in 0.54s, 0 queries (+0 extra) 
+2026-11-05 13:32:26,920 428338 INFO etat_civil_final_review_20261105_1304 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 13:32:26,923 428338 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: Modules loaded. 
+2026-11-05 13:32:26,934 428338 INFO etat_civil_final_review_20261105_1304 odoo.modules.registry: Registry loaded in 0.742s 
+2026-11-05 13:32:26,935 428338 INFO etat_civil_final_review_20261105_1304 odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 1 connections  
+2026-11-05 13:32:26,942 428370 INFO etat_civil_final_review_20261105_1304 odoo.service.server: Worker WorkerHTTP (428370) alive 
+2026-11-05 13:32:26,953 428371 INFO etat_civil_final_review_20261105_1304 odoo.service.server: Worker WorkerHTTP (428371) alive 
+2026-11-05 13:32:28,353 428373 INFO ? odoo: Odoo version 17.0 
+2026-11-05 13:32:28,353 428373 INFO ? odoo: Using configuration file at /tmp/etat_civil_isolated_review.conf 
+2026-11-05 13:32:28,353 428373 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 13:32:28,354 428373 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 13:32:28,552 428373 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 13:32:28,923 428373 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading 1 modules... 
+2026-11-05 13:32:28,938 428373 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-05 13:32:28,956 428373 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: loading 24 modules... 
+2026-11-05 13:32:29,346 428371 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 13:32:29,761 428371 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 13:32:29] "GET /web/login HTTP/1.1" 200 - 58 0.079 0.403
+2026-11-05 13:32:29,857 428373 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: 24 modules loaded in 0.90s, 0 queries (+0 extra) 
+2026-11-05 13:32:29,995 428373 INFO etat_civil_final_review_20261105_1304 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 13:32:30,003 428373 INFO etat_civil_final_review_20261105_1304 odoo.modules.loading: Modules loaded. 
+2026-11-05 13:32:30,013 428373 INFO etat_civil_final_review_20261105_1304 odoo.modules.registry: Registry loaded in 1.122s 
+2026-11-05 13:32:30,017 428373 INFO etat_civil_final_review_20261105_1304 odoo.service.server: Evented Service (longpolling) running on 127.0.0.1:18072 
+2026-11-05 13:32:36,751 428370 INFO etat_civil_final_review_20261105_1304 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 13:32:37,031 428370 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 13:32:37] "GET /web/login HTTP/1.1" 200 - 58 0.061 0.292
+2026-11-05 13:33:08,630 428371 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 13:33:08] "GET /web/login HTTP/1.1" 200 - 4 0.008 0.037
+2026-11-05 13:39:27,053 428370 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 13:39:27] "GET /web/login HTTP/1.1" 200 - 4 0.007 0.047
+2026-11-05 13:47:41,831 428371 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 13:47:41] "GET /web/login HTTP/1.1" 200 - 4 0.012 0.055
+2026-11-05 13:58:41,148 428371 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 13:58:41] "GET /web/login HTTP/1.1" 200 - 4 0.011 0.064
+2026-11-05 13:58:41,203 428371 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 13:58:41] "GET /api/v1/health HTTP/1.1" 200 - 2 0.005 0.032
+2026-11-05 14:02:45,954 428371 INFO etat_civil_final_review_20261105_1304 werkzeug: 127.0.0.1 - - [05/Nov/2026 14:02:45] "GET /web/login HTTP/1.1" 200 - 4 0.005 0.028

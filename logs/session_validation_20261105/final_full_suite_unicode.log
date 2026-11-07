@@ -1,0 +1,480 @@
+2026-11-05 11:27:51,894 361225 INFO ? odoo: Odoo version 17.0 
+2026-11-05 11:27:51,895 361225 INFO ? odoo: Using configuration file at /home/ulrich/tous_les_projet/stage_l3_odoo/config/odoo17.conf 
+2026-11-05 11:27:51,895 361225 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 11:27:51,896 361225 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 11:27:52,140 361225 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 11:27:52,594 361225 INFO ? odoo.service.server: HTTP service (werkzeug) running on localhost:18217 
+2026-11-05 11:27:52,631 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: loading 1 modules... 
+2026-11-05 11:27:52,649 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2026-11-05 11:27:52,713 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 11:27:52,714 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: updating modules list 
+2026-11-05 11:27:52,722 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-11-05 11:27:55,611 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Gestion d’État Civil'] to user __system__ #1 via n/a 
+2026-11-05 11:27:55,612 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Gestion d’État Civil'] to user __system__ #1 via n/a 
+2026-11-05 11:27:57,859 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-11-05 11:27:57,923 361225 WARNING etat_civil_admin_roles_validation_20261104 odoo.modules.graph: module html_editor: not installable, skipped 
+2026-11-05 11:27:57,928 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: loading 24 modules... 
+2026-11-05 11:27:58,486 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: Loading module etat_civil (15/24) 
+2026-11-05 11:27:58,734 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.registry: module etat_civil: creating or updating database tables 
+2026-11-05 11:27:59,069 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: loading etat_civil/security/security.xml 
+2026-11-05 11:27:59,602 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: loading etat_civil/security/ir.model.access.csv 
+2026-11-05 11:27:59,846 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: loading etat_civil/data/demande_guichet_sequence.xml 
+2026-11-05 11:27:59,868 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: loading etat_civil/data/acte_sequence.xml 
+2026-11-05 11:27:59,876 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: loading etat_civil/data/mention_sequence.xml 
+2026-11-05 11:27:59,899 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: loading etat_civil/views/individu_views.xml 
+2026-11-05 11:27:59,994 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: loading etat_civil/views/registre_views.xml 
+2026-11-05 11:28:00,089 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: loading etat_civil/reports/actes_reports.xml 
+2026-11-05 11:28:00,324 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: loading etat_civil/views/acte_naissance_views.xml 
+2026-11-05 11:28:00,440 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: loading etat_civil/views/acte_mariage_views.xml 
+2026-11-05 11:28:00,557 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: loading etat_civil/views/acte_deces_views.xml 
+2026-11-05 11:28:00,666 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: loading etat_civil/views/mentions_marginales_views.xml 
+2026-11-05 11:28:00,758 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: loading etat_civil/views/demandes_guichet_views.xml 
+2026-11-05 11:28:00,825 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: loading etat_civil/views/gestion_utilisateurs_views.xml 
+2026-11-05 11:28:00,961 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: loading etat_civil/views/registry_actions.xml 
+2026-11-05 11:28:01,050 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: loading etat_civil/views/wizard_views.xml 
+2026-11-05 11:28:01,128 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: loading etat_civil/views/import_export_views.xml 
+2026-11-05 11:28:01,194 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: loading etat_civil/views/import_export_log_views.xml 
+2026-11-05 11:28:01,300 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #1 deleted ir.actions.act_window.view records with IDs: [45, 46] 
+2026-11-05 11:28:01,312 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: loading etat_civil/views/menus.xml 
+2026-11-05 11:28:01,739 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: Module etat_civil loaded in 3.25s, 1395 queries (+1395 other) 
+2026-11-05 11:28:01,831 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: 24 modules loaded in 3.90s, 1395 queries (+1395 extra) 
+2026-11-05 11:28:01,833 361225 WARNING etat_civil_admin_roles_validation_20261104 odoo.modules.graph: module html_editor: not installable, skipped 
+2026-11-05 11:28:01,835 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: loading 24 modules... 
+2026-11-05 11:28:01,835 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: 24 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-11-05 11:28:01,838 361225 WARNING etat_civil_admin_roles_validation_20261104 odoo.modules.graph: module html_editor: not installable, skipped 
+2026-11-05 11:28:01,839 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: loading 24 modules... 
+2026-11-05 11:28:01,839 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: 24 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-11-05 11:28:02,143 361225 ERROR etat_civil_admin_roles_validation_20261104 odoo.modules.loading: Some modules are not loaded, some dependencies or manifest may be missing: ['html_editor'] 
+2026-11-05 11:28:02,460 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.registry: verifying fields for every extended model 
+2026-11-05 11:28:03,831 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.loading: Modules loaded. 
+2026-11-05 11:28:03,843 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.modules.registry: Registry loaded in 11.251s 
+2026-11-05 11:28:03,843 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.service.server: Starting post tests 
+2026-11-05 11:28:03,848 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_qweb: Pregenerating assets bundles 
+2026-11-05 11:28:03,956 361225 WARNING etat_civil_admin_roles_validation_20261104 odoo.modules.module: module html_editor: module not found 
+2026-11-05 11:28:05,340 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_qweb: JS Assets bundles generated in 1.0494027137756348 seconds 
+2026-11-05 11:28:05,489 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_qweb: CSS Assets bundles generated in 0.14779162406921387 seconds 
+2026-11-05 11:28:05,922 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 400 and Message-Id '<356175287869360.1793878085.876631498336792-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'****************pi@example.test'" successfully sent 
+2026-11-05 11:28:05,923 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:05,938 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [400] 
+2026-11-05 11:28:05,964 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #1 deleted mail.message records with IDs: [4417] 
+2026-11-05 11:28:05,965 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:05,972 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <agent-workflow-api> to <agent-workflow-api@example.test> 
+2026-11-05 11:28:06,322 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 401 and Message-Id '<178097775888381.1793878086.274197340011597-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'******************pi@example.test'" successfully sent 
+2026-11-05 11:28:06,322 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:06,336 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [401] 
+2026-11-05 11:28:06,355 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #1 deleted mail.message records with IDs: [4419] 
+2026-11-05 11:28:06,355 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:06,362 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <officer-workflow-api> to <officer-workflow-api@example.test> 
+2026-11-05 11:28:06,692 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 402 and Message-Id '<548407959259223.1793878086.643436193466187-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'************************pi@example.test'" successfully sent 
+2026-11-05 11:28:06,693 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:06,707 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [402] 
+2026-11-05 11:28:06,728 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #1 deleted mail.message records with IDs: [4421] 
+2026-11-05 11:28:06,729 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:06,735 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <agent-outside-workflow-api> to <agent-outside-workflow-api@example.test> 
+2026-11-05 11:28:06,736 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_accepts_valid_piece_images_and_infers_mimetype ... 
+2026-11-05 11:28:06,760 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.res_users: Login successful for db:etat_civil_admin_roles_validation_20261104 login:agent-workflow-api from n/a 
+2026-11-05 11:28:06,992 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 11:28:07,281 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:07] "POST /api/v1/actes/naissance/422 HTTP/1.1" 200 - 62 0.091 0.201
+2026-11-05 11:28:07,320 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_allows_agent_correction_and_rejects_direct_civil_status_changes ... 
+2026-11-05 11:28:07,892 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 403 and Message-Id '<842945541692610.1793878087.746043920516968-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-api@example.test' to (redacted) 'o*****************pi@example.test' successfully sent 
+2026-11-05 11:28:07,892 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:07,908 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #186 deleted mail.mail records with IDs: [403] 
+2026-11-05 11:28:07,908 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:08,215 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 404 and Message-Id '<681498268874565.1793878088.046723127365112-openerp-message-notify@ulrich-Default-string>' from 'officer-workflow-api@example.test' to (redacted) 'a***************pi@example.test' successfully sent 
+2026-11-05 11:28:08,215 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:08,238 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #187 deleted mail.mail records with IDs: [404] 
+2026-11-05 11:28:08,238 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:08,315 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.res_users: Login successful for db:etat_civil_admin_roles_validation_20261104 login:agent-workflow-api from n/a 
+2026-11-05 11:28:08,324 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 11:28:08,475 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:08] "POST /api/v1/actes/naissance/423 HTTP/1.1" 200 - 34 0.041 0.111
+2026-11-05 11:28:08,496 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:08] "POST /api/v1/personnes/1152 HTTP/1.1" 400 - 3 0.001 0.003
+2026-11-05 11:28:08,502 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_health_reports_the_selected_database ... 
+2026-11-05 11:28:08,514 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 11:28:08,544 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:08] "GET /api/v1/health HTTP/1.1" 200 - 7 0.004 0.029
+2026-11-05 11:28:08,547 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_acte_workflow.TestActeWorkflowApi: waiting for threads: [<Thread(odoo.service.http.request.128718129366720, stopped 128718129366720)>] 
+2026-11-05 11:28:08,550 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_logout_requires_json_post ... 
+2026-11-05 11:28:08,582 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.res_users: Login successful for db:etat_civil_admin_roles_validation_20261104 login:agent-workflow-api from n/a 
+2026-11-05 11:28:08,607 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 11:28:08,639 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:08] "GET /api/v1/auth/logout HTTP/1.1" 405 - 3 0.001 0.037
+2026-11-05 11:28:08,649 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:08] "POST /api/v1/auth/logout HTTP/1.1" 415 - 5 0.002 0.004
+2026-11-05 11:28:08,659 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:08] "POST /api/v1/auth/logout HTTP/1.1" 200 - 3 0.001 0.004
+2026-11-05 11:28:08,662 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_mutations_reject_json_sent_as_plain_text ... 
+2026-11-05 11:28:08,681 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.res_users: Login successful for db:etat_civil_admin_roles_validation_20261104 login:agent-workflow-api from n/a 
+2026-11-05 11:28:08,697 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 11:28:08,736 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:08] "POST /api/v1/personnes HTTP/1.1" 415 - 8 0.008 0.032
+2026-11-05 11:28:09,275 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 405 and Message-Id '<869846164907806.1793878089.120018005371094-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-api@example.test' to (redacted) 'o*****************pi@example.test' successfully sent 
+2026-11-05 11:28:09,276 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:09,299 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #186 deleted mail.mail records with IDs: [405] 
+2026-11-05 11:28:09,299 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:09,358 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.res_users: Login successful for db:etat_civil_admin_roles_validation_20261104 login:officer-workflow-api from n/a 
+2026-11-05 11:28:09,391 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:09] "POST /api/v1/actes/naissance/424/valider HTTP/1.1" 415 - 2 0.002 0.013
+2026-11-05 11:28:09,405 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:09] "POST /api/v1/actes/mariage/999999999/valider HTTP/1.1" 415 - 2 0.001 0.004
+2026-11-05 11:28:09,422 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:09] "POST /api/v1/actes/deces/999999999/valider HTTP/1.1" 415 - 2 0.004 0.007
+2026-11-05 11:28:09,433 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:09] "POST /api/v1/actes/invalide/999999999/valider HTTP/1.1" 415 - 2 0.001 0.003
+2026-11-05 11:28:09,456 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:09] "POST /api/v1/mentions/999999999/valider HTTP/1.1" 415 - 2 0.003 0.004
+2026-11-05 11:28:09,458 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_acte_workflow.TestActeWorkflowApi: waiting for threads: [<Thread(odoo.service.http.request.128718109435584, started 128718109435584)>] 
+2026-11-05 11:28:09,461 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_api_rejects_invalid_piece_images_without_partial_updates ... 
+2026-11-05 11:28:09,475 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.res_users: Login successful for db:etat_civil_admin_roles_validation_20261104 login:agent-workflow-api from n/a 
+2026-11-05 11:28:09,742 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 11:28:09,819 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:09] "POST /api/v1/actes/naissance/425 HTTP/1.1" 400 - 20 0.016 0.062
+2026-11-05 11:28:09,866 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:09] "POST /api/v1/actes/naissance/425 HTTP/1.1" 400 - 9 0.007 0.019
+2026-11-05 11:28:10,072 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:10] "POST /api/v1/actes/naissance HTTP/1.1" 400 - 41 0.052 0.126
+2026-11-05 11:28:10,080 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_attachment_preview_route_respects_civil_centre_access ... 
+2026-11-05 11:28:10,302 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.res_users: Login successful for db:etat_civil_admin_roles_validation_20261104 login:agent-workflow-api from n/a 
+2026-11-05 11:28:10,311 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 11:28:10,392 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:10] "GET /web/content/935?download=false HTTP/1.1" 200 - 13 0.018 0.065
+2026-11-05 11:28:10,408 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.res_users: Login successful for db:etat_civil_admin_roles_validation_20261104 login:agent-outside-workflow-api from n/a 
+2026-11-05 11:28:10,500 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [935], uid: 188, model: ir.attachment 
+2026-11-05 11:28:10,516 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:10] "GET /web/content/935?download=false HTTP/1.1" 404 - 24 0.046 0.045
+2026-11-05 11:28:10,526 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_authenticated_api_routes_reject_anonymous_writes ... 
+2026-11-05 11:28:10,561 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.res_users: Login successful for db:etat_civil_admin_roles_validation_20261104 login:agent-workflow-api from n/a 
+2026-11-05 11:28:10,579 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 11:28:10,611 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:10] "POST /api/v1/auth/logout HTTP/1.1" 200 - 6 0.003 0.031
+2026-11-05 11:28:10,624 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.http: Session expired 
+2026-11-05 11:28:10,625 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:10] "POST /api/v1/personnes HTTP/1.1" 303 - 4 0.003 0.004
+2026-11-05 11:28:10,631 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowApi.test_specific_api_routes_enforce_the_workflow_for_each_act_type ... 
+2026-11-05 11:28:10,647 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.res_users: Login successful for db:etat_civil_admin_roles_validation_20261104 login:officer-workflow-api from n/a 
+2026-11-05 11:28:10,702 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.res_users: Login successful for db:etat_civil_admin_roles_validation_20261104 login:officer-workflow-api from n/a 
+2026-11-05 11:28:10,905 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 11:28:10,989 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:10] "POST /api/v1/actes/naissance/428/valider HTTP/1.1" 409 - 27 0.038 0.049
+2026-11-05 11:28:11,007 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.res_users: Login successful for db:etat_civil_admin_roles_validation_20261104 login:agent-workflow-api from n/a 
+2026-11-05 11:28:11,566 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:11] "POST /api/v1/actes/naissance/428/transmettre HTTP/1.1" 200 - 106 0.118 0.237
+2026-11-05 11:28:11,583 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.res_users: Login successful for db:etat_civil_admin_roles_validation_20261104 login:officer-workflow-api from n/a 
+2026-11-05 11:28:12,039 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #187 deleted mail.activity records with IDs: [325] 
+2026-11-05 11:28:12,177 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:12] "POST /api/v1/actes/naissance/428/valider HTTP/1.1" 200 - 73 0.092 0.279
+2026-11-05 11:28:12,196 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.res_users: Login successful for db:etat_civil_admin_roles_validation_20261104 login:agent-workflow-api from n/a 
+2026-11-05 11:28:12,216 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.res_users: Login successful for db:etat_civil_admin_roles_validation_20261104 login:officer-workflow-api from n/a 
+2026-11-05 11:28:12,574 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:12] "POST /api/v1/actes/mariage/67/valider HTTP/1.1" 409 - 21 0.041 0.032
+2026-11-05 11:28:12,598 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.res_users: Login successful for db:etat_civil_admin_roles_validation_20261104 login:agent-workflow-api from n/a 
+2026-11-05 11:28:13,405 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:13] "POST /api/v1/actes/mariage/67/transmettre HTTP/1.1" 200 - 76 0.108 0.230
+2026-11-05 11:28:13,435 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.res_users: Login successful for db:etat_civil_admin_roles_validation_20261104 login:officer-workflow-api from n/a 
+2026-11-05 11:28:14,060 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #187 deleted mail.activity records with IDs: [326] 
+2026-11-05 11:28:14,258 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:14] "POST /api/v1/actes/mariage/67/valider HTTP/1.1" 200 - 77 0.114 0.253
+2026-11-05 11:28:14,296 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.res_users: Login successful for db:etat_civil_admin_roles_validation_20261104 login:agent-workflow-api from n/a 
+2026-11-05 11:28:14,319 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.res_users: Login successful for db:etat_civil_admin_roles_validation_20261104 login:officer-workflow-api from n/a 
+2026-11-05 11:28:14,548 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:14] "POST /api/v1/actes/deces/44/valider HTTP/1.1" 409 - 17 0.016 0.043
+2026-11-05 11:28:14,576 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.res_users: Login successful for db:etat_civil_admin_roles_validation_20261104 login:agent-workflow-api from n/a 
+2026-11-05 11:28:15,161 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:15] "POST /api/v1/actes/deces/44/transmettre HTTP/1.1" 200 - 71 0.129 0.195
+2026-11-05 11:28:15,194 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.res_users: Login successful for db:etat_civil_admin_roles_validation_20261104 login:officer-workflow-api from n/a 
+2026-11-05 11:28:15,482 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #187 deleted mail.activity records with IDs: [327] 
+2026-11-05 11:28:15,575 361225 INFO etat_civil_admin_roles_validation_20261104 werkzeug: 127.0.0.1 - - [05/Nov/2026 11:28:15] "POST /api/v1/actes/deces/44/valider HTTP/1.1" 200 - 56 0.067 0.168
+2026-11-05 11:28:15,598 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.res_users: Login successful for db:etat_civil_admin_roles_validation_20261104 login:agent-workflow-api from n/a 
+2026-11-05 11:28:15,745 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_attachment: filestore gc 5 checked, 4 removed 
+2026-11-05 11:28:16,200 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 409 and Message-Id '<204584257786436.1793878096.149929046630859-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'************************ns@example.test'" successfully sent 
+2026-11-05 11:28:16,201 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:16,215 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [409] 
+2026-11-05 11:28:16,238 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #1 deleted mail.message records with IDs: [4523] 
+2026-11-05 11:28:16,239 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:16,247 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <agent-workflow-transitions> to <agent-workflow-transitions@example.test> 
+2026-11-05 11:28:16,605 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 410 and Message-Id '<877792769643860.1793878096.542798995971680-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'**************************ns@example.test'" successfully sent 
+2026-11-05 11:28:16,607 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:16,617 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [410] 
+2026-11-05 11:28:16,651 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #1 deleted mail.message records with IDs: [4525] 
+2026-11-05 11:28:16,652 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:16,660 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <officer-workflow-transitions> to <officer-workflow-transitions@example.test> 
+2026-11-05 11:28:16,660 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowTransitions.test_all_act_types_reject_invalid_states_and_run_validation_effects ... 
+2026-11-05 11:28:17,371 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 411 and Message-Id '<216466338587973.1793878097.217003345489502-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 11:28:17,372 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:17,392 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #189 deleted mail.mail records with IDs: [411] 
+2026-11-05 11:28:17,392 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:17,598 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 412 and Message-Id '<810374968115767.1793878097.531251668930054-openerp-message-notify@ulrich-Default-string>' from 'officer-workflow-transitions@example.test' to (redacted) 'a***********************ns@example.test' successfully sent 
+2026-11-05 11:28:17,599 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:17,613 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #190 deleted mail.mail records with IDs: [412] 
+2026-11-05 11:28:17,613 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:17,908 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 413 and Message-Id '<345512103128533.1793878097.848267793655396-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 11:28:17,908 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:17,929 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #189 deleted mail.mail records with IDs: [413] 
+2026-11-05 11:28:17,929 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:18,270 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #190 deleted mail.activity records with IDs: [328, 329, 330] 
+2026-11-05 11:28:19,207 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 414 and Message-Id '<675566340817199.1793878099.148242950439453-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 11:28:19,207 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:19,227 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #189 deleted mail.mail records with IDs: [414] 
+2026-11-05 11:28:19,228 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:19,380 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 415 and Message-Id '<340603179416266.1793878099.319347620010376-openerp-message-notify@ulrich-Default-string>' from 'officer-workflow-transitions@example.test' to (redacted) 'a***********************ns@example.test' successfully sent 
+2026-11-05 11:28:19,380 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:19,396 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #190 deleted mail.mail records with IDs: [415] 
+2026-11-05 11:28:19,396 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:19,669 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 416 and Message-Id '<781362016477896.1793878099.609664678573608-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 11:28:19,669 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:19,690 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #189 deleted mail.mail records with IDs: [416] 
+2026-11-05 11:28:19,690 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:20,206 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #190 deleted mail.activity records with IDs: [331, 332, 333] 
+2026-11-05 11:28:21,345 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 417 and Message-Id '<312918290267436.1793878101.211150169372559-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 11:28:21,346 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:21,387 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #189 deleted mail.mail records with IDs: [417] 
+2026-11-05 11:28:21,391 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:21,652 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 418 and Message-Id '<991456401067002.1793878101.554218053817749-openerp-message-notify@ulrich-Default-string>' from 'officer-workflow-transitions@example.test' to (redacted) 'a***********************ns@example.test' successfully sent 
+2026-11-05 11:28:21,652 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:21,673 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #190 deleted mail.mail records with IDs: [418] 
+2026-11-05 11:28:21,673 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:21,972 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 419 and Message-Id '<951721725421836.1793878101.899673700332642-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 11:28:21,972 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:21,994 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #189 deleted mail.mail records with IDs: [419] 
+2026-11-05 11:28:21,995 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:22,304 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #190 deleted mail.activity records with IDs: [334, 335, 336] 
+2026-11-05 11:28:22,519 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowTransitions.test_officer_record_rule_preserves_read_access_in_own_centre ... 
+2026-11-05 11:28:22,747 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowTransitions.test_piece_actions_are_separated_in_each_act_form ... 
+2026-11-05 11:28:23,102 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowTransitions.test_piece_receipt_and_verification_actions_are_persistent_and_audited ... 
+2026-11-05 11:28:24,014 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 420 and Message-Id '<701747044537131.1793878103.839740991592407-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 11:28:24,014 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:24,045 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #189 deleted mail.mail records with IDs: [420] 
+2026-11-05 11:28:24,046 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:24,243 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowTransitions.test_second_marriage_for_a_spouse_is_rechecked_before_validation ... 
+2026-11-05 11:28:25,465 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 421 and Message-Id '<835880981681596.1793878105.310986757278442-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 11:28:25,465 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:25,482 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #189 deleted mail.mail records with IDs: [421] 
+2026-11-05 11:28:25,483 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:26,735 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 422 and Message-Id '<554188281853519.1793878106.629483938217163-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 11:28:26,736 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:26,763 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #189 deleted mail.mail records with IDs: [422] 
+2026-11-05 11:28:26,763 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:27,398 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #190 deleted mail.activity records with IDs: [338] 
+2026-11-05 11:28:27,478 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowTransitions.test_transmission_is_atomic_when_activity_creation_fails ... 
+2026-11-05 11:28:27,889 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_acte_workflow: Starting TestActeWorkflowTransitions.test_validation_is_atomic_when_a_post_validation_effect_fails ... 
+2026-11-05 11:28:28,464 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 423 and Message-Id '<246427593155776.1793878108.329225778579712-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 11:28:28,465 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:28,479 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #189 deleted mail.mail records with IDs: [423] 
+2026-11-05 11:28:28,480 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:29,497 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 424 and Message-Id '<443896469602791.1793878109.436460018157959-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 11:28:29,497 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:29,516 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #189 deleted mail.mail records with IDs: [424] 
+2026-11-05 11:28:29,517 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:30,187 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #190 deleted mail.activity records with IDs: [341] 
+2026-11-05 11:28:30,644 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 425 and Message-Id '<871463964820192.1793878110.571596384048462-openerp-message-notify@ulrich-Default-string>' from 'agent-workflow-transitions@example.test' to (redacted) 'o*************************ns@example.test' successfully sent 
+2026-11-05 11:28:30,645 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:30,669 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #189 deleted mail.mail records with IDs: [425] 
+2026-11-05 11:28:30,670 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:31,096 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #190 deleted mail.activity records with IDs: [342] 
+2026-11-05 11:28:31,161 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_attachment: filestore gc 3 checked, 3 removed 
+2026-11-05 11:28:31,196 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_cin_compatibility: Starting TestCINCompatibility.test_birth_filiation_piece_rules_remain_distinct_and_neutral ... 
+2026-11-05 11:28:31,198 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_cin_compatibility: Starting TestCINCompatibility.test_guichet_accepts_legacy_citizen_nin_key ... 
+2026-11-05 11:28:31,224 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_cin_compatibility: Starting TestCINCompatibility.test_guichet_status_changes_only_through_actions ... 
+2026-11-05 11:28:31,288 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_cin_compatibility: Starting TestCINCompatibility.test_individu_accepts_legacy_api_key_and_stores_cin ... 
+2026-11-05 11:28:31,345 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_cin_compatibility: Starting TestCINCompatibility.test_individu_rejects_invalid_cin_length ... 
+2026-11-05 11:28:31,354 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_cin_compatibility: Starting TestCINCompatibility.test_marriage_foreign_documents_and_witness_requirements_are_explicit ... 
+2026-11-05 11:28:31,387 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-11-05 11:28:31,515 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_01_creation_nouveau_ne_sans_cin_et_sans_profession ... 
+2026-11-05 11:28:31,531 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_02_nouveau_ne_cin_format_et_unicite ... 
+2026-11-05 11:28:31,561 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_03_creation_adulte_avec_cin_et_profession ... 
+2026-11-05 11:28:31,592 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_04_cin_parents_distinctes_de_lenfant ... 
+2026-11-05 11:28:31,751 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_05_sequence_non_consommee_a_louverture_du_formulaire ... 
+2026-11-05 11:28:32,014 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_06_sequences_independantes_mariage_et_deces ... 
+2026-11-05 11:28:32,253 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_07_import_csv ... 
+2026-11-05 11:28:32,391 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_08_import_json ... 
+2026-11-05 11:28:32,481 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_09_import_xml ... 
+2026-11-05 11:28:32,567 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_10_import_xlsx ... 
+2026-11-05 11:28:33,064 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_11_detection_doublons_et_strategies ... 
+2026-11-05 11:28:33,163 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_12_exportation_citoyens ... 
+2026-11-05 11:28:33,259 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_14_import_xls ... 
+2026-11-05 11:28:33,328 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_15_import_ods ... 
+2026-11-05 11:28:33,410 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_16_import_valid_zip ... 
+2026-11-05 11:28:33,580 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_17_zip_import_reports_invalid_inner_file ... 
+2026-11-05 11:28:33,618 361225 WARNING etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.wizards.import_export_citoyen: Could not parse citoyens.json from uploaded ZIP: Expecting property name enclosed in double quotes: line 1 column 2 (char 1) 
+2026-11-05 11:28:33,729 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_18_mentions_generate_type_specific_references ... 
+2026-11-05 11:28:34,438 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_19_system_admin_has_direct_module_access ... 
+2026-11-05 11:28:34,785 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #193 deleted etat.civil.individu records with IDs: [1229] 
+2026-11-05 11:28:34,793 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_mobile_act_creation_requires_an_open_register ... 
+2026-11-05 11:28:34,797 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_mobile_citizen_list_omits_nested_mentions ... 
+2026-11-05 11:28:34,814 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_nouveau_ne_sequence_import_export: Starting TestNouveauNeSequenceImportExport.test_spreadsheet_exports_treat_formula_like_citizen_values_as_text ... 
+2026-11-05 11:28:34,901 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_attachment: filestore gc 19 checked, 19 removed 
+2026-11-05 11:28:35,356 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 426 and Message-Id '<749273052300083.1793878115.296412467956543-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'***************rt@example.com'" successfully sent 
+2026-11-05 11:28:35,356 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:35,377 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [426] 
+2026-11-05 11:28:35,396 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #1 deleted mail.message records with IDs: [4794] 
+2026-11-05 11:28:35,396 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:35,403 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <agent_test_report@example.com> to <agent_test_report@example.com> 
+2026-11-05 11:28:35,789 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 427 and Message-Id '<158596313044438.1793878115.726331710815430-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'******************rt@example.com'" successfully sent 
+2026-11-05 11:28:35,789 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:35,798 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [427] 
+2026-11-05 11:28:35,813 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #1 deleted mail.message records with IDs: [4796] 
+2026-11-05 11:28:35,814 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:35,820 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <officier_test_report@example.com> to <officier_test_report@example.com> 
+2026-11-05 11:28:35,821 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_chatter_and_messages ... 
+2026-11-05 11:28:35,927 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_civil_admin_can_render_report_without_system_or_officer_group ... 
+2026-11-05 11:28:36,562 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_historical_marriage_without_witnesses ... 
+2026-11-05 11:28:37,028 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_integrity_hash_detects_tampering ... 
+2026-11-05 11:28:37,789 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 428 and Message-Id '<868817279848720.1793878117.564579248428345-openerp-message-notify@ulrich-Default-string>' from 'agent_test_report@example.com' to (redacted) 'o*****************rt@example.com' successfully sent 
+2026-11-05 11:28:37,789 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:37,809 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #194 deleted mail.mail records with IDs: [428] 
+2026-11-05 11:28:37,810 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:38,186 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #195 deleted mail.activity records with IDs: [343] 
+2026-11-05 11:28:38,215 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_physical_print_action_is_available_before_validation_for_all_act_types ... 
+2026-11-05 11:28:38,988 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_qr_code_and_hash_generation_and_disclaimer_in_report ... 
+2026-11-05 11:28:39,528 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 429 and Message-Id '<485132590797473.1793878119.369250059127808-openerp-message-notify@ulrich-Default-string>' from 'agent_test_report@example.com' to (redacted) 'o*****************rt@example.com' successfully sent 
+2026-11-05 11:28:39,529 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:39,556 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #194 deleted mail.mail records with IDs: [429] 
+2026-11-05 11:28:39,557 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:39,967 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #195 deleted mail.activity records with IDs: [344] 
+2026-11-05 11:28:40,250 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_report_deces_rendering ... 
+2026-11-05 11:28:40,549 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_report_mariage_rendering ... 
+2026-11-05 11:28:41,066 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_report_naissance_rendering_with_missing_optional_fields ... 
+2026-11-05 11:28:41,674 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_reports_and_security: Starting TestReportsAndSecurity.test_territorial_security_isolation ... 
+2026-11-05 11:28:42,095 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 430 and Message-Id '<715617781202355.1793878122.040285348892212-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'*******************so@test.com'" successfully sent 
+2026-11-05 11:28:42,095 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:42,106 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [430] 
+2026-11-05 11:28:42,122 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #1 deleted mail.message records with IDs: [4887] 
+2026-11-05 11:28:42,123 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:42,132 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <officier_centre_b_iso@test.com> to <officier_centre_b_iso@test.com> 
+2026-11-05 11:28:42,799 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 431 and Message-Id '<337095859500868.1793878122.623713731765747-openerp-message-notify@ulrich-Default-string>' from 'agent_test_report@example.com' to (redacted) 'o*****************rt@example.com' successfully sent 
+2026-11-05 11:28:42,799 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:42,835 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #194 deleted mail.mail records with IDs: [431] 
+2026-11-05 11:28:42,836 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:43,172 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [444], uid: 197, model: etat.civil.acte.naissance 
+2026-11-05 11:28:43,211 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_attachment: filestore gc 4 checked, 4 removed 
+2026-11-05 11:28:43,680 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 432 and Message-Id '<552949234347391.1793878123.626354932785034-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'********nt@example.test'" successfully sent 
+2026-11-05 11:28:43,681 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:43,692 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [432] 
+2026-11-05 11:28:43,712 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #1 deleted mail.message records with IDs: [4902] 
+2026-11-05 11:28:43,712 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:43,717 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <role-test-agent> to <role-agent@example.test> 
+2026-11-05 11:28:44,099 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 433 and Message-Id '<200065501849379.1793878124.024498224258423-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'**********er@example.test'" successfully sent 
+2026-11-05 11:28:44,099 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:44,110 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [433] 
+2026-11-05 11:28:44,129 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #1 deleted mail.message records with IDs: [4904] 
+2026-11-05 11:28:44,130 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:44,141 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <role-test-officer> to <role-officer@example.test> 
+2026-11-05 11:28:44,533 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 434 and Message-Id '<755851574234484.1793878124.469578981399536-openerp-private@ulrich-Default-string>' from 'odoobot@example.com' to (redacted) "'********in@example.test'" successfully sent 
+2026-11-05 11:28:44,534 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:44,560 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #1 deleted mail.mail records with IDs: [434] 
+2026-11-05 11:28:44,581 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #1 deleted mail.message records with IDs: [4906] 
+2026-11-05 11:28:44,583 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:44,588 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.auth_signup.models.res_users: Password reset email sent for user <role-test-admin> to <role-admin@example.test> 
+2026-11-05 11:28:44,588 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_act_numbers_and_page_numbers_are_defaulted_by_act_type ... 
+2026-11-05 11:28:44,749 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_act_validation_requires_verified_documents ... 
+2026-11-05 11:28:45,427 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 435 and Message-Id '<645644153125107.1793878125.240177869796753-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 11:28:45,427 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:45,447 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #198 deleted mail.mail records with IDs: [435] 
+2026-11-05 11:28:45,447 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:45,912 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #199 deleted mail.activity records with IDs: [346] 
+2026-11-05 11:28:45,942 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_admin_can_create_centres_registers_and_admin_users ... 
+2026-11-05 11:28:46,213 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_admin_can_manage_mentions_and_read_across_centres ... 
+2026-11-05 11:28:46,611 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_admin_can_process_decisions_without_territorial_assignment ... 
+2026-11-05 11:28:47,174 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 436 and Message-Id '<348257573917464.1793878127.015140295028687-openerp-message-notify@ulrich-Default-string>' from 'role-admin@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 11:28:47,174 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:47,201 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #200 deleted mail.mail records with IDs: [436] 
+2026-11-05 11:28:47,202 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:47,615 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 437 and Message-Id '<593975565795936.1793878127.550760269165039-openerp-message-notify@ulrich-Default-string>' from 'role-admin@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 11:28:47,615 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:47,638 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #200 deleted mail.mail records with IDs: [437] 
+2026-11-05 11:28:47,638 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:48,077 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 438 and Message-Id '<785335270404431.1793878128.016289234161377-openerp-message-notify@ulrich-Default-string>' from 'role-admin@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 11:28:48,078 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:48,103 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #200 deleted mail.mail records with IDs: [438] 
+2026-11-05 11:28:48,104 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:48,379 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #200 deleted mail.activity records with IDs: [350] 
+2026-11-05 11:28:48,766 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 439 and Message-Id '<270459271654755.1793878128.688954591751099-openerp-message-notify@ulrich-Default-string>' from 'role-admin@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 11:28:48,766 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:48,781 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #200 deleted mail.mail records with IDs: [439] 
+2026-11-05 11:28:48,785 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:49,005 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #200 deleted mail.activity records with IDs: [351] 
+2026-11-05 11:28:49,058 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_admin_has_full_act_workflow_without_officer_membership ... 
+2026-11-05 11:28:49,357 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #200 deleted mail.message records with IDs: [5010] 
+2026-11-05 11:28:49,390 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #200 deleted etat.civil.acte.naissance records with IDs: [453] 
+2026-11-05 11:28:49,407 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #200 deleted mail.followers records with IDs: [1577] 
+2026-11-05 11:28:49,829 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 440 and Message-Id '<757090083772314.1793878129.669131994247437-openerp-message-notify@ulrich-Default-string>' from 'role-admin@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 11:28:49,830 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:49,850 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #200 deleted mail.mail records with IDs: [440] 
+2026-11-05 11:28:49,851 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:50,096 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #200 deleted mail.activity records with IDs: [352] 
+2026-11-05 11:28:50,119 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_agent_can_read_but_cannot_create_marginal_mentions ... 
+2026-11-05 11:28:50,126 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_agent_cannot_assign_an_officer_from_another_centre ... 
+2026-11-05 11:28:50,758 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_agent_cannot_open_user_management ... 
+2026-11-05 11:28:50,786 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: create, uid: 198, model: etat.civil.gestion.utilisateur 
+2026-11-05 11:28:50,787 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_agent_cannot_read_acts_outside_assigned_centres ... 
+2026-11-05 11:28:50,887 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_agent_cannot_set_act_status_directly_or_validate ... 
+2026-11-05 11:28:51,079 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_agent_transmits_to_the_assigned_officer ... 
+2026-11-05 11:28:51,663 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 441 and Message-Id '<505095846050533.1793878131.532609462738037-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 11:28:51,664 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:51,685 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #198 deleted mail.mail records with IDs: [441] 
+2026-11-05 11:28:51,686 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:51,771 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_cancellation_wizard ... 
+2026-11-05 11:28:52,312 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 442 and Message-Id '<674309404492633.1793878132.171219348907471-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 11:28:52,312 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:52,331 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #198 deleted mail.mail records with IDs: [442] 
+2026-11-05 11:28:52,331 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:52,711 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #199 deleted mail.activity records with IDs: [354] 
+2026-11-05 11:28:52,801 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_cannot_disable_last_civil_admin ... 
+2026-11-05 11:28:52,836 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_civil_admin_can_change_an_internal_users_role ... 
+2026-11-05 11:28:53,090 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_civil_admin_can_create_an_officer_account ... 
+2026-11-05 11:28:53,328 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_civil_admin_can_create_role_limited_internal_user ... 
+2026-11-05 11:28:53,599 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_civil_admin_can_validate_without_officer_group_membership ... 
+2026-11-05 11:28:54,350 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 444 and Message-Id '<828917556690573.1793878134.183102130889893-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 11:28:54,350 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:54,370 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #198 deleted mail.mail records with IDs: [444] 
+2026-11-05 11:28:54,372 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:54,804 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #200 deleted mail.activity records with IDs: [355] 
+2026-11-05 11:28:54,834 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_civil_status_cannot_be_changed_outside_approved_workflows ... 
+2026-11-05 11:28:54,863 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_double_transmission_is_rejected ... 
+2026-11-05 11:28:55,637 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 445 and Message-Id '<460566511012807.1793878135.468067407608032-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 11:28:55,637 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:55,657 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #198 deleted mail.mail records with IDs: [445] 
+2026-11-05 11:28:55,658 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:55,728 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_incomplete_act_cannot_be_transmitted ... 
+2026-11-05 11:28:55,969 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_manual_act_number_is_preserved_and_folio_increments_per_register ... 
+2026-11-05 11:28:56,292 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_can_refuse_waiting_act ... 
+2026-11-05 11:28:56,973 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 446 and Message-Id '<203055213187906.1793878136.808626413345337-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 11:28:56,974 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:56,998 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #198 deleted mail.mail records with IDs: [446] 
+2026-11-05 11:28:56,999 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:57,119 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_can_return_for_correction_and_agent_can_resubmit ... 
+2026-11-05 11:28:57,812 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 447 and Message-Id '<222603502666244.1793878137.615973472595215-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 11:28:57,812 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:57,833 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #198 deleted mail.mail records with IDs: [447] 
+2026-11-05 11:28:57,833 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:58,045 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 448 and Message-Id '<104995990083178.1793878137.975277423858643-openerp-message-notify@ulrich-Default-string>' from 'role-officer@example.test' to (redacted) 'r*******nt@example.test' successfully sent 
+2026-11-05 11:28:58,046 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:58,068 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #199 deleted mail.mail records with IDs: [448] 
+2026-11-05 11:28:58,071 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:58,424 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 449 and Message-Id '<028089487824852.1793878138.335940599441528-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 11:28:58,425 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:28:58,455 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #198 deleted mail.mail records with IDs: [449] 
+2026-11-05 11:28:58,456 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:28:58,500 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_cannot_create_edit_or_transmit_agent_acts ... 
+2026-11-05 11:28:58,829 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_cannot_read_or_change_another_centres_mentions ... 
+2026-11-05 11:28:59,335 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [109], uid: 205, model: etat.civil.mention.marginale 
+2026-11-05 11:28:59,469 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [407], uid: 205, model: etat.civil.centre 
+2026-11-05 11:28:59,484 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_cannot_set_mention_status_directly ... 
+2026-11-05 11:28:59,706 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_from_another_centre_cannot_validate ... 
+2026-11-05 11:29:00,305 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 450 and Message-Id '<366724617967763.1793878140.150897741317749-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 11:29:00,305 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:29:00,325 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #198 deleted mail.mail records with IDs: [450] 
+2026-11-05 11:29:00,325 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:29:00,665 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [469], uid: 206, model: etat.civil.acte.naissance 
+2026-11-05 11:29:00,676 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_full_lifecycle_annulation_and_archivage ... 
+2026-11-05 11:29:01,248 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 451 and Message-Id '<024048717954632.1793878141.108371734619141-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 11:29:01,248 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:29:01,261 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #198 deleted mail.mail records with IDs: [451] 
+2026-11-05 11:29:01,262 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:29:01,597 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #199 deleted mail.activity records with IDs: [362] 
+2026-11-05 11:29:01,746 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_group_does_not_imply_agent_group ... 
+2026-11-05 11:29:01,749 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_officer_validation_locks_all_act_data_but_keeps_mentions_optional ... 
+2026-11-05 11:29:02,337 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 452 and Message-Id '<503536644943980.1793878142.178925752639771-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 11:29:02,337 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:29:02,351 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #198 deleted mail.mail records with IDs: [452] 
+2026-11-05 11:29:02,352 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:29:02,709 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #199 deleted mail.activity records with IDs: [363] 
+2026-11-05 11:29:02,850 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_only_officer_can_verify_required_documents ... 
+2026-11-05 11:29:03,136 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_only_the_assigned_officer_can_validate ... 
+2026-11-05 11:29:03,847 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 453 and Message-Id '<240805002102109.1793878143.665730714797974-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 11:29:03,847 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:29:03,871 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #198 deleted mail.mail records with IDs: [453] 
+2026-11-05 11:29:03,872 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:29:04,623 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #199 deleted mail.activity records with IDs: [364] 
+2026-11-05 11:29:04,642 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_user_with_agent_and_officer_groups_is_not_allowed_agent_actions ... 
+2026-11-05 11:29:05,061 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_role_permissions: Starting TestEtatCivilRolePermissions.test_validated_act_cannot_be_transmitted ... 
+2026-11-05 11:29:05,691 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Mail (mail.mail) with ID 454 and Message-Id '<358609764799127.1793878145.541091680526733-openerp-message-notify@ulrich-Default-string>' from 'role-agent@example.test' to (redacted) 'r*********er@example.test' successfully sent 
+2026-11-05 11:29:05,691 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Total emails tried by SMTP: 1 
+2026-11-05 11:29:05,705 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #198 deleted mail.mail records with IDs: [454] 
+2026-11-05 11:29:05,705 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.mail.models.mail_mail: Sent batch 1 emails via mail server ID #False 
+2026-11-05 11:29:06,317 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.models.unlink: User #199 deleted mail.activity records with IDs: [365] 
+2026-11-05 11:29:06,364 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_attachment: filestore gc 11 checked, 11 removed 
+2026-11-05 11:29:06,388 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_user_directory: Starting TestEtatCivilUserDirectory.test_role_is_derived_from_existing_groups ... 
+2026-11-05 11:29:06,727 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_user_directory: Starting TestEtatCivilUserDirectory.test_user_directory_action_is_read_only_and_restricted ... 
+2026-11-05 11:29:06,754 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.etat_civil.tests.test_user_directory: Starting TestEtatCivilUserDirectory.test_user_directory_menu_uses_native_user_model ... 
+2026-11-05 11:29:06,773 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.addons.base.models.ir_attachment: filestore gc 1 checked, 1 removed 
+2026-11-05 11:29:06,788 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.service.server: 91 post-tests in 62.94s, 19112 queries 
+2026-11-05 11:29:06,788 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.tests.stats: etat_civil: 105 tests 61.24s 18943 queries 
+2026-11-05 11:29:06,788 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.tests.result: 0 failed, 0 error(s) of 91 tests when loading database 'etat_civil_admin_roles_validation_20261104' 
+2026-11-05 11:29:06,788 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.service.server: Initiating shutdown 
+2026-11-05 11:29:06,789 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-11-05 11:29:06,817 361225 INFO etat_civil_admin_roles_validation_20261104 odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 1 connections  

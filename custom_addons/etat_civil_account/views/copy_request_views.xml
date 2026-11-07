@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_copy_request_tree" model="ir.ui.view">
+        <field name="name">etat.civil.copy.request.tree</field>
+        <field name="model">etat.civil.copy.request</field>
+        <field name="arch" type="xml">
+            <tree decoration-danger="state == 'waiting_payment'" decoration-success="state == 'delivered'">
+                <field name="name"/><field name="request_date"/><field name="partner_id"/>
+                <field name="document_type"/><field name="copy_kind"/><field name="copy_number"/>
+                <field name="center_id"/><field name="amount"/><field name="currency_id"/><field name="state"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_copy_request_form" model="ir.ui.view">
+        <field name="name">etat.civil.copy.request.form</field>
+        <field name="model">etat.civil.copy.request</field>
+        <field name="arch" type="xml">
+            <form string="Demande de copie">
+                <header>
+                    <button name="action_submit" type="object" string="Soumettre" class="oe_highlight" groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_officier,etat_civil.group_etat_civil_admin" invisible="state != 'draft'"/>
+                    <button name="action_create_invoice" type="object" string="Créer la facture brouillon" groups="account.group_account_invoice,account.group_account_user" invisible="state != 'waiting_payment' or account_move_id"/>
+                    <button name="action_confirm_payment" type="object" string="Confirmer l'encaissement" class="oe_highlight" groups="etat_civil_account.group_etat_civil_regisseur,etat_civil.group_etat_civil_admin" invisible="state != 'waiting_payment'"/>
+                    <button name="action_deliver" type="object" string="Enregistrer la délivrance" class="oe_highlight" invisible="state != 'authorized'" groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_officier,etat_civil.group_etat_civil_admin"/>
+                    <button name="action_print_copy" type="object" string="Imprimer / consulter la copie" invisible="state not in ('authorized', 'delivered')" groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_officier,etat_civil.group_etat_civil_admin"/>
+                    <button name="action_cancel" type="object" string="Annuler" invisible="state in ('delivered', 'cancelled')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,waiting_payment,payment_confirmed,authorized,delivered"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><h1><field name="name"/></h1></div>
+                    <field name="company_id" invisible="1"/>
+                    <group>
+                        <group string="Demande">
+                            <field name="document_type"/><field name="copy_kind"/><field name="partner_id"/>
+                            <field name="center_id"/><field name="requested_by_id"/><field name="request_date"/>
+                        </group>
+                        <group string="Acte concerné">
+                            <field name="acte_naissance_id" invisible="document_type != 'naissance'"/>
+                            <field name="acte_mariage_id" invisible="document_type != 'mariage'"/>
+                            <field name="acte_deces_id" invisible="document_type != 'deces'"/>
+                        </group>
+                    </group>
+                    <group string="Facturation et délivrance">
+                        <field name="copy_number"/><field name="is_free"/><field name="tariff_id"/>
+                        <field name="amount"/><field name="currency_id"/><field name="account_move_id"/>
+                        <field name="payment_confirmed_by_id"/><field name="payment_confirmed_at"/>
+                        <field name="delivered_by_id"/><field name="delivered_at"/>
+                    </group>
+                    <notebook><page string="Historique"><field name="event_ids" readonly="1"><tree>
+                        <field name="event_date"/><field name="event_type"/><field name="user_id"/><field name="note"/><field name="account_move_id"/>
+                    </tree></field></page></notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="view_copy_tariff_tree" model="ir.ui.view">
+        <field name="name">etat.civil.copy.tariff.tree</field><field name="model">etat.civil.copy.tariff</field>
+        <field name="arch" type="xml"><tree><field name="name"/><field name="document_type"/><field name="copy_kind"/><field name="product_id"/><field name="price"/><field name="currency_id"/><field name="center_id"/><field name="date_start"/><field name="date_end"/><field name="active"/></tree></field>
+    </record>
+    <record id="view_copy_tariff_form" model="ir.ui.view">
+        <field name="name">etat.civil.copy.tariff.form</field><field name="model">etat.civil.copy.tariff</field>
+        <field name="arch" type="xml"><form><sheet><group>
+            <field name="name"/><field name="document_type"/><field name="copy_kind"/><field name="product_id"/>
+            <field name="price"/><field name="currency_id"/><field name="company_id"/><field name="center_id"/>
+            <field name="first_copy_free"/><field name="date_start"/><field name="date_end"/><field name="active"/>
+        </group></sheet></form></field>
+    </record>
+    <record id="action_copy_request" model="ir.actions.act_window">
+        <field name="name">Demandes de copies</field><field name="res_model">etat.civil.copy.request</field><field name="view_mode">tree,form</field>
+    </record>
+    <record id="action_copy_tariff" model="ir.actions.act_window">
+        <field name="name">Tarifs des copies</field><field name="res_model">etat.civil.copy.tariff</field><field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_copy_request" name="Demandes de copies" parent="etat_civil.menu_etat_civil_root" action="action_copy_request" sequence="30" groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_officier,etat_civil.group_etat_civil_admin,group_etat_civil_regisseur"/>
+    <menuitem id="menu_copy_tariff" name="Tarifs des copies" parent="etat_civil.menu_etat_civil_root" action="action_copy_tariff" sequence="31" groups="etat_civil.group_etat_civil_admin"/>
+</odoo>
+

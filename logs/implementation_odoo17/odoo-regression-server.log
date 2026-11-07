@@ -1,0 +1,52 @@
+2026-11-05 16:30:39,768 508925 INFO ? odoo: Odoo version 17.0 
+2026-11-05 16:30:39,769 508925 INFO ? odoo: Using configuration file at /tmp/etat_civil_dev_regression_server_20261105.conf 
+2026-11-05 16:30:39,769 508925 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/implementation_odoo17_dev/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 16:30:39,769 508925 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 16:30:39,963 508925 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 16:30:40,262 508925 INFO ? odoo.service.server: HTTP service (werkzeug) running on 127.0.0.1:18177 
+2026-11-05 16:30:40,304 508925 INFO etat_civil_dev_regression_20261105 odoo.modules.loading: loading 1 modules... 
+2026-11-05 16:30:40,314 508925 INFO etat_civil_dev_regression_20261105 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-05 16:30:40,346 508925 INFO etat_civil_dev_regression_20261105 odoo.modules.loading: loading 46 modules... 
+2026-11-05 16:30:41,345 508925 INFO etat_civil_dev_regression_20261105 odoo.modules.loading: 46 modules loaded in 1.00s, 0 queries (+0 extra) 
+2026-11-05 16:30:41,595 508925 INFO etat_civil_dev_regression_20261105 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 16:30:41,601 508925 INFO etat_civil_dev_regression_20261105 odoo.modules.loading: Modules loaded. 
+2026-11-05 16:30:41,613 508925 INFO etat_civil_dev_regression_20261105 odoo.modules.registry: Registry loaded in 1.350s 
+2026-11-05 16:30:41,614 508925 INFO etat_civil_dev_regression_20261105 odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 1 connections  
+2026-11-05 16:30:41,626 508956 INFO etat_civil_dev_regression_20261105 odoo.service.server: Worker WorkerHTTP (508956) alive 
+2026-11-05 16:30:41,634 508958 INFO etat_civil_dev_regression_20261105 odoo.service.server: Worker WorkerHTTP (508958) alive 
+2026-11-05 16:30:43,173 508959 INFO ? odoo: Odoo version 17.0 
+2026-11-05 16:30:43,173 508959 INFO ? odoo: Using configuration file at /tmp/etat_civil_dev_regression_server_20261105.conf 
+2026-11-05 16:30:43,174 508959 INFO ? odoo: addons paths: ['/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/data/implementation_odoo17_dev/addons/17.0', '/home/ulrich/tous_les_projet/stage_l3_odoo/odoo/addons', '/home/ulrich/tous_les_projet/stage_l3_odoo/custom_addons'] 
+2026-11-05 16:30:43,174 508959 INFO ? odoo: database: odoo17@127.0.0.1:5432 
+2026-11-05 16:30:43,378 508959 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-11-05 16:30:44,079 508959 INFO etat_civil_dev_regression_20261105 odoo.modules.loading: loading 1 modules... 
+2026-11-05 16:30:44,092 508959 INFO etat_civil_dev_regression_20261105 odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-11-05 16:30:44,123 508959 INFO etat_civil_dev_regression_20261105 odoo.modules.loading: loading 46 modules... 
+2026-11-05 16:30:45,109 508959 INFO etat_civil_dev_regression_20261105 odoo.modules.loading: 46 modules loaded in 0.99s, 0 queries (+0 extra) 
+2026-11-05 16:30:45,346 508959 INFO etat_civil_dev_regression_20261105 odoo.tools.version_tag_reset: Detected tp_versions_used at offset 410, reset enabled 
+2026-11-05 16:30:45,353 508959 INFO etat_civil_dev_regression_20261105 odoo.modules.loading: Modules loaded. 
+2026-11-05 16:30:45,362 508959 INFO etat_civil_dev_regression_20261105 odoo.modules.registry: Registry loaded in 1.329s 
+2026-11-05 16:30:45,366 508959 INFO etat_civil_dev_regression_20261105 odoo.service.server: Evented Service (longpolling) running on 127.0.0.1:18178 
+2026-11-05 16:31:55,876 508958 INFO etat_civil_dev_regression_20261105 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 16:31:56,238 508958 INFO etat_civil_dev_regression_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:31:56] "GET /web/login HTTP/1.1" 200 - 60 0.063 0.349
+2026-11-05 16:31:56,321 508958 INFO etat_civil_dev_regression_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:31:56] "GET /api/v1/health HTTP/1.1" 200 - 2 0.004 0.027
+2026-11-05 16:32:40,594 508956 INFO etat_civil_dev_regression_20261105 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-11-05 16:32:41,042 508956 INFO etat_civil_dev_regression_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:32:41] "GET /web/login HTTP/1.1" 200 - 60 0.095 0.426
+2026-11-05 16:32:41,167 508956 INFO etat_civil_dev_regression_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:32:41] "GET /web/assets/1d0cf09/web.assets_frontend.min.css HTTP/1.1" 200 - 6 0.015 0.051
+2026-11-05 16:32:41,291 508956 INFO etat_civil_dev_regression_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:32:41] "GET /web/binary/company_logo HTTP/1.1" 200 - 3 0.015 0.090
+2026-11-05 16:32:41,364 508956 INFO etat_civil_dev_regression_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:32:41] "GET /web/assets/a3cf721/web.assets_frontend_minimal.min.js HTTP/1.1" 200 - 5 0.017 0.045
+2026-11-05 16:32:41,633 508958 INFO ? werkzeug: 127.0.0.1 - - [05/Nov/2026 16:32:41] "GET /web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0 HTTP/1.1" 200 - 1 0.004 0.519
+2026-11-05 16:32:41,721 508958 INFO etat_civil_dev_regression_20261105 werkzeug: 127.0.0.1 - - [05/Nov/2026 16:32:41] "GET /web/assets/0c5835b/web.assets_frontend_lazy.min.js HTTP/1.1" 200 - 6 0.014 0.052
+2026-11-05 16:32:42,262 508956 INFO ? werkzeug: 127.0.0.1 - - [05/Nov/2026 16:32:42] "GET /web/static/img/favicon.ico HTTP/1.1" 200 - 1 0.009 0.582
+2026-11-05 17:34:21,995 508925 ERROR etat_civil_dev_regression_20261105 odoo.service.server: WorkerHTTP (508956) timeout after 120s 
+2026-11-05 17:34:22,038 523549 INFO etat_civil_dev_regression_20261105 odoo.service.server: Worker WorkerHTTP (523549) alive 
+2026-11-06 05:44:03,479 508925 ERROR etat_civil_dev_regression_20261105 odoo.service.server: WorkerHTTP (508958) timeout after 120s 
+2026-11-06 05:44:03,652 664527 INFO etat_civil_dev_regression_20261105 odoo.service.server: Worker WorkerHTTP (664527) alive 
+2026-11-06 08:28:47,192 508925 ERROR etat_civil_dev_regression_20261105 odoo.service.server: WorkerHTTP (664527) timeout after 120s 
+2026-11-06 08:28:47,325 778234 INFO etat_civil_dev_regression_20261105 odoo.service.server: Worker WorkerHTTP (778234) alive 
+2026-11-06 11:15:23,818 508925 ERROR etat_civil_dev_regression_20261105 odoo.service.server: WorkerHTTP (778234) timeout after 120s 
+2026-11-06 11:15:24,623 848621 INFO etat_civil_dev_regression_20261105 odoo.service.server: Worker WorkerHTTP (848621) alive 
+2026-11-06 16:35:24,734 508925 ERROR etat_civil_dev_regression_20261105 odoo.service.server: WorkerHTTP (523549) timeout after 120s 
+2026-11-06 16:35:24,993 882095 INFO etat_civil_dev_regression_20261105 odoo.service.server: Worker WorkerHTTP (882095) alive 
+2026-11-07 07:15:44,151 508925 ERROR etat_civil_dev_regression_20261105 odoo.service.server: WorkerHTTP (882095) timeout after 120s 
+2026-11-07 07:15:44,164 1041378 INFO etat_civil_dev_regression_20261105 odoo.service.server: Worker WorkerHTTP (1041378) alive 
