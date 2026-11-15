@@ -1071,6 +1071,27 @@ class EtatCivilActeOfficiel(models.AbstractModel):
             piece.action_mark_verified()
         return True
 
+    def action_add_manual_piece(self):
+        """Ouvre le formulaire de pièce justificative pour ajouter un document manuel."""
+        self.ensure_one()
+        self._ensure_competence_territoriale()
+        self._ensure_agent()
+        owner_field = self._pieces_owner_field()
+        if not owner_field:
+            raise UserError(_("Impossible d'ajouter une pièce à ce type d'acte."))
+        return {
+            "type": "ir.actions.act_window",
+            "name": _("Ajouter un document"),
+            "res_model": "etat.civil.piece.justificative",
+            "view_mode": "form",
+            "target": "new",
+            "context": {
+                "default_" + owner_field: self.id,
+                "default_etat": "a_fournir",
+                "default_obligatoire": False,
+            },
+        }
+
     def action_telecharger_acte_pdf(self):
         self.ensure_one()
         if self.statut not in ("valide", "rectifie", "archive"):

@@ -221,17 +221,10 @@
                             </field>
                         </page>
                         <page string="Pièces à vérifier">
-                            <h3>PIÈCES JUSTIFICATIVES</h3>
-                            <button name="action_recevoir_toutes_pieces" type="object" string="REÇU TOUT"
-                                    class="btn-secondary mb-2"
-                                    groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_admin"/>
-                            <button name="action_verifier_toutes_pieces" type="object" string="VÉRIFIER TOUT"
-                                    class="btn-primary mb-2 ms-2"
-                                    groups="etat_civil.group_etat_civil_officier,etat_civil.group_etat_civil_admin"/>
-                            <field name="piece_ids">
-                                <tree editable="bottom" delete="0">
+                            <field name="piece_ids" nolabel="1">
+                                <tree delete="0">
                                     <field name="genere_automatiquement" column_invisible="1"/>
-                                    <field name="name" readonly="genere_automatiquement"/>
+                                    <field name="name" readonly="1"/>
                                     <field name="obligatoire"/>
                                     <field name="etat" readonly="1"/>
                                     <button name="action_mark_received" type="object" string="REÇU"
@@ -250,6 +243,16 @@
                                            string="Fichiers"/>
                                 </tree>
                             </field>
+                            <div class="text-end mt-2" groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_admin">
+                                <button name="action_recevoir_toutes_pieces" type="object" string="✓ Marquer tout comme REÇU"
+                                        class="btn-secondary"/>
+                                <button name="action_add_manual_piece" type="object" string="+ Ajouter un document"
+                                        class="btn-outline-primary ms-2"/>
+                            </div>
+                            <div class="text-end mt-1" groups="etat_civil.group_etat_civil_officier,etat_civil.group_etat_civil_admin">
+                                <button name="action_verifier_toutes_pieces" type="object" string="✓ VÉRIFIER TOUT"
+                                        class="btn-primary"/>
+                            </div>
                         </page>
                         <page string="Notifications aux communes de naissance">
                             <field name="notification_mention_ids">
