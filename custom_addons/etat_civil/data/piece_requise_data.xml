@@ -31,14 +31,6 @@
         <field name="description">Certificat de résidence du parent – toujours requis.</field>
     </record>
 
-    <record id="piece_requise_naissance_livret_famille" model="etat.civil.piece.requise">
-        <field name="type_acte">naissance</field>
-        <field name="code_piece">livret_famille</field>
-        <field name="condition">toujours</field>
-        <field name="obligatoire" eval="True"/>
-        <field name="sequence">25</field>
-        <field name="description">Livret de famille – toujours requis.</field>
-    </record>
 
     <!-- Naissance à l'hôpital -->
     <record id="piece_requise_naissance_hopital_declaration" model="etat.civil.piece.requise">
@@ -102,41 +94,6 @@
         <field name="description">CIN du second conjoint – toujours requis.</field>
     </record>
 
-    <record id="piece_requise_mariage_celibat_conjoint_1_toujours" model="etat.civil.piece.requise">
-        <field name="type_acte">mariage</field>
-        <field name="code_piece">celibat_conjoint_1</field>
-        <field name="condition">toujours</field>
-        <field name="obligatoire" eval="True"/>
-        <field name="sequence">30</field>
-        <field name="description">Certificat de célibat du premier conjoint – toujours requis.</field>
-    </record>
-
-    <record id="piece_requise_mariage_celibat_conjoint_2_toujours" model="etat.civil.piece.requise">
-        <field name="type_acte">mariage</field>
-        <field name="code_piece">celibat_conjoint_2</field>
-        <field name="condition">toujours</field>
-        <field name="obligatoire" eval="True"/>
-        <field name="sequence">35</field>
-        <field name="description">Certificat de célibat du second conjoint – toujours requis.</field>
-    </record>
-
-    <record id="piece_requise_mariage_residence_conjoint_1_toujours" model="etat.civil.piece.requise">
-        <field name="type_acte">mariage</field>
-        <field name="code_piece">residence_conjoint_1</field>
-        <field name="condition">toujours</field>
-        <field name="obligatoire" eval="True"/>
-        <field name="sequence">40</field>
-        <field name="description">Certificat de résidence du premier conjoint – toujours requis.</field>
-    </record>
-
-    <record id="piece_requise_mariage_residence_conjoint_2_toujours" model="etat.civil.piece.requise">
-        <field name="type_acte">mariage</field>
-        <field name="code_piece">residence_conjoint_2</field>
-        <field name="condition">toujours</field>
-        <field name="obligatoire" eval="True"/>
-        <field name="sequence">45</field>
-        <field name="description">Certificat de résidence du second conjoint – toujours requis.</field>
-    </record>
 
     <!-- Témoins — dossier complet (non historique) -->
     <record id="piece_requise_mariage_cin_temoin_1" model="etat.civil.piece.requise">

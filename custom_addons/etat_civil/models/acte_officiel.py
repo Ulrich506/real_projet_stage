@@ -867,7 +867,14 @@ class EtatCivilActeOfficiel(models.AbstractModel):
         return required
 
     def _required_piece_codes(self):
-        return set()
+        """Renvoie l'ensemble des codes de pièces requises pour cet acte.
+
+        Utilise la table de configuration etat.civil.piece.requise si des règles
+        sont définies pour le type d'acte. Retourne un ensemble vide sinon,
+        ce qui empêche la génération automatique (comportement legacy).
+        """
+        configured = self._get_configured_required_pieces()
+        return configured if configured is not None else set()
 
     def _pieces_owner_field(self):
         return {
@@ -1166,6 +1173,8 @@ class EtatCivilActeOfficiel(models.AbstractModel):
                     "texte_integral_acte": generated_text,
                     "texte_integral_acte_auto": True,
                 })
+        # Générer automatiquement les pièces justificatives attendues
+        records._sync_pieces_justificatives()
         return records
 
     def write(self, vals):
@@ -1239,6 +1248,12 @@ class EtatCivilActeOfficiel(models.AbstractModel):
             "enfant_id", "mere_id", "pere_id", "declarant_id", "date_naissance_enfant",
             "heure_naissance", "lieu_naissance", "lieu_accouchement", "filiation",
             "defunt_id", "date_deces", "heure_deces", "lieu_deces", "cause_deces",
+            # Champs conditionnels pièces justificatives
+            "conjoint_1_est_etranger", "conjoint_2_est_etranger",
+            "conjoint_1_capacite_requise", "conjoint_2_capacite_requise",
+            "conjoint_1_residence_etranger_requise",
+            "conjoint_2_residence_etranger_requise",
+            "donnees_historiques_incompletes",
         }
         if business_fields.intersection(vals):
             for record in self:
@@ -1250,6 +1265,18 @@ class EtatCivilActeOfficiel(models.AbstractModel):
                         ).write({
                             "texte_integral_acte": generated_text,
                         })
+            # Mettre à jour les pièces justificatives si les champs conditionnels changent
+            condition_fields = {
+                "conjoint_1_est_etranger", "conjoint_2_est_etranger",
+                "conjoint_1_capacite_requise", "conjoint_2_capacite_requise",
+                "conjoint_1_residence_etranger_requise",
+                "conjoint_2_residence_etranger_requise",
+                "donnees_historiques_incompletes",
+                "lieu_accouchement", "filiation",
+                "temoin_1_id", "temoin_2_id",
+            }
+            if condition_fields.intersection(vals):
+                self._sync_pieces_justificatives()
         return result
 
     def unlink(self):

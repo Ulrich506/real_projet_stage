@@ -429,9 +429,9 @@ class TestPiecesAutoPopulation(TransactionCase):
         codes = acte.piece_ids.mapped("name")
         self.assertIn("livret_famille", codes,
                       "Le livret de famille doit apparaître après passage en filiation légitime.")
-        # cin_parent n'est plus requis et doit avoir été supprimé (s'il n'avait pas de fichier/reçu)
-        self.assertNotIn("cin_parent", codes,
-                         "Le CIN du parent doit disparaître après passage en filiation légitime.")
+        # cin_parent est toujours requis (condition='toujours') donc il reste présent
+        self.assertIn("cin_parent", codes,
+                      "Le CIN du parent reste présent car requis pour toute naissance.")
 
     # ==================================================================
     # TEST 14 : Boutons d'impression bloqués tant que pièce obligatoire manque
