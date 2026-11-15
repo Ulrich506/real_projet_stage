@@ -233,6 +233,29 @@ class EtatCivilActeOfficiel(models.AbstractModel):
                 % (centre.nom_centre if centre else _("non défini"))
             )
 
+    def _ensure_competence_territoriale_create(self, vals):
+        """Vérifie la compétence territoriale avant la création d'un acte.
+
+        Examine le registre_id fourni dans vals pour s'assurer que l'utilisateur
+        est affecté au centre correspondant. Ne fait pas confiance aux valeurs
+        envoyées depuis l'interface sans vérification serveur.
+        """
+        user = self.env.user
+        if self.env.su or user._is_etat_civil_admin():
+            return
+        registre_id = vals.get("registre_id")
+        if not registre_id:
+            return
+        registre = self.env["etat.civil.registre"].browse(registre_id).exists()
+        if not registre:
+            return
+        centre = registre.centre_id
+        if not centre or centre not in user.etat_civil_centre_ids:
+            raise AccessError(
+                _("Vous n'êtes pas affecté au centre d'état civil de ce registre (%s). Création refusée.")
+                % (centre.nom_centre if centre else _("non défini"))
+            )
+
     def _ensure_officier_responsable(self):
         self.ensure_one()
         if (
@@ -1101,6 +1124,8 @@ class EtatCivilActeOfficiel(models.AbstractModel):
         )
         pending_feuillets = {}
         for vals in vals_list:
+            # VULN-01 fix: vérifier la compétence territoriale avant création
+            self._ensure_competence_territoriale_create(vals)
             if not (vals.get("texte_integral_acte") or "").strip():
                 vals["texte_integral_acte"] = "Texte intégral en cours de génération."
             if not internal_transition:
@@ -1165,6 +1190,24 @@ class EtatCivilActeOfficiel(models.AbstractModel):
         if protected_workflow_fields.intersection(vals) and not internal_transition:
             raise UserError(_("Les informations de transmission et de vérification sont gérées par le workflow."))
 
+        # VULN-01 fix: vérifier la compétence territoriale sur les enregistrements existants
+        if not self.env.su:
+            for record in self:
+                record._ensure_competence_territoriale()
+
+        # VULN-01 fix: empêcher le changement de registre vers un autre centre
+        if "registre_id" in vals and not self.env.su:
+            user = self.env.user
+            if not user._is_etat_civil_admin():
+                new_registre = self.env["etat.civil.registre"].browse(vals["registre_id"]).exists()
+                if new_registre:
+                    new_centre = new_registre.centre_id
+                    if not new_centre or new_centre not in user.etat_civil_centre_ids:
+                        raise AccessError(
+                            _("Vous n'êtes pas affecté au centre du registre cible (%s). Modification refusée.")
+                            % (new_centre.nom_centre if new_centre else _("non défini"))
+                        )
+
         if not internal_transition:
             for record in self:
                 if record.statut in {"brouillon", "a_corriger"}:
@@ -1211,6 +1254,10 @@ class EtatCivilActeOfficiel(models.AbstractModel):
 
     def unlink(self):
         self._ensure_agent()
+        # VULN-01 fix: vérifier la compétence territoriale avant suppression
+        if not self.env.su:
+            for record in self:
+                record._ensure_competence_territoriale()
         for record in self:
             if record.statut not in ("brouillon", "a_corriger"):
                 raise UserError(

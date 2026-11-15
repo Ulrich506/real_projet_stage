@@ -1,6 +1,6 @@
 {
     "name": "État civil — Connexion par e-mail",
-    "version": "18.0.1.0.2",
+    "version": "17.0.1.0.2",
     "category": "Administration",
     "summary": "Impose une adresse e-mail comme identifiant utilisateur",
     "depends": ["base", "web", "etat_civil"],
