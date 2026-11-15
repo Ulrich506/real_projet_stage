@@ -27,7 +27,7 @@
     <record id="group_etat_civil_admin" model="res.groups">
         <field name="name">Administrateur d'état civil</field>
         <field name="category_id" ref="module_category_etat_civil"/>
-        <field name="implied_ids" eval="[(6, 0, [ref('etat_civil.group_etat_civil_agent')])]"/>
+        <field name="implied_ids" eval="[(6, 0, [ref('etat_civil.group_etat_civil_agent'), ref('etat_civil.group_etat_civil_officier')])]"/>
     </record>
 
     <record id="rule_acte_naissance_centre" model="ir.rule">

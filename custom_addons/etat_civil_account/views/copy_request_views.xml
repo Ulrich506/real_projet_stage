@@ -95,7 +95,6 @@
     <record id="action_copy_payment" model="ir.actions.act_window">
         <field name="name">Quittances de versement</field><field name="res_model">etat.civil.copy.payment</field><field name="view_mode">tree,form</field>
     </record>
-    <menuitem id="menu_copy_request" name="Demandes de copies" parent="etat_civil.menu_etat_civil_root" action="action_copy_request" sequence="30" groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_admin,group_etat_civil_regisseur"/>
     <menuitem id="menu_copy_tariff" name="Tarifs des copies" parent="etat_civil.menu_etat_civil_root" action="action_copy_tariff" sequence="31" groups="etat_civil.group_etat_civil_admin"/>
     <menuitem id="menu_copy_payment" name="Quittances" parent="etat_civil.menu_etat_civil_root" action="action_copy_payment" sequence="32" groups="etat_civil.group_etat_civil_admin,group_etat_civil_regisseur"/>
     <menuitem id="menu_copy_receipt_settings" name="Configuration des quittances" parent="etat_civil.menu_etat_civil_root" action="action_copy_receipt_settings" sequence="33" groups="etat_civil.group_etat_civil_admin"/>

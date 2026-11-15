@@ -1,6 +1,6 @@
 {
     "name": "Gestion d’État Civil",
-    "version": "17.0.2.1.12",
+    "version": "17.0.2.1.14",
     "summary": "Gestion professionnelle des citoyens et actes d’état civil",
     "category": "Public Sector",
     "author": "Équipe État Civil",
@@ -37,6 +37,8 @@
             "etat_civil/static/src/scss/etat_civil_ui.scss",
             "etat_civil/static/src/js/piece_attachment_preview_field.js",
             "etat_civil/static/src/xml/piece_attachment_preview_field.xml",
+            "etat_civil/static/src/js/auto_save.js",
+            "etat_civil/static/src/xml/auto_save.xml",
         ],
     },
     "installable": True,

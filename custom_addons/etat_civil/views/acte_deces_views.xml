@@ -103,6 +103,7 @@
         <field name="arch" type="xml">
             <form string="Acte de décès" class="ec_form_view">
                 <header>
+                    <button name="%(action_etat_civil_acte_deces)d" string="Retour à la liste" type="action" class="btn-secondary"/>
                     <button name="action_envoyer_validation" string="Envoyer pour validation" type="object"
                             class="btn-primary" groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_admin"
                             invisible="statut not in ('brouillon', 'a_corriger')"/>
