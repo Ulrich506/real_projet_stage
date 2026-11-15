@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Les agents préparent et transmettent les actes dans leurs centres
+         affectés. Seul le groupe officier peut les valider. -->
+    <record id="module_category_etat_civil" model="ir.module.category">
+        <field name="name">État Civil</field>
+        <field name="description">Gestion des actes d'état civil</field>
+        <field name="sequence">25</field>
+    </record>
+
+    <!-- Groupe métier qui donne aux agents les droits de préparation et de
+         transmission des actes. -->
+    <record id="group_etat_civil_agent" model="res.groups">
+        <field name="name">Agent d'état civil</field>
+        <field name="category_id" ref="module_category_etat_civil"/>
+        <field name="implied_ids" eval="[(6, 0, [ref('base.group_user')])]"/>
+    </record>
+
+    <!-- Rôle de contrôle et de validation, distinct du rôle Agent. -->
+    <record id="group_etat_civil_officier" model="res.groups">
+        <field name="name">Officier d'état civil</field>
+        <field name="category_id" ref="module_category_etat_civil"/>
+        <field name="implied_ids" eval="[(6, 0, [ref('base.group_user')])]"/>
+    </record>
+
+    <!-- Administrateur métier: droits d'agent, d'officier et de gestion, sans rôle Odoo système. -->
+    <record id="group_etat_civil_admin" model="res.groups">
+        <field name="name">Administrateur d'état civil</field>
+        <field name="category_id" ref="module_category_etat_civil"/>
+        <field name="implied_ids" eval="[(6, 0, [ref('etat_civil.group_etat_civil_agent')])]"/>
+    </record>
+
+    <record id="rule_acte_naissance_centre" model="ir.rule">
+        <field name="name">Actes de naissance limités aux centres affectés</field>
+        <field name="model_id" ref="model_etat_civil_acte_naissance"/>
+        <field name="domain_force">[('registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_agent'))]"/>
+    </record>
+
+    <record id="rule_acte_mariage_centre" model="ir.rule">
+        <field name="name">Actes de mariage limités aux centres affectés</field>
+        <field name="model_id" ref="model_etat_civil_acte_mariage"/>
+        <field name="domain_force">[('registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_agent'))]"/>
+    </record>
+
+    <record id="rule_acte_deces_centre" model="ir.rule">
+        <field name="name">Actes de décès limités aux centres affectés</field>
+        <field name="model_id" ref="model_etat_civil_acte_deces"/>
+        <field name="domain_force">[('registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_agent'))]"/>
+    </record>
+
+    <record id="rule_acte_naissance_officier_centre" model="ir.rule">
+        <field name="name">Officiers: actes de naissance qui leur sont affectés</field>
+        <field name="model_id" ref="model_etat_civil_acte_naissance"/>
+        <field name="domain_force">[('officier_validateur_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_officier'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_acte_mariage_officier_centre" model="ir.rule">
+        <field name="name">Officiers: actes de mariage qui leur sont affectés</field>
+        <field name="model_id" ref="model_etat_civil_acte_mariage"/>
+        <field name="domain_force">[('officier_validateur_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_officier'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_acte_deces_officier_centre" model="ir.rule">
+        <field name="name">Officiers: actes de décès qui leur sont affectés</field>
+        <field name="model_id" ref="model_etat_civil_acte_deces"/>
+        <field name="domain_force">[('officier_validateur_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_officier'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_centre_officier" model="ir.rule">
+        <field name="name">Consultation des centres affectés aux officiers</field>
+        <field name="model_id" ref="model_etat_civil_centre"/>
+        <field name="domain_force">[('id', 'in', user.etat_civil_centre_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_officier'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_registre_officier_centre" model="ir.rule">
+        <field name="name">Consultation des registres des centres affectés aux officiers</field>
+        <field name="model_id" ref="model_etat_civil_registre"/>
+        <field name="domain_force">[('centre_id', 'in', user.etat_civil_centre_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_officier'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_mention_agent_centre" model="ir.rule">
+        <field name="name">Mentions marginales limitées aux centres affectés des agents</field>
+        <field name="model_id" ref="model_etat_civil_mention_marginale"/>
+        <field name="domain_force">['|', '|', '|', '|', '|', ('acte_naissance_id.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_mariage_id.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_deces_id.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('source_acte_mariage_id.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('source_acte_deces_id.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), '&amp;', ('create_uid', '=', user.id), '&amp;', '&amp;', '&amp;', '&amp;', ('acte_naissance_id', '=', False), ('acte_mariage_id', '=', False), ('acte_deces_id', '=', False), ('source_acte_mariage_id', '=', False), ('source_acte_deces_id', '=', False)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_agent'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_mention_officier_centre" model="ir.rule">
+        <field name="name">Officiers: mentions liées à leurs dossiers affectés</field>
+        <field name="model_id" ref="model_etat_civil_mention_marginale"/>
+        <field name="domain_force">['|', '|', '|', '|', ('acte_naissance_id.officier_validateur_id', '=', user.id), ('acte_mariage_id.officier_validateur_id', '=', user.id), ('acte_deces_id.officier_validateur_id', '=', user.id), ('source_acte_mariage_id.officier_validateur_id', '=', user.id), ('source_acte_deces_id.officier_validateur_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_officier'))]"/>
+    </record>
+
+    <record id="rule_piece_agent_centre" model="ir.rule">
+        <field name="name">Pièces justificatives limitées aux centres affectés des agents</field>
+        <field name="model_id" ref="model_etat_civil_piece_justificative"/>
+        <field name="domain_force">['|', '|', '|', '|', '|', '|', '|', '|', ('acte_naissance_id.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_mariage_id.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_deces_id.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('mention_id.acte_naissance_id.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('mention_id.acte_mariage_id.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('mention_id.acte_deces_id.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('mention_id.source_acte_mariage_id.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('mention_id.source_acte_deces_id.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), '&amp;', ('mention_id.create_uid', '=', user.id), '&amp;', '&amp;', '&amp;', '&amp;', ('mention_id.acte_naissance_id', '=', False), ('mention_id.acte_mariage_id', '=', False), ('mention_id.acte_deces_id', '=', False), ('mention_id.source_acte_mariage_id', '=', False), ('mention_id.source_acte_deces_id', '=', False)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_agent'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_piece_officier_centre" model="ir.rule">
+        <field name="name">Pièces justificatives des dossiers affectés aux officiers</field>
+        <field name="model_id" ref="model_etat_civil_piece_justificative"/>
+        <field name="domain_force">['|', '|', '|', '|', '|', '|', '|', ('acte_naissance_id.officier_validateur_id', '=', user.id), ('acte_mariage_id.officier_validateur_id', '=', user.id), ('acte_deces_id.officier_validateur_id', '=', user.id), ('mention_id.acte_naissance_id.officier_validateur_id', '=', user.id), ('mention_id.acte_mariage_id.officier_validateur_id', '=', user.id), ('mention_id.acte_deces_id.officier_validateur_id', '=', user.id), ('mention_id.source_acte_mariage_id.officier_validateur_id', '=', user.id), ('mention_id.source_acte_deces_id.officier_validateur_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_officier'))]"/>
+    </record>
+
+    <record id="rule_mentions_admin_all" model="ir.rule">
+        <field name="name">Administrateurs d'état civil: accès aux mentions</field>
+        <field name="model_id" ref="model_etat_civil_mention_marginale"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_admin'))]"/>
+    </record>
+
+    <record id="rule_pieces_admin_all" model="ir.rule">
+        <field name="name">Administrateurs d'état civil: accès aux pièces justificatives</field>
+        <field name="model_id" ref="model_etat_civil_piece_justificative"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_admin'))]"/>
+    </record>
+
+    <record id="rule_acte_naissance_admin_all" model="ir.rule">
+        <field name="name">Administrateurs d'état civil: tous les actes de naissance</field>
+        <field name="model_id" ref="model_etat_civil_acte_naissance"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_admin'))]"/>
+    </record>
+
+    <record id="rule_acte_mariage_admin_all" model="ir.rule">
+        <field name="name">Administrateurs d'état civil: tous les actes de mariage</field>
+        <field name="model_id" ref="model_etat_civil_acte_mariage"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_admin'))]"/>
+    </record>
+
+    <record id="rule_acte_deces_admin_all" model="ir.rule">
+        <field name="name">Administrateurs d'état civil: tous les actes de décès</field>
+        <field name="model_id" ref="model_etat_civil_acte_deces"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_admin'))]"/>
+    </record>
+
+    <record id="rule_centre_admin_all" model="ir.rule">
+        <field name="name">Administrateurs d'état civil: tous les centres</field>
+        <field name="model_id" ref="model_etat_civil_centre"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_admin'))]"/>
+    </record>
+
+    <record id="rule_registre_admin_all" model="ir.rule">
+        <field name="name">Administrateurs d'état civil: tous les registres</field>
+        <field name="model_id" ref="model_etat_civil_registre"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_admin'))]"/>
+    </record>
+
+    <record id="rule_individu_admin_all" model="ir.rule">
+        <field name="name">Administrateurs d'état civil: tous les citoyens</field>
+        <field name="model_id" ref="model_etat_civil_individu"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_admin'))]"/>
+    </record>
+
+    <record id="rule_individu_agent_centres" model="ir.rule">
+        <field name="name">Agents: citoyens liés à leurs dossiers ou créés par eux</field>
+        <field name="model_id" ref="model_etat_civil_individu"/>
+        <field name="domain_force">['|', '|', '|', '|', '|', '|', '|', '|', '|', '|', ('create_uid', '=', user.id), ('acte_naissance_enfant_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_naissance_pere_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_naissance_mere_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_naissance_declarant_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_mariage_conjoint_1_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_mariage_conjoint_2_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_mariage_temoin_1_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_mariage_temoin_2_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_deces_defunt_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_deces_declarant_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_agent'))]"/>
+    </record>
+    <record id="rule_individu_officier_assigned" model="ir.rule">
+        <field name="name">Officiers: citoyens liés à leurs dossiers affectés</field>
+        <field name="model_id" ref="model_etat_civil_individu"/>
+        <field name="domain_force">['|', '|', '|', '|', '|', '|', '|', '|', '|', ('acte_naissance_enfant_ids.officier_validateur_id', '=', user.id), ('acte_naissance_pere_ids.officier_validateur_id', '=', user.id), ('acte_naissance_mere_ids.officier_validateur_id', '=', user.id), ('acte_naissance_declarant_ids.officier_validateur_id', '=', user.id), ('acte_mariage_conjoint_1_ids.officier_validateur_id', '=', user.id), ('acte_mariage_conjoint_2_ids.officier_validateur_id', '=', user.id), ('acte_mariage_temoin_1_ids.officier_validateur_id', '=', user.id), ('acte_mariage_temoin_2_ids.officier_validateur_id', '=', user.id), ('acte_deces_defunt_ids.officier_validateur_id', '=', user.id), ('acte_deces_declarant_ids.officier_validateur_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_officier'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <!-- Explicit read rules must preserve the same center scope as write rules. -->
+    <record id="rule_acte_naissance_agent_read_all" model="ir.rule">
+        <field name="name">Agents: lecture des actes de naissance de leurs centres</field>
+        <field name="model_id" ref="model_etat_civil_acte_naissance"/>
+        <field name="domain_force">[('registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_agent'))]"/>
+        <field name="perm_read" eval="True"/><field name="perm_write" eval="False"/><field name="perm_create" eval="False"/><field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="rule_acte_mariage_agent_read_all" model="ir.rule">
+        <field name="name">Agents: lecture des actes de mariage de leurs centres</field>
+        <field name="model_id" ref="model_etat_civil_acte_mariage"/>
+        <field name="domain_force">[('registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_agent'))]"/>
+        <field name="perm_read" eval="True"/><field name="perm_write" eval="False"/><field name="perm_create" eval="False"/><field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="rule_acte_deces_agent_read_all" model="ir.rule">
+        <field name="name">Agents: lecture des actes de décès de leurs centres</field>
+        <field name="model_id" ref="model_etat_civil_acte_deces"/>
+        <field name="domain_force">[('registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_agent'))]"/>
+        <field name="perm_read" eval="True"/><field name="perm_write" eval="False"/><field name="perm_create" eval="False"/><field name="perm_unlink" eval="False"/>
+    </record>
+
+    <!-- System administrators receive direct ACLs without inheriting agent
+         record rules or being assigned to an operational role. -->
+</odoo>

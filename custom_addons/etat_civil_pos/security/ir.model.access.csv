@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_etat_civil_demande_guichet_regisseur,etat_civil.demande.guichet.regisseur,etat_civil.model_etat_civil_demande_guichet,etat_civil_account.group_etat_civil_regisseur,1,0,1,0

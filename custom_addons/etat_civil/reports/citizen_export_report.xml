@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_citizen_export" model="ir.actions.report">
+        <field name="name">Exportation des citoyens</field>
+        <field name="model">etat.civil.export.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">etat_civil.report_citizen_export</field>
+        <field name="report_file">etat_civil.report_citizen_export</field>
+        <field name="paperformat_id" ref="base.paperformat_euro"/>
+        <field name="print_report_name">'citoyens_export.pdf'</field>
+    </record>
+
+    <template id="report_citizen_export">
+        <t t-call="web.html_container">
+            <div class="page">
+                <h2 style="text-align: center; margin-bottom: 12px;">
+                    <span>Exportation des citoyens</span>
+                </h2>
+                <p style="text-align: center; margin-bottom: 16px;">
+                    <span t-esc="result_count"/> personne(s)
+                </p>
+                <t t-if="pdf_layout == 'table'">
+                    <table class="table table-sm" style="width: 100%; font-size: 9pt;">
+                        <thead>
+                            <tr>
+                                <th t-foreach="headers" t-as="header" t-esc="header"/>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="rows" t-as="row">
+                                <td t-foreach="row['values']" t-as="cell" t-esc="cell['value']"/>
+                            </tr>
+                        </tbody>
+                    </table>
+                </t>
+                <t t-else="">
+                    <t t-foreach="rows" t-as="row">
+                        <div t-att-style="'page-break-after: always;' if not row_last else ''">
+                            <table class="table table-sm" style="width: 100%;">
+                                <tbody>
+                                    <tr t-foreach="row['values']" t-as="cell">
+                                        <th style="width: 32%;"><span t-esc="cell['label']"/></th>
+                                        <td><span t-esc="cell['value']"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </div>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="rule_guichet_ticket_regisseur_own" model="ir.rule">
+        <field name="name">Régisseurs : tickets créés par eux</field>
+        <field name="model_id" ref="etat_civil.model_etat_civil_demande_guichet"/>
+        <field name="domain_force">[('create_uid', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('etat_civil_account.group_etat_civil_regisseur'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="rule_guichet_ticket_agent_centers" model="ir.rule">
+        <field name="name">Agents : tickets de leurs centres</field>
+        <field name="model_id" ref="etat_civil.model_etat_civil_demande_guichet"/>
+        <field name="domain_force">[('center_id', 'in', user.etat_civil_centre_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('etat_civil.group_etat_civil_agent'))]"/>
+    </record>
+    <record id="rule_guichet_ticket_admin_all" model="ir.rule">
+        <field name="name">Administrateurs d'état civil : tous les tickets</field>
+        <field name="model_id" ref="etat_civil.model_etat_civil_demande_guichet"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('etat_civil.group_etat_civil_admin'))]"/>
+    </record>
+    <record id="rule_guichet_ticket_officier_none" model="ir.rule">
+        <field name="name">Officiers : aucun ticket de guichet</field>
+        <field name="model_id" ref="etat_civil.model_etat_civil_demande_guichet"/>
+        <field name="domain_force">[('id', '=', 0)]</field>
+        <field name="groups" eval="[(4, ref('etat_civil.group_etat_civil_officier'))]"/>
+    </record>
+</odoo>

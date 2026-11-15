@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_etat_civil_demande_guichet_form_copy_request" model="ir.ui.view">
+        <field name="name">etat.civil.demande.guichet.form.copy.request</field>
+        <field name="model">etat.civil.demande.guichet</field>
+        <field name="inherit_id" ref="etat_civil.view_etat_civil_demande_guichet_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group[last()]" position="after">
+                <group string="Suivi de la copie">
+                    <field name="copy_request_ids" readonly="1">
+                        <tree>
+                            <field name="name"/>
+                            <field name="document_type"/>
+                            <field name="state"/>
+                            <field name="amount"/>
+                            <field name="currency_id"/>
+                        </tree>
+                    </field>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

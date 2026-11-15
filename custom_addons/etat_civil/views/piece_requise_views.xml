@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ========================= LISTE ========================= -->
+    <record id="view_etat_civil_piece_requise_tree" model="ir.ui.view">
+        <field name="name">etat.civil.piece.requise.tree</field>
+        <field name="model">etat.civil.piece.requise</field>
+        <field name="arch" type="xml">
+            <tree string="Pièces requises" editable="bottom">
+                <field name="type_acte"/>
+                <field name="code_piece"/>
+                <field name="condition"/>
+                <field name="obligatoire"/>
+                <field name="sequence"/>
+                <field name="description" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ========================= FORMULAIRE ========================= -->
+    <record id="view_etat_civil_piece_requise_form" model="ir.ui.view">
+        <field name="name">etat.civil.piece.requise.form</field>
+        <field name="model">etat.civil.piece.requise</field>
+        <field name="arch" type="xml">
+            <form string="Pièce requise">
+                <sheet>
+                    <group>
+                        <group string="Acte et catégorie">
+                            <field name="type_acte"/>
+                            <field name="code_piece"/>
+                        </group>
+                        <group string="Règle d'application">
+                            <field name="condition"/>
+                            <field name="obligatoire"/>
+                            <field name="sequence"/>
+                        </group>
+                    </group>
+                    <group string="Remarque">
+                        <field name="description" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ========================= RECHERCHE ========================= -->
+    <record id="view_etat_civil_piece_requise_search" model="ir.ui.view">
+        <field name="name">etat.civil.piece.requise.search</field>
+        <field name="model">etat.civil.piece.requise</field>
+        <field name="arch" type="xml">
+            <search string="Recherche">
+                <field name="type_acte"/>
+                <field name="code_piece"/>
+                <filter name="naissance" string="Naissance" domain="[('type_acte','=','naissance')]"/>
+                <filter name="mariage" string="Mariage" domain="[('type_acte','=','mariage')]"/>
+                <filter name="deces" string="Décès" domain="[('type_acte','=','deces')]"/>
+                <filter name="mention" string="Mention" domain="[('type_acte','=','mention')]"/>
+                <separator/>
+                <filter name="obligatoire" string="Obligatoires uniquement" domain="[('obligatoire','=',True)]"/>
+                <group expand="0" string="Regrouper par">
+                    <filter name="group_type_acte" string="Type d'acte" context="{'group_by':'type_acte'}"/>
+                    <filter name="group_condition" string="Condition" context="{'group_by':'condition'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- ========================= ACTION ========================= -->
+    <record id="action_etat_civil_piece_requise" model="ir.actions.act_window">
+        <field name="name">Pièces requises (configuration)</field>
+        <field name="res_model">etat.civil.piece.requise</field>
+        <field name="view_mode">tree,form</field>
+        <field name="groups_id" eval="[(6, 0, [ref('group_etat_civil_admin')])]"/>
+        <field name="search_view_id" ref="view_etat_civil_piece_requise_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Configurez ici les pièces justificatives requises par type d'acte.
+                Elles seront générées automatiquement lors de la création d'un dossier.
+            </p>
+        </field>
+    </record>
+
+</odoo>
+

@@ -1,0 +1,6 @@
+
+/* /spreadsheet/static/src/print_assets/print_spreadsheet.scss */
+ @media print{html, body, html .o_web_client{height: auto;}.o-spreadsheet{height: auto !important;}.o-spreadsheet .o-scrollbar{display: none;}}
+
+/* /spreadsheet_dashboard/static/src/print_assets/print_dashboard_action.scss */
+ @media print{.o_spreadsheet_dashboard_action{height: auto;}.o_spreadsheet_dashboard_action .o_spreadsheet_dashboard_search_panel, .o_spreadsheet_dashboard_action .o_control_panel{display: none !important;}}

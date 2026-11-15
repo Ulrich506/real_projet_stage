@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_etat_civil_res_users_search" model="ir.ui.view">
+        <field name="name">res.users.etat.civil.search</field>
+        <field name="model">res.users</field>
+        <field name="arch" type="xml">
+            <search string="Utilisateurs d'état civil">
+                <field name="name"/>
+                <field name="login"/>
+                <field name="email"/>
+                <field name="etat_civil_centre_ids"/>
+                <filter name="active_users" string="Actifs" domain="[('active', '=', True)]"/>
+                <filter name="inactive_users" string="Archivés" domain="[('active', '=', False)]"/>
+                <filter name="civil_users" string="Utilisateurs internes" domain="[('share', '=', False)]"/>
+                <group expand="0" string="Regrouper par">
+                    <filter name="group_by_role" string="Rôle" context="{'group_by': 'etat_civil_role'}"/>
+                    <filter name="group_by_centre" string="Centre" context="{'group_by': 'etat_civil_centre_ids'}"/>
+                    <filter name="group_by_status" string="Statut" context="{'group_by': 'active'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_etat_civil_res_users_tree" model="ir.ui.view">
+        <field name="name">res.users.etat.civil.tree</field>
+        <field name="model">res.users</field>
+        <field name="arch" type="xml">
+            <tree string="Utilisateurs d'état civil" create="false" edit="false" delete="false">
+                <field name="name"/>
+                <field name="login"/>
+                <field name="email" optional="show"/>
+                <field name="etat_civil_centre_ids" widget="many2many_tags" optional="show"/>
+                <field name="etat_civil_role" widget="badge"/>
+                <field name="active" widget="boolean"/>
+                <field name="create_date" string="Créé le" optional="hide"/>
+                <field name="login_date" string="Dernière connexion" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_etat_civil_res_users" model="ir.actions.act_window">
+        <field name="name">Liste des utilisateurs</field>
+        <field name="res_model">res.users</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_etat_civil_res_users_tree"/>
+        <field name="search_view_id" ref="view_etat_civil_res_users_search"/>
+        <field name="domain">[('share', '=', False)]</field>
+        <field name="context">{'create': False, 'edit': False, 'delete': False}</field>
+        <field name="groups_id" eval="[(4, ref('group_etat_civil_admin')), (4, ref('base.group_system'))]"/>
+    </record>
+
+    <record id="view_etat_civil_gestion_utilisateur_form" model="ir.ui.view">
+        <field name="name">etat.civil.gestion.utilisateur.form</field>
+        <field name="model">etat.civil.gestion.utilisateur</field>
+        <field name="arch" type="xml">
+            <form string="Gestion des comptes État Civil">
+                <group>
+                    <field name="mode" invisible="1"/>
+                    <field name="user_id" invisible="mode != 'edit'"
+                           required="mode == 'edit'"
+                           options="{'no_create': True, 'no_open': True}"/>
+                    <field name="name"/>
+                    <field name="login"/>
+                    <field name="email"/>
+                    <field name="new_user_role" invisible="mode != 'create'"
+                           required="mode == 'create'"/>
+                    <field name="role" invisible="mode != 'edit'"
+                           required="mode == 'edit'"/>
+                    <field name="centre_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                    <field name="password" password="True"
+                           required="mode == 'create'"
+                           placeholder="Laisser vide pour conserver le mot de passe actuel"/>
+                    <field name="active" invisible="mode != 'edit'"/>
+                </group>
+                <footer>
+                    <button name="action_save" type="object" string="Créer l'utilisateur"
+                            class="btn-primary" invisible="mode != 'create'"/>
+                    <button name="action_save" type="object" string="Enregistrer les modifications"
+                            class="btn-primary" invisible="mode != 'edit'"/>
+                    <button string="Annuler" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_etat_civil_user_create" model="ir.actions.act_window">
+        <field name="name">Créer un utilisateur État Civil</field>
+        <field name="res_model">etat.civil.gestion.utilisateur</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_etat_civil_gestion_utilisateur_form"/>
+        <field name="target">new</field>
+        <field name="context">{'default_mode': 'create'}</field>
+        <field name="groups_id" eval="[(4, ref('group_etat_civil_admin')), (4, ref('base.group_system'))]"/>
+    </record>
+
+    <record id="action_etat_civil_user_manage" model="ir.actions.act_window">
+        <field name="name">Gérer un compte État Civil</field>
+        <field name="res_model">etat.civil.gestion.utilisateur</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_etat_civil_gestion_utilisateur_form"/>
+        <field name="target">new</field>
+        <field name="context">{'default_mode': 'edit'}</field>
+        <field name="groups_id" eval="[(4, ref('group_etat_civil_admin')), (4, ref('base.group_system'))]"/>
+    </record>
+
+    <record id="view_users_form_etat_civil_centres" model="ir.ui.view">
+        <field name="name">res.users.form.etat.civil.centres</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='access_rights']" position="after">
+                <page string="État civil" name="etat_civil"
+                      groups="etat_civil.group_etat_civil_admin,base.group_system">
+                    <group string="Périmètre territorial">
+                        <field name="etat_civil_centre_ids" widget="many2many_tags"
+                               options="{'no_create': True}"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

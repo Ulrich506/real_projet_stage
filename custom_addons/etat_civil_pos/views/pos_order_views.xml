@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_pos_order_form_etat_civil_copy" model="ir.ui.view">
+        <field name="name">pos.order.form.etat.civil.copy</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="etat_civil_copy_request_id"
+                       groups="etat_civil_account.group_etat_civil_regisseur,etat_civil.group_etat_civil_admin"
+                       readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_copy_request_form_pos" model="ir.ui.view">
+        <field name="name">etat.civil.copy.request.form.pos</field>
+        <field name="model">etat.civil.copy.request</field>
+        <field name="inherit_id" ref="etat_civil_account.view_copy_request_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Encaissements POS"
+                      groups="etat_civil_account.group_etat_civil_regisseur,etat_civil.group_etat_civil_admin">
+                    <field name="pos_order_ids" readonly="1">
+                        <tree>
+                            <field name="name"/>
+                            <field name="date_order"/>
+                            <field name="session_id"/>
+                            <field name="amount_total"/>
+                            <field name="state"/>
+                            <field name="account_move"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

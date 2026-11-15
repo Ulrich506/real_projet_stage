@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+
+# Secrets
+.env
+config/*.conf
+!config/*.example
+
+# Données
+backups/
+sauvegarde_*.dump
+data/filestore/
+data/sessions/
+data/addons/
+
+# Logs
+logs/
+*.log
+
+# Éditeur
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Artifacts
+artifacts/
+
+# Odoo core (documenté dans README)
+odoo/
+odoo_18_backup/
+
+# Quarantaine
+odoo18_quarantine/
+
+# Junie agent sessions
+.junie/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Backup directory
+/home/ulrich/backups/

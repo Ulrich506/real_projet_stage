@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_etat_civil_regisseur" model="res.groups">
+        <field name="name">Régisseur — paiements des copies</field>
+        <field name="category_id" ref="etat_civil.module_category_etat_civil"/>
+        <field name="implied_ids" eval="[(6, 0, [ref('base.group_user')])]"/>
+    </record>
+
+    <record id="rule_copy_request_center" model="ir.rule">
+        <field name="name">Demandes de copies limitées aux centres affectés</field>
+        <field name="model_id" ref="model_etat_civil_copy_request"/>
+        <field name="domain_force">[('center_id', 'in', user.etat_civil_centre_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('etat_civil.group_etat_civil_agent')), (4, ref('group_etat_civil_regisseur'))]"/>
+    </record>
+    <record id="rule_copy_acte_naissance_regisseur" model="ir.rule">
+        <field name="name">Régisseurs: actes de naissance de leurs centres</field>
+        <field name="model_id" ref="etat_civil.model_etat_civil_acte_naissance"/>
+        <field name="domain_force">[('registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_regisseur'))]"/>
+        <field name="perm_read" eval="True"/><field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/><field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="rule_copy_acte_mariage_regisseur" model="ir.rule">
+        <field name="name">Régisseurs: actes de mariage de leurs centres</field>
+        <field name="model_id" ref="etat_civil.model_etat_civil_acte_mariage"/>
+        <field name="domain_force">[('registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_regisseur'))]"/>
+        <field name="perm_read" eval="True"/><field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/><field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="rule_copy_acte_deces_regisseur" model="ir.rule">
+        <field name="name">Régisseurs: actes de décès de leurs centres</field>
+        <field name="model_id" ref="etat_civil.model_etat_civil_acte_deces"/>
+        <field name="domain_force">[('registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_regisseur'))]"/>
+        <field name="perm_read" eval="True"/><field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/><field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="rule_copy_individu_regisseur" model="ir.rule">
+        <field name="name">Régisseurs: citoyens liés aux actes de leurs centres</field>
+        <field name="model_id" ref="etat_civil.model_etat_civil_individu"/>
+        <field name="domain_force">['|', '|', '|', '|', '|', '|', '|', '|', '|', ('acte_naissance_enfant_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_naissance_pere_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_naissance_mere_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_naissance_declarant_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_mariage_conjoint_1_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_mariage_conjoint_2_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_mariage_temoin_1_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_mariage_temoin_2_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_deces_defunt_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_deces_declarant_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_regisseur'))]"/>
+        <field name="perm_read" eval="True"/><field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/><field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="rule_copy_request_admin_all_centers" model="ir.rule">
+        <field name="name">Administrateur état civil: toutes les demandes de copie</field>
+        <field name="model_id" ref="model_etat_civil_copy_request"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('etat_civil.group_etat_civil_admin'))]"/>
+    </record>
+    <record id="rule_tariff_center" model="ir.rule">
+        <field name="name">Tarifs visibles par centre</field>
+        <field name="model_id" ref="model_etat_civil_copy_tariff"/>
+        <field name="domain_force">['|', ('center_id', '=', False), ('center_id', 'in', user.etat_civil_centre_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('etat_civil.group_etat_civil_agent')), (4, ref('group_etat_civil_regisseur'))]"/>
+        <field name="perm_read" eval="True"/><field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/><field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="rule_tariff_admin_all_centers" model="ir.rule">
+        <field name="name">Administrateur état civil: tous les tarifs</field>
+        <field name="model_id" ref="model_etat_civil_copy_tariff"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('etat_civil.group_etat_civil_admin'))]"/>
+    </record>
+    <record id="rule_event_center" model="ir.rule">
+        <field name="name">Historique financier du centre affecté</field>
+        <field name="model_id" ref="model_etat_civil_finance_event"/>
+        <field name="domain_force">[('request_id.center_id', 'in', user.etat_civil_centre_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_regisseur'))]"/>
+        <field name="perm_read" eval="True"/><field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/><field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="rule_event_admin_all_centers" model="ir.rule">
+        <field name="name">Administrateur état civil: historique de tous les centres</field>
+        <field name="model_id" ref="model_etat_civil_finance_event"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('etat_civil.group_etat_civil_admin'))]"/>
+        <field name="perm_read" eval="True"/><field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/><field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_regisseur_copy_invoice" model="ir.rule">
+        <field name="name">Régisseur : factures des demandes de ses centres</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="domain_force">[('etat_civil_copy_request_ids', 'any', [('center_id', 'in', user.etat_civil_centre_ids.ids)])]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_regisseur'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="rule_admin_copy_invoice" model="ir.rule">
+        <field name="name">Administrateur d'état civil : factures des demandes</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="domain_force">[('etat_civil_copy_request_ids', '!=', False)]</field>
+        <field name="groups" eval="[(4, ref('etat_civil.group_etat_civil_admin'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="rule_regisseur_copy_invoice_line" model="ir.rule">
+        <field name="name">Régisseur : lignes des factures de ses centres</field>
+        <field name="model_id" ref="account.model_account_move_line"/>
+        <field name="domain_force">[('move_id.etat_civil_copy_request_ids', 'any', [('center_id', 'in', user.etat_civil_centre_ids.ids)])]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_regisseur'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="rule_admin_copy_invoice_line" model="ir.rule">
+        <field name="name">Administrateur d'état civil : lignes des factures</field>
+        <field name="model_id" ref="account.model_account_move_line"/>
+        <field name="domain_force">[('move_id.etat_civil_copy_request_ids', '!=', False)]</field>
+        <field name="groups" eval="[(4, ref('etat_civil.group_etat_civil_admin'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="rule_copy_payment_center" model="ir.rule">
+        <field name="name">Quittances visibles dans les centres affectés</field>
+        <field name="model_id" ref="model_etat_civil_copy_payment"/>
+        <field name="domain_force">[('request_id.center_id', 'in', user.etat_civil_centre_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('etat_civil.group_etat_civil_admin')), (4, ref('group_etat_civil_regisseur'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="rule_copy_payment_admin_all_centers" model="ir.rule">
+        <field name="name">Administrateur état civil: toutes les quittances</field>
+        <field name="model_id" ref="model_etat_civil_copy_payment"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('etat_civil.group_etat_civil_admin'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="rule_copy_payment_wizard_center" model="ir.rule">
+        <field name="name">Versements limités au centre affecté</field>
+        <field name="model_id" ref="model_etat_civil_copy_payment_wizard"/>
+        <field name="domain_force">[('request_id.center_id', 'in', user.etat_civil_centre_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_regisseur'))]"/>
+    </record>
+    <record id="rule_copy_payment_wizard_admin_all_centers" model="ir.rule">
+        <field name="name">Administrateur état civil: tous les versements</field>
+        <field name="model_id" ref="model_etat_civil_copy_payment_wizard"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('etat_civil.group_etat_civil_admin'))]"/>
+    </record>
+    <record id="rule_copy_receipt_settings_company" model="ir.rule">
+        <field name="name">Configuration de quittance des sociétés autorisées</field>
+        <field name="model_id" ref="model_etat_civil_copy_receipt_settings"/>
+        <field name="domain_force">[('company_id', 'in', user.company_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('etat_civil.group_etat_civil_admin'))]"/>
+    </record>
+
+    <record id="etat_civil.menu_etat_civil_root" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('etat_civil_account.group_etat_civil_regisseur'))]"/>
+    </record>
+</odoo>

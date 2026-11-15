@@ -1,0 +1,128 @@
+#
+msgid ""
+msgstr ""
+"Language: fr_FR\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. module: etat_civil
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_import_wizard_form
+msgid "Télécharger le modèle CSV"
+msgstr "Télécharger le modèle CSV"
+
+#. module: etat_civil
+msgid ""
+"Corrigez les lignes directement dans le tableau, puis validez-les avant "
+"l'importation."
+msgstr ""
+"Corrigez les lignes directement dans le tableau, puis validez-les avant "
+"l'importation."
+
+#. module: etat_civil
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_import_wizard_form
+msgid "Valider les lignes"
+msgstr "Valider les lignes"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__export_filter__all
+msgid "Tous les statuts vitaux"
+msgstr "Tous les statuts vitaux"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__marital_filter__all
+msgid "Toutes les situations matrimoniales"
+msgstr "Toutes les situations matrimoniales"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__selection_mode__filtered
+msgid "Toutes les personnes correspondant aux filtres"
+msgstr "Toutes les personnes correspondant aux filtres"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__selection_mode__selected
+msgid "Sélection manuelle"
+msgstr "Sélection manuelle"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_export_wizard__include_all_fields
+msgid "Tous les champs exportables"
+msgstr "Tous les champs exportables"
+
+#. module: etat_civil
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_export_wizard_form
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_export_wizard__export_field_ids
+msgid "Champs à exporter"
+msgstr "Champs à exporter"
+
+#. module: etat_civil
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_export_wizard_form
+msgid "Tout sélectionner"
+msgstr "Tout sélectionner"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_export_wizard__language
+msgid "Langue du fichier"
+msgstr "Langue du fichier"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_export_wizard__pdf_layout
+msgid "Présentation du PDF"
+msgstr "Présentation du PDF"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__pdf_layout__table
+msgid "Liste tabulaire"
+msgstr "Liste tabulaire"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__pdf_layout__individual
+msgid "Fiche par personne"
+msgstr "Fiche par personne"
+
+#. module: etat_civil
+#: model:ir.actions.report,name:etat_civil.action_report_citizen_export
+msgid "Exportation des citoyens"
+msgstr "Exportation des citoyens"
+
+#. module: etat_civil
+#: model:ir.model,name:etat_civil.model_etat_civil_piece_requise
+msgid "Pièce justificative requise (configuration)"
+msgstr "Pièce justificative requise (configuration)"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_piece_justificative__genere_automatiquement
+msgid "Généré automatiquement"
+msgstr "Généré automatiquement"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_officiel__toutes_pieces_obligatoires_recues
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_naissance__toutes_pieces_obligatoires_recues
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_mariage__toutes_pieces_obligatoires_recues
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_deces__toutes_pieces_obligatoires_recues
+msgid "Toutes les pièces obligatoires sont reçues"
+msgstr "Toutes les pièces obligatoires sont reçues"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_piece_requise__type_acte
+msgid "Type d'acte"
+msgstr "Type d'acte"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_piece_requise__code_piece
+msgid "Catégorie de pièce"
+msgstr "Catégorie de pièce"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_piece_requise__condition
+msgid "Condition d'application"
+msgstr "Condition d'application"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_piece_requise__obligatoire
+msgid "Obligatoire"
+msgstr "Obligatoire"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_piece_requise__sequence
+msgid "Ordre d'affichage"
+msgstr "Ordre d'affichage"

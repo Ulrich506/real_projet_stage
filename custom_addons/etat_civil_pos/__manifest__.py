@@ -1,0 +1,26 @@
+{
+    "name": "État civil — Encaissement au point de vente",
+    "version": "17.0.1.0.1",
+    "category": "Services/Accounting",
+    "summary": "Relie les paiements POS aux factures des demandes de copie",
+    "depends": ["etat_civil_account", "point_of_sale"],
+    "data": [
+        "security/security.xml",
+        "security/ir.model.access.csv",
+        "security/guichet_ticket_rules.xml",
+        "data/service_products.xml",
+        "data/product.xml",
+        "report/guichet_ticket.xml",
+        "views/guichet_ticket_views.xml",
+        "views/pos_order_views.xml",
+    ],
+    "assets": {
+        "point_of_sale._assets_pos": [
+            "etat_civil_pos/static/src/js/*.js",
+            "etat_civil_pos/static/src/xml/*.xml",
+        ],
+    },
+    "installable": True,
+    "application": False,
+    "license": "LGPL-3",
+}

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="product_template_copy_birth_full" model="product.template">
+            <field name="name">Copie intégrale d'acte de naissance</field>
+            <field name="detailed_type">service</field>
+            <field name="sale_ok">True</field>
+            <field name="purchase_ok">False</field>
+            <field name="available_in_pos">True</field>
+            <field name="list_price">0.0</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="product_template_copy_birth_extract" model="product.template">
+            <field name="name">Extrait d'acte de naissance</field>
+            <field name="detailed_type">service</field>
+            <field name="sale_ok">True</field>
+            <field name="purchase_ok">False</field>
+            <field name="available_in_pos">True</field>
+            <field name="list_price">0.0</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="product_template_copy_marriage_full" model="product.template">
+            <field name="name">Copie intégrale d'acte de mariage</field>
+            <field name="detailed_type">service</field>
+            <field name="sale_ok">True</field>
+            <field name="purchase_ok">False</field>
+            <field name="available_in_pos">True</field>
+            <field name="list_price">0.0</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="product_template_copy_marriage_extract" model="product.template">
+            <field name="name">Extrait d'acte de mariage</field>
+            <field name="detailed_type">service</field>
+            <field name="sale_ok">True</field>
+            <field name="purchase_ok">False</field>
+            <field name="available_in_pos">True</field>
+            <field name="list_price">0.0</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="product_template_copy_death_full" model="product.template">
+            <field name="name">Copie intégrale d'acte de décès</field>
+            <field name="detailed_type">service</field>
+            <field name="sale_ok">True</field>
+            <field name="purchase_ok">False</field>
+            <field name="available_in_pos">True</field>
+            <field name="list_price">0.0</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="product_template_copy_death_extract" model="product.template">
+            <field name="name">Extrait d'acte de décès</field>
+            <field name="detailed_type">service</field>
+            <field name="sale_ok">True</field>
+            <field name="purchase_ok">False</field>
+            <field name="available_in_pos">True</field>
+            <field name="list_price">0.0</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

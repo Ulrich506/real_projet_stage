@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_guichet_ticket" model="ir.actions.report">
+        <field name="name">Ticket de demande d'état civil</field>
+        <field name="model">etat.civil.demande.guichet</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">etat_civil_pos.guichet_ticket</field>
+        <field name="report_file">etat_civil_pos.guichet_ticket</field>
+        <field name="paperformat_id" ref="etat_civil_account.paperformat_etat_civil_receipt_80mm"/>
+        <field name="groups_id" eval="[(6, 0, [ref('etat_civil.group_etat_civil_agent'), ref('etat_civil.group_etat_civil_admin'), ref('etat_civil_account.group_etat_civil_regisseur')])]"/>
+        <field name="binding_model_id" ref="etat_civil.model_etat_civil_demande_guichet"/>
+        <field name="binding_type">report</field>
+        <field name="print_report_name">'Ticket - %s' % (object.ticket_numero)</field>
+    </record>
+
+    <template id="guichet_ticket">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="ticket">
+                <div class="page article ec_guichet_ticket"
+                     t-att-data-oe-model="ticket._name" t-att-data-oe-id="ticket.id">
+                    <style>
+                        .ec_guichet_ticket {
+                            box-sizing: border-box;
+                            width: 72mm;
+                            color: #111;
+                            font-family: "DejaVu Sans", sans-serif;
+                            font-size: 8.5pt;
+                            line-height: 1.2;
+                            overflow-wrap: anywhere;
+                        }
+                        .ec_guichet_ticket h1 { margin: 0 0 1.5mm; text-align: center; font-size: 12pt; }
+                        .ec_guichet_ticket p { margin: 0 0 1mm; }
+                        .ec_guichet_ticket .center { text-align: center; }
+                        .ec_guichet_ticket .number { margin: 1.5mm 0; text-align: center; font-size: 12pt; font-weight: bold; }
+                        .ec_guichet_ticket table { width: 100%; table-layout: fixed; border-collapse: collapse; }
+                        .ec_guichet_ticket th { width: 45%; text-align: left; vertical-align: top; font-weight: normal; }
+                        .ec_guichet_ticket td { text-align: right; vertical-align: top; }
+                        .ec_guichet_ticket .notice { margin-top: 2mm; text-align: center; font-weight: bold; }
+                    </style>
+                    <div class="center">
+                        <strong t-if="ticket.center_id" t-field="ticket.center_id.nom_centre"/>
+                        <p t-if="ticket.center_id" t-field="ticket.center_id.commune"/>
+                    </div>
+                    <h1>TICKET DE DEMANDE</h1>
+                    <p class="number" t-field="ticket.ticket_numero"/>
+                    <table>
+                        <tbody>
+                            <tr><th>Demandeur</th><td><span t-field="ticket.citoyen_nom"/></td></tr>
+                            <tr t-if="ticket.requester_phone"><th>Téléphone</th><td><span t-field="ticket.requester_phone"/></td></tr>
+                            <tr><th>Personne concernée</th><td><span t-field="ticket.concerned_person_name"/></td></tr>
+                            <tr><th>Document</th><td><span t-field="ticket.type_acte"/> — <span t-field="ticket.type_demande"/></td></tr>
+                            <tr t-if="ticket.service_product_id"><th>Prestation</th><td><span t-field="ticket.service_product_id"/></td></tr>
+                            <tr><th>Nombre de copies</th><td><span t-field="ticket.copy_quantity"/></td></tr>
+                            <tr t-if="ticket.act_reference"><th>Référence fournie</th><td><span t-field="ticket.act_reference"/></td></tr>
+                            <tr><th>Date et heure</th><td><span t-field="ticket.create_date"/></td></tr>
+                        </tbody>
+                    </table>
+                    <p class="notice">Ticket de prise en charge uniquement.</p>
+                    <p class="center">Aucun paiement n'est confirmé par ce ticket.</p>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

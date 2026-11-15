@@ -1,0 +1,938 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="paperformat_etat_civil_naissance" model="report.paperformat">
+        <field name="name">État civil — Acte de naissance A4</field>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">20</field>
+        <field name="margin_bottom">20</field>
+        <field name="margin_left">20</field>
+        <field name="margin_right">20</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="paperformat_etat_civil_a4" model="report.paperformat">
+        <field name="name">État civil — A4 portrait</field>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">8</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">15</field>
+        <field name="margin_right">15</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <template id="report_physical_document_styles">
+        <style>
+            .ec_document {
+                color: #111;
+                font-family: "Liberation Serif", "DejaVu Serif", serif;
+                font-size: 10.5pt;
+                line-height: 1.35;
+            }
+            .ec_document table,
+            .ec_document table tr,
+            .ec_document table th,
+            .ec_document table td {
+                border: none !important;
+                outline: none !important;
+                box-shadow: none !important;
+            }
+            .ec_document * {
+                border: none !important;
+                outline: none !important;
+                box-shadow: none !important;
+            }
+            .ec_document table { border-collapse: collapse; }
+            .ec_document,
+            .ec_document.article {
+                border: none !important;
+                outline: none !important;
+                box-shadow: none !important;
+            }
+            .ec_header, .ec_header tr, .ec_header td,
+            .ec_signature, .ec_signature tr, .ec_signature td {
+                border: 0 !important;
+            }
+            .ec_header { width: 100%; table-layout: fixed; margin-bottom: 5mm; }
+            .ec_header td { width: 33.333%; vertical-align: middle; }
+            .ec_legal_reference {
+                border: 0.8pt solid #444 !important;
+                padding: 2mm;
+                font-size: 8pt;
+                line-height: 1.2;
+                white-space: pre-line;
+                overflow-wrap: anywhere;
+                box-sizing: border-box;
+            }
+            .ec_document .ec_legal_reference {
+                border: 0.8pt solid #444 !important;
+                outline: none !important;
+            }
+            .ec_national_emblem { display: block; width: 35mm; max-height: 22mm; margin: 0 auto; object-fit: contain; }
+            .ec_municipal_emblem { display: block; width: 24mm; max-height: 23mm; margin: 0 auto 1mm; object-fit: contain; }
+            .ec_region_emblem { display: block; width: 21mm; max-height: 23mm; margin: 0 auto 1mm; object-fit: contain; }
+            .ec_location { text-align: center; font-size: 9pt; }
+            .ec_location_right { text-align: right; }
+            .ec_title { margin: 3mm 0 1mm; text-align: center; font-size: 16pt; line-height: 1.2; }
+            .ec_subtitle { margin: 0 0 4mm; text-align: center; font-size: 10pt; font-style: italic; }
+            .ec_status { margin: 2mm 0 4mm; text-align: center; font-family: sans-serif; font-size: 8.5pt; font-weight: bold; }
+            .ec_status_draft { color: #8a1c1c; }
+            .ec_status_valid { color: #111; }
+            .ec_columns { width: 100%; table-layout: fixed; }
+            .ec_sidebar { width: 30%; padding: 0 4mm 0 0; vertical-align: top; }
+            .ec_main { width: 70%; padding: 0 0 0 7mm; vertical-align: top; }
+            .ec_sidebar_card { margin-bottom: 4mm; padding: 2.5mm; page-break-inside: avoid; }
+            .ec_sidebar_label { margin: 0 0 1mm; font-size: 8pt; font-weight: bold; text-transform: uppercase; }
+            .ec_sidebar_value { margin: 0 0 2mm; font-size: 10pt; overflow-wrap: anywhere; }
+            .ec_main p { margin: 0 0 3mm; text-align: justify; }
+            .ec_section_title { margin: 4mm 0 2mm; font-size: 10pt; font-weight: bold; }
+            .ec_person { margin: 0 0 4mm; page-break-inside: avoid; }
+            .ec_person p { margin-bottom: 1mm; text-align: left; }
+            .ec_transcription { margin-top: 4mm; white-space: normal; overflow-wrap: anywhere; }
+            .ec_transcription_text { margin: 0 !important; padding: 0 !important; white-space: pre-wrap; }
+            .ec_marginal_mentions { margin-top: 4mm; }
+            .ec_mention { margin: 0 0 2mm; padding-top: 1mm; overflow-wrap: anywhere; }
+            .ec_signature { width: 100%; margin-top: 8mm; page-break-inside: avoid; }
+            .ec_signature td { width: 50%; height: 27mm; padding: 2mm; text-align: center; vertical-align: bottom; }
+            .ec_signature_line { display: block; margin-bottom: 3mm; }
+            .ec_integrity { width: 100%; margin-top: 4mm; border: 0 !important; page-break-inside: avoid; }
+            .ec_integrity td { padding-top: 2mm; vertical-align: top; }
+            .ec_qr { width: 23mm; height: 23mm; object-fit: contain; }
+            .ec_page_break { page-break-after: always; }
+            .ec_reference_header { width: 100%; margin-bottom: 3mm; table-layout: fixed; border: 0 !important; }
+            .ec_reference_header tr, .ec_reference_header td { border: 0 !important; }
+            .ec_reference_header td { vertical-align: middle; }
+            .ec_reference_header .ec_reference_left { width: 44%; }
+            .ec_reference_header .ec_reference_center { width: 26%; text-align: center; }
+            .ec_reference_header .ec_reference_right { width: 30%; text-align: center; font-size: 9pt; }
+            .ec_reference_municipal_emblem { display: block; width: 22mm; height: 20mm; margin: 2mm 0 2mm 2mm; object-fit: contain; }
+            .ec_register_columns { width: 100%; margin-top: 3mm; table-layout: fixed; border: 0 !important; }
+            .ec_register_columns tr, .ec_register_columns td { border: 0 !important; }
+            .ec_register_columns td { vertical-align: top; box-sizing: border-box; }
+            .ec_register_sidebar { width: 32%; padding: 2mm 7mm 0 2mm; text-align: center; }
+            .ec_register_main { width: 68%; padding: 2mm 0 0 7mm; }
+            .ec_register_main .ec_register_title { margin: 0 0 1mm !important; text-align: center; font-size: 16pt; line-height: 1.15; }
+            .ec_register_main .ec_register_subtitle { margin: 0 0 2mm !important; text-align: center; font-size: 10pt; }
+            .ec_register_main .ec_section_title { margin: 2mm 0 1mm !important; }
+            .ec_register_main .ec_transcription { margin-top: 1mm !important; }
+            .ec_register_main .ec_transcription > .ec_section_title { margin: 0 0 1mm !important; }
+            .ec_register_main .ec_transcription p { margin: 0 0 2mm !important; }
+            .ec_register_sidebar p { margin: 0 0 2mm; overflow-wrap: anywhere; }
+            .ec_register_signature { margin-top: 6mm; text-align: center; page-break-inside: avoid; }
+            .ec_register_qr_frame { display: inline-block; width: 31mm; min-height: 31mm; padding: 1.5mm; border: 0; text-align: center; box-sizing: border-box; }
+            .ec_register_qr_frame img { display: block; width: 25mm; height: 25mm; margin: 1mm auto 0; object-fit: contain; }
+            .ec_copy_metadata { margin: 2mm 0 3mm; text-align: center; font-size: 8pt; }
+            .ec_copy_report .ec_integrity { margin-top: 1mm; }
+            .ec_copy_report .ec_integrity td { padding-top: 0.5mm; }
+            .ec_copy_report .ec_register_qr_frame { width: 21mm; min-height: 21mm; padding: 0.75mm; }
+            .ec_copy_report .ec_register_qr_frame img { width: 16mm; height: 16mm; }
+            .ec_copy_report .ec_signature { margin-top: 2mm; }
+            .ec_copy_report .ec_signature td { height: 19mm; padding: 1mm; }
+            .ec_copy_report { font-size: 9.5pt; line-height: 1.2; }
+            .ec_copy_report .ec_register_columns { margin-top: 1mm; }
+            .ec_copy_report .ec_register_sidebar { padding: 2mm; }
+            .ec_copy_report .ec_register_main { padding: 2mm 3mm; }
+            .ec_copy_report .ec_register_main .ec_register_title { margin-bottom: 1mm; font-size: 12pt; }
+            .ec_copy_report .ec_register_main .ec_register_subtitle { margin-bottom: 2mm; }
+            .ec_copy_report .ec_register_main p { margin-bottom: 1.5mm; }
+            .ec_copy_report .ec_section_title { margin: 2mm 0 1mm; }
+            .ec_copy_report .ec_person { margin-bottom: 2mm; }
+            .ec_copy_report .ec_person p { margin-bottom: 0.5mm; }
+            .ec_copy_report .ec_transcription { margin-top: 2mm; }
+            .ec_marginal_full { width: 100%; }
+            .ec_marginal_full p { margin: 0 0 3mm; text-align: justify; overflow-wrap: anywhere; }
+            .ec_marginal_reference { width: 100%; margin: 2mm 0 5mm; table-layout: fixed; }
+            .ec_marginal_reference td { padding: 1mm 2mm; border: 0 !important; vertical-align: top; }
+            .ec_marginal_signature { margin-top: 12mm; text-align: center; page-break-inside: avoid; }
+            .ec_marginal_qr { margin-top: 8mm; text-align: right; page-break-inside: avoid; }
+        </style>
+    </template>
+
+    <template id="report_register_reference_header">
+        <table class="ec_reference_header" border="0"
+               style="border: none !important; border-style: none !important;">
+            <tr>
+                <td class="ec_reference_left" style="border: none !important; border-style: none !important;">
+                    <div t-if="center and center.reference_legale" class="ec_legal_reference">
+                        <span t-field="center.reference_legale"/>
+                    </div>
+                </td>
+                <td class="ec_reference_center" style="border: none !important; border-style: none !important;">
+                    <img class="ec_national_emblem" src="/etat_civil/static/src/img/reports/madagascar-emblem.jpg"
+                         alt="Emblème de Madagascar"/>
+                </td>
+                <td class="ec_reference_right" style="border: none !important; border-style: none !important;">
+                    <img t-if="center and center.logo_region" class="ec_region_emblem"
+                         t-att-src="image_data_uri(center.logo_region)" alt="Emblème de la région"/>
+                    <strong t-if="center and center.district_province" t-field="center.district_province"/>
+                </td>
+            </tr>
+        </table>
+        <img t-if="center and center.logo_commune" class="ec_reference_municipal_emblem"
+             t-att-src="image_data_uri(center.logo_commune)" alt="Emblème de la commune"/>
+    </template>
+
+    <template id="report_emblem_header">
+        <table class="ec_header">
+            <tr>
+                <td>
+                    <img t-if="center and center.logo_commune" class="ec_municipal_emblem"
+                         t-att-src="image_data_uri(center.logo_commune)" alt="Emblème de la commune"/>
+                    <div t-if="center" class="ec_location" t-field="center.commune"/>
+                </td>
+                <td>
+                    <img class="ec_national_emblem" src="/etat_civil/static/src/img/reports/madagascar-emblem.jpg"
+                         alt="Emblème de Madagascar"/>
+                </td>
+                <td class="ec_location ec_location_right">
+                    <img t-if="center and center.logo_region" class="ec_region_emblem"
+                         t-att-src="image_data_uri(center.logo_region)" alt="Emblème de la région"/>
+                    <strong t-if="center and center.district_province" t-field="center.district_province"/>
+                </td>
+            </tr>
+        </table>
+    </template>
+
+    <template id="report_administrative_header">
+        <table class="ec_header">
+            <tr>
+                <td>
+                    <img t-if="center and center.logo_commune" class="ec_municipal_emblem"
+                         t-att-src="image_data_uri(center.logo_commune)" alt="Emblème de la commune"/>
+                    <div t-if="center and center.reference_legale" class="ec_legal_reference">
+                        <span t-field="center.reference_legale"/>
+                    </div>
+                </td>
+                <td>
+                    <img class="ec_national_emblem" src="/etat_civil/static/src/img/reports/madagascar-emblem.jpg" alt="Emblème de Madagascar"/>
+                </td>
+                <td class="ec_location ec_location_right">
+                    <img t-if="center and center.logo_region" class="ec_region_emblem"
+                         t-att-src="image_data_uri(center.logo_region)" alt="Emblème de la région"/>
+                    <strong t-if="center and center.district_province" t-field="center.district_province"/><br t-if="center and center.district_province"/>
+                    <span t-if="center" t-field="center.commune"/><br t-if="center"/>
+                    <span t-if="center" t-field="center.nom_centre"/>
+                </td>
+            </tr>
+        </table>
+    </template>
+
+    <template id="report_person_details">
+        <div class="ec_person">
+            <p><strong><span t-esc="person_label"/> :</strong> <span t-esc="person.nom_complet"/></p>
+            <p t-if="person.date_naissance"><strong>Daty nahaterahana :</strong> <span t-esc="person.date_naissance.strftime('%d/%m/%Y')"/></p>
+            <p t-if="person.lieu_naissance_commune"><strong>Toerana nahaterahana :</strong> <span t-field="person.lieu_naissance_commune"/></p>
+            <p t-if="person.profession_actuelle"><strong>Asa :</strong> <span t-field="person.profession_actuelle"/></p>
+            <p t-if="person.domicile_actuel"><strong>Toerana onenana :</strong> <span t-field="person.domicile_actuel"/></p>
+        </div>
+    </template>
+
+    <template id="report_record_status">
+        <div t-if="doc.statut in ('brouillon', 'en_attente', 'a_corriger')" class="ec_status ec_status_draft">
+            BROUILLON — NON VALIDÉ — IMPRESSION NON OFFICIELLE
+        </div>
+        <div t-elif="doc.statut in ('valide', 'rectifie')" class="ec_status ec_status_valid">
+            EXTRAIT VALIDÉ DU REGISTRE — <span t-field="doc.statut"/>
+        </div>
+        <div t-else="" class="ec_status ec_status_draft">
+            <span t-field="doc.statut"/> — DOCUMENT NON DÉLIVRABLE
+        </div>
+    </template>
+
+    <template id="report_acte_naissance">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="center" t-value="doc.registre_id.centre_id"/>
+                <div class="page article ec_birth_report"
+                     t-att-data-oe-model="doc._name" t-att-data-oe-id="doc.id">
+                    <style>
+                        .ec_birth_report {
+                            position: relative;
+                            min-height: 257mm;
+                            border: 0 !important;
+                            outline: 0 !important;
+                            box-shadow: none !important;
+                            color: #111;
+                            font-family: "Liberation Serif", "DejaVu Serif", serif;
+                            font-size: 11pt;
+                            line-height: 1.2;
+                            box-sizing: border-box;
+                        }
+                        .ec_birth_report * {
+                            border: none !important;
+                            outline: none !important;
+                            box-shadow: none !important;
+                        }
+                        .ec_birth_report table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            table-layout: fixed;
+                            border: 0 !important;
+                        }
+                        .ec_birth_report table,
+                        .ec_birth_report table tr,
+                        .ec_birth_report table td {
+                            border: 0 !important;
+                        }
+                        .ec_birth_report td {
+                            padding: 0;
+                            border: 0;
+                            vertical-align: top;
+                        }
+                        .ec_birth_header { height: 27mm; }
+                        .ec_birth_header td { vertical-align: middle; }
+                        .ec_birth_report table.ec_birth_header,
+                        .ec_birth_report table.ec_birth_header tr,
+                        .ec_birth_report table.ec_birth_header td {
+                            border: 0 !important;
+                            outline: 0 !important;
+                        }
+                        .ec_birth_report table.ec_birth_header {
+                            border-collapse: separate;
+                            border-spacing: 0;
+                        }
+                        .ec_birth_report div.ec_birth_legal {
+                            width: auto;
+                            min-height: 18.81mm;
+                            padding: 2mm;
+                            border: 0.8pt solid #333 !important;
+                            font-size: 7.5pt;
+                            line-height: 1.15;
+                            white-space: pre-line;
+                            overflow-wrap: anywhere;
+                            box-sizing: border-box;
+                            margin: 0;
+                        }
+                        .ec_birth_national_emblem {
+                            display: block;
+                            width: 42mm;
+                            max-height: 26mm;
+                            margin: 0 auto;
+                            object-fit: contain;
+                        }
+                        .ec_birth_region_emblem {
+                            display: block;
+                            width: 25mm;
+                            height: 21mm;
+                            margin: 0 auto 1mm;
+                            object-fit: contain;
+                        }
+                        .ec_birth_region_text {
+                            text-align: center;
+                            font-size: 9pt;
+                            text-transform: uppercase;
+                        }
+                        .ec_birth_commune_emblem {
+                            display: block;
+                            width: 22mm;
+                            height: 20mm;
+                            margin: 2mm 0 2mm 2mm;
+                            object-fit: contain;
+                        }
+                        .ec_birth_columns {
+                            margin-top: 3mm;
+                        }
+                        .ec_birth_report td.ec_birth_sidebar {
+                            width: 34%;
+                            padding: 0;
+                            border: 0 !important;
+                            box-sizing: border-box;
+                        }
+                        .ec_birth_report td.ec_birth_main {
+                            width: 66%;
+                            padding: 0;
+                            border: 0 !important;
+                            box-sizing: border-box;
+                        }
+                        .ec_birth_sidebar_inner {
+                            box-sizing: border-box;
+                            min-height: 91mm;
+                            padding: 2.5mm 7mm 2.5mm 3mm;
+                        }
+                        .ec_birth_main_inner {
+                            box-sizing: border-box;
+                            min-height: 134mm;
+                            padding: 3mm 4mm 3mm 7mm;
+                        }
+                        .ec_birth_sidebar p { margin: 0 0 2mm; }
+                        .ec_birth_sidebar .ec_birth_sidebar_heading {
+                            margin-bottom: 5mm;
+                            font-weight: bold;
+                        }
+                        .ec_birth_main p {
+                            margin: 0 0 3mm;
+                            text-align: justify;
+                            overflow-wrap: anywhere;
+                        }
+                        .ec_birth_main .ec_birth_narrative { text-indent: 8mm; }
+                        .ec_birth_main p.ec_birth_validator {
+                            margin: 0 0 1mm;
+                            text-align: center;
+                            font-size: 9pt;
+                        }
+                        .ec_birth_main .ec_title {
+                            margin: 0 0 4mm;
+                            font-size: 16pt;
+                            font-weight: bold;
+                            line-height: 1.15;
+                            white-space: nowrap;
+                        }
+                        .ec_birth_mentions { margin-top: 4mm; }
+                        .ec_birth_mention {
+                            margin: 0 0 3mm;
+                            padding-top: 1mm;
+                            overflow-wrap: anywhere;
+                        }
+                        .ec_birth_transcription {
+                            margin-top: 4mm;
+                            white-space: pre-wrap;
+                            overflow-wrap: anywhere;
+                        }
+                        .ec_birth_signatures {
+                            margin-top: 8mm;
+                            font-size: 10pt;
+                            text-align: center;
+                        }
+                        .ec_birth_signatures p { text-align: center; }
+                        .ec_birth_qr_area {
+                            position: static;
+                            display: block;
+                            width: 100%;
+                            text-align: right;
+                            margin-top: 4mm;
+                        }
+                        .ec_birth_qr_frame {
+                            display: inline-block;
+                            width: 33.73mm;
+                            min-height: 32.64mm;
+                            padding: 1.5mm;
+                            border: 0;
+                            text-align: center;
+                            box-sizing: border-box;
+                        }
+                        .ec_birth_qr {
+                            width: 25mm;
+                            height: 25mm;
+                            display: block;
+                            margin: 1mm auto 0;
+                            object-fit: contain;
+                        }
+                    </style>
+                    <table class="ec_birth_header"
+                           style="border: 0 !important; border-collapse: separate; border-spacing: 0;">
+                        <tr>
+                            <td style="width: 44%; border: 0 !important;">
+                                <div t-if="center and center.reference_legale" class="ec_birth_legal"
+                                     style="border: 0.8pt solid #333 !important; padding: 2mm;">
+                                <span t-field="center.reference_legale"/>
+                                </div>
+                            </td>
+                            <td style="width: 26%; border: 0 !important;">
+                                <img class="ec_birth_national_emblem"
+                                 src="/etat_civil/static/src/img/reports/madagascar-emblem.jpg"
+                                 alt="Emblème de Madagascar"/>
+                            </td>
+                            <td style="width: 30%; border: 0 !important;">
+                                <img t-if="center and center.logo_region"
+                                 class="ec_birth_region_emblem"
+                                 t-att-src="image_data_uri(center.logo_region)"
+                                 alt="Emblème de la région"/>
+                                <div class="ec_birth_region_text">
+                                <div t-if="center and center.district_province">
+                                    <strong>FARITRA <span t-field="center.district_province"/></strong>
+                                </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <img t-if="center and center.logo_commune"
+                         class="ec_birth_commune_emblem"
+                         t-att-src="image_data_uri(center.logo_commune)"
+                         alt="Emblème de la commune"/>
+                    <table class="ec_birth_columns" border="0"
+                           style="border: none !important; border-style: none !important;">
+                        <tr>
+                            <td class="ec_birth_sidebar" style="border: none !important; border-style: none !important;">
+                                <div class="ec_birth_sidebar_inner">
+                                <p class="ec_birth_sidebar_heading">
+                                    Kaominina <span t-if="center" t-field="center.commune"/>
+                                </p>
+                                <p>Faha: <strong t-field="doc.numero_acte"/></p>
+                                <p>Tamin'ny
+                                    <span t-if="doc.date_dressage"
+                                          t-esc="doc.date_dressage.strftime('%d/%m/%Y')"/>
+                                </p>
+                                <p>Fahaterahana</p>
+                                <p><strong t-field="doc.enfant_id.nom_complet"/></p>
+                                <p t-if="doc.enfant_id.date_naissance">
+                                    <span t-esc="doc.enfant_id.date_naissance.strftime('%d/%m/%Y')"/>
+                                </p>
+                                <div t-if="doc.mention_ids" class="ec_birth_mentions">
+                                    <p><strong>Soratra an-tsisiny</strong></p>
+                                    <div t-foreach="doc.mention_ids" t-as="mention"
+                                         class="ec_birth_mention">
+                                        <strong t-field="mention.name"/><br/>
+                                        <span t-field="mention.contenu"/>
+                                    </div>
+                                </div>
+                                <p t-if="copy_request and copy_request.copy_number == 1"
+                                   class="ec_birth_sidebar_heading">KOPIA VOALOHANY</p>
+                                <p t-elif="copy_request and copy_request.copy_number"
+                                   class="ec_birth_sidebar_heading">
+                                    Copie n° <span t-field="copy_request.copy_number"/>
+                                </p>
+                                </div>
+                            </td>
+                            <td class="ec_birth_main" style="border: none !important; border-style: none !important;">
+                                <div class="ec_birth_main_inner"
+                                     style="border-left: 0 !important;">
+                                <h1 class="ec_title">KOPIAN'NY SORA-PIANKOHONANA</h1>
+                                <p class="ec_birth_narrative" style="margin-bottom: 2mm;">
+                                    Nalaina tamin'ny bokim-piankohonana, taona
+                                    <strong t-esc="doc.registre_id.annee"/>
+                                    Voatahiry ato amin'ny Kaominina
+                                    <strong t-if="center" t-field="center.commune"/> izao soratra izao :
+                                </p>
+                                <t t-if="doc.texte_integral_acte_auto">
+                                <p class="ec_birth_narrative" style="margin-bottom: 2mm;">
+                                    Tamin'ny
+                                    <span t-if="doc.enfant_id.date_naissance"
+                                          t-esc="doc.enfant_id.date_naissance.strftime('%d/%m/%Y')"/>
+                                    <span t-if="doc.heure_naissance">
+                                        tamin'ny <span t-field="doc.heure_naissance"
+                                                       t-options="{'widget': 'float_time'}"/>
+                                    </span>
+                                    no teraka tao <span t-field="doc.lieu_naissance"/>,
+                                    <strong t-field="doc.enfant_id.nom_complet"/>
+                                    <span t-if="doc.enfant_id.sexe == 'F'">, zazavavy</span>
+                                    <span t-elif="doc.enfant_id.sexe == 'M'">, zazalahy</span>.
+                                </p>
+                                <p t-if="doc.pere_id or doc.mere_id" class="ec_birth_narrative" style="margin-bottom: 2mm;">
+                                    Zanak'i
+                                    <span t-if="doc.pere_id" t-field="doc.pere_id.nom_complet"/>
+                                    <span t-if="doc.pere_id and doc.mere_id">sy</span>
+                                    <span t-if="doc.mere_id" t-field="doc.mere_id.nom_complet"/>.
+                                </p>
+                                <p t-if="doc.pere_id and (doc.pere_id.profession_actuelle or doc.pere_id.date_naissance or doc.pere_id.lieu_naissance_commune or doc.pere_id.domicile_actuel)">
+                                    <span t-field="doc.pere_id.nom_complet"/>
+                                    <span t-if="doc.pere_id.profession_actuelle">,
+                                        <span t-field="doc.pere_id.profession_actuelle"/>
+                                    </span>
+                                    <span t-if="doc.pere_id.date_naissance">, teraka tamin'ny
+                                        <span t-esc="doc.pere_id.date_naissance.strftime('%d/%m/%Y')"/>
+                                    </span>
+                                    <span t-if="doc.pere_id.lieu_naissance_commune"> tao
+                                        <span t-field="doc.pere_id.lieu_naissance_commune"/>
+                                    </span>
+                                    <span t-if="doc.pere_id.domicile_actuel">, monina ao
+                                        <span t-field="doc.pere_id.domicile_actuel"/>
+                                    </span>.
+                                </p>
+                                <p t-if="doc.mere_id and (doc.mere_id.profession_actuelle or doc.mere_id.date_naissance or doc.mere_id.lieu_naissance_commune or doc.mere_id.domicile_actuel)">
+                                    <span t-field="doc.mere_id.nom_complet"/>
+                                    <span t-if="doc.mere_id.profession_actuelle">,
+                                        <span t-field="doc.mere_id.profession_actuelle"/>
+                                    </span>
+                                    <span t-if="doc.mere_id.date_naissance">, teraka tamin'ny
+                                        <span t-esc="doc.mere_id.date_naissance.strftime('%d/%m/%Y')"/>
+                                    </span>
+                                    <span t-if="doc.mere_id.lieu_naissance_commune"> tao
+                                        <span t-field="doc.mere_id.lieu_naissance_commune"/>
+                                    </span>
+                                    <span t-if="doc.mere_id.domicile_actuel">, monina ao
+                                        <span t-field="doc.mere_id.domicile_actuel"/>
+                                    </span>.
+                                </p>
+                                <p class="ec_birth_narrative">
+                                    Nosoratana androany
+                                    <span t-if="doc.date_dressage"
+                                          t-esc="doc.date_dressage.strftime('%d/%m/%Y')"/>
+                                    <span t-if="doc.declarant_id">araka ny fanambarana nataon'i
+                                        <span t-field="doc.declarant_id.nom_complet"/>
+                                    </span>
+                                    <span t-elif="doc.mere_id">araka ny fanambarana nataon'i
+                                        <span t-field="doc.mere_id.nom_complet"/>
+                                    </span>
+                                    izay miara manao sonia aminay.
+                                </p>
+                                </t>
+                                <p t-elif="doc.texte_integral_acte" class="ec_birth_transcription">
+                                    <span t-field="doc.texte_integral_acte"/>
+                                </p>
+                                <div class="ec_birth_signatures" style="margin-top: 6mm;">
+                                    <p style="margin-bottom: 1mm;">-MANARAKA NY SONIA-</p>
+                                    <p style="margin-bottom: 1mm;">Kopia manontolo nadika tamin'ny boky androany
+                                        <span t-if="copy_request and copy_request.delivered_at"
+                                              t-esc="copy_request.delivered_at.strftime('%d/%m/%Y')"/>.
+                                    </p>
+                                    <p t-if="doc.utilisateur_validation_id" class="ec_birth_validator" style="margin-bottom: 1mm;">
+                                        <strong t-field="doc.utilisateur_validation_id.name"/>
+                                    </p>
+                                    <p style="margin-bottom: 0;"><strong>NY MPIANDRAIKITRA NY SORA-PIANKOHONANA</strong></p>
+                                </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="ec_birth_qr_area">
+                        <div class="ec_birth_qr_frame">
+                            <img t-if="doc.qr_code_image" class="ec_birth_qr"
+                                 t-att-src="image_data_uri(doc.qr_code_image)"
+                                 alt="Code QR de vérification"/>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_acte_mariage">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="center" t-value="doc.registre_id.centre_id"/>
+                <div t-attf-class="page ec_document article {{ 'ec_copy_report' if copy_request else '' }}"
+                     t-att-data-oe-model="doc._name" t-att-data-oe-id="doc.id">
+                    <t t-call="etat_civil.report_physical_document_styles"/>
+                    <t t-call="etat_civil.report_register_reference_header"/>
+                    <t t-call="etat_civil.report_record_status"/>
+                    <table class="ec_register_columns" border="0"
+                           style="border: none !important; border-style: none !important;">
+                        <tr>
+                            <td class="ec_register_sidebar" style="border: none !important; border-style: none !important;">
+                                <div class="ec_sidebar_card">
+                                    <p class="ec_sidebar_label">Kaominina</p>
+                                    <p class="ec_sidebar_value" t-field="center.commune"/>
+                                    <p class="ec_sidebar_label">Faha</p>
+                                    <p class="ec_sidebar_value" t-field="doc.numero_acte"/>
+                                    <p class="ec_sidebar_label">Feuillet</p>
+                                    <p class="ec_sidebar_value" t-field="doc.feuillet_numero"/>
+                                    <p class="ec_sidebar_label">Daty nanoratana</p>
+                                    <p t-if="doc.date_dressage" class="ec_sidebar_value"
+                                       t-esc="doc.date_dressage.strftime('%d/%m/%Y %H:%M')"/>
+                                    <p class="ec_sidebar_label">Datin'ny fanambadiana</p>
+                                    <p t-if="doc.date_mariage" class="ec_sidebar_value"
+                                       t-esc="doc.date_mariage.strftime('%d/%m/%Y')"/>
+                                </div>
+                                <div class="ec_sidebar_card">
+                                    <p class="ec_sidebar_label">Mpivady</p>
+                                    <p class="ec_sidebar_value" t-field="doc.conjoint_1_id.nom_complet"/>
+                                    <p class="ec_sidebar_value">Sy <span t-field="doc.conjoint_2_id.nom_complet"/></p>
+                                </div>
+                            </td>
+                            <td class="ec_register_main" style="border: none !important; border-style: none !important;">
+                                <h1 class="ec_register_title">KOPIAN'NY SORA-PIANKOHONANA</h1>
+                                <p class="ec_register_subtitle">Soratra momba ny fanambadiana</p>
+                                <div t-if="copy_request" class="ec_copy_metadata">
+                                    <strong t-if="copy_request.copy_number == 1">KOPIA VOALOHANY</strong>
+                                    <strong t-elif="copy_request.copy_number">Copie n° <span t-field="copy_request.copy_number"/></strong>
+                                    <span> — Demande <span t-field="copy_request.name"/></span>
+                                    <span t-if="copy_request.delivered_at">
+                                        — Délivrée le <span t-field="copy_request.delivered_at"
+                                                           t-options="{'widget': 'date'}"/>
+                                    </span>
+                                </div>
+                                <p>
+                                    Nalaina tamin'ny bokim-piankohonana, taona
+                                    <strong t-esc="doc.registre_id.annee"/> voatahiry ao amin'ny
+                                    <strong t-field="center.commune"/>:
+                                </p>
+                                <p>
+                                    Ny <span t-field="doc.conjoint_1_id.nom_complet"/> sy
+                                    <span t-field="doc.conjoint_2_id.nom_complet"/>
+                                    dia nanao fanambadiana
+                                    <span t-if="doc.date_mariage">tamin'ny <span t-esc="doc.date_mariage.strftime('%d/%m/%Y')"/></span>
+                                    <span t-if="doc.lieu_mariage"> tao <span t-field="doc.lieu_mariage"/></span>.
+                                </p>
+                                <p t-if="doc.regime_matrimonial"><strong>Fananana :</strong> <span t-field="doc.regime_matrimonial"/></p>
+                                <p class="ec_section_title">Mombamomba ny mpivady</p>
+                                <t t-set="person" t-value="doc.conjoint_1_id"/>
+                                <t t-set="person_label" t-value="'Mpivady voalohany'"/>
+                                <t t-call="etat_civil.report_person_details"/>
+                                <t t-set="person" t-value="doc.conjoint_2_id"/>
+                                <t t-set="person_label" t-value="'Mpivady faharoa'"/>
+                                <t t-call="etat_civil.report_person_details"/>
+                                <div t-if="doc.temoin_1_id or doc.temoin_2_id">
+                                    <p class="ec_section_title">Vavolombelona</p>
+                                    <t t-if="doc.temoin_1_id">
+                                        <t t-set="person" t-value="doc.temoin_1_id"/>
+                                        <t t-set="person_label" t-value="'Vavolombelona voalohany'"/>
+                                        <t t-call="etat_civil.report_person_details"/>
+                                    </t>
+                                    <t t-if="doc.temoin_2_id">
+                                        <t t-set="person" t-value="doc.temoin_2_id"/>
+                                        <t t-set="person_label" t-value="'Vavolombelona faharoa'"/>
+                                        <t t-call="etat_civil.report_person_details"/>
+                                    </t>
+                                </div>
+                                <p t-if="doc.donnees_historiques_incompletes"><em>Tahirin-kevitra ara-tantara tsy feno; tsy nampiana ny mombamomba tsy hita.</em></p>
+                                <div t-if="not doc.texte_integral_acte_auto and doc.texte_integral_acte" class="ec_transcription">
+                                    <p class="ec_section_title"
+                                       style="margin: 0 0 1mm !important; line-height: 1.2 !important;">
+                                        Soratra manontolo
+                                    </p>
+                                    <div class="ec_transcription_text" t-field="doc.texte_integral_acte"/>
+                                </div>
+                                <div t-if="doc.mention_ids" class="ec_marginal_mentions">
+                                    <p class="ec_section_title">Soratra an-tsisiny</p>
+                                    <div t-foreach="doc.mention_ids" t-as="mention" class="ec_mention">
+                                        <strong t-field="mention.name"/> — <span t-esc="mention.date_mention.strftime('%d/%m/%Y')"/><br/>
+                                        <span t-field="mention.contenu"/>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <table t-if="doc.statut in ('valide', 'rectifie') and (doc.hash_empreinte_num or doc.qr_code_image)"
+                           class="ec_integrity" border="0"
+                           style="border: none !important; border-style: none !important;">
+                        <tr>
+                            <td style="border: none !important; border-style: none !important;">
+                                <strong>Fanamarinana ny antontan-taratasy</strong>
+                                <p t-if="doc.hash_empreinte_num"><span t-field="doc.hash_empreinte_num"/></p>
+                                <p t-if="doc.utilisateur_validation_id">Nankatoavin'i <span t-field="doc.utilisateur_validation_id.name"/> tamin'ny <span t-if="doc.date_validation" t-esc="doc.date_validation.strftime('%d/%m/%Y %H:%M')"/>.</p>
+                                <p><em>Ny kaody sy ny dian-tanana dia natao hanamarinana ny fahamarinan'ny antontan-taratasy; tsy sonia elektronika izy ireo ary tsy misolo ny sonia an-tanana ataon'ny mpiandraikitra.</em></p>
+                            </td>
+                            <td t-if="doc.qr_code_image"
+                                style="width: 34mm; text-align: right; border: none !important; border-style: none !important;">
+                                <div class="ec_register_qr_frame">
+                                    <img class="ec_qr" t-att-src="image_data_uri(doc.qr_code_image)" alt="QR de vérification"/>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="ec_signature" border="0"
+                           style="border: none !important; border-style: none !important;">
+                        <tr>
+                            <td style="border: none !important; border-style: none !important;"><span class="ec_signature_line"/>Kopia manontolo nadika tamin'ny boky<br/><span t-if="center" t-field="center.commune"/></td>
+                            <td style="border: none !important; border-style: none !important;"><span class="ec_signature_line"/>NY MPIANDRAIKITRA NY SORA-PIANKOHONANA</td>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_acte_deces">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="center" t-value="doc.registre_id.centre_id"/>
+                <div class="page ec_document article"
+                     t-att-data-oe-model="doc._name" t-att-data-oe-id="doc.id">
+                    <t t-call="etat_civil.report_physical_document_styles"/>
+                    <t t-call="etat_civil.report_register_reference_header"/>
+                    <t t-call="etat_civil.report_record_status"/>
+                    <table class="ec_register_columns" border="0"
+                           style="border: none !important; border-style: none !important;">
+                        <tr>
+                            <td class="ec_register_sidebar" style="border: none !important; border-style: none !important;">
+                                <div class="ec_sidebar_card">
+                                    <p class="ec_sidebar_label">Kaominina</p>
+                                    <p class="ec_sidebar_value" t-field="center.commune"/>
+                                    <p class="ec_sidebar_label">Faha</p>
+                                    <p class="ec_sidebar_value" t-field="doc.numero_acte"/>
+                                    <p class="ec_sidebar_label">Feuillet</p>
+                                    <p class="ec_sidebar_value" t-field="doc.feuillet_numero"/>
+                                    <p class="ec_sidebar_label">Daty nanoratana</p>
+                                    <p t-if="doc.date_dressage" class="ec_sidebar_value"
+                                       t-esc="doc.date_dressage.strftime('%d/%m/%Y %H:%M')"/>
+                                </div>
+                                <div class="ec_sidebar_card">
+                                    <p class="ec_sidebar_label">Maty</p>
+                                    <p class="ec_sidebar_value" t-field="doc.defunt_id.nom_complet"/>
+                                    <p class="ec_sidebar_label">Datin'ny fahafatesana</p>
+                                    <p t-if="doc.date_deces" class="ec_sidebar_value"
+                                       t-esc="doc.date_deces.strftime('%d/%m/%Y')"/>
+                                    <p class="ec_sidebar_label">Toerana</p>
+                                    <p class="ec_sidebar_value" t-field="doc.lieu_deces"/>
+                                </div>
+                            </td>
+                            <td class="ec_register_main" style="border: none !important; border-style: none !important;">
+                                <h1 class="ec_register_title">KOPIAN'NY SORA-PIANKOHONANA</h1>
+                                <p class="ec_register_subtitle">Soratra momba ny fahafatesana</p>
+                                <div t-if="copy_request" class="ec_copy_metadata">
+                                    <strong t-if="copy_request.copy_number == 1">KOPIA VOALOHANY</strong>
+                                    <strong t-elif="copy_request.copy_number">Copie n° <span t-field="copy_request.copy_number"/></strong>
+                                    <span> — Demande <span t-field="copy_request.name"/></span>
+                                    <span t-if="copy_request.delivered_at">
+                                        — Délivrée le <span t-field="copy_request.delivered_at"
+                                                           t-options="{'widget': 'date'}"/>
+                                    </span>
+                                </div>
+                                <p>
+                                    Nalaina tamin'ny bokim-piankohonana, taona
+                                    <strong t-esc="doc.registre_id.annee"/> voatahiry ao amin'ny
+                                    <strong t-field="center.commune"/>:
+                                </p>
+                                <p>
+                                    <span t-field="doc.defunt_id.nom_complet"/>
+                                    <span t-if="doc.date_deces">dia maty tamin'ny <span t-esc="doc.date_deces.strftime('%d/%m/%Y')"/></span>
+                                    <span t-if="doc.heure_deces is not False"> tamin'ny <span t-field="doc.heure_deces" t-options="{'widget': 'float_time'}"/></span>
+                                    <span t-if="doc.lieu_deces"> tao <span t-field="doc.lieu_deces"/></span>.
+                                </p>
+                                <p t-if="doc.cause_deces"><strong>Antony :</strong> <span t-field="doc.cause_deces"/></p>
+                                <div t-if="doc.declarant_id" class="ec_person">
+                                    <p class="ec_section_title">Mpitondra fanambarana</p>
+                                    <t t-set="person" t-value="doc.declarant_id"/>
+                                    <t t-set="person_label" t-value="'Mpitondra fanambarana'"/>
+                                    <t t-call="etat_civil.report_person_details"/>
+                                </div>
+                                <div t-if="not doc.texte_integral_acte_auto and doc.texte_integral_acte" class="ec_transcription">
+                                    <p class="ec_section_title"
+                                       style="margin: 0 0 1mm !important; line-height: 1.2 !important;">
+                                        Soratra manontolo
+                                    </p>
+                                    <div class="ec_transcription_text" t-field="doc.texte_integral_acte"/>
+                                </div>
+                                <div t-if="doc.mention_ids" class="ec_marginal_mentions">
+                                    <p class="ec_section_title">Soratra an-tsisiny</p>
+                                    <div t-foreach="doc.mention_ids" t-as="mention" class="ec_mention">
+                                        <strong t-field="mention.name"/> — <span t-esc="mention.date_mention.strftime('%d/%m/%Y')"/><br/>
+                                        <span t-field="mention.contenu"/>
+                                    </div>
+                                </div>
+                                <p t-if="doc.motif_annulation and doc.statut in ('annule', 'archive')">
+                                    <strong>Antony :</strong> <span t-field="doc.motif_annulation"/>
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                    <table t-if="doc.statut in ('valide', 'rectifie') and (doc.hash_empreinte_num or doc.qr_code_image)"
+                           class="ec_integrity" border="0"
+                           style="border: none !important; border-style: none !important;">
+                        <tr>
+                            <td style="border: none !important; border-style: none !important;">
+                                <strong>Fanamarinana ny antontan-taratasy</strong>
+                                <p t-if="doc.hash_empreinte_num"><span t-field="doc.hash_empreinte_num"/></p>
+                                <p t-if="doc.utilisateur_validation_id">Nankatoavin'i <span t-field="doc.utilisateur_validation_id.name"/> tamin'ny <span t-if="doc.date_validation" t-esc="doc.date_validation.strftime('%d/%m/%Y %H:%M')"/>.</p>
+                                <p><em>Ny kaody sy ny dian-tanana dia natao hanamarinana ny fahamarinan'ny antontan-taratasy; tsy sonia elektronika izy ireo ary tsy misolo ny sonia an-tanana ataon'ny mpiandraikitra.</em></p>
+                            </td>
+                            <td t-if="doc.qr_code_image"
+                                style="width: 34mm; text-align: right; border: none !important; border-style: none !important;">
+                                <div class="ec_register_qr_frame">
+                                    <img class="ec_qr" t-att-src="image_data_uri(doc.qr_code_image)" alt="QR de vérification"/>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="ec_signature" border="0"
+                           style="border: none !important; border-style: none !important;">
+                        <tr>
+                            <td style="border: none !important; border-style: none !important;"><span class="ec_signature_line"/>Kopia manontolo nadika tamin'ny boky<br/><span t-if="center" t-field="center.commune"/></td>
+                            <td style="border: none !important; border-style: none !important;"><span class="ec_signature_line"/>NY MPIANDRAIKITRA NY SORA-PIANKOHONANA</td>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_acte_naissance" model="ir.actions.report">
+        <field name="name">Acte de naissance — extrait du registre</field>
+        <field name="model">etat.civil.acte.naissance</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">etat_civil.report_acte_naissance</field>
+        <field name="report_file">etat_civil.report_acte_naissance</field>
+        <field name="paperformat_id" ref="paperformat_etat_civil_naissance"/>
+        <field name="groups_id" eval="[(6, 0, [ref('group_etat_civil_agent'), ref('group_etat_civil_officier'), ref('group_etat_civil_admin')])]"/>
+        <field name="binding_model_id" ref="model_etat_civil_acte_naissance"/>
+        <field name="binding_type">report</field>
+    </record>
+    <record id="action_report_acte_mariage" model="ir.actions.report">
+        <field name="name">Acte de mariage — extrait du registre</field>
+        <field name="model">etat.civil.acte.mariage</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">etat_civil.report_acte_mariage</field>
+        <field name="report_file">etat_civil.report_acte_mariage</field>
+        <field name="paperformat_id" ref="paperformat_etat_civil_a4"/>
+        <field name="groups_id" eval="[(6, 0, [ref('group_etat_civil_agent'), ref('group_etat_civil_officier'), ref('group_etat_civil_admin')])]"/>
+        <field name="binding_model_id" ref="model_etat_civil_acte_mariage"/>
+        <field name="binding_type">report</field>
+    </record>
+    <record id="action_report_acte_deces" model="ir.actions.report">
+        <field name="name">Acte de décès — extrait du registre</field>
+        <field name="model">etat.civil.acte.deces</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">etat_civil.report_acte_deces</field>
+        <field name="report_file">etat_civil.report_acte_deces</field>
+        <field name="paperformat_id" ref="paperformat_etat_civil_a4"/>
+        <field name="groups_id" eval="[(6, 0, [ref('group_etat_civil_agent'), ref('group_etat_civil_officier'), ref('group_etat_civil_admin')])]"/>
+        <field name="binding_model_id" ref="model_etat_civil_acte_deces"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_report_mention_marginale" model="ir.actions.report">
+        <field name="name">Avis de mention marginale</field>
+        <field name="model">etat.civil.mention.marginale</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">etat_civil.report_mention_marginale</field>
+        <field name="report_file">etat_civil.report_mention_marginale</field>
+        <field name="paperformat_id" ref="paperformat_etat_civil_a4"/>
+        <field name="groups_id" eval="[(6, 0, [ref('group_etat_civil_officier'), ref('group_etat_civil_admin')])]"/>
+        <field name="binding_model_id" ref="model_etat_civil_mention_marginale"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template id="report_mention_marginale">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="linked_act" t-value="doc.acte_naissance_id or doc.acte_mariage_id or doc.acte_deces_id or doc.source_acte_mariage_id or doc.source_acte_deces_id"/>
+                <t t-set="center" t-value="linked_act.registre_id.centre_id if linked_act else False"/>
+                <div class="page ec_document article"
+                     t-att-data-oe-model="doc._name" t-att-data-oe-id="doc.id">
+                    <t t-call="etat_civil.report_physical_document_styles"/>
+                    <t t-call="etat_civil.report_emblem_header"/>
+                    <h1 class="ec_title ec_marginal_title">FILAZANA SORATRA AN-TSISINY</h1>
+                    <p class="ec_subtitle">(Avis de mention en marge)</p>
+                    <div t-if="doc.statut != 'valide'" class="ec_status ec_status_draft">
+                        BROUILLON — NON VALIDÉ — IMPRESSION NON OFFICIELLE
+                    </div>
+                    <div t-else="" class="ec_status ec_status_valid">MENTION VALIDÉE — <span t-field="doc.statut"/></div>
+                    <table class="ec_marginal_reference">
+                        <tr>
+                            <td><strong>Fanondroana</strong><br/><span t-field="doc.name"/></td>
+                            <td><strong>Filazana</strong><br/><span t-field="doc.type_mention"/></td>
+                            <td><strong>Androany</strong><br/><span t-field="doc.date_mention"/></td>
+                        </tr>
+                    </table>
+                    <div class="ec_marginal_full">
+                        <p t-if="doc.personne_concernee_id">
+                            Filazana momba an'i <strong t-field="doc.personne_concernee_id.nom_complet"/>.
+                        </p>
+                        <p t-if="doc.acte_naissance_id"><strong>Soratra nahaterahana :</strong> <span t-field="doc.acte_naissance_id.numero_acte"/> — <span t-field="doc.acte_naissance_id.registre_id"/></p>
+                        <p t-if="doc.acte_mariage_id"><strong>Soratra fanambadiana :</strong> <span t-field="doc.acte_mariage_id.numero_acte"/> — <span t-field="doc.acte_mariage_id.registre_id"/></p>
+                        <p t-if="doc.acte_deces_id"><strong>Soratra fahafatesana :</strong> <span t-field="doc.acte_deces_id.numero_acte"/> — <span t-field="doc.acte_deces_id.registre_id"/></p>
+                        <p t-if="doc.source_acte_mariage_id"><strong>Antony — soratra fanambadiana :</strong> <span t-field="doc.source_acte_mariage_id.numero_acte"/></p>
+                        <p t-if="doc.source_acte_deces_id"><strong>Antony — soratra fahafatesana :</strong> <span t-field="doc.source_acte_deces_id.numero_acte"/></p>
+                        <p class="ec_section_title">Antsipirian'ny filazana</p>
+                        <div class="ec_transcription" t-field="doc.contenu"/>
+                        <p t-if="doc.autorite"><strong>Manampahefana :</strong> <span t-field="doc.autorite"/></p>
+                        <p t-if="doc.commune_naissance"><strong>Kaominina nahaterahana :</strong> <span t-field="doc.commune_naissance"/></p>
+                        <p t-if="doc.notification_commune_naissance"><strong>Fampandrenesana :</strong> <span t-field="doc.notification_commune_naissance"/></p>
+                        <p t-if="doc.reference_notification"><strong>Fanondroana ny taratasy :</strong> <span t-field="doc.reference_notification"/></p>
+                    </div>
+                    <div class="ec_marginal_signature">
+                        <span class="ec_signature_line"/>NY MPIANDRAIKITRA NY SORA-PIANKOHONANA
+                    </div>
+                    <div class="ec_marginal_qr">
+                        <table style="width: 31mm; height: 31mm; margin-left: auto; border-collapse: collapse; border: 0;">
+                            <tbody>
+                                <tr>
+                                    <td style="width: 31mm; height: 31mm; padding: 1.5mm; border: 0; text-align: center; vertical-align: top; box-sizing: border-box;">
+                                        <img t-if="linked_act and linked_act.qr_code_image" class="ec_qr"
+                                             style="width: 22mm; height: 22mm; object-fit: contain;"
+                                             t-att-src="image_data_uri(linked_act.qr_code_image)"
+                                             alt="QR de vérification"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="etat_civil.menu_etat_civil_root" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('etat_civil_account.group_etat_civil_regisseur'))]"/>
+    </record>
+    <record id="etat_civil.menu_etat_civil_guichet" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('etat_civil_account.group_etat_civil_regisseur'))]"/>
+    </record>
+
+    <record id="action_copy_request_from_guichet_ticket" model="ir.actions.act_window">
+        <field name="name">Créer la demande de copie</field>
+        <field name="res_model">etat.civil.copy.request</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+    </record>
+
+    <record id="view_etat_civil_demande_guichet_pos_tree" model="ir.ui.view">
+        <field name="name">etat.civil.demande.guichet.pos.tree</field>
+        <field name="model">etat.civil.demande.guichet</field>
+        <field name="inherit_id" ref="etat_civil.view_etat_civil_demande_guichet_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='ticket_numero']" position="after">
+                <field name="center_id"/>
+                <field name="concerned_person_name"/>
+                <field name="copy_quantity"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_etat_civil_demande_guichet_pos_form" model="ir.ui.view">
+        <field name="name">etat.civil.demande.guichet.pos.form</field>
+        <field name="model">etat.civil.demande.guichet</field>
+        <field name="inherit_id" ref="etat_civil.view_etat_civil_demande_guichet_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='citoyen_nom']" position="after">
+                <field name="requester_phone"/>
+                <field name="requester_partner_id" readonly="1"/>
+            </xpath>
+            <xpath expr="//field[@name='type_demande']" position="after">
+                <field name="center_id"/>
+                <field name="service_product_id" readonly="1"/>
+                <field name="concerned_person_name"/>
+                <field name="act_reference"/>
+                <field name="copy_quantity"/>
+                <field name="pos_session_id" readonly="1" groups="etat_civil_account.group_etat_civil_regisseur,etat_civil.group_etat_civil_admin"/>
+            </xpath>
+            <xpath expr="//sheet" position="inside">
+                <notebook>
+                    <page string="Demande de copie liée">
+                        <button name="%(action_copy_request_from_guichet_ticket)d"
+                                type="action"
+                                string="Créer la demande de copie"
+                                class="oe_highlight"
+                                groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_admin"
+                                context="{'default_guichet_ticket_id': id, 'default_center_id': center_id, 'default_partner_id': requester_partner_id, 'default_document_type': type_acte, 'default_copy_kind': 'integrale' if type_demande == 'copie_integrale' else 'extrait', 'default_copy_quantity': copy_quantity}"/>
+                        <field name="copy_request_ids" readonly="1">
+                            <tree>
+                                <field name="name"/>
+                                <field name="document_type"/>
+                                <field name="copy_kind"/>
+                                <field name="copy_quantity"/>
+                                <field name="state"/>
+                                <field name="account_move_id"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

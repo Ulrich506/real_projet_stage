@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Données de configuration initiales pour etat.civil.piece.requise.
+    Ces enregistrements reproduisent exactement la logique codée dans
+    _required_piece_codes() de chaque type d'acte.
+    L'administrateur peut modifier, ajouter ou supprimer ces règles
+    depuis Administration > Pièces requises (configuration).
+-->
+<odoo noupdate="1">
+
+    <!-- ================================================================ -->
+    <!-- ACTE DE NAISSANCE                                                  -->
+    <!-- ================================================================ -->
+
+    <!-- Naissance à l'hôpital -->
+    <record id="piece_requise_naissance_hopital_declaration" model="etat.civil.piece.requise">
+        <field name="type_acte">naissance</field>
+        <field name="code_piece">declaration_hopital</field>
+        <field name="condition">naissance_hopital</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">10</field>
+        <field name="description">Requis uniquement si le lieu d'accouchement est l'hôpital.</field>
+    </record>
+
+    <!-- Filiation légitime -->
+    <record id="piece_requise_naissance_legitime_livret" model="etat.civil.piece.requise">
+        <field name="type_acte">naissance</field>
+        <field name="code_piece">livret_famille</field>
+        <field name="condition">filiation_legitime</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">20</field>
+        <field name="description">Requis si la filiation est légitime.</field>
+    </record>
+
+    <record id="piece_requise_naissance_legitime_residence" model="etat.civil.piece.requise">
+        <field name="type_acte">naissance</field>
+        <field name="code_piece">residence_parent</field>
+        <field name="condition">filiation_legitime</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">30</field>
+        <field name="description">Requis si la filiation est légitime.</field>
+    </record>
+
+    <!-- Filiation illégitime -->
+    <record id="piece_requise_naissance_illegitime_cin" model="etat.civil.piece.requise">
+        <field name="type_acte">naissance</field>
+        <field name="code_piece">cin_parent</field>
+        <field name="condition">filiation_illegitime</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">40</field>
+        <field name="description">Requis si la filiation est illégitime.</field>
+    </record>
+
+    <!-- ================================================================ -->
+    <!-- ACTE DE MARIAGE                                                    -->
+    <!-- ================================================================ -->
+
+    <!-- Témoins — dossier complet (non historique) -->
+    <record id="piece_requise_mariage_cin_temoin_1" model="etat.civil.piece.requise">
+        <field name="type_acte">mariage</field>
+        <field name="code_piece">cin_temoin_1</field>
+        <field name="condition">temoins_complets</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">10</field>
+        <field name="description">Requis si le dossier est complet (pas de données historiques incomplètes).</field>
+    </record>
+
+    <record id="piece_requise_mariage_cin_temoin_2" model="etat.civil.piece.requise">
+        <field name="type_acte">mariage</field>
+        <field name="code_piece">cin_temoin_2</field>
+        <field name="condition">temoins_complets</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">20</field>
+        <field name="description">Requis si le dossier est complet (pas de données historiques incomplètes).</field>
+    </record>
+
+    <!-- Témoins — présence individuelle (pour les dossiers historiques incomplets) -->
+    <record id="piece_requise_mariage_cin_temoin_1_present" model="etat.civil.piece.requise">
+        <field name="type_acte">mariage</field>
+        <field name="code_piece">cin_temoin_1</field>
+        <field name="condition">temoin_1_present</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">11</field>
+        <field name="description">Requis si le premier témoin est renseigné (dossier historique).</field>
+    </record>
+
+    <record id="piece_requise_mariage_cin_temoin_2_present" model="etat.civil.piece.requise">
+        <field name="type_acte">mariage</field>
+        <field name="code_piece">cin_temoin_2</field>
+        <field name="condition">temoin_2_present</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">21</field>
+        <field name="description">Requis si le second témoin est renseigné (dossier historique).</field>
+    </record>
+
+    <!-- Témoins — certificats de résidence -->
+    <record id="piece_requise_mariage_residence_temoin_1" model="etat.civil.piece.requise">
+        <field name="type_acte">mariage</field>
+        <field name="code_piece">residence_temoin_1</field>
+        <field name="condition">temoins_complets</field>
+        <field name="obligatoire" eval="False"/>
+        <field name="sequence">12</field>
+        <field name="description">Certificat de résidence du premier témoin (facultatif).</field>
+    </record>
+
+    <record id="piece_requise_mariage_residence_temoin_2" model="etat.civil.piece.requise">
+        <field name="type_acte">mariage</field>
+        <field name="code_piece">residence_temoin_2</field>
+        <field name="condition">temoins_complets</field>
+        <field name="obligatoire" eval="False"/>
+        <field name="sequence">22</field>
+        <field name="description">Certificat de résidence du second témoin (facultatif).</field>
+    </record>
+
+    <!-- Premier conjoint malgache -->
+    <record id="piece_requise_mariage_celibat_1" model="etat.civil.piece.requise">
+        <field name="type_acte">mariage</field>
+        <field name="code_piece">celibat_conjoint_1</field>
+        <field name="condition">conjoint_1_local</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">30</field>
+    </record>
+
+    <record id="piece_requise_mariage_cin_conjoint_1" model="etat.civil.piece.requise">
+        <field name="type_acte">mariage</field>
+        <field name="code_piece">cin_conjoint_1</field>
+        <field name="condition">conjoint_1_local</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">40</field>
+    </record>
+
+    <record id="piece_requise_mariage_residence_conjoint_1" model="etat.civil.piece.requise">
+        <field name="type_acte">mariage</field>
+        <field name="code_piece">residence_conjoint_1</field>
+        <field name="condition">conjoint_1_local</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">50</field>
+    </record>
+
+    <!-- Premier conjoint étranger -->
+    <record id="piece_requise_mariage_passeport_1" model="etat.civil.piece.requise">
+        <field name="type_acte">mariage</field>
+        <field name="code_piece">passeport_1</field>
+        <field name="condition">conjoint_1_etranger</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">60</field>
+    </record>
+
+    <record id="piece_requise_mariage_capacite_1" model="etat.civil.piece.requise">
+        <field name="type_acte">mariage</field>
+        <field name="code_piece">capacite_mariage_1</field>
+        <field name="condition">conjoint_1_capacite</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">70</field>
+        <field name="description">Requis uniquement si capacité de mariage requise pour le conjoint étranger 1.</field>
+    </record>
+
+    <record id="piece_requise_mariage_residence_etranger_1" model="etat.civil.piece.requise">
+        <field name="type_acte">mariage</field>
+        <field name="code_piece">residence_etranger_1</field>
+        <field name="condition">conjoint_1_residence_etranger</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">80</field>
+        <field name="description">Requis uniquement si résidence étrangère requise pour le conjoint 1.</field>
+    </record>
+
+    <!-- Second conjoint malgache -->
+    <record id="piece_requise_mariage_celibat_2" model="etat.civil.piece.requise">
+        <field name="type_acte">mariage</field>
+        <field name="code_piece">celibat_conjoint_2</field>
+        <field name="condition">conjoint_2_local</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">90</field>
+    </record>
+
+    <record id="piece_requise_mariage_cin_conjoint_2" model="etat.civil.piece.requise">
+        <field name="type_acte">mariage</field>
+        <field name="code_piece">cin_conjoint_2</field>
+        <field name="condition">conjoint_2_local</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">100</field>
+    </record>
+
+    <record id="piece_requise_mariage_residence_conjoint_2" model="etat.civil.piece.requise">
+        <field name="type_acte">mariage</field>
+        <field name="code_piece">residence_conjoint_2</field>
+        <field name="condition">conjoint_2_local</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">110</field>
+    </record>
+
+    <!-- Second conjoint étranger -->
+    <record id="piece_requise_mariage_passeport_2" model="etat.civil.piece.requise">
+        <field name="type_acte">mariage</field>
+        <field name="code_piece">passeport_2</field>
+        <field name="condition">conjoint_2_etranger</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">120</field>
+    </record>
+
+    <record id="piece_requise_mariage_capacite_2" model="etat.civil.piece.requise">
+        <field name="type_acte">mariage</field>
+        <field name="code_piece">capacite_mariage_2</field>
+        <field name="condition">conjoint_2_capacite</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">130</field>
+        <field name="description">Requis uniquement si capacité de mariage requise pour le conjoint étranger 2.</field>
+    </record>
+
+    <record id="piece_requise_mariage_residence_etranger_2" model="etat.civil.piece.requise">
+        <field name="type_acte">mariage</field>
+        <field name="code_piece">residence_etranger_2</field>
+        <field name="condition">conjoint_2_residence_etranger</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">140</field>
+        <field name="description">Requis uniquement si résidence étrangère requise pour le conjoint 2.</field>
+    </record>
+
+    <!-- ================================================================ -->
+    <!-- ACTE DE DÉCÈS                                                      -->
+    <!-- ================================================================ -->
+
+    <record id="piece_requise_deces_cin_declarant" model="etat.civil.piece.requise">
+        <field name="type_acte">deces</field>
+        <field name="code_piece">cin_declarant_deces</field>
+        <field name="condition">deces_toujours</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">10</field>
+    </record>
+
+    <record id="piece_requise_deces_residence_declarant" model="etat.civil.piece.requise">
+        <field name="type_acte">deces</field>
+        <field name="code_piece">residence_declarant_deces</field>
+        <field name="condition">deces_toujours</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">20</field>
+    </record>
+
+    <!-- ================================================================ -->
+    <!-- MENTIONS MARGINALES                                                -->
+    <!-- ================================================================ -->
+
+    <!-- Reconnaissance mineur -->
+    <record id="piece_requise_mention_reco_mineur_cin_pere" model="etat.civil.piece.requise">
+        <field name="type_acte">mention</field>
+        <field name="code_piece">cin_pere_reconnaissant</field>
+        <field name="condition">reconnaissance_mineur</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">10</field>
+    </record>
+
+    <record id="piece_requise_mention_reco_mineur_residence" model="etat.civil.piece.requise">
+        <field name="type_acte">mention</field>
+        <field name="code_piece">residence_pere_reconnaissant</field>
+        <field name="condition">reconnaissance_mineur</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">20</field>
+    </record>
+
+    <record id="piece_requise_mention_reco_mineur_lettre" model="etat.civil.piece.requise">
+        <field name="type_acte">mention</field>
+        <field name="code_piece">lettre_fokontany_reconnaissance</field>
+        <field name="condition">reconnaissance_mineur</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">30</field>
+    </record>
+
+    <!-- Reconnaissance majeur -->
+    <record id="piece_requise_mention_reco_majeur_cin" model="etat.civil.piece.requise">
+        <field name="type_acte">mention</field>
+        <field name="code_piece">cin_enfant_majeur</field>
+        <field name="condition">reconnaissance_majeur</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">10</field>
+    </record>
+
+    <record id="piece_requise_mention_reco_majeur_residence" model="etat.civil.piece.requise">
+        <field name="type_acte">mention</field>
+        <field name="code_piece">residence_enfant_majeur</field>
+        <field name="condition">reconnaissance_majeur</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">20</field>
+    </record>
+
+    <!-- Adoption -->
+    <record id="piece_requise_mention_adoption_cin" model="etat.civil.piece.requise">
+        <field name="type_acte">mention</field>
+        <field name="code_piece">cin_adoptant</field>
+        <field name="condition">adoption_toujours</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">10</field>
+    </record>
+
+    <record id="piece_requise_mention_adoption_residence" model="etat.civil.piece.requise">
+        <field name="type_acte">mention</field>
+        <field name="code_piece">residence_adoptant</field>
+        <field name="condition">adoption_toujours</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">20</field>
+    </record>
+
+    <record id="piece_requise_mention_adoption_accord" model="etat.civil.piece.requise">
+        <field name="type_acte">mention</field>
+        <field name="code_piece">lettre_accord_famille</field>
+        <field name="condition">adoption_accord_famille</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">30</field>
+    </record>
+
+    <record id="piece_requise_mention_adoption_fokontany" model="etat.civil.piece.requise">
+        <field name="type_acte">mention</field>
+        <field name="code_piece">lettre_fokontany_adoption</field>
+        <field name="condition">adoption_fokontany</field>
+        <field name="obligatoire" eval="True"/>
+        <field name="sequence">40</field>
+    </record>
+
+</odoo>
+

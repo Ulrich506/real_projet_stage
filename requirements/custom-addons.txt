@@ -1,0 +1,3 @@
+# Optional spreadsheet formats used by etat_civil import/export.
+openpyxl==3.1.5
+odfpy==1.4.1

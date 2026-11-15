@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_copy_payment_wizard_form" model="ir.ui.view">
+        <field name="name">etat.civil.copy.payment.wizard.form</field>
+        <field name="model">etat.civil.copy.payment.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Enregistrer un versement">
+                <group>
+                    <field name="request_id"/>
+                    <field name="company_id" invisible="1"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="amount"/>
+                    <field name="journal_id"/>
+                    <field name="payment_method_line_id"/>
+                    <field name="payment_date"/>
+                    <field name="communication"/>
+                </group>
+                <footer>
+                    <button name="action_register_payment" type="object" string="Encaisser et imprimer la quittance" class="oe_highlight"/>
+                    <button string="Annuler" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_copy_payment_tree" model="ir.ui.view">
+        <field name="name">etat.civil.copy.payment.tree</field>
+        <field name="model">etat.civil.copy.payment</field>
+        <field name="arch" type="xml">
+            <tree create="0" edit="0" delete="0">
+                <field name="name"/><field name="payment_date"/><field name="request_id"/>
+                <field name="payment_method"/><field name="amount"/><field name="currency_id"/>
+                <field name="received_by_id"/>
+                <button name="action_print_receipt" type="object" string="Réimprimer" icon="fa-print"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_copy_payment_form" model="ir.ui.view">
+        <field name="name">etat.civil.copy.payment.form</field>
+        <field name="model">etat.civil.copy.payment</field>
+        <field name="arch" type="xml">
+            <form string="Quittance de versement" create="0" edit="0" delete="0">
+                <header>
+                    <button name="action_print_receipt" type="object" string="Imprimer / réimprimer" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <div class="oe_title"><h1><field name="name"/></h1></div>
+                    <group>
+                        <field name="request_id"/><field name="payment_date"/>
+                        <field name="payment_method"/><field name="received_by_id"/>
+                    </group>
+                    <group>
+                        <field name="amount"/><field name="currency_id"/>
+                        <field name="company_id"/>
+                        <field name="account_payment_id"/>
+                        <field name="pos_payment_move_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_copy_receipt_settings_tree" model="ir.ui.view">
+        <field name="name">etat.civil.copy.receipt.settings.tree</field>
+        <field name="model">etat.civil.copy.receipt.settings</field>
+        <field name="arch" type="xml">
+            <tree><field name="company_id"/><field name="header"/></tree>
+        </field>
+    </record>
+
+    <record id="view_copy_receipt_settings_form" model="ir.ui.view">
+        <field name="name">etat.civil.copy.receipt.settings.form</field>
+        <field name="model">etat.civil.copy.receipt.settings</field>
+        <field name="arch" type="xml">
+            <form string="Configuration des quittances">
+                <sheet>
+                    <div class="alert alert-warning" role="alert">
+                        Le document reste un reçu technique tant que la commune n'a pas validé son statut,
+                        sa numérotation et ses mentions.
+                    </div>
+                    <group>
+                        <field name="company_id"/>
+                        <field name="header"/>
+                        <field name="legal_notice"/>
+                        <field name="footer"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_copy_receipt_settings" model="ir.actions.act_window">
+        <field name="name">Configuration des quittances</field>
+        <field name="res_model">etat.civil.copy.receipt.settings</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

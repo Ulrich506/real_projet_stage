@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="etat_civil_pos.GuichetTicketButton">
+        <button class="control-button btn btn-light rounded-0 fw-bolder"
+                t-on-click="click">
+            <i class="fa fa-ticket me-1" role="img" aria-label="Ticket"/>
+            Nouveau ticket de demande
+        </button>
+    </t>
+</templates>

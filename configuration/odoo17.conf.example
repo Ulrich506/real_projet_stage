@@ -1,0 +1,12 @@
+[options]
+admin_passwd = CHANGE_ME_WITH_A_PRIVATE_MASTER_PASSWORD
+db_host = 127.0.0.1
+db_port = 5432
+db_user = CHANGE_ME_WITH_A_DEVELOPMENT_DATABASE_ROLE
+db_password = CHANGE_ME_WITH_A_PRIVATE_DATABASE_PASSWORD
+db_name = gestion_etat_civil_dev
+addons_path = /absolute/path/to/gestion_etat_civil/odoo/addons,/absolute/path/to/gestion_etat_civil/custom_addons
+data_dir = /var/lib/odoo
+logfile = /var/log/odoo/odoo-server.log
+log_level = info
+http_port = 8071

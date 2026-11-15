@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="product_template_copy_payment" model="product.template">
+            <field name="name">Encaissement demande de copie d'état civil</field>
+            <field name="detailed_type">service</field>
+            <field name="sale_ok">True</field>
+            <field name="purchase_ok">False</field>
+            <field name="available_in_pos">True</field>
+            <field name="list_price">0.0</field>
+            <field name="taxes_id" eval="[(5, 0, 0)]"/>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

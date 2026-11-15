@@ -1,0 +1,1220 @@
+import base64
+import hashlib
+from io import BytesIO
+
+import qrcode
+
+from odoo import api, fields, models, _
+from odoo.exceptions import AccessError, UserError, ValidationError
+
+
+_INTERNAL_TRANSITION_TOKEN = object()
+
+
+class EtatCivilActeOfficiel(models.AbstractModel):
+    _name = "etat.civil.acte.officiel"
+    _description = "Acte officiel d'état civil"
+    _inherit = ["mail.thread", "mail.activity.mixin", "etat.civil.audit.mixin"]
+
+    numero_acte = fields.Char(
+        string="Numéro d'acte",
+        required=False,
+        copy=False,
+        readonly=True,
+        tracking=True,
+    )
+    feuillet_numero = fields.Integer(string="N° de feuillet", required=True)
+    registre_id = fields.Many2one(
+        "etat.civil.registre",
+        string="Registre",
+        required=True,
+        tracking=True,
+    )
+    date_dressage = fields.Datetime(
+        string="Date et heure d'établissement",
+        default=fields.Datetime.now,
+        required=True,
+        tracking=True,
+    )
+    texte_integral_acte = fields.Text(
+        string="Texte intégral de l'acte",
+        required=True,
+    )
+    texte_integral_acte_auto = fields.Boolean(
+        string="Texte intégral généré automatiquement",
+        default=False,
+        copy=False,
+    )
+    statut = fields.Selection(
+        [
+            ("brouillon", "Brouillon"),
+            ("en_attente", "En attente de validation"),
+            ("a_corriger", "À corriger"),
+            ("valide", "Validé"),
+            ("rectifie", "Rectifié"),
+            ("annule", "Annulé"),
+            ("archive", "Archivé"),
+        ],
+        string="Statut",
+        default="brouillon",
+        required=True,
+        tracking=True,
+    )
+    motif_annulation = fields.Text(string="Motif d'annulation")
+    motif_correction = fields.Text(string="Motif de retour pour correction", copy=False, tracking=True)
+    notes_transmission = fields.Text(string="Notes de transmission", copy=False)
+
+    agent_transmetteur_id = fields.Many2one(
+        "res.users",
+        string="Agent transmetteur",
+        readonly=True,
+        copy=False,
+        tracking=True,
+    )
+    date_transmission = fields.Datetime(
+        string="Date d'envoi pour validation",
+        readonly=True,
+        copy=False,
+        tracking=True,
+    )
+    officier_validateur_id = fields.Many2one(
+        "res.users",
+        string="Officier compétent désigné",
+        readonly=True,
+        copy=False,
+        tracking=True,
+    )
+    utilisateur_validation_id = fields.Many2one(
+        "res.users",
+        string="Utilisateur ayant validé",
+        readonly=True,
+        copy=False,
+        tracking=True,
+    )
+    date_validation = fields.Datetime(
+        string="Date de validation",
+        readonly=True,
+        copy=False,
+        tracking=True,
+    )
+
+    hash_empreinte_num = fields.Char(
+        string="Empreinte SHA-256",
+        readonly=True,
+        copy=False,
+    )
+    qr_code_signature = fields.Char(
+        string="Données de vérification QR",
+        readonly=True,
+        copy=False,
+    )
+    qr_code_image = fields.Binary(
+        string="QR de vérification",
+        readonly=True,
+        copy=False,
+        attachment=False,
+    )
+
+    toutes_pieces_obligatoires_recues = fields.Boolean(
+        string="Toutes les pièces obligatoires sont reçues",
+        compute="_compute_toutes_pieces_obligatoires_recues",
+        store=True,
+        help=(
+            "Vrai si toutes les pièces marquées obligatoires ont l'état "
+            "« Reçu » ou « Reçu et vérifié ». Conditionne les boutons Imprimer/Télécharger."
+        ),
+    )
+
+    @api.depends("piece_ids.etat", "piece_ids.obligatoire")
+    def _compute_toutes_pieces_obligatoires_recues(self):
+        for record in self:
+            if "piece_ids" not in record._fields:
+                record.toutes_pieces_obligatoires_recues = True
+                continue
+            obligatoires = record.piece_ids.filtered(lambda p: p.obligatoire)
+            if not obligatoires:
+                record.toutes_pieces_obligatoires_recues = True
+            else:
+                record.toutes_pieces_obligatoires_recues = all(
+                    p.etat in ("recu", "verifie") for p in obligatoires
+                )
+
+    _sql_constraints = [        (
+            "numero_acte_registre_unique",
+            "unique(numero_acte, registre_id)",
+            "Le numéro d'acte doit être unique dans le registre.",
+        ),
+        (
+            "feuillet_registre_unique",
+            "unique(feuillet_numero, registre_id)",
+            "Le numéro de feuillet doit être unique dans le registre.",
+        ),
+    ]
+
+    @api.model
+    def _search(self, domain, offset=0, limit=None, order=None, access_rights_uid=None):
+        if not self.env.su and not self.env.user._is_etat_civil_admin():
+            user = self.env.user
+            if (
+                user.has_group("etat_civil.group_etat_civil_agent")
+                or user.has_group("etat_civil.group_etat_civil_officier")
+            ):
+                centre_ids = user.etat_civil_centre_ids.ids
+                if not centre_ids:
+                    domain = list(domain or []) + [("id", "=", 0)]
+                else:
+                    domain = list(domain or []) + [("registre_id.centre_id", "in", centre_ids)]
+        return super()._search(
+            domain,
+            offset=offset,
+            limit=limit,
+            order=order,
+            access_rights_uid=access_rights_uid,
+        )
+
+    @api.constrains("feuillet_numero", "registre_id")
+    def _check_feuillet_numero(self):
+        for record in self:
+            if record.feuillet_numero < 1:
+                raise ValidationError("Le numéro de feuillet doit être supérieur à zéro.")
+
+    @api.constrains("statut", "motif_annulation")
+    def _check_annulation(self):
+        for record in self:
+            if record.statut == "annule" and not (record.motif_annulation or "").strip():
+                raise ValidationError("Le motif d'annulation est obligatoire.")
+
+    def _ensure_officier(self):
+        if not (
+            self.env.user.has_group("etat_civil.group_etat_civil_officier")
+            or self.env.user._is_etat_civil_admin()
+        ):
+            raise AccessError(
+                _("Seul un officier ou un administrateur d'état civil peut effectuer cette opération.")
+            )
+
+    def _ensure_piece_receiver(self):
+        """Only agents and administrators may register receipt of documents."""
+        user = self.env.user
+        if not (
+            self.env.su
+            or user.has_group("etat_civil.group_etat_civil_agent")
+            or user._is_etat_civil_admin()
+        ):
+            raise AccessError(
+                _("Seul un agent, un officier ou un administrateur peut recevoir les pièces.")
+            )
+
+    def _ensure_agent(self):
+        user = self.env.user
+        if (
+            user.has_group("etat_civil.group_etat_civil_officier")
+            and not user._is_etat_civil_admin()
+        ):
+            raise AccessError(_("Un officier ne peut pas effectuer les opérations réservées à l'agent."))
+        if (
+            not self.env.su
+            and not user.has_group("etat_civil.group_etat_civil_agent")
+            and not user._is_etat_civil_admin()
+        ):
+            raise AccessError(
+                _("Seul un agent ou un administrateur d'état civil peut effectuer cette opération.")
+            )
+
+    def _ensure_competence_territoriale(self):
+        self.ensure_one()
+        user = self.env.user
+        if self.env.su or user._is_etat_civil_admin():
+            return
+        centre = self.registre_id.centre_id
+        if not centre or centre not in user.etat_civil_centre_ids:
+            raise AccessError(
+                _("Vous n'êtes pas affecté au centre d'état civil de ce dossier (%s). Opération refusée.")
+                % (centre.nom_centre if centre else _("non défini"))
+            )
+
+    def _ensure_officier_responsable(self):
+        self.ensure_one()
+        if (
+            not self.env.user._is_etat_civil_admin()
+            and (
+                not self.officier_validateur_id
+                or self.officier_validateur_id != self.env.user
+            )
+        ):
+            raise AccessError(
+                _("Seul l'officier désigné lors de la transmission peut traiter ce dossier.")
+            )
+
+    def _compute_integrity_hash(self):
+        self.ensure_one()
+        payload = "|".join(
+            [
+                str(self._name),
+                str(self.id),
+                str(self.numero_acte or ""),
+                str(self.date_dressage or ""),
+                str(self.texte_integral_acte or ""),
+            ]
+        )
+        return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+    def verify_integrity_hash(self):
+        """Vérifie si l'empreinte cryptographique stockée correspond au contenu actuel de l'acte."""
+        self.ensure_one()
+        if not self.hash_empreinte_num:
+            return False, _("Aucune empreinte enregistrée sur cet acte.")
+        expected = self._compute_integrity_hash()
+        if self.hash_empreinte_num == expected:
+            return True, _("Contrôle interne d'intégrité valide : l'acte est intègre.")
+        return False, _("Alerte de discordance d'empreinte : le contenu actuel ne correspond plus au hash initialement calculé.")
+
+    def _get_competent_officiers(self):
+        self.ensure_one()
+        centre = self.registre_id.centre_id
+        officier_group = self.env.ref("etat_civil.group_etat_civil_officier")
+        base_officiers = self.env["res.users"].sudo().search([
+            ("groups_id", "in", officier_group.id),
+            ("active", "=", True),
+            ("share", "=", False),
+        ])
+        if not centre:
+            return self.env["res.users"]
+        return base_officiers.filtered(
+            lambda user: centre in user.etat_civil_centre_ids
+        )
+
+    def _generate_qr_verification_values(self, hash_value):
+        self.ensure_one()
+        payload = f"etat-civil:{self._name}:{self.id}:{hash_value}"
+        image = qrcode.make(payload)
+        buffer = BytesIO()
+        image.save(buffer, format="PNG")
+        return {
+            "qr_code_signature": payload,
+            "qr_code_image": base64.b64encode(buffer.getvalue()),
+        }
+
+    def _check_specific_transmission_requirements(self):
+        """Hook pour les contrôles spécifiques à chaque type d'acte (surchargé dans les sous-classes)."""
+        return []
+
+    def _status_blocks_transmission(self):
+        self.ensure_one()
+        if self.statut == "en_attente":
+            return _("Ce dossier est déjà en attente de validation.")
+        if self.statut == "valide":
+            return _("Ce dossier est déjà validé et ne peut plus être transmis.")
+        if self.statut in ("annule", "archive", "rectifie"):
+            return _("Ce dossier au statut '%s' ne peut pas être transmis.") % self.statut
+        if self.statut not in ("brouillon", "a_corriger"):
+            return _("Le dossier est déjà au statut '%s' et ne peut pas être transmis.") % self.statut
+        return False
+
+    def action_lister_officiers_competents(self):
+        self.ensure_one()
+        self._ensure_agent()
+        self.check_access_rights("read")
+        self.check_access_rule("read")
+        return [
+            {"id": officier.id, "name": officier.name}
+            for officier in self._get_competent_officiers()
+        ]
+
+    @api.model
+    def _generate_numero_acte(self):
+        """Generate the next act number from ir.sequence.
+
+        This method MUST only be called from create() to avoid consuming
+        sequence numbers when a form is merely opened or cancelled.
+        """
+        mapping = {
+            "etat.civil.acte.naissance": {
+                "code": "etat.civil.acte.naissance",
+                "xmlid": "etat_civil.sequence_etat_civil_acte_naissance",
+                "name": "Numéro d'acte de naissance",
+                "prefix": "NAI/%(year)s/",
+            },
+            "etat.civil.acte.mariage": {
+                "code": "etat.civil.acte.mariage",
+                "xmlid": "etat_civil.sequence_etat_civil_acte_mariage",
+                "name": "Numéro d'acte de mariage",
+                "prefix": "MAR/%(year)s/",
+            },
+            "etat.civil.acte.deces": {
+                "code": "etat.civil.acte.deces",
+                "xmlid": "etat_civil.sequence_etat_civil_acte_deces",
+                "name": "Numéro d'acte de décès",
+                "prefix": "DEC/%(year)s/",
+            },
+        }
+        cfg = mapping.get(self._name)
+        if not cfg:
+            if self._name == "etat.civil.acte.officiel":
+                return False
+            raise UserError(_("La séquence du numéro d'acte n'est pas configurée pour ce type d'acte."))
+
+        seq_model = self.env["ir.sequence"]
+        numero = seq_model.next_by_code(cfg["code"])
+        if not numero:
+            sequence = self.env.ref(cfg["xmlid"], raise_if_not_found=False)
+            if sequence:
+                numero = sequence.sudo().next_by_id()
+        if not numero:
+            seq = seq_model.sudo().search([("code", "=", cfg["code"])], limit=1)
+            if seq:
+                numero = seq.next_by_id()
+            else:
+                seq = seq_model.sudo().create({
+                    "name": cfg["name"],
+                    "code": cfg["code"],
+                    "prefix": cfg["prefix"],
+                    "padding": 5,
+                    "number_increment": 1,
+                    "implementation": "no_gap",
+                    "company_id": False,
+                })
+                numero = seq.next_by_id()
+
+        while numero and self.sudo().search_count([("numero_acte", "=", numero)]):
+            numero = seq_model.next_by_code(cfg["code"])
+        if not numero:
+            raise UserError(_("Impossible de générer un numéro d'acte avec la séquence configurée."))
+        return numero
+
+    @api.model
+    def _get_next_feuillet_numero(self, registre_id):
+        dernier_acte = self.search(
+            [("registre_id", "=", registre_id)],
+            order="feuillet_numero desc, id desc",
+            limit=1,
+        )
+        return (dernier_acte.feuillet_numero or 0) + 1
+
+    @api.onchange("registre_id")
+    def _onchange_registre_id_feuillet_numero(self):
+        for record in self:
+            if record.registre_id:
+                record.feuillet_numero = record._get_next_feuillet_numero(
+                    record.registre_id.id
+                )
+            else:
+                record.feuillet_numero = False
+
+    def _check_pret_pour_transmission(self):
+        self.ensure_one()
+        errors = []
+        status_error = self._status_blocks_transmission()
+        if status_error:
+            errors.append(status_error)
+        if not (self.numero_acte or "").strip():
+            errors.append(_("Le numéro d'acte est obligatoire."))
+        if self.feuillet_numero is None or (self.feuillet_numero or 0) < 1:
+            errors.append(_("Le numéro de feuillet doit être supérieur à zéro."))
+        if not self.registre_id:
+            errors.append(_("Le rattachement à un registre est obligatoire."))
+        elif self.registre_id.est_cloture:
+            errors.append(_("Le registre sélectionné est clôturé."))
+        if not (self.texte_integral_acte or "").strip():
+            errors.append(_("Le texte officiel/intégral de l'acte ne peut pas être vide."))
+
+        specific_errors = self._check_specific_transmission_requirements()
+        if specific_errors:
+            errors.extend(specific_errors)
+
+        self._sync_pieces_justificatives()
+        missing_pieces = self.piece_ids.filtered(
+            lambda p: p.obligatoire and p.etat == "a_fournir"
+        )
+        if missing_pieces:
+            names = ", ".join(missing_pieces.mapped("display_name"))
+            errors.append(_("Pièces justificatives obligatoires manquantes ou non reçues : %s.") % names)
+
+        competent_officiers = self._get_competent_officiers()
+        if not competent_officiers:
+            errors.append(
+                _("Aucun officier compétent n'a été trouvé pour ce dossier. Vérifiez l'affectation des utilisateurs ou contactez l'administrateur.")
+            )
+
+        centre = self.registre_id.centre_id
+        if (
+            not self.env.user._is_etat_civil_admin()
+            and (
+                not centre
+                or centre not in self.env.user.etat_civil_centre_ids
+            )
+        ):
+            errors.append(
+                _("Vous n'êtes pas affecté au centre de ce dossier (%s). Transmission interdite.")
+                % (centre.nom_centre if centre else _("non défini"))
+            )
+
+        return errors
+
+    def _resolve_competent_officier(self, officier, competent_officiers):
+        if type(officier) is int:
+            officier = self.env["res.users"].browse(officier).exists()
+        if (
+            not officier
+            or getattr(officier, "_name", None) != "res.users"
+            or len(officier) != 1
+            or officier not in competent_officiers
+        ):
+            raise AccessError(_("L'officier sélectionné n'est pas compétent pour ce dossier."))
+        return officier
+
+    def action_envoyer_validation(self, officier=None, notes=None):
+        self._ensure_agent()
+        if not self:
+            raise UserError(_("Sélectionnez au moins un dossier à transmettre."))
+        self.check_access_rights("write")
+        if not self.env.su:
+            self.check_access_rule("write")
+
+        if len(self) > 1:
+            transmitted = 0
+            errors_summary = []
+            for record in self:
+                rec_errors = record._check_pret_pour_transmission()
+                if rec_errors:
+                    errors_summary.append(f"{record.numero_acte or record.id}: " + "; ".join(rec_errors))
+                    continue
+                competent = record._get_competent_officiers()
+                if officier:
+                    target_officier = record._resolve_competent_officier(officier, competent)
+                elif len(competent) == 1:
+                    target_officier = competent
+                else:
+                    errors_summary.append(
+                        f"{record.numero_acte or record.id}: "
+                        + _("Plusieurs officiers sont compétents; une sélection explicite est requise.")
+                    )
+                    continue
+                record._execute_transmission(target_officier, notes)
+                transmitted += 1
+
+            if errors_summary and transmitted == 0:
+                raise ValidationError(
+                    _("Impossible d'envoyer les dossiers sélectionnés :\n")
+                    + "\n".join(f"- {e}" for e in errors_summary)
+                )
+
+            msg = _("%d dossier(s) transmis avec succès pour validation.") % transmitted
+            if errors_summary:
+                msg += _("\nCertains dossiers n'ont pas pu être transmis :\n") + "\n".join(f"- {e}" for e in errors_summary)
+
+            return {
+                "type": "ir.actions.client",
+                "tag": "display_notification",
+                "params": {
+                    "title": _("Transmission pour validation"),
+                    "message": msg,
+                    "type": "success" if transmitted > 0 else "warning",
+                    "sticky": bool(errors_summary),
+                },
+            }
+
+        self.ensure_one()
+        status_error = self._status_blocks_transmission()
+        if status_error:
+            raise UserError(status_error)
+        errors = self._check_pret_pour_transmission()
+        if errors:
+            raise ValidationError(
+                _("Impossible d'envoyer ce dossier pour validation. Les informations suivantes sont manquantes :\n")
+                + "\n".join(f"- {e}" for e in errors)
+            )
+
+        competent = self._get_competent_officiers()
+        if not officier:
+            if len(competent) == 1:
+                officier = competent
+            else:
+                action = self.env.ref("etat_civil.action_etat_civil_transmission_acte_wizard").read()[0]
+                action["context"] = {
+                    "default_acte_type": self._ec_acte_type(),
+                    "default_acte_id": self.id,
+                    "default_acte_display": f"{self.numero_acte} — {self.display_name}",
+                    "default_centre_id": self.registre_id.centre_id.id if self.registre_id else False,
+                }
+                return action
+        else:
+            officier = self._resolve_competent_officier(officier, competent)
+
+        self._execute_transmission(officier, notes)
+        return {
+            "type": "ir.actions.client",
+            "tag": "display_notification",
+            "params": {
+                "title": _("Transmission réussie"),
+                "message": _("Le dossier a été transmis à l'officier compétent."),
+                "type": "success",
+                "sticky": False,
+            },
+        }
+
+    def _execute_transmission(self, officier, notes=None):
+        self.ensure_one()
+        with self.env.cr.savepoint():
+            if not officier or officier not in self._get_competent_officiers():
+                raise AccessError(_("L'officier responsable doit être compétent pour ce dossier."))
+            vals = {
+                "statut": "en_attente",
+                "agent_transmetteur_id": self.env.user.id,
+                "date_transmission": fields.Datetime.now(),
+                "officier_validateur_id": officier.id,
+                "motif_correction": False,
+            }
+            if notes:
+                vals["notes_transmission"] = notes
+
+            previous_status = self.statut
+            previous_officer = self.officier_validateur_id
+            previous_date = self.date_transmission
+            self.with_context(etat_civil_transition_token=_INTERNAL_TRANSITION_TOKEN).write(vals)
+            self.env["etat.civil.audit.log"]._record_event(
+                "transmit",
+                record=self,
+                old_values={"statut": previous_status},
+                new_values={"statut": "en_attente"},
+            )
+
+            if previous_date:
+                self.message_post(
+                    body=_(
+                        "Nouvelle transmission après un traitement précédent "
+                        "(précédemment envoyé le %s à %s)."
+                    )
+                    % (
+                        previous_date,
+                        previous_officer.name if previous_officer else _("non assigné"),
+                    )
+                )
+
+            body = _("Le dossier a été transmis à l'officier compétent.") + " "
+            body += _("Destinataire : <b>%s</b>. Agent : <b>%s</b>.") % (
+                officier.name,
+                self.env.user.name,
+            )
+            if notes:
+                body += _("<br/><b>Note de l'agent :</b> %s") % notes
+            self.message_post(body=body)
+
+            todo_type = self.env.ref("mail.mail_activity_data_todo", raise_if_not_found=False)
+            if not todo_type:
+                raise UserError(_("Le type d'activité de validation n'est pas configuré dans Odoo."))
+            self.activity_schedule(
+                activity_type_id=todo_type.id,
+                summary=_("Validation de l'acte %s") % self.numero_acte,
+                note=_("L'agent %s a soumis ce dossier pour examen et validation.") % self.env.user.name,
+                user_id=officier.id,
+            )
+
+    def action_demander_correction(self):
+        self.ensure_one()
+        self._ensure_officier()
+        self._ensure_competence_territoriale()
+        self._ensure_officier_responsable()
+        action = self.env.ref("etat_civil.action_etat_civil_retour_correction_wizard").read()[0]
+        action["context"] = {
+            "default_action_type": "correction",
+            "default_acte_type": self._ec_acte_type(),
+            "default_acte_id": self.id,
+            "default_acte_display": f"{self.numero_acte} — {self.display_name}",
+        }
+        return action
+
+    def action_retourner_correction(self, motif):
+        self._ensure_officier()
+        motif = (motif or "").strip()
+        if not motif:
+            raise ValidationError(_("Le motif de retour pour correction est obligatoire."))
+        with self.env.cr.savepoint():
+            for record in self:
+                record._ensure_competence_territoriale()
+                record._ensure_officier_responsable()
+                if record.statut != "en_attente":
+                    raise UserError(_("Seul un dossier en attente de validation peut être retourné pour correction."))
+                record.with_context(
+                    etat_civil_transition_token=_INTERNAL_TRANSITION_TOKEN
+                ).write({
+                    "statut": "a_corriger",
+                    "motif_correction": motif,
+                })
+                self.env["etat.civil.audit.log"]._record_event(
+                    "return_correction",
+                    record=record,
+                    old_values={"statut": "en_attente"},
+                    new_values={"statut": "a_corriger"},
+                )
+                record.message_post(
+                    body=_("Dossier retourné à l'agent pour correction par l'officier <b>%s</b>.<br/><b>Motif :</b> %s")
+                    % (self.env.user.name, motif)
+                )
+                if record.agent_transmetteur_id:
+                    todo_type = self.env.ref("mail.mail_activity_data_todo", raise_if_not_found=False)
+                    if not todo_type:
+                        raise UserError(_("Le type d'activité de correction n'est pas configuré dans Odoo."))
+                    record.activity_schedule(
+                        activity_type_id=todo_type.id,
+                        summary=_("Corrections requises pour l'acte %s") % record.numero_acte,
+                        note=motif,
+                        user_id=record.agent_transmetteur_id.id,
+                    )
+        return True
+
+    def action_ouvrir_refus(self):
+        self.ensure_one()
+        self._ensure_officier()
+        self._ensure_competence_territoriale()
+        self._ensure_officier_responsable()
+        action = self.env.ref("etat_civil.action_etat_civil_retour_correction_wizard").read()[0]
+        action["context"] = {
+            "default_action_type": "refus",
+            "default_acte_type": self._ec_acte_type(),
+            "default_acte_id": self.id,
+            "default_acte_display": f"{self.numero_acte} — {self.display_name}",
+        }
+        return action
+
+    def action_refuser_acte(self, motif):
+        self._ensure_officier()
+        motif = (motif or "").strip()
+        if not motif:
+            raise ValidationError(_("Le motif de refus est obligatoire."))
+        for record in self:
+            with self.env.cr.savepoint():
+                record._ensure_competence_territoriale()
+                record._ensure_officier_responsable()
+                if record.statut != "en_attente":
+                    raise UserError(_("Seul un dossier en attente de validation peut être refusé."))
+                decision_motif = _("REFUS — %s") % motif
+                record.with_context(
+                    etat_civil_transition_token=_INTERNAL_TRANSITION_TOKEN
+                ).write({"statut": "annule", "motif_annulation": decision_motif})
+                self.env["etat.civil.audit.log"]._record_event(
+                    "reject",
+                    record=record,
+                    old_values={"statut": "en_attente"},
+                    new_values={"statut": "annule"},
+                )
+                record.message_post(
+                    body=_("Dossier définitivement refusé par l'officier <b>%s</b>.<br/><b>Motif :</b> %s")
+                    % (self.env.user.name, motif)
+                )
+        return True
+
+    def action_valider_acte(self):
+        self._ensure_officier()
+        with self.env.cr.savepoint():
+            for record in self:
+                record._ensure_competence_territoriale()
+                if record.statut != "en_attente":
+                    raise UserError(_("Seul un dossier transmis et en attente peut être validé."))
+                record._ensure_officier_responsable()
+                if record.registre_id.est_cloture:
+                    raise UserError(_("Impossible de valider un acte dans un registre clôturé."))
+                if not (record.texte_integral_acte or "").strip():
+                    raise ValidationError(_("Le texte intégral de l'acte ne peut pas être vide."))
+                record._sync_pieces_justificatives()
+                record._check_pieces_justificatives()
+
+            for record in self:
+                hash_value = record._compute_integrity_hash()
+                qr_values = record._generate_qr_verification_values(hash_value)
+
+                record.with_context(
+                    etat_civil_transition_token=_INTERNAL_TRANSITION_TOKEN
+                ).write(
+                    {
+                        "hash_empreinte_num": hash_value,
+                        **qr_values,
+                        "statut": "valide",
+                        "utilisateur_validation_id": self.env.user.id,
+                        "date_validation": fields.Datetime.now(),
+                        "motif_correction": False,
+                    }
+                )
+                self.env["etat.civil.audit.log"]._record_event(
+                    "validate",
+                    record=record,
+                    old_values={"statut": "en_attente"},
+                    new_values={"statut": "valide"},
+                )
+                self.env["etat.civil.audit.log"]._record_event(
+                    "sign",
+                    record=record,
+                    new_values={"statut": "valide"},
+                    details={"algorithm": "SHA-256"},
+                )
+
+                record.message_post(
+                    body=(
+                        _("Acte validé par <b>%s</b>. Une empreinte SHA-256 a été calculée et un QR de vérification a été généré.")
+                        % self.env.user.name
+                    )
+                )
+
+                record.activity_feedback(["mail.mail_activity_data_todo"])
+        return True
+
+    def _evaluate_piece_condition(self, condition):
+        self.ensure_one()
+        if condition in ("toujours", "deces_toujours", "adoption_toujours"):
+            return True
+        if condition == "naissance_hopital":
+            return getattr(self, "lieu_accouchement", False) == "hopital"
+        if condition == "naissance_maison_autre":
+            return getattr(self, "lieu_accouchement", False) in ("maison", "autre")
+        if condition == "filiation_legitime":
+            return getattr(self, "filiation", False) == "legitime"
+        if condition == "filiation_illegitime":
+            return getattr(self, "filiation", False) == "illegitime"
+        if condition == "conjoint_1_local":
+            return not getattr(self, "conjoint_1_est_etranger", False)
+        if condition == "conjoint_1_etranger":
+            return bool(getattr(self, "conjoint_1_est_etranger", False))
+        if condition == "conjoint_1_capacite":
+            return bool(
+                getattr(self, "conjoint_1_est_etranger", False)
+                and getattr(self, "conjoint_1_capacite_requise", False)
+            )
+        if condition == "conjoint_1_residence_etranger":
+            return bool(
+                getattr(self, "conjoint_1_est_etranger", False)
+                and getattr(self, "conjoint_1_residence_etranger_requise", False)
+            )
+        if condition == "conjoint_2_local":
+            return not getattr(self, "conjoint_2_est_etranger", False)
+        if condition == "conjoint_2_etranger":
+            return bool(getattr(self, "conjoint_2_est_etranger", False))
+        if condition == "conjoint_2_capacite":
+            return bool(
+                getattr(self, "conjoint_2_est_etranger", False)
+                and getattr(self, "conjoint_2_capacite_requise", False)
+            )
+        if condition == "conjoint_2_residence_etranger":
+            return bool(
+                getattr(self, "conjoint_2_est_etranger", False)
+                and getattr(self, "conjoint_2_residence_etranger_requise", False)
+            )
+        if condition == "temoin_1_present":
+            return bool(getattr(self, "temoin_1_id", False))
+        if condition == "temoin_2_present":
+            return bool(getattr(self, "temoin_2_id", False))
+        if condition == "temoins_complets":
+            if getattr(self, "donnees_historiques_incompletes", False):
+                return False
+            return True
+        if condition == "reconnaissance_mineur":
+            return (
+                getattr(self, "type_mention", None) == "reconnaissance"
+                and getattr(self, "statut_reconnaissance", None) == "mineur"
+            )
+        if condition == "reconnaissance_majeur":
+            return (
+                getattr(self, "type_mention", None) == "reconnaissance"
+                and getattr(self, "statut_reconnaissance", None) == "majeur"
+            )
+        if condition == "adoption_accord_famille":
+            return (
+                getattr(self, "type_mention", None) == "adoption"
+                and getattr(self, "type_justificatif_adoption", None) == "accord_famille"
+            )
+        if condition == "adoption_fokontany":
+            return (
+                getattr(self, "type_mention", None) == "adoption"
+                and getattr(self, "type_justificatif_adoption", None) == "fokontany"
+            )
+        return False
+
+    def _get_configured_required_pieces(self):
+        """Lit la table etat.civil.piece.requise et renvoie l'ensemble des codes requis si configurés."""
+        self.ensure_one()
+        type_acte = self._ec_acte_type()
+        rules = self.env["etat.civil.piece.requise"].sudo().search([
+            ("type_acte", "=", type_acte),
+        ], order="sequence, id")
+        if not rules:
+            return None
+        required = set()
+        for rule in rules:
+            if self._evaluate_piece_condition(rule.condition):
+                required.add(rule.code_piece)
+        return required
+
+    def _required_piece_codes(self):
+        return set()
+
+    def _pieces_owner_field(self):
+        return {
+            "etat.civil.acte.naissance": "acte_naissance_id",
+            "etat.civil.acte.mariage": "acte_mariage_id",
+            "etat.civil.acte.deces": "acte_deces_id",
+            "etat.civil.mention.marginale": "mention_id",
+        }.get(self._name)
+
+    def _sync_pieces_justificatives(self):
+        """
+        Synchronise les pièces justificatives avec les règles de _required_piece_codes() :
+        - Crée les pièces manquantes (marquées genere_automatiquement=True).
+        - Met à jour le flag obligatoire sur les pièces existantes.
+        - Supprime les pièces auto-générées devenues obsolètes, SAUF si elles ont
+          un fichier attaché ou un état autre que 'a_fournir' (reçu ou vérifié).
+        """
+        owner_field = self._pieces_owner_field()
+        if not owner_field or "piece_ids" not in self._fields:
+            return
+        for record in self:
+            required = record._required_piece_codes()
+            existing = {piece.name: piece for piece in record.piece_ids}
+
+            # 1. Mettre à jour le flag obligatoire sur les pièces qui changent de statut
+            for code, piece in existing.items():
+                should_be_required = code in required
+                if piece.obligatoire != should_be_required:
+                    piece._set_required_from_procedure(should_be_required)
+
+            # 2. Supprimer les pièces auto-générées devenues obsolètes (si sans fichier et non reçues)
+            to_delete = self.env["etat.civil.piece.justificative"]
+            for code, piece in existing.items():
+                if code not in required and piece.genere_automatiquement:
+                    # Ne jamais supprimer si fichier attaché ou déjà reçue/vérifiée
+                    if piece.etat == "a_fournir" and not piece.attachment_ids:
+                        to_delete |= piece
+            if to_delete:
+                # Utiliser sudo() pour que _is_etat_civil_admin() soit bypassed
+                # La suppression système est toujours autorisée dans unlink()
+                to_delete.sudo().unlink()
+
+            # 3. Recalculer existing après suppression
+            existing_after = {p.name: p for p in record.piece_ids}
+
+            # 4. Créer les pièces manquantes
+            missing = required - existing_after.keys()
+            if missing:
+                # Récupérer les config piece.requise pour l'obligatoire
+                type_acte = self._ec_acte_type() if hasattr(self, "_ec_acte_type") else "naissance"
+                configs = self.env["etat.civil.piece.requise"].sudo().search([
+                    ("type_acte", "=", type_acte),
+                    ("code_piece", "in", list(missing)),
+                ])
+                config_obligatoire = {c.code_piece: c.obligatoire for c in configs}
+                self.env["etat.civil.piece.justificative"]._create_required(
+                    [
+                        {
+                            "name": code,
+                            "obligatoire": config_obligatoire.get(code, True),
+                            owner_field: record.id,
+                        }
+                        for code in sorted(missing)
+                    ]
+                )
+
+    def _check_pieces_justificatives(self):
+        self.ensure_one()
+        missing = self.piece_ids.filtered(
+            lambda piece: piece.obligatoire and piece.etat not in ("recu", "verifie")
+        )
+        if missing:
+            names = ", ".join(missing.mapped("display_name"))
+            raise ValidationError(
+                _("Les pièces obligatoires doivent être reçues et vérifiées par un officier : %s.")
+                % names
+            )
+
+    def action_ouvrir_annulation(self):
+        self.ensure_one()
+        if not self.env.user._is_etat_civil_admin():
+            raise AccessError(_("Seul l'administrateur d'état civil peut annuler un acte validé."))
+        self._ensure_competence_territoriale()
+        self._ensure_officier_responsable()
+        if self.statut != "valide":
+            raise UserError(_("Seul un acte validé peut être annulé."))
+        action = self.env.ref("etat_civil.action_etat_civil_annulation_acte_wizard").read()[0]
+        action["context"] = {
+            "default_acte_type": self._ec_acte_type(),
+            "default_acte_id": self.id,
+            "default_acte_display": f"{self.numero_acte} — {self.display_name}",
+        }
+        return action
+
+    def _ec_acte_type(self):
+        return {
+            "etat.civil.acte.naissance": "naissance",
+            "etat.civil.acte.mariage": "mariage",
+            "etat.civil.acte.deces": "deces",
+            "etat.civil.mention.marginale": "mention",
+        }.get(self._name, "naissance")
+
+    def action_annuler_acte(self, motif):
+        if not self.env.user._is_etat_civil_admin():
+            raise AccessError(_("Seul l'administrateur d'état civil peut annuler un acte validé."))
+        motif = (motif or "").strip()
+        if not motif:
+            raise ValidationError(_("Le motif d'annulation est obligatoire."))
+        for record in self:
+            with self.env.cr.savepoint():
+                record._ensure_competence_territoriale()
+                record._ensure_officier_responsable()
+                if record.statut != "valide":
+                    raise UserError(_("Seul un acte validé peut être annulé."))
+                decision_motif = _("ANNULATION — %s") % motif
+                record.with_context(
+                    etat_civil_transition_token=_INTERNAL_TRANSITION_TOKEN
+                ).write({"statut": "annule", "motif_annulation": decision_motif})
+                self.env["etat.civil.audit.log"]._record_event(
+                    "cancel",
+                    record=record,
+                    old_values={"statut": "valide"},
+                    new_values={"statut": "annule"},
+                )
+                record.message_post(
+                    body=_("Acte annulé par <b>%s</b>. Motif : %s")
+                    % (self.env.user.name, motif)
+                )
+        return True
+
+    def action_rectifier_acte(self):
+        if not self.env.user._is_etat_civil_admin():
+            raise AccessError(_("La rectification officielle de l'acte est réservée à l'administrateur d'état civil."))
+        with self.env.cr.savepoint():
+            for record in self:
+                record._ensure_competence_territoriale()
+                record._ensure_officier_responsable()
+                if record.statut != "valide":
+                    raise UserError(_("Seul un acte validé peut être rectifié."))
+                record.with_context(
+                    etat_civil_transition_token=_INTERNAL_TRANSITION_TOKEN
+                ).write({"statut": "rectifie"})
+                self.env["etat.civil.audit.log"]._record_event(
+                    "rectify",
+                    record=record,
+                    old_values={"statut": "valide"},
+                    new_values={"statut": "rectifie"},
+                )
+                record.message_post(
+                    body=_("Acte marqué comme rectifié par <b>%s</b>.")
+                    % self.env.user.name
+                )
+        return True
+
+    def action_archiver_acte(self):
+        if not self.env.user._is_etat_civil_admin():
+            raise AccessError(_("Seul l'administrateur d'état civil peut archiver un acte."))
+        with self.env.cr.savepoint():
+            for record in self:
+                record._ensure_competence_territoriale()
+                record._ensure_officier_responsable()
+                if record.statut != "annule":
+                    raise UserError(_("Seul un acte annulé peut être archivé."))
+                record.with_context(
+                    etat_civil_transition_token=_INTERNAL_TRANSITION_TOKEN
+                ).write({"statut": "archive"})
+                self.env["etat.civil.audit.log"]._record_event(
+                    "archive",
+                    record=record,
+                    old_values={"statut": "annule"},
+                    new_values={"statut": "archive"},
+                )
+                record.message_post(
+                    body=_("Acte archivé par <b>%s</b>.") % self.env.user.name
+                )
+        return True
+
+    def _build_texte_integral_acte(self):
+        return ""
+
+    def action_recevoir_toutes_pieces(self):
+        self.ensure_one()
+        self._ensure_competence_territoriale()
+        self._ensure_piece_receiver()
+        if self.statut not in ("brouillon", "a_corriger"):
+            raise UserError(_("Les pièces peuvent être reçues uniquement dans un brouillon ou un dossier à corriger."))
+        pieces = self.piece_ids.filtered(lambda piece: piece.etat == "a_fournir")
+        for piece in pieces:
+            piece.action_mark_received()
+        return True
+
+    def action_verifier_toutes_pieces(self):
+        self.ensure_one()
+        self._ensure_competence_territoriale()
+        self._ensure_officier()
+        self._ensure_officier_responsable()
+        if self.statut != "en_attente":
+            raise UserError(_("Les pièces peuvent être vérifiées uniquement dans un dossier envoyé pour validation."))
+        pieces = self.piece_ids.filtered(lambda piece: piece.etat == "recu")
+        for piece in pieces:
+            piece.action_mark_verified()
+        return True
+
+    def action_telecharger_acte_pdf(self):
+        self.ensure_one()
+        if self.statut not in ("valide", "rectifie", "archive"):
+            raise UserError(_("L'acte doit être validé avant d'être téléchargé."))
+        if not self.toutes_pieces_obligatoires_recues:
+            raise UserError(_("Toutes les pièces justificatives obligatoires doivent être reçues avant de télécharger l'acte."))
+        report_names = {
+            "etat.civil.acte.naissance": "etat_civil.report_acte_naissance",
+            "etat.civil.acte.mariage": "etat_civil.report_acte_mariage",
+            "etat.civil.acte.deces": "etat_civil.report_acte_deces",
+        }
+        report_name = report_names.get(self._name)
+        if not report_name:
+            raise UserError(_("Le téléchargement PDF n'est pas disponible pour ce dossier."))
+        return {
+            "type": "ir.actions.act_url",
+            "url": "/etat_civil/download/%s/%s" % (report_name, self.id),
+            "target": "self",
+        }
+
+    def action_imprimer_acte(self):
+        self.ensure_one()
+        if self.statut not in ("valide", "rectifie", "archive"):
+            raise UserError(_("L'acte doit être validé avant d'être imprimé."))
+        if not self.toutes_pieces_obligatoires_recues:
+            raise UserError(_("Toutes les pièces justificatives obligatoires doivent être reçues avant d'imprimer l'acte."))
+        report_names = {
+            "etat.civil.acte.naissance": "etat_civil.report_acte_naissance",
+            "etat.civil.acte.mariage": "etat_civil.report_acte_mariage",
+            "etat.civil.acte.deces": "etat_civil.report_acte_deces",
+        }
+        report_name = report_names.get(self._name)
+        if not report_name:
+            raise UserError(_("L'impression n'est pas disponible pour ce dossier."))
+        return {
+            "type": "ir.actions.act_url",
+            "url": "/etat_civil/imprimer/%s/%s" % (report_name, self.id),
+            "target": "new",
+        }
+
+    @api.onchange("texte_integral_acte")
+    def _onchange_texte_integral_acte_manual(self):
+        if self.texte_integral_acte_auto and self.texte_integral_acte:
+            self.texte_integral_acte_auto = False
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        self._ensure_agent()
+        internal_transition = (
+            self.env.context.get("etat_civil_transition_token") is _INTERNAL_TRANSITION_TOKEN
+        )
+        pending_feuillets = {}
+        for vals in vals_list:
+            if not (vals.get("texte_integral_acte") or "").strip():
+                vals["texte_integral_acte"] = "Texte intégral en cours de génération."
+            if not internal_transition:
+                vals["statut"] = "brouillon"
+                vals.pop("hash_empreinte_num", None)
+                vals.pop("qr_code_signature", None)
+                vals.pop("qr_code_image", None)
+                vals.pop("officier_validateur_id", None)
+                vals.pop("date_validation", None)
+                vals.pop("utilisateur_validation_id", None)
+                vals.pop("agent_transmetteur_id", None)
+                vals.pop("date_transmission", None)
+                vals.pop("notes_transmission", None)
+            # Generate sequence number ONLY at actual record creation,
+            # never during form open / default_get / onchange.
+            if not (vals.get("numero_acte") or "").strip():
+                vals["numero_acte"] = self._generate_numero_acte()
+            if (
+                vals.get("feuillet_numero") is False
+                or vals.get("feuillet_numero") is None
+            ) and vals.get("registre_id"):
+                registre_id = vals["registre_id"]
+                if registre_id not in pending_feuillets:
+                    self.env.cr.execute(
+                        "SELECT id FROM etat_civil_registre WHERE id = %s FOR UPDATE",
+                        [registre_id],
+                    )
+                    pending_feuillets[registre_id] = self._get_next_feuillet_numero(
+                        registre_id
+                    ) - 1
+                pending_feuillets[registre_id] += 1
+                vals["feuillet_numero"] = pending_feuillets[registre_id]
+        records = super().create(vals_list)
+        for record, vals in zip(records, vals_list):
+            generated_text = record._build_texte_integral_acte()
+            if generated_text and not (vals.get("texte_integral_acte") or "").strip():
+                record.with_context(etat_civil_transition_token=_INTERNAL_TRANSITION_TOKEN).write({
+                    "texte_integral_acte": generated_text,
+                    "texte_integral_acte_auto": True,
+                })
+        return records
+
+    def write(self, vals):
+        internal_transition = (
+            self.env.context.get("etat_civil_transition_token") is _INTERNAL_TRANSITION_TOKEN
+        )
+        if "statut" in vals and not internal_transition:
+            raise UserError(
+                _("Le statut d'un acte doit être modifié par une action autorisée.")
+            )
+        if "hash_empreinte_num" in vals and not internal_transition:
+            raise UserError(_("L'empreinte d'un acte est gérée automatiquement."))
+        protected_workflow_fields = {
+            "qr_code_signature",
+            "qr_code_image",
+            "officier_validateur_id",
+            "agent_transmetteur_id",
+            "date_transmission",
+            "date_validation",
+            "utilisateur_validation_id",
+        }
+        if protected_workflow_fields.intersection(vals) and not internal_transition:
+            raise UserError(_("Les informations de transmission et de vérification sont gérées par le workflow."))
+
+        if not internal_transition:
+            for record in self:
+                if record.statut in {"brouillon", "a_corriger"}:
+                    record._ensure_agent()
+                if record.statut == "en_attente":
+                    raise UserError(
+                        _("Ce dossier est actuellement en attente de validation par l'officier compétent. "
+                          "Il est verrouillé pour éviter les modifications concurrentes. "
+                          "Si des modifications sont nécessaires, demandez à l'officier de le renvoyer pour correction.")
+                    )
+                if record.statut in {"valide", "rectifie", "annule", "archive"}:
+                    if record.statut == "archive":
+                        raise UserError(_("Un acte archivé ne peut plus être modifié, y compris par ajout de mention."))
+                    if set(vals) == {"mention_ids"} and (
+                        self.env.user.has_group("etat_civil.group_etat_civil_officier")
+                        or self.env.user._is_etat_civil_admin()
+                        or self.env.user.has_group("base.group_system")
+                    ):
+                        continue
+                    raise UserError(
+                        _("Un acte au statut '%s' est verrouillé. "
+                          "Seul un officier peut y ajouter une mention marginale.")
+                        % record.statut
+                    )
+        result = super().write(vals)
+        business_fields = {
+            "registre_id", "conjoint_1_id", "conjoint_2_id", "temoin_1_id",
+            "temoin_2_id", "date_mariage", "lieu_mariage", "regime_matrimonial",
+            "enfant_id", "mere_id", "pere_id", "declarant_id", "date_naissance_enfant",
+            "heure_naissance", "lieu_naissance", "lieu_accouchement", "filiation",
+            "defunt_id", "date_deces", "heure_deces", "lieu_deces", "cause_deces",
+        }
+        if business_fields.intersection(vals):
+            for record in self:
+                if record.texte_integral_acte_auto:
+                    generated_text = record._build_texte_integral_acte()
+                    if generated_text:
+                        record.with_context(
+                            etat_civil_transition_token=_INTERNAL_TRANSITION_TOKEN
+                        ).write({
+                            "texte_integral_acte": generated_text,
+                        })
+        return result
+
+    def unlink(self):
+        self._ensure_agent()
+        for record in self:
+            if record.statut not in ("brouillon", "a_corriger"):
+                raise UserError(
+                    _("Impossible de supprimer l'acte %s : seuls les brouillons ou les dossiers à corriger peuvent être supprimés.")
+                    % record.numero_acte
+                )
+        return super().unlink()

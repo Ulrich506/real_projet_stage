@@ -1,0 +1,958 @@
+#
+msgid ""
+msgstr ""
+"Language: mg_MG\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. module: etat_civil
+#: model:ir.ui.menu,name:etat_civil.menu_etat_civil_root
+#: model:ir.module.category,name:etat_civil.module_category_etat_civil
+msgid "État Civil"
+msgstr "Sata-piankohonana"
+
+#. module: etat_civil
+#: model:ir.ui.menu,name:etat_civil.menu_etat_civil_guichet
+#: model:ir.actions.act_window,name:etat_civil.action_etat_civil_demandes_guichet
+msgid "File d'attente"
+msgstr "Filaharana"
+
+#. module: etat_civil
+#: model:ir.ui.menu,name:etat_civil.menu_etat_civil_actes
+msgid "Actes"
+msgstr "Taratasy ara-panjakana"
+
+#. module: etat_civil
+#: model:ir.ui.menu,name:etat_civil.menu_etat_civil_acte_naissance
+msgid "Naissances"
+msgstr "Fahaterahana"
+
+#. module: etat_civil
+#: model:ir.ui.menu,name:etat_civil.menu_etat_civil_acte_mariage
+msgid "Mariages"
+msgstr "Fanambadiana"
+
+#. module: etat_civil
+#: model:ir.ui.menu,name:etat_civil.menu_etat_civil_acte_deces
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_mention_marginale__type_mention__deces
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_registre__type_registre__deces
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_demande_guichet__type_acte__deces
+msgid "Décès"
+msgstr "Fahafatesana"
+
+#. module: etat_civil
+#: model:ir.ui.menu,name:etat_civil.menu_etat_civil_mentions
+#: model:ir.actions.act_window,name:etat_civil.action_etat_civil_mention_marginale
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_naissance__mention_ids
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_mariage_form
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_naissance_form
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_mariage__mention_ids
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_mention_marginale_tree
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_deces__mention_ids
+msgid "Mentions marginales"
+msgstr "Fanamarihana an-tsisiny"
+
+#. module: etat_civil
+#: model:ir.ui.menu,name:etat_civil.menu_etat_civil_citoyens
+msgid "Citoyens / Individus"
+msgstr "Olom-pirenena"
+
+#. module: etat_civil
+#: model:ir.ui.menu,name:etat_civil.menu_etat_civil_config
+msgid "Administration"
+msgstr "Fitantanana"
+
+#. module: etat_civil
+#: model:ir.ui.menu,name:etat_civil.menu_etat_civil_registres
+#: model:ir.actions.act_window,name:etat_civil.action_etat_civil_registre
+msgid "Registres"
+msgstr "Bokim-pisoratana"
+
+#. module: etat_civil
+#: model:ir.ui.menu,name:etat_civil.menu_etat_civil_centres
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_centre_tree
+#: model:ir.actions.act_window,name:etat_civil.action_etat_civil_centre
+msgid "Centres d'état civil"
+msgstr "Foibem-panjakana sivily"
+
+#. module: etat_civil
+#: model:ir.ui.menu,name:etat_civil.menu_etat_civil_users
+msgid "Utilisateurs"
+msgstr "Mpampiasa"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_individu__cin
+msgid "Carte d'Identité Nationale (CIN)"
+msgstr "Kara-panondrom-pirenena (CIN)"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_demande_guichet__citoyen_cin
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_demande_guichet_tree
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_demande_guichet_form
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_individu_tree
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_import_line__cin
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_demande_guichet_search
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_individu_search
+msgid "CIN"
+msgstr "CIN"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_individu__nom
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_import_line__nom
+msgid "Nom"
+msgstr "Anarana"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_individu__prenoms
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_import_line__prenoms
+msgid "Prénoms"
+msgstr "Fanampin'anarana"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_individu__date_naissance
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_import_line__date_naissance
+msgid "Date de naissance"
+msgstr "Daty nahaterahana"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_individu__sexe
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_import_line__sexe
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_export_wizard__sex_filter
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_individu_search
+msgid "Sexe"
+msgstr "Lahy sa vavy"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_individu__statut_vital
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_export_wizard__export_filter
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_import_line__statut_vital
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_individu_search
+msgid "Statut vital"
+msgstr "Toetry ny fiainana"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_individu__situation_matrimoniale
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_import_line__situation_matrimoniale
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_export_wizard__marital_filter
+msgid "Situation matrimoniale"
+msgstr "Sata ara-panambadiana"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_individu__sexe__m
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__sex_filter__m
+msgid "Masculin"
+msgstr "Lahy"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_individu__sexe__f
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__sex_filter__f
+msgid "Féminin"
+msgstr "Vavy"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_individu__statut_vital__vivant
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_individu_search
+msgid "Vivant"
+msgstr "Velona"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_individu__statut_vital__decede
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_individu_search
+msgid "Décédé"
+msgstr "Maty"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_individu__statut_vital__disparu
+msgid "Présumé Disparu"
+msgstr "Heverina fa tsy hita"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_individu__situation_matrimoniale__celibataire
+msgid "Célibataire"
+msgstr "Tsy manambady"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_individu__situation_matrimoniale__marie
+msgid "Marié(e)"
+msgstr "Manambady"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_individu__situation_matrimoniale__divorce
+msgid "Divorcé(e)"
+msgstr "Nisaraka"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_individu__situation_matrimoniale__veuf
+msgid "Veuf/Veuve"
+msgstr "Maty vady"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_individu__categorie_age__nourrisson
+msgid "Nourrisson"
+msgstr "Zazakely"
+
+#. module: etat_civil
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_naissance_search
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_individu__categorie_age__enfant
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_naissance_form
+msgid "Enfant"
+msgstr "Ankizy"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_individu__categorie_age__adolescent
+msgid "Adolescent"
+msgstr "Tanora"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_individu__categorie_age__adulte
+msgid "Adulte"
+msgstr "Olon-dehibe"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_individu__categorie_age__senior
+msgid "Senior"
+msgstr "Zokiolona"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_individu__categorie_age__indetermine
+msgid "Non déterminé"
+msgstr "Tsy voafaritra"
+
+#. module: etat_civil
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_export_wizard_form
+msgid "Filtres démographiques"
+msgstr "Sivana momba ny mponina"
+
+#. module: etat_civil
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_export_wizard_form
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_export_wizard__selection_mode
+msgid "Personnes à exporter"
+msgstr "Olona havoaka"
+
+#. module: etat_civil
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_export_wizard_form
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_export_wizard__export_field_ids
+msgid "Champs à exporter"
+msgstr "Saha havoaka"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_export_wizard__include_all_fields
+msgid "Tous les champs exportables"
+msgstr "Ny saha rehetra azo avoaka"
+
+#. module: etat_civil
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_export_wizard_form
+msgid "Format et langue"
+msgstr "Endrika sy fiteny"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_import_wizard__file_format__xlsx
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__export_format__xlsx
+msgid "Excel (.xlsx)"
+msgstr "Excel (.xlsx)"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_import_wizard__file_format__csv
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__export_format__csv
+msgid "CSV"
+msgstr "CSV"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__export_format__ods
+msgid "ODS"
+msgstr "ODS"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__export_format__pdf
+msgid "PDF"
+msgstr "PDF"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_import_wizard__file_format__json
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__export_format__json
+msgid "JSON"
+msgstr "JSON"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_import_wizard__file_format__xml
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__export_format__xml
+msgid "XML"
+msgstr "XML"
+
+#. module: etat_civil
+#: code:addons/etat_civil/wizards/import_export_citoyen.py:0
+msgid "Sélectionnez au moins une personne à exporter."
+msgstr "Misafidiana olona iray farafahakeliny havoaka."
+
+#. module: etat_civil
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_import_wizard_form
+msgid "Télécharger le modèle CSV"
+msgstr "Hisintona ny santionan'ny rakitra CSV"
+
+#. module: etat_civil
+msgid ""
+"Corrigez les lignes directement dans le tableau, puis validez-les avant "
+"l'importation."
+msgstr ""
+"Ahitsio eto amin'ny tabilao ny andalana, ary hamarino alohan'ny hampidirana "
+"azy."
+
+#. module: etat_civil
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_import_wizard_form
+msgid "Valider les lignes"
+msgstr "Hamarino ny andalana"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_import_wizard__line_ids
+msgid "Lignes à importer"
+msgstr "Andalana hampidirina"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_import_line__error_message
+msgid "Erreurs de validation"
+msgstr "Hadisoana hita tamin'ny fanamarinana"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_import_line__duplicate_record_id
+msgid "Doublon existant"
+msgstr "Firaketana efa misy"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_import_line__date_naissance_estimee
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_individu__date_naissance_estimee
+msgid "Date estimée"
+msgstr "Daty tombanana"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_individu__lieu_naissance_commune
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_import_line__lieu_naissance_commune
+msgid "Commune de naissance"
+msgstr "Kaominina nahaterahana"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_import_line__lieu_naissance_pays
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_individu__lieu_naissance_pays
+msgid "Pays de naissance"
+msgstr "Firenena nahaterahana"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_individu__nationalite_actuelle
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_import_line__nationalite_actuelle
+msgid "Nationalité"
+msgstr "Zom-pirenena"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_import_line__domicile_actuel
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_individu__domicile_actuel
+msgid "Domicile"
+msgstr "Toerana onenana"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_individu__nom_complet
+msgid "Nom Complet"
+msgstr "Anarana feno"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_individu__categorie_age
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_individu_search
+msgid "Catégorie d'âge"
+msgstr "Sokajin-taona"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_import_line__profession_actuelle
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_individu__profession_actuelle
+msgid "Profession"
+msgstr "Asa"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_export_wizard__age_min
+msgid "Âge minimum"
+msgstr "Taona farany ambany"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_export_wizard__age_max
+msgid "Âge maximum"
+msgstr "Taona farany ambony"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_export_wizard__filter_age_min
+msgid "Activer l'âge minimum"
+msgstr "Hampihatra ny taona farany ambany"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_export_wizard__filter_age_max
+msgid "Activer l'âge maximum"
+msgstr "Hampihatra ny taona farany ambony"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__export_filter__all
+msgid "Tous les statuts vitaux"
+msgstr "Ny sata rehetra"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__export_filter__vivant
+msgid "Vivants uniquement"
+msgstr "Velona ihany"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__export_filter__decede
+msgid "Décédés uniquement"
+msgstr "Maty ihany"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__export_filter__disparu
+msgid "Présumés disparus"
+msgstr "Heverina fa tsy hita"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__marital_filter__all
+msgid "Toutes les situations matrimoniales"
+msgstr "Ny sata ara-panambadiana rehetra"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__marital_filter__celibataire
+msgid "Célibataires"
+msgstr "Tsy manambady"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__marital_filter__marie
+msgid "Mariés"
+msgstr "Manambady"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__marital_filter__divorce
+msgid "Divorcés"
+msgstr "Nisara-panambadiana"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__marital_filter__veuf
+msgid "Veufs ou veuves"
+msgstr "Maty vady"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__sex_filter__all
+msgid "Tous"
+msgstr "Rehetra"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__selection_mode__filtered
+msgid "Toutes les personnes correspondant aux filtres"
+msgstr "Ny olona rehetra mifanaraka amin'ny sivana"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__selection_mode__selected
+msgid "Sélection manuelle"
+msgstr "Fisafidianana tanana"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_export_wizard__selected_individu_ids
+msgid "Personnes sélectionnées"
+msgstr "Olona voafantina"
+
+#. module: etat_civil
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_export_wizard_form
+msgid "Tout sélectionner"
+msgstr "Safidio daholo"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_import_wizard__file_format
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_export_wizard__export_format
+msgid "Format"
+msgstr "Endrika"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_export_wizard__language
+msgid "Langue du fichier"
+msgstr "Fitenin'ny rakitra"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__language__fr_fr
+msgid "Français"
+msgstr "Frantsay"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__language__mg_mg
+msgid "Malagasy"
+msgstr "Malagasy"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_export_wizard__pdf_layout
+msgid "Présentation du PDF"
+msgstr "Fomba fanehoana ny PDF"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__pdf_layout__table
+msgid "Liste tabulaire"
+msgstr "Lisitra anaty tabilao"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_export_wizard__pdf_layout__individual
+msgid "Fiche par personne"
+msgstr "Taratasy isaky ny olona"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_export_wizard__result_file
+msgid "Fichier exporté"
+msgstr "Rakitra navoaka"
+
+#. module: etat_civil
+msgid "Exportation terminée."
+msgstr "Vita ny famoahana rakitra."
+
+#. module: etat_civil
+#: model:ir.actions.report,name:etat_civil.action_report_citizen_export
+msgid "Exportation des citoyens"
+msgstr "Famoahana ny antontan'olon-pirenena"
+
+#. module: etat_civil
+msgid "Olom-pirenena"
+msgstr "Olom-pirenena"
+
+#. module: etat_civil
+#: model_terms:ir.ui.view,arch_db:etat_civil.report_citizen_export
+msgid "personne(s)"
+msgstr "olona"
+
+#. module: etat_civil
+#: code:addons/etat_civil/wizards/import_export_citoyen.py:0
+msgid "Le nom est obligatoire."
+msgstr "Tsy maintsy fenoina ny anarana."
+
+#. module: etat_civil
+#: code:addons/etat_civil/wizards/import_export_citoyen.py:0
+msgid "Le sexe doit être Masculin ou Féminin."
+msgstr "Lahy na vavy ihany no ekena."
+
+#. module: etat_civil
+#: code:addons/etat_civil/wizards/import_export_citoyen.py:0
+msgid "La date de naissance est obligatoire."
+msgstr "Tsy maintsy fenoina ny daty nahaterahana."
+
+#. module: etat_civil
+#: code:addons/etat_civil/wizards/import_export_citoyen.py:0
+msgid "Le statut vital n'est pas reconnu."
+msgstr "Tsy fantatra io sata momba ny fiainana io."
+
+#. module: etat_civil
+#: code:addons/etat_civil/wizards/import_export_citoyen.py:0
+msgid "La situation matrimoniale n'est pas reconnue."
+msgstr "Tsy fantatra io sata ara-panambadiana io."
+
+#. module: etat_civil
+#: code:addons/etat_civil/wizards/import_export_citoyen.py:0
+msgid "Sélectionnez au moins un champ à exporter."
+msgstr "Misafidiana saha iray farafahakeliny havoaka."
+
+#. module: etat_civil
+#: code:addons/etat_civil/wizards/import_export_citoyen.py:0
+msgid "Les âges ne peuvent pas être négatifs."
+msgstr "Tsy azo atao miiba ny taona."
+
+#. module: etat_civil
+#: code:addons/etat_civil/wizards/import_export_citoyen.py:0
+msgid "L'âge minimum ne peut pas dépasser l'âge maximum."
+msgstr "Tsy afaka mihoatra ny taona farany ambony ny taona farany ambany."
+
+#. module: etat_civil
+#: code:addons/etat_civil/wizards/import_export_citoyen.py:0
+#: model:ir.model.constraint,message:etat_civil.constraint_etat_civil_individu_cin_format
+msgid "Le numéro de CIN doit contenir exactement 12 chiffres."
+msgstr "Tsy maintsy misy tarehimarika 12 katroka ny laharan'ny CIN."
+
+#. module: etat_civil
+#: code:addons/etat_civil/wizards/import_export_citoyen.py:0
+msgid "La date de naissance ne peut pas être dans le futur."
+msgstr "Tsy mety ho amin'ny ho avy ny daty nahaterahana."
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_demande_guichet__citoyen_nom
+msgid "Nom du citoyen"
+msgstr "Anaran'ny olom-pirenena"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_demande_guichet__ticket_numero
+msgid "Numéro de ticket"
+msgstr "Laharan'ny tapakila"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_demande_guichet__statut
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_naissance_search
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_mariage_search
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_res_users_search
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_deces__statut
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_officiel__statut
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_deces_search
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_mariage__statut
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_naissance__statut
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_demande_guichet_search
+msgid "Statut"
+msgstr "Sata"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_demande_guichet__priorite
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_demande_guichet_search
+msgid "Priorité"
+msgstr "Laharam-pahamehana"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_demande_guichet__processed_at
+msgid "Date de traitement"
+msgstr "Daty nanaovana fikarakarana"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_naissance__filiation
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_acte_naissance__filiation__legitime
+msgid "Filiation établie"
+msgstr "Ray aman-dreny voafaritra"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_naissance__filiation
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_acte_naissance__filiation__illegitime
+msgid "Filiation à préciser"
+msgstr "Mbola hofaritana ny ray aman-dreny"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_mariage__conjoint_1_capacite_requise
+msgid "Capacité matrimoniale requise"
+msgstr "Taratasy fahafahana manambady takiana"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_mariage__conjoint_1_residence_etranger_requise
+msgid "Résidence requise"
+msgstr "Taratasy fonenana takiana"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_demande_guichet__type_acte
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_demande_guichet_search
+msgid "Type d'acte"
+msgstr "Karazana taratasy"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_demande_guichet__type_demande
+msgid "Type de demande"
+msgstr "Karazana fangatahana"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_demande_guichet__statut
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_demande_guichet_search
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_demande_guichet__statut__en_attente
+msgid "En attente"
+msgstr "Miandry"
+
+#. module: etat_civil
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_demande_guichet_search
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_demande_guichet__statut__en_cours
+msgid "Au guichet"
+msgstr "Eo am-pandraisana"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_demande_guichet__statut__traite
+msgid "Traité"
+msgstr "Voakarakara"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_demande_guichet__priorite
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_demande_guichet__priorite__normale
+msgid "Normale"
+msgstr "Mahazatra"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_demande_guichet__priorite__prioritaire
+msgid "Prioritaire"
+msgstr "Laharam-pahamehana"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_demande_guichet__priorite__urgente
+msgid "Urgente"
+msgstr "Maika"
+
+#. module: etat_civil
+#: model:ir.ui.view,arch_db:etat_civil.view_etat_civil_demande_guichet_form
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_demande_guichet_form
+msgid "Appeler au guichet"
+msgstr "Antsoy eo amin'ny kaontera"
+
+#. module: etat_civil
+#: model:ir.ui.view,arch_db:etat_civil.view_etat_civil_demande_guichet_form
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_demande_guichet_form
+msgid "Marquer traité"
+msgstr "Mariho fa voakarakara"
+
+#. module: etat_civil
+#: model:ir.ui.view,arch_db:etat_civil.view_etat_civil_demande_guichet_form
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_annulation_acte_wizard
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_transmission_acte_wizard
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_demande_guichet_form
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_retour_correction_wizard
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_deces_form
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_mariage_form
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_gestion_utilisateur_form
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_naissance_form
+msgid "Annuler"
+msgstr "Hanafoana"
+
+#. module: etat_civil
+#: model:ir.ui.view,arch_db:etat_civil.view_etat_civil_demande_guichet_form
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_demande_guichet_form
+msgid "Citoyen"
+msgstr "Olom-pirenena"
+
+#. module: etat_civil
+#: model:ir.ui.view,arch_db:etat_civil.view_etat_civil_demande_guichet_form
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_demande_guichet_form
+msgid "Demande"
+msgstr "Fangatahana"
+
+#. module: etat_civil
+#: model:ir.ui.view,arch_db:etat_civil.view_etat_civil_demande_guichet_search
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_demande_guichet_search
+msgid "Rechercher dans la file d'attente"
+msgstr "Hikaroka ao amin'ny filaharana"
+
+#. module: etat_civil
+#: model:ir.ui.view,arch_db:etat_civil.view_etat_civil_demande_guichet_search
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_demande_guichet_search
+msgid "Grouper par"
+msgstr "Vondrona araka ny"
+
+#. module: etat_civil
+#: model:ir.ui.menu,name:etat_civil.menu_etat_civil_a_valider
+msgid "Dossiers à examiner"
+msgstr "Taratasy hojerena"
+
+#. module: etat_civil
+#: model:ir.ui.menu,name:etat_civil.menu_etat_civil_naissance_a_valider
+#: model:ir.actions.act_window,name:etat_civil.action_etat_civil_acte_naissance_a_valider
+msgid "Naissances à examiner"
+msgstr "Fahaterahana hojerena"
+
+#. module: etat_civil
+#: model:ir.ui.menu,name:etat_civil.menu_etat_civil_mariage_a_valider
+#: model:ir.actions.act_window,name:etat_civil.action_etat_civil_acte_mariage_a_valider
+msgid "Mariages à examiner"
+msgstr "Fanambadiana hojerena"
+
+#. module: etat_civil
+#: model:ir.ui.menu,name:etat_civil.menu_etat_civil_deces_a_valider
+#: model:ir.actions.act_window,name:etat_civil.action_etat_civil_acte_deces_a_valider
+msgid "Décès à examiner"
+msgstr "Fahafatesana hojerena"
+
+#. module: etat_civil
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_naissance_search
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_mariage_search
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_deces_search
+msgid "À examiner"
+msgstr "Hojerena"
+
+#. module: etat_civil
+msgid "Assignés à moi"
+msgstr "Omena ahy"
+
+#. module: etat_civil
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_naissance_search
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_mariage_search
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_demande_guichet_search
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_deces_search
+msgid "Traités"
+msgstr "Efa voakarakara"
+
+#. module: etat_civil
+#: code:addons/etat_civil/models/acte_officiel.py:0
+msgid "Le dossier a été transmis à l'officier compétent."
+msgstr "Ny taratasy dia nalefa tamin’ny tompon’andraikitra mahefa."
+
+#. module: etat_civil
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_transmission_acte_wizard
+#: model:ir.actions.server,name:etat_civil.action_acte_mariage_envoyer_validation
+#: model:ir.actions.server,name:etat_civil.action_acte_naissance_envoyer_validation
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_naissance_kanban
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_deces_form
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_mariage_form
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_deces_kanban
+#: model:ir.actions.act_window,name:etat_civil.action_etat_civil_transmission_acte_wizard
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_naissance_tree
+#: model:ir.actions.server,name:etat_civil.action_acte_deces_envoyer_validation
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_deces_tree
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_mariage_tree
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_naissance_form
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_mariage_kanban
+msgid "Envoyer pour validation"
+msgstr "Handefa hankatoavina"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_acte_officiel__statut__en_attente
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_acte_naissance__statut__en_attente
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_acte_mariage__statut__en_attente
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_acte_deces__statut__en_attente
+msgid "En attente de validation"
+msgstr "Miandry fankatoavana"
+
+#. module: etat_civil
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_naissance_search
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_mariage_search
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_deces_search
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_acte_naissance__statut__a_corriger
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_acte_mariage__statut__a_corriger
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_acte_officiel__statut__a_corriger
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_acte_deces__statut__a_corriger
+msgid "À corriger"
+msgstr "Harenina"
+
+#. module: etat_civil
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_deces_form
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_mariage_form
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_naissance_form
+msgid "Renvoyer pour correction"
+msgstr "Hamerina harenina"
+
+#. module: etat_civil
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_deces_form
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_mariage_form
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_naissance_form
+msgid "Refuser"
+msgstr "Andavana"
+
+#. module: etat_civil
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_deces_form
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_mariage_form
+#: model_terms:ir.ui.view,arch_db:etat_civil.view_etat_civil_acte_naissance_form
+msgid "Valider l'acte"
+msgstr "Hankatoa ny taratasy"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_officiel__agent_transmetteur_id
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_naissance__agent_transmetteur_id
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_deces__agent_transmetteur_id
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_mariage__agent_transmetteur_id
+msgid "Agent transmetteur"
+msgstr "Mpiasam-panjakana nanefa"
+
+#. module: etat_civil
+msgid "Date de transmission"
+msgstr "Daty nandefa"
+
+#. module: etat_civil
+msgid "Officier validateur"
+msgstr "Tompon'andraikitra nankatoa"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_mariage__date_validation
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_naissance__date_validation
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_deces__date_validation
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_officiel__date_validation
+msgid "Date de validation"
+msgstr "Daty fankatoavana"
+
+#. module: etat_civil
+msgid "Motif de correction"
+msgstr "Antony namerenan-dresa"
+
+#. module: etat_civil
+msgid "Motif du refus"
+msgstr "Antony nanadavana"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_officiel__notes_transmission
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_deces__notes_transmission
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_mariage__notes_transmission
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_naissance__notes_transmission
+msgid "Notes de transmission"
+msgstr "Fanamarihana momba ny fandefasana"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_acte_deces__statut__brouillon
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_acte_mariage__statut__brouillon
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_acte_naissance__statut__brouillon
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_acte_officiel__statut__brouillon
+msgid "Brouillon"
+msgstr "Taratasy vontoaty"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_acte_officiel__statut__valide
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_acte_deces__statut__valide
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_acte_naissance__statut__valide
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_acte_mariage__statut__valide
+msgid "Validé"
+msgstr "Voakatoa"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_acte_naissance__statut__annule
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_acte_officiel__statut__annule
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_demande_guichet__statut__annule
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_acte_deces__statut__annule
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_acte_mariage__statut__annule
+msgid "Annulé"
+msgstr "Voafoanana"
+
+#. module: etat_civil
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_acte_officiel__statut__archive
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_acte_deces__statut__archive
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_acte_naissance__statut__archive
+#: model:ir.model.fields.selection,name:etat_civil.selection__etat_civil_acte_mariage__statut__archive
+msgid "Archivé"
+msgstr "Voarakitra"
+
+#. module: etat_civil
+msgid "À valider"
+msgstr "Hankatoavina"
+
+#. module: etat_civil
+msgid "Le dossier a été transmis pour validation."
+msgstr "Ny taratasy dia nalefa hankatoavina."
+
+#. module: etat_civil
+msgid "Aucun officier compétent n'a été trouvé pour ce dossier."
+msgstr "Tsy hita tompon'andraikitra mahefa ho an'ity taratasy ity."
+
+#. module: etat_civil
+msgid "Sélectionnez un officier compétent pour ce dossier."
+msgstr "Misafidiana tompon'andraikitra mahefa ho an'ity taratasy ity."
+
+#. module: etat_civil
+#: code:addons/etat_civil/models/acte_officiel.py:0
+msgid "Ce dossier est déjà en attente de validation."
+msgstr "Ity taratasy ity efa miandry fankatoavana."
+
+#. module: etat_civil
+#: model:ir.model,name:etat_civil.model_etat_civil_piece_requise
+msgid "Pièce justificative requise (configuration)"
+msgstr "Taratasy ilaina (fanamboarana)"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_piece_justificative__genere_automatiquement
+msgid "Généré automatiquement"
+msgstr "Namboarina ho azy"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_officiel__toutes_pieces_obligatoires_recues
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_naissance__toutes_pieces_obligatoires_recues
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_mariage__toutes_pieces_obligatoires_recues
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_acte_deces__toutes_pieces_obligatoires_recues
+msgid "Toutes les pièces obligatoires sont reçues"
+msgstr "Voaray avokoa ny taratasy tsy maintsy ilaina"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_piece_requise__type_acte
+msgid "Type d'acte"
+msgstr "Karazana sora-piankohonana"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_piece_requise__code_piece
+msgid "Catégorie de pièce"
+msgstr "Sokajin-taratasy"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_piece_requise__condition
+msgid "Condition d'application"
+msgstr "Fepetra fampiharana"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_piece_requise__obligatoire
+msgid "Obligatoire"
+msgstr "Tsy maintsy"
+
+#. module: etat_civil
+#: model:ir.model.fields,field_description:etat_civil.field_etat_civil_piece_requise__sequence
+msgid "Ordre d'affichage"
+msgstr "Filaharana"

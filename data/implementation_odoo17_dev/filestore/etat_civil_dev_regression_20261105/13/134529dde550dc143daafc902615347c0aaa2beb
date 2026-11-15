@@ -1,0 +1,87 @@
+
+/* /web/static/lib/bootstrap/scss/_functions.scss */
+ 
+
+/* /web/static/lib/bootstrap/scss/_mixins.scss */
+ 
+
+/* /web/static/src/scss/functions.scss */
+ 
+
+/* /web/static/src/scss/mixins_forwardport.scss */
+ 
+
+/* /web/static/src/scss/bs_mixins_overrides.scss */
+ 
+
+/* /web/static/src/scss/utils.scss */
+ 
+
+/* /web/static/src/scss/primary_variables.scss */
+ 
+
+/* /web/static/src/core/avatar/avatar.variables.scss */
+ 
+
+/* /web/static/src/core/notifications/notification.variables.scss */
+ 
+
+/* /web/static/src/search/control_panel/control_panel.variables.scss */
+ 
+
+/* /web/static/src/search/search_panel/search_panel.variables.scss */
+ 
+
+/* /web/static/src/views/fields/statusbar/statusbar_field.variables.scss */
+ 
+
+/* /web/static/src/views/form/form.variables.scss */
+ 
+
+/* /web/static/src/views/kanban/kanban.variables.scss */
+ 
+
+/* /web/static/src/webclient/burger_menu/burger_menu.variables.scss */
+ 
+
+/* /web/static/src/webclient/navbar/navbar.variables.scss */
+ 
+
+/* /onboarding/static/src/scss/onboarding.variables.scss */
+ 
+
+/* /mail/static/src/core/common/primary_variables.scss */
+ 
+
+/* /mail/static/src/discuss/typing/common/primary_variables.scss */
+ 
+
+/* /mail/static/src/scss/variables/primary_variables.scss */
+ 
+
+/* /web_editor/static/src/scss/web_editor.variables.scss */
+ 
+
+/* /web_editor/static/src/scss/wysiwyg.variables.scss */
+ 
+
+/* /portal/static/src/scss/primary_variables.scss */
+ 
+
+/* /account/static/src/scss/variables.scss */
+ @keyframes animate-red{0%{color: red;}100%{color: inherit;}}.animate{animation: animate-red 1s ease;}
+
+/* /web/static/src/scss/secondary_variables.scss */
+ 
+
+/* /web_editor/static/src/scss/secondary_variables.scss */
+ 
+
+/* /web/static/src/scss/pre_variables.scss */
+ 
+
+/* /web/static/lib/bootstrap/scss/_variables.scss */
+ 
+
+/* /snailmail/static/src/scss/snailmail_external_layout_asset.scss */
+ div .header > div[class$="_header"]{overflow: hidden !important; max-height: 150px;}.article.o_report_layout_standard > .pt-5, .article.o_report_layout_boxed > .pt-5{padding-top: 0 !important;}div .address.row{height: 56mm; max-height: 56mm;}div .address.row > div[name="address"]{font-size: 95%; background-color: #fff; padding-top: 25mm; padding-left: 4mm; margin-bottom: 2mm; margin-left: 56% !important; width: 45.5%; height: 56mm; max-height: 56mm;}div .address.row > div[name="address"] > span:not(:first-child){display: none;}div .address.row > div[name="address"] > address{margin-bottom: 12mm !important;}div .row.fallback_header{height: 56mm; max-height: 56mm;}div .row.fallback_header > div.col-5.offset-7{font-size: 95%; background-color: #fff; padding-top: 25mm; padding-left: 4mm; margin-bottom: 2mm; margin-left: 56%; width: 45.5%; height: 56mm; max-height: 56mm;}div .row.fallback_header > div.col-5.offset-7 > span:not(:first-child){display: none;}div .row.fallback_header > div.col-5.offset-7 div[itemscope="itemscope"] > div:first-child{margin-bottom: 12mm;}
