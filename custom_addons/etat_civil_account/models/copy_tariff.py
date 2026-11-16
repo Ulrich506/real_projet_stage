@@ -15,7 +15,18 @@ class EtatCivilCopyTariff(models.Model):
     copy_kind = fields.Selection(
         [("integrale", "Copie intégrale"), ("extrait", "Extrait")], required=True
     )
-    product_id = fields.Many2one("product.product", required=True, ondelete="restrict")
+    product_template_id = fields.Many2one(
+        "product.template", string="Produit de prestation", required=True, ondelete="restrict",
+    )
+    product_id = fields.Many2one(
+        "product.product", string="Variante du produit",
+        compute="_compute_product_id", store=True,
+    )
+
+    @api.depends("product_template_id")
+    def _compute_product_id(self):
+        for record in self:
+            record.product_id = record.product_template_id.product_variant_id.id
     price = fields.Monetary(
         required=True, default=2000, currency_field="currency_id"
     )
@@ -47,6 +58,11 @@ class EtatCivilCopyTariff(models.Model):
         for vals in vals_list:
             if vals.get("document_type"):
                 vals["first_copy_free"] = vals["document_type"] == "naissance"
+            # Si on passe product_id au lieu de product_template_id, convertir
+            if vals.get("product_id") and not vals.get("product_template_id"):
+                prod = self.env["product.product"].browse(vals["product_id"])
+                if prod.exists():
+                    vals["product_template_id"] = prod.product_tmpl_id.id
         return super().create(vals_list)
 
     @api.model

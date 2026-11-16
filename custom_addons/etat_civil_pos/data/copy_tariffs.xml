@@ -15,7 +15,7 @@
         <field name="name">Copie intégrale d'acte de naissance</field>
         <field name="document_type">naissance</field>
         <field name="copy_kind">integrale</field>
-        <field name="product_id" ref="etat_civil_pos.product_template_copy_birth_full"/>
+        <field name="product_template_id" ref="etat_civil_pos.product_template_copy_birth_full"/>
         <field name="price">2000.00</field>
         <field name="currency_id" ref="base.MGA"/>
         <field name="first_copy_free" eval="True"/>
@@ -27,7 +27,7 @@
         <field name="name">Extrait d'acte de naissance</field>
         <field name="document_type">naissance</field>
         <field name="copy_kind">extrait</field>
-        <field name="product_id" ref="etat_civil_pos.product_template_copy_birth_extract"/>
+        <field name="product_template_id" ref="etat_civil_pos.product_template_copy_birth_extract"/>
         <field name="price">1000.00</field>
         <field name="currency_id" ref="base.MGA"/>
         <field name="first_copy_free" eval="True"/>
@@ -43,7 +43,7 @@
         <field name="name">Copie intégrale d'acte de mariage</field>
         <field name="document_type">mariage</field>
         <field name="copy_kind">integrale</field>
-        <field name="product_id" ref="etat_civil_pos.product_template_copy_marriage_full"/>
+        <field name="product_template_id" ref="etat_civil_pos.product_template_copy_marriage_full"/>
         <field name="price">2000.00</field>
         <field name="currency_id" ref="base.MGA"/>
         <field name="first_copy_free" eval="False"/>
@@ -55,7 +55,7 @@
         <field name="name">Extrait d'acte de mariage</field>
         <field name="document_type">mariage</field>
         <field name="copy_kind">extrait</field>
-        <field name="product_id" ref="etat_civil_pos.product_template_copy_marriage_extract"/>
+        <field name="product_template_id" ref="etat_civil_pos.product_template_copy_marriage_extract"/>
         <field name="price">1000.00</field>
         <field name="currency_id" ref="base.MGA"/>
         <field name="first_copy_free" eval="False"/>
@@ -71,7 +71,7 @@
         <field name="name">Copie intégrale d'acte de décès</field>
         <field name="document_type">deces</field>
         <field name="copy_kind">integrale</field>
-        <field name="product_id" ref="etat_civil_pos.product_template_copy_death_full"/>
+        <field name="product_template_id" ref="etat_civil_pos.product_template_copy_death_full"/>
         <field name="price">2000.00</field>
         <field name="currency_id" ref="base.MGA"/>
         <field name="first_copy_free" eval="False"/>
@@ -83,7 +83,7 @@
         <field name="name">Extrait d'acte de décès</field>
         <field name="document_type">deces</field>
         <field name="copy_kind">extrait</field>
-        <field name="product_id" ref="etat_civil_pos.product_template_copy_death_extract"/>
+        <field name="product_template_id" ref="etat_civil_pos.product_template_copy_death_extract"/>
         <field name="price">1000.00</field>
         <field name="currency_id" ref="base.MGA"/>
         <field name="first_copy_free" eval="False"/>
