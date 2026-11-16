@@ -10,6 +10,8 @@
         "security/guichet_ticket_rules.xml",
         "data/service_products.xml",
         "data/product.xml",
+        "data/pos_category.xml",
+        "data/copy_tariffs.xml",
         "report/guichet_ticket.xml",
         "views/guichet_ticket_views.xml",
         "views/pos_order_views.xml",

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Tarifs par défaut des copies d'état civil.
+    Ces tarifs sont des valeurs indicatives (2000 MGA).
+    L'administrateur DOIT les modifier selon les tarifs officiels validés par la commune.
+    La première copie de naissance est gratuite par défaut (first_copy_free=True).
+-->
+<odoo noupdate="1">
+
+    <!-- ================================================================ -->
+    <!-- NAISSANCE                                                          -->
+    <!-- ================================================================ -->
+
+    <record id="tariff_birth_full" model="etat.civil.copy.tariff">
+        <field name="name">Copie intégrale d'acte de naissance</field>
+        <field name="document_type">naissance</field>
+        <field name="copy_kind">integrale</field>
+        <field name="product_id" ref="etat_civil_pos.product_template_copy_birth_full"/>
+        <field name="price">2000.00</field>
+        <field name="currency_id" ref="base.MGA"/>
+        <field name="first_copy_free" eval="True"/>
+        <field name="date_start">2020-01-01</field>
+        <field name="active" eval="True"/>
+    </record>
+
+    <record id="tariff_birth_extract" model="etat.civil.copy.tariff">
+        <field name="name">Extrait d'acte de naissance</field>
+        <field name="document_type">naissance</field>
+        <field name="copy_kind">extrait</field>
+        <field name="product_id" ref="etat_civil_pos.product_template_copy_birth_extract"/>
+        <field name="price">1000.00</field>
+        <field name="currency_id" ref="base.MGA"/>
+        <field name="first_copy_free" eval="True"/>
+        <field name="date_start">2020-01-01</field>
+        <field name="active" eval="True"/>
+    </record>
+
+    <!-- ================================================================ -->
+    <!-- MARIAGE                                                            -->
+    <!-- ================================================================ -->
+
+    <record id="tariff_marriage_full" model="etat.civil.copy.tariff">
+        <field name="name">Copie intégrale d'acte de mariage</field>
+        <field name="document_type">mariage</field>
+        <field name="copy_kind">integrale</field>
+        <field name="product_id" ref="etat_civil_pos.product_template_copy_marriage_full"/>
+        <field name="price">2000.00</field>
+        <field name="currency_id" ref="base.MGA"/>
+        <field name="first_copy_free" eval="False"/>
+        <field name="date_start">2020-01-01</field>
+        <field name="active" eval="True"/>
+    </record>
+
+    <record id="tariff_marriage_extract" model="etat.civil.copy.tariff">
+        <field name="name">Extrait d'acte de mariage</field>
+        <field name="document_type">mariage</field>
+        <field name="copy_kind">extrait</field>
+        <field name="product_id" ref="etat_civil_pos.product_template_copy_marriage_extract"/>
+        <field name="price">1000.00</field>
+        <field name="currency_id" ref="base.MGA"/>
+        <field name="first_copy_free" eval="False"/>
+        <field name="date_start">2020-01-01</field>
+        <field name="active" eval="True"/>
+    </record>
+
+    <!-- ================================================================ -->
+    <!-- DÉCÈS                                                              -->
+    <!-- ================================================================ -->
+
+    <record id="tariff_death_full" model="etat.civil.copy.tariff">
+        <field name="name">Copie intégrale d'acte de décès</field>
+        <field name="document_type">deces</field>
+        <field name="copy_kind">integrale</field>
+        <field name="product_id" ref="etat_civil_pos.product_template_copy_death_full"/>
+        <field name="price">2000.00</field>
+        <field name="currency_id" ref="base.MGA"/>
+        <field name="first_copy_free" eval="False"/>
+        <field name="date_start">2020-01-01</field>
+        <field name="active" eval="True"/>
+    </record>
+
+    <record id="tariff_death_extract" model="etat.civil.copy.tariff">
+        <field name="name">Extrait d'acte de décès</field>
+        <field name="document_type">deces</field>
+        <field name="copy_kind">extrait</field>
+        <field name="product_id" ref="etat_civil_pos.product_template_copy_death_extract"/>
+        <field name="price">1000.00</field>
+        <field name="currency_id" ref="base.MGA"/>
+        <field name="first_copy_free" eval="False"/>
+        <field name="date_start">2020-01-01</field>
+        <field name="active" eval="True"/>
+    </record>
+
+</odoo>

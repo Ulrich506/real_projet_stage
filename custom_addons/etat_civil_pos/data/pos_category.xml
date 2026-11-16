@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Catégorie POS dédiée aux prestations d'état civil.
+    Les produits de service sont regroupés pour que le régisseur
+    ne voie que les prestations officielles dans le POS.
+-->
+<odoo noupdate="1">
+
+    <!-- Catégorie produit : Prestations d'état civil -->
+    <record id="pos_category_etat_civil" model="pos.category">
+        <field name="name">Prestations d'état civil</field>
+    </record>
+
+    <!-- Assigner les 6 prestations à la catégorie -->
+    <record id="product_template_copy_birth_full" model="product.template">
+        <field name="pos_categ_ids" eval="[(4, ref('pos_category_etat_civil'))]"/>
+    </record>
+    <record id="product_template_copy_birth_extract" model="product.template">
+        <field name="pos_categ_ids" eval="[(4, ref('pos_category_etat_civil'))]"/>
+    </record>
+    <record id="product_template_copy_marriage_full" model="product.template">
+        <field name="pos_categ_ids" eval="[(4, ref('pos_category_etat_civil'))]"/>
+    </record>
+    <record id="product_template_copy_marriage_extract" model="product.template">
+        <field name="pos_categ_ids" eval="[(4, ref('pos_category_etat_civil'))]"/>
+    </record>
+    <record id="product_template_copy_death_full" model="product.template">
+        <field name="pos_categ_ids" eval="[(4, ref('pos_category_etat_civil'))]"/>
+    </record>
+    <record id="product_template_copy_death_extract" model="product.template">
+        <field name="pos_categ_ids" eval="[(4, ref('pos_category_etat_civil'))]"/>
+    </record>
+
+    <!-- Assigner le produit technique d'encaissement à la catégorie -->
+    <record id="product_template_copy_payment" model="product.template">
+        <field name="pos_categ_ids" eval="[(4, ref('pos_category_etat_civil'))]"/>
+    </record>
+
+</odoo>
