@@ -31,6 +31,7 @@
         "views/piece_requise_views.xml",
         "data/piece_requise_data.xml",
         "views/menus.xml",
+        "views/menus_restrictions.xml",
     ],
     "assets": {
         "web.assets_backend": [

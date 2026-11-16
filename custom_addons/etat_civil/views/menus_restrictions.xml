@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Restrictions de menus par rôle.
+    
+    Régisseur : voit uniquement le POS et les quittances.
+    Agent : voit l'application État Civil mais pas le POS ni la comptabilité.
+    Officier : voit uniquement les dossiers à examiner.
+    Administrateur : voit tout.
+    
+    Ces règles s'appliquent en ajoutant des groups_id aux menus existants.
+    Si un menu n'a pas de groups_id, il est visible par tous les utilisateurs.
+-->
+<odoo>
+
+    <!-- ================================================================ -->
+    <!-- MENUS DE L'APPLICATION ÉTAT CIVIL                                 -->
+    <!-- ================================================================ -->
+
+    <!-- Menu racine "État Civil" : visible par agent, officier, admin, régisseur -->
+    <!-- Le régisseur voit le menu racine mais pas les sous-menus (ci-dessous) -->
+    <record id="etat_civil.menu_etat_civil_root" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('etat_civil.group_etat_civil_agent')),
+            (4, ref('etat_civil.group_etat_civil_officier')),
+            (4, ref('etat_civil.group_etat_civil_admin')),
+            (4, ref('etat_civil_account.group_etat_civil_regisseur')),
+        ]"/>
+    </record>
+
+    <!-- Sous-menus de l'application État Civil : PAS pour le régisseur -->
+
+    <!-- File d'attente : agent + admin uniquement -->
+    <record id="etat_civil.menu_etat_civil_guichet" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('etat_civil.group_etat_civil_agent')),
+            (4, ref('etat_civil.group_etat_civil_admin')),
+        ]"/>
+    </record>
+
+    <!-- Dossiers à examiner : officier + admin uniquement -->
+    <record id="etat_civil.menu_etat_civil_a_valider" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('etat_civil.group_etat_civil_officier')),
+            (4, ref('etat_civil.group_etat_civil_admin')),
+        ]"/>
+    </record>
+    <record id="etat_civil.menu_etat_civil_naissance_a_valider" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('etat_civil.group_etat_civil_officier')),
+            (4, ref('etat_civil.group_etat_civil_admin')),
+        ]"/>
+    </record>
+    <record id="etat_civil.menu_etat_civil_mariage_a_valider" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('etat_civil.group_etat_civil_officier')),
+            (4, ref('etat_civil.group_etat_civil_admin')),
+        ]"/>
+    </record>
+    <record id="etat_civil.menu_etat_civil_deces_a_valider" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('etat_civil.group_etat_civil_officier')),
+            (4, ref('etat_civil.group_etat_civil_admin')),
+        ]"/>
+    </record>
+
+    <!-- Actes : agent + admin uniquement -->
+    <record id="etat_civil.menu_etat_civil_actes" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('etat_civil.group_etat_civil_agent')),
+            (4, ref('etat_civil.group_etat_civil_admin')),
+        ]"/>
+    </record>
+    <record id="etat_civil.menu_etat_civil_acte_naissance" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('etat_civil.group_etat_civil_agent')),
+            (4, ref('etat_civil.group_etat_civil_admin')),
+        ]"/>
+    </record>
+    <record id="etat_civil.menu_etat_civil_acte_mariage" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('etat_civil.group_etat_civil_agent')),
+            (4, ref('etat_civil.group_etat_civil_admin')),
+        ]"/>
+    </record>
+    <record id="etat_civil.menu_etat_civil_acte_deces" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('etat_civil.group_etat_civil_agent')),
+            (4, ref('etat_civil.group_etat_civil_admin')),
+        ]"/>
+    </record>
+    <record id="etat_civil.menu_etat_civil_mentions" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('etat_civil.group_etat_civil_agent')),
+            (4, ref('etat_civil.group_etat_civil_admin')),
+        ]"/>
+    </record>
+
+    <!-- Citoyens : agent + admin uniquement -->
+    <record id="etat_civil.menu_etat_civil_citoyens" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('etat_civil.group_etat_civil_agent')),
+            (4, ref('etat_civil.group_etat_civil_admin')),
+        ]"/>
+    </record>
+
+    <!-- Administration : admin uniquement -->
+    <record id="etat_civil.menu_etat_civil_config" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('etat_civil.group_etat_civil_admin')),
+        ]"/>
+    </record>
+    <record id="etat_civil.menu_etat_civil_registres" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('etat_civil.group_etat_civil_admin')),
+        ]"/>
+    </record>
+    <record id="etat_civil.menu_etat_civil_centres" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('etat_civil.group_etat_civil_admin')),
+        ]"/>
+    </record>
+    <record id="etat_civil.menu_etat_civil_users" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('etat_civil.group_etat_civil_admin')),
+        ]"/>
+    </record>
+    <record id="etat_civil.menu_etat_civil_users_list" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('etat_civil.group_etat_civil_admin')),
+        ]"/>
+    </record>
+    <record id="etat_civil.menu_etat_civil_users_create" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('etat_civil.group_etat_civil_admin')),
+        ]"/>
+    </record>
+    <record id="etat_civil.menu_etat_civil_users_manage" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('etat_civil.group_etat_civil_admin')),
+        ]"/>
+    </record>
+    <record id="etat_civil.menu_etat_civil_citoyens_import" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('etat_civil.group_etat_civil_admin')),
+        ]"/>
+    </record>
+    <record id="etat_civil.menu_etat_civil_citoyens_export" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('etat_civil.group_etat_civil_admin')),
+        ]"/>
+    </record>
+    <record id="etat_civil.menu_etat_civil_exchange_logs" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('etat_civil.group_etat_civil_admin')),
+        ]"/>
+    </record>
+    <record id="etat_civil.menu_etat_civil_audit_log" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('etat_civil.group_etat_civil_admin')),
+        ]"/>
+    </record>
+    <record id="etat_civil.menu_etat_civil_pieces_requises" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('etat_civil.group_etat_civil_admin')),
+        ]"/>
+    </record>
+
+    <!-- ================================================================ -->
+    <!-- MENUS FINANCIERS (etat_civil_account)                             -->
+    <!-- Ces menus sont gérés dans etat_civil_account/views/menus_restrictions.xml -->
+    <!-- car ce module ne peut pas référencer les IDs de l'autre module.     -->
+    <!-- ================================================================ -->
+
+    <!-- ================================================================ -->
+    <!-- APPLICATIONS STANDARD À MASQUER AU RÉGISSEUR                      -->
+    <!-- On ne modifie pas les menus standard d'Odoo depuis un module     -->
+    <!-- custom. La restriction se fait via les ACL et record rules.       -->
+    <!-- Le régisseur n'a pas les groupes nécessaires pour voir ces apps.  -->
+    <!-- ================================================================ -->
+
+    <!-- ================================================================ -->
+    <!-- RESTRICTIONS SUPPLÉMENTAIRES PAR RÔLE                            -->
+    <!-- ================================================================ -->
+
+    <!-- Agent : ne voit pas le POS -->
+    <!-- Le POS est visible par point_of_sale.group_pos_user -->
+    <!-- L'agent n'a pas ce groupe, donc il ne voit pas le POS -->
+
+    <!-- Officier : ne voit pas le POS ni les actes de création -->
+    <!-- L'officier n'a pas point_of_sale.group_pos_user -->
+    <!-- Les menus Actes sont déjà restreints à agent + admin -->
+
+    <!-- Régisseur : ne voit pas les actes, citoyens, mentions, administration -->
+    <!-- Les menus sont déjà restreints ci-dessus -->
+    <!-- Le régisseur voit : menu racine (vide sauf Quittances) + POS -->
+
+</odoo>

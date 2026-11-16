@@ -6,11 +6,19 @@
         <field name="implied_ids" eval="[(6, 0, [ref('base.group_user')])]"/>
     </record>
 
-    <record id="rule_copy_request_center" model="ir.rule">
-        <field name="name">Demandes de copies limitées aux centres affectés</field>
+    <!-- Agent : voit toutes les demandes de son centre -->
+    <record id="rule_copy_request_agent_center" model="ir.rule">
+        <field name="name">Agent: demandes de copies de son centre</field>
         <field name="model_id" ref="model_etat_civil_copy_request"/>
         <field name="domain_force">[('center_id', 'in', user.etat_civil_centre_ids.ids)]</field>
-        <field name="groups" eval="[(4, ref('etat_civil.group_etat_civil_agent')), (4, ref('group_etat_civil_regisseur'))]"/>
+        <field name="groups" eval="[(4, ref('etat_civil.group_etat_civil_agent'))]"/>
+    </record>
+    <!-- Régisseur : voit uniquement les demandes qu'il a créées -->
+    <record id="rule_copy_request_regisseur_own" model="ir.rule">
+        <field name="name">Régisseur: uniquement ses propres demandes de copies</field>
+        <field name="model_id" ref="model_etat_civil_copy_request"/>
+        <field name="domain_force">[('center_id', 'in', user.etat_civil_centre_ids.ids), ('create_uid', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_regisseur'))]"/>
     </record>
     <record id="rule_copy_acte_naissance_regisseur" model="ir.rule">
         <field name="name">Régisseurs: actes de naissance de leurs centres</field>
@@ -162,5 +170,25 @@
 
     <record id="etat_civil.menu_etat_civil_root" model="ir.ui.menu">
         <field name="groups_id" eval="[(4, ref('etat_civil_account.group_etat_civil_regisseur'))]"/>
+    </record>
+
+    <!-- ================================================================ -->
+    <!-- Régisseur : sécurité côté serveur                                -->
+    <!-- La sécurité repose sur l'absence d'ACL pour les modèles sensibles -->
+    <!-- dans ir.model.access.csv. Le régisseur n'a pas les groupes        -->
+    <!-- product.group_product_manager ni point_of_sale.group_pos_manager  -->
+    <!-- pour modifier les produits ou la configuration POS.               -->
+    <!-- ================================================================ -->
+
+    <!-- Le régisseur ne doit pas accéder aux pièces jointes d'actes -->
+    <record id="rule_regisseur_attachment" model="ir.rule">
+        <field name="name">Régisseur : pièces jointes limitées</field>
+        <field name="model_id" ref="base.model_ir_attachment"/>
+        <field name="domain_force">[('res_model', 'not in', ['etat.civil.acte.naissance', 'etat.civil.acte.mariage', 'etat.civil.acte.deces', 'etat.civil.piece.justificative', 'etat.civil.audit.log'])]</field>
+        <field name="groups" eval="[(4, ref('group_etat_civil_regisseur'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
     </record>
 </odoo>

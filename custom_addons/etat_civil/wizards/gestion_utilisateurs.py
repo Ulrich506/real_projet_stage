@@ -5,10 +5,12 @@ from odoo.exceptions import AccessError, UserError, ValidationError
 # Rôles métiers du module État Civil selon le workflow opérationnel :
 # - Agent : crée et prépare les actes d'état civil.
 # - Officier : valide et signe officiellement les actes créés.
+# - Régisseur : gère le POS, encaisse et imprime les quittances.
 # - Administrateur : accède aux actions Agent et Officier et gère le module.
 _CIVIL_ROLE_REFS = (
     "etat_civil.group_etat_civil_agent",
     "etat_civil.group_etat_civil_officier",
+    "etat_civil_account.group_etat_civil_regisseur",
     "etat_civil.group_etat_civil_admin",
 )
 
@@ -34,6 +36,7 @@ class EtatCivilGestionUtilisateur(models.TransientModel):
         [
             ("agent", "Agent d'état civil"),
             ("officier", "Officier d'état civil"),
+            ("regisseur", "Régisseur"),
             ("admin", "Administrateur d'état civil"),
         ],
         string="Rôle État Civil",
@@ -41,6 +44,7 @@ class EtatCivilGestionUtilisateur(models.TransientModel):
             "Workflow métier proposé :\n"
             "- Agent : crée les actes et les dossiers ;\n"
             "- Officier : valide et signe les actes ;\n"
+            "- Régisseur : gère le POS, encaisse et imprime les quittances ;\n"
             "- Administrateur : accède aux fonctions Agent et Officier, "
             "gère les référentiels et les comptes."
         ),
@@ -51,6 +55,7 @@ class EtatCivilGestionUtilisateur(models.TransientModel):
         [
             ("agent", "Agent d'état civil"),
             ("officier", "Officier d'état civil"),
+            ("regisseur", "Régisseur"),
             ("admin", "Administrateur d'état civil"),
         ],
         string="Rôle du nouveau compte",
@@ -78,7 +83,8 @@ class EtatCivilGestionUtilisateur(models.TransientModel):
         role_ref = {
             "agent": _CIVIL_ROLE_REFS[0],
             "officier": _CIVIL_ROLE_REFS[1],
-            "admin": _CIVIL_ROLE_REFS[2],
+            "regisseur": _CIVIL_ROLE_REFS[2],
+            "admin": _CIVIL_ROLE_REFS[3],
         }.get(role)
         if not role_ref:
             raise ValidationError("Sélectionnez un rôle État Civil valide.")
@@ -98,7 +104,7 @@ class EtatCivilGestionUtilisateur(models.TransientModel):
             )
 
     def _ensure_admin_remains(self, user, target_role, target_active):
-        admin_group = self.env.ref(_CIVIL_ROLE_REFS[2])
+        admin_group = self.env.ref(_CIVIL_ROLE_REFS[3])
         if user and admin_group in user.groups_id:
             if target_role != "admin" or not target_active:
                 other_admins = self.env["res.users"].sudo().search_count(
@@ -125,20 +131,29 @@ class EtatCivilGestionUtilisateur(models.TransientModel):
         self.active = user.active
         self.password = False
         self.centre_ids = user.etat_civil_centre_ids
-        if self.env.ref(_CIVIL_ROLE_REFS[2]) in user.groups_id:
+        if self.env.ref(_CIVIL_ROLE_REFS[3]) in user.groups_id:
             self.role = "admin"
         elif self.env.ref(_CIVIL_ROLE_REFS[1]) in user.groups_id:
             self.role = "officier"
+        elif self.env.ref(_CIVIL_ROLE_REFS[2]) in user.groups_id:
+            self.role = "regisseur"
         elif self.env.ref(_CIVIL_ROLE_REFS[0]) in user.groups_id:
             self.role = "agent"
         else:
             self.role = "agent"
 
+    def _get_pos_group(self):
+        """Retourne le groupe utilisateur POS, s'il est disponible."""
+        try:
+            return self.env.ref("point_of_sale.group_pos_user")
+        except ValueError:
+            return self.env["res.groups"]
+
     def action_save(self):
         self.ensure_one()
         self._ensure_admin()
         target_role = self.new_user_role if self.mode == "create" else self.role
-        if self.mode == "create" and target_role not in ("agent", "officier", "admin"):
+        if self.mode == "create" and target_role not in ("agent", "officier", "regisseur", "admin"):
             raise ValidationError(
                 "Sélectionnez un rôle valide pour le nouveau compte."
             )
@@ -148,36 +163,83 @@ class EtatCivilGestionUtilisateur(models.TransientModel):
             raise ValidationError("Le nom et l'identifiant sont obligatoires.")
 
         users = self.env["res.users"].sudo().with_context(no_reset_password=True)
+        pos_group = self._get_pos_group()
+
         if self.mode == "create":
             if not (self.password or "").strip():
                 raise ValidationError("Saisissez un mot de passe initial.")
+            groups = [role_group.id]
+            if target_role == "regisseur" and pos_group:
+                groups.append(pos_group.id)
             user = users.create(
                 {
                     "name": self.name.strip(),
                     "login": self.login.strip(),
                     "email": (self.email or "").strip() or False,
                     "password": self.password,
-                    "groups_id": [(6, 0, [role_group.id])],
+                    "groups_id": [(6, 0, groups)],
                     "etat_civil_centre_ids": [(6, 0, self.centre_ids.ids)],
                 }
             )
+            # Journalisation audit : création d'un utilisateur
+            self._log_audit_event(user, 'create', {
+                'operation': 'user_created',
+                'role': target_role,
+                'centre_ids': self.centre_ids.ids,
+            })
         else:
             user = self.user_id.sudo()
+            old_role = self._detect_current_role(user)
             self._validate_target(user)
             self._ensure_admin_remains(user, target_role, self.active)
 
             role_groups = [self.env.ref(group_ref).id for group_ref in _CIVIL_ROLE_REFS]
+            groups_update = [(3, group_id) for group_id in role_groups]
+            groups_update.append((4, role_group.id))
+            # Le régisseur doit avoir le groupe POS
+            if target_role == "regisseur" and pos_group:
+                groups_update.append((4, pos_group.id))
+            elif pos_group:
+                groups_update.append((3, pos_group.id))
+
             values = {
                 "name": self.name.strip(),
                 "login": self.login.strip(),
                 "email": (self.email or "").strip() or False,
                 "active": self.active,
-                "groups_id": [(3, group_id) for group_id in role_groups]
-                + [(4, role_group.id)],
+                "groups_id": groups_update,
                 "etat_civil_centre_ids": [(6, 0, self.centre_ids.ids)],
             }
             if self.password:
                 values["password"] = self.password
             user.write(values)
+            # Journalisation audit : changement de rôle
+            if old_role != target_role:
+                self._log_audit_event(user, 'update', {
+                    'operation': 'role_changed',
+                    'old_role': old_role,
+                    'new_role': target_role,
+                    'centre_ids': self.centre_ids.ids,
+                })
 
         return {"type": "ir.actions.act_window_close"}
+
+    def _detect_current_role(self, user):
+        """Détermine le rôle métier actuel d'un utilisateur."""
+        if self.env.ref(_CIVIL_ROLE_REFS[3]) in user.groups_id:
+            return "admin"
+        if self.env.ref(_CIVIL_ROLE_REFS[1]) in user.groups_id:
+            return "officier"
+        if self.env.ref(_CIVIL_ROLE_REFS[2]) in user.groups_id:
+            return "regisseur"
+        if self.env.ref(_CIVIL_ROLE_REFS[0]) in user.groups_id:
+            return "agent"
+        return None
+
+    def _log_audit_event(self, user, event_type, details):
+        """Journalise un événement dans le journal d'audit."""
+        self.env['etat.civil.audit.log'].sudo()._record_event(
+            event_type,
+            record=user,
+            details=details,
+        )

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Restrictions de menus financiers par rôle.
+    Ce fichier est dans etat_civil_account car il référence les IDs de menus
+    définis dans ce module.
+-->
+<odoo>
+
+    <!-- Tarifs des copies : admin uniquement -->
+    <record id="menu_copy_tariff" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('etat_civil.group_etat_civil_admin')),
+        ]"/>
+    </record>
+
+    <!-- Quittances : régisseur + admin -->
+    <record id="menu_copy_payment" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('group_etat_civil_regisseur')),
+            (4, ref('etat_civil.group_etat_civil_admin')),
+        ]"/>
+    </record>
+
+    <!-- Configuration des quittances : admin uniquement -->
+    <record id="menu_copy_receipt_settings" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('etat_civil.group_etat_civil_admin')),
+        ]"/>
+    </record>
+
+</odoo>

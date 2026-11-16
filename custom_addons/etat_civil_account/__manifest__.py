@@ -10,6 +10,7 @@
         "security/ir.model.access.csv",
         "views/copy_payment_views.xml",
         "views/copy_request_views.xml",
+        "views/menus_restrictions.xml",
         "views/guichet_views.xml",
         "report/copy_document.xml",
         "report/copy_receipt.xml",
