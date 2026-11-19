@@ -143,7 +143,7 @@
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="view_guichet_ticket_regisseur_tree"/>
         <field name="search_view_id" ref="etat_civil.view_etat_civil_demande_guichet_search"/>
-        <field name="context">{'search_default_en_attente': 1, 'create': False}</field>
+        <field name="context">{'create': False}</field>
         <field name="groups_id" eval="[(4, ref('etat_civil_account.group_etat_civil_regisseur'))]"/>
     </record>
 

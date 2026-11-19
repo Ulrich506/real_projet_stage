@@ -24,9 +24,10 @@
         <field name="arch" type="xml">
             <form string="Demande au guichet">
                 <header>
-                    <!-- Marquer traité : agent et admin -->
+                    <!-- Marquer traité : agent et admin, masqué si déjà traité -->
                     <button name="action_marquer_traite" type="object"
                             string="Marquer traité"
+                            invisible="statut == 'traite' or statut == 'annule'"
                             groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_admin"/>
                     <!-- Annuler : admin uniquement -->
                     <button name="action_annuler_ticket" type="object"
@@ -97,7 +98,7 @@
         <field name="name">File d'attente</field>
         <field name="res_model">etat.civil.demande.guichet</field>
         <field name="view_mode">tree,form</field>
-        <field name="context">{'search_default_en_attente': 1, 'create': False}</field>
+        <field name="context">{'create': False}</field>
     </record>
 
     <record id="view_etat_civil_demande_guichet_search" model="ir.ui.view">
