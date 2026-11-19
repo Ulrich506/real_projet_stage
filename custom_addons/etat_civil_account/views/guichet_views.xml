@@ -1,23 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="view_etat_civil_demande_guichet_form_copy_request" model="ir.ui.view">
-        <field name="name">etat.civil.demande.guichet.form.copy.request</field>
-        <field name="model">etat.civil.demande.guichet</field>
-        <field name="inherit_id" ref="etat_civil.view_etat_civil_demande_guichet_form"/>
-        <field name="arch" type="xml">
-            <xpath expr="//sheet/group[last()]" position="after">
-                <group string="Suivi de la copie" groups="etat_civil.group_etat_civil_admin">
-                    <field name="copy_request_ids" readonly="1">
-                        <tree>
-                            <field name="name"/>
-                            <field name="document_type"/>
-                            <field name="state"/>
-                            <field name="amount"/>
-                            <field name="currency_id"/>
-                        </tree>
-                    </field>
-                </group>
-            </xpath>
-        </field>
-    </record>
+    <!-- Vue "Suivi de la copie" supprimée : l'affichage n'est plus nécessaire.
+         Le champ copy_request_ids reste dans le modèle car il est utilisé par la logique métier
+         (encaissement, facturation) dans etat_civil_account/models/guichet.py. -->
 </odoo>
