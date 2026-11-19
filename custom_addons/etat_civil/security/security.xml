@@ -30,6 +30,15 @@
         <field name="implied_ids" eval="[(6, 0, [ref('etat_civil.group_etat_civil_agent'), ref('etat_civil.group_etat_civil_officier')])]"/>
     </record>
 
+    <!-- Administrateur technique: installe, met à jour, sauvegarde, gère la configuration.
+         N'a pas accès fonctionnel aux dossiers citoyens. -->
+    <record id="group_etat_civil_tech_admin" model="res.groups">
+        <field name="name">Administrateur technique</field>
+        <field name="category_id" ref="module_category_etat_civil"/>
+        <field name="implied_ids" eval="[(6, 0, [ref('base.group_user')])]"/>
+        <field name="comment">Peut installer/mettre à jour les modules, gérer la configuration, déverrouiller l'identité. N'a pas accès fonctionnel aux dossiers citoyens.</field>
+    </record>
+
     <record id="rule_acte_naissance_centre" model="ir.rule">
         <field name="name">Actes de naissance limités aux centres affectés</field>
         <field name="model_id" ref="model_etat_civil_acte_naissance"/>
@@ -199,9 +208,9 @@
     </record>
 
     <record id="rule_individu_agent_centres" model="ir.rule">
-        <field name="name">Agents: citoyens liés à leurs dossiers ou créés par eux</field>
+        <field name="name">Agents: tous les citoyens</field>
         <field name="model_id" ref="model_etat_civil_individu"/>
-        <field name="domain_force">['|', '|', '|', '|', '|', '|', '|', '|', '|', '|', ('create_uid', '=', user.id), ('acte_naissance_enfant_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_naissance_pere_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_naissance_mere_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_naissance_declarant_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_mariage_conjoint_1_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_mariage_conjoint_2_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_mariage_temoin_1_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_mariage_temoin_2_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_deces_defunt_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids), ('acte_deces_declarant_ids.registre_id.centre_id', 'in', user.etat_civil_centre_ids.ids)]</field>
+        <field name="domain_force">[(1, '=', 1)]</field>
         <field name="groups" eval="[(4, ref('group_etat_civil_agent'))]"/>
     </record>
     <record id="rule_individu_officier_assigned" model="ir.rule">

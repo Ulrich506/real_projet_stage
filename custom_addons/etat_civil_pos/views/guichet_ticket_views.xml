@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="etat_civil.menu_etat_civil_root" model="ir.ui.menu">
-        <field name="groups_id" eval="[(4, ref('etat_civil_account.group_etat_civil_regisseur'))]"/>
-    </record>
-    <record id="etat_civil.menu_etat_civil_guichet" model="ir.ui.menu">
-        <field name="groups_id" eval="[(4, ref('etat_civil_account.group_etat_civil_regisseur'))]"/>
-    </record>
+    <!-- Le régisseur voit le menu racine État Civil mais pas "File d'attente" -->
+    <!-- L'accès au menu racine est géré dans etat_civil/data/menus_restrictions.xml -->
+    <!-- Le régisseur accède à la file d'attente via le POS, pas via le menu État Civil -->
 
     <record id="action_copy_request_from_guichet_ticket" model="ir.actions.act_window">
         <field name="name">Créer la demande de copie</field>
@@ -46,7 +43,7 @@
             </xpath>
             <xpath expr="//sheet" position="inside">
                 <notebook>
-                    <page string="Demande de copie liée">
+                    <page string="Demande de copie liée" groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_admin">
                         <button name="%(action_copy_request_from_guichet_ticket)d"
                                 type="action"
                                 string="Créer la demande de copie"

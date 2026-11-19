@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 from odoo import api, fields, models, _
 from odoo.exceptions import AccessError, UserError, ValidationError
 from odoo.tools.float_utils import float_compare
@@ -86,7 +88,7 @@ class EtatCivilCopyRequest(models.Model):
             ("draft", "Brouillon"), ("waiting_payment", "En attente de paiement"),
             ("payment_confirmed", "Paiement confirmé"),
             ("authorized", "Autorisée à délivrer"), ("delivered", "Délivrée"),
-            ("cancelled", "Annulée"),
+            ("cancelled", "Annulée"), ("acte_not_found", "Acte non retrouvé"),
         ], default="draft", required=True, tracking=True, index=True,
     )
     request_date = fields.Datetime(default=fields.Datetime.now, required=True, readonly=True)
@@ -101,6 +103,36 @@ class EtatCivilCopyRequest(models.Model):
     payment_ids = fields.One2many(
         "etat.civil.copy.payment", "request_id", string="Quittances",
         readonly=True,
+    )
+
+    # Changement 4 : Acte introuvable (ancien registre papier non numérisé)
+    acte_introuvable_note = fields.Text(
+        string="Note sur l'acte introuvable",
+        help="Renseignez les détails de recherche lorsque l'acte demandé n'existe pas dans le système (registre papier non numérisé, etc.).",
+    )
+
+    # Changement 7 : Champs optionnels pour la traçabilité du demandeur
+    requester_id_type = fields.Selection(
+        [
+            ("cin", "CIN"),
+            ("passeport", "Passeport"),
+            ("carte_vitale", "Carte vitale"),
+            ("autre", "Autre"),
+        ],
+        string="Type de pièce d'identité du demandeur",
+    )
+    requester_id_number = fields.Char(
+        string="Numéro de pièce d'identité du demandeur",
+    )
+    requester_quality = fields.Selection(
+        [
+            ("interesse", "Intéressé(e) lui-même"),
+            ("parent", "Parent"),
+            ("representant_legal", "Représentant légal"),
+            ("mandataire", "Mandataire"),
+            ("autre", "Autre qualité"),
+        ],
+        string="Qualité du demandeur",
     )
 
     _sql_constraints = [
@@ -122,6 +154,9 @@ class EtatCivilCopyRequest(models.Model):
     )
     def _check_exactly_one_act(self):
         for record in self:
+            # Changement 4 : l'état "acte_not_found" n'exige pas de lien avec un acte
+            if record.state == "acte_not_found":
+                continue
             acts = [record.acte_naissance_id, record.acte_mariage_id, record.acte_deces_id]
             selected = [act for act in acts if act]
             if len(selected) != 1:
@@ -149,6 +184,8 @@ class EtatCivilCopyRequest(models.Model):
 
     def _selected_act(self):
         self.ensure_one()
+        if self.state == "acte_not_found":
+            return self.env["etat.civil.acte.officiel"]
         act = self.acte_naissance_id or self.acte_mariage_id or self.acte_deces_id
         if not act:
             raise ValidationError(_("Aucun acte n'est associé à cette demande."))
@@ -195,9 +232,37 @@ class EtatCivilCopyRequest(models.Model):
             clean_vals.append(vals)
         records = super().create(clean_vals)
         for record in records:
-            record._selected_act()
             record._log_event("created", _("Demande créée en brouillon."))
+        # Changement 3 : avertissement anti-doublon
+        for record in records:
+            record._check_duplicate_warning()
         return records
+
+    def _check_duplicate_warning(self):
+        """Avertir si une demande identique (même acte, même type de copie) existe
+        avec un état actif dans les dernières 24 heures, sans bloquer la création."""
+        self.ensure_one()
+        if self.state == "acte_not_found":
+            return
+        if not self.acte_naissance_id and not self.acte_mariage_id and not self.acte_deces_id:
+            return
+        cutoff = fields.Datetime.now() - timedelta(hours=24)
+        scope_domain = [
+            ("acte_naissance_id", "=", self.acte_naissance_id.id if self.acte_naissance_id else False),
+            ("acte_mariage_id", "=", self.acte_mariage_id.id if self.acte_mariage_id else False),
+            ("acte_deces_id", "=", self.acte_deces_id.id if self.acte_deces_id else False),
+            ("copy_kind", "=", self.copy_kind),
+            ("state", "not in", ("cancelled", "delivered", "acte_not_found")),
+            ("request_date", ">=", cutoff),
+            ("id", "!=", self.id),
+        ]
+        duplicates = self.search(scope_domain)
+        if duplicates:
+            dup_names = ", ".join(duplicates.mapped("name"))
+            raise UserError(_(
+                "Attention : une demande de copie similaire est déjà en cours de traitement "
+                "pour cet acte (%s). Vérifiez qu'il ne s'agit pas d'un doublon avant de "
+                "poursuivre.") % dup_names)
 
     def write(self, vals):
         protected = {
@@ -243,6 +308,7 @@ class EtatCivilCopyRequest(models.Model):
             "delivered": "delivery",
             "cancelled": "cancel",
             "refund": "refund",
+            "acte_not_found": "copy_request",
         }.get(event_type, "other")
         state_by_event = {
             "created": "draft",
@@ -253,6 +319,7 @@ class EtatCivilCopyRequest(models.Model):
             "authorized": "authorized",
             "delivered": "delivered",
             "cancelled": "cancelled",
+            "acte_not_found": "acte_not_found",
         }
         details = {
             "finance_event_type": event_type,
@@ -285,6 +352,32 @@ class EtatCivilCopyRequest(models.Model):
         ):
             raise AccessError(_("Votre rôle ne permet pas de gérer la délivrance des copies."))
 
+    def action_mark_acte_not_found(self):
+        """Changement 4 : Marquer une demande comme 'acte non retrouvé'.
+        Utilisé lorsque l'acte demandé n'existe pas dans le système
+        (ancien registre papier non numérisé, etc.)."""
+        self._require_copy_operator()
+        for record in self.sorted("id"):
+            record._check_center_access()
+            self.env.cr.execute(
+                "SELECT id FROM etat_civil_copy_request WHERE id = %s FOR UPDATE",
+                [record.id],
+            )
+            record.invalidate_recordset()
+            if record.state != "draft":
+                raise UserError(_("Seule une demande brouillon peut être marquée comme acte non retrouvé."))
+            if not (record.acte_introuvable_note or "").strip():
+                raise UserError(_(
+                    "Veuillez renseigner une note expliquant pourquoi l'acte est introuvable "
+                    "(détails de la recherche, registre papier concerné, etc.)."
+                ))
+            record._transition_write({"state": "acte_not_found"})
+            record._log_event(
+                "acte_not_found",
+                _("Acte non retrouvé : %s") % (record.acte_introuvable_note[:200],),
+            )
+        return True
+
     def action_submit(self):
         self._require_copy_operator()
         for record in self.sorted("id"):
@@ -295,7 +388,7 @@ class EtatCivilCopyRequest(models.Model):
                 [record.id],
             )
             record.invalidate_recordset()
-            if record.state != "draft":
+            if record.state not in ("draft",):
                 raise UserError(_("Seule une demande brouillon peut être soumise."))
             act = record._selected_act()
             table = self.env[act._name]._table

@@ -58,7 +58,8 @@ class TestCINCompatibility(TransactionCase):
 
         ticket.action_appeler_au_guichet()
         self.assertEqual(ticket.statut, "en_cours")
-        ticket.action_marquer_traite()
+        # action_marquer_traite requires agent/admin; run as admin
+        ticket.with_user(self.env.ref("base.user_admin")).action_marquer_traite()
         self.assertEqual(ticket.statut, "traite")
         self.assertTrue(ticket.processed_at)
 

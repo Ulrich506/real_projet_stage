@@ -884,6 +884,75 @@ class EtatCivilActeOfficiel(models.AbstractModel):
             "etat.civil.mention.marginale": "mention_id",
         }.get(self._name)
 
+    def _piece_requise_obligatoire_map(self):
+        """code_piece -> obligatoire, d'après la configuration (dernier gagne si doublon)."""
+        self.ensure_one()
+        type_acte = self._ec_acte_type()
+        rules = self.env["etat.civil.piece.requise"].sudo().search(
+            [("type_acte", "=", type_acte)],
+            order="sequence, id",
+        )
+        return {rule.code_piece: rule.obligatoire for rule in rules}
+
+    def _auto_piece_vals_list(self):
+        """Valeurs des lignes auto à créer pour l'état courant du dossier (sans persistance)."""
+        self.ensure_one()
+        required = self._required_piece_codes()
+        obligatoire_map = self._piece_requise_obligatoire_map()
+        return [
+            {
+                "name": code,
+                "obligatoire": obligatoire_map.get(code, True),
+                "etat": "a_fournir",
+                "genere_automatiquement": True,
+            }
+            for code in sorted(required)
+        ]
+
+    def _in_memory_sync_pieces(self):
+        """
+        Préremplit / ajuste piece_ids dans le formulaire (NewId ou brouillon affiché).
+        N'écrit rien en base : la persistance a lieu à l'enregistrement, via create/write.
+        Ne touche pas aux lignes exceptionnelles ni aux pièces déjà reçues / avec fichier.
+        """
+        if "piece_ids" not in self._fields:
+            return
+        for record in self:
+            required = record._required_piece_codes()
+            obligatoire_map = record._piece_requise_obligatoire_map()
+            kept = self.env["etat.civil.piece.justificative"]
+            for piece in record.piece_ids:
+                if piece.name in required:
+                    piece.obligatoire = obligatoire_map.get(piece.name, piece.obligatoire)
+                    kept |= piece
+                    continue
+                if not piece.genere_automatiquement:
+                    kept |= piece
+                    continue
+                if piece.etat != "a_fournir" or piece.attachment_ids:
+                    kept |= piece
+                    continue
+            missing = required - set(kept.mapped("name"))
+            record.piece_ids = kept
+            for vals in (
+                v for v in record._auto_piece_vals_list() if v["name"] in missing
+            ):
+                record.piece_ids += record.piece_ids.new(vals)
+
+    @api.model
+    def default_get(self, fields_list):
+        """À l'ouverture d'un NOUVEL acte, préremplit les pièces selon les règles et les défauts du formulaire."""
+        res = super().default_get(fields_list)
+        if "piece_ids" not in self._fields or "piece_ids" not in fields_list:
+            return res
+        if res.get("piece_ids"):
+            return res
+        rec = self.new(res)
+        res["piece_ids"] = [
+            fields.Command.create(vals) for vals in rec._auto_piece_vals_list()
+        ]
+        return res
+
     def _sync_pieces_justificatives(self):
         """
         Synchronise les pièces justificatives avec les règles de _required_piece_codes() :
@@ -943,14 +1012,28 @@ class EtatCivilActeOfficiel(models.AbstractModel):
 
     def _check_pieces_justificatives(self):
         self.ensure_one()
-        missing = self.piece_ids.filtered(
-            lambda piece: piece.obligatoire and piece.etat not in ("recu", "verifie")
+        # Pièces obligatoires qui ne sont pas encore vérifiées (doivent passer par "Reçu" puis "Vérifié")
+        not_verified = self.piece_ids.filtered(
+            lambda piece: piece.obligatoire and piece.etat != "verifie"
         )
-        if missing:
-            names = ", ".join(missing.mapped("display_name"))
-            raise ValidationError(
-                _("Les pièces obligatoires doivent être reçues et vérifiées par un officier : %s.")
-                % names
+        if not_verified:
+            # Détail des pièces par état pour un message précis
+            not_received = not_verified.filtered(lambda p: p.etat == "a_fournir")
+            only_received = not_verified.filtered(lambda p: p.etat == "recu")
+            details = []
+            if not_received:
+                details.append(
+                    _("Pièces non reçues : %s") % ", ".join(not_received.mapped("display_name"))
+                )
+            if only_received:
+                details.append(
+                    _("Pièces reçues mais non vérifiées : %s")
+                    % ", ".join(only_received.mapped("display_name"))
+                )
+            raise UserError(
+                _("Impossible de valider le dossier : toutes les pièces obligatoires doivent être "
+                  "d'abord marquées « Reçu » puis « Vérifié ».\n\n%s")
+                % "\n".join(details)
             )
 
     def action_ouvrir_annulation(self):
@@ -1278,6 +1361,39 @@ class EtatCivilActeOfficiel(models.AbstractModel):
             if condition_fields.intersection(vals):
                 self._sync_pieces_justificatives()
         return result
+
+    def _rattrapage_pieces_justificatives(self, dry_run=True):
+        """
+        Rattrapage des actes déjà enregistrés : crée uniquement les pièces
+        auto manquantes. Ne supprime aucune ligne, ne modifie aucun état.
+        À n'exécuter que sur une copie de base, jamais implicitement au -u.
+        """
+        created = 0
+        details = []
+        for record in self:
+            required = record._required_piece_codes()
+            existing = set(record.piece_ids.mapped("name"))
+            missing = required - existing
+            if not missing:
+                continue
+            details.append((record._name, record.id, sorted(missing)))
+            if dry_run:
+                created += len(missing)
+                continue
+            owner_field = record._pieces_owner_field()
+            obligatoire_map = record._piece_requise_obligatoire_map()
+            self.env["etat.civil.piece.justificative"]._create_required(
+                [
+                    {
+                        "name": code,
+                        "obligatoire": obligatoire_map.get(code, True),
+                        owner_field: record.id,
+                    }
+                    for code in sorted(missing)
+                ]
+            )
+            created += len(missing)
+        return created, details
 
     def unlink(self):
         self._ensure_agent()

@@ -1,6 +1,36 @@
 from odoo import _, api, models
 from odoo.exceptions import AccessError, UserError
 
+from ..models.malagasy_date_utils import (
+    date_to_malagasy_words,
+    date_to_malagasy_short,
+    time_to_malagasy_words,
+    year_to_malagasy_words,
+    montant_to_malagasy_words,
+)
+
+
+def _get_commune_identity(env):
+    """Retourne l'identité de la commune depuis le singleton de configuration."""
+    try:
+        config = env['etat.civil.config.settings'].get_config()
+        return config.get_full_identity()
+    except Exception:
+        # Fallback sur res.company si le singleton n'est pas disponible
+        return {
+            'nom': env.company.name,
+            'type': '',
+            'code': '',
+            'region': '',
+            'district': '',
+            'adresse': '',
+            'contact': '',
+            'mentions_legales': '',
+            'logo': False,
+            'signature': False,
+            'company_name': env.company.name,
+        }
+
 
 def _checked_records(env, model_name, docids):
     docids = list(docids or [])
@@ -40,6 +70,11 @@ class ReportEtatCivilActeNaissance(models.AbstractModel):
             "doc_model": docs._name,
             "docs": docs,
             "copy_request": False,
+            "commune_identity": _get_commune_identity(self.env),
+            "date_to_malagasy_words": date_to_malagasy_words,
+            "date_to_malagasy_short": date_to_malagasy_short,
+            "time_to_malagasy_words": time_to_malagasy_words,
+            "year_to_malagasy_words": year_to_malagasy_words,
         }
 
 
@@ -75,6 +110,11 @@ class ReportEtatCivilActeMariage(models.AbstractModel):
             "doc_model": docs._name,
             "docs": docs,
             "copy_request": False,
+            "commune_identity": _get_commune_identity(self.env),
+            "date_to_malagasy_words": date_to_malagasy_words,
+            "date_to_malagasy_short": date_to_malagasy_short,
+            "time_to_malagasy_words": time_to_malagasy_words,
+            "year_to_malagasy_words": year_to_malagasy_words,
         }
 
 
@@ -104,7 +144,11 @@ class ReportEtatCivilActeDeces(models.AbstractModel):
             "doc_ids": docs.ids,
             "doc_model": docs._name,
             "docs": docs,
-            "copy_request": False,
+            "commune_identity": _get_commune_identity(self.env),
+            "date_to_malagasy_words": date_to_malagasy_words,
+            "date_to_malagasy_short": date_to_malagasy_short,
+            "time_to_malagasy_words": time_to_malagasy_words,
+            "year_to_malagasy_words": year_to_malagasy_words,
         }
 
 
@@ -122,4 +166,14 @@ class ReportEtatCivilMentionMarginale(models.AbstractModel):
                 raise UserError(_("La mention validée ne contient pas les données requises pour l'avis."))
         for doc in docs:
             self.env["etat.civil.audit.log"]._record_event("print", record=doc)
-        return {"doc_ids": docs.ids, "doc_model": docs._name, "docs": docs}
+        return {
+            "doc_ids": docs.ids,
+            "doc_model": docs._name,
+            "docs": docs,
+            "commune_identity": _get_commune_identity(self.env),
+            "date_to_malagasy_words": date_to_malagasy_words,
+            "date_to_malagasy_short": date_to_malagasy_short,
+            "time_to_malagasy_words": time_to_malagasy_words,
+            "year_to_malagasy_words": year_to_malagasy_words,
+            "montant_to_malagasy_words": montant_to_malagasy_words,
+        }

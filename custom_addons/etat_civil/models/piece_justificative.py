@@ -388,6 +388,8 @@ class EtatCivilPieceJustificative(models.Model):
                     "date_verification": transition_time,
                 })
             super(EtatCivilPieceJustificative, changed).write(transition_vals)
+            for piece in changed:
+                piece._log_state_transition(old_states.get(piece.id), vals["etat"])
 
         if "name" in vals or any(
             field_name in vals

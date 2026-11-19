@@ -3,3 +3,8 @@ from . import gestion_utilisateurs
 from . import transmission_acte
 from . import retour_acte_correction
 from . import import_export_citoyen
+from . import audit_log_export
+from . import ticket_preview
+from . import config_init_wizard
+from . import imprimer_acte_wizard
+from . import creer_acte_wizard

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!-- Données de démonstration : citoyens fictifs malagasy -->
+    <function model="etat.civil.individu" name="citoyens_demo_init"/>
+</odoo>

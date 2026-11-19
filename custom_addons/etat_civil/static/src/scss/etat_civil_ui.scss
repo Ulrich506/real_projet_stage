@@ -46,3 +46,46 @@
     box-shadow: 0 4px 6px rgba(15, 23, 42, .07), 0 2px 4px rgba(15, 23, 42, .04);
     transform: translateY(-1px);
 }
+
+/* ================================================================ */
+/* Tâche 6 : Placeholders gris et champs readonly en gris           */
+/* Limité aux formulaires du module etat_civil (classe ec_form_view) */
+/* ================================================================ */
+
+/* Placeholders gris dans les formulaires etat_civil uniquement */
+.ec_form_view input::placeholder,
+.ec_form_view textarea::placeholder,
+.ec_form_view input::-webkit-input-placeholder,
+.ec_form_view textarea::-webkit-input-placeholder,
+.ec_form_view input::-moz-placeholder,
+.ec_form_view textarea::-moz-placeholder {
+    color: #9ca3af !important;
+    opacity: 1 !important;
+}
+
+/* Champs en lecture seule (readonly) affichés en gris — etat_civil uniquement */
+.ec_form_view .o_field_widget.o_readonly input,
+.ec_form_view .o_field_widget.o_readonly textarea,
+.ec_form_view [readonly="readonly"] input,
+.ec_form_view [readonly="readonly"] textarea,
+.ec_form_view .o_field_readonly .o_input,
+.ec_form_view .o_field_readonly input,
+.ec_form_view .o_field_readonly textarea {
+    color: #6b7280 !important;
+    background-color: #f9fafb !important;
+    border-color: #e5e7eb !important;
+}
+
+/* Labels des champs readonly en gris — etat_civil uniquement */
+.ec_form_view .o_field_readonly + label,
+.ec_form_view .o_field_readonly label {
+    color: #6b7280 !important;
+}
+
+/* Valeurs calculées (champs computed readonly) en gris — etat_civil uniquement */
+.ec_form_view .o_field_numeric.o_readonly,
+.ec_form_view .o_field_date.o_readonly,
+.ec_form_view .o_field_datetime.o_readonly,
+.ec_form_view .o_field_selection.o_readonly {
+    color: #6b7280 !important;
+}

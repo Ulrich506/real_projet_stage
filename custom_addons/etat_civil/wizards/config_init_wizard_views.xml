@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Vue formulaire de l'assistant de configuration initiale -->
+    <record id="view_config_init_wizard_form" model="ir.ui.view">
+        <field name="name">etat.civil.config.init.wizard.form</field>
+        <field name="model">etat.civil.config.init.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Configuration de l'identité de la commune">
+                <sheet>
+                    <group>
+                        <group string="Identité officielle">
+                            <field name="commune_nom_officiel" placeholder="Commune urbaine d'Antsohihy"/>
+                            <field name="commune_type"/>
+                            <field name="commune_code" placeholder="ANTS"/>
+                        </group>
+                        <group string="Localisation">
+                            <field name="region" placeholder="Atsinanana"/>
+                            <field name="district" placeholder="Antsohihy"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Contact">
+                            <field name="adresse" placeholder="Adresse du siège&#10;Ville, Code postal"/>
+                            <field name="contact_officiel" placeholder="Téléphone&#10;email@commune.mg"/>
+                        </group>
+                        <group string="Documents">
+                            <field name="langue_principale"/>
+                            <field name="mentions_legales" placeholder="Référence légale des extraits d'actes"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_configure" string="Enregistrer la configuration"
+                            type="object" class="oe_highlight"/>
+                    <button string="Plus tard" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action pour ouvrir l'assistant -->
+    <record id="action_config_init_wizard" model="ir.actions.act_window">
+        <field name="name">Configuration de la commune</field>
+        <field name="res_model">etat.civil.config.init.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- ACL pour le wizard -->
+    <record id="access_config_init_wizard_admin" model="ir.model.access">
+        <field name="name">etat.civil.config.init.wizard.admin</field>
+        <field name="model_id" ref="model_etat_civil_config_init_wizard"/>
+        <field name="group_id" ref="etat_civil.group_etat_civil_admin"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+
+</odoo>

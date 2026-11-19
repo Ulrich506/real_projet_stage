@@ -77,7 +77,6 @@ class EtatCivilAuditBinaryController(Binary):
                         record=piece,
                     )
                     cr.commit()
-                return response
 
         response = super().content_common(
             xmlid=xmlid,

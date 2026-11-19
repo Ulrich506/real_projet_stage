@@ -1,5 +1,6 @@
-from odoo import api, fields, models
+from odoo import api, fields, models, _
 from odoo.exceptions import AccessError, UserError, ValidationError
+import secrets
 
 
 # Rôles métiers du module État Civil selon le workflow opérationnel :
@@ -166,8 +167,9 @@ class EtatCivilGestionUtilisateur(models.TransientModel):
         pos_group = self._get_pos_group()
 
         if self.mode == "create":
-            if not (self.password or "").strip():
-                raise ValidationError("Saisissez un mot de passe initial.")
+            initial_password = (self.password or "").strip()
+            if not initial_password:
+                initial_password = secrets.token_urlsafe(12)
             groups = [role_group.id]
             if target_role == "regisseur" and pos_group:
                 groups.append(pos_group.id)
@@ -176,17 +178,25 @@ class EtatCivilGestionUtilisateur(models.TransientModel):
                     "name": self.name.strip(),
                     "login": self.login.strip(),
                     "email": (self.email or "").strip() or False,
-                    "password": self.password,
+                    "password": initial_password,
                     "groups_id": [(6, 0, groups)],
                     "etat_civil_centre_ids": [(6, 0, self.centre_ids.ids)],
                 }
             )
             # Journalisation audit : création d'un utilisateur
-            self._log_audit_event(user, 'create', {
-                'operation': 'user_created',
+            self._log_audit_event(user, 'user_created', {
                 'role': target_role,
                 'centre_ids': self.centre_ids.ids,
             })
+            # Retourner le mot de passe généré pour l'afficher à l'utilisateur
+            raise UserError(
+                _("Le compte a été créé avec succès.\n\n"
+                  "Identifiant : %s\n"
+                  "Mot de passe : %s\n\n"
+                  "Ce mot de passe est affiché UNE SEULE FOIS. "
+                  "Conservez-le en lieu sûr.")
+                % (self.login.strip(), initial_password)
+            )
         else:
             user = self.user_id.sudo()
             old_role = self._detect_current_role(user)
@@ -215,8 +225,7 @@ class EtatCivilGestionUtilisateur(models.TransientModel):
             user.write(values)
             # Journalisation audit : changement de rôle
             if old_role != target_role:
-                self._log_audit_event(user, 'update', {
-                    'operation': 'role_changed',
+                self._log_audit_event(user, 'role_changed', {
                     'old_role': old_role,
                     'new_role': target_role,
                     'centre_ids': self.centre_ids.ids,

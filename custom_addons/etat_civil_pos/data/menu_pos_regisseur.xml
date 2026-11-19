@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Menu "Point de Vente" : ajouter le régisseur.
+    Ce fichier est dans etat_civil_pos car il référence point_of_sale.
+-->
+<odoo>
+    <record id="point_of_sale.menu_point_root" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('base.group_system')),
+            (4, ref('etat_civil.group_etat_civil_admin')),
+            (4, ref('etat_civil_account.group_etat_civil_regisseur')),
+        ]"/>
+    </record>
+</odoo>

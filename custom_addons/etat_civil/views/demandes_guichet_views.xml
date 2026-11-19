@@ -4,7 +4,7 @@
         <field name="name">etat.civil.demande.guichet.tree</field>
         <field name="model">etat.civil.demande.guichet</field>
         <field name="arch" type="xml">
-            <tree string="File d'attente du guichet" default_order="priorite desc, create_date asc">
+            <tree string="File d'attente du guichet" default_order="priorite desc, create_date asc" create="0">
                 <field name="ticket_numero"/>
                 <field name="citoyen_nom"/>
                 <field name="citoyen_cin" string="CIN"/>
@@ -24,29 +24,64 @@
         <field name="arch" type="xml">
             <form string="Demande au guichet">
                 <header>
-                    <button name="action_appeler_au_guichet" type="object"
-                            string="Appeler au guichet" class="oe_highlight"/>
+                    <!-- Marquer traité : agent et admin -->
                     <button name="action_marquer_traite" type="object"
-                            string="Marquer traité"/>
+                            string="Marquer traité"
+                            groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_admin"/>
+                    <!-- Annuler : admin uniquement -->
                     <button name="action_annuler_ticket" type="object"
-                            string="Annuler"/>
+                            string="Annuler"
+                            groups="etat_civil.group_etat_civil_admin"/>
+                    <!-- Voir le ticket : admin et régisseur, pas l'agent -->
+                    <button name="action_preview_ticket" type="object"
+                            string="Voir ticket" class="oe_highlight" icon="fa-eye"
+                            groups="etat_civil.group_etat_civil_admin,etat_civil_account.group_etat_civil_regisseur"/>
+                    <!-- Télécharger : admin et régisseur, pas l'agent -->
+                    <button name="action_download_ticket" type="object"
+                            string="Télécharger ticket" icon="fa-download"
+                            groups="etat_civil.group_etat_civil_admin,etat_civil_account.group_etat_civil_regisseur"/>
+                    <!-- Imprimer : admin et régisseur, pas l'agent -->
+                    <button name="action_print_ticket" type="object"
+                            string="Imprimer" icon="fa-print"
+                            groups="etat_civil.group_etat_civil_admin,etat_civil_account.group_etat_civil_regisseur"/>
+                    <!-- Boutons d'impression d'actes — admin et agent -->
+                    <button name="action_imprimer_acte_naissance" type="object"
+                            string="Imprimer acte de naissance" icon="fa-file-text"
+                            class="btn-secondary"
+                            invisible="not has_acte_naissance"
+                            groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_admin"/>
+                    <button name="action_imprimer_acte_mariage" type="object"
+                            string="Imprimer acte de mariage" icon="fa-file-text"
+                            class="btn-secondary"
+                            invisible="not has_acte_mariage"
+                            groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_admin"/>
+                    <button name="action_imprimer_acte_deces" type="object"
+                            string="Imprimer acte de décès" icon="fa-file-text"
+                            class="btn-secondary"
+                            invisible="not has_acte_deces"
+                            groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_admin"/>
+                    <!-- Champs invisibles pour les conditions d'affichage -->
+                    <field name="has_acte_naissance" invisible="1"/>
+                    <field name="has_acte_mariage" invisible="1"/>
+                    <field name="has_acte_deces" invisible="1"/>
                     <field name="statut" widget="statusbar" readonly="1"
-                           statusbar_visible="en_attente,en_cours,traite"/>
+                           statusbar_visible="en_attente,traite"/>
                 </header>
                 <sheet>
                     <div class="oe_title">
                         <label for="ticket_numero"/>
-                        <h1><field name="ticket_numero"/></h1>
+                        <h1><field name="ticket_numero" readonly="1"/></h1>
                     </div>
                     <group>
                         <group string="Citoyen">
-                            <field name="citoyen_nom"/>
-                            <field name="citoyen_cin" string="CIN"/>
+                            <field name="citoyen_id" readonly="1" invisible="not citoyen_id"/>
+                            <field name="citoyen_nom" readonly="1"/>
+                            <field name="citoyen_cin" string="CIN" readonly="1"/>
                         </group>
                         <group string="Demande">
-                            <field name="type_acte"/>
-                            <field name="type_demande"/>
-                            <field name="priorite"/>
+                            <field name="type_acte" readonly="1"/>
+                            <field name="type_demande" readonly="1"/>
+                            <field name="priorite" readonly="1"/>
                         </group>
                     </group>
                     <group>
@@ -62,7 +97,7 @@
         <field name="name">File d'attente</field>
         <field name="res_model">etat.civil.demande.guichet</field>
         <field name="view_mode">tree,form</field>
-        <field name="context">{'search_default_en_attente': 1}</field>
+        <field name="context">{'search_default_en_attente': 1, 'create': False}</field>
     </record>
 
     <record id="view_etat_civil_demande_guichet_search" model="ir.ui.view">
@@ -75,8 +110,6 @@
                 <field name="citoyen_cin" string="CIN"/>
                 <filter name="en_attente" string="En attente"
                         domain="[('statut', '=', 'en_attente')]"/>
-                <filter name="en_cours" string="Au guichet"
-                        domain="[('statut', '=', 'en_cours')]"/>
                 <filter name="traite" string="Traités"
                         domain="[('statut', '=', 'traite')]"/>
                 <group expand="0" string="Grouper par">

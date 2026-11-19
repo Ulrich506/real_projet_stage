@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vue formulaire du wizard de création d'acte -->
+    <record id="view_etat_civil_creer_acte_wizard_form" model="ir.ui.view">
+        <field name="name">etat.civil.creer.acte.wizard.form</field>
+        <field name="model">etat.civil.creer.acte.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Créer un acte" class="ec_form_view">
+                <field name="individu_id" invisible="1"/>
+                <field name="can_create_naissance" invisible="1"/>
+                <field name="can_create_mariage" invisible="1"/>
+                <field name="can_create_deces" invisible="1"/>
+
+                <div class="mt-2">
+                    <p class="text-muted">
+                        Sélectionnez le type d'acte à créer pour ce citoyen.
+                        Seuls les actes applicables selon le profil du citoyen sont proposés.
+                    </p>
+                </div>
+
+                <!-- Acte de naissance -->
+                <div class="mb-3 border rounded p-3" invisible="not can_create_naissance">
+                    <div class="d-flex align-items-center">
+                        <i class="fa fa-baby fa-2x text-success me-3"/>
+                        <div class="flex-grow-1">
+                            <div class="fw-bold">Acte de naissance</div>
+                            <small class="text-muted">
+                                Créer un acte de naissance pour ce citoyen.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Acte de mariage -->
+                <div class="mb-3 border rounded p-3" invisible="not can_create_mariage">
+                    <div class="d-flex align-items-center">
+                        <i class="fa fa-ring fa-2x text-primary me-3"/>
+                        <div class="flex-grow-1">
+                            <div class="fw-bold">Acte de mariage</div>
+                            <small class="text-muted">
+                                Créer un acte de mariage avec ce citoyen comme conjoint.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Acte de décès -->
+                <div class="mb-3 border rounded p-3" invisible="not can_create_deces">
+                    <div class="d-flex align-items-center">
+                        <i class="fa fa-file-text fa-2x text-secondary me-3"/>
+                        <div class="flex-grow-1">
+                            <div class="fw-bold">Acte de décès</div>
+                            <small class="text-muted">
+                                Créer un acte de décès pour ce citoyen.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aucun acte disponible -->
+                <div class="alert alert-warning mt-3"
+                     invisible="can_create_naissance or can_create_mariage or can_create_deces">
+                    <i class="fa fa-exclamation-triangle me-2" title="Aucun acte créable"/>
+                    <strong>Aucun acte créable pour ce citoyen.</strong>
+                    <br/>
+                    Les types d'acte disponibles dépendent du profil du citoyen :
+                    âge, statut vital et actes existants.
+                </div>
+
+                <!-- Sélection du type d'acte -->
+                <div class="mt-4" invisible="not (can_create_naissance or can_create_mariage or can_create_deces)">
+                    <separator string="Choisir le type d'acte"/>
+                    <field name="acte_type"
+                           widget="radio"
+                           options="{'horizontal': false}"/>
+                </div>
+
+                <!-- Choix du rôle dans le mariage -->
+                <div class="mt-3" invisible="acte_type != 'mariage' or not can_create_mariage">
+                    <separator string="Rôle dans le mariage"/>
+                    <field name="mariage_role"
+                           widget="radio"
+                           options="{'horizontal': true}"/>
+                </div>
+
+                <footer>
+                    <button name="action_creer_acte" string="Créer l'acte"
+                            type="object" class="btn-primary"
+                            invisible="not acte_type"/>
+                    <button special="cancel" string="Annuler" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action fenêtre pour ouvrir le wizard -->
+    <record id="action_etat_civil_creer_acte_wizard" model="ir.actions.act_window">
+        <field name="name">Créer un acte</field>
+        <field name="res_model">etat.civil.creer.acte.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{'default_individu_id': active_id}</field>
+    </record>
+
+    <!-- Bouton dans la fiche citoyen — à côté du bouton "Imprimer un acte" -->
+    <record id="view_etat_civil_individu_form_creer_button" model="ir.ui.view">
+        <field name="name">etat.civil.individu.form.creer.button</field>
+        <field name="model">etat.civil.individu</field>
+        <field name="inherit_id" ref="view_etat_civil_individu_form_imprimer_button"/>
+        <field name="arch" type="xml">
+            <!-- Insérer le bouton après le bouton "Imprimer un acte" dans le header -->
+            <button name="%(action_etat_civil_imprimer_acte_wizard)d" position="after">
+                <button name="%(action_etat_civil_creer_acte_wizard)d"
+                        type="action"
+                        string="Créer un acte"
+                        icon="fa-plus"
+                        class="btn-secondary"
+                        groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_admin"/>
+            </button>
+        </field>
+    </record>
+</odoo>

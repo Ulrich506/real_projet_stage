@@ -23,6 +23,8 @@
                 <separator/>
                 <filter name="vivants" string="Vivant" domain="[('statut_vital','=','vivant')]"/>
                 <filter name="decedes" string="Décédé" domain="[('statut_vital','=','decede')]"/>
+                <filter name="presume_disparu" string="Présumé disparu" domain="[('statut_vital','=','presume_disparu')]"/>
+                <filter name="presume_mort" string="Présumé mort" domain="[('statut_vital','=','presume_mort')]"/>
                 <group expand="0" string="Regrouper par">
                     <filter name="group_sexe" string="Sexe" context="{'group_by':'sexe'}"/>
                     <filter name="group_categorie_age" string="Catégorie d'âge" context="{'group_by':'categorie_age'}"/>
@@ -43,7 +45,7 @@
                 <field name="date_naissance"/>
                 <field name="categorie_age"/>
                 <field name="lieu_naissance_commune" optional="show"/>
-                <field name="statut_vital" widget="badge" decoration-success="statut_vital == 'vivant'" decoration-danger="statut_vital == 'decede'" decoration-warning="statut_vital == 'disparu'"/>
+                <field name="statut_vital" widget="badge" decoration-success="statut_vital == 'vivant'" decoration-danger="statut_vital == 'decede'" decoration-warning="statut_vital in ('presume_disparu', 'presume_mort', 'autre')"/>
                 <field name="situation_matrimoniale" optional="hide"/>
             </tree>
         </field>
@@ -54,7 +56,7 @@
         <field name="name">etat.civil.individu.form</field>
         <field name="model">etat.civil.individu</field>
         <field name="arch" type="xml">
-            <form string="Fiche citoyen">
+            <form string="Fiche citoyen" class="ec_form_view">
                 <sheet>
                     <div class="oe_title">
                         <label for="nom_complet" class="oe_edit_only"/>
@@ -82,6 +84,7 @@
                     <group string="Situation actuelle">
                         <group>
                             <field name="statut_vital" readonly="1"/>
+                            <field name="statut_vital_precision" readonly="1" invisible="statut_vital != 'autre'"/>
                             <field name="situation_matrimoniale" readonly="1" invisible="cin_non_requise"/>
                         </group>
                         <group>
@@ -101,7 +104,7 @@
         <field name="model">etat.civil.individu</field>
         <field name="priority">99</field>
         <field name="arch" type="xml">
-            <form string="Créer Enfant Nouveau-né">
+            <form string="Créer Enfant Nouveau-né" class="ec_form_view">
                 <sheet>
                     <div class="oe_title">
                         <label for="nom_complet" class="oe_edit_only"/>
@@ -128,6 +131,7 @@
                     <group string="Situation de l'enfant">
                         <group>
                             <field name="statut_vital" readonly="1"/>
+                            <field name="statut_vital_precision" readonly="1" invisible="statut_vital != 'autre'"/>
                         </group>
                     </group>
                     <!-- Champs techniques masqués pour un nouveau-né -->
@@ -159,5 +163,17 @@
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" ref="view_etat_civil_individu_search"/>
         <field name="groups_id" eval="[(6, 0, [ref('group_etat_civil_agent'), ref('group_etat_civil_admin')])]"/>
+    </record>
+
+    <!-- Restriction agent : pas de création dans Citoyens -->
+    <record id="view_etat_civil_individu_tree_agent" model="ir.ui.view">
+        <field name="name">etat.civil.individu.tree.agent</field>
+        <field name="model">etat.civil.individu</field>
+        <field name="inherit_id" ref="view_etat_civil_individu_tree"/>
+        <field name="arch" type="xml">
+            <tree position="attributes">
+                <attribute name="create" groups="etat_civil.group_etat_civil_admin">0</attribute>
+            </tree>
+        </field>
     </record>
 </odoo>

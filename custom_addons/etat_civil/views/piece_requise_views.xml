@@ -7,6 +7,7 @@
         <field name="model">etat.civil.piece.requise</field>
         <field name="arch" type="xml">
             <tree string="Pièces requises" editable="bottom">
+                <field name="ref_internal"/>
                 <field name="type_acte"/>
                 <field name="code_piece"/>
                 <field name="condition"/>
@@ -22,10 +23,11 @@
         <field name="name">etat.civil.piece.requise.form</field>
         <field name="model">etat.civil.piece.requise</field>
         <field name="arch" type="xml">
-            <form string="Pièce requise">
+            <form string="Pièce requise" class="ec_form_view">
                 <sheet>
                     <group>
                         <group string="Acte et catégorie">
+                            <field name="ref_internal"/>
                             <field name="type_acte"/>
                             <field name="code_piece"/>
                         </group>

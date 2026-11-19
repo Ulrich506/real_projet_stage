@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!-- ================================================================ -->
+    <!-- VUE DE RECHERCHE : filtres avancés par période et par type       -->
+    <!-- ================================================================ -->
     <record id="view_etat_civil_audit_log_search" model="ir.ui.view">
         <field name="name">etat.civil.audit.log.search</field>
         <field name="model">etat.civil.audit.log</field>
@@ -10,43 +13,78 @@
                 <field name="action_type"/>
                 <field name="record_model"/>
                 <field name="record_id"/>
-                <filter name="filter_event_date" string="Date" date="event_datetime_utc"/>
+                <filter name="filter_today" string="Aujourd'hui"
+                        date="event_datetime_utc"/>
+                <filter name="filter_yesterday" string="Hier"
+                        domain="[('event_datetime_utc','&gt;=',(context_today()-datetime.timedelta(days=1)).strftime('%Y-%m-%d')),
+                                 ('event_datetime_utc','&lt;',context_today().strftime('%Y-%m-%d'))]"/>
+                <filter name="filter_week" string="Cette semaine"
+                        domain="[('event_datetime_utc','&gt;=',(context_today()-datetime.timedelta(days=context_today().weekday())).strftime('%Y-%m-%d'))]"/>
+                <filter name="filter_month" string="Ce mois"
+                        domain="[('event_datetime_utc','&gt;=',(context_today().replace(day=1)).strftime('%Y-%m-%d'))]"/>
+                <filter name="filter_year" string="Cette année"
+                        domain="[('event_datetime_utc','&gt;=',(context_today().replace(month=1,day=1)).strftime('%Y-%m-%d'))]"/>
+                <separator/>
+                <filter name="filter_action_create" string="Créations"
+                        domain="[('action_type','=','create')]"/>
+                <filter name="filter_action_update" string="Modifications"
+                        domain="[('action_type','=','update')]"/>
+                <filter name="filter_action_delete" string="Suppressions"
+                        domain="[('action_type','=','delete')]"/>
+                <filter name="filter_action_login" string="Connexions"
+                        domain="[('action_type','=','login')]"/>
+                <filter name="filter_action_payment" string="Paiements"
+                        domain="[('action_type','=','payment')]"/>
+                <filter name="filter_action_user" string="Gestion utilisateurs"
+                        domain="[('action_type','in',('user_created','role_changed'))]"/>
+                <separator/>
                 <group expand="0" string="Regrouper par">
                     <filter name="group_user" string="Utilisateur" context="{'group_by': 'user_id'}"/>
                     <filter name="group_commune" string="Commune" context="{'group_by': 'commune'}"/>
                     <filter name="group_date" string="Date" context="{'group_by': 'event_datetime_utc:day'}"/>
                     <filter name="group_action" string="Type d'action" context="{'group_by': 'action_type'}"/>
                     <filter name="group_model" string="Modèle" context="{'group_by': 'record_model'}"/>
+                    <filter name="group_result" string="Résultat" context="{'group_by': 'result'}"/>
                 </group>
             </search>
         </field>
     </record>
 
+    <!-- ================================================================ -->
+    <!-- VUE LISTE : timeline chronologique (plus récent en premier)      -->
+    <!-- ================================================================ -->
     <record id="view_etat_civil_audit_log_tree" model="ir.ui.view">
         <field name="name">etat.civil.audit.log.tree</field>
         <field name="model">etat.civil.audit.log</field>
         <field name="arch" type="xml">
-            <tree create="0" edit="0" delete="0" import="0" duplicate="0">
+            <tree create="0" edit="0" delete="0" import="0" duplicate="0"
+                  default_order="event_datetime_utc desc, id desc">
                 <field name="event_datetime_utc"/>
-                <field name="event_datetime_local" optional="hide"/>
-                <field name="event_timezone" optional="hide"/>
+                <field name="event_datetime_local" optional="show"/>
                 <field name="user_id"/>
-                <field name="role"/>
-                <field name="commune"/>
+                <field name="role" optional="show"/>
+                <field name="commune" optional="hide"/>
                 <field name="action_type"/>
-                <field name="record_model"/>
-                <field name="record_id"/>
-                <field name="result"/>
+                <field name="record_model" optional="show"/>
+                <field name="record_id" optional="hide"/>
+                <field name="result" widget="badge"
+                       decoration-success="result == 'success'"
+                       decoration-warning="result == 'partial'"
+                       decoration-danger="result == 'failed'"/>
             </tree>
         </field>
     </record>
 
+    <!-- ================================================================ -->
+    <!-- VUE FORMULAIRE : détail complet d'un événement                   -->
+    <!-- ================================================================ -->
     <record id="view_etat_civil_audit_log_form" model="ir.ui.view">
         <field name="name">etat.civil.audit.log.form</field>
         <field name="model">etat.civil.audit.log</field>
         <field name="arch" type="xml">
-            <form create="0" edit="0" delete="0">
+            <form create="0" edit="0" delete="0" class="ec_form_view">
                 <sheet>
+                    <div class="oe_button_box" name="button_box"/>
                     <group>
                         <group string="Événement">
                             <field name="event_uuid"/>
@@ -62,8 +100,8 @@
                             <field name="centre_id"/>
                             <field name="commune"/>
                             <field name="ip_address"/>
-                            <field name="session_hash"/>
-                            <field name="request_id"/>
+                            <field name="session_hash" optional="hide"/>
+                            <field name="request_id" optional="hide"/>
                         </group>
                     </group>
                     <group string="Opération">
@@ -82,11 +120,28 @@
         </field>
     </record>
 
+    <!-- ================================================================ -->
+    <!-- ACTION : Journal d'audit (vue principale)                       -->
+    <!-- ================================================================ -->
     <record id="action_etat_civil_audit_log" model="ir.actions.act_window">
         <field name="name">Journal d'audit</field>
         <field name="res_model">etat.civil.audit.log</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" ref="view_etat_civil_audit_log_search"/>
         <field name="view_ids" eval="[(5, 0, 0), (0, 0, {'view_mode': 'tree', 'view_id': ref('view_etat_civil_audit_log_tree')}), (0, 0, {'view_mode': 'form', 'view_id': ref('view_etat_civil_audit_log_form')})]"/>
+    </record>
+
+    <!-- ================================================================ -->
+    <!-- ACTION : Historique d'un utilisateur (timeline par personne)     -->
+    <!-- ================================================================ -->
+    <record id="action_etat_civil_audit_log_by_user" model="ir.actions.act_window">
+        <field name="name">Historique d'audit</field>
+        <field name="res_model">etat.civil.audit.log</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_etat_civil_audit_log_search"/>
+        <field name="view_ids" eval="[(5, 0, 0), (0, 0, {'view_mode': 'tree', 'view_id': ref('view_etat_civil_audit_log_tree')}), (0, 0, {'view_mode': 'form', 'view_id': ref('view_etat_civil_audit_log_form')})]"/>
+        <field name="domain">[('user_id', 'child_of', active_id)]</field>
+        <field name="context">{'search_default_group_date': 1}</field>
+        <field name="target">current</field>
     </record>
 </odoo>

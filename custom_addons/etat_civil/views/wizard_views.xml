@@ -5,7 +5,7 @@
         <field name="name">etat.civil.annulation.acte.wizard.form</field>
         <field name="model">etat.civil.annulation.acte.wizard</field>
         <field name="arch" type="xml">
-            <form string="Annuler l'acte">
+            <form string="Annuler l'acte" class="ec_form_view">
                 <sheet>
                     <div class="alert alert-warning" role="alert">
                         <strong>Attention :</strong> cette action rend l'acte inutilisable pour les opérations normales.
@@ -38,7 +38,7 @@
         <field name="name">etat.civil.transmission.acte.wizard.form</field>
         <field name="model">etat.civil.transmission.acte.wizard</field>
         <field name="arch" type="xml">
-            <form string="Envoyer pour validation">
+            <form string="Envoyer pour validation" class="ec_form_view">
                 <sheet>
                     <div class="alert alert-info" role="alert">
                         Sélectionnez l'officier compétent pour vérifier et valider ce document d'état civil.
@@ -74,7 +74,7 @@
         <field name="name">etat.civil.retour.correction.wizard.form</field>
         <field name="model">etat.civil.retour.correction.wizard</field>
         <field name="arch" type="xml">
-            <form string="Décision sur le dossier">
+            <form string="Décision sur le dossier" class="ec_form_view">
                 <sheet>
                     <group>
                         <field name="acte_type" invisible="1"/>

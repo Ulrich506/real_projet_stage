@@ -624,7 +624,7 @@ class EtatCivilImportWizard(models.TransientModel):
         if birth_date > fields.Date.context_today(self):
             raise ValidationError(_("La date de naissance ne peut pas être dans le futur."))
         if vals.get("statut_vital") and vals["statut_vital"] not in (
-            "vivant", "decede", "disparu"
+            "vivant", "decede", "presume_disparu", "presume_mort", "autre"
         ):
             raise ValidationError(_("Le statut vital n'est pas reconnu."))
         if vals.get("situation_matrimoniale") and vals[
@@ -789,7 +789,7 @@ class EtatCivilImportWizard(models.TransientModel):
                 elif raw_lower in (
                     'disparu', 'missing', 'presumed_missing', 'heverina fa tsy hita'
                 ):
-                    vals['statut_vital'] = 'disparu'
+                    vals['statut_vital'] = 'presume_disparu'
                 else:
                     vals['statut_vital'] = raw_val
             elif odoo_field == 'situation_matrimoniale':
@@ -919,7 +919,8 @@ class EtatCivilExportWizard(models.TransientModel):
     )
     export_filter = fields.Selection(
         [("all", "Tous les statuts vitaux"), ("vivant", "Vivants uniquement"),
-         ("decede", "Décédés uniquement"), ("disparu", "Présumés disparus")],
+         ("decede", "Décédés uniquement"), ("presume_disparu", "Présumés disparus"),
+         ("presume_mort", "Présumés morts")],
         string="Statut vital",
         default="all",
         required=True,

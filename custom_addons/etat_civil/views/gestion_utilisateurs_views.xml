@@ -53,7 +53,7 @@
         <field name="name">etat.civil.gestion.utilisateur.form</field>
         <field name="model">etat.civil.gestion.utilisateur</field>
         <field name="arch" type="xml">
-            <form string="Gestion des comptes État Civil">
+            <form string="Gestion des comptes État Civil" class="ec_form_view">
                 <group>
                     <field name="mode" invisible="1"/>
                     <field name="user_id" invisible="mode != 'edit'"
@@ -116,6 +116,14 @@
                                options="{'no_create': True}"/>
                     </group>
                 </page>
+            </xpath>
+            <!-- Bouton : Historique d'audit de l'utilisateur -->
+            <xpath expr="//header" position="inside">
+                <button name="%(action_etat_civil_audit_log_by_user)d"
+                        type="action"
+                        string="Historique d'audit"
+                        class="btn-secondary"
+                        groups="etat_civil.group_etat_civil_admin,base.group_system"/>
             </xpath>
         </field>
     </record>

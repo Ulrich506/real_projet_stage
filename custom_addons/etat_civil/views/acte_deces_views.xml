@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
+    <record id="action_etat_civil_acte_deces" model="ir.actions.act_window">
+        <field name="name">Actes de décès</field>
+        <field name="res_model">etat.civil.acte.deces</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="groups_id" eval="[(6, 0, [ref('group_etat_civil_agent'), ref('group_etat_civil_admin')])]"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Créer un nouveau constat de décès</p>
+            <p>Renseignez la fiche puis cliquez sur « Envoyer pour validation ».</p>
+        </field>
+    </record>
+
+
+    <record id="action_etat_civil_acte_deces_a_valider" model="ir.actions.act_window">
+        <field name="name">Décès à examiner</field>
+        <field name="res_model">etat.civil.acte.deces</field>
+        <field name="view_mode">tree,form</field>
+        <field name="groups_id" eval="[(6, 0, [ref('group_etat_civil_officier'), ref('group_etat_civil_admin')])]"/>
+        <field name="domain">[('statut', '=', 'en_attente')]</field>
+        <field name="context">{'search_default_to_validate': 1, 'create': False}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Aucun acte de décès en attente d'examen.</p>
+        </field>
+    </record>
+
     <!-- VUE RECHERCHE -->
     <record id="view_etat_civil_acte_deces_search" model="ir.ui.view">
         <field name="name">etat.civil.acte.deces.search</field>
@@ -214,11 +239,11 @@
                                 <tree editable="bottom" delete="0">
                                     <field name="genere_automatiquement" column_invisible="1"/>
                                     <field name="name" readonly="genere_automatiquement"/>
-                                    <field name="obligatoire"/>
+                                    <field name="obligatoire" readonly="1"/>
                                     <field name="etat" readonly="1"/>
                                     <button name="action_mark_received" type="object" string="REÇU"
                                             class="btn-secondary"
-                                            groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_admin"
+                                            groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_officier,etat_civil.group_etat_civil_admin"
                                             invisible="etat != 'a_fournir'"/>
                                     <button name="action_mark_verified" type="object" string="REÇU ET VÉRIFIER"
                                             class="btn-primary"
@@ -245,28 +270,4 @@
     </record>
 
     <!-- ACTIONS SÉCURISÉES -->
-    <record id="action_etat_civil_acte_deces" model="ir.actions.act_window">
-        <field name="name">Actes de décès</field>
-        <field name="res_model">etat.civil.acte.deces</field>
-        <field name="view_mode">tree,kanban,form</field>
-        <field name="groups_id" eval="[(6, 0, [ref('group_etat_civil_agent'), ref('group_etat_civil_admin')])]"/>
-        <field name="search_view_id" ref="view_etat_civil_acte_deces_search"/>
-        <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">Créer un nouveau constat de décès</p>
-            <p>Renseignez la fiche puis cliquez sur « Envoyer pour validation ».</p>
-        </field>
-    </record>
-
-    <record id="action_etat_civil_acte_deces_a_valider" model="ir.actions.act_window">
-        <field name="name">Décès à examiner</field>
-        <field name="res_model">etat.civil.acte.deces</field>
-        <field name="view_mode">tree,form</field>
-        <field name="groups_id" eval="[(6, 0, [ref('group_etat_civil_officier'), ref('group_etat_civil_admin')])]"/>
-        <field name="domain">[('statut', '=', 'en_attente')]</field>
-        <field name="context">{'search_default_to_validate': 1}</field>
-        <field name="search_view_id" ref="view_etat_civil_acte_deces_search"/>
-        <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">Aucun acte de décès en attente d'examen.</p>
-        </field>
-    </record>
 </odoo>

@@ -7,7 +7,7 @@
         <field name="name">etat.civil.import.wizard.form</field>
         <field name="model">etat.civil.import.wizard</field>
         <field name="arch" type="xml">
-            <form string="Importer des citoyens">
+            <form string="Importer des citoyens" class="ec_form_view">
                 <sheet>
                     <!-- ÉTAPE 1 : Téléverser un fichier -->
                     <div invisible="state != 'upload'">
@@ -160,7 +160,7 @@
         <field name="name">etat.civil.export.wizard.form</field>
         <field name="model">etat.civil.export.wizard</field>
         <field name="arch" type="xml">
-            <form string="Exporter des citoyens">
+            <form string="Exporter des citoyens" class="ec_form_view">
                 <sheet>
                     <div invisible="state != 'config'">
                         <div class="alert alert-info" role="alert">

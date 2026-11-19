@@ -80,13 +80,21 @@ class EtatCivilActeDeces(models.Model):
     def create(self, vals_list):
         records = super().create(vals_list)
         records._sync_pieces_justificatives()
+        records._check_and_lock_identity()
         return records
 
     def write(self, vals):
         result = super().write(vals)
         if {'declarant_id'} & vals.keys():
             self._sync_pieces_justificatives()
+        self._check_and_lock_identity()
         return result
+
+    def _check_and_lock_identity(self):
+        """Verrouille l'identité de la commune après le premier acte."""
+        config = self.env['etat.civil.config.settings'].get_config()
+        if not config.identity_locked:
+            config._lock_identity()
 
     @api.constrains('registre_id', 'defunt_id', 'declarant_id', 'date_deces', 'heure_deces')
     def _check_acte_deces(self):

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vue formulaire du wizard d'impression d'acte -->
+    <record id="view_etat_civil_imprimer_acte_wizard_form" model="ir.ui.view">
+        <field name="name">etat.civil.imprimer.acte.wizard.form</field>
+        <field name="model">etat.civil.imprimer.acte.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Imprimer un acte" class="ec_form_view">
+                <field name="individu_id" invisible="1"/>
+                <field name="has_naissance" invisible="1"/>
+                <field name="has_mariage" invisible="1"/>
+                <field name="has_deces" invisible="1"/>
+                <field name="acte_mariage_ids" invisible="1"/>
+
+                <div class="mt-2">
+                    <p class="text-muted">
+                        Sélectionnez l'acte à imprimer pour ce citoyen.
+                        Seuls les actes validés par l'officier sont disponibles.
+                    </p>
+                </div>
+
+                <!-- Acte de naissance -->
+                <div class="mb-3 border rounded p-3" invisible="not has_naissance">
+                    <div class="d-flex align-items-center">
+                        <i class="fa fa-file-text-o fa-2x text-success me-3"/>
+                        <div class="flex-grow-1">
+                            <div class="fw-bold">Acte de naissance</div>
+                            <small class="text-muted">
+                                N° <field name="acte_naissance_id" readonly="1"
+                                         options="{'fields': ['numero_acte']}"
+                                         widget="many2one"/>
+                                — Feuillet <field name="acte_naissance_id" readonly="1"
+                                                  options="{'fields': ['feuillet_numero']}"
+                                                  widget="many2one"/>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Acte(s) de mariage -->
+                <div class="mb-3 border rounded p-3" invisible="not has_mariage">
+                    <div class="d-flex align-items-center">
+                        <i class="fa fa-ring fa-2x text-primary me-3"/>
+                        <div class="flex-grow-1">
+                            <div class="fw-bold">Acte de mariage</div>
+                            <field name="selected_mariage_id"/>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Acte de décès -->
+                <div class="mb-3 border rounded p-3" invisible="not has_deces">
+                    <div class="d-flex align-items-center">
+                        <i class="fa fa-file-text fa-2x text-secondary me-3"/>
+                        <div class="flex-grow-1">
+                            <div class="fw-bold">Acte de décès</div>
+                            <small class="text-muted">
+                                N° <field name="acte_deces_id" readonly="1"
+                                         options="{'fields': ['numero_acte']}"
+                                         widget="many2one"/>
+                                — Feuillet <field name="acte_deces_id" readonly="1"
+                                                  options="{'fields': ['feuillet_numero']}"
+                                                  widget="many2one"/>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aucun acte disponible -->
+                <div class="alert alert-warning mt-3"
+                     invisible="has_naissance or has_mariage or has_deces">
+                    <i class="fa fa-exclamation-triangle me-2" title="Aucun acte disponible"/>
+                    <strong>Aucun acte valide disponible.</strong>
+                    Aucun acte enregistré et validé par l'officier n'a été trouvé pour ce citoyen.
+                    Vérifiez que l'acte a bien été déclaré et validé.
+                </div>
+
+                <!-- Sélection par radio buttons -->
+                <div class="mt-4" invisible="not (has_naissance or has_mariage or has_deces)">
+                    <separator string="Choisir l'acte à imprimer"/>
+                    <field name="acte_type"
+                           widget="radio"
+                           options="{'horizontal': false}"/>
+                </div>
+
+                <footer>
+                    <button name="action_imprimer" string="Imprimer"
+                            type="object" class="btn-primary"
+                            invisible="not acte_type"/>
+                    <button special="cancel" string="Annuler" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action fenêtre pour ouvrir le wizard -->
+    <record id="action_etat_civil_imprimer_acte_wizard" model="ir.actions.act_window">
+        <field name="name">Imprimer un acte</field>
+        <field name="res_model">etat.civil.imprimer.acte.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{'default_individu_id': active_id}</field>
+    </record>
+
+    <!-- Bouton dans la fiche citoyen — héritage pour ajouter le header -->
+    <record id="view_etat_civil_individu_form_imprimer_button" model="ir.ui.view">
+        <field name="name">etat.civil.individu.form.imprimer.button</field>
+        <field name="model">etat.civil.individu</field>
+        <field name="inherit_id" ref="view_etat_civil_individu_form"/>
+        <field name="arch" type="xml">
+            <form position="attributes">
+                <attribute name="string">Fiche citoyen</attribute>
+            </form>
+            <sheet position="before">
+                <header>
+                    <button name="%(action_etat_civil_imprimer_acte_wizard)d"
+                            type="action"
+                            string="Imprimer un acte"
+                            icon="fa-print"
+                            class="btn-secondary"
+                            groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_admin"/>
+                </header>
+            </sheet>
+        </field>
+    </record>
+</odoo>

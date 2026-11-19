@@ -30,13 +30,13 @@ class EtatCivilIndividu(models.Model):
         "etat.civil.acte.mariage", "conjoint_1_id", string="Actes de mariage comme conjoint"
     )
     acte_mariage_conjoint_2_ids = fields.One2many(
-        "etat.civil.acte.mariage", "conjoint_2_id", string="Actes de mariage comme conjoint"
+        "etat.civil.acte.mariage", "conjoint_2_id", string="Actes de mariage comme 2ème conjoint"
     )
     acte_mariage_temoin_1_ids = fields.One2many(
         "etat.civil.acte.mariage", "temoin_1_id", string="Actes de mariage comme témoin"
     )
     acte_mariage_temoin_2_ids = fields.One2many(
-        "etat.civil.acte.mariage", "temoin_2_id", string="Actes de mariage comme témoin"
+        "etat.civil.acte.mariage", "temoin_2_id", string="Actes de mariage comme 2ème témoin"
     )
     acte_deces_defunt_ids = fields.One2many(
         "etat.civil.acte.deces", "defunt_id", string="Actes de décès comme défunt"
@@ -109,8 +109,14 @@ class EtatCivilIndividu(models.Model):
     statut_vital = fields.Selection([
         ('vivant', 'Vivant'),
         ('decede', 'Décédé'),
-        ('disparu', 'Présumé Disparu')
+        ('presume_disparu', 'Présumé disparu'),
+        ('presume_mort', 'Présumé mort'),
+        ('autre', 'Autre'),
     ], string='Statut vital', default='vivant', required=True)
+    statut_vital_precision = fields.Char(
+        string='Précision du statut vital',
+        help='Champ visible uniquement quand le statut vital est « Autre ».',
+    )
     
     situation_matrimoniale = fields.Selection([
         ('celibataire', 'Célibataire'),
@@ -365,6 +371,122 @@ class EtatCivilIndividu(models.Model):
                     if spouse.id in reference_ids:
                         spouse._validate_marriage_eligibility(reference_date, label)
         return result
+
+    @api.model
+    def citoyens_demo_init(self):
+        """Initialiser les citoyens de démonstration (appelé depuis data XML)."""
+        citoyens = [
+            {"nom": "Rakoto", "prenoms": "Jean Michel", "cin": "100198500001", "sexe": "M",
+             "date_naissance": "1985-03-15", "lieu_naissance_commune": "Fianarantsoa",
+             "lieu_naissance_pays": "Madagascar", "nationalite_actuelle": "Malagasy",
+             "domicile_actuel": "Lot II N°45, Analakely, Fianarantsoa 401",
+             "profession_actuelle": "Enseignant", "statut_vital": "vivant", "situation_matrimoniale": "marie"},
+            {"nom": "Rasoa", "prenoms": "Marie Claire", "cin": "100199000002", "sexe": "F",
+             "date_naissance": "1990-07-22", "lieu_naissance_commune": "Fianarantsoa",
+             "lieu_naissance_pays": "Madagascar", "nationalite_actuelle": "Malagasy",
+             "domicile_actuel": "Tsiafahiny, Fianarantsoa 401",
+             "profession_actuelle": "Infirmière", "statut_vital": "vivant", "situation_matrimoniale": "celibataire"},
+            {"nom": "Andria", "prenoms": "François", "cin": "100197800003", "sexe": "M",
+             "date_naissance": "1978-11-05", "lieu_naissance_commune": "Fianarantsoa",
+             "lieu_naissance_pays": "Madagascar", "nationalite_actuelle": "Malagasy",
+             "domicile_actuel": "Ambodivona, Fianarantsoa 401",
+             "profession_actuelle": "Commerçant", "statut_vital": "vivant", "situation_matrimoniale": "marie"},
+            {"nom": "Be", "prenoms": "Sophie Raharimanana", "cin": "100199500004", "sexe": "F",
+             "date_naissance": "1995-01-30", "lieu_naissance_commune": "Fianarantsoa",
+             "lieu_naissance_pays": "Madagascar", "nationalite_actuelle": "Malagasy",
+             "domicile_actuel": "Lot I N°12, Ambodivona, Fianarantsoa 401",
+             "profession_actuelle": "Avocate", "statut_vital": "vivant", "situation_matrimoniale": "celibataire"},
+            {"nom": "Rajaonarivelo", "prenoms": "Hery", "cin": "100196000005", "sexe": "M",
+             "date_naissance": "1960-06-18", "lieu_naissance_commune": "Fianarantsoa",
+             "lieu_naissance_pays": "Madagascar", "nationalite_actuelle": "Malagasy",
+             "domicile_actuel": "Ambohimanga, Fianarantsoa 401",
+             "profession_actuelle": "Retraité", "statut_vital": "vivant", "situation_matrimoniale": "veuf"},
+            {"nom": "Voahirana", "prenoms": "Nirina", "cin": "100198800006", "sexe": "F",
+             "date_naissance": "1988-09-12", "lieu_naissance_commune": "Fianarantsoa",
+             "lieu_naissance_pays": "Madagascar", "nationalite_actuelle": "Malagasy",
+             "domicile_actuel": "Ambodirano, Fianarantsoa 401",
+             "profession_actuelle": "Médecin", "statut_vital": "vivant", "situation_matrimoniale": "marie"},
+            {"nom": "Randria", "prenoms": "Tiana", "cin": "100197200007", "sexe": "F",
+             "date_naissance": "1972-04-25", "lieu_naissance_commune": "Fianarantsoa",
+             "lieu_naissance_pays": "Madagascar", "nationalite_actuelle": "Malagasy",
+             "domicile_actuel": "Lot IV N°78, Isotry, Fianarantsoa 401",
+             "profession_actuelle": "Pharmacien", "statut_vital": "vivant", "situation_matrimoniale": "divorce"},
+            {"nom": "Njara", "prenoms": "Andry", "cin": "100200000008", "sexe": "M",
+             "date_naissance": "2000-12-03", "lieu_naissance_commune": "Fianarantsoa",
+             "lieu_naissance_pays": "Madagascar", "nationalite_actuelle": "Malagasy",
+             "domicile_actuel": "Lot I N°5, Fianarantsoa 401",
+             "profession_actuelle": "Étudiant", "statut_vital": "vivant", "situation_matrimoniale": "celibataire"},
+            {"nom": "Rakotonirina", "prenoms": "Voahirana", "cin": "100195500009", "sexe": "F",
+             "date_naissance": "1955-08-14", "lieu_naissance_commune": "Fianarantsoa",
+             "lieu_naissance_pays": "Madagascar", "nationalite_actuelle": "Malagasy",
+             "domicile_actuel": "Ambalabe, Fianarantsoa 401",
+             "profession_actuelle": "Retraité", "statut_vital": "decede", "situation_matrimoniale": "veuve"},
+            {"nom": "Haja", "prenoms": "Fidovolonirina", "cin": "100199200010", "sexe": "F",
+             "date_naissance": "1992-02-28", "lieu_naissance_commune": "Fianarantsoa",
+             "lieu_naissance_pays": "Madagascar", "nationalite_actuelle": "Malagasy",
+             "domicile_actuel": "Lot III N°33, Alasora, Fianarantsoa 401",
+             "profession_actuelle": "Comptable", "statut_vital": "vivant", "situation_matrimoniale": "marie"},
+            {"nom": "Ravelo", "prenoms": "M-bah", "cin": "100198300011", "sexe": "M",
+             "date_naissance": "1983-05-09", "lieu_naissance_commune": "Fianarantsoa",
+             "lieu_naissance_pays": "Madagascar", "nationalite_actuelle": "Malagasy",
+             "domicile_actuel": "Amborovy, Fianarantsoa 401",
+             "profession_actuelle": "Ingénieur", "statut_vital": "vivant", "situation_matrimoniale": "marie"},
+            {"nom": "Rajaona", "prenoms": "Hanta", "cin": "100199800012", "sexe": "F",
+             "date_naissance": "1998-10-17", "lieu_naissance_commune": "Fianarantsoa",
+             "lieu_naissance_pays": "Madagascar", "nationalite_actuelle": "Malagasy",
+             "domicile_actuel": "Lot II N°21, Ambatobevy, Fianarantsoa 401",
+             "profession_actuelle": "Journaliste", "statut_vital": "vivant", "situation_matrimoniale": "celibataire"},
+            {"nom": "Andriamampandry", "prenoms": "Solomon", "cin": "100196500013", "sexe": "M",
+             "date_naissance": "1965-07-01", "lieu_naissance_commune": "Fianarantsoa",
+             "lieu_naissance_pays": "Madagascar", "nationalite_actuelle": "Malagasy",
+             "domicile_actuel": "Lot I N°9, Fianarantsoa 401",
+             "profession_actuelle": "Professeur", "statut_vital": "vivant", "situation_matrimoniale": "marie"},
+            {"nom": "Rakotoharisoa", "prenoms": "Voahary", "cin": "100200300014", "sexe": "F",
+             "date_naissance": "2003-03-20", "lieu_naissance_commune": "Fianarantsoa",
+             "lieu_naissance_pays": "Madagascar", "nationalite_actuelle": "Malagasy",
+             "domicile_actuel": "Ambodivona, Fianarantsoa 401",
+             "profession_actuelle": "Étudiante", "statut_vital": "vivant", "situation_matrimoniale": "celibataire"},
+            {"nom": "Razafindrabe", "prenoms": "Tobiana", "cin": "100197500015", "sexe": "M",
+             "date_naissance": "1975-12-11", "lieu_naissance_commune": "Fianarantsoa",
+             "lieu_naissance_pays": "Madagascar", "nationalite_actuelle": "Malagasy",
+             "domicile_actuel": "Lot II N°56, Ambalavojy, Fianarantsoa 401",
+             "profession_actuelle": "Agriculteur", "statut_vital": "vivant", "situation_matrimoniale": "marie"},
+            {"nom": "Nirina", "prenoms": "Rakotonirina", "cin": "100194000016", "sexe": "F",
+             "date_naissance": "1940-01-05", "lieu_naissance_commune": "Fianarantsoa",
+             "lieu_naissance_pays": "Madagascar", "nationalite_actuelle": "Malagasy",
+             "domicile_actuel": "Lot IV N°2, Analakely, Fianarantsoa 401",
+             "profession_actuelle": "Retraité", "statut_vital": "decede", "situation_matrimoniale": "veuve"},
+            {"nom": "Rakotondrazaka", "prenoms": "Haja", "cin": "100199900017", "sexe": "F",
+             "date_naissance": "1999-06-23", "lieu_naissance_commune": "Fianarantsoa",
+             "lieu_naissance_pays": "Madagascar", "nationalite_actuelle": "Malagasy",
+             "domicile_actuel": "Lot I N°44, Fianarantsoa 401",
+             "profession_actuelle": "Vétérinaire", "statut_vital": "vivant", "situation_matrimoniale": "celibataire"},
+            {"nom": "Rajaonarison", "prenoms": "David", "cin": "100198700018", "sexe": "M",
+             "date_naissance": "1987-04-08", "lieu_naissance_commune": "Fianarantsoa",
+             "lieu_naissance_pays": "Madagascar", "nationalite_actuelle": "Malagasy",
+             "domicile_actuel": "Ambodirano, Fianarantsoa 401",
+             "profession_actuelle": "Architecte", "statut_vital": "vivant", "situation_matrimoniale": "marie"},
+            {"nom": "Be", "prenoms": "Fara", "cin": "100200100019", "sexe": "F",
+             "date_naissance": "2001-09-15", "lieu_naissance_commune": "Fianarantsoa",
+             "lieu_naissance_pays": "Madagascar", "nationalite_actuelle": "Malagasy",
+             "domicile_actuel": "Lot III N°67, Isotry, Fianarantsoa 401",
+             "profession_actuelle": "Étudiante", "statut_vital": "vivant", "situation_matrimoniale": "celibataire"},
+            {"nom": "Andriamanjato", "prenoms": "Rakoto", "cin": "100197000020", "sexe": "M",
+             "date_naissance": "1970-11-30", "lieu_naissance_commune": "Fianarantsoa",
+             "lieu_naissance_pays": "Madagascar", "nationalite_actuelle": "Malagasy",
+             "domicile_actuel": "Ambalabe, Fianarantsoa 401",
+             "profession_actuelle": "Pêcheur", "statut_vital": "vivant", "situation_matrimoniale": "divorce"},
+        ]
+        created = 0
+        for vals in citoyens:
+            if self.search_count([('cin', '=', vals['cin'])]):
+                continue
+            try:
+                self._create_from_import([vals])
+                created += 1
+            except Exception:
+                pass
+        return created
 
     @api.depends('nom', 'prenoms')
     def _compute_nom_complet(self):

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Liste de la file d'attente pour le régisseur : sans CIN, sans Nouveau -->
+    <record id="view_guichet_ticket_regisseur_tree" model="ir.ui.view">
+        <field name="name">etat.civil.demande.guichet.regisseur.tree</field>
+        <field name="model">etat.civil.demande.guichet</field>
+        <field name="inherit_id" ref="etat_civil.view_etat_civil_demande_guichet_tree"/>
+        <field name="arch" type="xml">
+            <tree position="attributes">
+                <attribute name="create">0</attribute>
+            </tree>
+            <field name="citoyen_cin" position="replace"/>
+            <field name="statut" position="attributes">
+                <attribute name="decoration-success">statut == 'traite'</attribute>
+                <attribute name="decoration-info">statut == 'en_attente'</attribute>
+                <attribute name="decoration-danger">statut == 'annule'</attribute>
+            </field>
+            <!-- Champs de paiement pour le régisseur -->
+            <field name="processed_at" position="before">
+                <field name="copy_request_state" column_invisible="1"/>
+                <field name="can_encaisser" column_invisible="1"/>
+                <field name="has_payment" column_invisible="1"/>
+                <!-- Bouton Encaisser : visible si la demande attend le paiement -->
+                <button name="action_encaisser" type="object" string="Encaisser" class="btn-primary"
+                        icon="fa-money"
+                        invisible="not can_encaisser"/>
+                <!-- Bouton Voir quittance : visible si déjà payé -->
+                <button name="action_view_quittance" type="object" string="Voir quittance"
+                        icon="fa-eye"
+                        invisible="not has_payment"/>
+                <!-- Bouton Consulter le ticket -->
+                <button name="action_preview_ticket" type="object" string="Consulter" class="oe_link" icon="fa-eye"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Formulaire du régisseur : modifiable avant facturation, boutons de paiement -->
+    <record id="view_guichet_ticket_regisseur_form" model="ir.ui.view">
+        <field name="name">etat.civil.demande.guichet.regisseur.form</field>
+        <field name="model">etat.civil.demande.guichet</field>
+        <field name="inherit_id" ref="etat_civil.view_etat_civil_demande_guichet_form"/>
+        <field name="arch" type="xml">
+            <!-- Supprimer la page "Demande de copie liée" du régisseur -->
+            <xpath expr="//notebook/page" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <!-- Masquer les boutons agent/admin du header -->
+            <button name="action_marquer_traite" position="attributes">
+                <attribute name="groups">etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_admin</attribute>
+            </button>
+            <button name="action_annuler_ticket" position="attributes">
+                <attribute name="groups">etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_admin</attribute>
+            </button>
+            <!-- Voir ticket : visible pour le régisseur -->
+            <button name="action_preview_ticket" position="attributes">
+                <attribute name="string">Voir ticket</attribute>
+                <attribute name="icon">fa-eye</attribute>
+            </button>
+            <!-- Télécharger ticket : visible pour le régisseur -->
+            <button name="action_download_ticket" position="attributes">
+                <attribute name="string">Télécharger ticket</attribute>
+                <attribute name="icon">fa-download</attribute>
+            </button>
+            <!-- Imprimer : visible pour le régisseur -->
+            <button name="action_print_ticket" position="attributes">
+                <attribute name="string">Imprimer</attribute>
+                <attribute name="icon">fa-print</attribute>
+            </button>
+            <!-- Boutons de paiement dans le header -->
+            <field name="statut" position="before">
+                <!-- Encaisser : visible si la demande attend le paiement -->
+                <button name="action_encaisser" type="object" string="Encaisser" class="btn-success"
+                        icon="fa-money"
+                        invisible="not can_encaisser"/>
+                <!-- Voir quittance : visible si déjà payé -->
+                <button name="action_view_quittance" type="object" string="Voir quittance"
+                        icon="fa-eye"
+                        invisible="not has_payment"/>
+                <!-- Imprimer quittance : visible si déjà payé -->
+                <button name="action_print_quittance" type="object" string="Imprimer quittance"
+                        icon="fa-print"
+                        invisible="not has_payment"/>
+                <!-- Champs invisibles pour les conditions -->
+                <field name="copy_request_state" invisible="1"/>
+                <field name="can_encaisser" invisible="1"/>
+                <field name="has_payment" invisible="1"/>
+            </field>
+            <!-- Remplacer les champs readonly par des champs modifiables pour le régisseur -->
+            <field name="citoyen_nom" position="attributes">
+                <attribute name="readonly">statut in ('traite', 'annule')</attribute>
+            </field>
+            <field name="citoyen_cin" position="attributes">
+                <attribute name="readonly">statut in ('traite', 'annule')</attribute>
+            </field>
+            <field name="type_acte" position="attributes">
+                <attribute name="readonly">statut in ('traite', 'annule')</attribute>
+            </field>
+            <field name="type_demande" position="attributes">
+                <attribute name="readonly">statut in ('traite', 'annule')</attribute>
+            </field>
+            <field name="priorite" position="attributes">
+                <attribute name="readonly">statut in ('traite', 'annule')</attribute>
+            </field>
+            <!-- Zone d'information de paiement en haut du formulaire -->
+            <xpath expr="//sheet/div[hasclass('oe_title')]" position="after">
+                <!-- Alertes de statut de paiement -->
+                <div class="alert alert-warning mt-2" role="alert"
+                     invisible="copy_request_state != 'waiting_payment'">
+                    <i class="fa fa-clock-o me-2" title="En attente de paiement"/>
+                    <strong>En attente de paiement</strong> — Montant :
+                    <field name="copy_request_amount" widget="monetary"
+                           options="{'currency_field': 'copy_request_currency_id'}"/>
+                    <button name="action_encaisser" type="object" string="Encaisser"
+                            class="btn btn-sm btn-success ms-2"
+                            invisible="not can_encaisser"/>
+                </div>
+                <div class="alert alert-success mt-2" role="alert"
+                     invisible="copy_request_state not in ('payment_confirmed', 'authorized', 'delivered')">
+                    <i class="fa fa-check-circle me-2" title="Paiement confirmé"/>
+                    <strong>Paiement confirmé</strong> —
+                    <button name="action_view_quittance" type="object" string="Voir quittance"
+                            class="btn btn-sm btn-outline-success ms-2"
+                            invisible="not has_payment"/>
+                    <button name="action_print_quittance" type="object" string="Imprimer quittance"
+                            class="btn btn-sm btn-outline-success ms-1"
+                            invisible="not has_payment"/>
+                </div>
+                <div class="alert alert-danger mt-2" role="alert"
+                     invisible="copy_request_state != 'cancelled'">
+                    <i class="fa fa-ban me-2" title="Demande annulée"/>
+                    <strong>Demande annulée</strong> — Aucun encaissement possible.
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+
+    <!-- Action pour le régisseur : sans bouton Nouveau -->
+    <record id="action_guichet_ticket_regisseur" model="ir.actions.act_window">
+        <field name="name">File d'attente</field>
+        <field name="res_model">etat.civil.demande.guichet</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_guichet_ticket_regisseur_tree"/>
+        <field name="search_view_id" ref="etat_civil.view_etat_civil_demande_guichet_search"/>
+        <field name="context">{'search_default_en_attente': 1, 'create': False}</field>
+        <field name="groups_id" eval="[(4, ref('etat_civil_account.group_etat_civil_regisseur'))]"/>
+    </record>
+
+    <!-- Action retour vers la liste -->
+    <record id="action_guichet_ticket_list" model="ir.actions.act_window">
+        <field name="name">File d'attente</field>
+        <field name="res_model">etat.civil.demande.guichet</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_guichet_ticket_regisseur_tree"/>
+    </record>
+
+    <!-- Menu supprimé : le régisseur voit déjà "File d'attente" sous État Civil via menus_restrictions.xml -->
+    <!-- Le menu sous Point de Vente créait un doublon. -->
+
+</odoo>

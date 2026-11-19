@@ -73,6 +73,7 @@ class ResUsers(models.Model):
             ("admin", "Administrateur d'état civil"),
             ("officier", "Officier d'état civil"),
             ("agent", "Agent d'état civil"),
+            ("regisseur", "Régisseur"),
             ("system", "Administrateur Odoo"),
             ("other", "Autre"),
         ],
@@ -106,6 +107,7 @@ class ResUsers(models.Model):
                 ("admin", "etat_civil.group_etat_civil_admin"),
                 ("officier", "etat_civil.group_etat_civil_officier"),
                 ("agent", "etat_civil.group_etat_civil_agent"),
+                ("regisseur", "etat_civil_account.group_etat_civil_regisseur"),
                 ("system", "base.group_system"),
             )
         }
@@ -114,7 +116,7 @@ class ResUsers(models.Model):
             user.etat_civil_role = next(
                 (
                     role
-                    for role in ("admin", "officier", "agent", "system")
+                    for role in ("admin", "officier", "agent", "regisseur", "system")
                     if role_groups[role] and role_groups[role] in user_groups
                 ),
                 "other",

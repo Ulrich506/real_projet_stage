@@ -460,23 +460,22 @@
                             <td class="ec_birth_sidebar" style="border: none !important; border-style: none !important;">
                                 <div class="ec_birth_sidebar_inner">
                                 <p class="ec_birth_sidebar_heading">
-                                    Kaominina <span t-if="center" t-field="center.commune"/>
+                                    Kaominina Ambonivohitra <span t-if="center" t-field="center.commune"/>
                                 </p>
-                                <p>Faha: <strong t-field="doc.numero_acte"/></p>
-                                <p>Tamin'ny
-                                    <span t-if="doc.date_dressage"
-                                          t-esc="doc.date_dressage.strftime('%d/%m/%Y')"/>
+                                <p>Faha : <strong t-field="doc.numero_acte"/></p>
+                                <p t-if="doc.date_dressage">
+                                    <u>Tamin'ny <span t-esc="date_to_malagasy_short(doc.date_dressage)"/></u>
                                 </p>
-                                <p>Fahaterahana</p>
+                                <p><u>Fahaterahana</u></p>
                                 <p><strong t-field="doc.enfant_id.nom_complet"/></p>
                                 <p t-if="doc.enfant_id.date_naissance">
-                                    <span t-esc="doc.enfant_id.date_naissance.strftime('%d/%m/%Y')"/>
+                                    <span t-esc="date_to_malagasy_short(doc.enfant_id.date_naissance)"/>
                                 </p>
                                 <div t-if="doc.mention_ids" class="ec_birth_mentions">
                                     <p><strong>Soratra an-tsisiny</strong></p>
                                     <div t-foreach="doc.mention_ids" t-as="mention"
                                          class="ec_birth_mention">
-                                        <strong t-field="mention.name"/><br/>
+                                        <p>Soratra faha : <span t-field="mention.name"/></p>
                                         <span t-field="mention.contenu"/>
                                     </div>
                                 </div>
@@ -494,71 +493,50 @@
                                 <h1 class="ec_title">KOPIAN'NY SORA-PIANKOHONANA</h1>
                                 <p class="ec_birth_narrative" style="margin-bottom: 2mm;">
                                     Nalaina tamin'ny bokim-piankohonana, taona
-                                    <strong t-esc="doc.registre_id.annee"/>
-                                    Voatahiry ato amin'ny Kaominina
+                                    <strong t-esc="year_to_malagasy_words(doc.registre_id.annee)"/>
+                                </p>
+                                <p class="ec_birth_narrative" style="margin-bottom: 2mm;">
+                                    Voatahiry ato amin'ny Kaominina Ambonivohitra
                                     <strong t-if="center" t-field="center.commune"/> izao soratra izao :
                                 </p>
                                 <t t-if="doc.texte_integral_acte_auto">
                                 <p class="ec_birth_narrative" style="margin-bottom: 2mm;">
                                     Tamin'ny
                                     <span t-if="doc.enfant_id.date_naissance"
-                                          t-esc="doc.enfant_id.date_naissance.strftime('%d/%m/%Y')"/>
+                                          t-esc="date_to_malagasy_words(doc.enfant_id.date_naissance)"/>
                                     <span t-if="doc.heure_naissance">
-                                        tamin'ny <span t-field="doc.heure_naissance"
-                                                       t-options="{'widget': 'float_time'}"/>
+                                        , tamin'ny <span t-esc="time_to_malagasy_words(doc.heure_naissance)"/>
                                     </span>
-                                    no teraka tao <span t-field="doc.lieu_naissance"/>,
+                                    , no teraka tao <span t-field="doc.lieu_naissance"/>,
                                     <strong t-field="doc.enfant_id.nom_complet"/>
                                     <span t-if="doc.enfant_id.sexe == 'F'">, zazavavy</span>
-                                    <span t-elif="doc.enfant_id.sexe == 'M'">, zazalahy</span>.
+                                    <span t-elif="doc.enfant_id.sexe == 'M'">, zazalahy</span>
+                                    <span t-if="doc.mere_id">
+                                        , zanak'i <span t-field="doc.mere_id.nom_complet"/>
+                                        <span t-if="doc.mere_id.profession_actuelle">, <span t-field="doc.mere_id.profession_actuelle"/></span>
+                                        <span t-if="doc.mere_id.date_naissance">, teraka tamin'ny <span t-esc="date_to_malagasy_words(doc.mere_id.date_naissance)"/></span>
+                                        <span t-if="doc.mere_id.lieu_naissance_commune">, tao <span t-field="doc.mere_id.lieu_naissance_commune"/></span>
+                                        <span t-if="doc.mere_id.domicile_actuel">, monina ao <span t-field="doc.mere_id.domicile_actuel"/></span>
+                                    </span>
+                                    .
                                 </p>
-                                <p t-if="doc.pere_id or doc.mere_id" class="ec_birth_narrative" style="margin-bottom: 2mm;">
-                                    Zanak'i
-                                    <span t-if="doc.pere_id" t-field="doc.pere_id.nom_complet"/>
-                                    <span t-if="doc.pere_id and doc.mere_id">sy</span>
-                                    <span t-if="doc.mere_id" t-field="doc.mere_id.nom_complet"/>.
-                                </p>
-                                <p t-if="doc.pere_id and (doc.pere_id.profession_actuelle or doc.pere_id.date_naissance or doc.pere_id.lieu_naissance_commune or doc.pere_id.domicile_actuel)">
-                                    <span t-field="doc.pere_id.nom_complet"/>
-                                    <span t-if="doc.pere_id.profession_actuelle">,
-                                        <span t-field="doc.pere_id.profession_actuelle"/>
-                                    </span>
-                                    <span t-if="doc.pere_id.date_naissance">, teraka tamin'ny
-                                        <span t-esc="doc.pere_id.date_naissance.strftime('%d/%m/%Y')"/>
-                                    </span>
-                                    <span t-if="doc.pere_id.lieu_naissance_commune"> tao
-                                        <span t-field="doc.pere_id.lieu_naissance_commune"/>
-                                    </span>
-                                    <span t-if="doc.pere_id.domicile_actuel">, monina ao
-                                        <span t-field="doc.pere_id.domicile_actuel"/>
-                                    </span>.
-                                </p>
-                                <p t-if="doc.mere_id and (doc.mere_id.profession_actuelle or doc.mere_id.date_naissance or doc.mere_id.lieu_naissance_commune or doc.mere_id.domicile_actuel)">
-                                    <span t-field="doc.mere_id.nom_complet"/>
-                                    <span t-if="doc.mere_id.profession_actuelle">,
-                                        <span t-field="doc.mere_id.profession_actuelle"/>
-                                    </span>
-                                    <span t-if="doc.mere_id.date_naissance">, teraka tamin'ny
-                                        <span t-esc="doc.mere_id.date_naissance.strftime('%d/%m/%Y')"/>
-                                    </span>
-                                    <span t-if="doc.mere_id.lieu_naissance_commune"> tao
-                                        <span t-field="doc.mere_id.lieu_naissance_commune"/>
-                                    </span>
-                                    <span t-if="doc.mere_id.domicile_actuel">, monina ao
-                                        <span t-field="doc.mere_id.domicile_actuel"/>
-                                    </span>.
-                                </p>
-                                <p class="ec_birth_narrative">
+                                <p class="ec_birth_narrative" style="margin-bottom: 2mm;">
                                     Nosoratana androany
                                     <span t-if="doc.date_dressage"
-                                          t-esc="doc.date_dressage.strftime('%d/%m/%Y')"/>
-                                    <span t-if="doc.declarant_id">araka ny fanambarana nataon'i
-                                        <span t-field="doc.declarant_id.nom_complet"/>
+                                          t-esc="date_to_malagasy_words(doc.date_dressage)"/>
+                                    <span t-if="doc.heure_dressage">
+                                        , tamin'ny <span t-esc="time_to_malagasy_words(doc.heure_dressage)"/>
                                     </span>
-                                    <span t-elif="doc.mere_id">araka ny fanambarana nataon'i
-                                        <span t-field="doc.mere_id.nom_complet"/>
+                                    <span t-if="doc.declarant_id">
+                                        , araka ny fanambarana nataon'ny renin'ny zaza <span t-field="doc.declarant_id.nom_complet"/>
                                     </span>
-                                    izay miara manao sonia aminay.
+                                    <span t-elif="doc.mere_id">
+                                        , araka ny fanambarana nataon'ny renin'ny zaza <span t-field="doc.mere_id.nom_complet"/>
+                                    </span>
+                                    , izay miara manao sonia aminay
+                                    <span t-if="doc.utilisateur_validation_id">, <span t-field="doc.utilisateur_validation_id.name"/></span>
+                                    <span>, Ben'ny Tanana, mpiandraikitra ny soram-piankohonana ao amin'ny <strong t-if="center" t-field="center.commune"/></span>
+                                    , rehefa novakiana taminy ity soratra ity.
                                 </p>
                                 </t>
                                 <p t-elif="doc.texte_integral_acte" class="ec_birth_transcription">
@@ -566,9 +544,13 @@
                                 </p>
                                 <div class="ec_birth_signatures" style="margin-top: 6mm;">
                                     <p style="margin-bottom: 1mm;">-MANARAKA NY SONIA-</p>
-                                    <p style="margin-bottom: 1mm;">Kopia manontolo nadika tamin'ny boky androany
+                                    <p style="margin-bottom: 1mm;">
+                                        Kopia manontolo nadika tamin'ny boky androany
                                         <span t-if="copy_request and copy_request.delivered_at"
-                                              t-esc="copy_request.delivered_at.strftime('%d/%m/%Y')"/>.
+                                              t-esc="date_to_malagasy_words(copy_request.delivered_at)"/>
+                                        <span t-elif="doc.date_dressage"
+                                              t-esc="date_to_malagasy_words(doc.date_dressage)"/>
+                                        .
                                     </p>
                                     <p t-if="doc.utilisateur_validation_id" class="ec_birth_validator" style="margin-bottom: 1mm;">
                                         <strong t-field="doc.utilisateur_validation_id.name"/>
@@ -605,71 +587,99 @@
                         <tr>
                             <td class="ec_register_sidebar" style="border: none !important; border-style: none !important;">
                                 <div class="ec_sidebar_card">
-                                    <p class="ec_sidebar_label">Kaominina</p>
+                                    <p class="ec_sidebar_label">Kaominina Ambonivohitra</p>
                                     <p class="ec_sidebar_value" t-field="center.commune"/>
                                     <p class="ec_sidebar_label">Faha</p>
                                     <p class="ec_sidebar_value" t-field="doc.numero_acte"/>
-                                    <p class="ec_sidebar_label">Feuillet</p>
-                                    <p class="ec_sidebar_value" t-field="doc.feuillet_numero"/>
                                     <p class="ec_sidebar_label">Daty nanoratana</p>
                                     <p t-if="doc.date_dressage" class="ec_sidebar_value"
-                                       t-esc="doc.date_dressage.strftime('%d/%m/%Y %H:%M')"/>
-                                    <p class="ec_sidebar_label">Datin'ny fanambadiana</p>
-                                    <p t-if="doc.date_mariage" class="ec_sidebar_value"
-                                       t-esc="doc.date_mariage.strftime('%d/%m/%Y')"/>
+                                       t-esc="date_to_malagasy_short(doc.date_dressage)"/>
                                 </div>
                                 <div class="ec_sidebar_card">
-                                    <p class="ec_sidebar_label">Mpivady</p>
-                                    <p class="ec_sidebar_value" t-field="doc.conjoint_1_id.nom_complet"/>
-                                    <p class="ec_sidebar_value">Sy <span t-field="doc.conjoint_2_id.nom_complet"/></p>
+                                    <p class="ec_sidebar_label"><u>Fanambadiana</u></p>
+                                    <p class="ec_sidebar_value"><strong t-field="doc.conjoint_1_id.nom_complet"/></p>
+                                    <p class="ec_sidebar_value">Sy</p>
+                                    <p class="ec_sidebar_value"><strong t-field="doc.conjoint_2_id.nom_complet"/></p>
                                 </div>
                             </td>
                             <td class="ec_register_main" style="border: none !important; border-style: none !important;">
                                 <h1 class="ec_register_title">KOPIAN'NY SORA-PIANKOHONANA</h1>
-                                <p class="ec_register_subtitle">Soratra momba ny fanambadiana</p>
-                                <div t-if="copy_request" class="ec_copy_metadata">
-                                    <strong t-if="copy_request.copy_number == 1">KOPIA VOALOHANY</strong>
-                                    <strong t-elif="copy_request.copy_number">Copie n° <span t-field="copy_request.copy_number"/></strong>
-                                    <span> — Demande <span t-field="copy_request.name"/></span>
-                                    <span t-if="copy_request.delivered_at">
-                                        — Délivrée le <span t-field="copy_request.delivered_at"
-                                                           t-options="{'widget': 'date'}"/>
-                                    </span>
-                                </div>
                                 <p>
                                     Nalaina tamin'ny bokim-piankohonana, taona
-                                    <strong t-esc="doc.registre_id.annee"/> voatahiry ao amin'ny
-                                    <strong t-field="center.commune"/>:
+                                    <strong t-esc="year_to_malagasy_words(doc.registre_id.annee)"/>
                                 </p>
                                 <p>
-                                    Ny <span t-field="doc.conjoint_1_id.nom_complet"/> sy
-                                    <span t-field="doc.conjoint_2_id.nom_complet"/>
-                                    dia nanao fanambadiana
-                                    <span t-if="doc.date_mariage">tamin'ny <span t-esc="doc.date_mariage.strftime('%d/%m/%Y')"/></span>
-                                    <span t-if="doc.lieu_mariage"> tao <span t-field="doc.lieu_mariage"/></span>.
+                                    Voatahiry ato amin'ny Kaominina Ambonivohitra
+                                    <strong t-field="center.commune"/> izao soratra izao :
                                 </p>
-                                <p t-if="doc.regime_matrimonial"><strong>Fananana :</strong> <span t-field="doc.regime_matrimonial"/></p>
-                                <p class="ec_section_title">Mombamomba ny mpivady</p>
-                                <t t-set="person" t-value="doc.conjoint_1_id"/>
-                                <t t-set="person_label" t-value="'Mpivady voalohany'"/>
-                                <t t-call="etat_civil.report_person_details"/>
-                                <t t-set="person" t-value="doc.conjoint_2_id"/>
-                                <t t-set="person_label" t-value="'Mpivady faharoa'"/>
-                                <t t-call="etat_civil.report_person_details"/>
-                                <div t-if="doc.temoin_1_id or doc.temoin_2_id">
-                                    <p class="ec_section_title">Vavolombelona</p>
-                                    <t t-if="doc.temoin_1_id">
-                                        <t t-set="person" t-value="doc.temoin_1_id"/>
-                                        <t t-set="person_label" t-value="'Vavolombelona voalohany'"/>
-                                        <t t-call="etat_civil.report_person_details"/>
-                                    </t>
-                                    <t t-if="doc.temoin_2_id">
-                                        <t t-set="person" t-value="doc.temoin_2_id"/>
-                                        <t t-set="person_label" t-value="'Vavolombelona faharoa'"/>
-                                        <t t-call="etat_civil.report_person_details"/>
-                                    </t>
-                                </div>
-                                <p t-if="doc.donnees_historiques_incompletes"><em>Tahirin-kevitra ara-tantara tsy feno; tsy nampiana ny mombamomba tsy hita.</em></p>
+                                <p style="text-align: justify; text-indent: 8mm; margin-bottom: 3mm;">
+                                    Androany
+                                    <span t-if="doc.date_mariage"
+                                          t-esc="date_to_malagasy_words(doc.date_mariage)"/>
+                                    , dia tonga teto anatrehanay,
+                                    <span t-if="doc.utilisateur_validation_id"><span t-field="doc.utilisateur_validation_id.name"/></span>
+                                    <span>, Ben'ny Tanana, mpiandraikitra ny soram-piankohonana ao amin'ny Kaominina Ambonivohitra <strong t-if="center" t-field="center.commune"/></span>.
+                                </p>
+                                <p style="text-align: justify; text-indent: 8mm; margin-bottom: 3mm;">
+                                    1) <strong t-field="doc.conjoint_1_id.nom_complet"/>
+                                    <span t-if="doc.conjoint_1_id.profession_actuelle">, <span t-field="doc.conjoint_1_id.profession_actuelle"/></span>
+                                    <span t-if="doc.conjoint_1_id.nationalite_actuelle">, mizaka ny zom-pirenena <span t-field="doc.conjoint_1_id.nationalite_actuelle"/></span>
+                                    <span t-if="doc.conjoint_1_id.date_naissance">, teraka tamin'ny <span t-esc="date_to_malagasy_words(doc.conjoint_1_id.date_naissance)"/></span>
+                                    <span t-if="doc.conjoint_1_id.lieu_naissance_commune">, tao <span t-field="doc.conjoint_1_id.lieu_naissance_commune"/></span>
+                                    <span t-if="doc.conjoint_1_id.domicile_actuel">, monina ao <span t-field="doc.conjoint_1_id.domicile_actuel"/></span>
+                                    <span>, zanak'i</span>
+                                    <span t-if="doc.conjoint_1_id.rainy_id">
+                                        <span t-field="doc.conjoint_1_id.rainy_id.nom_complet"/>
+                                        <span t-if="doc.conjoint_1_id.rainy_id.statut_vital == 'maty'">, efa maty</span>
+                                    </span>
+                                    <span t-if="doc.conjoint_1_id.rainy_id and doc.conjoint_1_id.rena_id">, sy</span>
+                                    <span t-if="doc.conjoint_1_id.rena_id">
+                                        <span t-field="doc.conjoint_1_id.rena_id.nom_complet"/>
+                                        <span t-if="doc.conjoint_1_id.rena_id.profession_actuelle">, <span t-field="doc.conjoint_1_id.rena_id.profession_actuelle"/></span>
+                                    </span>
+                                    .
+                                </p>
+                                <p style="text-align: justify; text-indent: 8mm; margin-bottom: 3mm;">
+                                    2) <strong t-field="doc.conjoint_2_id.nom_complet"/>
+                                    <span t-if="doc.conjoint_2_id.profession_actuelle">, <span t-field="doc.conjoint_2_id.profession_actuelle"/></span>
+                                    <span t-if="doc.conjoint_2_id.nationalite_actuelle">, mizaka ny zom-pirenena <span t-field="doc.conjoint_2_id.nationalite_actuelle"/></span>
+                                    <span t-if="doc.conjoint_2_id.date_naissance">, teraka tamin'ny <span t-esc="date_to_malagasy_words(doc.conjoint_2_id.date_naissance)"/></span>
+                                    <span t-if="doc.conjoint_2_id.lieu_naissance_commune">, tao <span t-field="doc.conjoint_2_id.lieu_naissance_commune"/></span>
+                                    <span t-if="doc.conjoint_2_id.domicile_actuel">, monina ao <span t-field="doc.conjoint_2_id.domicile_actuel"/></span>
+                                    <span>, zanak'i</span>
+                                    <span t-if="doc.conjoint_2_id.rainy_id">
+                                        <span t-field="doc.conjoint_2_id.rainy_id.nom_complet"/>
+                                        <span t-if="doc.conjoint_2_id.rainy_id.profession_actuelle">, <span t-field="doc.conjoint_2_id.rainy_id.profession_actuelle"/></span>
+                                    </span>
+                                    <span t-if="doc.conjoint_2_id.rainy_id and doc.conjoint_2_id.rena_id"> sy</span>
+                                    <span t-if="doc.conjoint_2_id.rena_id">
+                                        <span t-field="doc.conjoint_2_id.rena_id.nom_complet"/>
+                                        <span t-if="doc.conjoint_2_id.rena_id.profession_actuelle">, <span t-field="doc.conjoint_2_id.rena_id.profession_actuelle"/></span>
+                                    </span>
+                                    .
+                                </p>
+                                <p style="text-align: justify; text-indent: 8mm; margin-bottom: 3mm;">
+                                    Samy nilaza izy ireo fa mifanaiky ny hifampakatra ka dia ambaranay amin'ny anaran'y lalana fa mpivady izy ireo hatramin'izao.
+                                </p>
+                                <p t-if="doc.temoin_1_id or doc.temoin_2_id" style="text-align: justify; text-indent: 8mm; margin-bottom: 3mm;">
+                                    Ny fanoratana dia natao teo anatrehan'i
+                                    <span t-if="doc.temoin_1_id">
+                                        <span t-field="doc.temoin_1_id.nom_complet"/>
+                                        <span t-if="doc.temoin_1_id.profession_actuelle">, <span t-field="doc.temoin_1_id.profession_actuelle"/></span>
+                                        <span t-if="doc.temoin_1_id.lieu_naissance_commune">, teraka tao <span t-field="doc.temoin_1_id.lieu_naissance_commune"/></span>
+                                        <span t-if="doc.temoin_1_id.date_naissance">, tamin'ny <span t-esc="date_to_malagasy_words(doc.temoin_1_id.date_naissance)"/></span>
+                                        <span t-if="doc.temoin_1_id.domicile_actuel">, monina ao <span t-field="doc.temoin_1_id.domicile_actuel"/></span>
+                                    </span>
+                                    <span t-if="doc.temoin_1_id and doc.temoin_2_id"> sy</span>
+                                    <span t-if="doc.temoin_2_id">
+                                        <span t-field="doc.temoin_2_id.nom_complet"/>
+                                        <span t-if="doc.temoin_2_id.profession_actuelle">, <span t-field="doc.temoin_2_id.profession_actuelle"/></span>
+                                        <span t-if="doc.temoin_2_id.lieu_naissance_commune">, teraka tao <span t-field="doc.temoin_2_id.lieu_naissance_commune"/></span>
+                                        <span t-if="doc.temoin_2_id.date_naissance">, tamin'ny <span t-esc="date_to_malagasy_words(doc.temoin_2_id.date_naissance)"/></span>
+                                        <span t-if="doc.temoin_2_id.domicile_actuel">, monina ao <span t-field="doc.temoin_2_id.domicile_actuel"/></span>
+                                    </span>
+                                    <span>, ka rehefa novakiana taminy ity Soratra ity dia miara-manao sonia aminay izy mivady sy ny vavolombelona.</span>
+                                </p>
                                 <div t-if="not doc.texte_integral_acte_auto and doc.texte_integral_acte" class="ec_transcription">
                                     <p class="ec_section_title"
                                        style="margin: 0 0 1mm !important; line-height: 1.2 !important;">
@@ -680,38 +690,33 @@
                                 <div t-if="doc.mention_ids" class="ec_marginal_mentions">
                                     <p class="ec_section_title">Soratra an-tsisiny</p>
                                     <div t-foreach="doc.mention_ids" t-as="mention" class="ec_mention">
-                                        <strong t-field="mention.name"/> — <span t-esc="mention.date_mention.strftime('%d/%m/%Y')"/><br/>
+                                        <strong t-field="mention.name"/> — <span t-esc="date_to_malagasy_short(mention.date_mention)"/><br/>
                                         <span t-field="mention.contenu"/>
                                     </div>
                                 </div>
-                            </td>
-                        </tr>
-                    </table>
-                    <table t-if="doc.statut in ('valide', 'rectifie') and (doc.hash_empreinte_num or doc.qr_code_image)"
-                           class="ec_integrity" border="0"
-                           style="border: none !important; border-style: none !important;">
-                        <tr>
-                            <td style="border: none !important; border-style: none !important;">
-                                <strong>Fanamarinana ny antontan-taratasy</strong>
-                                <p t-if="doc.hash_empreinte_num"><span t-field="doc.hash_empreinte_num"/></p>
-                                <p t-if="doc.utilisateur_validation_id">Nankatoavin'i <span t-field="doc.utilisateur_validation_id.name"/> tamin'ny <span t-if="doc.date_validation" t-esc="doc.date_validation.strftime('%d/%m/%Y %H:%M')"/>.</p>
-                                <p><em>Ny kaody sy ny dian-tanana dia natao hanamarinana ny fahamarinan'ny antontan-taratasy; tsy sonia elektronika izy ireo ary tsy misolo ny sonia an-tanana ataon'ny mpiandraikitra.</em></p>
-                            </td>
-                            <td t-if="doc.qr_code_image"
-                                style="width: 34mm; text-align: right; border: none !important; border-style: none !important;">
-                                <div class="ec_register_qr_frame">
-                                    <img class="ec_qr" t-att-src="image_data_uri(doc.qr_code_image)" alt="QR de vérification"/>
+                                <div style="margin-top: 6mm; text-align: center; page-break-inside: avoid;">
+                                    <p style="margin-bottom: 1mm;">-MANARAKA NY SONIA-</p>
+                                    <p style="margin-bottom: 1mm;">
+                                        Kopia manontolo nadika tamin'ny boky androany
+                                        <span t-if="copy_request and copy_request.delivered_at"
+                                              t-esc="date_to_malagasy_words(copy_request.delivered_at)"/>
+                                        <span t-elif="doc.date_dressage"
+                                              t-esc="date_to_malagasy_words(doc.date_dressage)"/>
+                                        .
+                                    </p>
+                                    <p t-if="doc.utilisateur_validation_id" style="margin-bottom: 1mm;">
+                                        <strong t-field="doc.utilisateur_validation_id.name"/>
+                                    </p>
+                                    <p style="margin-bottom: 0;"><strong>NY MPIANDRAIKITRA NY SORA-PIANKOHONANA</strong></p>
                                 </div>
                             </td>
                         </tr>
                     </table>
-                    <table class="ec_signature" border="0"
-                           style="border: none !important; border-style: none !important;">
-                        <tr>
-                            <td style="border: none !important; border-style: none !important;"><span class="ec_signature_line"/>Kopia manontolo nadika tamin'ny boky<br/><span t-if="center" t-field="center.commune"/></td>
-                            <td style="border: none !important; border-style: none !important;"><span class="ec_signature_line"/>NY MPIANDRAIKITRA NY SORA-PIANKOHONANA</td>
-                        </tr>
-                    </table>
+                    <div t-if="doc.qr_code_image" style="margin-top: 4mm; text-align: right; page-break-inside: avoid;">
+                        <div class="ec_register_qr_frame">
+                            <img class="ec_qr" t-att-src="image_data_uri(doc.qr_code_image)" alt="QR de vérification"/>
+                        </div>
+                    </div>
                 </div>
             </t>
         </t>
@@ -731,56 +736,82 @@
                         <tr>
                             <td class="ec_register_sidebar" style="border: none !important; border-style: none !important;">
                                 <div class="ec_sidebar_card">
-                                    <p class="ec_sidebar_label">Kaominina</p>
+                                    <p class="ec_sidebar_label">Kaominina Ambonivohitra</p>
                                     <p class="ec_sidebar_value" t-field="center.commune"/>
                                     <p class="ec_sidebar_label">Faha</p>
                                     <p class="ec_sidebar_value" t-field="doc.numero_acte"/>
-                                    <p class="ec_sidebar_label">Feuillet</p>
-                                    <p class="ec_sidebar_value" t-field="doc.feuillet_numero"/>
                                     <p class="ec_sidebar_label">Daty nanoratana</p>
                                     <p t-if="doc.date_dressage" class="ec_sidebar_value"
-                                       t-esc="doc.date_dressage.strftime('%d/%m/%Y %H:%M')"/>
+                                       t-esc="date_to_malagasy_short(doc.date_dressage)"/>
                                 </div>
                                 <div class="ec_sidebar_card">
-                                    <p class="ec_sidebar_label">Maty</p>
-                                    <p class="ec_sidebar_value" t-field="doc.defunt_id.nom_complet"/>
-                                    <p class="ec_sidebar_label">Datin'ny fahafatesana</p>
+                                    <p class="ec_sidebar_label">Sora-pahafatesana</p>
+                                    <p class="ec_sidebar_value"><strong t-field="doc.defunt_id.nom_complet"/></p>
                                     <p t-if="doc.date_deces" class="ec_sidebar_value"
-                                       t-esc="doc.date_deces.strftime('%d/%m/%Y')"/>
-                                    <p class="ec_sidebar_label">Toerana</p>
-                                    <p class="ec_sidebar_value" t-field="doc.lieu_deces"/>
+                                       t-esc="date_to_malagasy_short(doc.date_deces)"/>
                                 </div>
                             </td>
                             <td class="ec_register_main" style="border: none !important; border-style: none !important;">
                                 <h1 class="ec_register_title">KOPIAN'NY SORA-PIANKOHONANA</h1>
-                                <p class="ec_register_subtitle">Soratra momba ny fahafatesana</p>
+                                <p>
+                                    Nalaina tamin'ny bokim-piankohonana, taona
+                                    <strong t-esc="year_to_malagasy_words(doc.registre_id.annee)"/>
+                                </p>
+                                <p>
+                                    Voatahiry ato amin'ny Kaominina Ambonivohitra
+                                    <strong t-field="center.commune"/> izao soratra izao :
+                                </p>
                                 <div t-if="copy_request" class="ec_copy_metadata">
                                     <strong t-if="copy_request.copy_number == 1">KOPIA VOALOHANY</strong>
                                     <strong t-elif="copy_request.copy_number">Copie n° <span t-field="copy_request.copy_number"/></strong>
-                                    <span> — Demande <span t-field="copy_request.name"/></span>
-                                    <span t-if="copy_request.delivered_at">
-                                        — Délivrée le <span t-field="copy_request.delivered_at"
-                                                           t-options="{'widget': 'date'}"/>
-                                    </span>
                                 </div>
-                                <p>
-                                    Nalaina tamin'ny bokim-piankohonana, taona
-                                    <strong t-esc="doc.registre_id.annee"/> voatahiry ao amin'ny
-                                    <strong t-field="center.commune"/>:
+                                <p style="text-align: justify; text-indent: 8mm; margin-bottom: 3mm;">
+                                    Tamin'ny
+                                    <span t-if="doc.date_deces"
+                                          t-esc="date_to_malagasy_words(doc.date_deces)"/>
+                                    <span t-if="doc.heure_deces is not False and doc.heure_deces">
+                                        , tamin'ny <span t-esc="time_to_malagasy_words(doc.heure_deces)"/>
+                                    </span>
+                                    , no maty tao <span t-field="doc.lieu_deces"/>,
+                                    <strong t-field="doc.defunt_id.nom_complet"/>
+                                    <span t-if="doc.defunt_id.sexe == 'M'">, lehilahy</span>
+                                    <span t-elif="doc.defunt_id.sexe == 'F'">, vehivavy</span>
+                                    <span t-if="doc.defunt_id.profession_actuelle">, <span t-field="doc.defunt_id.profession_actuelle"/></span>
+                                    <span t-if="doc.defunt_id.date_naissance">, teraka tamin'ny <span t-esc="date_to_malagasy_words(doc.defunt_id.date_naissance)"/></span>
+                                    <span t-if="doc.defunt_id.lieu_naissance_commune">, ao amin'ny <span t-field="doc.defunt_id.lieu_naissance_commune"/></span>
+                                    <span t-if="doc.defunt_id.domicile_actuel">, monina ao <span t-field="doc.defunt_id.domicile_actuel"/></span>
+                                    .
                                 </p>
-                                <p>
-                                    <span t-field="doc.defunt_id.nom_complet"/>
-                                    <span t-if="doc.date_deces">dia maty tamin'ny <span t-esc="doc.date_deces.strftime('%d/%m/%Y')"/></span>
-                                    <span t-if="doc.heure_deces is not False"> tamin'ny <span t-field="doc.heure_deces" t-options="{'widget': 'float_time'}"/></span>
-                                    <span t-if="doc.lieu_deces"> tao <span t-field="doc.lieu_deces"/></span>.
+                                <p t-if="doc.defunt_id.rena_id or doc.defunt_id.rainy_id" style="text-align: justify; margin-bottom: 3mm;">
+                                    Zanak'i
+                                    <span t-if="doc.defunt_id.rainy_id"><span t-field="doc.defunt_id.rainy_id.nom_complet"/></span>
+                                    <span t-if="doc.defunt_id.rainy_id and doc.defunt_id.rena_id"> sy </span>
+                                    <span t-if="doc.defunt_id.rena_id"><span t-field="doc.defunt_id.rena_id.nom_complet"/></span>
+                                    .
+                                </p>
+                                <p t-if="doc.defunt_id.vady_id" style="text-align: justify; margin-bottom: 3mm;">
+                                    Vadin'i <span t-field="doc.defunt_id.vady_id.nom_complet"/>.
+                                </p>
+                                <p style="text-align: justify; text-indent: 8mm; margin-bottom: 3mm;">
+                                    Nosoratana androany
+                                    <span t-if="doc.date_dressage"
+                                          t-esc="date_to_malagasy_words(doc.date_dressage)"/>
+                                    <span t-if="doc.heure_dressage">
+                                        , tamin'ny <span t-esc="time_to_malagasy_words(doc.heure_dressage)"/>
+                                    </span>
+                                    <span t-if="doc.declarant_id">
+                                        araka ny fanambarana nataon'i <span t-field="doc.declarant_id.nom_complet"/>
+                                        <span t-if="doc.declarant_id.profession_actuelle">, <span t-field="doc.declarant_id.profession_actuelle"/></span>
+                                        <span t-if="doc.declarant_id.date_naissance">, teraka tamin'ny <span t-esc="date_to_malagasy_words(doc.declarant_id.date_naissance)"/></span>
+                                        <span t-if="doc.declarant_id.lieu_naissance_commune">, teraka tao <span t-field="doc.declarant_id.lieu_naissance_commune"/></span>
+                                        <span t-if="doc.declarant_id.domicile_actuel">, monina <span t-field="doc.declarant_id.domicile_actuel"/></span>
+                                    </span>
+                                    <span>, ka miara-manao sonia aminay</span>
+                                    <span t-if="doc.utilisateur_validation_id">, <span t-field="doc.utilisateur_validation_id.name"/></span>
+                                    <span>, Ben'ny Tanana, mpiandraikitra ny sora-piankohonana ao amin'ny Kaominina Ambonivohitra <strong t-if="center" t-field="center.commune"/></span>
+                                    <span> rehefa novakiana taminy ity soratra ity.</span>
                                 </p>
                                 <p t-if="doc.cause_deces"><strong>Antony :</strong> <span t-field="doc.cause_deces"/></p>
-                                <div t-if="doc.declarant_id" class="ec_person">
-                                    <p class="ec_section_title">Mpitondra fanambarana</p>
-                                    <t t-set="person" t-value="doc.declarant_id"/>
-                                    <t t-set="person_label" t-value="'Mpitondra fanambarana'"/>
-                                    <t t-call="etat_civil.report_person_details"/>
-                                </div>
                                 <div t-if="not doc.texte_integral_acte_auto and doc.texte_integral_acte" class="ec_transcription">
                                     <p class="ec_section_title"
                                        style="margin: 0 0 1mm !important; line-height: 1.2 !important;">
@@ -791,41 +822,36 @@
                                 <div t-if="doc.mention_ids" class="ec_marginal_mentions">
                                     <p class="ec_section_title">Soratra an-tsisiny</p>
                                     <div t-foreach="doc.mention_ids" t-as="mention" class="ec_mention">
-                                        <strong t-field="mention.name"/> — <span t-esc="mention.date_mention.strftime('%d/%m/%Y')"/><br/>
+                                        <strong t-field="mention.name"/> — <span t-esc="date_to_malagasy_short(mention.date_mention)"/><br/>
                                         <span t-field="mention.contenu"/>
                                     </div>
                                 </div>
                                 <p t-if="doc.motif_annulation and doc.statut in ('annule', 'archive')">
                                     <strong>Antony :</strong> <span t-field="doc.motif_annulation"/>
                                 </p>
-                            </td>
-                        </tr>
-                    </table>
-                    <table t-if="doc.statut in ('valide', 'rectifie') and (doc.hash_empreinte_num or doc.qr_code_image)"
-                           class="ec_integrity" border="0"
-                           style="border: none !important; border-style: none !important;">
-                        <tr>
-                            <td style="border: none !important; border-style: none !important;">
-                                <strong>Fanamarinana ny antontan-taratasy</strong>
-                                <p t-if="doc.hash_empreinte_num"><span t-field="doc.hash_empreinte_num"/></p>
-                                <p t-if="doc.utilisateur_validation_id">Nankatoavin'i <span t-field="doc.utilisateur_validation_id.name"/> tamin'ny <span t-if="doc.date_validation" t-esc="doc.date_validation.strftime('%d/%m/%Y %H:%M')"/>.</p>
-                                <p><em>Ny kaody sy ny dian-tanana dia natao hanamarinana ny fahamarinan'ny antontan-taratasy; tsy sonia elektronika izy ireo ary tsy misolo ny sonia an-tanana ataon'ny mpiandraikitra.</em></p>
-                            </td>
-                            <td t-if="doc.qr_code_image"
-                                style="width: 34mm; text-align: right; border: none !important; border-style: none !important;">
-                                <div class="ec_register_qr_frame">
-                                    <img class="ec_qr" t-att-src="image_data_uri(doc.qr_code_image)" alt="QR de vérification"/>
+                                <div style="margin-top: 6mm; text-align: center; page-break-inside: avoid;">
+                                    <p style="margin-bottom: 1mm;">-MANARAKA NY SONIA-</p>
+                                    <p style="margin-bottom: 1mm;">
+                                        Kopia manontolo nadika tamin'ny boky androany
+                                        <span t-if="copy_request and copy_request.delivered_at"
+                                              t-esc="date_to_malagasy_words(copy_request.delivered_at)"/>
+                                        <span t-elif="doc.date_dressage"
+                                              t-esc="date_to_malagasy_words(doc.date_dressage)"/>
+                                        .
+                                    </p>
+                                    <p t-if="doc.utilisateur_validation_id" style="margin-bottom: 1mm;">
+                                        <strong t-field="doc.utilisateur_validation_id.name"/>
+                                    </p>
+                                    <p style="margin-bottom: 0;"><strong>NY MPIANDRAIKITRA NY SORA-PIANKOHONANA</strong></p>
                                 </div>
                             </td>
                         </tr>
                     </table>
-                    <table class="ec_signature" border="0"
-                           style="border: none !important; border-style: none !important;">
-                        <tr>
-                            <td style="border: none !important; border-style: none !important;"><span class="ec_signature_line"/>Kopia manontolo nadika tamin'ny boky<br/><span t-if="center" t-field="center.commune"/></td>
-                            <td style="border: none !important; border-style: none !important;"><span class="ec_signature_line"/>NY MPIANDRAIKITRA NY SORA-PIANKOHONANA</td>
-                        </tr>
-                    </table>
+                    <div t-if="doc.qr_code_image" style="margin-top: 4mm; text-align: right; page-break-inside: avoid;">
+                        <div class="ec_register_qr_frame">
+                            <img class="ec_qr" t-att-src="image_data_uri(doc.qr_code_image)" alt="QR de vérification"/>
+                        </div>
+                    </div>
                 </div>
             </t>
         </t>
@@ -884,52 +910,50 @@
                 <div class="page ec_document article"
                      t-att-data-oe-model="doc._name" t-att-data-oe-id="doc.id">
                     <t t-call="etat_civil.report_physical_document_styles"/>
-                    <t t-call="etat_civil.report_emblem_header"/>
-                    <h1 class="ec_title ec_marginal_title">FILAZANA SORATRA AN-TSISINY</h1>
-                    <p class="ec_subtitle">(Avis de mention en marge)</p>
-                    <div t-if="doc.statut != 'valide'" class="ec_status ec_status_draft">
+                    <div style="margin-bottom: 4mm;">
+                        <p style="text-align: right; margin-bottom: 0;"><strong>FARITRA <span t-if="center" t-field="center.region"/></strong></p>
+                        <p style="margin-bottom: 0;">Kaominina Ambonivohitra <strong t-if="center" t-field="center.commune"/></p>
+                    </div>
+                    <h1 style="text-align: center; font-size: 16pt; margin-bottom: 2mm;">
+                        Filazana soratra an-tsisiny
+                    </h1>
+                    <p style="text-align: center; font-size: 12pt; margin-bottom: 4mm;">(Avis de mention en marge)</p>
+                    <div t-if="doc.statut != 'valide'" class="ec_status ec_status_draft" style="text-align: center; margin-bottom: 3mm;">
                         BROUILLON — NON VALIDÉ — IMPRESSION NON OFFICIELLE
                     </div>
-                    <div t-else="" class="ec_status ec_status_valid">MENTION VALIDÉE — <span t-field="doc.statut"/></div>
-                    <table class="ec_marginal_reference">
-                        <tr>
-                            <td><strong>Fanondroana</strong><br/><span t-field="doc.name"/></td>
-                            <td><strong>Filazana</strong><br/><span t-field="doc.type_mention"/></td>
-                            <td><strong>Androany</strong><br/><span t-field="doc.date_mention"/></td>
-                        </tr>
-                    </table>
-                    <div class="ec_marginal_full">
-                        <p t-if="doc.personne_concernee_id">
-                            Filazana momba an'i <strong t-field="doc.personne_concernee_id.nom_complet"/>.
-                        </p>
-                        <p t-if="doc.acte_naissance_id"><strong>Soratra nahaterahana :</strong> <span t-field="doc.acte_naissance_id.numero_acte"/> — <span t-field="doc.acte_naissance_id.registre_id"/></p>
-                        <p t-if="doc.acte_mariage_id"><strong>Soratra fanambadiana :</strong> <span t-field="doc.acte_mariage_id.numero_acte"/> — <span t-field="doc.acte_mariage_id.registre_id"/></p>
-                        <p t-if="doc.acte_deces_id"><strong>Soratra fahafatesana :</strong> <span t-field="doc.acte_deces_id.numero_acte"/> — <span t-field="doc.acte_deces_id.registre_id"/></p>
-                        <p t-if="doc.source_acte_mariage_id"><strong>Antony — soratra fanambadiana :</strong> <span t-field="doc.source_acte_mariage_id.numero_acte"/></p>
-                        <p t-if="doc.source_acte_deces_id"><strong>Antony — soratra fahafatesana :</strong> <span t-field="doc.source_acte_deces_id.numero_acte"/></p>
-                        <p class="ec_section_title">Antsipirian'ny filazana</p>
-                        <div class="ec_transcription" t-field="doc.contenu"/>
-                        <p t-if="doc.autorite"><strong>Manampahefana :</strong> <span t-field="doc.autorite"/></p>
-                        <p t-if="doc.commune_naissance"><strong>Kaominina nahaterahana :</strong> <span t-field="doc.commune_naissance"/></p>
-                        <p t-if="doc.notification_commune_naissance"><strong>Fampandrenesana :</strong> <span t-field="doc.notification_commune_naissance"/></p>
-                        <p t-if="doc.reference_notification"><strong>Fanondroana ny taratasy :</strong> <span t-field="doc.reference_notification"/></p>
-                    </div>
-                    <div class="ec_marginal_signature">
-                        <span class="ec_signature_line"/>NY MPIANDRAIKITRA NY SORA-PIANKOHONANA
-                    </div>
-                    <div class="ec_marginal_qr">
-                        <table style="width: 31mm; height: 31mm; margin-left: auto; border-collapse: collapse; border: 0;">
-                            <tbody>
-                                <tr>
-                                    <td style="width: 31mm; height: 31mm; padding: 1.5mm; border: 0; text-align: center; vertical-align: top; box-sizing: border-box;">
-                                        <img t-if="linked_act and linked_act.qr_code_image" class="ec_qr"
-                                             style="width: 22mm; height: 22mm; object-fit: contain;"
-                                             t-att-src="image_data_uri(linked_act.qr_code_image)"
-                                             alt="QR de vérification"/>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <p style="margin-bottom: 2mm;">
+                        <strong>Filazana :</strong> <span t-field="doc.type_mention"/>
+                    </p>
+                    <p style="margin-bottom: 2mm;">
+                        Filazana ho soratra eo an-tsisin'ny sorapahaterahan'i
+                        <strong t-if="doc.personne_concernee_id" t-field="doc.personne_concernee_id.nom_complet"/>.
+                        <span t-if="doc.acte_naissance_id">Kopia N° : <span t-field="doc.acte_naissance_id.numero_acte"/></span>
+                        <span t-if="doc.date_mention"> tamin'ny <span t-esc="date_to_malagasy_words(doc.date_mention)"/></span>.
+                    </p>
+                    <p style="margin-bottom: 2mm;">
+                        <span t-if="doc.commune_naissance">Alefa amin'ny mpiandraikitra ny sora-piankohonana ao <span t-field="doc.commune_naissance"/></span>.
+                    </p>
+                    <p style="margin-bottom: 2mm;">
+                        Soratra faha : <strong t-field="doc.name"/>
+                        <span t-field="doc.contenu"/>
+                    </p>
+                    <p style="margin-bottom: 4mm;">
+                        Soratra faha : <strong t-field="doc.name"/>
+                        <br/>
+                        Androany : <span t-if="doc.date_mention"><strong t-esc="date_to_malagasy_short(doc.date_mention)"/></span>
+                    </p>
+                    <div style="display: flex; justify-content: space-between; margin-top: 6mm;">
+                        <div style="text-align: center; width: 45%;">
+                            <p style="margin-bottom: 10mm;">NY MPIANDRAIKITRA NY SORA-PIANKOHONANA</p>
+                        </div>
+                        <div style="text-align: right; width: 45%;">
+                            <p style="margin-bottom: 2mm;"><strong>CODE QR</strong></p>
+                            <t t-if="linked_act and linked_act.qr_code_image">
+                                <img class="ec_qr" style="width: 31mm; height: 31mm; object-fit: contain;"
+                                     t-att-src="image_data_uri(linked_act.qr_code_image)"
+                                     alt="QR de vérification"/>
+                            </t>
+                        </div>
                     </div>
                 </div>
             </t>

@@ -58,6 +58,19 @@ class EtatCivilPieceRequise(models.Model):
     _description = "Pièce justificative requise (configuration)"
     _order = "type_acte, sequence, id"
 
+    ref_internal = fields.Char(
+        string="Référence interne",
+        readonly=True,
+        copy=False,
+        index=True,
+        default=lambda self: self._next_ref_internal(),
+    )
+
+    def _next_ref_internal(self):
+        return self.env["ir.sequence"].next_by_code(
+            "etat.civil.piece.requise"
+        ) or False
+
     type_acte = fields.Selection(
         TYPE_ACTE_SELECTION,
         string="Type d'acte",

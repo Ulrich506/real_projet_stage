@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="etat_civil.view_etat_civil_demande_guichet_form"/>
         <field name="arch" type="xml">
             <xpath expr="//sheet/group[last()]" position="after">
-                <group string="Suivi de la copie">
+                <group string="Suivi de la copie" groups="etat_civil.group_etat_civil_admin">
                     <field name="copy_request_ids" readonly="1">
                         <tree>
                             <field name="name"/>

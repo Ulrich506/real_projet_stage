@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Menu "File d'attente" dédié au régisseur.
+
+    Ce fichier est dans etat_civil_pos car le menu référence
+    action_guichet_ticket_regisseur définie dans ce module.
+    Le groupe regisseur est défini dans etat_civil_account
+    (dont etat_civil_pos dépend).
+-->
+<odoo>
+
+    <!-- Menu File d'attente dédié au régisseur -->
+    <record id="menu_etat_civil_guichet_regisseur" model="ir.ui.menu">
+        <field name="name">File d'attente</field>
+        <field name="parent_id" ref="etat_civil.menu_etat_civil_root"/>
+        <field name="action" ref="etat_civil_pos.action_guichet_ticket_regisseur"/>
+        <field name="groups_id" eval="[(4, ref('etat_civil_account.group_etat_civil_regisseur'))]"/>
+        <field name="sequence" eval="5"/>
+    </record>
+
+</odoo>

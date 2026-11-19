@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ================================================================ -->
+    <!-- RAPPORT PDF : Export du journal d'audit                          -->
+    <!-- ================================================================ -->
+    <template id="report_etat_civil_audit_log_document">
+        <t t-call="web.external_layout">
+            <t t-set="doc_title" t-value="'Journal d&apos;audit - État Civil'"/>
+            <div class="page">
+                <h2>Journal d'audit - État Civil</h2>
+                <div class="row mt32 mb32">
+                    <div class="col-6">
+                        <strong>Généré le :</strong>
+                        <span t-field="context_timestamp.now()" t-options='{"widget": "datetime", "format": "dd/MM/yyyy HH:mm"}'/>
+                    </div>
+                    <div class="col-6">
+                        <strong>Nombre d'événements :</strong>
+                        <span t-value="len(docs)"/>
+                    </div>
+                </div>
+                <table class="table table-sm table-sm">
+                    <thead>
+                        <tr>
+                            <th>Date/Heure</th>
+                            <th>Utilisateur</th>
+                            <th>Rôle</th>
+                            <th>Type d'action</th>
+                            <th>Modèle</th>
+                            <th>ID</th>
+                            <th>Résultat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="docs" t-as="log">
+                            <tr>
+                                <td>
+                                    <span t-field="log.event_datetime_local"/>
+                                </td>
+                                <td>
+                                    <span t-field="log.user_id"/>
+                                    <br/>
+                                    <small class="text-muted">
+                                        <span t-field="log.user_login"/>
+                                    </small>
+                                </td>
+                                <td>
+                                    <span t-field="log.role"/>
+                                </td>
+                                <td>
+                                    <span t-field="log.action_type"/>
+                                </td>
+                                <td>
+                                    <span t-field="log.record_model"/>
+                                </td>
+                                <td>
+                                    <span t-field="log.record_id"/>
+                                </td>
+                                <td>
+                                    <span t-field="log.result"
+                                          t-options='{"widget": "selection"}'/>
+                                </td>
+                            </tr>
+                            <t t-if="log.details">
+                                <tr>
+                                    <td colspan="7" class="text-muted" style="font-size:0.85em;">
+                                        <em>Détails :</em> <span t-esc="log.details"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+
+    <template id="report_etat_civil_audit_log">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc" t-ignore="True"/>
+            <t t-call="etat_civil.report_etat_civil_audit_log_document"/>
+        </t>
+    </template>
+
+    <record id="action_report_etat_civil_audit_log" model="ir.actions.report">
+        <field name="name">Imprimer le journal d'audit (PDF)</field>
+        <field name="model">etat.civil.audit.log</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">etat_civil.report_etat_civil_audit_log</field>
+        <field name="report_file">etat_civil.report_etat_civil_audit_log</field>
+        <field name="binding_model_id" ref="model_etat_civil_audit_log"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

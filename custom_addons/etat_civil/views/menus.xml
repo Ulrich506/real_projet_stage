@@ -80,4 +80,8 @@
     <menuitem id="menu_etat_civil_pieces_requises" name="Pièces requises (configuration)"
               parent="menu_etat_civil_config" action="action_etat_civil_piece_requise"
               groups="etat_civil.group_etat_civil_admin" sequence="50"/>
+    <menuitem id="menu_config_settings" name="Identité de la commune"
+              parent="menu_etat_civil_config" action="action_config_settings"
+              groups="etat_civil.group_etat_civil_admin,etat_civil.group_etat_civil_tech_admin"
+              sequence="5"/>
 </odoo>

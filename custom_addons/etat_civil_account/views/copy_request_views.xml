@@ -21,14 +21,15 @@
             <form string="Demande de copie">
                 <header>
                     <button name="action_submit" type="object" string="Soumettre" class="oe_highlight" groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_admin,etat_civil_account.group_etat_civil_regisseur" invisible="state != 'draft'"/>
+                    <button name="action_mark_acte_not_found" type="object" string="Signaler acte introuvable" class="btn-warning" groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_admin,etat_civil_account.group_etat_civil_regisseur" invisible="state != 'draft'"/>
                     <button name="action_create_invoice" type="object" string="Créer la facture brouillon" groups="etat_civil_account.group_etat_civil_regisseur,etat_civil.group_etat_civil_admin" invisible="state != 'waiting_payment' or account_move_id"/>
                     <button name="action_post_invoice" type="object" string="Comptabiliser la facture" class="oe_highlight" groups="etat_civil_account.group_etat_civil_regisseur,etat_civil.group_etat_civil_admin" invisible="state != 'waiting_payment' or invoice_state != 'draft'"/>
                     <button name="action_register_payment" type="object" string="Enregistrer un versement" class="oe_highlight" groups="etat_civil_account.group_etat_civil_regisseur,etat_civil.group_etat_civil_admin" invisible="state != 'waiting_payment' or invoice_state != 'posted'"/>
                     <button name="action_confirm_payment" type="object" string="Actualiser l'état des encaissements" groups="etat_civil_account.group_etat_civil_regisseur,etat_civil.group_etat_civil_admin" invisible="state != 'waiting_payment' or invoice_state != 'posted'"/>
                     <button name="action_deliver" type="object" string="Enregistrer la délivrance" class="oe_highlight" invisible="state != 'authorized'" groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_admin,etat_civil_account.group_etat_civil_regisseur"/>
                     <button name="action_print_copy" type="object" string="Imprimer / consulter la copie" invisible="state not in ('authorized', 'delivered')" groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_admin,etat_civil_account.group_etat_civil_regisseur"/>
-                    <button name="action_cancel" type="object" string="Annuler" invisible="state in ('delivered', 'cancelled')" groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_admin,etat_civil_account.group_etat_civil_regisseur"/>
-                    <field name="state" widget="statusbar" statusbar_visible="draft,waiting_payment,payment_confirmed,authorized,delivered"/>
+                    <button name="action_cancel" type="object" string="Annuler" invisible="state in ('delivered', 'cancelled', 'acte_not_found')" groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_admin,etat_civil_account.group_etat_civil_regisseur"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,waiting_payment,authorized,delivered,acte_not_found"/>
                 </header>
                 <sheet>
                     <div class="oe_title"><h1><field name="name"/></h1></div>
@@ -40,9 +41,15 @@
                             <field name="guichet_ticket_id" domain="[('type_acte', '=', document_type), ('type_demande', 'in', ('copie_integrale', 'extrait')), ('statut', '!=', 'annule')]" readonly="state != 'draft'"/>
                         </group>
                         <group string="Acte concerné">
-                            <field name="acte_naissance_id" invisible="document_type != 'naissance'"/>
-                            <field name="acte_mariage_id" invisible="document_type != 'mariage'"/>
-                            <field name="acte_deces_id" invisible="document_type != 'deces'"/>
+                            <field name="acte_naissance_id" invisible="document_type != 'naissance'"
+                                   domain="[('statut', 'in', ('valide', 'rectifie'))]"
+                                   context="{'search_default_valid': 1}"/>
+                            <field name="acte_mariage_id" invisible="document_type != 'mariage'"
+                                   domain="[('statut', 'in', ('valide', 'rectifie'))]"
+                                   context="{'search_default_valid': 1}"/>
+                            <field name="acte_deces_id" invisible="document_type != 'deces'"
+                                   domain="[('statut', 'in', ('valide', 'rectifie'))]"
+                                   context="{'search_default_valid': 1}"/>
                             <field name="entitlement_individu_id" invisible="document_type != 'naissance'"/>
                         </group>
                     </group>
@@ -55,7 +62,20 @@
                         <field name="payment_confirmed_by_id"/><field name="payment_confirmed_at"/>
                         <field name="delivered_by_id"/><field name="delivered_at"/>
                     </group>
+                    <group string="Demandeur (traçabilité)">
+                        <field name="requester_id_type"/>
+                        <field name="requester_id_number"/>
+                        <field name="requester_quality"/>
+                    </group>
                     <notebook>
+                        <page string="Acte introuvable" invisible="state != 'acte_not_found'">
+                            <div class="alert alert-warning" role="alert">
+                                <i class="fa fa-exclamation-triangle me-2" title="Acte non retrouvé"/>
+                                <strong>Acte non retrouvé dans le système.</strong>
+                                Cette demande est conservée pour traçabilité. Une recherche manuelle est nécessaire.
+                            </div>
+                            <field name="acte_introuvable_note" readonly="state != 'draft'" placeholder="Détaillez les raisons pour lesquelles l'acte est introuvable : registre papier concerné, période, critères de recherche effectués, etc."/>
+                        </page>
                         <page string="Quittances" groups="etat_civil.group_etat_civil_admin,etat_civil_account.group_etat_civil_regisseur">
                             <field name="payment_ids" readonly="1">
                                 <tree>
@@ -94,8 +114,9 @@
     </record>
     <record id="action_copy_payment" model="ir.actions.act_window">
         <field name="name">Quittances de versement</field><field name="res_model">etat.civil.copy.payment</field><field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_copy_payment_search"/>
     </record>
     <menuitem id="menu_copy_tariff" name="Tarifs des copies" parent="etat_civil.menu_etat_civil_root" action="action_copy_tariff" sequence="31" groups="etat_civil.group_etat_civil_admin"/>
-    <menuitem id="menu_copy_payment" name="Quittances" parent="etat_civil.menu_etat_civil_root" action="action_copy_payment" sequence="32" groups="etat_civil.group_etat_civil_admin,group_etat_civil_regisseur"/>
+    <menuitem id="menu_copy_payment" name="Quittances" parent="etat_civil.menu_etat_civil_root" action="action_copy_payment" sequence="32" groups="etat_civil.group_etat_civil_admin"/>
     <menuitem id="menu_copy_receipt_settings" name="Configuration des quittances" parent="etat_civil.menu_etat_civil_root" action="action_copy_receipt_settings" sequence="33" groups="etat_civil.group_etat_civil_admin"/>
 </odoo>

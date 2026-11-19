@@ -452,3 +452,76 @@ class TestPiecesAutoPopulation(TransactionCase):
         with self.assertRaises(UserError, msg="Le téléchargement doit être bloqué tant que l'acte n'est pas validé et pièces reçues."):
             acte.action_telecharger_acte_pdf()
 
+    # ==================================================================
+    # TEST 15 : default_get — lignes présentes à l'ouverture d'un nouvel acte
+    # ==================================================================
+
+    def test_15_default_get_naissance_prefill(self):
+        """Un nouvel acte de naissance (défauts hôpital + filiation établie) préremplit les pièces."""
+        defaults = self.env["etat.civil.acte.naissance"].with_user(
+            self.user_agent
+        ).default_get(["piece_ids", "lieu_accouchement", "filiation"])
+        commands = defaults.get("piece_ids") or []
+        names = [cmd[2]["name"] for cmd in commands if cmd[0] == 0]
+        self.assertIn("declaration_hopital", names)
+        self.assertIn("livret_famille", names)
+        self.assertIn("cin_parent", names)
+        self.assertIn("residence_parent", names)
+        self.assertTrue(all(cmd[2].get("genere_automatiquement") for cmd in commands if cmd[0] == 0))
+
+    def test_16_default_get_deces_prefill(self):
+        defaults = self.env["etat.civil.acte.deces"].default_get(["piece_ids"])
+        names = [cmd[2]["name"] for cmd in (defaults.get("piece_ids") or []) if cmd[0] == 0]
+        self.assertEqual(set(names), {"cin_declarant_deces", "residence_declarant_deces"})
+
+    def test_17_onchange_filiation_sans_doublon(self):
+        """Changer la filiation dans le formulaire (NewId) ajuste les lignes, sans doublon."""
+        acte = self.env["etat.civil.acte.naissance"].new({
+            "lieu_accouchement": "maison",
+            "filiation": "illegitime",
+        })
+        acte._in_memory_sync_pieces()
+        names = acte.piece_ids.mapped("name")
+        self.assertIn("cin_parent", names)
+        self.assertNotIn("declaration_hopital", names)
+        self.assertNotIn("livret_famille", names)
+        count = len(acte.piece_ids)
+        acte._in_memory_sync_pieces()
+        self.assertEqual(len(acte.piece_ids), count)
+
+    def test_18_ouverture_acte_existant_ne_recrée_pas(self):
+        """Lire un acte déjà enregistré ne crée pas de lignes (pas de default_get ni write)."""
+        acte = self.env["etat.civil.acte.deces"].create({
+            "registre_id": self.registre_deces.id,
+            "defunt_id": self.defunt.id,
+            "declarant_id": self.declarant_deces.id,
+            "date_deces": "2026-05-13",
+            "lieu_deces": "Test ouverture existant",
+        })
+        count = len(acte.piece_ids)
+        reloaded = self.env["etat.civil.acte.deces"].browse(acte.id)
+        self.assertEqual(len(reloaded.piece_ids), count)
+        created, details = reloaded._rattrapage_pieces_justificatives(dry_run=True)
+        self.assertEqual(created, 0)
+        self.assertFalse(details)
+
+    def test_19_rattrapage_dry_run_puis_applique(self):
+        """Le rattrapage crée les lignes manquantes, une seule fois."""
+        acte = self.env["etat.civil.acte.deces"].create({
+            "registre_id": self.registre_deces.id,
+            "defunt_id": self.defunt.id,
+            "declarant_id": self.declarant_deces.id,
+            "date_deces": "2026-05-14",
+            "lieu_deces": "Test rattrapage",
+        })
+        acte.piece_ids.sudo().unlink()
+        self.assertFalse(acte.piece_ids)
+        created_dry, details = acte._rattrapage_pieces_justificatives(dry_run=True)
+        self.assertEqual(created_dry, 2)
+        self.assertFalse(acte.piece_ids)
+        created, _ = acte._rattrapage_pieces_justificatives(dry_run=False)
+        self.assertEqual(created, 2)
+        self.assertEqual(len(acte.piece_ids), 2)
+        created_again, _ = acte._rattrapage_pieces_justificatives(dry_run=False)
+        self.assertEqual(created_again, 0)
+

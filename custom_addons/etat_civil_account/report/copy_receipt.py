@@ -2,7 +2,8 @@ from odoo import _, api, models
 from odoo.exceptions import AccessError, UserError
 from odoo.tools.float_utils import float_compare
 from babel.numbers import format_decimal
-from num2words import num2words
+
+from odoo.addons.etat_civil.models.malagasy_date_utils import montant_to_malagasy_words
 
 
 class ReportEtatCivilCopyPaymentReceipt(models.AbstractModel):
@@ -110,23 +111,8 @@ class ReportEtatCivilCopyPaymentReceipt(models.AbstractModel):
 
     @api.model
     def _amount_in_words(self, currency, amount):
-        formatted = "%.{0}f".format(currency.decimal_places) % currency.round(amount)
-        integer_part, _, fractional_part = formatted.partition(".")
-        unit_label = currency.currency_unit_label or currency.name
-        amount_words = "{} {}".format(
-            num2words(int(integer_part), lang="fr"), unit_label
-        )
-        fractional_value = int(fractional_part or 0)
-        if fractional_value:
-            if not currency.currency_subunit_label:
-                raise UserError(
-                    _("La devise %s n'a pas d'unité secondaire configurée.", currency.name)
-                )
-            amount_words += " et {} {}".format(
-                num2words(fractional_value, lang="fr"),
-                currency.currency_subunit_label,
-            )
-        return amount_words
+        rounded = currency.round(amount)
+        return montant_to_malagasy_words(rounded)
 
     @api.model
     def _get_reconciled_receipt_amount(self, receipt, request, invoice):

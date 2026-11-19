@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Vue formulaire de la configuration de l'identité de la commune -->
+    <record id="view_config_settings_form" model="ir.ui.view">
+        <field name="name">etat.civil.config.settings.form</field>
+        <field name="model">etat.civil.config.settings</field>
+        <field name="arch" type="xml">
+            <form string="Configuration de l'identité de la commune">
+                <header>
+                    <button name="action_sync_company" string="Synchroniser avec la société"
+                            type="object" class="oe_highlight"
+                            invisible="identity_locked"/>
+                    <button name="action_lock_identity" string="Verrouiller l'identité"
+                            type="object" class="oe_highlight"
+                            invisible="identity_locked"/>
+                    <button name="action_unlock_identity" string="Déverrouiller l'identité"
+                            type="object" class="oe_button_warning"
+                            invisible="not identity_locked"/>
+                    <field name="locked_at" invisible="1"/>
+                    <field name="locked_by_id" invisible="1"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box"/>
+                    <field name="logo_officiel" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <label for="commune_nom_officiel" class="oe_edit_only"/>
+                        <h1>
+                            <field name="commune_nom_officiel"
+                                   readonly="identity_locked"/>
+                        </h1>
+                        <group>
+                            <field name="commune_type"
+                                   readonly="identity_locked"/>
+                            <field name="commune_code"
+                                   readonly="identity_locked"/>
+                        </group>
+                    </div>
+                    <group>
+                        <group string="Localisation">
+                            <field name="region"
+                                   readonly="identity_locked"/>
+                            <field name="district"
+                                   readonly="identity_locked"/>
+                        </group>
+                        <group string="Société Odoo">
+                            <field name="company_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Contact" name="contact">
+                            <group>
+                                <group>
+                                    <field name="adresse"/>
+                                </group>
+                                <group>
+                                    <field name="contact_officiel"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Documents" name="documents">
+                            <group>
+                                <group string="Identité visuelle">
+                                    <field name="signature_cachet" widget="image"/>
+                                    <field name="langue_principale"/>
+                                    <field name="devise"/>
+                                </group>
+                                <group string="Mentions légales">
+                                    <field name="mentions_legales"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Historique du verrouillage" name="lock_history">
+                            <field name="identity_locked" invisible="1"/>
+                            <group invisible="not identity_locked">
+                                <field name="locked_at"/>
+                                <field name="locked_by_id"/>
+                                <p>
+                                    L'identité de la commune a été verrouillée automatiquement
+                                    après le premier acte enregistré. Seul un administrateur technique
+                                    peut la déverrouiller avec un motif obligatoire et une trace dans
+                                    le journal d'audit.
+                                </p>
+                            </group>
+                            <group>
+                                <field name="identity_locked" invisible="1"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter"/>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vue liste de la configuration -->
+    <record id="view_config_settings_tree" model="ir.ui.view">
+        <field name="name">etat.civil.config.settings.tree</field>
+        <field name="model">etat.civil.config.settings</field>
+        <field name="arch" type="xml">
+            <tree string="Configuration de la commune">
+                <field name="commune_nom_officiel"/>
+                <field name="commune_type"/>
+                <field name="commune_code"/>
+                <field name="region"/>
+                <field name="district"/>
+                <field name="company_id"/>
+                <field name="identity_locked"/>
+                <field name="locked_at"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action pour ouvrir la configuration -->
+    <record id="action_config_settings" model="ir.actions.act_window">
+        <field name="name">Configuration de la commune</field>
+        <field name="res_model">etat.civil.config.settings</field>
+        <field name="view_mode">form,tree</field>
+        <field name="search_view_id" eval="False"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Aucune configuration trouvée.
+            </p>
+            <p>
+                Cliquez sur le bouton pour créer la configuration de l'identité de la commune.
+            </p>
+        </field>
+    </record>
+
+
+    <!-- Vue formulaire du wizard de déverrouillage -->
+    <record id="view_unlock_identity_wizard_form" model="ir.ui.view">
+        <field name="name">etat.civil.unlock.identity.wizard.form</field>
+        <field name="model">etat.civil.unlock.identity.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Déverrouiller l'identité de la commune">
+                <group>
+                    <field name="config_id" invisible="1"/>
+                    <field name="justification" placeholder="Expliquez pourquoi vous devez déverrouiller l'identité de la commune..."/>
+                    <field name="confirmation"/>
+                </group>
+                <footer>
+                    <button name="action_unlock" string="Déverrouiller"
+                            type="object" class="oe_highlight"
+                            invisible="not confirmation"/>
+                    <button string="Annuler" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

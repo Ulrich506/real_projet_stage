@@ -95,4 +95,34 @@
         <field name="res_model">etat.civil.copy.receipt.settings</field>
         <field name="view_mode">tree,form</field>
     </record>
+
+    <!-- Vue de recherche pour les quittances avec filtres -->
+    <record id="view_copy_payment_search" model="ir.ui.view">
+        <field name="name">etat.civil.copy.payment.search</field>
+        <field name="model">etat.civil.copy.payment</field>
+        <field name="arch" type="xml">
+            <search string="Rechercher une quittance">
+                <field name="name" string="Numéro de ticket"/>
+                <field name="request_id"/>
+                <field name="payment_date"/>
+                <field name="received_by_id"/>
+                <field name="amount"/>
+                <separator/>
+                <!-- Filtres par période -->
+                <filter name="aujourd_hui" string="Aujourd'hui"
+                        domain="[('payment_date', '>=', context_today().strftime('%Y-%m-%d'))]"/>
+                <filter name="cette_semaine" string="Cette semaine"
+                        domain="[('payment_date', '>=', (context_today() - datetime.timedelta(days=context_today().weekday())).strftime('%Y-%m-%d'))]"/>
+                <filter name="ce_mois" string="Ce mois"
+                        domain="[('payment_date', '>=', context_today().replace(day=1).strftime('%Y-%m-%d'))]"/>
+                <separator/>
+                <!-- Regroupements -->
+                <group expand="0" string="Grouper par">
+                    <filter name="group_periode" string="Période" context="{'group_by': 'payment_date'}"/>
+                    <filter name="group_regisseur" string="Régisseur" context="{'group_by': 'received_by_id'}"/>
+                    <filter name="group_methode" string="Méthode de paiement" context="{'group_by': 'payment_method'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
 </odoo>

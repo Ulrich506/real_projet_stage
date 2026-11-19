@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ================================================================ -->
+    <!-- WIZARD : Export du journal d'audit (CSV / Excel)                 -->
+    <!-- ================================================================ -->
+    <record id="view_etat_civil_audit_log_export_wizard" model="ir.ui.view">
+        <field name="name">etat.civil.audit.log.export.wizard.form</field>
+        <field name="model">etat.civil.audit.log.export.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Exporter le journal d'audit">
+                <field name="data_file" invisible="1"/>
+                <group>
+                    <group string="Filtres">
+                        <field name="user_id"/>
+                        <field name="action_type"/>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                    </group>
+                    <group string="Format">
+                        <field name="export_format"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="action_export" string="Générer l'export"
+                            type="object" class="btn-primary"/>
+                    <button name="action_download" string="Télécharger"
+                            type="object" class="btn-success"
+                            invisible="not data_file"/>
+                    <span invisible="not data_file" class="text-success mx-2">
+                        <field name="filename" readonly="1"/>
+                    </span>
+                    <button string="Annuler" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action : ouvrir le wizard d'export -->
+    <record id="action_etat_civil_audit_log_export" model="ir.actions.act_window">
+        <field name="name">Exporter le journal d'audit</field>
+        <field name="res_model">etat.civil.audit.log.export.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="model_etat_civil_audit_log"/>
+        <field name="binding_view_types">list</field>
+    </record>
+</odoo>

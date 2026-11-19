@@ -31,12 +31,6 @@ class EtatCivilDemandeGuichet(models.Model):
         copy=False,
         index=True,
     )
-    copy_request_ids = fields.One2many(
-        "etat.civil.copy.request",
-        "guichet_ticket_id",
-        string="Demandes de copie liées",
-        readonly=True,
-    )
 
     _sql_constraints = [
         (

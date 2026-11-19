@@ -33,68 +33,70 @@
             <t t-foreach="docs" t-as="receipt">
                 <t t-set="request" t-value="request_by_receipt_id[receipt.id]"/>
                 <t t-set="settings" t-value="settings_by_company.get(receipt.company_id.id)"/>
+                <t t-set="receipt_display" t-value="receipt_display_by_id[receipt.id]"/>
+                <t t-set="linked_act" t-value="request.acte_naissance_id or request.acte_mariage_id or request.acte_deces_id"/>
                 <div class="page ec_receipt article"
                      t-att-data-oe-model="receipt._name" t-att-data-oe-id="receipt.id">
-                    <t t-set="receipt_display" t-value="receipt_display_by_id[receipt.id]"/>
                     <style>
                         .ec_receipt {
                             box-sizing: border-box;
                             width: 72mm;
                             color: #111;
-                            font-family: "DejaVu Sans", sans-serif;
-                            font-size: 8.5pt;
-                            line-height: 1.18;
+                            font-family: "DejaVu Sans Mono", "Courier New", monospace;
+                            font-size: 8pt;
+                            line-height: 1.25;
                             overflow-wrap: anywhere;
                         }
-                        .ec_receipt h1 { margin: 0 0 1.5mm; text-align: center; font-size: 12pt; }
                         .ec_receipt p { margin: 0 0 1mm; }
+                        .ec_receipt .ec_receipt_label { font-weight: bold; }
+                        .ec_receipt .ec_receipt_underline { text-decoration: underline; }
+                        .ec_receipt .ec_receipt_right { text-align: right; }
                         .ec_receipt .ec_receipt_center { text-align: center; }
-                        .ec_receipt .ec_receipt_number { margin: 1.5mm 0; padding: 0.8mm 0; border-top: 1px solid #222; border-bottom: 1px solid #222; text-align: center; font-size: 10pt; font-weight: bold; }
-                        .ec_receipt .ec_receipt_rule { margin: 1.5mm 0; border-top: 0.5px dashed #555; }
-                        .ec_receipt table { width: 100%; table-layout: fixed; border-collapse: collapse; }
-                        .ec_receipt th { width: 53%; padding: 0.5mm 1mm 0.5mm 0; text-align: left; vertical-align: top; font-weight: normal; }
-                        .ec_receipt td { padding: 0.5mm 0; text-align: right; vertical-align: top; overflow-wrap: anywhere; }
-                        .ec_receipt .ec_receipt_total td { padding-top: 1mm; border-top: 0.5px solid #333; font-size: 9.5pt; font-weight: bold; }
-                        .ec_receipt .ec_receipt_note { margin-top: 1.5mm; font-size: 7.5pt; }
-                        .ec_receipt .ec_receipt_signature { height: 12mm; margin-top: 2mm; border-bottom: 0.5px solid #555; }
+                        .ec_receipt .ec_receipt_paye-stamp {
+                            position: relative;
+                            display: inline-block;
+                        }
+                        .ec_receipt .ec_receipt_paye-stamp::after {
+                            content: "PAYÉ";
+                            position: absolute;
+                            top: -2mm;
+                            right: -10mm;
+                            color: #cc0000;
+                            font-size: 10pt;
+                            font-weight: bold;
+                            border: 2px solid #cc0000;
+                            border-radius: 3mm;
+                            padding: 1mm 2mm;
+                            transform: rotate(-15deg);
+                            opacity: 0.7;
+                        }
                     </style>
-                    <div class="ec_receipt_center">
-                        <strong t-if="settings and settings.header" t-field="settings.header"/>
-                        <strong t-else="" t-field="request.center_id.commune"/>
-                        <p t-if="request.center_id.nom_centre" t-field="request.center_id.nom_centre"/>
+                    <!-- En-tête -->
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <p class="ec_receipt_label">Quittance N° : <span t-field="receipt.name"/></p>
                     </div>
-                    <h1>QUITTANCE</h1>
-                    <p class="ec_receipt_number">
-                        N° <span t-field="receipt.name"/>
+                    <p class="ec_receipt_label">Commune :</p>
+                    <p>Kaominina Ambonivohitra <strong t-field="request.center_id.commune"/></p>
+                    <p class="ec_receipt_label">Reçu de :</p>
+                    <p t-if="linked_act"><span t-field="linked_act.numero_acte"/> / <span t-field="linked_act.registre_id.annee"/></p>
+                    <p><span t-field="request.partner_id.name"/></p>
+                    <p class="ec_receipt_label">la somme de :</p>
+                    <p><span t-esc="receipt_display['amount_in_words']"/> (<span t-esc="receipt_display['paid_amount']"/>)</p>
+                    <p class="ec_receipt_label ec_receipt_underline">DESCRIPTION</p>
+                    <p t-if="request.document_type"><span t-field="request.document_type"/> — <span t-field="request.copy_kind"/></p>
+                    <p>Nombre de copies : <span t-field="request.copy_quantity"/></p>
+                    <div class="ec_receipt_paye-stamp">
+                        <p>Prix Unitaire : <span t-esc="receipt_display['unit_price']"/></p>
+                    </div>
+                    <p>Montant : <span t-esc="receipt_display['paid_amount']"/></p>
+                    <!-- Bas de page -->
+                    <div style="display: flex; justify-content: space-between; margin-top: 2mm;">
+                        <p><span t-field="receipt.create_date" t-options="{'widget': 'float_time'}"/></p>
+                        <p><span t-field="request.center_id.commune"/>, le <span t-esc="receipt_display['payment_date']"/></p>
+                    </div>
+                    <p class="ec_receipt_note" style="font-size: 6.5pt; margin-top: 1mm;">
+                        Réimpression de la même quittance — aucune nouvelle opération financière.
                     </p>
-                    <table>
-                        <tbody>
-                            <tr><th>Reçu de</th><td><span t-field="request.partner_id.name"/></td></tr>
-                            <tr><th>Date du versement</th><td><span t-esc="receipt_display['payment_date']"/></td></tr>
-                            <tr><th>Demande</th><td><span t-field="request.name"/></td></tr>
-                            <tr><th>Document</th><td><span t-field="request.document_type"/> — <span t-field="request.copy_kind"/></td></tr>
-                            <tr t-if="request.guichet_ticket_id"><th>Ticket guichet</th><td><span t-field="request.guichet_ticket_id.ticket_numero"/></td></tr>
-                            <tr t-if="request.center_id.commune"><th>Commune</th><td><span t-field="request.center_id.commune"/></td></tr>
-                            <tr><th>Nombre de copies</th><td><span t-field="request.copy_quantity"/></td></tr>
-                            <tr><th>Copies facturables</th><td><span t-field="request.billable_quantity"/></td></tr>
-                            <tr><th>Prix unitaire</th><td><span t-esc="receipt_display['unit_price']"/></td></tr>
-                            <tr><th>Total de la demande</th><td><span t-esc="receipt_display['request_total']"/></td></tr>
-                            <tr><th>Moyen de paiement</th><td><span t-field="receipt.payment_method"/></td></tr>
-                            <tr><th>Régisseur</th><td><span t-field="receipt.received_by_id.name"/></td></tr>
-                            <tr><th>Date et heure d'émission</th><td><span t-field="receipt.create_date"/></td></tr>
-                            <tr t-if="receipt.account_payment_id"><th>Transaction</th><td><span t-field="receipt.account_payment_id.name"/></td></tr>
-                            <tr t-if="receipt.pos_payment_move_id"><th>Transaction POS</th><td><span t-field="receipt.pos_payment_move_id.name"/></td></tr>
-                            <tr class="ec_receipt_total"><th>Montant reçu</th><td><span t-esc="receipt_display['paid_amount']"/></td></tr>
-                        </tbody>
-                    </table>
-                    <div class="ec_receipt_rule"/>
-                    <p><strong>Arrêté à la somme de :</strong></p>
-                    <p class="ec_receipt_center" t-esc="receipt_display['amount_in_words']"/>
-                    <p class="ec_receipt_note" t-if="settings and settings.legal_notice" t-field="settings.legal_notice"/>
-                    <p class="ec_receipt_note" t-if="settings and settings.footer" t-field="settings.footer"/>
-                    <div class="ec_receipt_signature"/>
-                    <p class="ec_receipt_center">Signature et cachet du régisseur</p>
-                    <p class="ec_receipt_center ec_receipt_note">Réimpression de la même quittance — aucune nouvelle opération financière.</p>
                 </div>
             </t>
         </t>

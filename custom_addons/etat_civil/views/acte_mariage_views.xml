@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
+
+    <record id="action_etat_civil_acte_mariage" model="ir.actions.act_window">
+        <field name="name">Actes de mariage</field>
+        <field name="res_model">etat.civil.acte.mariage</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="groups_id" eval="[(6, 0, [ref('group_etat_civil_agent'), ref('group_etat_civil_admin')])]"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Enregistrer un nouvel acte de mariage</p>
+            <p>Créez un brouillon, puis cliquez sur « Envoyer pour validation ».</p>
+        </field>
+    </record>
+
+
+    <record id="action_etat_civil_acte_mariage_a_valider" model="ir.actions.act_window">
+        <field name="name">Mariages à examiner</field>
+        <field name="res_model">etat.civil.acte.mariage</field>
+        <field name="view_mode">tree,form</field>
+        <field name="groups_id" eval="[(6, 0, [ref('group_etat_civil_officier'), ref('group_etat_civil_admin')])]"/>
+        <field name="domain">[('statut', '=', 'en_attente')]</field>
+        <field name="context">{'search_default_to_validate': 1, 'create': False}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Aucun acte de mariage en attente d'examen.</p>
+        </field>
+    </record>
+
     <record id="view_etat_civil_acte_mariage_search" model="ir.ui.view">
         <field name="name">etat.civil.acte.mariage.search</field>
         <field name="model">etat.civil.acte.mariage</field>
@@ -232,11 +258,11 @@
                                 <tree editable="bottom" delete="0">
                                     <field name="genere_automatiquement" column_invisible="1"/>
                                     <field name="name" readonly="genere_automatiquement"/>
-                                    <field name="obligatoire"/>
+                                    <field name="obligatoire" readonly="1"/>
                                     <field name="etat" readonly="1"/>
                                     <button name="action_mark_received" type="object" string="REÇU"
                                             class="btn-secondary"
-                                            groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_admin"
+                                            groups="etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_officier,etat_civil.group_etat_civil_admin"
                                             invisible="etat != 'a_fournir'"/>
                                     <button name="action_mark_verified" type="object" string="REÇU ET VÉRIFIER"
                                             class="btn-primary"
@@ -251,7 +277,7 @@
                                 </tree>
                             </field>
                         </page>
-                        <page string="Notifications aux communes de naissance">
+                        <page string="Avis de mention marginale">
                             <field name="notification_mention_ids">
                                 <tree>
                                     <field name="name"/>
@@ -270,31 +296,6 @@
                     <field name="message_ids"/>
                 </div>
             </form>
-        </field>
-    </record>
-
-    <record id="action_etat_civil_acte_mariage" model="ir.actions.act_window">
-        <field name="name">Actes de mariage</field>
-        <field name="res_model">etat.civil.acte.mariage</field>
-        <field name="view_mode">tree,kanban,form</field>
-        <field name="groups_id" eval="[(6, 0, [ref('group_etat_civil_agent'), ref('group_etat_civil_admin')])]"/>
-        <field name="search_view_id" ref="view_etat_civil_acte_mariage_search"/>
-        <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">Enregistrer un nouvel acte de mariage</p>
-            <p>Créez un brouillon, puis cliquez sur « Envoyer pour validation ».</p>
-        </field>
-    </record>
-
-    <record id="action_etat_civil_acte_mariage_a_valider" model="ir.actions.act_window">
-        <field name="name">Mariages à examiner</field>
-        <field name="res_model">etat.civil.acte.mariage</field>
-        <field name="view_mode">tree,form</field>
-        <field name="groups_id" eval="[(6, 0, [ref('group_etat_civil_officier'), ref('group_etat_civil_admin')])]"/>
-        <field name="domain">[('statut', '=', 'en_attente')]</field>
-        <field name="context">{'search_default_to_validate': 1}</field>
-        <field name="search_view_id" ref="view_etat_civil_acte_mariage_search"/>
-        <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">Aucun acte de mariage en attente d'examen.</p>
         </field>
     </record>
 </odoo>

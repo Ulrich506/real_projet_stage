@@ -16,152 +16,203 @@
     <!-- MENUS DE L'APPLICATION ÉTAT CIVIL                                 -->
     <!-- ================================================================ -->
 
-    <!-- Menu racine "État Civil" : visible par agent, officier, admin, régisseur -->
-    <!-- Le régisseur voit le menu racine mais pas les sous-menus (ci-dessous) -->
+    <!-- Menu racine "État Civil" : visible par agent, officier, admin -->
+    <!-- Le régisseur voit le menu racine via etat_civil_account/menus_restrictions_regisseur.xml -->
     <record id="etat_civil.menu_etat_civil_root" model="ir.ui.menu">
         <field name="groups_id" eval="[
-            (4, ref('etat_civil.group_etat_civil_agent')),
-            (4, ref('etat_civil.group_etat_civil_officier')),
-            (4, ref('etat_civil.group_etat_civil_admin')),
-            (4, ref('etat_civil_account.group_etat_civil_regisseur')),
+            (6, 0, [
+                ref('etat_civil.group_etat_civil_agent'),
+                ref('etat_civil.group_etat_civil_officier'),
+                ref('etat_civil.group_etat_civil_admin'),
+            ])
         ]"/>
     </record>
 
     <!-- Sous-menus de l'application État Civil : PAS pour le régisseur -->
 
-    <!-- File d'attente : agent + admin uniquement -->
+    <!-- File d'attente : agent + admin uniquement.
+         L'officier n'a PAS accès à ce menu.
+         Le régisseur a son propre menu dédié via etat_civil_pos. -->
     <record id="etat_civil.menu_etat_civil_guichet" model="ir.ui.menu">
         <field name="groups_id" eval="[
-            (4, ref('etat_civil.group_etat_civil_agent')),
-            (4, ref('etat_civil.group_etat_civil_admin')),
+            (6, 0, [
+                ref('etat_civil.group_etat_civil_agent'),
+                ref('etat_civil.group_etat_civil_admin'),
+            ])
         ]"/>
     </record>
 
     <!-- Dossiers à examiner : officier + admin uniquement -->
     <record id="etat_civil.menu_etat_civil_a_valider" model="ir.ui.menu">
         <field name="groups_id" eval="[
-            (4, ref('etat_civil.group_etat_civil_officier')),
-            (4, ref('etat_civil.group_etat_civil_admin')),
+            (6, 0, [
+                ref('etat_civil.group_etat_civil_officier'),
+                ref('etat_civil.group_etat_civil_admin'),
+            ])
         ]"/>
     </record>
     <record id="etat_civil.menu_etat_civil_naissance_a_valider" model="ir.ui.menu">
         <field name="groups_id" eval="[
-            (4, ref('etat_civil.group_etat_civil_officier')),
-            (4, ref('etat_civil.group_etat_civil_admin')),
+            (6, 0, [
+                ref('etat_civil.group_etat_civil_officier'),
+                ref('etat_civil.group_etat_civil_admin'),
+            ])
         ]"/>
     </record>
     <record id="etat_civil.menu_etat_civil_mariage_a_valider" model="ir.ui.menu">
         <field name="groups_id" eval="[
-            (4, ref('etat_civil.group_etat_civil_officier')),
-            (4, ref('etat_civil.group_etat_civil_admin')),
+            (6, 0, [
+                ref('etat_civil.group_etat_civil_officier'),
+                ref('etat_civil.group_etat_civil_admin'),
+            ])
         ]"/>
     </record>
     <record id="etat_civil.menu_etat_civil_deces_a_valider" model="ir.ui.menu">
         <field name="groups_id" eval="[
-            (4, ref('etat_civil.group_etat_civil_officier')),
-            (4, ref('etat_civil.group_etat_civil_admin')),
+            (6, 0, [
+                ref('etat_civil.group_etat_civil_officier'),
+                ref('etat_civil.group_etat_civil_admin'),
+            ])
         ]"/>
     </record>
 
-    <!-- Actes : agent + admin uniquement -->
+    <!-- Actes : agent + admin uniquement.
+         L'officier n'a PAS accès à ce menu ni aux sous-menus (Naissances, Mariages, Décès, Mentions). -->
     <record id="etat_civil.menu_etat_civil_actes" model="ir.ui.menu">
         <field name="groups_id" eval="[
-            (4, ref('etat_civil.group_etat_civil_agent')),
-            (4, ref('etat_civil.group_etat_civil_admin')),
+            (6, 0, [
+                ref('etat_civil.group_etat_civil_agent'),
+                ref('etat_civil.group_etat_civil_admin'),
+            ])
         ]"/>
     </record>
     <record id="etat_civil.menu_etat_civil_acte_naissance" model="ir.ui.menu">
         <field name="groups_id" eval="[
-            (4, ref('etat_civil.group_etat_civil_agent')),
-            (4, ref('etat_civil.group_etat_civil_admin')),
+            (6, 0, [
+                ref('etat_civil.group_etat_civil_agent'),
+                ref('etat_civil.group_etat_civil_admin'),
+            ])
         ]"/>
     </record>
     <record id="etat_civil.menu_etat_civil_acte_mariage" model="ir.ui.menu">
         <field name="groups_id" eval="[
-            (4, ref('etat_civil.group_etat_civil_agent')),
-            (4, ref('etat_civil.group_etat_civil_admin')),
+            (6, 0, [
+                ref('etat_civil.group_etat_civil_agent'),
+                ref('etat_civil.group_etat_civil_admin'),
+            ])
         ]"/>
     </record>
     <record id="etat_civil.menu_etat_civil_acte_deces" model="ir.ui.menu">
         <field name="groups_id" eval="[
-            (4, ref('etat_civil.group_etat_civil_agent')),
-            (4, ref('etat_civil.group_etat_civil_admin')),
+            (6, 0, [
+                ref('etat_civil.group_etat_civil_agent'),
+                ref('etat_civil.group_etat_civil_admin'),
+            ])
         ]"/>
     </record>
     <record id="etat_civil.menu_etat_civil_mentions" model="ir.ui.menu">
         <field name="groups_id" eval="[
-            (4, ref('etat_civil.group_etat_civil_agent')),
-            (4, ref('etat_civil.group_etat_civil_admin')),
+            (6, 0, [
+                ref('etat_civil.group_etat_civil_agent'),
+                ref('etat_civil.group_etat_civil_admin'),
+            ])
         ]"/>
     </record>
 
-    <!-- Citoyens : agent + admin uniquement -->
+    <!-- Citoyens / Individus : agent + admin uniquement.
+         L'officier n'a PAS accès à ce menu. -->
     <record id="etat_civil.menu_etat_civil_citoyens" model="ir.ui.menu">
         <field name="groups_id" eval="[
-            (4, ref('etat_civil.group_etat_civil_agent')),
-            (4, ref('etat_civil.group_etat_civil_admin')),
+            (6, 0, [
+                ref('etat_civil.group_etat_civil_agent'),
+                ref('etat_civil.group_etat_civil_admin'),
+            ])
         ]"/>
     </record>
 
     <!-- Administration : admin uniquement -->
     <record id="etat_civil.menu_etat_civil_config" model="ir.ui.menu">
         <field name="groups_id" eval="[
-            (4, ref('etat_civil.group_etat_civil_admin')),
+            (6, 0, [
+                ref('etat_civil.group_etat_civil_admin'),
+            ])
         ]"/>
     </record>
     <record id="etat_civil.menu_etat_civil_registres" model="ir.ui.menu">
         <field name="groups_id" eval="[
-            (4, ref('etat_civil.group_etat_civil_admin')),
+            (6, 0, [
+                ref('etat_civil.group_etat_civil_admin'),
+            ])
         ]"/>
     </record>
     <record id="etat_civil.menu_etat_civil_centres" model="ir.ui.menu">
         <field name="groups_id" eval="[
-            (4, ref('etat_civil.group_etat_civil_admin')),
+            (6, 0, [
+                ref('etat_civil.group_etat_civil_admin'),
+            ])
         ]"/>
     </record>
     <record id="etat_civil.menu_etat_civil_users" model="ir.ui.menu">
         <field name="groups_id" eval="[
-            (4, ref('etat_civil.group_etat_civil_admin')),
+            (6, 0, [
+                ref('etat_civil.group_etat_civil_admin'),
+            ])
         ]"/>
     </record>
     <record id="etat_civil.menu_etat_civil_users_list" model="ir.ui.menu">
         <field name="groups_id" eval="[
-            (4, ref('etat_civil.group_etat_civil_admin')),
+            (6, 0, [
+                ref('etat_civil.group_etat_civil_admin'),
+            ])
         ]"/>
     </record>
     <record id="etat_civil.menu_etat_civil_users_create" model="ir.ui.menu">
         <field name="groups_id" eval="[
-            (4, ref('etat_civil.group_etat_civil_admin')),
+            (6, 0, [
+                ref('etat_civil.group_etat_civil_admin'),
+            ])
         ]"/>
     </record>
     <record id="etat_civil.menu_etat_civil_users_manage" model="ir.ui.menu">
         <field name="groups_id" eval="[
-            (4, ref('etat_civil.group_etat_civil_admin')),
+            (6, 0, [
+                ref('etat_civil.group_etat_civil_admin'),
+            ])
         ]"/>
     </record>
     <record id="etat_civil.menu_etat_civil_citoyens_import" model="ir.ui.menu">
         <field name="groups_id" eval="[
-            (4, ref('etat_civil.group_etat_civil_admin')),
+            (6, 0, [
+                ref('etat_civil.group_etat_civil_admin'),
+            ])
         ]"/>
     </record>
     <record id="etat_civil.menu_etat_civil_citoyens_export" model="ir.ui.menu">
         <field name="groups_id" eval="[
-            (4, ref('etat_civil.group_etat_civil_admin')),
+            (6, 0, [
+                ref('etat_civil.group_etat_civil_admin'),
+            ])
         ]"/>
     </record>
     <record id="etat_civil.menu_etat_civil_exchange_logs" model="ir.ui.menu">
         <field name="groups_id" eval="[
-            (4, ref('etat_civil.group_etat_civil_admin')),
+            (6, 0, [
+                ref('etat_civil.group_etat_civil_admin'),
+            ])
         ]"/>
     </record>
     <record id="etat_civil.menu_etat_civil_audit_log" model="ir.ui.menu">
         <field name="groups_id" eval="[
-            (4, ref('etat_civil.group_etat_civil_admin')),
+            (6, 0, [
+                ref('etat_civil.group_etat_civil_admin'),
+            ])
         ]"/>
     </record>
     <record id="etat_civil.menu_etat_civil_pieces_requises" model="ir.ui.menu">
         <field name="groups_id" eval="[
-            (4, ref('etat_civil.group_etat_civil_admin')),
+            (6, 0, [
+                ref('etat_civil.group_etat_civil_admin'),
+            ])
         ]"/>
     </record>
 
@@ -179,18 +230,27 @@
     <!-- ================================================================ -->
 
     <!-- ================================================================ -->
+    <!-- APPLICATIONS STANDARD — RESTRICTION PAR RÔLE                     -->
+    <!-- Agent et Officier : seuls "Discussion" et "État Civil"            -->
+    <!-- Régisseur : POS + Discussion + État Civil (racine vide)           -->
+    <!-- Administrateur : tout                                            -->
+    <!-- ================================================================ -->
+
+    <!-- Menu "Apps" (base.menu_management) : admin uniquement -->
+    <record id="base.menu_management" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (6, 0, [
+                ref('base.group_system'),
+                ref('etat_civil.group_etat_civil_admin'),
+            ])
+        ]"/>
+    </record><!-- ================================================================ -->
     <!-- RESTRICTIONS SUPPLÉMENTAIRES PAR RÔLE                            -->
     <!-- ================================================================ -->
 
-    <!-- Agent : ne voit pas le POS -->
-    <!-- Le POS est visible par point_of_sale.group_pos_user -->
-    <!-- L'agent n'a pas ce groupe, donc il ne voit pas le POS -->
-
-    <!-- Officier : ne voit pas le POS ni les actes de création -->
-    <!-- L'officier n'a pas point_of_sale.group_pos_user -->
-    <!-- Les menus Actes sont déjà restreints à agent + admin -->
-
-    <!-- Régisseur : ne voit pas les actes, citoyens, mentions, administration -->
+    <!-- Agent : ne voit pas le POS, Facturation, Inventaire -->
+    <!-- Officier : ne voit pas le POS, Facturation, Inventaire, ni les actes de création -->
+    <!-- Régisseur : ne voit pas les actes, citoyens, mentions, administration, Facturation, Inventaire -->
     <!-- Les menus sont déjà restreints ci-dessus -->
     <!-- Le régisseur voit : menu racine (vide sauf Quittances) + POS -->
 

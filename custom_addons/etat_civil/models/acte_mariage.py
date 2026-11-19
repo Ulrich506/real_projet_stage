@@ -66,13 +66,14 @@ class EtatCivilActeMariage(models.Model):
     notification_mention_ids = fields.One2many(
         "etat.civil.mention.marginale",
         "source_acte_mariage_id",
-        string="Notifications aux communes de naissance",
+        string="Avis de mention marginale",
     )
     piece_ids = fields.One2many(
         "etat.civil.piece.justificative",
         "acte_mariage_id",
         string="Documents à vérifier",
     )
+
     def _build_texte_integral_acte(self):
         self.ensure_one()
         if not self.conjoint_1_id or not self.conjoint_2_id:
@@ -95,6 +96,20 @@ class EtatCivilActeMariage(models.Model):
         if generated:
             self.texte_integral_acte = generated
             self.texte_integral_acte_auto = True
+
+    @api.onchange(
+        "conjoint_1_est_etranger",
+        "conjoint_2_est_etranger",
+        "conjoint_1_capacite_requise",
+        "conjoint_2_capacite_requise",
+        "conjoint_1_residence_etranger_requise",
+        "conjoint_2_residence_etranger_requise",
+        "donnees_historiques_incompletes",
+        "temoin_1_id",
+        "temoin_2_id",
+    )
+    def _onchange_pieces_justificatives(self):
+        self._in_memory_sync_pieces()
 
     def _default_required_piece_codes(self):
         self.ensure_one()
@@ -153,6 +168,7 @@ class EtatCivilActeMariage(models.Model):
     def create(self, vals_list):
         records = super().create(vals_list)
         records._sync_pieces_justificatives()
+        records._check_and_lock_identity()
         return records
 
     def write(self, vals):
@@ -169,7 +185,14 @@ class EtatCivilActeMariage(models.Model):
             "temoin_2_id",
         } & vals.keys():
             self._sync_pieces_justificatives()
+        self._check_and_lock_identity()
         return result
+
+    def _check_and_lock_identity(self):
+        """Verrouille l'identité de la commune après le premier acte."""
+        config = self.env['etat.civil.config.settings'].get_config()
+        if not config.identity_locked:
+            config._lock_identity()
 
     @api.constrains(
         "registre_id",

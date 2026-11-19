@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Données de configuration initiales de l'identité de la commune.
+    Le singleton etat.civil.config.settings est créé automatiquement
+    par la méthode get_config() au premier appel. Pour les installations
+    existantes, il pré-remplit depuis res.company et le premier centre.
+    Pour les nouvelles installations, l'assistant de configuration guide
+    l'administrateur.
+    Le groupe group_etat_civil_tech_admin est défini dans security/security.xml.
+    Plus aucun nom de commune n'est codé en dur.
+-->
+<odoo noupdate="1">
+    <!--
+        Ce fichier est conservé pour d'éventuelles données de configuration
+        futures. Le singleton et le groupe sont gérés ailleurs.
+    -->
+</odoo>

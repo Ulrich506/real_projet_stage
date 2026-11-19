@@ -11,3 +11,6 @@ from . import piece_justificative
 from . import piece_requise
 from . import demande_guichet
 from . import import_export_log
+from . import config_settings
+from . import officier_views_hook
+from . import malagasy_date_utils

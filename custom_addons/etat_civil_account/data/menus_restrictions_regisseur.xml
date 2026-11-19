@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Restrictions de menus pour le rôle Régisseur.
+
+    Ce fichier est dans etat_civil_account car le groupe regisseur
+    est défini dans ce module. Placer ces données dans etat_civil
+    créerait une dépendance circulaire (etat_civil ne dépend pas
+    de etat_civil_account).
+
+    Le régisseur voit :
+    - Le menu racine "État Civil" (mais pas les sous-menus internes)
+    - Un menu "File d'attente" dédié (via etat_civil_pos)
+    - Le menu "Point de Vente"
+-->
+<odoo>
+
+    <!-- Menu racine "État Civil" : ajouter le régisseur -->
+    <record id="etat_civil.menu_etat_civil_root" model="ir.ui.menu">
+        <field name="groups_id" eval="[
+            (4, ref('etat_civil.group_etat_civil_agent')),
+            (4, ref('etat_civil.group_etat_civil_officier')),
+            (4, ref('etat_civil.group_etat_civil_admin')),
+            (4, ref('etat_civil_account.group_etat_civil_regisseur')),
+        ]"/>
+    </record></odoo>
