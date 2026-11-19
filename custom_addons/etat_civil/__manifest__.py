@@ -42,7 +42,7 @@
         "views/piece_requise_views.xml",
         "data/piece_requise_data.xml",
         "data/piece_requise_sequence.xml",
-        "data/citoyens_demo_data.xml",
+        "demo/citoyens_demo_data.xml",
         "views/menus.xml",
         "data/menus_restrictions.xml",
     ],
