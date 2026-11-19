@@ -9,9 +9,11 @@
 
     <!-- Centre de démonstration -->
     <record id="centre_demo_fianarantsoa" model="etat.civil.centre">
-        <field name="name">Centre de démonstration — Fianarantsoa</field>
+        <field name="code_centre">DEMO-F</field>
+        <field name="nom_centre">Centre de démonstration — Fianarantsoa</field>
         <field name="commune">Fianarantsoa</field>
-        <field name="region">Fianarantsoa</field>
+        <field name="district_province">Fianarantsoa</field>
+        <field name="pays">Madagascar</field>
     </record>
 
     <!-- Agent d'état civil -->

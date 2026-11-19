@@ -8,6 +8,7 @@
 <odoo>
 
     <!-- Régisseur — paiements des copies -->
+    <!-- Le centre sera attribué manuellement par l'administrateur après l'installation -->
     <record id="user_demo_regisseur" model="res.users">
         <field name="name">Be Regisseur</field>
         <field name="login">regisseur@demo.mg</field>
@@ -15,7 +16,6 @@
         <field name="password">demo123</field>
         <field name="groups_id" eval="[(4, ref('base.group_user')),
                                        (4, ref('etat_civil_account.group_etat_civil_regisseur'))]"/>
-        <field name="etat_civil_centre_ids" eval="[(4, ref('etat_civil.centre_demo_fianarantsoa'))]"/>
     </record>
 
 </odoo>
