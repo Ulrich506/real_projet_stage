@@ -1,0 +1,89 @@
+@startuml
+!include ../style.puml
+
+title Diagramme de cas d'utilisation — Vue globale
+
+left to right direction
+
+actor "Agent d'état civil" as A
+actor "Officier d'état civil" as O
+actor "Administrateur" as AD
+actor "Régisseur" as R
+actor "Citoyen" as C
+
+package "Gestion d'État Civil" {
+
+  usecase "Gérer les citoyens\n(individus)" as UC1
+  usecase "Créer un acte de naissance" as UC2
+  usecase "Créer un acte de mariage" as UC3
+  usecase "Créer un acte de décès" as UC4
+  usecase "Transmettre un acte\npour validation" as UC5
+  usecase "Gérer les pièces\njustificatives" as UC6
+
+  usecase "Valider un acte" as UC7
+  usecase "Retourner un acte\npour correction" as UC8
+  usecase "Refuser un acte" as UC9
+  usecase "Apposer une mention\nmarginale" as UC10
+
+  usecase "Gérer les centres\net registres" as UC11
+  usecase "Gérer les utilisateurs\net rôles" as UC12
+  usecase "Annuler un acte\nvalidé" as UC13
+  usecase "Rectifier un acte" as UC14
+  usecase "Exporter les données" as UC15
+  usecase "Consulter le journal\nd'audit" as UC16
+
+  usecase "Créer un ticket\nde guichet" as UC17
+  usecase "Imprimer un acte" as UC18
+
+  usecase "Encaisser une copie\nau point de vente" as UC19
+  usecase "Émettre une quittance" as UC20
+  usecase "Imprimer un ticket" as UC21
+
+  usecase "Demander une copie\nd'acte" as UC22
+}
+
+' Agent
+A --> UC1
+A --> UC2
+A --> UC3
+A --> UC4
+A --> UC5
+A --> UC6
+A --> UC17
+A --> UC18
+
+' Officier
+O --> UC7
+O --> UC8
+O --> UC9
+O --> UC10
+O --> UC18
+
+' Administrateur
+AD --> UC11
+AD --> UC12
+AD --> UC13
+AD --> UC14
+AD --> UC15
+AD --> UC16
+AD ..> A : inclut tous les UC de l'agent
+AD ..> O : inclut tous les UC de l'officier
+
+' Régisseur
+R --> UC19
+R --> UC20
+R --> UC21
+
+' Citoyen
+C --> UC22
+
+' Relations
+UC5 ..> UC6 : <<include>>
+UC7 ..> UC6 : <<include>>
+UC2 ..> UC1 : <<include>>
+UC3 ..> UC1 : <<include>>
+UC4 ..> UC1 : <<include>>
+UC19 ..> UC17 : <<include>>
+UC20 ..> UC19 : <<include>>
+
+@enduml

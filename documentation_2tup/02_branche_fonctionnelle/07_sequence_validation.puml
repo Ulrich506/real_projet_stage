@@ -1,0 +1,64 @@
+@startuml
+!include ../style.puml
+
+title Diagramme de séquence — Validation d'un acte par l'officier
+
+participant "Officier" as O
+participant "Vue liste\nactes" as V
+participant "Modèle Acte" as M
+participant "Modèle Pièce\nJustificative" as PJ
+participant "Modèle Individu" as I
+participant "Audit Log" as AL
+participant "Base de données" as DB
+
+O -> V: Consulter dossiers assignés
+V -> M: search([officier_validateur_id = user])
+M -> DB: SELECT avec ir.rule
+DB --> M: Actes en attente
+M --> V: Liste des dossiers
+V --> O: Affichage
+
+O -> V: Ouvrir un dossier
+V -> M: read()
+M --> V: Formulaire lecture seule
+V --> O: Détails de l'acte
+
+O -> V: Cliquer "Vérifier pièces"
+V -> M: action_verifier_toutes_pieces()
+M -> M: _ensure_officier()
+M -> M: _ensure_competence_territoriale()
+M -> M: _ensure_officier_responsable()
+M -> PJ: Filtrer pièces "recu"
+PJ -> PJ: action_mark_verified()
+PJ --> O: Pièces vérifiées
+
+O -> V: Cliquer "Valider"
+V -> M: action_valider_acte()
+activate M
+    M -> M: _ensure_officier()
+    M -> M: _ensure_competence_territoriale()
+    M -> M: _ensure_officier_responsable()
+    M -> M: _check_pieces_justificatives()
+    
+    alt Acte de mariage
+        M -> I: FOR UPDATE (verrouillage conjoints)
+        M -> I: situation_matrimoniale = "marie"
+        M -> M: Créer mentions marginales
+    else Acte de décès
+        M -> I: statut_vital = "decede"
+    end
+    
+    M -> M: _compute_integrity_hash()
+    M -> M: _generate_qr_verification_values()
+    
+    M -> DB: write(statut="valide", hash, qr, ...)
+    M -> AL: _record_event("validate")
+    M -> AL: _record_event("sign")
+    M -> M: message_post()
+    M -> M: activity_feedback()
+    
+    M --> V: Validation réussie
+deactivate M
+V --> O: Notification succès
+
+@enduml

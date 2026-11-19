@@ -1,0 +1,44 @@
+@startuml
+!include ../style.puml
+
+title Diagramme de contexte statique — Système de Gestion d'État Civil
+
+rectangle "Système de Gestion\nÉtat Civil" as S [bgcolor=#E8F4FD]
+
+left to right direction
+
+actor "Agent d'état civil" as A
+actor "Officier d'état civil" as O
+actor "Administrateur\nd'état civil" as AD
+actor "Régisseur" as R
+actor "Citoyen" as C
+
+rectangle "Serveur Odoo 17" as OD [bgcolor=#FFF2E6]
+rectangle "PostgreSQL 18" as PG [bgcolor=#FFF2E6]
+rectangle "Point de Vente\n(POS)" as POS [bgcolor=#F0F0F0]
+rectangle "GitHub\n(CI/Code)" as GH [bgcolor=#F0F0F0]
+rectangle "Imprimante" as IMP [bgcolor=#F0F0F0]
+
+A --> S : Interface web
+O --> S : Interface web
+AD --> S : Interface web + config
+R --> POS : Terminal POS
+R --> S : Interface web
+C --> R : Demande de copie
+C --> IMP : Récupère acte imprimé
+
+S --> OD : Serveur applicatif
+OD --> PG : Base de données
+S --> POS : Synchronisation
+S --> IMP : Impression PDF
+OD --> GH : Git (développement)
+
+legend right
+  *Agent* : saisie et transmission des actes\n
+  *Officier* : validation/refus des actes\n
+  *Administrateur* : gestion complète + config\n
+  *Régisseur* : encaissement POS + quittances\n
+  *Citoyen* : demande des copies d'actes
+endlegend
+
+@enduml

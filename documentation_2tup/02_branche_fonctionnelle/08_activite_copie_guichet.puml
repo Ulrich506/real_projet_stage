@@ -1,0 +1,48 @@
+@startuml
+!include ../style.puml
+
+title Diagramme d'activité — Traitement d'une demande de copie au guichet
+
+start
+
+:Le citoyen demande une copie d'acte;
+:Le régisseur crée un ticket de guichet;
+partition Création du ticket {
+    :Saisir nom et CIN du citoyen;
+    :Choisir type d'acte (naissance/mariage/décès);
+    :Choisir type de demande (copie intégrale/extrait);
+    :Générer numéro de ticket;
+    :Statut = "En attente";
+}
+
+partition Traitement au guichet {
+    :L'agent appelle le ticket au guichet;
+    :Statut = "Au guichet";
+    
+    if (Acte disponible et validé?) then (oui)
+        :Afficher l'acte associé;
+        :Vérifier les pièces obligatoires;
+        
+        if (Paiement requis?) then (oui)
+            :Le régisseur encaisse au POS;
+            :Générer la quittance;
+        else (non)
+            :Délivrance directe;
+        endif
+        
+        :Imprimer l'acte;
+        :Statut = "Traité";
+        :Enregistrer date de traitement;
+    else (non)
+        :Informer le citoyen;
+        :Statut = "Annulé";
+    endif
+}
+
+partition Audit {
+    :Toutes les étapes sont tracées\ndans le journal d'audit;
+}
+
+stop
+
+@enduml

@@ -1,0 +1,48 @@
+@startuml
+!include ../style.puml
+
+title Cas d'utilisation — Administrateur d'état civil
+
+skinparam packageStyle rectangle
+
+package "Administrateur d'état civil" {
+    usecase "Tous les droits Agent" as UC20
+    usecase "Tous les droits Officier" as UC21
+    usecase "Gérer les utilisateurs et rôles" as UC22
+    usecase "Configurer l'identité de la commune" as UC23
+    usecase "Gérer les centres d'état civil" as UC24
+    usecase "Exporter les données (ODF/Excel)" as UC25
+    usecase "Consulter le journal d'audit complet" as UC26
+    usecase "Gérer les séquences de numérotation" as UC27
+    usecase "Annuler un acte (wizard)" as UC28
+}
+
+left to right direction
+actor "Administrateur" as Admin
+
+Admin -- UC20
+Admin -- UC21
+Admin -- UC22
+Admin -- UC23
+Admin -- UC24
+Admin -- UC25
+Admin -- UC26
+Admin -- UC27
+Admin -- UC28
+
+note right of UC20
+  Inclut tous les cas d'utilisation
+  de l'Agent
+end note
+
+note right of UC21
+  Inclut tous les cas d'utilisation
+  de l'Officier
+end note
+
+note right of UC25
+  Export ODF via odfpy et Excel
+  via openpyxl
+end note
+
+@enduml

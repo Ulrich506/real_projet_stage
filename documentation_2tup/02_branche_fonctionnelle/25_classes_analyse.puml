@@ -1,0 +1,211 @@
+@startuml
+!include ../style.puml
+
+title Classes d'analyse — Modèle du domaine État Civil
+
+' Domaine Citoyen
+package "Domaine Citoyen" {
+    class "Individu (Citoyen)" as Individu {
+        + cin : Char
+        + nom : Char
+        + prenoms : Char
+        + sexe : Selection
+        + date_naissance : Date
+        + statut_vital : Selection
+        + situation_matrimoniale : Selection
+        + lieu_naissance_commune : Char
+        + profession_actuelle : Char
+        + domicile_actuel : Char
+        + nationalite_actuelle : Char
+    }
+}
+
+' Domaine Actes
+package "Domaine Actes" {
+    class "Acte Officiel (Abstrait)" as ActeOfficiel <<abstract>> {
+        + numero_acte : Char
+        + feuillet_numero : Integer
+        + date_dressage : Date
+        + texte_integral_acte : Text
+        + statut : Selection
+        + hash_empreinte_num : Char
+        + qr_code_image : Binary
+        + action_transmit()
+        + action_validate()
+        + action_refuse()
+        + action_retransmit()
+        + _ensure_competence_territoriale()
+        + _ensure_agent()
+        + _ensure_officier()
+    }
+    
+    class "Acte Naissance" as Naissance {
+        + enfant : Individu
+        + pere : Individu
+        + mere : Individu
+        + declarant : Individu
+        + heure_naissance : Time
+        + lieu_naissance : Char
+        + lieu_accouchement : Char
+        + filiation : Selection
+        + est_jumeau : Boolean
+        + rang_naissance : Integer
+    }
+    
+    class "Acte Mariage" as Mariage {
+        + conjoint_1 : Individu
+        + conjoint_2 : Individu
+        + temoin_1 : Individu
+        + temoin_2 : Individu
+        + date_mariage : Date
+        + lieu_mariage : Char
+        + regime_matrimonial : Selection
+    }
+    
+    class "Acte Décès" as Deces {
+        + defunt : Individu
+        + declarant : Individu
+        + date_deces : Date
+        + heure_deces : Time
+        + lieu_deces : Char
+        + cause_deces : Char
+        + certificat_medical_ref : Char
+    }
+    
+    Naissance --|> ActeOfficiel
+    Mariage --|> ActeOfficiel
+    Deces --|> ActeOfficiel
+}
+
+' Domaine Registre
+package "Domaine Registre" {
+    class "Centre (Mairie)" as Centre {
+        + code_centre : Char
+        + nom_centre : Char
+        + commune : Char
+        + district_province : Char
+        + logo_commune : Binary
+        + reference_legale : Char
+    }
+    
+    class "Registre" as Registre {
+        + annee : Integer
+        + type_registre : Selection
+        + numero_volume : Integer
+        + est_cloture : Boolean
+        + date_ouverture : Date
+        + date_cloture : Date
+    }
+    
+    Centre "1" --> "N" Registre
+    Registre "1" --> "N" ActeOfficiel
+}
+
+' Domaine Mentions
+package "Domaine Mentions" {
+    class "Mention Marginale" as Mention {
+        + name : Char
+        + type_mention : Selection
+        + date_mention : Date
+        + contenu : Text
+        + statut : Selection
+    }
+    
+    Individu "1" --> "N" Mention
+    Naissance "1" --> "N" Mention
+    Mariage "1" --> "N" Mention
+    Deces "1" --> "N" Mention
+}
+
+' Domaine Pièces
+package "Domaine Pièces" {
+    class "Pièce Justificative" as Piece {
+        + name : Selection(40 types)
+        + etat : Selection
+        + attachment_ids : Binary
+    }
+    
+    class "Pièce Requise (Config)" as PieceRequise {
+        + code_piece : Char
+        + type_acte : Selection
+        + obligatoire : Boolean
+        + sequence : Integer
+    }
+    
+    Naissance "1" --> "N" Piece
+    Mariage "1" --> "N" Piece
+    Deces "1" --> "N" Piece
+}
+
+' Domaine Guichet
+package "Domaine Guichet" {
+    class "Demande Guichet (Ticket)" as Demande {
+        + ticket_numero : Char
+        + citoyen_nom : Char
+        + citoyen_cin : Char
+        + type_acte : Selection
+        + type_demande : Selection
+        + statut : Selection
+        + priorite : Selection
+        + action_mark_treated()
+    }
+    
+    Individu "1" --> "N" Demande
+}
+
+' Domaine Audit
+package "Domaine Audit" {
+    class "Audit Log" as AuditLog {
+        + event_uuid : UUID
+        + event_datetime_utc : DateTime
+        + user_id : ResUsers
+        + action_type : Selection
+        + record_model : Char
+        + record_id : Integer
+        + ip_address : Char
+        + session_hash : Char
+    }
+    
+    class "Audit Mixin (Abstrait)" as AuditMixin <<abstract>> {
+        + _log_event()
+        + create() (surcharge)
+        + write() (surcharge)
+    }
+    
+    Individu ..> AuditMixin : hérite
+    ActeOfficiel ..> AuditMixin : hérite
+    Demande ..> AuditMixin : hérite
+    AuditMixin --> AuditLog
+}
+
+' Domaine Comptabilité (module account)
+package "Domaine Comptabilité" {
+    class "Demande de Copie" as CopyRequest {
+        + type_copie : Selection
+        + tarif_applique : Float
+    }
+    
+    class "Paiement Copie" as CopyPayment {
+        + montant : Float
+        + etat : Selection
+        + date_paiement : DateTime
+    }
+    
+    class "Tarif Copie" as CopyTariff {
+        + type_acte : Selection
+        + type_copie : Selection
+        + montant : Float
+    }
+    
+    class "Quittance" as Quittance {
+        + numero : Char
+        + date : Date
+        + montant : Float
+    }
+    
+    CopyRequest --> CopyPayment
+    CopyPayment --> CopyTariff
+    CopyPayment --> Quittance
+}
+
+@enduml

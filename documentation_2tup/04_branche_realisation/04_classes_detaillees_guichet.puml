@@ -1,0 +1,136 @@
+@startuml
+!include ../style.puml
+
+title Classes détaillées — Domaine Guichet, Copies et Comptabilité
+
+skinparam class {
+    BackgroundColor #E8F4FD
+    BorderColor #2979B5
+}
+
+class "etat.civil.individu" as Individu {
+    _name = "etat.civil.individu"
+    _inherit = "etat.civil.audit.mixin"
+    
+    + cin : Char (required, unique)
+    + nom : Char (required)
+    + prenoms : Char (required)
+    + sexe : Selection(masculin, feminin)
+    + date_naissance : Date
+    + statut_vital : Selection(vivant, decede, inconnu)
+    + situation_matrimoniale : Selection(celebataire, marie, divorce, veuf)
+    + lieu_naissance_commune : Char
+    + profession_actuelle : Char
+    + domicile_actuel : Char
+    + nationalite_actuelle : Char
+    + telephone : Char
+    + email : Char
+    + image : Binary
+    
+    + name_get()
+    + _compute_age()
+}
+
+class "etat.civil.demande.guichet" as Demande {
+    _name = "etat.civil.demande.guichet"
+    _inherit = "etat.civil.audit.mixin"
+    
+    + ticket_numero : Char (compute)
+    + citoyen_nom : Char
+    + citoyen_cin : Char
+    + citoyen_id : Many2one('etat.civil.individu')
+    + type_acte : Selection(naissance, mariage, deces)
+    + type_demande : Selection(copie_integrale, extrait_bn, autre)
+    + statut : Selection(en_attente, traite, impossible, annule)
+    + priorite : Selection(normale, urgente)
+    + date_creation : DateTime
+    + date_traitement : DateTime
+    + notes : Text
+    
+    + action_mark_treated()
+    + name_get()
+}
+
+class "etat.civil.copy.request" as CopyRequest {
+    _name = "etat.civil.copy.request"
+    extends = "etat.civil.demande.guichet"
+    
+    + acte_id : Many2one('etat.civil.acte.officiel')
+    + tarif_id : Many2one('etat.civil.copy.tariff')
+    + montant_total : Float (compute)
+    + est_payee : Boolean (compute)
+    + payment_ids : One2many('etat.civil.copy.payment')
+}
+
+class "etat.civil.copy.payment" as CopyPayment {
+    _name = "etat.civil.copy.payment"
+    
+    + copy_request_id : Many2one('etat.civil.copy.request')
+    + montant : Float
+    + etat : Selection(brouillon, paye, annule)
+    + date_paiement : DateTime
+    + mode_paiement : Selection(espèces, cheque, carte, autre)
+    + reference_paiement : Char
+    + guichet_id : Many2one('etat.civil.guichet')
+}
+
+class "etat.civil.copy.tariff" as CopyTariff {
+    _name = "etat.civil.copy.tariff"
+    
+    + name : Char
+    + type_acte : Selection(naissance, mariage, deces)
+    + type_copie : Selection(copie_integrale, extrait_bn, autre)
+    + montant : Float
+    + date_debut : Date
+    + date_fin : Date
+    + actif : Boolean
+}
+
+class "etat.civil.guichet" as Guichet {
+    _name = "etat.civil.guichet"
+    
+    + name : Char
+    + centre_id : Many2one('etat.civil.centre')
+    + responsable_id : Many2one('res.users')
+}
+
+class "etat.civil.guichet.ticket" as GuichetTicket {
+    _name = "etat.civil.guichet.ticket"
+    extends = "etat.civil.demande.guichet"
+    
+    + pos_order_id : Many2one('pos.order')
+    + est_imprime : Boolean
+}
+
+class "pos.order" as PosOrder {
+    _name = "pos.order"
+    extends = "pos.order" (Odoo standard)
+    
+    + guichet_ticket_ids : One2many('etat.civil.guichet.ticket')
+    + etat_civil_total : Float (compute)
+}
+
+Individu "1" --> "N" Demande : citoyen_id
+Demande <.. CopyRequest : extends
+CopyRequest "1" --> "N" CopyPayment : payment_ids
+CopyPayment --> CopyTariff : tarif_id
+CopyPayment --> Guichet : guichet_id
+GuichetTicket --> PosOrder : pos_order_id
+PosOrder "1" --> "N" GuichetTicket
+
+note right of Individu
+  493 lignes
+  Index unique sur cin
+end note
+
+note right of Demande
+  516 lignes
+  Séquence : seq_demande_guichet
+end note
+
+note right of CopyRequest
+  836 lignes (module account)
+  Extension de demande_guichet
+end note
+
+@enduml

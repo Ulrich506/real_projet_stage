@@ -1,0 +1,75 @@
+@startuml
+!include ../style.puml
+
+title Activité — Cycle de vie complet d'un acte d'état civil
+
+start
+
+:Agent saisie les données de l'acte;
+:Joindre les pièces justificatives;
+
+if (Pièces complètes?) then (non)
+    :Compléter les pièces manquantes;
+    else (oui)
+endif
+
+:Agent clique sur "Transmettre";
+
+if (Compétence territoriale?) then (oui)
+    if (Rôle Agent vérifié?) then (oui)
+        :Statut → __transmis__;
+        :Notification à l'officier;
+        
+        group Officier traite le dossier
+            :Officier consulte l'acte;
+            :Officier vérifie données et pièces;
+            
+            if (Conforme?) then (oui)
+                :Officier clique sur "Valider";
+                :Statut → __valide__;
+                :Calcul du hash SHA-256;
+                :Génération du QR code;
+                :Création automatique des mentions marginales;
+                :Acte scellé numériquement;
+            else (non)
+                :Officier clique sur "Refuser";
+                :Saisie du motif de refus;
+                :Statut → __retourne_correction__;
+                :Notification à l'agent;
+                
+                group Agent corrige
+                    :Agent lit le motif de refus;
+                    :Agent corrige les champs;
+                    :Agent retransmet;
+                    :Statut → __transmis__;
+                end
+                
+                detach
+            endif
+        end
+        
+        if (Acte validé?) then (oui)
+            :Acte disponible pour copies;
+            :Impression possible;
+        endif
+    else (non)
+        :Erreur : rôle insuffisant;
+        stop
+    endif
+else (non)
+    :Erreur : centre incompatible;
+    stop
+endif
+
+:Administrateur peut annuler l'acte;
+if (Annulation demandée?) then (oui)
+    :Motif d'annulation;
+    :Statut → __annule__;
+    stop
+endif
+
+:Audit log enregistré à chaque transition;
+
+stop
+
+@enduml

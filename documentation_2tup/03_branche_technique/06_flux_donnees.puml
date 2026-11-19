@@ -1,0 +1,107 @@
+@startuml
+!include ../style.puml
+
+title Diagramme de flux de données — Système État Civil
+
+skinparam componentStyle rectangle
+
+actor "Agent" as Agent
+actor "Officier" as Officier
+actor "Administrateur" as Admin
+actor "Régisseur" as Regisseur
+actor "Citoyen" as Citoyen
+
+participant "Navigateur Web" as Nav
+
+database "PostgreSQL" as PG
+
+component "Serveur Odoo 17" as Odoo {
+    component "Contrôleurs HTTP" as Ctrl
+    component "Modèles ORM" as ORM
+    component "Wizards" as Wiz
+    component "Audit Mixin" as Audit
+    component "Vues XML" as Vues
+    component "Rapports QWeb" as QWeb
+}
+
+component "Module Account" as AccMod
+component "Module POS" as PosMod
+
+database "Fichiers joints" as Attachments
+database "Journal d'audit" as AuditDB
+
+' Flux Citoyen → Agent
+Citoyen -> Agent : Données personnelles,\n demande d'acte
+Agent -> Nav : Saisie via interface Odoo
+Nav -> Ctrl : POST /web/dataset/call_kw
+Ctrl -> ORM : create()/write()
+ORM -> Audit : _log_event()
+Audit -> PG : INSERT audit_log
+ORM -> PG : INSERT/UPDATE tables actes
+
+' Flux Agent → Officier
+ORM -> QWeb : Notification e-mail
+note right
+  Via mail.thread
+  (Odoo base)
+end note
+
+' Flux Officier → Validation
+Officier -> Nav : Consultation et validation
+Nav -> Ctrl : action_validate()
+Ctrl -> ORM : write(statut='valide')
+ORM -> ORM : Calcul hash SHA-256
+ORM -> ORM : Génération QR code
+ORM -> PG : UPDATE acte + INSERT mention
+
+' Flux Admin → Export
+Admin -> Nav : Demande d'export
+Nav -> Ctrl : /etat_civil/export
+Ctrl -> ORM : search_read()
+ORM -> PG : SELECT actes
+Ctrl -> Ctrl : Génération ODF/Excel
+Ctrl -> Audit : Log export
+Ctrl -> Nav : Fichier téléchargé
+Nav -> Admin : Fichier ODF/Excel
+
+' Flux Guichet / POS
+Citoyen -> Regisseur : Demande de copie
+Regisseur -> Nav : Interface POS
+Nav -> PosMod : Commande POS
+PosMod -> ORM : Demande guichet
+ORM -> PG : UPDATE ticket statut
+PosMod -> AccMod : Mouvement comptable
+AccMod -> PG : INSERT account_move
+
+' Flux Paiement
+Regisseur -> Nav : Encaissement
+Nav -> PosMod : Paiement
+PosMod -> ORM : copy_payment create
+ORM -> PG : INSERT paiement
+ORM -> QWeb : Quittance PDF
+QWeb -> Nav : PDF quittance
+Nav -> Regisseur : Impression
+
+' Flux Pièces justificatives
+Agent -> Nav : Upload fichiers
+Nav -> Attachments : Stockage fichiers
+ORM -> Attachments : Lien pièce-acte
+
+' Flux Configuration
+Admin -> Nav : Paramètres
+Nav -> ORM : config.settings
+ORM -> PG : ir.config_parameter
+
+' Flux Audit (continu)
+ORM -> AuditDB : Chaque opération CRUD
+Admin -> Nav : Consultation audit
+Nav -> ORM : read() audit_log
+ORM -> AuditDB : SELECT audit_log
+
+note as remark
+  Les flux marqués en gras représentent
+  les chemins critiques de données
+  personnelles sensibles.
+end note
+
+@enduml

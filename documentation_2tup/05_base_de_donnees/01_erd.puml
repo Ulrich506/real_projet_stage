@@ -1,0 +1,197 @@
+@startuml
+!include ../style.puml
+
+title Diagramme Entité-Relation — Tables PostgreSQL (modules custom)
+
+database "PostgreSQL" {
+
+entity etat_civil_individu {
+    * id: serial PK
+    --
+    # cin: varchar INDEX
+    ~ nom: varchar NOT NULL
+    ~ prenoms: varchar
+    ~ nom_complet: varchar STORED
+    ~ sexe: varchar NOT NULL
+    ~ date_naissance: date
+    ~ categorie_age: varchar
+    ~ statut_vital: varchar
+    ~ situation_matrimoniale: varchar
+    ~ lieu_naissance_commune: varchar
+    ~ lieu_naissance_pays: varchar
+    ~ profession_actuelle: varchar
+    ~ domicile_actuel: text
+    ~ nationalite_actuelle: varchar
+}
+
+entity etat_civil_centre {
+    * id: serial PK
+    --
+    # code_centre: varchar UNIQUE
+    ~ nom_centre: varchar NOT NULL
+    ~ commune: varchar NOT NULL
+    ~ district_province: varchar
+    ~ pays: varchar
+    ~ reference_legale: text
+}
+
+entity etat_civil_registre {
+    * id: serial PK
+    --
+    ~ annee: integer NOT NULL
+    ~ type_registre: varchar NOT NULL
+    ~ numero_volume: integer NOT NULL
+    * centre_id: integer FK -> etat_civil_centre
+    ~ est_cloture: boolean
+    ~ date_ouverture: date
+    ~ date_cloture: date
+    --
+    UK(annee, type_registre, numero_volume, centre_id)
+}
+
+entity etat_civil_acte_naissance {
+    * id: serial PK
+    --
+    # numero_acte: varchar
+    ~ feuillet_numero: integer NOT NULL
+    * registre_id: integer FK -> etat_civil_registre
+    ~ date_dressage: timestamp
+    ~ texte_integral_acte: text
+    ~ statut: varchar DEFAULT 'brouillon'
+    ~ hash_empreinte_num: varchar
+    ~ qr_code_signature: varchar
+    * enfant_id: integer FK -> etat_civil_individu UNIQUE
+    * pere_id: integer FK -> etat_civil_individu
+    * mere_id: integer FK -> etat_civil_individu
+    * declarant_id: integer FK -> etat_civil_individu
+    ~ heure_naissance: numeric
+    ~ lieu_naissance: varchar
+    ~ lieu_accouchement: varchar
+    ~ filiation: varchar
+    ~ est_jumeau: boolean
+    ~ rang_naissance: integer
+    --
+    UK(numero_acte, registre_id)
+    UK(feuillet_numero, registre_id)
+}
+
+entity etat_civil_acte_mariage {
+    * id: serial PK
+    --
+    # numero_acte: varchar
+    ~ feuillet_numero: integer NOT NULL
+    * registre_id: integer FK -> etat_civil_registre
+    ~ date_dressage: timestamp
+    ~ texte_integral_acte: text
+    ~ statut: varchar DEFAULT 'brouillon'
+    ~ hash_empreinte_num: varchar
+    * conjoint_1_id: integer FK -> etat_civil_individu
+    * conjoint_2_id: integer FK -> etat_civil_individu
+    * temoin_1_id: integer FK -> etat_civil_individu
+    * temoin_2_id: integer FK -> etat_civil_individu
+    ~ date_mariage: date
+    ~ lieu_mariage: varchar
+    ~ regime_matrimonial: varchar
+    --
+    UK(numero_acte, registre_id)
+    UK(feuillet_numero, registre_id)
+}
+
+entity etat_civil_acte_deces {
+    * id: serial PK
+    --
+    # numero_acte: varchar
+    ~ feuillet_numero: integer NOT NULL
+    * registre_id: integer FK -> etat_civil_registre
+    ~ date_dressage: timestamp
+    ~ texte_integral_acte: text
+    ~ statut: varchar DEFAULT 'brouillon'
+    ~ hash_empreinte_num: varchar
+    * defunt_id: integer FK -> etat_civil_individu UNIQUE
+    * declarant_id: integer FK -> etat_civil_individu
+    ~ date_deces: date
+    ~ heure_deces: numeric
+    ~ lieu_deces: varchar
+    ~ cause_deces: varchar
+    --
+    UK(numero_acte, registre_id)
+    UK(feuillet_numero, registre_id)
+}
+
+entity etat_civil_mention_marginale {
+    * id: serial PK
+    --
+    ~ name: varchar NOT NULL
+    ~ type_mention: varchar NOT NULL
+    ~ date_mention: date
+    ~ contenu: text
+    * personne_concernee_id: integer FK -> etat_civil_individu
+    * acte_naissance_id: integer FK -> etat_civil_acte_naissance
+    * acte_mariage_id: integer FK -> etat_civil_acte_mariage
+    * acte_deces_id: integer FK -> etat_civil_acte_deces
+    ~ statut: varchar
+}
+
+entity etat_civil_piece_justificative {
+    * id: serial PK
+    --
+    ~ name: varchar NOT NULL
+    ~ obligatoire: boolean
+    ~ etat: varchar DEFAULT 'a_fournir'
+    ~ genere_automatiquement: boolean
+    * acte_naissance_id: integer FK -> etat_civil_acte_naissance
+    * acte_mariage_id: integer FK -> etat_civil_acte_mariage
+    * acte_deces_id: integer FK -> etat_civil_acte_deces
+    * mention_id: integer FK -> etat_civil_mention_marginale
+}
+
+entity etat_civil_piece_requise {
+    * id: serial PK
+    --
+    ~ code_piece: varchar
+    ~ type_acte: varchar
+    ~ condition: varchar
+    ~ obligatoire: boolean
+    ~ sequence: integer
+}
+
+entity etat_civil_demande_guichet {
+    * id: serial PK
+    --
+    # ticket_numero: varchar UNIQUE
+    ~ citoyen_nom: varchar NOT NULL
+    ~ citoyen_cin: varchar
+    * citoyen_id: integer FK -> etat_civil_individu
+    ~ type_acte: varchar
+    ~ type_demande: varchar
+    ~ statut: varchar DEFAULT 'en_attente'
+    ~ priorite: varchar DEFAULT 'normale'
+    ~ processed_at: timestamp
+}
+
+entity etat_civil_audit_log {
+    * id: serial PK
+    --
+    # event_uuid: varchar UNIQUE INDEX
+    ~ event_datetime_utc: timestamp INDEX
+    ~ event_datetime_local: varchar
+    ~ event_timezone: varchar
+    * user_id: integer FK -> res_users
+    ~ user_login: varchar INDEX
+    ~ role: varchar INDEX
+    * centre_id: integer FK -> etat_civil_centre
+    ~ commune: varchar INDEX
+    ~ action_type: varchar INDEX
+    ~ record_model: varchar INDEX
+    ~ record_id: integer INDEX
+    ~ changed_fields: text
+    ~ old_values: text
+    ~ new_values: text
+    ~ ip_address: varchar
+    ~ session_hash: varchar
+    ~ result: varchar
+}
+
+} ' end database
+
+@enduml

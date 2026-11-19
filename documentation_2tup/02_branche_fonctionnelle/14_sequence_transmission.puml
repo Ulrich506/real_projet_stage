@@ -1,0 +1,37 @@
+@startuml
+!include ../style.puml
+
+title Séquence système — Transmission d'un acte à l'officier
+
+participant "Agent" as Agent
+participant "Vue Form Acte" as Vue
+participant "Wizard Transmission" as Wizard
+participant "etat.civil.acte.officiel" as Acte
+participant "etat.civil.piece.justificative" as Pieces
+participant "mail.thread" as Mail
+
+Agent -> Vue: Cliquer sur "Transmettre"
+Vue -> Acte: action_transmit()
+Acte -> Acte: _ensure_agent()
+Note over Acte: Vérifie le rôle Agent
+Acte -> Acte: _ensure_competence_territoriale()
+Note over Acte: Vérifie l'appartenance au centre
+Acte -> Pieces: Vérifier pièces requises
+Pieces --> Acte: Liste des pièces manquantes
+alt Pièces manquantes
+    Acte --> Vue: Erreur : pièces obligatoires manquantes
+    Vue --> Agent: Message d'erreur avec liste
+else Toutes les pièces présentes
+    Acte -> Wizard: Ouvrir wizard de confirmation
+    Wizard --> Agent: Formulaire de confirmation
+    Agent -> Wizard: Confirmer la transmission
+    Wizard -> Acte: write(statut='transmis')
+    Acte -> Acte: _INTERNAL_TRANSITION_TOKEN
+    Note over Acte: Protection contre modification directe
+    Acte -> Mail: message_post()
+    Mail --> Agent: Notification envoyée à l'officier
+    Acte --> Vue: Statut mis à jour
+    Vue --> Agent: Acte transmis avec succès
+end
+
+@enduml

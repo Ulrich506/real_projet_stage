@@ -1,0 +1,182 @@
+@startuml
+!include ../style.puml
+
+title Classes détaillées — Domaine Audit, Mentions, Pièces et Configuration
+
+skinparam class {
+    BackgroundColor #E8F4FD
+    BorderColor #2979B5
+}
+
+class "etat.civil.audit.mixin (Abstract)" as AuditMixin {
+    <<abstract>>
+    _name = "etat.civil.audit.mixin"
+    
+    + _log_event(action_type, record, changes=None)
+    + create(vals_list)
+    + write(vals)
+    + unlink()
+    
+    note right
+      Surcharge les méthodes ORM
+      pour journalisation automatique
+    end note
+}
+
+class "etat.civil.audit.log" as AuditLog {
+    _name = "etat.civil.audit.log"
+    
+    + event_uuid : Char (UUID, readonly)
+    + event_datetime_utc : DateTime (readonly)
+    + user_id : Many2one('res.users')
+    + action_type : Selection(create, write, unlink)
+    + record_model : Char
+    + record_id : Integer
+    + old_values : Text (JSON)
+    + new_values : Text (JSON)
+    + ip_address : Char
+    + session_hash : Char
+    + user_agent : Char
+    
+    + write(vals) → raise AccessError
+    + unlink() → raise AccessError
+    
+    note right
+      366 lignes
+      Journal immuable :
+      write() et unlink() bloqués
+    end note
+}
+
+class "etat.civil.mention.marginale" as Mention {
+    _name = "etat.civil.mention.marginale"
+    _inherit = "etat.civil.audit.mixin"
+    
+    + name : Char (compute)
+    + type_mention : Selection(mariage, divorce, deces, rectification, autre)
+    + date_mention : Date
+    + contenu : Text
+    + personne_concernee_id : Many2one('etat.civil.individu')
+    + acte_naissance_id : Many2one('etat.civil.acte.naissance')
+    + acte_mariage_id : Many2one('etat.civil.acte.mariage')
+    + acte_deces_id : Many2one('etat.civil.acte.deces')
+    + statut : Selection(brouillon, valide)
+    
+    + name_get()
+    
+    note right
+      373 lignes
+      Séquence : seq_mention_marginale
+    end note
+}
+
+class "etat.civil.piece.justificative" as Piece {
+    _name = "etat.civil.piece.justificative"
+    _inherit = "mail.thread, etat.civil.audit.mixin"
+    
+    + name : Selection(40 types de pièces)
+    + obligatoire : Boolean
+    + etat : Selection(a_fournir, recu, verifie)
+    + attachment_ids : Many2many('ir.attachment')
+    + acte_naissance_id : Many2one('etat.civil.acte.naissance')
+    + acte_mariage_id : Many2one('etat.civil.acte.mariage')
+    + acte_deces_id : Many2one('etat.civil.acte.deces')
+    + acte_mention_id : Many2one('etat.civil.mention.marginale')
+    + notes : Text
+    
+    + action_mark_received()
+    + action_mark_verified()
+    
+    note right
+      544 lignes
+      40 types de pièces configurables
+    end note
+}
+
+class "etat.civil.piece.requise" as PieceRequise {
+    _name = "etat.civil.piece.requise"
+    
+    + code_piece : Char
+    + name : Char
+    + type_acte : Selection(naissance, mariage, deces)
+    + condition : Text
+    + obligatoire : Boolean
+    + sequence : Integer
+    
+    note right
+      143 lignes
+      Configuration des pièces
+      requises par type d'acte
+    end note
+}
+
+class "etat.civil.config.settings" as Config {
+    _name = "etat.civil.config.settings"
+    _inherit = "res.config.settings"
+    
+    + identity_locked : Boolean
+    + commune_code : Char
+    + commune_name : Char
+    + district_name : Char
+    + province_name : Char
+    + logo_commune : Binary
+    + logo_region : Binary
+    + reference_legale : Char
+    + phone : Char
+    + email : Char
+    
+    note right
+      345 lignes
+      Configuration de l'identité
+      de la commune
+    end note
+}
+
+class "etat.civil.import_export_log" as ImportExportLog {
+    _name = "etat.civil.import_export_log"
+    
+    + name : Char
+    + operation_type : Selection(import, export)
+    + format_type : Selection(odf, excel, csv)
+    + record_model : Char
+    + record_count : Integer
+    + date_operation : DateTime
+    + user_id : Many2one('res.users')
+    + status : Selection(success, failed)
+    + error_message : Text
+    
+    note right
+      35 lignes
+      Journal des opérations
+      d'import/export
+    end note
+}
+
+class "res.users (extension)" as ResUsers {
+    _name = "res.users"
+    _inherit = "res.users"
+    
+    + etat_civil_centre_ids : Many2many('etat.civil.centre')
+    + _is_etat_civil_admin() : Boolean
+    + _is_etat_civil_agent() : Boolean
+    + _is_etat_civil_officier() : Boolean
+    
+    note right
+      123 lignes
+      Extension avec centres
+      et méthodes de vérification
+      de rôle
+    end note
+}
+
+AuditMixin <.|> AuditLog : loggue vers
+Mention ..> AuditMixin : hérite
+Piece ..> AuditMixin : hérite
+
+note as remark
+  Les classes détaillées des domaines
+  Actes et Guichet/Compta sont dans
+  les fichiers 03_ et 04_ séparés.
+end note
+
+@enduml

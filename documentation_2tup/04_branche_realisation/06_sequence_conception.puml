@@ -1,0 +1,74 @@
+@startuml
+!include ../style.puml
+
+title Séquence de conception — Vue → Méthode Python → ORM → Base
+
+participant "Utilisateur" as User
+participant "Vue Form XML" as Vue
+participant "Contrôleur Odoo" as Controller
+participant "Wizard Python" as Wizard
+participant "Modèle Python" as Model
+participant "Audit Mixin" as Mixin
+participant "ORM Odoo" as ORM
+database "PostgreSQL" as PG
+
+User -> Vue: Remplir le formulaire et cliquer "Sauvegarder"
+Vue -> Controller: POST /web/dataset/call_kw
+note right
+  JSON-RPC avec model, method, args
+end note
+
+Controller -> Controller: Vérification ACL (ir.model.access)
+Controller -> Model: create(vals_dict)
+
+group Surcharge par Audit Mixin
+    Model -> Mixin: create() (surcharge)
+    Mixin -> Mixin: Capturer contexte (user, ip, session)
+    Mixin -> Model: super().create(vals_dict)
+end group
+
+Model -> ORM: Préparer la requête INSERT
+ORM -> PG: INSERT INTO etat_civil_acte_naissance (...) VALUES (...)
+PG --> ORM: record_id généré
+ORM --> Model: Recordset avec id
+Mixin -> Mixin: _log_event('create', record)
+Mixin -> ORM: INSERT sur audit_log
+ORM -> PG: INSERT INTO etat_civil_audit_log (...)
+PG --> ORM: Succès
+Mixin --> Controller: Recordset créé
+Controller --> Vue: Retour JSON avec id
+Vue --> User: Formulaire mis à jour avec numéro
+
+== Modification (write) ==
+
+User -> Vue: Modifier un champ et sauvegarder
+Vue -> Controller: POST /web/dataset/call_kw
+Controller -> Model: write(vals_dict)
+
+group Surcharge par Audit Mixin
+    Model -> Mixin: write() (surcharge)
+    Mixin -> Model: read() — valeurs avant
+    Mixin -> Model: super().write(vals_dict)
+    Mixin -> Mixin: Capturer valeurs après
+    Mixin -> Mixin: _log_event('write', record, changes)
+end group
+
+Model -> ORM: UPDATE etat_civil_acte_naissance SET ...
+ORM -> PG: UPDATE ... WHERE id = ?
+PG --> ORM: Lignes affectées
+Mixin -> ORM: INSERT sur audit_log
+ORM -> PG: INSERT INTO etat_civil_audit_log (...)
+
+== Transition de statut ==
+
+User -> Vue: Cliquer "Transmettre"
+Vue -> Controller: button_exec_workflow
+Controller -> Wizard: execution()
+Wizard -> Model: action_transmit()
+Model -> Model: _ensure_agent()
+Model -> Model: _ensure_competence_territoriale()
+Model -> Model: write({'statut': 'transmis', _TOKEN: True})
+Mixin -> Mixin: _log_event('write', changes)
+ORM -> PG: UPDATE statut = 'transmis'
+
+@enduml

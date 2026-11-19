@@ -1,0 +1,49 @@
+@startuml
+!include ../style.puml
+
+title Cas d'utilisation — Vue par acteur
+
+skinparam packageStyle rectangle
+
+package "Agent d'état civil" {
+    usecase "Rechercher/Enregistrer un citoyen (Individu)" as UC1
+    usecase "Saisir un acte de naissance" as UC2
+    usecase "Saisir un acte de mariage" as UC3
+    usecase "Saisir un acte de décès" as UC4
+    usecase "Joindre des pièces justificatives" as UC5
+    usecase "Transmettre un acte à l'officier" as UC6
+    usecase "Corriger un acte retourné" as UC7
+    usecase "Créer une demande de copie au guichet" as UC8
+    usecase "Consulter le journal d'audit" as UC9
+    usecase "Gérer les registres" as UC10
+}
+
+left to right direction
+actor "Agent" as Agent
+
+Agent -- UC1
+Agent -- UC2
+Agent -- UC3
+Agent -- UC4
+Agent -- UC5
+Agent -- UC6
+Agent -- UC7
+Agent -- UC8
+Agent -- UC9
+Agent -- UC10
+
+UC2 ..> UC5 : <<include>>
+UC3 ..> UC5 : <<include>>
+UC4 ..> UC5 : <<include>>
+UC6 ..> UC2 : <<extend>>
+UC6 ..> UC3 : <<extend>>
+UC6 ..> UC4 : <<extend>>
+UC7 ..> UC2 : <<extend>>
+UC7 ..> UC3 : <<extend>>
+UC7 ..> UC4 : <<extend>>
+
+note right of UC9
+  Lecture seule, filtré par centre
+end note
+
+@enduml

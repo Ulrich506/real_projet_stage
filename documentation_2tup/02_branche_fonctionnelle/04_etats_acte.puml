@@ -1,0 +1,45 @@
+@startuml
+!include ../style.puml
+
+title Diagramme d'états-transitions — Cycle de vie d'un acte
+
+state "Brouillon" as BROUILLON #E8F4FD
+state "En attente de validation" as EN_ATTENTE #FFF8E1
+state "À corriger" as A_CORRIGER #FFE0B2
+state "Validé" as VALIDE #C8E6C9
+state "Rectifié" as RECTIFIE #B3E5FC
+state "Annulé" as ANNULE #FFCDD2
+state "Archivé" as ARCHIVE #E0E0E0
+
+[*] --> BROUILLON
+
+BROUILLON --> EN_ATTENTE : Transmettre\n(agent)
+BROUILLON --> [*] : Supprimer\n(agent)
+
+EN_ATTENTE --> VALIDE : Valider\n(officier)
+EN_ATTENTE --> A_CORRIGER : Retourner correction\n(officier)
+EN_ATTENTE --> ANNULE : Refuser\n(officier)
+
+A_CORRIGER --> EN_ATTENTE : Retransmettre\n(agent)
+A_CORRIGER --> [*] : Supprimer\n(agent)
+
+VALIDE --> RECTIFIE : Rectifier\n(admin)
+VALIDE --> ANNULE : Annuler\n(admin)
+
+ANNULE --> ARCHIVE : Archiver\n(admin)
+
+note right of VALIDE
+  À la validation :\n
+  - Empreinte SHA-256 calculée\n
+  - QR code généré\n
+  - Audit log enregistré\n
+  - Statut vital mis à jour (décès)\n
+  - Situation matrimoniale mise à jour (mariage)
+end note
+
+note right of BROUILLON
+  L'agent peut modifier librement\n
+  le brouillon avant transmission.
+end note
+
+@enduml

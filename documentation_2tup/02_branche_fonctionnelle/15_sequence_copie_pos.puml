@@ -1,0 +1,28 @@
+@startuml
+!include ../style.puml
+
+title Séquence système — Demande de copie au point de vente
+
+participant "Citoyen" as Citoyen
+participant "Agent" as Agent
+participant "Vue Demande Guichet" as Vue
+participant "etat.civil.demande.guichet" as Demande
+participant "ir.sequence" as Sequence
+participant "etat.civil.audit.log" as Audit
+
+Citoyen -> Agent: Demander une copie d'acte
+Agent -> Vue: Nouveau ticket guichet
+Vue --> Agent: Formulaire de saisie
+Agent -> Vue: Remplir (CIN, type acte, type demande, priorité)
+Vue -> Demande: create(vals)
+Demanda -> Demande: _compute_ticket_numero()
+Demanda -> Sequence: next_by_code('seq_demande_guichet')
+Sequence --> Demande: Numéro généré
+Demanda -> Demande: statut='en_attente'
+Demanda -> Audit: _log_event('create')
+Note over Audit: Entrée immuable dans le journal
+Demanda --> Vue: Ticket créé
+Vue --> Agent: Numéro de ticket affiché
+Agent --> Citoyen: Récépissé avec numéro
+
+@enduml

@@ -1,0 +1,77 @@
+@startuml
+!include ../style.puml
+
+title Diagramme de classes — Conception détaillée (domaine Actes)
+
+abstract class "etat.civil.acte.officiel\n(Abstract)" as AO {
+    +numero_acte: Char
+    +feuillet_numero: Integer
+    +registre_id: Many2one(registre)
+    +date_dressage: Datetime
+    +texte_integral_acte: Text
+    +statut: Selection
+    +hash_empreinte_num: Char
+    +qr_code_image: Binary
+    +agent_transmetteur_id: Many2one(res.users)
+    +officier_validateur_id: Many2one(res.users)
+    +utilisateur_validation_id: Many2one(res.users)
+    +date_validation: Datetime
+    +toutes_pieces_obligatoires_recues: Boolean
+    
+    +action_envoyer_validation()
+    +action_valider_acte()
+    +action_demander_correction()
+    +action_refuser_acte()
+    +action_annuler_acte()
+    +action_rectifier_acte()
+    +_ensure_agent()
+    +_ensure_officier()
+    +_ensure_competence_territoriale()
+    +_compute_integrity_hash()
+}
+
+class "etat.civil.acte.naissance" as AN {
+    +enfant_id: Many2one(individu)
+    +pere_id: Many2one(individu)
+    +mere_id: Many2one(individu)
+    +declarant_id: Many2one(individu)
+    +heure_naissance: Float
+    +lieu_naissance: Char
+    +lieu_accouchement: Selection
+    +filiation: Selection
+    +est_jumeau: Boolean
+    +rang_naissance: Integer
+    +mention_ids: One2many(mention)
+    +piece_ids: One2many(piece)
+}
+
+class "etat.civil.acte.mariage" as AM {
+    +conjoint_1_id: Many2one(individu)
+    +conjoint_2_id: Many2one(individu)
+    +temoin_1_id: Many2one(individu)
+    +temoin_2_id: Many2one(individu)
+    +date_mariage: Date
+    +lieu_mariage: Char
+    +regime_matrimonial: Selection
+    +conjoint_1_est_etranger: Boolean
+    +conjoint_2_est_etranger: Boolean
+    +mention_ids: One2many(mention)
+    +piece_ids: One2many(piece)
+}
+
+class "etat.civil.acte.deces" as AD {
+    +defunt_id: Many2one(individu)
+    +declarant_id: Many2one(individu)
+    +date_deces: Date
+    +heure_deces: Float
+    +lieu_deces: Char
+    +cause_deces: Char
+    +mention_ids: One2many(mention)
+    +piece_ids: One2many(piece)
+}
+
+AO <|-- AN
+AO <|-- AM
+AO <|-- AD
+
+@enduml

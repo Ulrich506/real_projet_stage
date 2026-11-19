@@ -1,0 +1,118 @@
+@startuml
+!include ../style.puml
+
+title Packages d'analyse — Architecture fonctionnelle du système
+
+skinparam packageStyle rectangle
+
+package "Système d'État Civil" {
+    
+    package "Citoyen" as P1 {
+        note right
+          Gestion des personnes physiques
+          (individus/citoyens)
+        end note
+    }
+    
+    package "Actes" as P2 {
+        note right
+          Naissance, Mariage, Décès
+          Workflow de validation
+        end note
+    }
+    
+    package "Registre" as P3 {
+        note right
+          Centres (mairies) et registres annuels
+        end note
+    }
+    
+    package "Mentions" as P4 {
+        note right
+          Mentions marginales sur les actes
+        end note
+    }
+    
+    package "Pièces" as P5 {
+        note right
+          Pièces justificatives et configuration
+        end note
+    }
+    
+    package "Guichet" as P6 {
+        note right
+          Demandes de copies, tickets, file d'attente
+        end note
+    }
+    
+    package "Comptabilité" as P7 {
+        note right
+          Tarifs, paiements, quittances
+          (module etat_civil_account)
+        end note
+    }
+    
+    package "Point de Vente" as P8 {
+        note right
+          Interface POS, encaissement
+          (module etat_civil_pos)
+        end note
+    }
+    
+    package "Audit" as P9 {
+        note right
+          Journal d'audit immuable, mixin de traçabilité
+        end note
+    }
+    
+    package "Export" as P10 {
+        note right
+          Export ODF/Excel, journal d'import/export
+        end note
+    }
+    
+    package "Sécurité" as P11 {
+        note right
+          Groupes, ACL, règles d'accès, rôles
+        end note
+    }
+    
+    package "Configuration" as P12 {
+        note right
+          Identité commune, paramètres, séquences
+        end note
+    }
+    
+    package "Authentification" as P13 {
+        note right
+          Contrainte e-mail comme login
+          (module etat_civil_auth_email)
+        end note
+    }
+}
+
+' Dépendances entre packages
+P2 --> P1 : Individu (enfant, parents…)
+P2 --> P3 : Registre, Centre
+P2 --> P9 : Audit mixin
+P2 --> P5 : Pièces justificatives
+P4 --> P1 : Personne concernée
+P4 --> P2 : Actes liés
+P6 --> P1 : Citoyen
+P6 --> P2 : Acte demandé
+P7 --> P6 : Demande de copie
+P8 --> P7 : Paiement, tarifs
+P10 --> P2 : Données des actes
+P10 --> P9 : Journal export
+P11 --> P1 : ACL sur tous les modèles
+P11 --> P2 : Règles par centre
+P12 --> P3 : Centre configuré
+P13 --> P11 : Utilisateur authentifié
+
+note as remark
+  Les packages P7 et P8 correspondent
+  aux modules séparés etat_civil_account
+  et etat_civil_pos.
+end note
+
+@enduml

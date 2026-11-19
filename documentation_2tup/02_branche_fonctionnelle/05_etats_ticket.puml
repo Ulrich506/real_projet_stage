@@ -1,0 +1,29 @@
+@startuml
+!include ../style.puml
+
+title Diagramme d'états-transitions — Ticket de guichet
+
+state "En attente" as EN_ATTENTE #E8F4FD
+state "Au guichet" as EN_COURS #FFF8E1
+state "Traité" as TRAITE #C8E6C9
+state "Annulé" as ANNULE #FFCDD2
+
+[*] --> EN_ATTENTE
+
+EN_ATTENTE --> EN_COURS : Appeler au guichet
+EN_COURS --> TRAITE : Marquer traité\n(agent/admin)
+EN_ATTENTE --> ANNULE : Annuler\n(admin)
+EN_COURS --> ANNULE : Annuler\n(admin)
+
+note right of TRAITE
+  Date de traitement enregistrée.\n
+  Le ticket est clôturé et ne peut\n
+  plus être modifié.
+end note
+
+note right of ANNULE
+  Le ticket est clôturé.\n
+  Seul l'administrateur peut annuler.
+end note
+
+@enduml

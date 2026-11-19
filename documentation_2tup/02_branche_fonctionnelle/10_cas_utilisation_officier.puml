@@ -1,0 +1,38 @@
+@startuml
+!include ../style.puml
+
+title Cas d'utilisation — Officier d'état civil
+
+skinparam packageStyle rectangle
+
+package "Officier d'état civil" {
+    usecase "Consulter les actes transmis" as UC11
+    usecase "Valider un acte" as UC12
+    usecase "Refuser un acte avec motif" as UC13
+    usecase "Consulter les mentions marginales" as UC14
+    usecase "Consulter les registres" as UC15
+}
+
+left to right direction
+actor "Officier" as Officier
+
+Officier -- UC11
+Officier -- UC12
+Officier -- UC13
+Officier -- UC14
+Officier -- UC15
+
+UC12 ..> UC11 : <<extend>>
+UC13 ..> UC11 : <<extend>>
+
+note right of UC12
+  Signature numérique et scellement
+  de l'acte validé
+end note
+
+note right of UC13
+  Retour à l'agent avec motif de
+  correction requis
+end note
+
+@enduml

@@ -1,0 +1,61 @@
+@startuml
+!include ../style.puml
+
+title Activité — Traitement de la file d'attente du guichet
+
+start
+
+:Régisseur ouvre l'interface POS;
+:Affichage de la file d'attente;
+
+note right
+  Tri par priorité (urgente > normale)
+  puis par date d'arrivée (FIFO)
+end note
+
+while (Tickets en attente?) is (oui)
+    :Régisseur sélectionne le prochain ticket;
+    :Affichage des détails (citoyen, type acte, type copie);
+    
+    if (Citoyen identifié?) then (oui)
+        :Vérification de l'acte demandé;
+        
+        if (Acte validé existant?) then (oui)
+            :Consultation du tarif applicable;
+            :Affichage du montant;
+            
+            :Régisseur marque "Traité";
+            :Statut → __traite__;
+            
+            :Encaissement du paiement;
+            
+            if (Paiement réussi?) then (oui)
+                :Création du paiement en base;
+                :Mouvement comptable (module account);
+                :Émission de la quittance;
+                :Impression de la copie d'acte;
+                :Lien acte-copie enregistré;
+            else (échec)
+                :Annulation du paiement;
+                :Statut retourné à __en_attente__;
+                :Message d'erreur;
+            endif
+            
+        else (non)
+            :Erreur : acte non trouvé ou non validé;
+            :Statut → __impossible__;
+        endif
+    else (non)
+        :Erreur : citoyen non identifié;
+    endif
+    
+    :Audit log de l'opération;
+    
+endwhile
+
+:Aucun ticket en attente;
+:File d'attente vide;
+
+stop
+
+@enduml

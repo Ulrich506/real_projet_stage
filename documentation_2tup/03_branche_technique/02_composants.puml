@@ -1,0 +1,84 @@
+@startuml
+!include ../style.puml
+
+title Diagramme de composants — Architecture logicielle en couches
+
+package "Couche Présentation" as PRESENTATION {
+    component "Vues XML\n(form/list/kanban/search)" as VUES
+    component "Rapports QWeb\n(actes, tickets, export)" as RAPPORTS
+    component "JavaScript OWL\n(auto-save, preview)" as JS
+    component "SCSS\n(styles personnalisés)" as SCSS
+    component "Templates login\n(auth_email)" as LOGIN
+}
+
+package "Couche Contrôle" as CONTROLE {
+    component "Contrôleurs HTTP\n(download, imprimer)" as CTRL
+    component "Wizards\n(création, transmission,\ncorrection, annulation)" as WIZARDS
+}
+
+package "Couche Métier (Modèles ORM)" as METIER {
+    package "Domaine Actes" as ACTES {
+        component "acte_officiel\n(abstrait)" as AO
+        component "acte_naissance" as AN
+        component "acte_mariage" as AM
+        component "acte_deces" as AD
+    }
+    package "Domaine Citoyen" as CITOYEN {
+        component "individu" as IND
+    }
+    package "Domaine Guichet" as GUICHET {
+        component "demande_guichet" as DG
+        component "guichet_ticket (POS)" as GT
+    }
+    package "Domaine Mentions" as MENTIONS {
+        component "mention_marginale" as MM
+    }
+    package "Domaine Pièces" as PIECES {
+        component "piece_justificative" as PJ
+        component "piece_requise" as PR
+    }
+    package "Domaine Configuration" as CONFIG {
+        component "centre" as C
+        component "registre" as R
+        component "config_settings" as CS
+    }
+    package "Domaine Audit" as AUDIT {
+        component "audit_log" as AL
+        component "audit.mixin\n(abstrait)" as AMIX
+    }
+    package "Domaine Comptabilité" as COMPTE {
+        component "copy_request" as CR
+        component "copy_payment" as CP
+        component "copy_tariff" as CT
+        component "guichet (account)" as GA
+    }
+    package "Domaine POS" as POS {
+        component "pos_order" as PO
+        component "pos_config" as PC
+    }
+}
+
+package "Couche Sécurité" as SECURITE {
+    component "Groupes\n(4 groupes métier)" as GROUPES
+    component "ACL CSV\n(82 règles)" as ACL
+    component "Règles ir.rule\n(isolation centre)" as RULES
+    component "Vérifications Python\n(_ensure_*)" as VPython
+}
+
+package "Couche Persistance" as PERSISTANCE {
+    database "PostgreSQL 18" as PG
+}
+
+PRESENTATION --> CONTROLE
+CONTROLE --> METIER
+METIER --> PERSISTANCE
+SECURITE ..> METIER : Protège
+
+AO <.. AN : hérite
+AO <.. AM : hérite
+AO <.. AD : hérite
+IND --> AO : Many2one
+C --> R : Many2one
+R --> AO : Many2one
+
+@enduml

@@ -1,0 +1,99 @@
+@startuml
+!include ../style.puml
+
+title ERD complémentaire — Tables Guichet, Comptabilité et POS
+
+database "PostgreSQL" {
+
+entity etat_civil_copy_request {
+    * id: serial PK
+    --
+    Hérite de etat_civil_demande_guichet
+    --
+    * acte_id: integer FK -> etat_civil_acte_*
+    * tarif_id: integer FK -> etat_civil_copy_tariff
+    ~ montant_total: numeric
+    ~ est_payee: boolean
+}
+
+entity etat_civil_copy_payment {
+    * id: serial PK
+    --
+    * copy_request_id: integer FK -> etat_civil_copy_request
+    ~ montant: numeric NOT NULL
+    ~ etat: varchar DEFAULT 'brouillon'
+    ~ date_paiement: timestamp
+    ~ mode_paiement: varchar
+    ~ reference_paiement: varchar
+    * guichet_id: integer FK -> etat_civil_guichet
+}
+
+entity etat_civil_copy_tariff {
+    * id: serial PK
+    --
+    ~ name: varchar NOT NULL
+    ~ type_acte: varchar NOT NULL
+    ~ type_copie: varchar NOT NULL
+    ~ montant: numeric NOT NULL
+    ~ date_debut: date
+    ~ date_fin: date
+    ~ actif: boolean DEFAULT true
+    --
+    UK(type_acte, type_copie, date_debut)
+}
+
+entity etat_civil_guichet {
+    * id: serial PK
+    --
+    ~ name: varchar NOT NULL
+    * centre_id: integer FK -> etat_civil_centre
+    * responsable_id: integer FK -> res_users
+}
+
+entity etat_civil_guichet_ticket {
+    * id: serial PK
+    --
+    Extension de etat_civil_demande_guichet
+    --
+    * pos_order_id: integer FK -> pos_order
+    ~ est_imprime: boolean DEFAULT false
+}
+
+entity etat_civil_acte_copy_link {
+    * id: serial PK
+    --
+    * acte_id: integer FK -> etat_civil_acte_*
+    * copy_request_id: integer FK -> etat_civil_copy_request
+    ~ date_copie: date
+    --
+    UK(acte_id, copy_request_id)
+}
+
+entity etat_civil_operation_event {
+    * id: serial PK
+    --
+    * copy_payment_id: integer FK -> etat_civil_copy_payment
+    ~ event_type: varchar
+    ~ date_event: timestamp
+    ~ details: text
+}
+
+entity pos_order {
+    * id: serial PK
+    --
+    Table Odoo standard étendue
+    --
+    ~ etat_civil_total: numeric
+}
+
+entity pos_config {
+    * id: serial PK
+    --
+    Table Odoo standard étendue
+    --
+    ~ etat_civil_enabled: boolean
+}
+
+} ' end database
+
+@enduml

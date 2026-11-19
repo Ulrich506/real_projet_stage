@@ -1,0 +1,29 @@
+@startuml
+!include ../style.puml
+
+title Séquence système — Export des données (ODF/Excel)
+
+participant "Administrateur" as Admin
+participant "Vue Liste Actes" as Vue
+participant "etat.civil.acte.officiel" as Acte
+participant "Controller (main.py)" as Controller
+participant "odfpy / openpyxl" as ExportLib
+participant "etat.civil.import_export_log" as Log
+participant "PostgreSQL" as DB
+
+Admin -> Vue: Sélectionner des actes, cliquer "Exporter"
+Vue -> Controller: /etat_civil/export?model=...&format=odf
+Controller -> Controller: _ensure_admin()
+Note over Controller: Vérifie le rôle administrateur
+Controller -> Acte: search_read(selection)
+Acte -> DB: SELECT sur table acte
+DB --> Acte: Données des actes
+Acte --> Controller: Liste des enregistrements
+Controller -> ExportLib: Générer fichier (ODF ou Excel)
+ExportLib --> Controller: Fichier binaire
+Controller -> Log: create(type='export', format, nbre_enregistrements)
+Note over Log: Entrée dans le journal d'import/export
+Controller --> Vue: Fichier téléchargé
+Vue --> Admin: Ouverture du fichier
+
+@enduml

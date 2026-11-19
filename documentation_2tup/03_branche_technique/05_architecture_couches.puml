@@ -1,0 +1,224 @@
+@startuml
+!include ../style.puml
+
+title Architecture logicielle en couches — Système État Civil Odoo
+
+skinparam componentStyle rectangle
+
+package "Couche Présentation" {
+    component "Vues XML (Form/List/Kanban/Search)" as VuesXML {
+        note right
+          27 fichiers XML
+          Interfaces utilisateur Odoo
+        end note
+    }
+    
+    component "Rapports QWeb" as QWeb {
+        note right
+          12 fichiers XML
+          Templates HTML → PDF via wkhtmltopdf
+        end note
+    }
+    
+    component "Composants JS/OWL" as OWL {
+        note right
+          3 fichiers JS + 2 templates XML
+          Widgets et composants front-end
+        end note
+    }
+    
+    component "Contrôleurs HTTP" as Controllers {
+        note right
+          4 fichiers Python
+          Routes : download, imprimer, export
+        end note
+    }
+}
+
+package "Couche Métier (ORM)" {
+    component "Modèles Core" as ModelsCore {
+        note right
+          individu.py (493 lignes)
+          acte_officiel.py (1410 lignes)
+          acte_naissance.py (224 lignes)
+          acte_mariage.py (326 lignes)
+          acte_deces.py (122 lignes)
+          mention_marginale.py (373 lignes)
+          piece_justificative.py (544 lignes)
+          demande_guichet.py (516 lignes)
+          registre.py (107 lignes)
+        end note
+    }
+    
+    component "Modèles Comptabilité" as ModelsAccount {
+        note right
+          copy_request.py (836 lignes)
+          copy_payment.py (196 lignes)
+          copy_tariff.py (101 lignes)
+          guichet.py (209 lignes)
+        end note
+    }
+    
+    component "Modèles POS" as ModelsPOS {
+        note right
+          guichet_ticket.py (226 lignes)
+          pos_order.py (261 lignes)
+          pos_config.py (113 lignes)
+        end note
+    }
+    
+    component "Wizards" as Wizards {
+        note right
+          13 fichiers Python
+          Transmission, correction, annulation
+        end note
+    }
+    
+    component "Audit Mixin" as AuditMixin {
+        note right
+          Surcharge create/write/unlink
+          Journalisation automatique
+        end note
+    }
+    
+    component "Utilitaires" as Utils {
+        note right
+          malagasy_date_utils.py (337 lignes)
+          Calculs de dates malgaches
+        end note
+    }
+}
+
+package "Couche Sécurité" {
+    component "Groupes & Règles" as Security {
+        note right
+          security.xml — 4 groupes, ~15 ir.rule
+          ir.model.access.csv — 82 ACL
+        end note
+    }
+    
+    component "Vérifications Python" as PythonChecks {
+        note right
+          _ensure_agent(), _ensure_officier()
+          _ensure_admin(), _ensure_competence_territoriale()
+          _INTERNAL_TRANSITION_TOKEN
+        end note
+    }
+    
+    component "Authentification E-mail" as AuthEmail {
+        note right
+          Module etat_civil_auth_email
+          Contrainte SQL sur e-mail
+        end note
+    }
+}
+
+package "Couche Persistance" {
+    component "ORM Odoo" as OdooORM {
+        note right
+          Couche ORM SQLAlchemy
+          Mapping Python ↔ PostgreSQL
+        end note
+    }
+    
+    database "PostgreSQL 18" as PG {
+        note right
+          Base : etat_civil_odoo17_test
+          Tables : etat_civil_individu,
+          etat_civil_acte_naissance, etc.
+        end note
+    }
+}
+
+package "Couche Configuration" {
+    component "Données XML" as DataXML {
+        note right
+          16 fichiers XML
+          Séquences, pièces requises,
+          identité commune
+        end note
+    }
+    
+    component "Configuration Odoo" as OdooConf {
+        note right
+          odoo17.conf
+          Ports, DB, addons_path
+        end note
+    }
+}
+
+package "Couche Intégration" {
+    component "Export ODF" as ODF {
+        note right
+          Bibliothèque odfpy
+        end note
+    }
+    
+    component "Export Excel" as Excel {
+        note right
+          Bibliothèque openpyxl
+        end note
+    }
+    
+    component "QR Code" as QR {
+        note right
+          Bibliothèque qrcode
+        end note
+    }
+    
+    component "wkhtmltopdf" as WkHTML {
+        note right
+          Conversion HTML → PDF
+        end note
+    }
+    
+    component "Module Account Odoo" as Account {
+        note right
+          Module standard Odoo
+          Factures, paiements
+        end note
+    }
+    
+    component "Module POS Odoo" as POS {
+        note right
+          Module standard Odoo
+          Point de vente
+        end note
+    }
+}
+
+' Connexions entre couches
+VuesXML --> ModelsCore
+QWeb --> ModelsCore
+QWeb --> WkHTML
+OWL --> Controllers
+Controllers --> ModelsCore
+Controllers --> ODF
+Controllers --> Excel
+Controllers --> AuditMixin
+
+ModelsCore --> AuditMixin
+ModelsCore --> Utils
+ModelsAccount --> ModelsCore
+ModelsPOS --> ModelsAccount
+Wizards --> ModelsCore
+
+ModelsCore --> Security
+ModelsCore --> PythonChecks
+Wizards --> PythonChecks
+
+ModelsCore --> OdooORM
+ModelsAccount --> OdooORM
+ModelsPOS --> OdooORM
+OdooORM --> PG
+
+DataXML --> OdooORM
+OdooConf --> OdooORM
+
+ModelsAccount --> Account
+ModelsPOS --> POS
+ModelsCore --> QR
+
+AuthEmail --> OdooORM
+
+@enduml

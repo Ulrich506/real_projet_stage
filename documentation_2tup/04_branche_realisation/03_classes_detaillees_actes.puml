@@ -1,0 +1,164 @@
+@startuml
+!include ../style.puml
+
+title Classes détaillées — Domaine Actes (naissance, mariage, décès)
+
+skinparam class {
+    BackgroundColor #E8F4FD
+    BorderColor #2979B5
+}
+
+class "etat.civil.acte.officiel (Abstract)" as ActeOfficiel {
+    <<abstract>>
+    _name = "Acte Officiel"
+    _inherit = "etat.civil.acte.officiel"
+    _description = "mail.thread, mail.activity.mixin, etat.civil.audit.mixin"
+    
+    + numero_acte : Char (compute)
+    + feuillet_numero : Integer
+    + registre_id : Many2one('etat.civil.registre')
+    + date_dressage : Date
+    + texte_integral_acte : Text
+    + statut : Selection(brouillon, transmis, valide, retourne_correction, annule)
+    + hash_empreinte_num : Char (compute)
+    + qr_code_image : Binary (compute)
+    + agent_transmetteur_id : Many2one('res.users')
+    + officier_validateur_id : Many2one('res.users')
+    + date_transmission : DateTime
+    + date_validation : DateTime
+    + motif_refus : Char
+    + motif_annulation : Char
+    
+    + action_transmit()
+    + action_validate()
+    + action_refuse(motif)
+    + action_retransmit()
+    + action_annulate(motif)
+    + _ensure_competence_territoriale()
+    + _ensure_agent()
+    + _ensure_officier()
+    + _ensure_admin()
+    + _ensure_officier_responsable()
+    + _compute_hash_empreinte()
+    + _compute_qr_code()
+    + write(vals)
+    + unlink()
+    
+    {static} _INTERNAL_TRANSITION_TOKEN
+}
+
+class "etat.civil.acte.naissance" as Naissance {
+    _name = "etat.civil.acte.naissance"
+    _inherit = "etat.civil.acte.officiel"
+    
+    + enfant_id : Many2one('etat.civil.individu')
+    + pere_id : Many2one('etat.civil.individu')
+    + mere_id : Many2one('etat.civil.individu')
+    + declarant_id : Many2one('etat.civil.individu')
+    + heure_naissance : Time
+    + lieu_naissance : Char
+    + lieu_accouchement : Char
+    + filiation : Selection(etablie_simple, etablie_double, non_etablie)
+    + est_jumeau : Boolean
+    + rang_naissance : Integer
+    + piece_naissance_ref : Char
+    
+    + name_get()
+}
+
+class "etat.civil.acte.mariage" as Mariage {
+    _name = "etat.civil.acte.mariage"
+    _inherit = "etat.civil.acte.officiel"
+    
+    + conjoint_1_id : Many2one('etat.civil.individu')
+    + conjoint_2_id : Many2one('etat.civil.individu')
+    + temoin_1_id : Many2one('etat.civil.individu')
+    + temoin_2_id : Many2one('etat.civil.individu')
+    + date_mariage : Date
+    + lieu_mariage : Char
+    + regime_matrimonial : Selection(communautaire, separation, autre)
+    + conjoint_1_est_etranger : Boolean
+    + conjoint_2_est_etranger : Boolean
+    + nationalite_conjoint_1 : Char
+    + nationalite_conjoint_2 : Char
+    
+    + name_get()
+}
+
+class "etat.civil.acte.deces" as Deces {
+    _name = "etat.civil.acte.deces"
+    _inherit = "etat.civil.acte.officiel"
+    
+    + defunt_id : Many2one('etat.civil.individu')
+    + declarant_id : Many2one('etat.civil.individu')
+    + date_deces : Date
+    + heure_deces : Time
+    + lieu_deces : Char
+    + cause_deces : Char
+    + certificat_medical_ref : Char
+    + age_du_defunt : Integer (compute)
+    
+    + name_get()
+}
+
+class "etat.civil.registre" as Registre {
+    _name = "etat.civil.registre"
+    _inherit = "etat.civil.audit.mixin"
+    
+    + annee : Integer
+    + type_registre : Selection(naissance, mariage, deces)
+    + numero_volume : Integer
+    + centre_id : Many2one('etat.civil.centre')
+    + est_cloture : Boolean
+    + date_ouverture : Date
+    + date_cloture : Date
+    + acte_naissance_ids : One2many('etat.civil.acte.naissance')
+    + acte_mariage_ids : One2many('etat.civil.acte.mariage')
+    + acte_deces_ids : One2many('etat.civil.acte.deces')
+    
+    + name_get()
+}
+
+class "etat.civil.centre" as Centre {
+    _name = "etat.civil.centre"
+    _inherit = "etat.civil.audit.mixin"
+    
+    + code_centre : Char
+    + nom_centre : Char
+    + commune : Char
+    + district_province : Char
+    + pays : Many2one('res.country')
+    + logo_commune : Binary
+    + logo_region : Binary
+    + reference_legale : Char
+}
+
+Naissance --|> ActeOfficiel
+Mariage --|> ActeOfficiel
+Deces --|> ActeOfficiel
+
+ActeOfficiel --> Registre : registre_id
+Registre --> Centre : centre_id
+
+note right of ActeOfficiel
+  1410 lignes de code
+  Hérité par 3 modèles concrets
+  Token de protection des transitions
+end note
+
+note right of Naissance
+  224 lignes
+  Séquence : seq_acte_naissance
+end note
+
+note right of Mariage
+  326 lignes
+  Séquence : seq_acte_mariage
+end note
+
+note right of Deces
+  122 lignes
+  Séquence : seq_acte_deces
+end note
+
+@enduml

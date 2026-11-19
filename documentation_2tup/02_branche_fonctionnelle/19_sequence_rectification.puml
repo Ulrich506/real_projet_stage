@@ -1,0 +1,45 @@
+@startuml
+!include ../style.puml
+
+title Séquence système — Rectification d'un acte refusé
+
+participant "Officier" as Officier
+participant "Vue Form Acte" as Vue
+participant "Wizard Refus" as WizardRefus
+participant "etat.civil.acte.officiel" as Acte
+participant "mail.thread" as Mail
+participant "Agent" as Agent
+participant "Wizard Retransmission" as WizardRetrans
+
+Officier -> Vue: Ouvir un acte transmis
+Vue -> Acte: read(acte_id)
+Acte --> Vue: Données complètes de l'acte
+Officier -> Vue: Cliquer "Refuser"
+Vue -> WizardRefus: Ouvrir wizard de refus
+WizardRefus --> Officier: Formulaire avec champ motif
+Officier -> WizardRefus: Saisir le motif de refus
+WizardRefus -> Acte: action_refuse(motif)
+Acte -> Acte: _ensure_officier()
+Note over Acte: Vérifie le rôle Officier
+Acte -> Acte: write(statut='retourne_correction', motif_refus=motif)
+Acte -> Mail: message_post()
+Mail --> Agent: Notification de retour correction
+Acte --> Vue: Statut mis à jour
+Vue --> Officier: Acte retourné
+
+Agent -> Vue: Recevoir notification, ouvrir l'acte
+Vue --> Agent: Acte avec motif de refus visible
+Agent -> Vue: Corriger les champs en erreur
+Vue -> Acte: write(champs_corrigés)
+Agent -> Vue: Cliquer "Retransmettre"
+Vue -> WizardRetrans: Ouvrir wizard de retransmission
+WizardRetrans --> Agent: Confirmation
+Agent -> WizardRetrans: Confirmer
+WizardRetrans -> Acte: action_retransmit()
+Acte -> Acte: write(statut='transmis')
+Acte -> Mail: message_post()
+Mail --> Officier: Notification de retransmission
+Acte --> Vue: Statut mis à jour
+Vue --> Agent: Acte retransmis
+
+@enduml

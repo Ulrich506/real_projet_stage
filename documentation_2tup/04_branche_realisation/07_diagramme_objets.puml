@@ -1,0 +1,144 @@
+@startuml
+!include ../style.puml
+
+title Diagramme d'objets — Exemple concret : Acte de naissance
+
+skinparam class {
+    BackgroundColor #E8F4FD
+    BorderColor #2979B5
+}
+
+' Objet Centre
+object "Centre: Mairie d'Antananarivo" as Centre1 {
+    + code_centre = "TNR-001"
+    + nom_centre = "Mairie d'Antananarivo"
+    + commune = "Antananarivo"
+    + district_province = "Analamanga"
+}
+
+' Objet Registre
+object "Registre: Naissances 2024" as Registre1 {
+    + annee = 2024
+    + type_registre = "naissance"
+    + numero_volume = 1
+    + est_cloture = false
+    + date_ouverture = 2024-01-01
+}
+
+' Objets Individu
+object "Individu: Enfant RAKOTO" as Enfant1 {
+    + cin = "CIN-2024-001234"
+    + nom = "RAKOTO"
+    + prenoms = "Jean"
+    + sexe = "masculin"
+    + date_naissance = 2024-03-15
+    + statut_vital = "vivant"
+}
+
+object "Individu: Père RANDRIA" as Pere1 {
+    + cin = "CIN-1990-005678"
+    + nom = "RANDRIA"
+    + prenoms = "Pierre"
+    + sexe = "masculin"
+    + date_naissance = 1990-06-20
+    + situation_matrimoniale = "marie"
+}
+
+object "Individu: Mère RAKOTO" as Mere1 {
+    + cin = "CIN-1992-009012"
+    + nom = "RAKOTO"
+    + prenoms = "Marie"
+    + sexe = "feminin"
+    + date_naissance = 1992-11-08
+    + situation_matrimoniale = "marie"
+}
+
+object "Individu: Déclarant RANDRIA" as Declarant1 {
+    + cin = "CIN-1990-005678"
+    + nom = "RANDRIA"
+    + prenoms = "Pierre"
+}
+
+' Objet Acte de naissance
+object "ActeNaissance: N-2024-0042" as Acte1 {
+    + numero_acte = "N-2024-0042"
+    + feuillet_numero = 42
+    + date_dressage = 2024-03-20
+    + statut = "valide"
+    + hash_empreinte_num = "sha256:a1b2c3..."
+    + qr_code_image = <binary>
+    + heure_naissance = 14:30:00
+    + lieu_naissance = "CHU d'Antananarivo"
+    + lieu_accouchement = "CHU d'Antananarivo"
+    + filiation = "etablie_double"
+    + est_jumeau = false
+    + rang_naissance = 1
+    + date_validation = 2024-03-22 10:15:00
+}
+
+' Objets Utilisateurs
+object "res.users: Agent SOA" as Agent1 {
+    + login = "soa@commune.mg"
+    + etat_civil_centre_ids = [Centre1]
+    + groups = ["group_etat_civil_agent"]
+}
+
+object "res.users: Officier ANDRIANARIVO" as Officier1 {
+    + login = "andrianarivo@commune.mg"
+    + etat_civil_centre_ids = [Centre1]
+    + groups = ["group_etat_civil_officier"]
+}
+
+' Objets Pièces
+object "Piece: Certificat médical" as Piece1 {
+    + name = "certificat_medical_naissance"
+    + etat = "verifie"
+    + obligatoire = true
+}
+
+object "Piece: Acte d'identité père" as Piece2 {
+    + name = "identite_pere"
+    + etat = "verifie"
+    + obligatoire = true
+}
+
+' Objet Mention marginale
+object "Mention: Naissance enregistrée" as Mention1 {
+    + type_mention = "naissance"
+    + date_mention = 2024-03-22
+    + contenu = "Naissance de Jean RAKOTO..."
+    + statut = "valide"
+}
+
+' Objet Audit log
+object "AuditLog: Création acte" as Audit1 {
+    + event_uuid = "550e8400-e29b-41d4-a716-446655440000"
+    + event_datetime_utc = 2024-03-20 08:30:00 UTC
+    + action_type = "create"
+    + record_model = "etat.civil.acte.naissance"
+    + record_id = 42
+    + ip_address = "192.168.1.100"
+}
+
+' Relations
+Centre1 --> Registre1 : centre_id
+Registre1 --> Acte1 : registre_id
+Acte1 --> Enfant1 : enfant_id
+Acte1 --> Pere1 : pere_id
+Acte1 --> Mere1 : mere_id
+Acte1 --> Declarant1 : declarant_id
+Acte1 --> Agent1 : agent_transmetteur_id
+Acte1 --> Officier1 : officier_validateur_id
+Acte1 --> Piece1 : piece_justificative_ids
+Acte1 --> Piece2 : piece_justificative_ids
+Acte1 --> Mention1 : mention_marginale_ids
+Acte1 --> Audit1 : audit_log (via mixin)
+
+note right of Acte1
+  Exemple concret d'un acte de naissance
+  validé à la Mairie d'Antananarivo.
+  L'enfant Jean RAKOTO est né le 15 mars 2024
+  au CHU d'Antananarivo.
+end note
+
+@enduml

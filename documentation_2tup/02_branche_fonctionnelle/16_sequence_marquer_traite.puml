@@ -1,0 +1,29 @@
+@startuml
+!include ../style.puml
+
+title Séquence système — Marquer une demande comme traitée
+
+participant "Régisseur" as Regisseur
+participant "Interface POS" as POS
+participant "etat.civil.guichet.ticket" as Ticket
+participant "etat.civil.demande.guichet" as Demande
+participant "etat.civil.audit.log" as Audit
+
+Regisseur -> POS: Sélectionner un ticket dans la file d'attente
+POS -> Ticket: read(ticket_id)
+Ticket --> POS: Détails du ticket
+Regisseur -> POS: Cliquer "Marquer traité"
+POS -> Demande: action_mark_treated()
+Demanda -> Demande: Vérifier statut='en_attente'
+alt Statut incorrect
+    Demande --> POS: Erreur : statut incompatible
+    POS --> Regisseur: Message d'erreur
+else Statut correct
+    Demande -> Demande: write(statut='traite', date_traitement=now())
+    Demande -> Audit: _log_event('status_change')
+    Note over Audit: Transition enregistrée
+    Demande --> POS: Succès
+    POS --> Regisseur: Ticket marqué comme traité
+end
+
+@enduml

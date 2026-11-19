@@ -1,0 +1,59 @@
+' Style PlantUML commun pour tous les diagrammes du projet État Civil
+' Inclure dans chaque fichier .puml avec : !include ../style.puml
+
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam borderRadius 8
+skinparam padding 10
+
+' Couleurs du projet
+skinparam rectangle {
+    BackgroundColor #E8F4FD
+    BorderColor #2979B5
+}
+skinparam database {
+    BackgroundColor #FFF2E6
+    BorderColor #D79B00
+}
+skinparam usecase {
+    BackgroundColor #F0F7FF
+    BorderColor #2979B5
+}
+skinparam actor {
+    BackgroundColor #E2F0D9
+    BorderColor #4F8A10
+}
+skinparam component {
+    BackgroundColor #F5F5F5
+    BorderColor #666666
+}
+skinparam package {
+    BackgroundColor #F0F0F0
+    BorderColor #333333
+}
+skinparam state {
+    BackgroundColor #FFF8E1
+    BorderColor #F9A825
+}
+skinparam activity {
+    BackgroundColor #FFF8E1
+    BorderColor #F9A825
+}
+
+' Typographie
+skinparam fontName DejaVu Sans
+skinparam fontSize 14
+skinparam titleFontSize 18
+skinparam titleFontName DejaVu Sans
+skinparam titleBackgroundColor #2979B5
+skinparam titleFontColor #FFFFFF
+
+' Flèches
+skinparam arrowColor #555555
+skinparam arrowThickness 2
+
+' Legendes
+skinparam legend {
+    BackgroundColor #F8F8F8
+    BorderColor #CCCCCC
+}

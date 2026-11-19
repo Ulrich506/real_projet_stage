@@ -1,0 +1,37 @@
+@startuml
+!include ../style.puml
+
+title Séquence système — Paiement et quittance de copie
+
+participant "Régisseur" as Regisseur
+participant "Interface POS" as POS
+participant "pos.order" as PosOrder
+participant "etat.civil.copy.payment" as Payment
+participant "etat.civil.copy.tariff" as Tariff
+participant "etat.civil.copy.request" as CopyRequest
+participant "account.move" as Invoice
+participant "Rapport QWeb" as Report
+
+Regisseur -> POS: Sélectionner la demande de copie
+POS -> CopyRequest: read(request_id)
+CopyRequest --> POS: Détails (type acte, type copie)
+POS -> Tariff: search_read(type_acte, type_copie)
+Tariff --> POS: Montant du tarif
+Regisseur -> POS: Confirmer le paiement
+POS -> PosOrder: create(order_lines=[copie])
+PosOrder -> Payment: create(paiement lié à la copie)
+Payment -> Invoice: create(mouvement comptable)
+Note over Invoice: Intégration module account
+alt Paiement réussi
+    Payment -> Payment: write(etat='paye')
+    Payment --> POS: Confirmation
+    Regisseur -> POS: Imprimer la quittance
+    POS -> Report: render_quittance(payment_id)
+    Report --> POS: PDF de la quittance
+    POS --> Regisseur: Quittance imprimée
+else Échec du paiement
+    Payment --> POS: Erreur de paiement
+    POS --> Regisseur: Message d'erreur
+end
+
+@enduml

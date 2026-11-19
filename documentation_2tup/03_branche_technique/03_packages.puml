@@ -1,0 +1,84 @@
+@startuml
+!include ../style.puml
+
+title Diagramme de packages — Dépendances entre modules
+
+package "etat_civil\n(Application principale)" as EC {
+    package "Modèles" as EC_M {
+        [individu]
+        [acte_officiel]
+        [acte_naissance]
+        [acte_mariage]
+        [acte_deces]
+        [mention_marginale]
+        [piece_justificative]
+        [piece_requise]
+        [demande_guichet]
+        [audit_log]
+        [audit.mixin]
+        [centre]
+        [registre]
+        [config_settings]
+    }
+    package "Vues" as EC_V
+    package "Sécurité" as EC_S
+    package "Wizards" as EC_W
+    package "Contrôleurs" as EC_C
+    package "Rapports" as EC_R
+    package "Données" as EC_D
+}
+
+package "etat_civil_account\n(Passerelle comptable)" as ECA {
+    package "Modèles" as ECA_M {
+        [copy_request]
+        [copy_payment]
+        [copy_tariff]
+        [guichet]
+        [acte_copy_link]
+        [operation_event]
+    }
+    package "Vues" as ECA_V
+    package "Sécurité" as ECA_S
+}
+
+package "etat_civil_pos\n(Point de vente)" as ECP {
+    package "Modèles" as ECP_M {
+        [guichet_ticket]
+        [pos_order]
+        [pos_config]
+        [copy_request]
+        [copy_payment]
+    }
+    package "Vues" as ECP_V
+    package "Données" as ECP_D
+}
+
+package "etat_civil_auth_email\n(Authentification)" as ECAE {
+    [res_users]
+}
+
+' Dépendances inter-modules
+EC_M --> ECA_M : etat_civil_account dépend de etat_civil
+ECA_M --> ECP_M : etat_civil_pos dépend de etat_civil_account
+EC_M --> ECAE : etat_civil_auth_email dépend de etat_civil
+
+' Dépendances intra-modules
+EC_V --> EC_M
+EC_W --> EC_M
+EC_C --> EC_M
+EC_R --> EC_M
+EC_S --> EC_M
+
+ECA_V --> ECA_M
+ECA_S --> ECA_M
+
+ECP_V --> ECP_M
+ECP_D --> ECP_M
+
+note right of EC_M
+  Module principal avec\n
+  16 modèles ORM et\n
+  4743 lignes de code
+end note
+
+@enduml

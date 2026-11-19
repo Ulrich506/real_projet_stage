@@ -1,0 +1,41 @@
+@startuml
+!include ../style.puml
+
+title Cas d'utilisation — Régisseur (Point de vente)
+
+skinparam packageStyle rectangle
+
+package "Régisseur / Point de vente" {
+    usecase "Consulter la file d'attente du guichet" as UC30
+    usecase "Marquer une demande comme traitée" as UC31
+    usecase "Encaisser un paiement" as UC32
+    usecase "Émettre une quittance" as UC33
+    usecase "Imprimer une copie d'acte" as UC34
+    usecase "Consulter les tarifs en vigueur" as UC35
+}
+
+left to right direction
+actor "Régisseur" as Regisseur
+
+Regisseur -- UC30
+Regisseur -- UC31
+Regisseur -- UC32
+Regisseur -- UC33
+Regisseur -- UC34
+Regisseur -- UC35
+
+UC31 ..> UC32 : <<extend>>
+UC32 ..> UC33 : <<include>>
+UC33 ..> UC34 : <<extend>>
+
+note right of UC30
+  File d'attente gérée par priorité
+  et date d'arrivée
+end note
+
+note right of UC32
+  Intégration avec le module POS
+  (point_of_sale Odoo)
+end note
+
+@enduml

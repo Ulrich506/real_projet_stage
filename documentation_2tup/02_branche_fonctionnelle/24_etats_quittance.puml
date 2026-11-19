@@ -1,0 +1,37 @@
+@startuml
+!include ../style.puml
+
+title États-transitions — Quittance de paiement
+
+start : Quittance créée
+note right
+  Liée à etat.civil.copy.payment
+  et au module account
+end note
+
+["Non payée"] : en_attente_paiement
+
+["Payée"] : payee
+en_attente_paiement --> payee : Paiement encaissé
+
+["Imprimée"] : imprimee
+payee --> imprimee : Quittance imprimée
+
+["Annulée"] : annulee
+en_attente_paiement --> annulee : Annulation avant paiement
+payee --> annulee : Remboursement / annulation
+
+note right of annulee
+  Mouvement comptable
+  d'annulation créé
+end note
+
+["Remboursée"] : remboursee
+annulee --> remboursee : Remboursement effectué
+
+note right of remboursee
+  Cas rare : erreur de paiement
+  ou demande de remboursement
+end note
+
+@enduml

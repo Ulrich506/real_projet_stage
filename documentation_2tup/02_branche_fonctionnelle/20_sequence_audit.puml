@@ -1,0 +1,57 @@
+@startuml
+!include ../style.puml
+
+title Séquence système — Journal d'audit automatique
+
+participant "Utilisateur" as User
+participant "Vue Odoo" as Vue
+participant "Modèle ORM" as Model
+participant "etat.civil.audit.mixin" as Mixin
+participant "etat.civil.audit.log" as AuditLog
+participant "PostgreSQL" as DB
+
+note over User, DB
+  Le mixin est hérité par tous les modèles
+  sensibles (Individu, Acte, Demande, etc.)
+end note
+
+group Création d'un enregistrement
+    User -> Vue: Remplir et sauvegarder
+    Vue -> Model: create(vals)
+    Model -> Mixin: create() (surchargé)
+    Mixin -> Model: super().create(vals)
+    Model -> DB: INSERT
+    DB --> Model: record_id
+    Mixin -> AuditLog: _log_event('create', record)
+    AuditLog -> AuditLog: generate_event_uuid()
+    AuditLog -> AuditLog: capture_context()
+    Note over AuditLog: user_id, ip_address, session_hash, datetime_utc
+    AuditLog -> DB: INSERT INTO etat_civil_audit_log
+    DB --> AuditLog: Succès
+    Mixin --> Vue: Recordset créé
+    Vue --> User: Confirmation
+end
+
+group Modification d'un enregistrement
+    User -> Vue: Modifier et sauvegarder
+    Vue -> Model: write(vals)
+    Model -> Mixin: write() (surchargé)
+    Mixin -> Mixin: Capturer valeurs avant/après
+    Mixin -> Model: super().write(vals)
+    Model -> DB: UPDATE
+    Mixin -> AuditLog: _log_event('write', record, changes)
+    AuditLog -> DB: INSERT INTO etat_civil_audit_log
+    Mixin --> Vue: Succès
+    Vue --> User: Confirmation
+end
+
+group Suppression (bloquée pour audit log)
+    User -> Vue: Essayer de supprimer
+    Vue -> AuditLog: unlink()
+    AuditLog -> AuditLog: raise AccessError()
+    Note over AuditLog: Journal immuable — suppression interdite
+    AuditLog --> Vue: Erreur : suppression interdite
+    Vue --> User: Message d'erreur
+end
+
+@enduml

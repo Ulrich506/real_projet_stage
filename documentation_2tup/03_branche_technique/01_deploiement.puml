@@ -1,0 +1,54 @@
+@startuml
+!include ../style.puml
+
+title Diagramme de déploiement — Architecture d'infrastructure
+
+node "Poste Agent/Officier/Admin" as POSTE {
+    component "Navigateur Web" as NAV
+}
+
+node "Poste Régisseur" as POS_REG {
+    component "Terminal POS" as TPOS
+}
+
+node "Serveur Odoo" as SERVER {
+    component "Odoo 17 (odoo-bin)" as ODOO
+    component "Modules custom" as MOD {
+        component "etat_civil" as EC
+        component "etat_civil_account" as ECA
+        component "etat_civil_pos" as ECP
+        component "etat_civil_auth_email" as ECAE
+    }
+    component "wkhtmltopdf" as WKHTML
+}
+
+node "Serveur PostgreSQL" as PG_NODE {
+    database "PostgreSQL 18" as PG
+    database "etat_civil_odoo17_test" as DB
+}
+
+node "GitHub" as GH {
+    repository "real_projet_stage" as REPO
+}
+
+NAV -> ODOO : HTTP (port 8071)
+TPOS -> ODOO : HTTP (port 8071)
+ODOO --> PG : TCP (port 5432)
+PG --> DB
+ODOO --> WKHTML : Génération PDF
+EC --> ECA : Dépendance
+ECA --> ECP : Dépendance
+ECAE --> EC : Dépendance
+
+SERVER --> GH : Git (push/pull)
+
+note right of SERVER
+  Configuration :\n
+  - http_port: 8071\n
+  - gevent_port: 8072\n
+  - interface: 127.0.0.1\n
+  - max_cron_threads: 0\n
+  - log_level: info
+end note
+
+@enduml

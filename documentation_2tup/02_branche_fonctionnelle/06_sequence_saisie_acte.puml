@@ -1,0 +1,59 @@
+@startuml
+!include ../style.puml
+
+title Diagramme de séquence — Saisie et transmission d'un acte
+
+participant "Agent" as A
+participant "Vue formulaire" as V
+participant "Modèle Acte\n(acte_officiel)" as M
+participant "Modèle Individu" as I
+participant "Modèle Registre" as R
+participant "Modèle Pièce\nRequise" as PR
+participant "Modèle Pièce\nJustificative" as PJ
+participant "Audit Log" as AL
+
+A -> V: Ouvrir formulaire acte naissance
+V -> M: default_get(fields_list)
+M -> PR: _get_configured_required_pieces()
+PR --> M: Liste des codes pièces
+M -> PJ: _auto_piece_vals_list()
+PJ --> M: Pièces à préremplir
+M --> V: Valeurs par défaut avec pièces
+V --> A: Formulaire affiché
+
+A -> V: Remplir et enregistrer
+V -> M: create(vals_list)
+M -> M: _ensure_agent()
+M -> M: _ensure_competence_territoriale_create()
+M -> I: Vérifier individu (enfant, parents)
+M -> R: Vérifier registre ouvert
+M -> M: _generate_numero_acte()
+M -> M: _get_next_feuillet_numero()
+M --> M: Enregistrer en base
+M -> PJ: _sync_pieces_justificatives()
+M -> AL: _record_event("create")
+M --> V: Acte créé (brouillon)
+V --> A: Confirmation
+
+A -> V: Cliquer "Transmettre"
+V -> M: action_envoyer_validation(officier)
+M -> M: _check_pret_pour_transmission()
+M -> M: _get_competent_officiers()
+alt Officier unique
+    M -> M: _execute_transmission(officier)
+    M --> M: statut = "en_attente"
+    M -> AL: _record_event("transmit")
+    M -> M: message_post()
+    M -> M: activity_schedule(officier)
+    M --> V: Notification succès
+else Plusieurs officiers
+    M --> V: Ouvrir wizard sélection
+    V --> A: Choisir l'officier
+    A -> V: Confirmer officier
+    V -> M: _execute_transmission(officier)
+    M --> V: Notification succès
+end
+
+V --> A: Acte transmis
+
+@enduml

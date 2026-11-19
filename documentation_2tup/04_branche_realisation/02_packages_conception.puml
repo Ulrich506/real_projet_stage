@@ -1,0 +1,145 @@
+@startuml
+!include ../style.puml
+
+title Packages de conception — Structure des modules Odoo
+
+skinparam packageStyle rectangle
+
+package "custom_addons" {
+    
+    package "etat_civil (v17.0.2.1.30)" {
+        
+        package "models/" {
+            package "Citoyen" {
+                "individu.py"
+                "registre.py" (Centre)
+            }
+            package "Actes" {
+                "acte_officiel.py" (abstrait)
+                "acte_naissance.py"
+                "acte_mariage.py"
+                "acte_deces.py"
+            }
+            package "Mentions & Pièces" {
+                "mention_marginale.py"
+                "piece_justificative.py"
+                "piece_requise.py"
+            }
+            package "Guichet" {
+                "demande_guichet.py"
+            }
+            package "Audit" {
+                "audit_log.py"
+            }
+            package "Configuration" {
+                "config_settings.py"
+                "import_export_log.py"
+            }
+            package "Extensions" {
+                "res_users.py"
+                "officier_views_hook.py"
+            }
+            package "Utilitaires" {
+                "malagasy_date_utils.py"
+            }
+        }
+        
+        package "views/" {
+            "menus.xml"
+            "individu_views.xml"
+            "acte_naissance_views.xml"
+            "acte_mariage_views.xml"
+            "acte_deces_views.xml"
+            "mentions_marginales_views.xml"
+            "demandes_guichet_views.xml"
+            "audit_log_views.xml"
+            "config_settings_views.xml"
+            "... (27 fichiers)"
+        }
+        
+        package "wizards/" {
+            "creer_acte_wizard.py"
+            "transmission_acte_wizard.py"
+            "retour_correction_wizard.py"
+            "annulation_acte_wizard.py"
+            "... (13 fichiers)"
+        }
+        
+        package "controllers/" {
+            "main.py" (routes HTTP)
+            "... (4 fichiers)"
+        }
+        
+        package "security/" {
+            "security.xml" (groupes + ir.rule)
+            "ir.model.access.csv" (82 ACL)
+        }
+        
+        package "data/" {
+            "acte_sequence.xml"
+            "demande_guichet_sequence.xml"
+            "mention_sequence.xml"
+            "piece_requise_data.xml"
+            "... (16 fichiers)"
+        }
+        
+        package "reports/" {
+            "actes_reports.xml"
+            "citizen_export_report.xml"
+            "... (12 fichiers)"
+        }
+        
+        package "static/src/" {
+            package "js/" { "3 fichiers OWL" }
+            package "scss/" { "1 fichier" }
+            package "xml/" { "2 templates" }
+        }
+        
+        package "tests/" { "22 fichiers" }
+        package "demo/" { "3 fichiers" }
+    }
+    
+    package "etat_civil_account (v17.0.1.1.6)" {
+        package "models/" {
+            "copy_request.py"
+            "copy_payment.py"
+            "copy_tariff.py"
+            "guichet.py"
+            "acte_copy_link.py"
+            "operation_event.py"
+            "account_move.py"
+        }
+        package "views/"
+        package "report/"
+        package "security/"
+        package "data/"
+        package "wizards/"
+    }
+    
+    package "etat_civil_pos (v17.0.1.0.9)" {
+        package "models/" {
+            "guichet_ticket.py"
+            "pos_order.py"
+            "pos_config.py"
+            "copy_request.py"
+            "copy_payment.py"
+        }
+        package "views/"
+        package "report/"
+        package "data/"
+        package "security/"
+        package "static/" (Assets POS)
+    }
+    
+    package "etat_civil_auth_email (v17.0.1.0.2)" {
+        package "models/" { "res_users.py" }
+        package "views/" { "login_templates.xml" }
+    }
+}
+
+' Dépendances entre packages
+"etat_civil_account" --> "etat_civil" : depends
+"etat_civil_pos" --> "etat_civil_account" : depends
+"etat_civil_auth_email" --> "etat_civil" : depends
+
+@enduml

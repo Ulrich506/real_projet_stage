@@ -1,0 +1,40 @@
+@startuml
+!include ../style.puml
+
+title Activité — Processus d'export des données
+
+start
+
+:Administrateur sélectionne des actes;
+:Cliquer sur "Exporter";
+
+if (Rôle Administrateur?) then (oui)
+    :Choisir le format (ODF / Excel);
+    
+    if (Format = ODF?) then (oui)
+        :Bibliothèque odfpy chargée;
+    else (Excel)
+        :Bibliothèque openpyxl chargée;
+    endif
+    
+    :Requête SELECT sur les actes sélectionnés;
+    :Lecture des données depuis PostgreSQL;
+    
+    :Génération du fichier;
+    :Ajout des en-têtes et métadonnées;
+    :Remplissage des lignes de données;
+    
+    :Création d'une entrée dans le journal d'import/export;
+    :Log(type='export', format, nbre_enregistrements);
+    
+    :Envoi du fichier au navigateur;
+    :Téléchargement par l'administrateur;
+    
+else (non)
+    :Erreur : accès refusé;
+    stop
+endif
+
+stop
+
+@enduml

@@ -1,0 +1,54 @@
+@startuml
+!include ../style.puml
+
+title Diagramme de contexte dynamique — Flux d'interactions
+
+actor "Agent" as A
+actor "Officier" as O
+actor "Administrateur" as AD
+actor "Régisseur" as R
+actor "Citoyen" as C
+
+rectangle "Système État Civil" as S
+
+' Agent
+A -> S : 1. Créer un individu (citoyen)
+A -> S : 2. Saisir un acte (naissance/mariage/décès)
+A -> S : 3. Joindre les pièces justificatives
+A -> S : 4. Transmettre à l'officier
+A -> S : 5. Corriger un acte retourné
+A -> S : 6. Marquer un ticket traité
+
+' Officier
+O -> S : 7. Consulter les dossiers assignés
+O -> S : 8. Vérifier les pièces reçues
+O -> S : 9. Valider un acte
+O -> S : 10. Retourner pour correction
+O -> S : 11. Refuser un acte
+O -> S : 12. Apposer une mention marginale
+
+' Administrateur
+AD -> S : 13. Gérer les centres et registres
+AD -> S : 14. Gérer les utilisateurs et rôles
+AD -> S : 15. Annuler un acte validé
+AD -> S : 16. Rectifier un acte
+AD -> S : 17. Exporter les données
+AD -> S : 18. Consulter le journal d'audit
+
+' Régisseur
+R -> S : 19. Encaisser au point de vente
+R -> S : 20. Émettre une quittance
+R -> S : 21. Imprimer un ticket
+
+' Citoyen
+C -> R : 22. Demander une copie d'acte
+C <- R : 23. Recevoir le ticket
+C <- R : 24. Payer et recevoir la copie
+
+note right of S
+  Chaque interaction est tracée dans le\n
+  journal d'audit (etat.civil.audit.log)\n
+  avec horodatage, IP et rôle.
+end note
+
+@enduml

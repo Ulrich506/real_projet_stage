@@ -1,0 +1,122 @@
+@startuml
+!include ../style.puml
+
+title ERD complémentaire — Tables Audit, Configuration et Export
+
+database "PostgreSQL" {
+
+entity etat_civil_audit_log {
+    Déjà dans 01_erd.puml
+    Rappel des champs principaux :
+    --
+    * id: serial PK
+    # event_uuid: varchar UNIQUE INDEX
+    ~ event_datetime_utc: timestamp INDEX
+    * user_id: integer FK -> res_users
+    ~ action_type: varchar INDEX
+    ~ record_model: varchar INDEX
+    ~ record_id: integer INDEX
+    ~ changed_fields: text
+    ~ old_values: text
+    ~ new_values: text
+    ~ ip_address: varchar
+    ~ session_hash: varchar
+}
+
+entity etat_civil_config_settings {
+    * id: serial PK
+    --
+    Table transitoire (res.config.settings)
+    Les valeurs sont stockées dans :
+    --
+    ~ identity_locked: boolean
+    ~ commune_code: varchar
+    ~ commune_name: varchar
+}
+
+entity ir_config_parameter {
+    * key: varchar PK
+    --
+    Table Odoo standard — stockage des paramètres
+    --
+    ~ value: text
+    --
+    Exemples de clés utilisées :
+    - etat_civil.commune_code
+    - etat_civil.commune_name
+    - etat_civil.logo_commune
+}
+
+entity etat_civil_import_export_log {
+    * id: serial PK
+    --
+    ~ name: varchar
+    ~ operation_type: varchar
+    ~ format_type: varchar
+    ~ record_model: varchar
+    ~ record_count: integer
+    ~ date_operation: timestamp
+    * user_id: integer FK -> res_users
+    ~ status: varchar
+    ~ error_message: text
+}
+
+entity ir_sequence {
+    * id: serial PK
+    --
+    Table Odoo standard — séquences
+    --
+    ~ code: varchar UNIQUE
+    ~ prefix: varchar
+    ~ suffix: varchar
+    ~ padding: integer
+    ~ number_next: integer
+    --
+    Séquences utilisées :
+    - seq_acte_naissance
+    - seq_acte_mariage
+    - seq_acte_deces
+    - seq_mention_marginale
+    - seq_demande_guichet
+}
+
+entity ir_attachment {
+    * id: serial PK
+    --
+    Table Odoo standard — fichiers joints
+    --
+    ~ name: varchar
+    ~ datas: bytea
+    ~ store_fname: varchar
+    * res_model: varchar
+    ~ res_id: integer
+    --
+    Liée à piece_justificative via Many2many
+}
+
+entity res_users {
+    * id: serial PK
+    --
+    Table Odoo standard — utilisateurs
+    --
+    ~ login: varchar
+    ~ email: varchar
+    ~ name: varchar
+    --
+    Étendue par :
+    - etat_civil_centre_ids (M2M)
+    - _is_etat_civil_admin()
+}
+
+entity etat_civil_centre_res_users_rel {
+    Table de liaison Many2many
+    --
+    * etat_civil_centre_id: integer FK -> etat_civil_centre
+    * res_users_id: integer FK -> res_users
+    --
+    PK(etat_civil_centre_id, res_users_id)
+}
+
+} ' end database
+
+@enduml
