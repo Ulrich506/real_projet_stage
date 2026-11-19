@@ -1,6 +1,6 @@
 {
     "name": "Gestion d'État Civil",
-    "version": "17.0.2.1.23",
+    "version": "17.0.2.1.24",
     "summary": "Gestion professionnelle des citoyens et actes d'état civil",
     "category": "Public Sector",
     "author": "Équipe État Civil",
@@ -42,12 +42,12 @@
         "views/piece_requise_views.xml",
         "data/piece_requise_data.xml",
         "data/piece_requise_sequence.xml",
+        "data/citoyens_demo_data.xml",
         "views/menus.xml",
         "data/menus_restrictions.xml",
     ],
     "demo": [
         "demo/demo_users.xml",
-        "demo/citoyens_demo_data.xml",
     ],
     "assets": {
         "web.assets_backend": [
