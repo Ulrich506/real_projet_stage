@@ -64,7 +64,7 @@
                     <field name="has_acte_naissance" invisible="1"/>
                     <field name="has_acte_mariage" invisible="1"/>
                     <field name="has_acte_deces" invisible="1"/>
-                    <field name="statut" widget="statusbar" readonly="1"
+                    <field name="statut" widget="statusbar" readonly="1" clickable="False"
                            statusbar_visible="en_attente,traite"/>
                 </header>
                 <sheet>

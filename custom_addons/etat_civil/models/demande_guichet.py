@@ -474,8 +474,8 @@ class EtatCivilDemandeGuichet(models.Model):
             if not self.env.su and not self.env.user.has_group('etat_civil.group_etat_civil_admin'):
                 raise UserError(
                     "Impossible de modifier le statut du ticket directement : "
-                    "utilisez les boutons « Marquer traité » ou « Annuler » disponibles dans "
-                    "l'en-tête du formulaire."
+                    "utilisez le bouton « Marquer traité » dans l'en-tête du formulaire. "
+                    "Le bouton « Annuler » est réservé aux administrateurs."
                 )
 
         # Bloquer la modification directe de processed_at
