@@ -1,6 +1,6 @@
 {
     "name": "État civil — Passerelle comptable",
-    "version": "17.0.1.1.5",
+    "version": "17.0.1.1.6",
     "category": "Services/Accounting",
     "summary": "Relie les demandes de copies à Odoo Accounting",
     "depends": ["etat_civil", "account"],
@@ -17,6 +17,9 @@
         "report/copy_document.xml",
         "report/copy_receipt.xml",
         "wizards/receipt_preview_views.xml",
+    ],
+    "demo": [
+        "demo/demo_users.xml",
     ],
     "installable": True,
     "application": False,

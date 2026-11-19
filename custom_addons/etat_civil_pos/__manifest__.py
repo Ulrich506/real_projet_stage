@@ -1,6 +1,6 @@
 {
     "name": "État civil — Encaissement au point de vente",
-    "version": "17.0.1.0.7",
+    "version": "17.0.1.0.8",
     "category": "Services/Accounting",
     "summary": "Relie les paiements POS aux factures des demandes de copie",
     "depends": ["etat_civil_account", "point_of_sale"],

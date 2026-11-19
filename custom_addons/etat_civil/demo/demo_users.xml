@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Comptes de démonstration — chargés UNIQUEMENT en mode démo.
+
+    Ne JAMAIS utiliser ces comptes en production.
+    Le mot de passe de démonstration est : demo123
+-->
+<odoo>
+
+    <!-- Centre de démonstration -->
+    <record id="centre_demo_fianarantsoa" model="etat.civil.centre">
+        <field name="name">Centre de démonstration — Fianarantsoa</field>
+        <field name="commune">Fianarantsoa</field>
+        <field name="region">Fianarantsoa</field>
+    </record>
+
+    <!-- Agent d'état civil -->
+    <record id="user_demo_agent" model="res.users">
+        <field name="name">Rakoto Agent</field>
+        <field name="login">agent@demo.mg</field>
+        <field name="email">agent@demo.mg</field>
+        <field name="password">demo123</field>
+        <field name="groups_id" eval="[(4, ref('base.group_user')),
+                                       (4, ref('etat_civil.group_etat_civil_agent'))]"/>
+        <field name="etat_civil_centre_ids" eval="[(4, ref('centre_demo_fianarantsoa'))]"/>
+    </record>
+
+    <!-- Officier d'état civil -->
+    <record id="user_demo_officier" model="res.users">
+        <field name="name">Rasoa Officier</field>
+        <field name="login">officier@demo.mg</field>
+        <field name="email">officier@demo.mg</field>
+        <field name="password">demo123</field>
+        <field name="groups_id" eval="[(4, ref('base.group_user')),
+                                       (4, ref('etat_civil.group_etat_civil_officier'))]"/>
+        <field name="etat_civil_centre_ids" eval="[(4, ref('centre_demo_fianarantsoa'))]"/>
+    </record>
+
+    <!-- Administrateur d'état civil -->
+    <record id="user_demo_admin" model="res.users">
+        <field name="name">Andria Admin</field>
+        <field name="login">admin_ec@demo.mg</field>
+        <field name="email">admin_ec@demo.mg</field>
+        <field name="password">demo123</field>
+        <field name="groups_id" eval="[(4, ref('base.group_user')),
+                                       (4, ref('etat_civil.group_etat_civil_admin')),
+                                       (4, ref('etat_civil.group_etat_civil_agent')),
+                                       (4, ref('etat_civil.group_etat_civil_officier'))]"/>
+        <field name="etat_civil_centre_ids" eval="[(4, ref('centre_demo_fianarantsoa'))]"/>
+    </record>
+
+</odoo>
