@@ -9,3 +9,4 @@ from . import test_user_directory
 from . import test_individu_age_marriage
 from . import test_pieces_auto
 from . import test_territorial_security
+from . import test_demande_guichet_status

@@ -275,9 +275,10 @@ class EtatCivilDemandeGuichet(models.Model):
                 "processed_at": fields.Datetime.now(),
             })
             # Trace dans l'audit log avec l'utilisateur réel
-            record._record_event(
-                action_type="status_changed",
-                info=f"Ticket {record.ticket_numero} marqué comme traité par {self.env.user.name}"
+            self.env["etat.civil.audit.log"]._record_event(
+                action_type="update",
+                record=record,
+                details={"info": f"Ticket {record.ticket_numero} marqué comme traité par {self.env.user.name}"}
             )
         return True
 
@@ -294,9 +295,10 @@ class EtatCivilDemandeGuichet(models.Model):
                 "statut": "annule",
                 "processed_at": fields.Datetime.now(),
             })
-            record._record_event(
-                action_type="status_changed",
-                info=f"Ticket {record.ticket_numero} annulé par {self.env.user.name}"
+            self.env["etat.civil.audit.log"]._record_event(
+                action_type="cancel",
+                record=record,
+                details={"info": f"Ticket {record.ticket_numero} annulé par {self.env.user.name}"}
             )
         return True
 
@@ -468,7 +470,8 @@ class EtatCivilDemandeGuichet(models.Model):
         # Bloquer la modification directe du statut par RPC — seul action_set_status peut le faire via sudo()
         if "statut" in vals:
             # Permettre si c'est un appel sudo() depuis action_set_status, action_marquer_traite, ou action_annuler_ticket
-            if not self.env.user.has_group('etat_civil.group_etat_civil_admin'):
+            # self.env.su est True quand record.sudo().write() est appelé (environnement élévé)
+            if not self.env.su and not self.env.user.has_group('etat_civil.group_etat_civil_admin'):
                 raise UserError(
                     "Impossible de modifier le statut du ticket directement : "
                     "utilisez les boutons « Marquer traité » ou « Annuler » disponibles dans "
@@ -477,7 +480,7 @@ class EtatCivilDemandeGuichet(models.Model):
 
         # Bloquer la modification directe de processed_at
         if "processed_at" in vals:
-            if not self.env.user.has_group('etat_civil.group_etat_civil_admin'):
+            if not self.env.su and not self.env.user.has_group('etat_civil.group_etat_civil_admin'):
                 raise UserError(
                     "Impossible de modifier la date de traitement manuellement : "
                     "cette date est enregistrée automatiquement lors du traitement du ticket."
@@ -503,10 +506,11 @@ class EtatCivilDemandeGuichet(models.Model):
                         field_label = record._fields.get(field_name, {}).get('string', field_name)
                         changes.append(f"{field_label}: {old_val} → {new_val}")
                 if changes:
-                    record._record_event(
+                    self.env["etat.civil.audit.log"]._record_event(
                         action_type="update",
-                        info=f"Modification de la demande {record.ticket_numero} par {user.name}: "
-                             + "; ".join(changes)
+                        record=record,
+                        details={"info": f"Modification de la demande {record.ticket_numero} par {user.name}: "
+                                         + "; ".join(changes)}
                     )
 
         return super().write(vals)

@@ -1,6 +1,6 @@
 {
     "name": "Gestion d'État Civil",
-    "version": "17.0.2.1.24",
+    "version": "17.0.2.1.25",
     "summary": "Gestion professionnelle des citoyens et actes d'état civil",
     "category": "Public Sector",
     "author": "Équipe État Civil",
